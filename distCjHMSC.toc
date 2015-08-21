@@ -61,9 +61,9 @@
 \contentsline {part}{III\hspace {1em}Library}{76}{part.3}
 \contentsline {chapter}{\numberline {11}Programs}{77}{chapter.11}
 \contentsline {section}{\numberline {1.}RMSE as function of coherence}{77}{section.11.1}
-\contentsline {section}{\numberline {2.}Test of coherence}{81}{section.11.2}
-\contentsline {section}{\numberline {3.}Statistical distribution of the ratios}{82}{section.11.3}
-\contentsline {section}{\numberline {4.}Example of filter bank description}{86}{section.11.4}
-\contentsline {section}{\numberline {5.}Full process}{87}{section.11.5}
-\contentsline {chapter}{\numberline {12}Toolbox}{91}{chapter.12}
-\contentsline {chapter}{\numberline {13}Utilitaries}{99}{chapter.13}
+\contentsline {section}{\numberline {2.}Test of coherence}{78}{section.11.2}
+\contentsline {section}{\numberline {3.}Statistical distribution of the ratios}{79}{section.11.3}
+\contentsline {section}{\numberline {4.}Example of filter bank description}{80}{section.11.4}
+\contentsline {section}{\numberline {5.}Full process}{81}{section.11.5}
+\contentsline {chapter}{\numberline {12}Toolbox}{82}{chapter.12}
+\contentsline {chapter}{\numberline {13}Utilitaries}{83}{chapter.13}
