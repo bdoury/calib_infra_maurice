@@ -1,0 +1,22 @@
+%====== spectral estimation
+
+\subsubsection{Spectral estimation}
+\label{ann:spectral-estimation}
+Estimation of the frequency response of the sensor under test needs the estimation of the spectral matrix of the process assumed it is stationary. The main ingredient is the following asymptotic result:  the $K$ 
+ frequency points of the discrete Fourier transform (DFT) are independent bivariate gaussian-circular random vectors with zero-mean and covariance $\Gamma_k$. $\Gamma_k$ is a $2\times 2$ matrix depending on $4$ real values. 
+
+In the general case, the statistical model is identifiable and the estimation of $\Gamma_k$ is obtained via the DFT by:
+ \begin{eqnarray}
+\label{eq:hatGammak}
+\widehat\Gamma_k = \sum_k w_M(k)I_N(k), \quad\mathrm{where}\quad
+I_N(k) = \frac{1}{N}\sum_{n=0}^{N-1}x_n\,e^{-2i\pi nk/N}
+\end{eqnarray}
+Unfortunately in our context, the spectral matrix has the following form:
+ \begin{eqnarray}
+\label{eq:GammakinourModel}
+\Gamma_k = \begin{bmatrix}
+|G_k|^2(\gamma_k+\sigma^2_{1,k})&G_kH_k^*\gamma_k\\
+G_k^*H_k\gamma_k&|H_k|^2(\gamma_k+\sigma^2_{2,k})
+\end{bmatrix}
+\end{eqnarray}
+whose the parametrization is not identifiable, consisting on $G_k\in\mathds{C}$, $\gamma_k\geq 0$, $\sigma^2_{1,k}\geq 0$ and $\sigma^2_{2,k}\geq 0$, i.e. $5$ real parameters whereas $\widehat\Gamma_k$ has only $4$ real values.

@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{alcoverro:2005}
+B.~Alcoverro and A.~Le~Pichon.
+\newblock Design and optimization of a noise reduction system for infrasonic
+  measurements using elements with low acoustic impedance.
+\newblock {\em The Journal of the Acoustical Society of America},
+  117(4):1717--1727, 2005.
+
+\bibitem{carter:1973}
+G.~C. Carter, C.~H. Knapp, and A.H. Nutall.
+\newblock Estimation of the magnitude-squared coherence function via overlapped
+  fast fourier transform processing.
+\newblock {\em IEEE trans. on Audio and Electroacoustics}, 21(4):337--344,
+  August 1973.
+
+\bibitem{gabrielson:2011}
+T.~B. Gabrielson.
+\newblock In-situ calibration of infrasound array elements.
+\newblock {\em The Journal of the Acoustical Society of America},
+  130(3):1154--1163, 2011.
+
+\bibitem{mack_flinn:1971}
+H.~Mack and E.~A. Flinn.
+\newblock Analysis of the spatial coherence of short-period acoustic-gravity
+  waves in the atmosphere.
+\newblock {\em Geophysical Journal of the Royal Astronomical Society},
+  26(1-4):255--269, 1971.
+
+\bibitem{nouvellet_itwb:2013}
+A.~Nouvellet, M.~Charbit, A.~Le Pichon, F.~Roueff, and I.Y. Che.
+\newblock Coherence parameters estimation from noisy observations.
+\newblock {\em ITW, Vienna}, October 2013.
+
+\bibitem{nouvellet:2012}
+A.~Nouvellet, A.~Le~Pichon, M.~Charbit, and F.~Roueff.
+\newblock Constraint on speed of sound for tdoa based estimator.
+\newblock Technical Report 4600239674/P6H53, CEA, DAM, DIF, F-91297 Arpajon
+  France, November 2012.
+\newblock Available upon request to the authors.
+
+\end{thebibliography}
