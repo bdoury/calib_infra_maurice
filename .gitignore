@@ -2,3 +2,10 @@
 *~
 figures/._.DS_Store
 figures/.DS_Store
+*.aux
+*.bbl
+*.log
+*.out
+*.gz
+*.toc
+distCjHMSC.pdf
