@@ -66,7 +66,7 @@ $G_{r}(f)$ represents the frequency response of the SREF. $H_{r}(f)$ is known an
 %===========================================
 %===========================================
 %===========================================
-\section{SUT estimation}
+\section{Spectral estimation}
 %===========================================
 If we assume that the SUT is well modeled by a linear filter, a common way to calibrate it is to estimate its impulse response or equivalently its frequency response. In the absence of {\it a priori} knowledges, i.e. non parametrical approac, the only parameters are the bounds of the frequency bandwidth. The lowest value is related to the largest period we want to analyze and the highest leads to the sampling frequency. In infrasonic system the largest period is about 50 seconds. Therefore to expect a good accuracy we can assume that at least 5 times this value is necessary leading to about 4 minutes. In frequency domain that is equivalent to about $0.004$ Hz. In infrasonic system the largest frequency leads to choose the sampling frequency to $20$ Hz. In summary impulse response consists of $4800$ real values and frequency response consists of $2400$ complex values. 
 
@@ -141,13 +141,15 @@ Considering only time intervals with almost zero noises, we can ask: why do we u
 %===========================================
 %===========================================
 %===========================================
-\section{Spectral analysis}
+\section{Spectral analysis for SUT estimation}
 %===========================================
 The classical moment method leads to replace in the  formulas like \eqref{eq:ratio-sup}  or \eqref{eq:ratio-inf} the true spectral components by consistent estimates. In the absence of {\it a priori} knowledges that is given by a non parametrical spectral analysis. More details about the statistics of these quantities, as  the ratio of spectral components or the MSC, are presented in annexe \ref{ann:spectral-estimation}. 
 
 
+%=================================
 %===========================================
-\subsubsection{Discrete time model}
+\subsection{Discrete time model}
+%=================================
 We consider that the frequency band of interest is $(1/\tau_{c}, F_{M})$. $F_{M}$ allows to replace the continuous time signals by a time series with a sampling frequency $F_{s}=2F_{M}$. In infrasonic $F_{s}=20$ Hz. $\tau_{c}$ implies to estimate the response up to this period. In the infrasonic context $\tau_{c}=50$ seconds. That implies to reach in the normalized frequency domain the frequency of about $1/\tau_{c}F_{s}=1/1000$. Taking a regular grid on the unit circle, as it is with FFT algorithm, the number $L$ of frequency bins will be of an order of magnitude of a few times $\tau_{c}F_{s}$. If we consider an order of 4 to 5, that leads to take $L$ around $4096$.
 
  In the following the index $k$ refers to the frequency $kF_{s}/L$. For example $\gamma_{ss,k}=\gamma_{ss}(kF_{s}/L)$. Because the signal is real, all spectral representations have hermitian symmetry and it is only necessary to consider normalized frequency between $0$ and $1/2$. Finally the spectrum at frequency 0 is real valued and will be omitted. Therefore the spectral representation is restricted to the values of the frequency index $k$ going from $1$ to $K=L/2$. 
@@ -174,15 +176,17 @@ From \eqref{eq:MSC-continuous-frequency} we derive the MSC expression in the dis
 and, for $\MSC_{k}$ very close to $1$ we can use any of the two formulas \eqref{eq:ratio-sup} or \eqref{eq:ratio-inf}, giving:
 \begin{eqnarray}
 \label{eq:ratio-sup-bis-exact}
-{G_{\ut,k}}&=&
-\frac{{S_{UU,k}}}{{S^*_{UR,k}}}\,G_{\rf,k}
+{G_{\ut,k}}&=&R_{k}^{\sup}\,G_{\rf,k}, \quad \mathrm{where}\quad
+R_{k}^{\sup} = \frac{{S_{UU,k}}}{{S^*_{UR,k}}}
 \end{eqnarray}
 or
 \begin{eqnarray}
 \label{eq:ratio-inf-bis-exact}
-{G_{\ut,k}}&=&
-\frac{{S_{UR,k}}}{{S_{RR,k}}}\,G_{\rf,k}
+{G_{\ut,k}}&=&R_{k}^{\inf}\,G_{\rf,k}, \quad \mathrm{where}\quad
+R_{k}^{\inf}=\frac{{S_{UR,k}}}{{S_{RR,k}}}
 \end{eqnarray}
+It is easy to show that $|R_{k}^{\inf}|\leq |R_{k}^{\sup}|$, using that the MSC is less than $1$.
+
 
 We have to keep in mind:
 \begin{itemize}
@@ -203,7 +207,8 @@ These consistent estimates are obtained via a Welch's approach by averaging succ
 Also we can find in the annex \ref{ann:spectral-estimation} the details to calculate the probability distributions of $\hMSC$ and of the ratio $\widehat{S_{UU,k}}/\widehat{S^*_{UR,k}}$. We also provide Matlab programs that performs these distributions. 
 
 %=================================
-\subsubsection{MSC approach}
+%=================================
+\subsection{MSC approach}
 %=================================
 
 It is worth noticing that we have only an estimate of the MSC not the true value. Therefore a test function has been determined to ensure with a given confidence level, typically $95\%$, to be over a target-value. The target-value is related to the accuracy we want on the estimation of the response of the SUT. In this case an important parameter is the  stationarity duration of the signals. For example we see on figure \ref{fig:allHest} that with $5$ windows, i.e. about 4 minutes (for long period of 50 seconds), the MSC must be over $0.97$ to ensure an RMSE of 5\% on the amplitude response. For such requirements the MSC threshold of the test is about $0.99$, see figure \ref{fig:MSCtestthreshold}.
@@ -220,15 +225,16 @@ It is worth to notice that the approach is strongly conservative. Indeed we keep
  It is important to remark that an RMSE of 5\% means that the measurement has only a probability of $0.7$ to be in this interval, if we assume gaussian asymptotic behavior. Therefore we could expect that we consider at first an accuracy of $10\%$ and reduce in second step this number by aggregating many measurements. The problem is when the MSC is far from $1$ a large indetermination appears which does not leads to a gaussian asymptotic behavior \emph{around the true value}. That is reported on the theoretical curves of the figure \ref{fig:theoreticaldistribratios}. We see that the two ratios are distributed to a gaussian distribution but at a wrong location. It is not possible to correct this bias because that would assume that  the noise ratio is exactly know.
 
 
-\figscale{theoreticaldistribratios.pdf}{Asymptotic distributions of the two ratios present in the formulas \eqref{eq:ratio-sup} and \eqref{eq:ratio-inf}. These distributions depend on the $\MSC$, but also on the noise levels and that is not known in practical case. These curves are obtained with the program {\tt CIHestimate.m}. The expressions are proved in the annex (see also the provided toolbox).}{fig:theoreticaldistribratios}{1}
+\figscale{theoreticaldistribratios.pdf}{Asymptotic distributions of the two ratios present in the formulas \eqref{eq:ratio-sup} and \eqref{eq:ratio-inf}. These distributions depend on the $\MSC$, but also on the noise levels and that is not known in practical case. These curves are obtained with the program {\tt CIHestimate.m}. The expressions are proved in the annex (see also the provided toolbox).}{fig:theoreticaldistribratios}{0.7}
 
 
 %=================================
-\subsubsection{SUT estimation}
+%=================================
+\subsection{SUT estimation}
 %=================================
 In each time window with an MSC above the selected threshold, we can use any of the formulas \eqref{eq:ratio-sup-bis-exact} or  \eqref{eq:ratio-inf-bis-exact} replacing the true values by estimated values. The estimated values are distributed as it is reported figure \ref{fig:theoreticaldistribratios}.  The theoretical expression of the distributions of both ratios are given in annex \ref{ann:spectral-estimation}. In first approximation, we can assume for large values of MSC that the bias is zero and only stays the variance.
 
-Therefore if we assume that the different values along a large period of time are statistically independent, we can access to a more accurate value of the useful ratio by averaging. But because we select time segments with different MSCs, we can use the variance of the estimated ratio and compute an averaging with weights in the inverse of this variance following:
+Therefore if we assume that the different values of the ratios along a large period of time are identically distributed and statistically independent, we can improve the accuracy by averaging. Also using the level of confidence of each ratio, i.e. its variance which is related to the  estimated MSC, we can perform a weighted average with weights in the inverse of this variance following:
 \begin{eqnarray}
 \label{eq:weithted-average-Ratio}
  \hat R &=& \frac{1}{L}\sum_{\ell=1}^{L}w_{\ell}\hat R_{\ell}
@@ -236,23 +242,66 @@ Therefore if we assume that the different values along a large period of time ar
 where $L$ denotes the number of periods of time with MSC above the selected threshold,
 \begin{eqnarray}
 \label{eq:estimated-Ratio}
-\hat R_{\ell} ^{\sup}=\frac{\hat S_{UU,k}}{S^{*}_{UR,k}}
+\hat R_{\ell,k} ^{\sup}=\frac{\hat S_{UU,k}^{(\ell)}}{\hat S^{*(\ell)}_{UR,k}}
 \quad
 \mathrm{or}
 \quad
-\hat R_{\ell}^{\inf} =\frac{\hat S_{UR,k}}{S_{RR,k}}
+\hat R_{\ell,k}^{\inf} =\frac{\hat S_{UR,k}^{(\ell)}}{\hat S_{RR,k}^{(\ell)}}
 \end{eqnarray}
 and where $w_{\ell}$ equals the inverse of the variances, whose approximate values are given by \eqref{eq:var12on22} and \eqref{eq:var11on21} and replacing true values by estimated values:
 \begin{eqnarray}
 \label{eq:weights}
-\mathrm{for}\,\, R^{\sup}:  &&1/w_{\ell}=\frac{1}{2(2M+1)}\frac{\hat\Gamma_{1,1}}{\hat\Gamma_{2,2}}
-  \frac{1-\hat\MSC}{\hat\MSC^{2}}
-\quad\mathrm{or}\\
+\mathrm{for}\,\, R^{\sup}:  &&1/w_{\ell}=\frac{1}{2(2M+1)}
+ \frac{\hat S_{UU,k}^{(\ell)}}{\hat S_{RR,k}^{(\ell)}} 
+  \frac{1-\hat\MSC_{\ell}}{\hat\MSC_{\ell}^{2}}
+\quad\mathrm{and}\\
 \mathrm{for }\,\, R^{\inf}:  && 1/w_{\ell}= \frac{1}{2(2M+1)}
-   \frac{\hat\Gamma_{1,1}}{\hat\Gamma_{2,2}} (1-\hat\MSC)
+   \frac{\hat S_{UU,k}^{(\ell)}}{\hat S_{RR,k}^{(\ell)}} (1-\hat\MSC_{\ell})
 \end{eqnarray}
 
 That is implemented in the fonction {\tt fbankanalysis.m}, look at the flag {\tt weightingflag}.
 
+\subsubsection{Remark}
 
+It is worth to notice that this weighted average is a little bit optimist because based on the assumption that the distribution is identical.
+We might be tempted to use this assumption to identify the parameter of interest as it follows: we start from the equation \eqref{eq:spectral-model-dicrete}, labeled by $\ell$ for different observed periods:
+\begin{eqnarray}
+\label{eq:spectral-model-dicrete-ell}
+\left\{
+\renewcommand\arraystretch{1.6}
+\begin{array}{rcl}
+S_{UU,k}^{(\ell)}&=&|G_{\ut,k}|^{2} (\gamma_{ss,k}+\gamma_{\ut,k})
+\\
+S_{RR,k}^{(\ell)}&=&|G_{\rf,k}|^{2} (\gamma_{ss,k}+\gamma_{\rf,k})
+\\
+S_{UR,k}^{(\ell)}&=&G_{\ut,k}G^{*}_{\rf,k}\gamma_{ss,k}
+\end{array}
+\right.
+\end{eqnarray}
+Under the assumption that the unlabeled unknown, saying $\gamma_{ss,k}$, $\gamma_{\ut,k}$  and
+$\gamma_{\rf,k}$ are identical, we can estimate these values. But it is likely that this approach is not fruitful. Indeed if we look at the distribution of  $R_{k}^{\sup}$ and $R_{k}^{\inf}$  as reported figure \ref{fig:practicalratiodistribution}, it is very different from the theoretical distribution given figure \ref{fig:theoreticaldistribratios}. The  main reason is that we mixed many different values of the MSCs.
+
+\figscale{practicalratiodistribution6.pdf}{Left: $R_{\inf}$, right: $R_{\sup}$. The values are obtained in the band of interest of the filter 3. The selected MSC threshold is $0.95$.}{fig:practicalratiodistribution}{0.8}
+%=================================
+%=================================
+\subsection{Case of known noise level ratio}
+%=================================
+In the particular case where we know the ratio between $\gamma_{u,k}$ and  $\gamma_{r,k}$, the equations \eqref{eq:spectral-model-dicrete} can be solved w.r.t. to $G_{u,k}$. Denoting $\rho_{k}=\gamma_{r,k}/\gamma_{u,k}$ we derive:
+\begin{eqnarray}
+\label{eq:known-noise-ratio}
+&&\hspace{-1cm}|G_{\ut,k}|=
+\frac{1}{2}\,\sqrt{\frac{\hat S_{UU,k}}{\hat S_{RR,k}}}\,|G_{\rf,k}|\times 
+\\&&\nonumber
+\left(
+(1-\rho_{k})\sqrt{\hMSC}+\sqrt{4\rho_{k}+(1-\rho_{k})^{2}\hMSC}
+\right)
+\end{eqnarray}
+
+
+Typically $\rho_{k}$ could be equal to the number of inlets in the noise reduction system, e.g. $96$.
+
+%    Hgknown_MC = (((noiseratioEff2-1)/(2*noiseratioEff2)) ...
+%        .*(absRsup_MC)) .*...
+%        (1+sqrt(1+4*noiseratioEff2/((noiseratioEff2-1)^2)*...
+%        absRinf_MC ./ absRsup_MC));
 
