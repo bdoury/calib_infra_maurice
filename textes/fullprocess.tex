@@ -2,7 +2,7 @@
 The full process consists of
 \begin{itemize}
 \item
- move data from the IDC, using {\tt execGPARSE.m} (thanks to P. Mialle). The data with Matlab format is saved. This data consists of a structure called {\tt records} with the following items:
+ move data from the IDC, using {\tt execGPARSE.m}. The data with Matlab format is saved. This data consists of a structure called {\tt records} with the following items:
  \begin{itemize}
  \item
 {\tt data}: sequence of samples,
@@ -15,10 +15,10 @@ The full process consists of
 \item
 {\tt channel}: 'BDF' or 'LKO' or 'LWD' or 'LWS'
  \end{itemize}   
-Typically in the following we use BDF on H and C.   The three other channels are only provided on H1. Channel LWD yields  the wind speed measurement. The wind sensor is located at about 2 meters above the infrasonic sensor.
+Typically in the following we use BDF on H and C.   The three other channels are only provided on H1. Channel LWD yields  the wind speed measurement. The wind sensor is located at about 2 meters above the infrasonic sensor. The frequency sampling depends on the channel. Typically for infrasound signals, the frequency sampling is $20$ Hz, and for wind features is 1 Hz.
     
 \item
- write the script {\tt filtercharacteristics.m}, following the example given in Annex.
+ provide the script {\tt filtercharacteristics.m}, following the example given in Annex.
  \item
  run the program {\tt ..... }.
 \end{itemize}
