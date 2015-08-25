@@ -15,7 +15,7 @@ e_{\rf}(t)&=&s(t)+w_{\rf}(t)
 \end{array}
 \right.
 \end{eqnarray}
-where $h(t)$ would take into account some possible filtering effect. It is worth to notice that because $s(t)$ is unknown, the unknown filter $h(t)$ is not identifiable, even in the simple case where $h(t) \star s(t)=\alpha s(t)$. In the following we only consider the case where $h(t)=\delta(t)$, leading to:
+where $h(t)$ would take into account some possible filtering effect. It is worth to notice that because $s(t)$ is unknown, the unknown filter $h(t)$ is not identifiable, even in the very simple case where $h(t) \star s(t)=\alpha s(t)$. In the following we only consider the case where $h(t)=\delta(t)$, leading to:
 \begin{eqnarray}
 \label{eq:model-of-excitation}
 \left\{
@@ -29,7 +29,10 @@ e_{\rf}(t)&=&s(t)+w_{\rf}(t)
 \end{eqnarray}
 
 
-The common signal $s(t)$ can be seen as the coherent part of the input signals. It is the key of the estimation. On the other hand the noises induce a loss of identifiability and appear as a nuisance factor which can be characterized by a loss of coherence (LOC). It follows that the observation signals write:
+The common signal $s(t)$ is the key of the estimation. On the other hand the noises induce a loss of identifiability and appear as a nuisance factor which can be characterized by a loss of coherence (LOC). \\*
+
+
+It follows that the observation signals write:
 \begin{eqnarray}
 \label{eq:model-of-obervation}
 \left\{
@@ -58,7 +61,7 @@ $$
 \item
 $G_{u}(f)$ represents the frequency response of the SUT which is the combination of the sensor under test, the frequency response of the anti-noise pipes and the digitalizer. It is the parameter to estimate.
 \item
-$G_{r}(f)$ represents the frequency response of the SREF. $H_{r}(f)$ is known and could be checked just before the test operation.
+$G_{r}(f)$ represents the frequency response of the SREF. $G_{r}(f)$ is known and has been checked just before the installation.
 \end{itemize}
 
 
@@ -125,17 +128,16 @@ The assumptions of negligible noises can be tested by thresholding the Magnitude
  \MSC(f) &=& \frac{|S_{UR}(f)|^{2}}{S_{UU}(f)S_{RR}(f)}
 \end{eqnarray}
  
-It can be shown that the MSC is 1, iff the two noises are zero.\\*
-
 In the model \eqref{eq:spectral-model} MSC also writes:
 \begin{eqnarray}
 \label{eq:coherence-in-our-model}
  \MSC(f) &=& \frac{1}{(1+\iSNR_{\ut}(f))(1+\iSNR_{\rf}(f))}
 \end{eqnarray}
-where $\iSNR_{\rf}(f)=\gamma_{\rf}(f)/\gamma_{ss}(f)$ and $\iSNR_{\ut}(f)=\gamma_{\ut}(f)/\gamma_{ss}(f)$.
+where $\iSNR_{\rf}(f)=\gamma_{\rf}(f)/\gamma_{ss}(f)$ and $\iSNR_{\ut}(f)=\gamma_{\ut}(f)/\gamma_{ss}(f)$. It follows that the MSC is 1, iff the two noises are zero.\\*
+
 
 %===========================================
-\subsubsection{Remark on the deterministic approach (a few details page \pageref{ann:deterministic-approach})}
+\subsubsection{Remark on the deterministic approach (more details page \pageref{ann:deterministic-approach})}
 Considering only time intervals with almost zero noises, we can ask: why do we use stochastic approach. Indeed the simple ratio of the short time Fourier transforms of the two observations, where the term short time is related to the long period, is the searched response. But there is also an equivalent to the MSC test. In the deterministic approach we have to validate the assumption that there is no noise and that in some way by locking if the performed ratio is almost constant along successive windows. That can be expressed by saying that the two sequences of Fourier along a few windows are correlated, and that leads to the MSC-like test.
 
 %===========================================

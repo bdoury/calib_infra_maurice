@@ -4,33 +4,58 @@
 \section{Objective}
 %===========================================
 
-\change[Benoit]{This study is devoted to the calibration of a sensor (assumed to be a linear time-invariant device). 
-We mainly focus on the infrasonic stations but most results can extended to seismic stations.\\*}
-{This study is devoted to the calibration of an infrasound system (Sensor + Wind Noise Reduction System),assumed to be a linear time-invariant system.
- It is expected that most results could be applied to the calibration of seismometers, using a reference instrument.\\*}
 
-\change[Benoit]
-{The PTS specifications for infrasonic frequency response sensor are $\pm 1\%$ on the amplitude gain and $\pm 5\degree$ on the phase in the frequency bandwidth going from $0.02$ Hz up to $4$ Hz}
-{The specifications set out in the Operational Manual \footnote{CTBT/WGB/TL-11,17/17/REV.5 Operational Manual for Infrasound Monitoring and the International Exchange of Infrasound Data} provide Minimum Requirements for the calibration of Infrasound Stations: the frequency response shall be within $\pm 5\%$ in amplitude gain from the nominal response in the PTS passband ($0.02$ Hz to $4$ Hz). That represents a challenging issue. 
-It should be noted that no Minimum Requirements are listed for the phase response of Infrasound Stations, yet it is stated in part 4.5 Calibration of the Operational Manual, that: "The calibration minimum requirements for infrasound stations do not currently include phase mesurement; however, these measurements are necessary to establish the full system response that is required for data processing at the International Data Centre."}\\*
+This study is devoted to the calibration of an infrasound system, which consists of its sensor and its Wind Noise Reduction System and which is assumed to be a linear time-invariant system, commonly called a linear filter in the literature.  It is expected that most results could be applied to the calibration of seismometers, using a reference instrument.\\*
 
-The method to estimate the response of a sensor, denoted Sensor Under Test (SUT), is based on the use of a second sensor, denoted Reference Sensor (SREF), whose frequency response is perfectly known. The calibration method is based \annote[Benoit]{on the presence of a quasi permanent background acoustical sound/noise all over the Word}{reference bibliographique nécessaire. Je ne suis pas s\^{u}r que le terme "sound" soit judicieux (je propose "noise"): le mot "acoustical" devrait \`{a} mon avis suffire à distinguer le signal qui nous intéresse des turbulences.}. 
-The term "acoustical'' refers to the propagation velocity of this wave which is commonly around 340 m/s inducing in the whole frequency domain of interest \annote[Benoit]{large wavelengths compared to the size of the sensor}{peut-\^{e}tre un ordre de grandeur ?}. It follows that this signal appears coherently on the two sensors. \annote[Benoit]{In the following it is shortly called the coherent signal and is denoted $s(t)$}{Le signal cohérent en basse fréquence est une somme d'un signal "acoustique" et d'un signal "non-acoustique". La terme "coherent signal" me semble mal choisi pour décrire le seul signal accoustique.}. It has been observed and seems to have a large enough frequency bandwidth and energy to satisfy the PTS requirements. A general schema is reported figure \ref{fig:general-schema}. 
-Unfortunately this signal is not observable. It follows that, in presence of additive noises, the problem is ill-conditioned in the sense that they are an infinity of possible solutions.
+The specifications set out in the Operational Manual \footnote{CTBT/WGB/TL-11,17/17/REV.5 Operational Manual for Infrasound Monitoring and the International Exchange of Infrasound Data} provide Minimum Requirements for the calibration of Infrasound Stations: the frequency response shall be within $\pm 5\%$ in amplitude gain from the nominal response in the PTS passband ($0.02$ Hz to $4$ Hz). That represents a challenging issue. 
+It should be noted that no Minimum Requirements are listed for the phase response of Infrasound Stations, yet it is stated in part 4.5 Calibration of the Operational Manual, that: "The calibration minimum requirements for infrasound stations do not currently include phase measurement; however, these measurements are necessary to establish the full system response that is required for data processing at the International Data Centre."\\*
 
-A special mention concerns the noises denoted $w_{\ut}$ and $w_{\rf}$ (see figure \ref{fig:general-schema}). They are mainly due to the wind. Although the wind structure is very different of the  "acoustical'' signal $s(t)$, we will see that a parameter of interest is $\zeta=v/f$ where $v$ is the wind velocity and $f$ the frequency. $\zeta$ can be interpreted 
-as a wavelength. \annote[Benoit]{For typical values of the wind velocity, $\zeta$ is much lower than the distances between air inlets of the noise reduction system (NRS).}{Je ne comprends pas bien l'int\'er\^et de cette phrase, surtout qu'a mon sens, en basse frequence le ratio $\zeta$ est presque toujours plus grand que la distance inter-inlet. Un aspect du probl\`eme consiste justement \`a comprendre et mod\'eliser le "dip" comme une fonction de $\zeta$, non ?}
 
+%================ figure ====================
+\figscale{schema-of-observation-simple.pdf}{Measurement process. SUT denotes the sensor under test, it consists of a sensor and its noise reduction system. SREF denotes the reference sensor. SUT and SREF are assumed to be linear filters. $e_{u}(t)$ and $e_{u}(t)$ denote the non observable input signals. $x_{u}(t)$ and $x_{r}(t)$ are sampled and recorded.}{fig:schema-of-observation-simple}{0.8}
+
+
+The method to estimate the response of a infrasound system, denoted Sensor Under Test (SUT) in the following, is based on the use of a second sensor, denoted Reference Sensor (SREF), whose frequency response is perfectly known. The calibration method is based on the presence of a quasi permanent background signal all over the Word \cite{?}.  Still in \cite{?}, experimental results have shown that this background signal has a large enough frequency bandwidth and energy to satisfy the PTS requirements. \\*
+
+
+This  background signal  induces two  signals denoted $e_{u}(t)$ and $e_{r}(t)$ in the figure \ref{fig:schema-of-observation-simple}
+A useful property is that a large part of these two signals is simultaneously present  on the two sensors. The main reason of the presence of this same signal is related to the spatial coherence which is due to the fact that the signal wavelength is much larger than the distances  involved in the measurement process: for a common acoustical velocity of $300$ m/s, and the highest frequency of interest saying $4$ Hz, the wavelength is $75$ m which is much larger than the distance between the two sensors, which is less than 3 meters. 
+\change[momo]{}{It is worth to notice that the air turbulences, which can be at first order characterized by the ratio $v/f$ where $v$ is its velocity of around a few meters per second, e.g. $4$ m/s, induces spatial coherence phenomena for frequencies under $f<0.02$ Hz, see chapter ...}
+
+\change[momo]{}{In the following the common part, denoted $s(t)$, is shortly called the \emph{coherent signal}. However spatial coherence does not mean that there is a commun part for the inputs of the two sensors. It means that a part of the SUT signal is a filtering of a part of the SREF signal. But if such situation occurs, the filter involved is not identifiable. In the following we assume that this filter is the identity filter.  More specifically we let:}
+\begin{eqnarray*}
+\left\{
+\renewcommand\arraystretch{1.6}
+\begin{array}{rcl}
+e_{\ut}(t)&=&s(t)+w_{\ut}(t)
+\\
+e_{\rf}(t)&=&s(t)+w_{\rf}(t)
+\end{array}
+\right.
+\end{eqnarray*}
+where $w_{\ut}(t)$ and $w_{\rf}(t)$ are such that the correlation between them are zero for any couple of times. In the following they are shortly called \emph{noise}.  They are mainly due to the wind.\\*
+
+Unfortunately the signal $s(t)$ is not  \emph{observable}. It follows that, in presence of the additive noises $w_{\ut}(t)$ and $w_{\rf}(t)$, the problem is ill-conditioned in the sense that they are an infinity of possible solutions.
+
+
+
+
+
+
+%Although the wind structure is very different of the  "acoustical'' signal $s(t)$, we will see that a parameter of interest is $\zeta=v/f$ where $v$ is the wind velocity and $f$ the frequency. $\zeta$ can be interpreted as a wavelength. \annote[Benoit]{For typical values of the wind velocity, $\zeta$ is much lower than the distances between air inlets of the noise reduction system (NRS).}{Je ne comprends pas bien l'int\'er\^et de cette phrase, surtout qu'a mon sens, en basse frequence le ratio $\zeta$ est presque toujours plus grand que la distance inter-inlet. Un aspect du probl\`eme consiste justement \`a comprendre et mod\'eliser le "dip" comme une fonction de $\zeta$, non ?}
+
+%===========================================
+ \newpage\clearpage
 %===========================================
 \section{Experimental testbed}
 %===========================================
 In may 2015, an experimental setup has been deployed in the IS26 located in Freyung in Germany:
 \begin{itemize}
 \item
-The sensors under test/reference are reported table \ref{tab:sensor-specifications}. \annote[Benoit]{The reference sensors are deployed at a few meters of the sensors under test.}{Je ne pense pas que la proximit\'e des micro-barom\`etres soit la donn\'ee \`a mettre en avant. Je suggere ce qui suit.} Each reference sensor was installed in the same vault as the sensor under test, and was connected to a newly installed reference inlet through a short pipe. The reference inlet port was positioned at a short distance (< few meters) from the main manifold of the Wind Noise Reduction System. 
+The different sensors under test/reference are reported table \ref{tab:sensor-specifications}. Each reference sensor was installed in the same vault as the sensor under test, and was connected to a newly installed reference inlet through a short pipe. The reference inlet port was positioned at a short distance (less than a few meters) from the main manifold of the Wind Noise Reduction System. 
 These sensors have been checked before installation. We have two kinds of SREF, one is MB2005 \annote[Benoit]{with a short period}{que veux-tu dire par l\`a?}, the other is MB3 with long period. The SUT are all MB3 with long period.
 \item
-The environment is particularly  quiet, due to the Bavarian Forest where the station is located. It follows that the wind is almost absent during large periods of time.
+The environment is particularly  quiet, due to the Bavarian Forest where the station is located. It follows that the wind is very low during large periods of time.
 
  \item
 The data are recorded in continuous at the IDC, in testbed.
@@ -39,7 +64,7 @@ The data are recorded in continuous at the IDC, in testbed.
 It is worth to notice that the calibration problem is a little bit different of the detection problem which consists to provide an alert when the system is out of specifications.
 
 
-\begin{table}
+\begin{table}[h]
 \begin{center}
 \begin{tabular}{|c||cc|cc||}
 \hline
@@ -68,7 +93,7 @@ H8/C8& MB3   & 00015  & MB3 &00022
 \end{tabular}
 \parbox{12 cm}
 {
-    \caption{\protect\small\it  sensor specifications: all sensors have the same theoretical sensitivity of $0.02$ V/Pa. The MB3s have self noise lower than that of the MB2005s. The sites associated to the ''Wind Noise Reduction System" are labelled H whereas  the sites of reference sensors are labelled C.}
+    \caption{\protect\small\it  sensor specifications: all sensors have the same theoretical sensitivity of $0.02$ V/Pa. The MB3s have self noise lower than that of the MB2005s. The sites associated to the ''Wind Noise Reduction System" are labelled H whereas  the sites of reference sensors are labelled C. In the site 1, we have wind informations, as direction, velocity, etc}
     \label{tab:sensor-specifications}
 }
 \end{center}
@@ -82,8 +107,7 @@ H8/C8& MB3   & 00015  & MB3 &00022
 \section{Main issue}
 %===========================================
 
-\annote[Benoit]{The main issue is related to the under-determination of the problem (also known as blind identification). More specifically in our model we have four unknowns for only two observations. The four unknowns are the frequency response of the SUT, the spectral shapes of the coherent signal and the two noises on the two sensors. The two observations are the output signals on both sensors.}{Certaines definitions sont necessaires a la lecture de l'introduction (en particulier la partie "main issue"). Je pense qu'il serait bon de poser brievement le modele quelque part dans l'introduction, ainsi que les definitions principales.}
-
+The main issue is related to the under-determination of the problem (also known as blind identification). More specifically in our model we have four unknowns for only two observations. The four unknowns are the frequency response of the SUT, the spectral shape of the coherent signal and the spectral shapes of the two noises. The two observations are the output signals on both sensors, see figure \ref{fig:general-schema}.
 
 A common way to solve this kind of problem is to introduce some {\it a priori} knowledges/assumptions. The drawback is what happens when the {\it a priori} knowledges are not well-verified.
 
