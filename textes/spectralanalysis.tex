@@ -31,7 +31,7 @@ The notations are reported figure \ref{fig:general-schema}.
 \subsection{Continuous time model}
 %=================================
 
-In the introduction discussion, we have explained that the model of signals are given by expressions \eqref{eq:model-signal-introduction}, they are re-written below:
+In the introduction discussion, we have explained that the model of signals are given by expressions \eqref{eq:model-signal-introduction}, which are re-written below:
 \begin{eqnarray}
 \label{eq:model-of-excitation}
 \left\{
@@ -67,6 +67,11 @@ The stationarity and the absence of correlation between $s(t)$, $w_{\ut}(t)$ and
 \begin{itemize}
 \item
 $s(t)$ is a wide-sense stationary process with zero-mean and spectral density $\gamma_{s}(f)$,
+which is the Fourier transform of the covariance fonction:
+\begin{eqnarray*}
+ R(\tau) = \esp{s(t+\tau)s(t)}&\rightleftharpoons  &
+ S(f)=\int R(\tau) e^{-2j\pi f\tau}d\tau
+\end{eqnarray*}
 \item
 $w_{u}(t)$ and $w_{r}(t)$ are two  stationary processes with zero-mean and respective spectral densities $\gamma_{\ut}(f)$ and $\gamma_{\rf}(f)$. 
 \item
@@ -130,7 +135,7 @@ and from the expression \eqref{eq:MSC-continuous-frequency} the MSC expression i
 \MSC_{k} = \frac{|{S_{UR,k}}|^{2}}{{S_{UU,k}}{S_{RR,k}}}
 \end{eqnarray}
 
-Also for $\MSC_{k}$ very close to $1$ we can use any of the two formulas \eqref{eq:ratio-sup} or \eqref{eq:ratio-inf}, to estimate the frequency response in the discrete frequency domain. 
+%Also for $\MSC_{k}$ very close to $1$ we can use any of the two formulas \eqref{eq:ratio-sup} or \eqref{eq:ratio-inf}, to estimate the frequency response in the discrete frequency domain. 
 
 
 
@@ -154,7 +159,7 @@ For the module of $G_{\ut,k}$, the problem is a little bit more complicate. Inde
 
 \subsubsection{Case of known noise level ratio}
 %=================================
-In the particular case where we know the ratio between $\gamma_{u,k}$ and  $\gamma_{r,k}$, the equations \eqref{eq:spectral-model} can be solved w.r.t. to $G_{u,k}$. Denoting $\rho_{k}=\gamma_{r,k}/\gamma_{u,k}$ we derive:
+In the particular case where we know the ratio between $\gamma_{u,k}$ and  $\gamma_{r,k}$, the equations \eqref{eq:spectral-model} can be solved w.r.t. to $G_{u,k}$. Denoting $\rho_{k}=\gamma_{r,k}/\gamma_{u,k}$ we easily derive:
 \begin{eqnarray}
 \label{eq:known-noise-ratio}
 &&\hspace{-1cm}|G_{\ut,k}|=
@@ -174,7 +179,7 @@ Typically $\rho_{k}$ could be considered as equal to the number of inlets in the
 In the equations \eqref{eq:spectral-model} the response $G_{\rf,k}$ is perfectly known, the unknows are $G_{\ut,k}\in\mathds{C}$, $\gamma_{s,k}\in\mathds{R}^{+}$,  $\gamma_{\ut,k}\in\mathds{R}^{+}$
 $\gamma_{\rf,k}\in\mathds{R}^{+}$. 
  
-It follows that, in absence of {\it a priori} knowledges,  the system \eqref{eq:spectral-model} is under-determined with $1$ degree of freedom (d.o.f.). That means that for all $f$ we can, for example,  choose arbitrarily the ratio $\rho_{k}=\gamma_{\ut,k}/\gamma_{\rf,k}$ from $0$ to infinity, then solve the systems \eqref{eq:spectral-model}. If one of the two noises is zero, i.e. the noise ratio is either 0 or infinite, the solution becomes unique and is given by:
+It follows that, in absence of {\it a priori} knowledges,  the system \eqref{eq:spectral-model} is under-determined with $1$ degree of freedom (d.o.f.). That means that for all $k$ we can, for example,  choose arbitrarily the ratio $\rho_{k}=\gamma_{\ut,k}/\gamma_{\rf,k}$ from $0$ to infinity, then solve the systems \eqref{eq:spectral-model}. If one of the two noises is zero, i.e. the noise ratio is either 0 or infinite, the solution becomes also unique and is given by:
 
 
 
@@ -228,19 +233,16 @@ that we have no access to the true values of the spectral components but only es
 %===========================================
 \section{Spectral analysis}
 %===========================================
-The classical moment method leads to replace in the  formulas \eqref{eq:phase-estimation}, \eqref{eq:ratio-sup-bis-exact}  and \eqref{eq:ratio-inf-bis-exact} the true spectral components by consistent estimates. In the absence of {\it a priori} knowledges that is given by a non parametrical spectral analysis. More details about the statistics of these quantities, as  the ratio of spectral components or the MSC, are presented in annexe \ref{ann:spectral-estimation}. 
+The classical moment method leads to replace in the  formulas \eqref{eq:exact-MSC}, \eqref{eq:phase-estimation}, \eqref{eq:ratio-sup-bis-exact}  and \eqref{eq:ratio-inf-bis-exact} the true spectral components by consistent estimates. In the absence of {\it a priori} knowledges that is given by a non parametrical spectral analysis. More details about the statistics of these quantities, as  the ratio of spectral components or the MSC, are presented in annexe \ref{ann:spectral-estimation}. 
 
 
 %=================================
 %===========================================
 
-Based on that, we can replace in expressions \eqref{eq:exact-MSC} and \eqref{eq:ratio-sup-bis-exact} the spectral components $S_{UU,k}$, $S_{RR,k}$ and $S_{UR,k}$ by their consistent estimates $\widehat{S_{UU,k}}$, $\widehat{S_{RR,k}}$ and $\widehat{S_{UR,k}}$.\\*
+Based on that, we replace the spectral components $S_{UU,k}$, $S_{RR,k}$ and $S_{UR,k}$ by their consistent estimates $\widehat{S_{UU,k}}$, $\widehat{S_{RR,k}}$ and $\widehat{S_{UR,k}}$, obtained via a Welch's approach by averaging successive periodograms, with a typical overlap of $50\%$ and Hann's window. It is worth to notice that the number of frequency  bins is related to the long period signals whereas the accuracy of the estimates are related to the number of windows which are used for averaging the periodograms, typically we have chosen $5$ windows. 
 
 
-These consistent estimates are obtained via a Welch's approach by averaging successive periodograms, with a typical overlap of $50\%$ and Hann's window. It is worth to notice that the number of frequency  bins is related to the long period signals whereas the accuracy of the estimates are related to the number of windows which are used for averaging the periodograms, typically we have chosen $5$ windows. 
-
-
-Also we can find in the annex \ref{ann:spectral-estimation} the details to calculate the probability distributions of $\hMSC_{k}$ and of the ratio $\widehat{S_{UU,k}}/\widehat{S^*_{UR,k}}$. We also provide Matlab programs that performs these distributions. 
+Also we can find in the annex \ref{ann:spectral-estimation} the details to calculate the probability distributions of $\hMSC_{k}$ and of the ratios $\widehat{S_{UU,k}}/|\widehat{S_{UR,k}|}$ and $|\widehat{S_{UR,k}}|/\widehat{S_{RR,k}}$. We also provide Matlab programs that performs these distributions. 
 
 %=================================
 %=================================
@@ -299,7 +301,7 @@ That is implemented in the fonction {\tt fbankanalysis.m}, look at the flag {\tt
 
 \subsubsection{Remark}
 
-It is worth to notice that this weighted average is a little bit optimist because based on the assumption that the distribution is identical.
+It is worth to notice that this weighted average is a little bit optimist because based on the assumption that the distribution is identical and the estimates independent.
 We might be tempted to use this assumption to identify the parameter of interest as it follows: we start from the equation \eqref{eq:spectral-model-discrete}, labeled by $\ell$ for different observed periods:
 \begin{eqnarray}
 \label{eq:spectral-model-discrete-ell}
@@ -315,7 +317,7 @@ S_{UR,k}^{(\ell)}&=&G_{\ut,k}G^{*}_{\rf,k}\gamma_{s,k}
 \right.
 \end{eqnarray}
 Under the assumption that the unlabeled unknown, saying $\gamma_{s,k}$, $\gamma_{\ut,k}$  and
-$\gamma_{\rf,k}$ are identical, we can estimate these values. But it is likely that this approach is not fruitful. Indeed if we look at the distribution of  $R_{k}^{\sup}$ and $R_{k}^{\inf}$  as reported figure \ref{fig:practicalratiodistribution}, it is very different from the theoretical distribution given figure \ref{fig:theoreticaldistribratios}. The  main reason is that we mixed many different values of the MSCs.
+$\gamma_{\rf,k}$ are identical, we can estimate these values. But it is likely that this approach is not fruitful. Indeed if we look at the distribution of  $R_{k}^{\sup}$ and $R_{k}^{\inf}$  as reported figure \ref{fig:practicalratiodistribution}, it is different from the theoretical distribution given figure \ref{fig:theoreticaldistribratios}. The  main reason is that we mixed many different values of the MSCs.
 
 \figscale{practicalratiodistribution6.pdf}{Left: $R_{\inf}$, right: $R_{\sup}$. The values are obtained in the band of interest of the filter 3. The selected MSC threshold is $0.95$.}{fig:practicalratiodistribution}{0.8}
 
@@ -324,34 +326,62 @@ $\gamma_{\rf,k}$ are identical, we can estimate these values. But it is likely t
 %================================
 \section{Using a filter bank}
 %================================
-The general pipeline proposed for the estimation process is reported figure \ref{fig:pipeline}. It consists 
+We had said that the spectral approach is based on stationarity property. But the real signals do not present permanent stationarity. Therefore we have to use time windows where this stationarity can be verified. Moreover is it maybe possible that in the high frequency range, saying e.g. around $1$ Hz, the time window length could be chosen shorter than in the low frequency range, saying e.g. around $0.02$ Hz. It is the main reason to propose a filter bank process in the full processing pipeline. The general pipeline proposed for the estimation process consists:
 \begin{itemize}
 \item
 of a filter bank described in a file of settings which is characterized by a sequence of following descriptors: type, frequency lower bound, upper frequency bound, order, desired stationarity duration etc. Commonly used type is Butterworth (available on Matlab).
 \item
-At the output of a filter, the two signals (one for the SUT the other for the SREF) are shared in non-overlapping blocks to perform the spectral estimate. Longer the size of a block more accurate the spectral analysis. But that assumes stationarity, and the real signals do not exhibit permanent stationarity. Therefore we can choose in the setting file the desired stationarity duration in term of multiple of the longest period in the band (inverse of lower frequency bound). Typically we take  $5$ times the longest period, expecting that we can find such length with stationarity to estimate the spectral components. Even with that, the accuracy is not in accordance with the PTS requirements, but by averaging in a long period of times (many days), we can reach such requirements.
-
-
+of a spectral estimation process. At the output of a filter, the two signals (one for the SUT the other for the SREF) are shared in non-overlapping blocks to perform the spectral estimates. Longer the size of a block more accurate the spectral analysis. But that assumes stationarity, and the real signals do not exhibit permanent stationarity. Therefore we can choose in the setting file the desired stationarity duration in term of multiple of the longest period in the band (inverse of lower frequency bound). Typically we take  $5$ times the longest period, expecting that we can find such length with stationarity to estimate the spectral components. Even with that, the accuracy is not in accordance with the PTS requirements, but by averaging in a long period of times (many days), we can reach such requirements.
 \item
 Each block is then shared in overlapping sub-blocks. We can choose the windowing and the overlap rate. Typically we consider Hann windowing and $50\%$ of overlapping. The periodograms in the different sub-blocks are averaged to provide a spectral estimation. 
 
 Only estimates in the bandwidth of the filter are retained.
-
 \item
 MSC is performed in each bandwidth. If the MSC is above the selected threshold, the value of the ratio $\hat S_{UU,k}/\hat S_{RU,k}$ is saved.
-
-
-
 \item
 along the recorded data, for a given frequency index $k$, the values  $\hat S_{UU,k}/\hat S_{RU,k}$ are averaged with weighting factors in accordance with $\hMSC$ values.
-
-
 \item
 Finally the estimation of the SUT response is derived from the SREF response.
+\end{itemize}
+The following shows an example of  process settings:
+\begin{center}
+\small
+\begin{verbatim}
+P=P+1;
+filtercharact(P).designname = 'butter';filtercharact(P).Norder=2;
+filtercharact(P).Wlow_Hz=0.02;
+filtercharact(P).Whigh_Hz=0.08;
+filtercharact(P).SCPperiod_sec=100;
+filtercharact(P).windowshape='hann';
+filtercharact(P).overlapDFT=0.5;
+filtercharact(P).overlapSCP=0;
+filtercharact(P).ratioDFT2SCP=5;
+\end{verbatim}
+\end{center}
+\begin{itemize}
+\item
+{\tt designname} means that the name of the filter model. The Butterworth model is available in Matlab. 
+\item
+{\tt Norder} denotes the order of the filter. If 0 there is no filtering. 
+\item
+{\tt Wlow\_Hz} denotes the low bound in Hz of the filter design,
+\item
+{\tt Whigh\_Hz} denotes the high bound in Hz of the filter design,
+\item
+{\tt windowshape} denotes the weighted window. Many windows are available in Matlab. Window is used to do a compromise between the leakage and the bias. Hann's window is commonly used.
+\item
+{\tt SCPperiod\_sec} denotes the time duration expressed in second of the window used for the spectral estimation,
+\item
+{\tt overlapDFT} overlapping rate for the spectral estimation,
+\item
+{\tt overlapSCP} overlapping rate for the different spectral estimates,
+\item
+{\tt ratioDFT2SCP} is an integer which denotes the ratio between the length of the duration fo spectral estimation and the duration for periodogram performing. 
 
-
+For example if {\tt SCPperiod\_sec=500}, {\tt overlapDFT = 0.5} and  {\tt ratioDFT2SCP=5}, the FFTs are computed on $500/5=100$ seconds, then for a sampling frequency of 20 Hz, on 2000 samples. Because the overlap is 0.5 we compute 9 FFTs.
 \end{itemize}
 
+\figscale{overlapFFTs.pdf}{Spectral estimation with $50\%$ overlapping. The variance of the estimate is related to the number of windows. The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. }{}{0.8}
 %=================================
 \subsubsection{Filter bank analysis}
 %=================================
