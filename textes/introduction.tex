@@ -23,7 +23,8 @@ A useful property is that a large part of these two signals is simultaneously pr
 \change[momo]{}{It is worth to notice that the air turbulences, which can be at first order characterized by the ratio $v/f$ where $v$ is its velocity of around a few meters per second, e.g. $4$ m/s, induces spatial coherence phenomena for frequencies under $f<0.02$ Hz, see chapter ...}
 
 \change[momo]{}{In the following the common part, denoted $s(t)$, is shortly called the \emph{coherent signal}. However spatial coherence does not mean that there is a commun part for the inputs of the two sensors. It means that a part of the SUT signal is a filtering of a part of the SREF signal. But if such situation occurs, the filter involved is not identifiable. In the following we assume that this filter is the identity filter.  More specifically we let:}
-\begin{eqnarray*}
+\begin{eqnarray}
+\label{eq:model-signal-introduction}
 \left\{
 \renewcommand\arraystretch{1.6}
 \begin{array}{rcl}
@@ -32,7 +33,7 @@ e_{\ut}(t)&=&s(t)+w_{\ut}(t)
 e_{\rf}(t)&=&s(t)+w_{\rf}(t)
 \end{array}
 \right.
-\end{eqnarray*}
+\end{eqnarray}
 where $w_{\ut}(t)$ and $w_{\rf}(t)$ are such that the correlation between them are zero for any couple of times. In the following they are shortly called \emph{noise}.  They are mainly due to the wind.\\*
 
 Unfortunately the signal $s(t)$ is not  \emph{observable}. It follows that, in presence of the additive noises $w_{\ut}(t)$ and $w_{\rf}(t)$, the problem is ill-conditioned in the sense that they are an infinity of possible solutions.
@@ -53,7 +54,7 @@ In may 2015, an experimental setup has been deployed in the IS26 located in Frey
 \begin{itemize}
 \item
 The different sensors under test/reference are reported table \ref{tab:sensor-specifications}. Each reference sensor was installed in the same vault as the sensor under test, and was connected to a newly installed reference inlet through a short pipe. The reference inlet port was positioned at a short distance (less than a few meters) from the main manifold of the Wind Noise Reduction System. 
-These sensors have been checked before installation. We have two kinds of SREF, one is MB2005 \annote[Benoit]{with a short period}{que veux-tu dire par l\`a?}, the other is MB3 with long period. The SUT are all MB3 with long period.
+These sensors have been checked before installation. We have two kinds of SREF, one is MB2005, the other MB3. The SUT is a MB3. For our calibration problem both SREF sensors can be considered as almost identical.
 \item
 The environment is particularly  quiet, due to the Bavarian Forest where the station is located. It follows that the wind is very low during large periods of time.
 
