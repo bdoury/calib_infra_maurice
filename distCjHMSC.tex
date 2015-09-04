@@ -229,6 +229,8 @@
 %===========================================
 \part{Library}
  \def\programs{../../allprogs/}
+ \def\programsfullprocess{fullprocess/}
+ \def\programsToolbox{fullprocess/ZZtoolbox/}
  %============================================
 \chapter{Programs}
  \section{RMSE as function of coherence}
@@ -250,26 +252,36 @@
 %============================================
   \section{Full process}
 
-{\tiny \verbatiminput{\programs/fullprocess/settings.m}}
+{\tiny \verbatiminput{\programsfullprocess settings.m}}
 
-{\tiny \verbatiminput{\programs/fullprocess/pipeline.m}}
+{\tiny \verbatiminput{\programsfullprocess pipeline.m}}
 
  \newpage
-{\tiny \verbatiminput{\programs/fullprocess/convertCSStomatlab.m}}
+{\tiny \verbatiminput{\programsfullprocess convertCSStomatlab.m}}
 
 \newpage
-{\tiny \verbatiminput{\programs/fullprocess/analyzeSUT.m}}
+{\tiny \verbatiminput{\programsfullprocess analyzeSUT.m}}
 
 \newpage
-{\tiny \verbatiminput{\programs/fullprocess/displayafigure.m}}
+{\tiny \verbatiminput{\programsfullprocess displayafigure.m}}
 
 
 %============================================ 
 \chapter{Toolbox}
-{\tiny \verbatiminput{../../../ZZtoolbox/fbankanalysis.m}}
+{\tiny \verbatiminput{\programsToolbox fbankanalysis.m}}
 
  \newpage
-{\tiny \verbatiminput{/Users/maurice/etudes/ctbto/allJOBs2015/myjob/ZZtoolbox/cumulFunctionMSC.m}
+{\tiny \verbatiminput{\programsToolbox cumulFunctionMSC.m}
+
+ \newpage
+{\tiny \verbatiminput{\programsToolbox invcumulFunctionMSC.m}
+
+ \newpage
+{\tiny \verbatiminput{\programsToolbox pdfMSC.m}
+
+ \newpage
+{\tiny \verbatiminput{\programsToolbox statsRatiosHbis.m}
+
 
 %===========================================
 %============================================ 
