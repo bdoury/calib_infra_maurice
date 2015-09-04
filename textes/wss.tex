@@ -1,6 +1,9 @@
 % !TEX root = ../distCjHMSC.tex
 %==============================================================
-A multivariate process $x_{n}$ is said to be a zero-mean wide-sense stationary (WSS) of second order iif $\esp{x_{n}}=0$, $\trace{\esp{x_{n}x_{n}^{H}}}<+\infty$ and the sequence of covariance matrices\footnote{The superscript $H$ denotes the transposition-conjugaison, $T$ the transposition and $*$ the conjugaison.} $R(h)=\esp{x_{n+h}x_{n}^{H}}$ does not depend on $n$. Under very general conditions, its Fourier transform
+A multivariate time series $x_{n}$ is said to be a zero-mean wide-sense stationary (WSS) process of second order iif $\esp{x_{n}}=0$, $\trace{\esp{x_{n}x_{n}^{H}}}<+\infty$ and the sequence of covariance matrices\footnote{The superscript $H$ denotes the transposition-conjugaison, $T$ the transposition and $*$ the conjugaison.} $R(h)=\esp{x_{n+h}x_{n}^{H}}$ does not depend on $n$. 
+It follows that $R(h)=R^{H}(-h)$. Therefore if $x_{n}$ is real $R(h)=R^{T}(-h)$.
+
+Under very general conditions, its Fourier transform
 $$
  \Gamma(f)=\sum_{h} R(h)e^{-2j\pi hf},\quad\text{with}\quad 
  f\in(0,1)
@@ -54,7 +57,7 @@ which is called the Magnitude Squared Coherence (MSC) or shortly the coherence. 
 $$
  \forall f, \quad \MSC(f)\leq 1
 $$
-and the equality occurs iff it exists a filter s.t. one signal of the bivariate process is the filtered expression  of the other. In this case $\Gamma(f)$ is, up to a a multiplicative positive value, a projector of rank 1. A fundamental example is given by
+and the equality occurs iff it exists a filter s.t. one signal of the bivariate process is the filtering  of the other. In this case $\Gamma(f)$ is, up to a a multiplicative positive value, a projector of rank 1. A fundamental example is given by
 $$
 \begin{array}{ccc}
 \left\{

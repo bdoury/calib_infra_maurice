@@ -31,7 +31,7 @@ There is no relationship between these two notions. In the general case $\esp{x_
 
 %============================================
 \subsubsection{Spectral description}
-When the process is a wide sense stationary (WSS) process  a spectral representation can be associated to the covariances. A zero-mean WSS  process is defined by the property that the covariance matrix $R(h)=\esp{x(t+h)x^{T}(t)}$ does not depend on $t$. It is also characterized by the spectral matrix which is the Fourier transform of the covariance matrix sequence:
+When the process is a wide sense stationary (WSS) process  a spectral representation can be associated to the covariances. A zero-mean WSS  process is defined by the property that the covariance matrix $R(h)=\esp{x(t+h)x^{H}(t)}$ does not depend on $t$. It is also characterized by the spectral matrix which is the Fourier transform of the covariance matrix sequence:
 \begin{eqnarray}
  \Gamma(f) = \int e^{-2j\pi fh}R(h)dh
 \end{eqnarray}
@@ -148,16 +148,18 @@ e^{-4\pi^{2}(r_{m}-r_{\ell})^{T}
                  \tilde \Sigma_{k}(r_{m}-r_{\ell})/\zeta^{2}}
  \end{eqnarray}
 
-The same parameter $\zeta$ has been proposed by Alcoverro and al. in \cite{alcoverro:2005} to characterize the coherence of the wind disturbances for closely located sensors. The expression \eqref{eq:MSCwind} has a clear meaning: the coherence  between any two spatial locations decreases when the distance between them is large compared to the ''wavelength'' $\zeta$. It follows that when $v_{0}$ increases the wind signals on the air inlets can be considered as uncorrelated and therefore $M$ works as a reduction factor. On the other hand when $f$ is very low, the ''wavelength'' is large and all coherence matrix entries are approximatively equal to $1$. 
+The same parameter $\zeta$ has been proposed by Alcoverro and al. in \cite{alcoverro:2005} to characterize the coherence of the wind disturbances for closely located sensors. The expression \eqref{eq:MSCwind} has a clear meaning: the coherence  between any two spatial locations decreases when the distance between them is large compared to the ''wavelength'' $\zeta$. 
+
+It follows that when $\zeta$ is low, i.e. low wind velocity and/or high frequency, the wind signals on the different air inlets are almost uncorrelated hence $M$ works as a reduction factor. On the other hand when $\zeta$ is high, i.e. high wind velocity and/or low frequency, the wind signals on the different air inlets are strongly correlated hence that allows good conditions to estimate the ratio between the sensor responses. In the mid-range, it appears that the common signal is present with two different amplitudes on the two sensors inducing a ratio different from $1$. Simulation below gives an illustration of that.
+
 
 
 
 %============================================
 \subsection{Coherence level as a function of $v/d$}
 
-To show that our model is in good agreement with the experimental results reported in  \cite{alcoverro:2005} we  consider a short simulation. We choose $M$ random locations in such a way we obtain several different distances. Using the formula \eqref{eq:Cfr1r2Gaussian} we compute for each pair of locations the frequency $f_{c}$ associated with the coherence level of $0.5$ and also the ratio $v/d$ where $d$ is the distance between the two locations. The coordinate couple $(v/d,f_{c})$ is reported figure \ref{fig:f05asvond}. The obtained cloud shape figure is very similar to the observation values reported in
-figure 5 of \cite{alcoverro:2005}. It is worth to notice that the frequency $f_{c}$ does not depend only on the distance. The reason is the coherence formula depends on the quadratic form $(r_m-r_k)^{T}\tilde \Sigma_{k}(r_m-r_k)$ and therefore on the angle between $(r_m-r_k)$ and the  eigenvectors of the matrix  $\tilde \Sigma_{k}$. This quadratic form reduces to the euclidian distance if $\tilde \Sigma_{k}\propto I_{3}$.
-
+To show that our model is in good agreement with the experimental results reported in  \cite{alcoverro:2005} we  consider the following simulation: we choose $M$ random locations in such a way we obtain several different inter-distances. Using the formula \eqref{eq:Cfr1r2Gaussian} we compute for each pair of locations the frequency $f_{c}$ associated with the coherence level of $0.5$. This value has been chosen in  \cite{alcoverro:2005} to define a cut-off for the MSC. We also compute the ratio $v/d$ where $d$ is the distance between the two locations. Finally the coordinate couples $(v/d,f_{c})$ are reported figure \ref{fig:f05asvond}. The obtained cloud shape figure is very similar to the observation values reported in
+figure 5 of \cite{alcoverro:2005}. It is worth to notice that the frequency $f_{c}$ does not depend only on the distance. The reason is the coherence formula depends on the quadratic form $(r_m-r_k)^{T}\tilde \Sigma_{k}(r_m-r_k)$ and therefore on the angle between $(r_m-r_k)$ and the  eigenvectors of the matrix  $\tilde \Sigma_{k}$. This quadratic form reduces to the euclidian distance if $\tilde \Sigma_{k}\propto I_{3}$. 
  \figscale{f05asvond.pdf}{Frequency $f_c$ associated with the MSC level $0.5$ as a function of $v/d$. }{fig:f05asvond}{0.8}
 
 
@@ -167,25 +169,25 @@ figure 5 of \cite{alcoverro:2005}. It is worth to notice that the frequency $f_{
  \section{Application to the {\it in-situ} calibration method}
 %======================================================
 %======================================================
- \subsubsection{Coherence with/without NRS}
+ %\subsubsection{Coherence with/without NRS}
 %======================================================
 
 
 
-	We consider a sensor with its NRS, called sensor under test (SUT), and an other sensor with no NRS, called reference sensor (Sref). The NRS consists  of $M=96$ air identical inlets located at the ends of pipes. The scheme is reported on the figure \ref{fig:bigschema}. Thanks to the  Gabrielson's algorithm \cite{gabrielson:2011}, the transfer function $U(f)$ between any inlet and the cavity center of the NRS can be performed as a function of the geometrical structure of the NRS.
+	We consider a sensor with its NRS. This sensor is called sensor under test (SUT). We also consider an other sensor with no NRS, representing the reference sensor (Sref). The NRS consists  of $M=96$ air identical inlets located at the ends of pipes. The scheme is reported on the figure \ref{fig:bigschema}. Thanks to the  Gabrielson's study \cite{gabrielson:2011}, the transfer function $U(f)$ between any inlet and the cavity center of the NRS can be performed as a function of the geometrical structure of the NRS.
 % and the transfer function $H(f)$ associated to the reference sensor can be performed. 
 %Calculation algorithm for the reference sensor gives $H(f)\approx 1$, hence the ratio $G(f)/H(f)\approx G(f)$ in the full frequency band.
 
-\figscale{bigschema.pdf}{$S_{x}(f)$ spectral matrix de dimension $(M+1)$, $S_{y}(f)$ spectral matrix de dimension $2$, $S_{z}(f)$ spectral matrix de dimension $2$}{fig:bigschema}{0.5}
+\figscale{bigschema.pdf}{$S_{x}(f)$ spectral matrix de dimension $(M+1)$, $S_{y}(f)$ spectral matrix de dimension $2$, $S_{z}(f)$ spectral matrix de dimension $2$}{fig:bigschema}{0.6}
 
 The spectral matrix of the $(M+1)$-ary input signal writes:
 \begin{eqnarray}
 \label{eq:Sxf}
  S_x(f) = \gamma_{s}(f) \mathds{1}_{M+1}\mathds{1}_{M+1}^T+ \Gamma(f)
 \end{eqnarray}
-where $\gamma_{s}(f)$ is the spectral density of the coherent part, which is usually acoustic. By acoustic we mean that the wave has a velocity $c$ of the order of magnitude of $300$ m/s. Let us notice that the wavelength of this acoustic part is greater  than 150 meter for frequencies under 2 Hz.
+where $\gamma_{s}(f)$ is the spectral density of the coherent part, which is generally acoustic. By acoustic we mean that the wave has a velocity $c$ of the order of magnitude of $300$ m/s. Let us notice that the associated wavelength of this acoustic part is greater  than 75 meter for any frequencies below 4 Hz.
 
-The spectral matrix $\Gamma(f)$, whose size is $(M+1)$, is given by the expression \eqref{eq:reverse-def-generalMSC}  where $C(f)$ entries are given by \eqref{eq:Cfr1r2Gaussian} and 
+We assume that the spectral square matrix $\Gamma(f)$, whose size is $(M+1)$, is given by the expression \eqref{eq:reverse-def-generalMSC}  where $C(f)$ entries are given by \eqref{eq:Cfr1r2Gaussian} and 
 \begin{eqnarray}
   \label{eq:spectral-content}
  P(f) =   \begin{bmatrix}
@@ -211,12 +213,16 @@ where
 \begin{eqnarray*}
 K(f)&=&
 \begin{bmatrix}
-U^*(f)&\ldots&U^*(f)&0
+U_{1}^*(f)&\ldots&U_{M}^*(f)&0
 \\
 0&\ldots&0&1
 \end{bmatrix}
 \end{eqnarray*}
-where we assume that the transfer function of the pipe of the reference sensor is $1$. From \eqref{eq:Syf} we derive that:
+where we assume that the transfer function of the pipe of the reference sensor is $1$. 
+
+In the following we assume that $U_{1}(f)=\cdots= U_{M}(f)=U(f)$.
+
+From \eqref{eq:Syf} we derive that:
 \begin{eqnarray*}
 \label{eq:Syentries}
 S_{y,11}(f)&=&
@@ -248,7 +254,7 @@ S_{RU}(f)&S_{RR}(f)
 \end{bmatrix}
 \end{eqnarray*}
 with
-\begin{eqnarray*}
+\begin{eqnarray}
 \label{eq:Syentries}
 S_{UU}(f)&=& |G_{u}(f)|^2 \,|U(f)|^2 \, (M^2 \gamma_{s}(f)+ \gamma_{u}(f) S_M(f))
 \\
@@ -258,12 +264,12 @@ S_{UR}(f)&=& G_{u}(f)G_{r}^{*}(f)U^{*}(f)\,
    (M\gamma_{s}(f)+\gamma_{u}^{1/2}(f)\gamma_{r}^{1/2}(f)s_M(f))
 \\
 S_{RU}(f)&=&S_{UR}^{*}(f)
-\end{eqnarray*}
-Let us remark that a good NRS has $U(f)=1/M$. That is not verified for high frequencies. Indeed it is known that the NRS presents a resonance above $2$ Hz.
+\end{eqnarray}
+Let us remark that a perfect NRS would have $U(f)=1/M$ for all frequencies. Unfortunately that is not satisfied for high frequency values. Indeed it is known that the NRS presents a resonance above $2$ Hz.
 
-Consider at first that $U(f)=1/M$, $S_M(f)=M$ and $s_{M}(F)=0$ we obtain
-\begin{eqnarray*}
-\label{eq:Syentries}
+At first  if we consider that $U(f)=1/M$, $S_M(f)=M$ and $s_{M}(f)=0$ then we obtain
+\begin{eqnarray}
+\label{eq:Syentries-idealcase}
 S_{UU}(f)&=& |G_{u}(f)|^2  (\gamma_{s}(f)+ \gamma_{u}(f) /M)
 \\
 S_{RR}(f)&=&|G_{r}(f)|^2 (\gamma_{s}(f)+\gamma_{r}(f))
@@ -271,26 +277,34 @@ S_{RR}(f)&=&|G_{r}(f)|^2 (\gamma_{s}(f)+\gamma_{r}(f))
 S_{UR}(f)&=& G_{u}(f)G_{r}^{*}(f) \gamma_{s}(f)
 \\
 S_{RU}(f)&=&S_{UR}^{*}(f)
-\end{eqnarray*}
-We recognize the classical expression which is the base of the {\it in-situ} calibration. We see also that the noise level is divided by $M$. Unfortunately, if  this ratio $\gamma_{r}(f)/\gamma_{r}(f)$ is unknown, the system is underdetermined. The only way to circumvent  the problem is to consider that the wind noise is very close to zero. Indeed if $\gamma_{u}(f)=\gamma_{r}(f)=0$
+\end{eqnarray}
+We recognize the classical expression which is the base of the {\it in-situ} calibration. We see also that the noise level is divided by $M$ which is what we expect using an NRS. Unfortunately, since  this ratio $\gamma_{u}(f)/\gamma_{r}(f)$ is unknown, the system is underdetermined. One way to circumvent  this problem is to consider that the wind noises are very close to zero. Indeed if $\gamma_{u}(f)=\gamma_{r}(f)=0$
 \begin{eqnarray*}
  G_{u}(f) &=& \frac{S_{UU}(f)}{S_{RU}(f)}\, G_{r}(f)
 \end{eqnarray*}
 
 
-To test the zero-noise it is well-known that the MSC can be used but we see below that unfortunately in the frequency mid-range this test could fail, due to the factors $S_M(f)$ and $s_{M}(F)$.
+To test the zero-noise it is well-known that the MSC can be used but we have to keep in mind that the MSC equal 1 does not mean that the ratio between the sensor response is 1. It only means that the ratio is a transfer function as for example a pure number. It is the reason why the ratio presents a dip as we see below.
 
 %==================================================================
 \subsubsection{MSC}
 %==================================================================
-The MSC writes:
+In this section we show that the MSC could be very close to 1 and the sensor frequency response ratio is not equal to 1. The MSC successively writes:
 \begin{eqnarray}
 \label{eq:RsuponM}
- \MSC(f) = \frac{|S_{UR}(f)|^2}{S_{UU}(f)S_{RR}(f)}
- = \frac{|M\gamma_{s}(f)+\gamma_{u}^{1/2}(f)\gamma_{r}^{1/2}(f)s_M(f))|^2}
+ \MSC(f) &=& \frac{|S_{UR}(f)|^2}{S_{UU}(f)S_{RR}(f)} \nonumber
+ \\
+ &=& \frac{|M\gamma_{s}(f)+\gamma_{u}^{1/2}(f)\gamma_{r}^{1/2}(f)s_M(f))|^2}
     {(M^2 \gamma_{s}(f)+ \gamma_{u}(f) S_M(f))(\gamma_{s}(f)+\gamma_{r}(f))}
 \end{eqnarray}
-We let $\rho_{i}(f)=\gamma_{i}(f)/\gamma_{s}(f)$.
+We let $\rho_{i}(f)=\gamma_{i}(f)/\gamma_{s}(f)$. Then
+\begin{eqnarray}
+\label{eq:RsuponM-rho}
+ \MSC(f) 
+ &=& \frac{|M+\rho_{u}^{1/2}(f)\rho_{r}^{1/2}(f)s_M(f))|^2}
+    {(M^2 + \rho_{u}(f) S_M(f))(1+\rho_{r}(f))}
+\end{eqnarray}
+It follows:
 \begin{itemize}
  \item
 For high frequencies $s_M(f)\approx 0$ and $S_M(f)\approx M$, hence 
@@ -299,7 +313,6 @@ For high frequencies $s_M(f)\approx 0$ and $S_M(f)\approx M$, hence
  \MSC(f) 
  \approx \frac{1}{(1+\rho_{u}(f)/M)(1+\rho_{r}(f))}
 \end{eqnarray}
-and the level of noise on the NRS is divided by $M$,
 
  \item
 For very low frequencies $s_M(f)= M$ and $S_M(f)= M^2$, hence:
@@ -320,11 +333,33 @@ If $\lambda_{1}$ and $\lambda_{2}$ are close to $1$, the MSC could be close to $
 \end{itemize}
 In conclusion $\MSC(f)$ close to $1$ does not mean that  $\rho_{u}(f)$ and $\rho_{r}(f)$ are close to 0 and in this case the system is still underdetermined.
 
-  \figscale{GonH.pdf}{$R(f)$ as a function of the frequency for different values of the $\SNR$. The color curves report the values corresponding to an MSC greater than 0.95. For frequencies over 0.4 Hz up to 4 Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the RHS the curves are increasing, in relation with a known resonance effect. For frequencies under 0.08 Hz and even for low values of $\SNR$, the coherence is very high, because the wind turbulences appear as spatially coherent. }{fig:GonH}{0.8}
 
 
- \newpage
+\newpage\clearpage
 %==================================================================
+\subsubsection{Frequency response ratio}
+%==================================================================
+Assuming that $U(f)=1/M$ for all frequencies, the frequency response ratio writes:
+\begin{eqnarray*}
+R(f)&=& 
+\frac{S_{UU}(f)}{S_{UR}^{*}(f)}=\frac{ G_{u}(f)}{G_{r}(f)}\times
+\frac{ 1+ \gamma_{u}(f) S_M(f)/M^{2} \gamma_{s}(f)}{
+   1+\gamma_{u}^{1/2}(f)\gamma_{r}^{1/2}(f)s_M(f)/M \gamma_{s}(f)}
+\end{eqnarray*}
+if $\gamma_{u}(f) =\gamma_{r}(f) =1$, and $\gamma_{u}(f) =\rho\gamma_{s}(f)$:
+\begin{eqnarray*}
+R(f)&=& 
+\frac{S_{UU}(f)}{S_{UR}^{*}(f)}=\frac{ G_{u}(f)/M}{G_{r}(f)}\times
+\frac{M^{2}+ \rho S_M(f)}{M+ \rho s_M(f)}
+\end{eqnarray*}
+where the quantity $G_{u}(f)/M$ is provided by the Gabrielsson analysis and is very close to $1/M$, except above 2 Hz, due to the resonance effect. Numerical results are reported figure \ref{fig:GonH} for a given shape of $\rho(f)$.
+
+
+  \figscale{GonH.pdf}{The top curve represents the spectral ratio $\rho(f)$. The two following curves report the magnitude and the phase of the ratio
+   The blue parts of   corresponding to an MSC greater than $0.95$. For frequencies over $0.4$ Hz up to $4$ Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the high frequency part the curves are related to a known resonance effect. For frequencies under $0.08$ Hz and even for low values of $\SNR$, the coherence is very high, because the wind turbulences appear as spatially coherent. In the mid frequency range we can have simultaneously a high MSC and a ratio less than $1$.}{fig:GonH}{0.7}
+  
+%==================================================================
+\newpage\clearpage
 %==================================================================
 \section{Results in I26}
 %==================================================================

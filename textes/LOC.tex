@@ -31,88 +31,7 @@ In a pioneer work Mack and Flinn \cite{mack_flinn:1971} propose to model the los
  \label{eq:randomnesswn}
  \mu=\mu_{0}+\nu
 \end{equation} 
-where $\mu_{0}=(a_{0},e_{0},c_{0})$ is a deterministic value and $\nu$ a zero-mean Gaussian random vector of dimension 3, whose covariance is denoted $\Sigma_{\mu}$. We know that $\mu$ is related to the 3D wavenumber vector $\theta$ by the one-to-one mapping 
-\begin{eqnarray*}
- \label{eq:tehtaxyz}
- {\footnotesize
- \begin{array}{rcl}
- f:\,
-  \mu= 
- \left\{
- \begin{array}{ll}
- a=\arg(\theta_{2}+j\theta_{1})&a\in(0,2\pi)
- \\
- e=\arg\sin(c\theta_{3})&e\in(-\pi/2,\pi/2)
- \\
- c=(\theta_{1}^{2}+\theta_{2}^{2}+\theta_{3}^{2})^{1/2}&c\in\mathds{R}^{+}
- \end{array}\right.
- &
- \longleftrightarrow\vspace{6pt}
- \\ 
- &&\hspace{-5.5cm}
- \,\theta=\left\{
- \begin{array}{ll}
- \theta_{1}=-c^{-1}\sin(a)\cos(e)
- \\
- \theta_{2}=c^{-1}\cos(a)\cos(e)&\in\mathds{R}^{3}
- \\
- \theta_{3}=c^{-1}\sin(e) 
- \end{array}\right.
- \end{array}}
-\end{eqnarray*}
-Using a first order Taylor's expansion, it follows that $\theta\approx f(\mu_{0})+J(\mu_{0})(\mu-\mu_{0})$ where the Jacobian writes
-\begin{eqnarray*}
- &&J(\mu_{0}) =
- \\
- &&\hspace{-0.5cm}
- {\footnotesize
- \begin{bmatrix}
- -c_{0}^{-1}\cos(a_{0})\cos(e_{0})&
- c_{0}^{-1}\sin(a_{0})\sin(e_{0})&
- c_{0}^{-2}\sin(a_{0})\cos(e_{0})
- \\
- -c_{0}^{-1}\sin(a_{0})\cos(e_{0})&
- -c_{0}^{-1}\cos(a_{0})\sin(e_{0})&
- -c_{0}^{-2}\cos(a_{0})\cos(e_{0})
- \\
- 0& 
- c_{0}^{-1}\cos(e_{0})&
- -c_{0}^{-2}\sin(e_{0})
- \end{bmatrix}}
-\end{eqnarray*}
-Therefore from \eqref{eq:randomnesswn} we can write $\theta\approx \theta_{0}+\varepsilon$ where $\varepsilon=J(\mu_{0})\nu$ appears as a Gaussian, zero-mean random vector of dimension 3 whose the covariance is
-\begin{eqnarray}
- \label{eq:aec2theta}
-\Sigma_{\theta} \approx J(\mu_{0}) \Sigma_{\mu} J'(\mu_{0})
-\end{eqnarray}
-Based on the expression \eqref{eq:delaymatrixpuredelay}, the coherence matrix entry of the model with random wavefront writes:
-%\begin{eqnarray}
-% \label{eq:Cfr1r2Phi}%\nonumber
-%  C_{m,\ell}(f)&=&
-%  \int_{\mathds{R}^{3}}  e^{-2j\pi f(r_{m}-r_{\ell})^{T}(\theta_{0}+e)} p_{\varepsilon}(e)de
-%\end{eqnarray}
-%We let It follows that 
-\begin{eqnarray*}
-   C_{m,\ell}(f)&=&e^{-2j\pi f(r_{m}-r_{\ell})^{T}\theta_{0}}
-   \Phi_{\epsilon}(2\pi f(r_{m}-r_{\ell}))
-\end{eqnarray*}
-where $\Phi_{\epsilon}:u\in\mathds{R}^{3}\mapsto\esp{e^{ju^{H}\varepsilon}}\in\mathds{C}$ is the characteristic function of $\varepsilon$. 
-Since $\varepsilon$ is Gaussian distributed with zero-mean and covariance matrix $\Sigma_{\theta}$, hence we have
-\begin{eqnarray}
-\label{eq:Cfr1r2Gaussian}
-C_{m,\ell}(f)=
-\underbrace{e^{-2j\pi f(r_{m}-r_{\ell})^{T}\theta_{0}}}_{\text{pure delay}}
- \underbrace{e^{-2\pi^{2}f^{2}(r_{m}-r_{\ell})^{T}\Sigma_{\theta}(r_{m}-r_{\ell})}}_{\text{LOC}}
- \end{eqnarray}
-The first term corresponds to the pure delay which is associated to the deterministic part and whose the modulus is 1. The second term corresponds to the LOC associated to the stochastic part. Finally the log-MSC writes:
-\begin{eqnarray}
- \label{eq:logcoherencemodel}
- \log\rho_{m,\ell}(f)=-2\pi^{2}f^{2}(r_{m}-r_{\ell})^{T}\Sigma_{\theta}(r_{m}-r_{\ell})
-\end{eqnarray}
-Let us notice that the log-MSC depends on the relative direction of the vector $(r_{m}-r_{\ell})$ w.r.t. the eigenvectors of $\Sigma_{\theta}$. 
-
-
-We know that $\mu$ is related to the slowness vector $k$ by the one-to-one mapping 
+where $\mu_{0}=(a_{0},e_{0},c_{0})$ is a deterministic value and $\nu$ a zero-mean Gaussian random vector of dimension 3, whose covariance is denoted $\Sigma_{\mu}$.  We know that $\mu$ is related to the slowness vector $k$ by the one-to-one mapping 
 \begin{eqnarray*}
  \label{eq:tehtaxyz}
  {\footnotesize
@@ -143,9 +62,13 @@ We know that $\mu$ is related to the slowness vector $k$ by the one-to-one mappi
 \end{eqnarray*}
 Using a first order Taylor's expansion, it follows that $k \approx f(\mu_{0})+J(\mu_{0})(\mu-\mu_{0})$ where the Jacobian writes
 \begin{eqnarray*}
- J(\mu_{0}) &=& 
- v_{0}^{-1}
- \begin{bmatrix}
+ J(\mu_{0}) 
+&=&
+v_{0}^{-1} \times \tilde J(\mu_0)
+\\
+\mathrm{with}&&
+\tilde J(\mu_0) = 
+\begin{bmatrix}
  -\cos(a_{0})\cos(e_{0})&
  \sin(a_{0})\sin(e_{0})&
  v_{0}^{-1}\sin(a_{0})\cos(e_{0})
@@ -158,9 +81,6 @@ Using a first order Taylor's expansion, it follows that $k \approx f(\mu_{0})+J(
  \cos(e_{0})&
  -v_{0}^{-1}\sin(e_{0})
  \end{bmatrix}
-\\
-&=&
-v_{0}^{-1} \times \tilde J(\mu_0)
 \end{eqnarray*}
 Therefore from \eqref{eq:randomnesswn} we derive $k\approx k_{0}+\varepsilon$ where $\varepsilon=J(\mu_{0})\,\nu$ appears as a zero-mean Gaussian random vector whose the covariance is:
 \begin{eqnarray}
@@ -174,7 +94,7 @@ Hence the coherence matrix entry of the model with random wavefront writes:
    \Phi_{\epsilon}(2\pi f(r_{m}-r_{\ell}))
 \end{eqnarray*}
 where $\Phi_{\epsilon}:u\in\mathds{R}^{3}\mapsto\esp{e^{ju^{T}\varepsilon}}\in\mathds{C}$ is the characteristic function of $\varepsilon$. 
-Since $\varepsilon$ is Gaussian distributed with zero-mean and covariance matrix $\Sigma_{\theta}$, hence we have
+Since $\varepsilon$ is Gaussian distributed with zero-mean and covariance matrix $\Sigma_{k}$, hence we have
 \begin{eqnarray}
 \label{eq:Cfr1r2Gaussian}
 C_{m,\ell}(f)=
@@ -182,3 +102,22 @@ C_{m,\ell}(f)=
  \underbrace{e^{-2\pi^{2}(f/v_0)^{2}(r_{m}-r_{\ell})^{T}
                  \tilde \Sigma_{k}(r_{m}-r_{\ell})}}_{\text{LOC}}
  \end{eqnarray}
+
+We let  $\zeta=v_0/f$ that can be interpreted as a ``wavelength''. Using the MSC definition \eqref{eq:def-coherence-function}  we derive the following expression:
+\begin{eqnarray}
+\label{eq:MSCwind}
+\MSC_{km}(f)=
+e^{-\frac{4\pi^{2}}{\zeta^{2}}(r_{m}-r_{\ell})^{T}
+                 \tilde \Sigma_{k}(r_{m}-r_{\ell})}
+ \end{eqnarray}
+It follows that
+\begin{itemize}
+\item
+ when $\zeta$ is large w.r.t. the sensor  inter-distances, the matrix $C\approx I$, hence the components of $x(t)$ appear as non spatially coherent,
+
+
+\item
+when $\zeta$ is small w.r.t.  the sensor  inter-distances, the matrix $C\approx \mathds{1} \mathds{1}^{T}$ which is a projector, hence the components of $x(t)$ appear as spatially coherent.
+ 
+
+\end{itemize}

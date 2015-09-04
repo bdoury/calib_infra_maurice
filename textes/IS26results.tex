@@ -2,78 +2,9 @@
 %================================
 The results of this section report the estimation for the eight locations given in the table \ref{tab:sensor-specifications}.
 
-%================================
-%================================
-\section{General pipeline for the estimation process}
-%================================
-The general pipeline proposed for the estimation process is reported figure \ref{fig:pipeline}. It consists 
-\begin{itemize}
-\item
-of a filter bank described in a file of settings which is characterized by a sequence of following descriptors: type, frequency lower bound, upper frequency bound, order, desired stationarity duration etc. Commonly used type is Butterworth (available on Matlab).
-\item
-At the output of a filter, the two signals (one for the SUT the other for the SREF) are shared in non-overlapping blocks to perform the spectral estimate. Longer the size of a block more accurate the spectral analysis. But that assumes stationarity, and the real signals do not exhibit permanent stationarity. Therefore we can choose in the setting file the desired stationarity duration in term of multiple of the longest period in the band (inverse of lower frequency bound). Typically we take  $5$ times the longest period, expecting that we can find such length with stationarity to estimate the spectral components. Even with that, the accuracy is not in accordance with the PTS requirements, but by averaging in a long period of times (many days), we can reach such requirements.
-
-
-\item
-Each block is then shared in overlapping sub-blocks. We can choose the windowing and the overlap rate. Typically we consider Hann windowing and $50\%$ of overlapping. The periodograms in the different sub-blocks are averaged to provide a spectral estimation. 
-
-Only estimates in the bandwidth of the filter are retained.
-
-\item
-MSC is performed in each bandwidth. If the MSC is above the selected threshold, the value of the ratio $\hat S_{UU,k}/\hat S_{RU,k}$ is saved.
-
-
-
-\item
-along the recorded data, for a given frequency index $k$, the values  $\hat S_{UU,k}/\hat S_{RU,k}$ are averaged with weighting factors in accordance with $\hMSC$ values.
-
-
-\item
-Finally the estimation of the SUT response is derived from the SREF response.
-
-
-\end{itemize}
-
-%=================================
-\subsubsection{Filter bank analysis}
-%=================================
-Let us recall that in a first step, the signals are filtered in adjacent bands in such a way to use different periods whose the main interest is to consider short periods, if necessary, in the high frequency bands. The table \ref{tab:freq-duration-tradeoff} is an example of pavement, consisting of $5$ bands with log-spaced filter parameters in the band $(0.01-5)$ Hz with a variable window length\footnote{See also recent PMCC reports.}. Because the two signals are applied to the same filter we can use RII as Butterworth filter. Also because this process is for anlysis, we don't need to downsampling and/or to require perfect recontruction. Even more the bandpass filters can be overlap in the frequency domain. Although a decimation can be used to save computational time, indeed the bandwidths are lower than $F_{s}/2$, that operation is not considering in the following.
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|c|c|}
-\hline
-frequency band (Hz) & stationarity period (second)
-\\
-\hline
-%%%%% from matlab
-$[0.02-0.20]$&$400$
-\\ \hline $[0.20-1.00]$&$200$
-\\ \hline $[1.00-2.00]$&$100$
-\\ \hline $[2.00-3.00]$&$50$
-\\ \hline $[3.00-4.00]$&$25$
-\\ \hline $[4.00-6.00]$&$25$
-\\ \hline 
-%%%%
-\end{tabular}
-\parbox{12 cm}
-{
-    \caption{\protect\small\it  }
-    \label{tab:freq-duration-tradeoff}
-}
-\end{center}
-\end{table}
-\figscale{filterbank.pdf}{Filter bank}{fig:filterbank}{1}
-
 
 %================================
-\newpage\clearpage
-%================================
-%================================section{Numerical results}
-%================================
-
-%================================
-\subsection{Results of IS26}
+\section{Results of IS26}
 %================================
 In this section we report analysis of the data from IS2. The numerical values are reported in figures from \ref{fig:C2} to \ref{fig:C8} associated with the sensors 1 to 8.
 
@@ -99,9 +30,9 @@ In this section we report analysis of the data from IS2. The numerical values ar
 \newpage\clearpage
 %================================
 %================================
-\section{More comments}
+\section{Comments}
 %================================
-\subsection{Effect of the selected MSC}
+\subsection{About the selected MSC threshold}
 %================================
 We said that we can not choose a too low value for the MSC threshold because the underdetermination. That appears clearly on figure \ref{fig:afewdaysonI26C6H6twoMSC}.
 When the  MSC threshold is $0.7$, there is a large discrepancy between the estimated ratios, see \eqref{eq:estimated-Ratio} and we outline that there is no way to solve the underdetermination. But for an MSC threshold of $0.95$, the two curves are very close.
