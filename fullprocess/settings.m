@@ -21,7 +21,7 @@ HMSend      = '23:50:10';
 temporary_gparse = 'gparse_temp.par';
 filewfdisc       = 'gparse.wfdisc';
 %========== matlab format files are saved into the following directory
-savedirnamefull  ='/dvlscratch/SHI/users/charbit/ProjectIMS2015b/DATA_IS/I26/';
+savedirnamefull  ='/dvlscratch/SHI/users/charbit/ProjectIMS2015b/myjob/1taskOnSensors/textes/dataIS26/‘;
 %========= for analyzing data =================
 MSCthreshold     = 0.97;
 filtercharactfilename = 'filtercharacteristics';
