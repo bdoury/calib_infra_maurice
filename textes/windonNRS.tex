@@ -297,7 +297,14 @@ In this section we show that the MSC could be very close to 1 and the sensor fre
  &=& \frac{|M\gamma_{s}(f)+\gamma_{u}^{1/2}(f)\gamma_{r}^{1/2}(f)s_M(f))|^2}
     {(M^2 \gamma_{s}(f)+ \gamma_{u}(f) S_M(f))(\gamma_{s}(f)+\gamma_{r}(f))}
 \end{eqnarray}
-We let $\rho_{i}(f)=\gamma_{i}(f)/\gamma_{s}(f)$.
+We let $\rho_{i}(f)=\gamma_{i}(f)/\gamma_{s}(f)$. Then
+\begin{eqnarray}
+\label{eq:RsuponM-rho}
+ \MSC(f) 
+ &=& \frac{|M+\rho_{u}^{1/2}(f)\rho_{r}^{1/2}(f)s_M(f))|^2}
+    {(M^2 + \rho_{u}(f) S_M(f))(1+\rho_{r}(f))}
+\end{eqnarray}
+It follows:
 \begin{itemize}
  \item
 For high frequencies $s_M(f)\approx 0$ and $S_M(f)\approx M$, hence 
@@ -345,10 +352,11 @@ R(f)&=&
 \frac{S_{UU}(f)}{S_{UR}^{*}(f)}=\frac{ G_{u}(f)/M}{G_{r}(f)}\times
 \frac{M^{2}+ \rho S_M(f)}{M+ \rho s_M(f)}
 \end{eqnarray*}
-where the quantity $G_{u}(f)/M$ is provided by the Gabrielsson analysis and is very close to $1/M$, except above 2 Hz, due to the resonance effect. Numerical results are reported figure \ref{fig:GonH} for different values of $\rho$.
+where the quantity $G_{u}(f)/M$ is provided by the Gabrielsson analysis and is very close to $1/M$, except above 2 Hz, due to the resonance effect. Numerical results are reported figure \ref{fig:GonH} for a given shape of $\rho(f)$.
 
 
-  \figscale{GonH.pdf}{$R(f)$ as a function of the frequency for different values of the $\SNR$. The color curves report the values corresponding to an MSC greater than 0.95. For frequencies over 0.4 Hz up to 4 Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the high frequency part the curves are increasing, in relation with a known resonance effect. For frequencies under 0.08 Hz and even for low values of $\SNR$, the coherence is very high, because the wind turbulences appear as spatially coherent. }{fig:GonH}{0.8}
+  \figscale{GonH.pdf}{The top curve represents the spectral ratio $\rho(f)$. The two following curves report the magnitude and the phase of the ratio
+   The blue parts of   corresponding to an MSC greater than $0.95$. For frequencies over $0.4$ Hz up to $4$ Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the high frequency part the curves are related to a known resonance effect. For frequencies under $0.08$ Hz and even for low values of $\SNR$, the coherence is very high, because the wind turbulences appear as spatially coherent. In the mid frequency range we can have simultaneously a high MSC and a ratio less than $1$.}{fig:GonH}{0.7}
   
 %==================================================================
 \newpage\clearpage
