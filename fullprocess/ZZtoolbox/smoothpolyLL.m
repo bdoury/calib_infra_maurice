@@ -8,9 +8,9 @@ function [xo,yo] = ...
 %     of values.
 % Synopsis
 %    [xo,yo] = smoothpolyLL(xi,yi,P,degs,logtrain,logfit)
-% Rk: if FREQ_FLAG is set to 1, the half 
-%    of the assumed frequency range is taken into account
-% Possible improvement: adjust derivative at the junctions
+% Rk: we assume that frequency range is included in 
+%   (0,Fs/2). In many spectral calculations the values
+%   close to Fs/2 are very inaccurate.
 %==========================================================
 % Inputs:
 %     (xi,yi): two arrays 1D
@@ -38,17 +38,13 @@ function [xo,yo] = ...
 %       performing yo
 %==========================================================
 
-FREQ_FLAG = 1;
+% Possible improvement: adjust derivative at the junctions
+
 % regularization factor
-lambda  = 0.00000001;
+lambda  = 0.000001;
 %======
 xi = xi(:);
 yi = yi(:);
-N1=length(xi);
-if FREQ_FLAG
-    xi=xi(1:fix(N1/2));
-    yi=yi(1:fix(N1/2));
-end
 yinan = yi(not(isnan(yi)));
 xinan = xi(not(isnan(yi)));
 
@@ -56,7 +52,7 @@ if logtrain.N>length(xinan)
     error('********* not enough data on input values ********')
 end
 if logtrain.flag
-    [xt,yt] = logextract(xinan,yinan, logtrain.N);
+    [xt,yt] = logextract(xinan,yinan,logtrain.N);
 else
     xt = xinan(1:logtrain.N);yt=yinan(1:logtrain.N);
 end
@@ -71,17 +67,16 @@ N = logfit.N;
 xo = zeros(N,1);
 yo = zeros(N,1);
 if logfit.flag
-    space_xe = logspace(log10(xp0(1)),...
+    space_xe = logspace(log10(xi(2)),...
         log10(xp0(end)),N)';
 else
-    space_xe = linspace(xp0(1),xp0(end),N)';
+    space_xe = linspace(xi(2),xp0(end),N)';
 end
 NonP = round(N/P);
 for ip=0:P-1
     ide1=ip*NonP+1;
     ide2=min([ide1+NonP,N]);
     xo(ide1:ide2) = space_xe(ide1:ide2);
-
     ind1_ip = find(xp0>xo(ide1),1,'first');
     ind2_ip = find(xp0<xo(ide2),1,'last');
     xp_ip = xp0(ind1_ip:ind2_ip);
@@ -93,7 +88,7 @@ for ip=0:P-1
     He_ip =  exp(log(xo(ide1:ide2))*degs);
     yo(ide1:ide2)=He_ip*alpha_ip;
 end
-yo = filtfilt(ones(3,1)/3,1,yo);
+% yo = filtfilt(ones(3,1)/3,1,yo);
 %=====================================================
 function [Fo,Ho] = logextract(Fi,Hi, Nop)
 % extract log scaling values wrt Fi
@@ -102,8 +97,8 @@ N=length(Hi);
 Flog = logspace(log10(Fi(2)),log10(Fi(N)),Nop)';
 Fo = zeros(Nop,1);
 Ho = zeros(Nop,1);
-Fo(1)=Fi(2);
-Ho(1)=Hi(2);
+Fo(1)=Fi(1);
+Ho(1)=Hi(1);
 ic1=2;
 for in=2:Nop
     ic = find(Fi(ic1:N)>Flog(in),1,'first');

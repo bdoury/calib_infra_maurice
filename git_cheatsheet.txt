@@ -1,0 +1,38 @@
+## Global configuration (to do once)
+git config --global user.name "bdoury"
+git config --global user.email "benoit.doury@ctbto.org"
+git config --global merge.tool vimdiff
+#to check config
+git config --list
+
+##Initializing a Repository in an existing directory
+git init
+git add *     #Choose files to be tracked or staged
+git commit -m 'initial project version'
+git status
+git push momo_rep master
+
+# Untrack a file
+git checkout test
+git rm --cached test     # in case the file is already tracked but you want to ignor it
+
+$cat .gitignore
+*.log
+*~
+
+git commit -m "third test commit"
+git mv README README.txt    # one liner to rename a file (rather than checkout and add)
+
+# LOGS
+git log -p -2
+git log -U1 --color-words
+git log --stat
+git log --pretty=oneline
+git log --pretty=format:"%h - %an, %ar : %s"
+gitk # graphical view on logs
+
+## REMOTE
+git remote -v # which remote servers are configured.
+git remote add momo_rep https://github.com/bdoury/calib_infra_maurice.git
+git push momo_rep master
+

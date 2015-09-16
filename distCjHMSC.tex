@@ -252,23 +252,34 @@
 %============================================
   \section{Full process}
 
+\subsection{Settings}
 {\tiny \verbatiminput{\programsfullprocess settings.m}}
 
+\subsection{Main program}
 {\tiny \verbatiminput{\programsfullprocess pipeline.m}}
 
- \newpage
+\subsection{Conversion to format {\tt .mat}}
 {\tiny \verbatiminput{\programsfullprocess convertCSStomatlab.m}}
 
-\newpage
+\subsection{Analysis function}
 {\tiny \verbatiminput{\programsfullprocess analyzeSUT.m}}
 
-\newpage
-{\tiny \verbatiminput{\programsfullprocess displayafigure.m}}
+%{\tiny \verbatiminput{\programsfullprocess displayafigure.m}}
+
+%============================================
+\section{Application program}
+The first following program extracts the final ratio between the SUT and the Sref sensor response, using the data available in the format {\tt .mat}. The data consist of many files for each of the 8 sensors of IS26. All the ratios are saved in a selected directory.
+
+The second following program displays the curves taking randomly a given number of records in the previous files.
+
+{\tiny \verbatiminput{\programsfullprocess extractSensorRatio.m}}
+
+{\tiny \verbatiminput{\programsfullprocess displaySensorRatio.m}}
 
 
 %============================================ 
 \chapter{Toolbox}
-\section{Full analysis Matlab function}
+\section{Spectral analysis for SUT}
 {\tiny \verbatiminput{\programsToolbox fbankanalysis.m}}
 
 \section{Cumulative function of $\hMSC$}

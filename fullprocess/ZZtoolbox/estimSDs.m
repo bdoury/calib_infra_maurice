@@ -61,21 +61,27 @@ if exist('smoothwindow','var')
 else
     Hwin     = hamming(Lfft);
 end
+%========= normalisation
+% not useful if only PSD ratios are considered
+Hwin = Hwin *sqrt(Lfft/(Hwin'*Hwin));
 
 for ibF  = 1:NblocksFFT
     ibT  = (ibF-1)*shiftSignal+(1:Lfft);
-    xU_i = xU(ibT) .* Hwin;xU_i=xU_i-mean(xU_i);
-    xR_i = xR(ibT) .* Hwin;xR_i=xR_i-mean(xR_i);
+    xU_i = xU(ibT) .* Hwin;
+%     xU_i = xU_i-mean(xU_i);
+    xR_i = xR(ibT) .* Hwin;
+%     xR_i = xR_i-mean(xR_i);
     allFFTsUU(:,ibF) = fft(xU_i,Lfft)/sqrtLfft;
     allFFTsRR(:,ibF) = fft(xR_i,Lfft)/sqrtLfft;
 end
 shiftFFTs = fix((1-overlapSD)*NaverageFFTs);
-NSD       = fix((NblocksFFT-(NaverageFFTs-shiftFFTs))/shiftFFTs)+1;
+NSD       = fix(N/Lfft/NaverageFFTs);%fix((NblocksFFT-(NaverageFFTs-shiftFFTs))/shiftFFTs)+1;
 allSDs    = struct;
 time_sec  = struct;
+NaverageFFTs_with_overlap = round(NaverageFFTs/(1-overlapFFT)-1);
 for ibB=1:NSD,
     indB1 = (ibB-1)*shiftFFTs+1;
-    indB2 = indB1+NaverageFFTs-1;
+    indB2 = indB1+NaverageFFTs_with_overlap-1;
     indB  = fix(indB1):fix(indB2);
     indB  = indB(indB<= NblocksFFT);
     allSDs(ibB).RR  = mean(abs(allFFTsRR(:,indB)) .^ 2,2);

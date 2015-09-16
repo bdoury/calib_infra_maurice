@@ -244,6 +244,15 @@ Based on that, we replace the spectral components $S_{UU,k}$, $S_{RR,k}$ and $S_
 
 Also we can find in the annex \ref{ann:spectral-estimation} the details to calculate the probability distributions of $\hMSC_{k}$ and of the ratios $\widehat{S_{UU,k}}/|\widehat{S_{UR,k}|}$ and $|\widehat{S_{UR,k}}|/\widehat{S_{RR,k}}$. We also provide Matlab programs that performs these distributions. 
 
+
+Remark: it is worth to notice that, in any case, the both following inequalities are satisfied:
+\begin{eqnarray}
+ |R_{k}^{\inf}|&\leq &|R_{k}^{\sup}|
+ \\
+  |\widehat{R}_{k}^{\inf}|&\leq &|\widehat{R}_{k}^{\sup}|
+\end{eqnarray}
+but we have no information about the rank of these four values. It means that the true values can be outside of the estimated ones. Moreover the true values can be also outside of the expectation of the two r.v. $\widehat{R}_{k}^{\inf}$ and $\widehat{R}_{k}^{\sup}$. However when the noises vanish the discrepancy goes to zero.
+
 %=================================
 %=================================
 \subsection{MSC test}
@@ -348,7 +357,8 @@ The following shows an example of  process settings:
 \small
 \begin{verbatim}
 P=P+1;
-filtercharact(P).designname = 'butter';filtercharact(P).Norder=2;
+filtercharact(P).designname = 'butter';
+filtercharact(P).Norder=2;
 filtercharact(P).Wlow_Hz=0.02;
 filtercharact(P).Whigh_Hz=0.08;
 filtercharact(P).SCPperiod_sec=100;

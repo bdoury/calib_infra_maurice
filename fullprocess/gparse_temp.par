@@ -1,4 +1,0 @@
-open open data_source=testbed_archive user=charbit password=sqlmomo
-query wfdisc select * from sel3.wfdisc where sta in ('I26H6','I26C6')and chan in ('BDF','BDF','LWS','LWD','LKO') and time between 1433548810 and 1433807410 order by sta,chan,time
-read waveforms
-write waveforms

@@ -1,5 +1,14 @@
-function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
+function [SUTs, filteredsignals, allfrqsFFT_Hz, ...
+    alltimes_sec, filterbank] = ...
     analyzeSUT(records,filtercharactfilename, MSCthreshold)
+%=================================================================
+% This function uses the "records" extracted from the database
+% by the program "convertCSStomatlab.m".
+% This function then calls the function "fbankanalysis.m" 
+% of the ZZtoolbox which returns the structure "SUTs".
+% This structure is of general purposes. The program
+% "displayafigure.m" is an example.
+%=================================================================
 
 idSc = 1;
 idSh = 1;
@@ -44,21 +53,16 @@ for ir =1:Lrecords
             idWD = idWD + LLWD;
     end
 end
-
 signals = signals(1:idSc-1,:);
 windSpeed = windSpeed(1:idWS-1);
 windDir = windDir(1:idWD-1);
 temperature = temperature(1:idT-1);
-
 Ts_sec = 1/Fs_Hz;
 signals_centered=signals-ones(size(signals,1),1)*mean(signals);
-
 %============================================
 cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
 eval(cmdloadcharact);
-
 %============================================
 [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
     fbankanalysis(signals_centered,filtercharact,Fs_Hz,MSCthreshold);
-
 %============================================

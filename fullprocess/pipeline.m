@@ -2,16 +2,8 @@
 clear
 %=== read settings 
 settings
-%=== extract data from the database 
-h_starttime   = sprintf('%s/%s/%s %s',yearstart,monthstart,daystart, HMSstart);
-h_endtime     = sprintf('%s/%s/%s %s',yearend,monthend,dayend, HMSend);
-[~,starttime] = unix(['h2e ',h_starttime,' ofmt="%#"']);
-[~,endtime]   = unix(['h2e ',h_endtime,' ofmt="%#"']);
-starttime     = str2double(starttime);
-endtime       = str2double(endtime);
-wlength       = endtime-starttime;
-fid           = fopen(temporary_gparse,'w');
 %==== Write the query
+fid           = fopen(temporary_gparse,'w');
 fprintf(fid, 'open open data_source=%s user=%s password=%s\n', data_source, user, password);
 fprintf(fid, '%s\n',['query wfdisc select * from sel3.wfdisc where sta in ', ...
     stations, 'and chan in ', channel,' and time between ',num2str(starttime),...
@@ -25,8 +17,9 @@ disp('****************** query to data base *************************')
 %==== Gparse run
 unix('setenv ORACLE_HOME /cots/oracle/oracle-10.2;');
 unix('setenv D_LIBRARY_PATH $ORACLE_HOME/lib:$ORACLE_HOME/lib32;');
-unix('/ctbto/ims/sm/local/linux/Geotool++/2.3.10/bin/gparse<gparse_temp.par;');
-
+commandunix = ...
+    sprintf('unix(''/ctbto/ims/sm/local/linux/Geotool++/2.3.10/bin/gparse<%s;'')',...
+    temporary_gparse);
 %====
 disp('***************************************************************')
 disp('***************** convert to Matlab format ********************')

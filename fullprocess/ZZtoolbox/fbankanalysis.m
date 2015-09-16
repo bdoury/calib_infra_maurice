@@ -165,9 +165,12 @@ for ifilter = 1:P
                 fdesign = sprintf('filnum = %s(%i,[%5.8f,%5.8f]);',...
                     fname,forder,2*flow,2*fhigh);
                 filden = 1;
-            otherwise
+            case 'butter'
                 fdesign = sprintf('[filnum,filden] = %s(%i,[%5.8f %5.8f]);',...
                     fname,forder,2*flow,2*fhigh);
+            case 'cheby1'
+                fdesign = sprintf('[filnum,filden] = %s(%i,%i,[%5.8f %5.8f]);',...
+                    fname,forder,0.02,2*flow,2*fhigh);
         end
         eval(fdesign);
         sigout(:,:,ifilter) = filter(filnum,filden,sigin);
@@ -258,12 +261,13 @@ for ibF  = 1:NblocksFFT
     allFFTsRR(:,ibF) = fft(xR_i,Lfft)/sqrtLfft;
 end
 shiftFFTs = fix((1-overlapSD)*NaverageFFTs);
-NSD       = fix((NblocksFFT-(NaverageFFTs-shiftFFTs))/shiftFFTs);
+NSD       = fix(N/Lfft/NaverageFFTs);% fix((NblocksFFT/2-(NaverageFFTs-shiftFFTs))/shiftFFTs);
 allSDs    = struct;
 time_sec  = struct;
+NaverageFFTs_with_overlap = round(NaverageFFTs/(1-overlapFFT)-1);
 for ibB=1:NSD,
     indB1 = (ibB-1)*shiftFFTs+1;
-    indB2 = indB1+NaverageFFTs-1;
+    indB2 = indB1+NaverageFFTs_with_overlap-1;
     indB  = fix(indB1):fix(indB2);
     indB  = indB(indB<= NblocksFFT);
     allSDs(ibB).RR  = mean(abs(allFFTsRR(:,indB)) .^ 2,2);
@@ -278,9 +282,9 @@ for ibB=1:NSD,
 end
 frqsFFT_Hz = (0:Lfft-1)*Fs_Hz/Lfft;
 time_sec.FFT = ((0:NblocksFFT-1)+1/2)*shiftSignal/Fs_Hz;
-time_sec.SD =  ((0:NSD-1)+1/2)*shiftFFTs*shiftSignal/Fs_Hz;
+time_sec.SD =  ((0:NSD-1)+1/2)*shiftFFTs*Lfft/Fs_Hz;
 time_sec.signals =  ((0:N-1)+1/2)/Fs_Hz;
-%==========================================================================
+% %==========================================================================
 function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
     = estimSUT(allSDs, MSCThreshold)
 %===========================================================
@@ -298,7 +302,6 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %            all spectrals components (provided by the function
 %                estimSD.
 %        MSCThreshold: MSC threshold, typicall 0.99
-%           Rk: the median is not sensible to the outlayers.
 %
 %====
 % Outputs:
@@ -342,8 +345,14 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %===========================================================
 %===========================================================
 
-nbblocksAVE = length(allSDs);
-Lfft = length(allSDs(1).UU);
+%================================================
+%================ if weightingflag = 1 ==========
+% a ponderation is applied using the estimated variance
+% of the MSC estimate
+weightingflag = 1;
+
+nbblocksAVE   = length(allSDs);
+Lfft          = length(allSDs(1).UU);
 indextabMSCsupthreshold = false(Lfft,nbblocksAVE);
 indextabMSCsupthreshold([allSDs.MSC]>MSCThreshold) = true;
 Nsupthreshold = sum(sum(indextabMSCsupthreshold));
@@ -457,7 +466,6 @@ weightMSCsupeta = (tabMSCwithMSCsupeta .^2) ./  ...
     (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
 weightMSCinfeta = 1 ./  ...
     (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
-weightingflag = 1;
 
 %================================================
 %================================================
@@ -525,10 +533,8 @@ stdmodHURRRwithMSCsupeta   = nanstd(tabmodHURRRwithMSCsupeta,[],2);
 stdphaseHURRRwithMSCsupeta = nanstd(tabphaseHURRRwithMSCsupeta,[],2);
 
 
-
 %================ on Rinf with constraint ======
 %===== hat's
-
 
 Rsup.tabmod = tabmodHUUUR;
 Rsup.tabmodcst = tabmodHUUURwithMSCsupeta;
