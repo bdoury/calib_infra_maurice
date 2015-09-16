@@ -3,6 +3,7 @@ clear
 allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
     'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 %=====================
+<<<<<<< HEAD
 %
 
 FLAGsaveall = 0;
@@ -15,6 +16,12 @@ directoryresultsALL = 'BBresults';
 %=========================================================================
 addpath ZZtoolbox/00gabrielson/
 addpath ZZtoolbox/00benoit/
+=======
+%  
+directorydata = '../../../../../DATA_IS/I26/';
+%   
+%=========================================================================
+>>>>>>> e518a59897f74aa44d579d6b4e37dafce4bba1aa
 addpath ZZtoolbox/
 
 %============== run the filter bank characteristics
@@ -26,6 +33,7 @@ if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
     filtercharact(Pfilter).Whigh_Hz = 10;
 end
 %=====================
+<<<<<<< HEAD
 MSCthreshold = 0.97;
 %=====================
 for indexofSTA = 1:8
@@ -40,12 +48,28 @@ for indexofSTA = 1:8
     allSTDphaseRatioPfilters  = zeros(10000,nbmats);
     allmeanMSCcstPfilters     = zeros(10000,nbmats);
     
+=======
+MSCthreshold = 0.99;
+%=====================
+for ihc = 1:8
+    %=====================
+    % under test = 1, reference = 2
+    %===================== read data =========================
+    filesmat = dir(sprintf('%ss%i/sta%i*.mat',directorydata,ihc,ihc));
+    nbmats   = length(filesmat);
+    allRatioPfilters = zeros(10000,nbmats);
+    allfrqsPfilters = zeros(10000,nbmats);
+>>>>>>> e518a59897f74aa44d579d6b4e37dafce4bba1aa
     for ifile=1:nbmats
         file_i=filesmat(ifile).name;
         dotpos = strfind(file_i,'.');
         underscorepos = strfind(file_i,'_');
         fileonly = file_i(setdiff(1:dotpos-1,underscorepos));
+<<<<<<< HEAD
         commandload    = sprintf('load %ss%i/%s',directorydata,indexofSTA,file_i);
+=======
+        commandload    = sprintf('load %ss%i/%s',directorydata,ihc,file_i);
+>>>>>>> e518a59897f74aa44d579d6b4e37dafce4bba1aa
         eval(commandload)
         
         idSc = 1;
@@ -56,7 +80,11 @@ for indexofSTA = 1:8
         signals     = zeros(34560000,2);
         windSpeed   = zeros(34560000,1);
         temperature = zeros(34560000,1);
+<<<<<<< HEAD
         windDir     = zeros(34560000,1);
+=======
+        windDir     = zeros(34560000,1);       
+>>>>>>> e518a59897f74aa44d579d6b4e37dafce4bba1aa
         Lrecords =length(records);
         for ir =1:Lrecords
             switch records{ir}.channel
@@ -111,6 +139,7 @@ for indexofSTA = 1:8
         for ip=1:P
             idipinf(ip) = SUTs(ip).indexinsidefreqband(1);
             idipsup(ip) = SUTs(ip).indexinsidefreqband(2);
+<<<<<<< HEAD
             id2         = id1+(idipsup(ip)-idipinf(ip));
             allRatioPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.modcst(idipinf(ip):idipsup(ip)) .* ...
@@ -121,10 +150,17 @@ for indexofSTA = 1:8
                 SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip));
             allmeanMSCcstPfilters(id1:id2,ifile) = ...
                 nanmean(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:),2);
+=======
+            id2 = id1+(idipsup(ip)-idipinf(ip));
+            allRatioPfilters(id1:id2,ifile) = ...
+                SUTs(ip).estimRsup.modcst(idipinf(ip):idipsup(ip)) .* ...
+                exp(1i*SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip)));
+>>>>>>> e518a59897f74aa44d579d6b4e37dafce4bba1aa
             allfrqsPfilters(id1:id2,ifile) = ...
                 SUTs(ip).frqsFFT_Hz(idipinf(ip):idipsup(ip))';
             id1 = id2+1;
         end
+<<<<<<< HEAD
         
         if FLAGsaveall
             comsave          = ...
@@ -154,5 +190,24 @@ for indexofSTA = 1:8
         clear SUTs
         eval(comsave);
     end
+=======
+    end
+    allRatioPfilters = allRatioPfilters(1:id1-1,:);
+    allfrqsPfilters  = allfrqsPfilters(1:id1-1,1);
+    comsave          = ...
+        sprintf('save AAresultsbis/resultssta26sensor%i%s',ihc);
+    clear signals
+    clear signalsC
+    clear signalsH
+    clear signals_centered
+    clear filteredsignals
+    clear windDir
+    clear windSpeed
+    clear records
+    clear temperature
+    clear alltimes_sec
+    clear SUTs
+    eval(comsave);
+>>>>>>> e518a59897f74aa44d579d6b4e37dafce4bba1aa
 end
 %============================ END =========================================
