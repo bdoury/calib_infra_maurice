@@ -5,10 +5,13 @@ allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
 
 FLAGsaveall = 0;
 
-addpath ../../textes/6distConjointHMSC/fullprocess/ZZtoolbox/
+% addpath ../../textes/6distConjointHMSC/fullprocess/ZZtoolbox/
+addpath ZZtoolbox/
 
-directoryresults    = 'AAresultsBW0610Hz';
-directoryresultsALL = 'BBresults';
+directoryresults      = 'AAresultswithoutFB';
+directoryresultsALL   = 'BBresults';
+filtercharactfilename = 'filtercharacteristics1';
+
 %==========================================================================
 % the data are in a file with the name built as:
 %                  sta1_Y2015_D239.mat
@@ -17,7 +20,6 @@ directoryresultsALL = 'BBresults';
 %==========================================================================
 
 %============== run the filter bank characteristics
-filtercharactfilename = 'filtercharacteristics1';
 cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
 eval(cmdloadcharact);
 if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
@@ -25,13 +27,13 @@ if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
     filtercharact(Pfilter).Whigh_Hz = 10;
 end
 %=====================
-MSCthreshold   = 0.97;
+MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 1:8
+for indexofSTA = 3:3
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
-    directorydatafromIDC = '../../../../DATA_IS/I26/';
+    directorydatafromIDC = '../AAdataI26/';
     fileswithdotmat         = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
     nbmats                    = length(fileswithdotmat);
     allRatioPfilters          = zeros(10000,nbmats);

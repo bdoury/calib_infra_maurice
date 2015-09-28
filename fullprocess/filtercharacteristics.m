@@ -15,103 +15,69 @@
 %                 DFT duration (typical integer value is 5).
 %===========================================================
 Pfilter=1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 2;
-% filtercharact(Pfilter).Wlow_Hz       = 0.001;
-% filtercharact(Pfilter).Whigh_Hz       = 0.2;
-% filtercharact(Pfilter).SCPperiod_sec  = 2000;
-% filtercharact(Pfilter).windowshape    = 'hann';
-% filtercharact(Pfilter).overlapDFT     = 0.5;
-% filtercharact(Pfilter).overlapSCP     = 0;
-% filtercharact(Pfilter).ratioDFT2SCP  = 10;
-% %------
-% Pfilter=Pfilter+1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 2;
-% filtercharact(Pfilter).Wlow_Hz      = 0.2;
-% filtercharact(Pfilter).Whigh_Hz      = 1;
-% filtercharact(Pfilter).SCPperiod_sec      = 500;
-% filtercharact(Pfilter).windowshape      = 'hann';
-% filtercharact(Pfilter).overlapDFT      = 0.5;
-% filtercharact(Pfilter).overlapSCP      = 0;
-% filtercharact(Pfilter).ratioDFT2SCP     = 5;
-% %------
-% Pfilter=Pfilter+1;
-filtercharact(Pfilter).designname = 'butter';
-filtercharact(Pfilter).Norder      = 0;
-filtercharact(Pfilter).Wlow_Hz      = 1;
-filtercharact(Pfilter).Whigh_Hz      = 2;
-filtercharact(Pfilter).SCPperiod_sec      = 1000;
+filtercharact(Pfilter).designname     = 'butter';
+filtercharact(Pfilter).Norder         = 2;
+filtercharact(Pfilter).Wlow_Hz        = 0.001;
+filtercharact(Pfilter).Whigh_Hz       = 0.015;
+filtercharact(Pfilter).SCPperiod_sec  = 1000;
+filtercharact(Pfilter).windowshape    = 'hann';
+filtercharact(Pfilter).overlapDFT     = 0.5;
+filtercharact(Pfilter).overlapSCP     = 0;
+filtercharact(Pfilter).ratioDFT2SCP   = 5;
+%------
+Pfilter=Pfilter+1;
+filtercharact(Pfilter).designname       = 'butter';
+filtercharact(Pfilter).Norder           = 3;
+filtercharact(Pfilter).Wlow_Hz          = 0.01;
+filtercharact(Pfilter).Whigh_Hz         = 0.08;
+filtercharact(Pfilter).SCPperiod_sec    = 500;
 filtercharact(Pfilter).windowshape      = 'hann';
-filtercharact(Pfilter).overlapDFT      = 0.5;
-filtercharact(Pfilter).overlapSCP      = 0;
+filtercharact(Pfilter).overlapDFT       = 0.5;
+filtercharact(Pfilter).overlapSCP       = 0;
 filtercharact(Pfilter).ratioDFT2SCP     = 5;
-% %------
-% Pfilter=Pfilter+1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 4;
-% filtercharact(Pfilter).Wlow_Hz      = 2;
-% filtercharact(Pfilter).Whigh_Hz      = 3;
-% filtercharact(Pfilter).SCPperiod_sec      = 50;
-% filtercharact(Pfilter).windowshape      = 'hann';
-% filtercharact(Pfilter).overlapDFT      = 0.5;
-% filtercharact(Pfilter).overlapSCP      = 0;
-% filtercharact(Pfilter).ratioDFT2SCP     = 5;
-% %------
-% Pfilter=Pfilter+1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 4;
-% filtercharact(Pfilter).Wlow_Hz      = 3;
-% filtercharact(Pfilter).Whigh_Hz      = 4;
-% filtercharact(Pfilter).SCPperiod_sec       = 25;
-% filtercharact(Pfilter).windowshape      = 'hann';
-% filtercharact(Pfilter).overlapDFT      = 0.5;
-% filtercharact(Pfilter).overlapSCP      = 0;
-% filtercharact(Pfilter).ratioDFT2SCP     = 5;
-% %------
-% Pfilter=Pfilter+1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 4;
-% filtercharact(Pfilter).Wlow_Hz      = 4;
-% filtercharact(Pfilter).Whigh_Hz      = 6;
-% filtercharact(Pfilter).SCPperiod_sec     = 25;
-% filtercharact(Pfilter).windowshape      = 'hann';
-% filtercharact(Pfilter).overlapDFT      = 0.5;
-% filtercharact(Pfilter).overlapSCP      = 0;
-% filtercharact(Pfilter).ratioDFT2SCP     = 5;
-% %------
-% Pfilter=Pfilter+1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 2;
-% filtercharact(Pfilter).Wlow_Hz      = 3.5;
-% filtercharact(Pfilter).Whigh_Hz      = 6;
-% filtercharact(Pfilter).SCPperiod_sec     = 25;
-% filtercharact(Pfilter).windowshape      = 'hann';
-% filtercharact(Pfilter).overlapDFT      = 0.5;
-% filtercharact(Pfilter).overlapSCP      = 0;
-% filtercharact(Pfilter).ratioDFT2SCP      = 5;
+%------
+Pfilter=Pfilter+1;
+filtercharact(Pfilter).designname       = 'butter';
+filtercharact(Pfilter).Norder           = 3;
+filtercharact(Pfilter).Wlow_Hz          = 0.1;
+filtercharact(Pfilter).Whigh_Hz         = 0.4;
+filtercharact(Pfilter).SCPperiod_sec    = 400;
+filtercharact(Pfilter).windowshape      = 'hann';
+filtercharact(Pfilter).overlapDFT       = 0.5;
+filtercharact(Pfilter).overlapSCP       = 0;
+filtercharact(Pfilter).ratioDFT2SCP     = 5;
+%------
+Pfilter=Pfilter+1;
+filtercharact(Pfilter).designname       = 'butter';
+filtercharact(Pfilter).Norder           = 3;
+filtercharact(Pfilter).Wlow_Hz          = 0.4;
+filtercharact(Pfilter).Whigh_Hz         = 1.5;
+filtercharact(Pfilter).SCPperiod_sec    = 100;
+filtercharact(Pfilter).windowshape      = 'hann';
+filtercharact(Pfilter).overlapDFT       = 0.5;
+filtercharact(Pfilter).overlapSCP       = 0;
+filtercharact(Pfilter).ratioDFT2SCP     = 5;
+%------
+Pfilter=Pfilter+1;
+filtercharact(Pfilter).designname       = 'butter';
+filtercharact(Pfilter).Norder           = 3;
+filtercharact(Pfilter).Wlow_Hz          = 1.5;
+filtercharact(Pfilter).Whigh_Hz         = 3.5;
+filtercharact(Pfilter).SCPperiod_sec    = 50;
+filtercharact(Pfilter).windowshape      = 'hann';
+filtercharact(Pfilter).overlapDFT       = 0.5;
+filtercharact(Pfilter).overlapSCP       = 0;
+filtercharact(Pfilter).ratioDFT2SCP     = 5;
+%------
+Pfilter=Pfilter+1;
+filtercharact(Pfilter).designname       = 'butter';
+filtercharact(Pfilter).Norder           = 3;
+filtercharact(Pfilter).Wlow_Hz          = 3;
+filtercharact(Pfilter).Whigh_Hz         = 8;
+filtercharact(Pfilter).SCPperiod_sec    = 40;
+filtercharact(Pfilter).windowshape      = 'hann';
+filtercharact(Pfilter).overlapDFT       = 0.5;
+filtercharact(Pfilter).overlapSCP       = 0;
+filtercharact(Pfilter).ratioDFT2SCP     = 5;
+%------
 
-% %------
-% Pfilter=Pfilter+1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 2;
-% filtercharact(Pfilter).Wlow_Hz      = 5;
-% filtercharact(Pfilter).Whigh_Hz      = 16;
-% filtercharact(Pfilter).SCPperiod_sec     = 10;
-% filtercharact(Pfilter).windowshape      = 'hann';
-% filtercharact(Pfilter).overlapDFT      = 0.5;
-% filtercharact(Pfilter).overlapSCP      = 0;
-% filtercharact(Pfilter).ratioDFT2SCP      = 5;
-
-
-% %------
-% Pfilter=Pfilter+1;
-% filtercharact(Pfilter).designname = 'butter';
-% filtercharact(Pfilter).Norder      = 8;
-% filtercharact(Pfilter).Wlow_Hz      = 4;
-% filtercharact(Pfilter).Whigh_Hz      = 6;
-% filtercharact(Pfilter).SCPperiod_sec     = 25;
-% filtercharact(Pfilter).windowshape      = 'hann';
-% filtercharact(Pfilter).overlapDFT      = 0.5;
-% filtercharact(Pfilter).overlapSCP      = 0;
-% filtercharact(Pfilter).ratioDFT2SCP      = 10;

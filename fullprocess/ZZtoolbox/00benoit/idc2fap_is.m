@@ -82,7 +82,7 @@ while ischar(tline)
         if (strfind(tline,'fir'))                    %entering a FIR stage
             if(include_fir == 1)
                 stage_id = stage_id + 1;
-                fprintf('fir stage %i\n',stage_id); 
+%                 fprintf('fir stage %i\n',stage_id); 
                 
                 %1 - Read the FIR into vector
                 tline = fgetl(fid);
@@ -99,7 +99,7 @@ while ischar(tline)
                 
                 %2 - Apply FIR to Transfer Function
                 delay=grpdelay(fir_vector);
-                fprintf('grpdelay %f \n',delay(1)/40);
+%                 fprintf('grpdelay %f \n',delay(1)/40);
                 fir=freqz(fir_vector,1,f,Decimation{1});
                 TF=TF.*fir;
             end
