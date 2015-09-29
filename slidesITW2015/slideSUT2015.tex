@@ -192,6 +192,10 @@
 \def\soi{s_{\mathrm{soi}}}
 \def\ns{s_{\mathrm{son}}}
 
+\def\sut{\mathrm{UT}}
+\def\sref{\mathrm{ref}}
+
+
 \def\ssoi{\utheta_{\mathrm{soi}}}
 \def\sns{\utheta_{\mathrm{son}}}
 \def\degree{^{\circ}}
@@ -275,7 +279,7 @@
 %%=======================================================
 %================= TITRE ===============================
 %============================================
-\title{Evaluation of the calibration method on a large campaign of measurement}
+\title{Evaluation of infrasound in-situ calibration method on a 3-month measurement campaign}
 \author{
  Charbit M.$^{1}$, 
  Doury B.$^{2}$
@@ -322,21 +326,21 @@
 %=======================================================
 \begin{frame}
  \frametitle{IMS study}
- In the framework of the calibration project, a study has been conducted by the 
- IMS that provides some theoretical and practical results:
+ In the framework of the calibration program, a study was  conducted by the 
+ with the following theoretical and practical results:
  \begin{itemize}
  \item
- determining closed form expression for the asymptotic distributions of the estimators,
+ determining closed form expression for the asymptotic distributions of the estimators;
  \item
-sizing a statistic for testing  the magnitude square coherence (MSC) level,
+sizing a statistic for testing  the magnitude square coherence (MSC) level;
  \item
- introducing a weighted estimator of the sensor under test (SUT) response based on the estimated value of the MSC estimator variance,
+ introducing a weighted estimator of the system under test (SUT) response based on the estimated value of the MSC estimator variance;
  \item
- proposal of a filter bank analysis for the SUT estimation,
+ proposal of a filter bank analysis for the SUT estimation;
  \item
- providing a simple wind coherence model which explains an observed artefact of the noise reduction system (NRS),
+ providing a simple wind coherence model which explains an observed artefact of the noise reduction system (NRS);
  \item
-{\color{red} Evaluation on a very large campaign of measurement on IS26}
+{\color{red} Evaluation on a very large campaign of measurement at station IS26}.
  \end{itemize}
  
   \bigskip
@@ -353,17 +357,15 @@ This presentation mainly focuses on the last item
 \figsstit{fulltestbedIS26-eps-converted-to.pdf}{0.5}
 
 \vspace{-24pt}
-$$\widehat{SUT}\approx \dfrac{\widehat{SUU}}{\widehat{SUR}}\times SREF$$
-
-
+$$\widehat{G_{\sut}}(f)\approx \dfrac{\widehat{S_{UU}}(f)}{\widehat{S_{UR}}(f)}\times G_{\sref}(f)$$
 
 \begin{itemize}
 \item
-objective: calibrate the system under test (SUT), i.e. NRS+sensor.
+objective: calibrate the system under test (SUT), i.e. NRS+sensor+digitizer;
 \item
-two kinds of signals: acoustic meaning about 300 m/s, and non acoustic, typically wind, meaning about 3 m/s,
+two kinds of signals: acoustic and non acoustic (typically wind) with different ranges of velocity;
 \item
-non spatially coherent signals are said "noise''.
+non spatially coherent signals are called "noise'';
 \item
 acoustic signals  is  spatially coherent regarding the size of the SUT. 
 \end{itemize}
@@ -406,13 +408,13 @@ The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be interpreted as a wavelength. The
 \begin{itemize}
 \item
 {\color{red}at very low frequency}, 
-{\tiny the wind appears as spatially coherent for all SUT inlets and SREF inlet. Therefore everything occurs as there is NO noise, and the MSC is almost 1},
+{ the wind appears as spatially coherent for all SUT inlets and SREF inlet. Therefore everything occurs as there is NO noise, and the MSC is almost 1},
 \item
 {\color{red}at high frequency},  
-{\tiny the wind appears as spatially NON coherent. Therefore the NRS plays its role to reduce the noise},
+{the wind appears as spatially NON coherent. Therefore the NRS plays its role to reduce the noise},
 \item
-{\color{red}at the mid frequency range}, 
-{\tiny a small part of the wind appears as  spatially coherent for near inlets. Therefore a dip artefact is observed}.
+{\color{red}around $0.8$ Hz}, 
+{a small part of the wind appears as  spatially coherent for near inlets. Therefore a dip artefact is observed}.
 \end{itemize}
 \end{minipage}
 &
@@ -429,7 +431,7 @@ The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be interpreted as a wavelength. The
 \begin{frame}
 \frametitle{Manage the stationarity}
 
-Spectrum analysis requires stationarity. In high frequencies the duration where we can expect stationarity can be considered smaller. Hence the use of a filter bank. An example is given below.
+Spectrum analysis requires stationarity. In high frequencies the duration where we can expect stationarity can be considered smaller. Hence the idea to use a filter bank. The example below is used in the following processing.
 
 \figsstit{filterbank-eps-converted-to.pdf}{0.55}
 
@@ -440,7 +442,19 @@ Spectrum analysis requires stationarity. In high frequencies the duration where 
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Results on confidence interval}
+\frametitle{Measurement description at station IS26}
+\begin{itemize}
+\item
+8 reference systems have been deployed on the 8 SUTs;
+\item
+each reference sensor has been calibrated in the lab; 
+\end{itemize}
+\end{frame}
+
+%=======================================================
+%=======================================================
+\begin{frame}
+\frametitle{Results}
 \begin{tabular}{cc}
 \includegraphics[scale=0.25]{3monthsonIS26SUTboxplot1-eps-converted-to.pdf}
 &

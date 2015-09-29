@@ -8,9 +8,10 @@ FLAGsaveall = 0;
 % addpath ../../textes/6distConjointHMSC/fullprocess/ZZtoolbox/
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresultswithoutFB';
-directoryresultsALL   = 'BBresults';
-filtercharactfilename = 'filtercharacteristics1';
+directoryresults      = 'AAresultswithFB';
+directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
+filtercharactfilename = 'filtercharacteristics';
+directorydatafromIDC  = '../AAdataI26/';
 
 %==========================================================================
 % the data are in a file with the name built as:
@@ -27,13 +28,12 @@ if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
     filtercharact(Pfilter).Whigh_Hz = 10;
 end
 %=====================
-MSCthreshold   = 0.98;
+MSCthreshold   = 0.96;
 %=====================
-for indexofSTA = 3:3
+for indexofSTA = 1:1
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
-    directorydatafromIDC = '../AAdataI26/';
     fileswithdotmat         = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
     nbmats                    = length(fileswithdotmat);
     allRatioPfilters          = zeros(10000,nbmats);
@@ -41,6 +41,7 @@ for indexofSTA = 3:3
     allSTDmodRatioPfilters    = zeros(10000,nbmats);
     allSTDphaseRatioPfilters  = zeros(10000,nbmats);
     allmeanMSCcstPfilters     = zeros(10000,nbmats);
+    nbofvaluesoverthreshold   = zeros(10000,nbmats);
 
     for ifile=1:nbmats
         fullfilename_i      = fileswithdotmat(ifile).name;
@@ -126,6 +127,8 @@ for indexofSTA = 3:3
                 nanmean(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:),2);
             allfrqsPfilters(id1:id2,ifile) = ...
                 SUTs(ip).frqsFFT_Hz(idipinf(ip):idipsup(ip))';
+            nbofvaluesoverthreshold(id1:id2,ifile) = ...
+                sum(not(isnan(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:))),2);
             id1 = id2+1;
         end
         if FLAGsaveall
@@ -140,6 +143,7 @@ for indexofSTA = 3:3
     allSTDmodRatioPfilters   = allSTDmodRatioPfilters(1:id1-1,:);
     allSTDphaseRatioPfilters = allSTDphaseRatioPfilters(1:id1-1,:);
     allmeanMSCcstPfilters    = allmeanMSCcstPfilters(1:id1-1,:);
+    nbofvaluesoverthreshold  = nbofvaluesoverthreshold(1:id1-1,:);
     
     if not(FLAGsaveall)
         comsave          = ...

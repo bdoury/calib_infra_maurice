@@ -28,7 +28,7 @@ for ihc = 3:3
     %     permutenbmats = randperm(nbmats);
     %     allRatioPfilters = allRatioPfilters(:,permutenbmats(1:doubledaynumber));
     
-        switch ihc
+    switch ihc
         case 1
             coeffsens=1.037;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';

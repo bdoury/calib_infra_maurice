@@ -1,8 +1,8 @@
 %========================== displaySensorRatio.m =========================
 % this program reads the ratios SUT/SREF estimated by spectral approach
-% and stored in the drectory AAresults. That consists on 8 files
+% and stored in a drectory as AAresults. That consists on 8 files
 % for the 8 sensors of IS26. Each file consists the estimate ratios
-% on several days of records. The
+% on several days of records. 
 %
 % this program calls the program theoreticalSUTresponse4IS26.m
 %
@@ -12,11 +12,11 @@ addpath ZZtoolbox/
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 
-for ihc = 1:5
+for ihc = 1:1
     
     switch ihc
         case 1
-            coeffsens=1.037;
+            coeffsens=1.05;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 2
             coeffsens=1.065;%.1;
@@ -28,7 +28,7 @@ for ihc = 1:5
             coeffsens=1.07;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 5
-            coeffsens=1.1;
+            coeffsens=1.07;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 6
             coeffsens=1.0;
@@ -75,29 +75,46 @@ for ihc = 1:5
     
     %=======
     
+    
     [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
     allRatioPfiltersU        = allRatioPfilters(inda,:);
-    allRatioPfiltersU        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);
-    allfrqsPfiltersU         = allfrqsPfiltersU(not(allfrqsPfiltersU==0));
- 
+    allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
+    nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
     
+    allRatioPfiltersUZ        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);
+    allmeanMSCcstPfiltersUZ   = allmeanMSCcstPfiltersU(not(allfrqsPfiltersU==0),:);
+    allfrqsPfiltersUZ         = allfrqsPfiltersU(not(allfrqsPfiltersU==0));
+    nbofvaluesoverthresholdUZ = nbofvaluesoverthresholdU(not(allfrqsPfiltersU==0),:);
+    
+    meanallRatioPfiltersUZ    = nanmean(allRatioPfiltersUZ,2);
+    
+    stdallRatioPfiltersUZ    = nanstd(allRatioPfiltersUZ,[],2);
+    
+    ICallRatioPfiltersUZ     = stdallRatioPfiltersUZ ./ sqrt(sum(nbofvaluesoverthresholdUZ,2));
     
     [p_total_NRS_sensor, freq_vector, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
-        theoreticalSUTresponse4IS26(allfrqsPfiltersU, sensor_UT, ref_sensor, 'nofir');
+        theoreticalSUTresponse4IS26(allfrqsPfiltersUZ, sensor_UT, ref_sensor, 'nofir');
     
-    absestim = coeffsens * abs(allRatioPfiltersU) .* ...
-        (abs(TFsensor4freqRatio)*ones(1,size(allRatioPfiltersU,2)));
+    absestim = coeffsens * abs(meanallRatioPfiltersUZ) .* abs(TFsensor4freqRatio);
+    
+    
     
     figure(ihc)
     
     %================================================
     subplot(121)
-    boxplot(absestim','position',allfrqsPfiltersU,'symbol','','whisker',0);
+    semilogx(allfrqsPfiltersUZ,absestim,'om'),
+    hold on
+        semilogx(ones(2,1)*allfrqsPfiltersUZ',...
+            [absestim'-ICallRatioPfiltersUZ';...
+            absestim'+ICallRatioPfiltersUZ'],'.-b')
+
+%     boxplot(absestim','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
         'xticklabel',[0.001 0.01 0.1 1 10])
     set(gca,'fontname','times','fontsize',10)
     set(gca,'xlim',[0.008 6])
-    set(gca,'ylim',[0.8 1.2])
+    set(gca,'ylim',[0.6 1.4])
     grid on
     xlabel('frequency - Hz')
     ylabel('estimated gain')
@@ -112,15 +129,16 @@ for ihc = 1:5
         ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',12)
 
     %========================== PHASE =========
-    anglestime_deg = angle(allRatioPfiltersU)*180/pi;
+    anglestime_deg = angle(meanallRatioPfiltersUZ)*180/pi;
     if ihc<=4
         anglestime_deg=-anglestime_deg;
     end
     
-    anglestime_deg = anglestime_deg + ...
-        (angle(TFsensor4freqRatio)*ones(1,size(anglestime_deg,2)))*180/pi;
+    anglestime_deg = anglestime_deg + angle(TFsensor4freqRatio)*180/pi;
     subplot(122)
-    boxplot(anglestime_deg','position',allfrqsPfiltersU,'symbol','','whisker',0);
+        semilogx(allfrqsPfiltersUZ,anglestime_deg),
+
+%     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
         'xticklabel',[0.001 0.01 0.1 1 10])
     set(gca,'fontname','times','fontsize',10)
@@ -155,7 +173,7 @@ for ihc = 1:5
     fileeps2pdfcmd  = sprintf('!epstopdf %s3monthsonIS26SUT%i.eps',printdirectory,ihc);
     filermcmd       = sprintf('!rm %s3monthsonIS26SUT%i.eps',printdirectory,ihc);
     %
-      eval(fileprintepscmd)
+%       eval(fileprintepscmd)
     %     eval(fileeps2pdfcmd)
     %     eval(filermcmd)
     
