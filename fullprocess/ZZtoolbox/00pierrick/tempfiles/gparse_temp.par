@@ -1,4 +1,4 @@
-open open data_source=testbed_archive user=charbit password=sqlmomo
-query wfdisc select * from sel3.wfdisc where sta in ('I26H6','I26C6')and chan in ('BDF','BDF','LWS','LWD','LKO') and time between NaN and NaN order by sta,chan,time
+open data_source=testbed_archive user=charbit password=sqlmomo
+query wfdisc select * from sel3.wfdisc where sta in  ('I26H1','I26C1') and chan in ('BDF','BDF','LWS','LWD','LKO')  and time between 1433548810  and 1433721010 order by sta,chan,time
 read waveforms
 write waveforms

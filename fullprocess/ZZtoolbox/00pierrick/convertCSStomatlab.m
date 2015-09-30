@@ -33,12 +33,12 @@ while ischar(tline)
 end
 fclose(fid);
 DY              = num2str(jdate(1));
-filenamesavemat = sprintf('%ssta%s_Y%s_D%s.mat',...
-    dirname,station{1}(5),DY(1:4),DY(5:end));
+filenamesavemat = sprintf('%ss%s/sta%s_Y%s_D%s.mat',...
+    dirname,station{1}(5),station{1}(5),DY(1:4),DY(5:end));
 % ratiorates    = samprate / min(samprate);
 length_record   = fix(etime-stime) .* samprate;
 % Read waveforms
-fid             = fopen('gparse.w','r','b');
+fid             = fopen(filewfdisc(1:end-5),'r','b');
 signal_temp     = fread(fid,'float32');
 fclose(fid);
 %========= save data
@@ -54,5 +54,6 @@ for is = 1 : length(wfid)
     records{is}.channel = chan{is};
 end
 cmdsave = sprintf(' save %s records samprate',filenamesavemat);
+cmdsave
 eval(cmdsave)
 %===============================================================

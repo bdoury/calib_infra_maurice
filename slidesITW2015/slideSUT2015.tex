@@ -326,7 +326,7 @@
 %=======================================================
 \begin{frame}
  \frametitle{IMS study}
- In the framework of the calibration program, a study was  conducted by the 
+ In the framework of the calibration program, a study was conducted 
  with the following theoretical and practical results:
  \begin{itemize}
  \item
@@ -334,40 +334,36 @@
  \item
 sizing a statistic for testing  the magnitude square coherence (MSC) level;
  \item
- introducing a weighted estimator of the system under test (SUT) response based on the estimated value of the MSC estimator variance;
+ introducing a weighted estimator of the system under test (SUT) response based on the estimated value of 
+the MSC;
  \item
  proposal of a filter bank analysis for the SUT estimation;
  \item
- providing a simple wind coherence model which explains an observed artefact of the noise reduction system (NRS);
+ providing a simple wind coherence model which explains an observed artefact of the noise reduction system (NRS), in relation with the wind velocity;
  \item
-{\color{red} Evaluation on a very large campaign of measurement at station IS26}.
+{\color{red} Evaluation on a 3-month campaign of measurement at station IS26. This presentation mainly focuses on the last item.}
  \end{itemize}
  
-  \bigskip
-  
-This presentation mainly focuses on the last item
  
 \end{frame}
 %=======================================================
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Typical condition of measurement}
+\frametitle{Measurement}
 
-\figsstit{fulltestbedIS26-eps-converted-to.pdf}{0.5}
+\figsstit{fulltestbedIS26.pdf}{0.65}
 
 \vspace{-24pt}
-$$\widehat{G_{\sut}}(f)\approx \dfrac{\widehat{S_{UU}}(f)}{\widehat{S_{UR}}(f)}\times G_{\sref}(f)$$
-
 \begin{itemize}
 \item
-objective: calibrate the system under test (SUT), i.e. NRS+sensor+digitizer;
+objective: calibrate the system under test (SUT), i.e. NRS+sensor+digitizer, based on the knowledge of the reference system (SREF);
 \item
-two kinds of signals: acoustic and non acoustic (typically wind) with different ranges of velocity;
+2 kinds of signals: acoustic and non acoustic (typically wind) with different ranges of velocity;
 \item
-non spatially coherent signals are called "noise'';
+non spatially coherent signals are called ``noise'';
 \item
-acoustic signals  is  spatially coherent regarding the size of the SUT. 
+acoustic signals is spatially coherent, in all frequency band of interest, regarding the size of the SUT. 
 \end{itemize}
 
 
@@ -397,10 +393,9 @@ acoustic signals  is  spatially coherent regarding the size of the SUT.
 \begin{frame}
 \frametitle{NRS effect}
 
-The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be interpreted as a wavelength. Therefore
+The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be viewed as a wavelength. Therefore
 
- 
-\bigskip
+%\bigskip
 
 \begin{tabular}{cl}
 \hspace{-1cm}
@@ -408,18 +403,18 @@ The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be interpreted as a wavelength. The
 \begin{itemize}
 \item
 {\color{red}at very low frequency}, 
-{ the wind appears as spatially coherent for all SUT inlets and SREF inlet. Therefore everything occurs as there is NO noise, and the MSC is almost 1},
+{ the wind appears as spatially coherent for all SUT/SREF elements. Therefore everything occurs as there is NO noise, and the MSC is almost 1},
 \item
 {\color{red}at high frequency},  
 {the wind appears as spatially NON coherent. Therefore the NRS plays its role to reduce the noise},
 \item
 {\color{red}around $0.8$ Hz}, 
-{a small part of the wind appears as  spatially coherent for near inlets. Therefore a dip artefact is observed}.
+{a small part of the wind appears as  spatially coherent for a few NRS inlets. Therefore a dip artefact is observed}.
 \end{itemize}
 \end{minipage}
 &
 \begin{minipage}{7.5cm}
-\includegraphics[scale=0.28]{3zones3.pdf}
+\includegraphics[scale=0.45]{twospeedster.pdf}
 \end{minipage}
 \end{tabular}
 
@@ -442,12 +437,16 @@ Spectrum analysis requires stationarity. In high frequencies the duration where 
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Measurement description at station IS26}
+\frametitle{Deployment}
 \begin{itemize}
 \item
-8 reference systems have been deployed on the 8 SUTs;
+8 SUTs with 18 meter wind noise reduction system, each of them with 96 inlets;
 \item
-each reference sensor has been calibrated in the lab; 
+8 SREFs have been deployed on May 2015;
+\item
+each reference sensor has been calibrated in the lab;
+\item
+capability of wind measurement on H1;
 \end{itemize}
 \end{frame}
 
@@ -456,15 +455,16 @@ each reference sensor has been calibrated in the lab;
 \begin{frame}
 \frametitle{Results}
 \begin{tabular}{cc}
-\includegraphics[scale=0.25]{3monthsonIS26SUTboxplot1-eps-converted-to.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot1.pdf}
 &
-\includegraphics[scale=0.25]{3monthsonIS26SUTboxplot3-eps-converted-to.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot3.pdf}
 \\
-\includegraphics[scale=0.25]{3monthsonIS26SUTboxplot4-eps-converted-to.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot4.pdf}
 &
-\includegraphics[scale=0.25]{3monthsonIS26SUTboxplot5-eps-converted-to.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5.pdf}
 \end{tabular}
 \end{frame}
+
 %%=======================================================
 %%=======================================================
 %\begin{frame}
@@ -526,15 +526,16 @@ each reference sensor has been calibrated in the lab;
 \begin{frame}
 \frametitle{Temporal variability at the 1 Hz frequency value}
 \begin{tabular}{cc}
-\includegraphics[scale=0.3]{evolutionon1atfreq1-eps-converted-to.pdf}
+\includegraphics[scale=0.3]{evolutionon1atfreq1.pdf}
 &
-\includegraphics[scale=0.3]{evolutionon3atfreq1-eps-converted-to.pdf}
+\includegraphics[scale=0.3]{evolutionon3atfreq1.pdf}
 \\
-\includegraphics[scale=0.3]{evolutionon4atfreq1-eps-converted-to.pdf}
+\includegraphics[scale=0.3]{evolutionon4atfreq1.pdf}
 &
-\includegraphics[scale=0.3]{evolutionon5atfreq1-eps-converted-to.pdf}
+\includegraphics[scale=0.3]{evolutionon5atfreq1.pdf}
 \end{tabular}
 \end{frame}
+
 %%=======================================================
 %%=======================================================
 %\begin{frame}
@@ -566,26 +567,51 @@ each reference sensor has been calibrated in the lab;
 %%=======================================================
 %%=======================================================
 \begin{frame}
-\frametitle{Conclusion}
+\frametitle{Conclusions}
 
-The experimental results obtained during 3 months on IS26 fully validate the calibration method.
-
+\framebox[11cm]{
+\begin{minipage}{10cm}
+PTS specifications are:
+\begin{itemize}
+\item
+bandwidth $[0.02 - 4]$ Hz;
+ \item
+$\pm 5\%$ on the response magnitude;
+ \item
+no requirement  on the phase but $\ldots$ $\pm 5\degree$ has been considered.
+\end{itemize}
+\end{minipage}
+}
+\framebox[11cm]{
+\begin{minipage}{10cm}
+Conclusions:
+\begin{itemize}
+\item
+The experimental results obtained averaging over 4 months fully validate the calibration method;
+\item
+The experimental results obtained by couples of 2 days show a permanence (without outliers) in full agreement with the PTS requirements;
+%\item
+%the small dip present in the curve stays in the PTS requirements and is proved to be an artefact of the NRS and not a default of the SUT or the %measurement process.
+\end{itemize}
+\end{minipage}
+}
 \end{frame}
-%=======================================================
-%=======================================================
 
-\begin{frame}
+%=======================================================
+%=======================================================
+ \begin{frame}
 \begin{center}
 {\large THANKS FOR YOUR ATTENTION}
 \end{center}
 \end{frame}
 
-\end{document}
-
-
-
-
-
+%=======================================================
+%=======================================================
+\begin{frame}\frametitle{NRS effect simulation}
+\begin{center}
+\includegraphics[scale=0.36]{GonH.pdf}
+\end{center}
+\end{frame}
 %=======================================================
 %=======================================================
 \begin{frame}\frametitle{Rks}
@@ -604,10 +630,14 @@ The experimental results obtained during 3 months on IS26 fully validate the cal
 }
 \begin{itemize}
 \item
-We have $N=2000$ time samples leading to a resolution of $F_s/N=0.01$ Hz. 
+If we have $N=2000$ samples the resolution is  $F_s/N=0.01$ Hz. 
 Therefore there is a possibility to decimate if the bandwidth is $B<0.01$.
-But for sake of simplicity, we keep the common value $F_s$ to all filters of the bank.
+But for sake of simplicity, we keep the common value $F_s$ to all filters of the bank (no decimation).
 \item
 For each frequency bin, an averaging is applied on the $L=9$ segments. If a few number of bins is required the fft algorithm is not needed.
 \end{itemize}
 \end{frame}
+
+
+\end{document}
+

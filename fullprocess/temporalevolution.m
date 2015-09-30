@@ -1,10 +1,9 @@
 clear
-close all
-for ihc=1:1
+for ihc=1:5
     
     switch ihc
         case 1
-            coeffsens=1.03;
+            coeffsens=1.025;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 2
             coeffsens=1.065;%.1;
@@ -16,7 +15,7 @@ for ihc=1:1
             coeffsens=1.05;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 5
-            coeffsens=1.03;
+            coeffsens=1.05;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 6
             coeffsens=1.0;
@@ -29,8 +28,7 @@ for ihc=1:1
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
     end
     
-
-    comload = sprintf('load AAresultsBW0812Hzbis/resultssta26sensor%i.mat',ihc);
+    comload = sprintf('load AAresults0812Hzbis/resultssta26sensor%i.mat',ihc);
     eval(comload)
     
     Dstart = str2double(fileswithdotmat(1).name(13:15));
@@ -46,28 +44,37 @@ for ihc=1:1
     indselect = find(allfrqsPfilters(:,1)>=1,1,'first');
     figure(ihc)
     subplot(211);
-    plot(coeffsens*abs(allRatioPfilters(indselect,:)),'or','markersize',4)
-    set(gca,'ylim',[0.9 1.1])
-    grid on
-    hold on
     sigmaonRatio = allSTDmodRatioPfilters(indselect,:) ./ ...
         sqrt(nbofvaluesoverthreshold(indselect,:));
     plot(ones(2,1)*(1:size(allRatioPfilters,2)),...
         coeffsens*[abs(allRatioPfilters(indselect,:))-sigmaonRatio;...)
-        abs(allRatioPfilters(indselect,:))+sigmaonRatio],'o-b');
+        abs(allRatioPfilters(indselect,:))+sigmaonRatio],'.-','color',0.6*[1 1 1]);
+    hold on
+    plot(coeffsens*abs(allRatioPfilters(indselect,:)),'ok','markersize',6,'markerfacec','k')
+    plot([0 100], 1.05*[1 1],'--r','linew',2)
+    plot([0 100], 0.95*[1 1],'--r','linew',2)
     hold off
+        set(gca,'fontname','times','fontsize',14)
+    ylabel('Gain at 1 Hz','fontname','times','fontsize',14)
+    grid on
+    set(gca,'xlim',[1 ceil(doubledaynumber)])
+    set(gca,'ylim',[0.8 1.12])
+
     title(sprintf('IS26 -  sensor #%i, threshold = %4.2f\nday number = %i',...
-        ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',12)
+        ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
     
     subplot(212);
     plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
         'markerfacec','b')
-    ylabel('MSC')
+        
+    set(gca,'ylim',[0.98 1])
+    ylabel('MSC','fontname','times','fontsize',14)
     grid on
-    
+        set(gca,'fontname','times','fontsize',14)
+
     
     HorizontalSize = 16;
-    VerticalSize   = 12;
+    VerticalSize   = 11;
     set(gcf,'units','centimeters');
     set(gcf,'paperunits','centimeters');
     set(gcf,'PaperType','a3');
@@ -76,9 +83,16 @@ for ihc=1:1
     set(gcf,'color', [1,1,0.92]);
     set(gcf, 'InvertHardCopy', 'off');
     
-    printdirectory = ' ../slidesITW2015/';
-    fileprintepscmd = sprintf('print -depsc -loose %sevolutionon%iatfreq%i.eps',printdirectory,ihc,allfrqsPfilters(indselect));
+    printdirectory  = ' ../slidesITW2015/';
+    fileprintepscmd = sprintf('print -depsc -loose %sevolutionon%iatfreq1.eps',printdirectory,ihc);
+    fileeps2pdfcmd  = sprintf('!epstopdf %sevolutionon%iatfreq1.eps',printdirectory,ihc);
+    filermcmd       = sprintf('!rm %sevolutionon%iatfreq1.eps',printdirectory,ihc);
+    %
+    eval(fileprintepscmd)
+    eval(fileeps2pdfcmd)
+    eval(filermcmd)
     
-%     eval(fileprintepscmd)
     
+    eval(fileprintepscmd)
+    sum(nbofvaluesoverthreshold(indselect,:))
 end

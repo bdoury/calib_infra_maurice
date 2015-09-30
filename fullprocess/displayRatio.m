@@ -14,7 +14,7 @@ addpath ZZtoolbox/
 %  - 
 
 %=======
-for ihc = 3:3
+for ihc = 1:1
     figure(ihc)
     comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
     eval(comload);
@@ -171,8 +171,8 @@ for ihc = 3:3
     fileeps2pdfcmd  = sprintf('!epstopdf %s3zones%i.eps',printdirectory,ihc);
     filermcmd       = sprintf('!rm %s3monthsonIS26SUT%i.eps',printdirectory,ihc);
     %
-      eval(fileprintepscmd)
-        eval(fileeps2pdfcmd)
+%       eval(fileprintepscmd)
+%         eval(fileeps2pdfcmd)
     %     eval(filermcmd)
     
     %     fileprintpngcmd = sprintf('print -dpng -loose ../../textes/6distConjointHMSC/figures/3monthsonIS26SUT%i',ihc);

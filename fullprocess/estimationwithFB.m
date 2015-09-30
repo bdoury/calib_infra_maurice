@@ -5,13 +5,12 @@ allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
 
 FLAGsaveall = 0;
 
-% addpath ../../textes/6distConjointHMSC/fullprocess/ZZtoolbox/
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresultswithFB';
+directoryresults      = 'AAresults0812Hzbis';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-filtercharactfilename = 'filtercharacteristics';
-directorydatafromIDC  = '../AAdataI26/';
+filtercharactfilename = 'filtercharacteristics1';
+directorydatafromIDC  = '../../../AAdataI26/';
 
 %==========================================================================
 % the data are in a file with the name built as:
@@ -28,13 +27,13 @@ if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
     filtercharact(Pfilter).Whigh_Hz = 10;
 end
 %=====================
-MSCthreshold   = 0.96;
+MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 1:1
+for indexofSTA = 1:8
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
-    fileswithdotmat         = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
+    fileswithdotmat           = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
     nbmats                    = length(fileswithdotmat);
     allRatioPfilters          = zeros(10000,nbmats);
     allfrqsPfilters           = zeros(10000,nbmats);
@@ -43,7 +42,7 @@ for indexofSTA = 1:1
     allmeanMSCcstPfilters     = zeros(10000,nbmats);
     nbofvaluesoverthreshold   = zeros(10000,nbmats);
 
-    for ifile=1:nbmats
+    for ifile=1:nbmats, ifile,tic
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -94,6 +93,7 @@ for indexofSTA = 1:1
             end
         end
         signals = signals(1:idSc-1,:);
+        size(signals)
         windSpeed = windSpeed(1:idWS-1);
         windDir = windDir(1:idWD-1);
         temperature = temperature(1:idT-1);
@@ -119,7 +119,7 @@ for indexofSTA = 1:1
             allRatioPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.modcst(idipinf(ip):idipsup(ip)) .* ...
                 exp(1i*SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip)));
-             allSTDmodRatioPfilters(id1:id2,ifile) = ...
+            allSTDmodRatioPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.stdmodcst(idipinf(ip):idipsup(ip));
             allSTDphaseRatioPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip));
@@ -137,6 +137,7 @@ for indexofSTA = 1:1
                 directoryresultsALL,indexofSTA,filenameonly);
             eval(comsave);
         end
+        toc
     end
     allRatioPfilters         = allRatioPfilters(1:id1-1,:);
     allfrqsPfilters          = allfrqsPfilters(1:id1-1,1);
