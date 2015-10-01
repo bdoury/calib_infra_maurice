@@ -330,9 +330,9 @@
  with the following theoretical and practical results:
  \begin{itemize}
  \item
- determining closed form expression for the asymptotic distributions of the estimators;
+ closed form expression for the asymptotic probability distributions of the estimators;
  \item
-sizing a statistic for testing  the magnitude square coherence (MSC) level;
+ sizing the statistic of test for the magnitude square coherence (MSC) level;
  \item
  introducing a weighted estimator of the system under test (SUT) response based on the estimated value of 
 the MSC;
@@ -341,7 +341,7 @@ the MSC;
  \item
  providing a simple wind coherence model which explains an observed artefact of the noise reduction system (NRS), in relation with the wind velocity;
  \item
-{\color{red} Evaluation on a 3-month campaign of measurement at station IS26. This presentation mainly focuses on the last item.}
+{\color{red} Evaluation on a measurement campaign at station IS26 during several months.}
  \end{itemize}
  
  
@@ -350,7 +350,7 @@ the MSC;
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Measurement}
+\frametitle{Measurement chain}
 
 \figsstit{fulltestbedIS26.pdf}{0.65}
 
@@ -368,36 +368,49 @@ acoustic signals is spatially coherent, in all frequency band of interest, regar
 
 
 \end{frame}
+
 %=======================================================
 %=======================================================
-%%=======================================================
-%\begin{frame}
-%\frametitle{Main schema - II}
-%
-%\figsstit{schema-of-observation-eps-converted-to.pdf}{0.55}
-%
-%\vspace{-12pt}
-%
-%A few remarks:
-%\begin{itemize}
-%\item
-%two kinds of signals: acoustic meaning about 300 m/s, and non acoustic meaning about 5 m/s,
-%\item
-%$s(t)$ is said \emph{common or coherent} because this signal is assumed to be spatially coherent w.r.t. the size of the SUT,
-%\end{itemize}
-%
-%\end{frame}
+\begin{frame}
+\frametitle{Performing process}
+\begin{itemize}
+\item
+Stationarity $+$ (MSC close to 1) solves the problem of underdetermination
+\item
+Typically, if we want $\pm 5\%$ on the gain, theoretical results show that we need an MSC value 0f $0.96$, but unfortunately we only have  an estimate of the true MSC. Therefore to get a confidence level of $90\%$ we have to thresholding at $0.98$.
+\end{itemize}
+\figsstit{processdetail.pdf}{0.8}
+
+\end{frame}
+
+%=======================================================
+%=======================================================
+%=======================================================
+\begin{frame}
+\frametitle{Manage the stationarity}
+
+
+
+For stationary signals the accuracy on the estimation does depend on the number of time windows we have for averaging the Fourier components. This number appears as the product of the duration by the spectral resolution. Hence the idea to use a filter bank with a logarithmic pavement.
+
+
+\figsstit{filterbank.pdf}{0.45}
+
+
+\end{frame}
+
 %=======================================================
 %=======================================================
 %=======================================================
 \begin{frame}
 \frametitle{NRS effect}
 
-The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be viewed as a wavelength. Therefore
+The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be viewed as a wavelength [Alcoverro, al., JASA,
+2002]. Therefore
 
 %\bigskip
 
-\begin{tabular}{cl}
+\begin{tabular}{clc}
 \hspace{-1cm}
 \begin{minipage}{6cm}
 \begin{itemize}
@@ -417,27 +430,14 @@ The ratio $\dfrac{v_{\mathrm{wind}}}{f}$ can be viewed as a wavelength. Therefor
 \includegraphics[scale=0.45]{twospeedster.pdf}
 \end{minipage}
 \end{tabular}
-
-
 \end{frame}
-%=======================================================
-%=======================================================
-%=======================================================
-\begin{frame}
-\frametitle{Manage the stationarity}
 
-Spectrum analysis requires stationarity. In high frequencies the duration where we can expect stationarity can be considered smaller. Hence the idea to use a filter bank. The example below is used in the following processing.
-
-\figsstit{filterbank-eps-converted-to.pdf}{0.55}
-
-
-\end{frame}
 %=======================================================
 \section{Campaign measurement results}
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Deployment}
+\frametitle{Deployment [A.Kramer, al., ITW2015]}
 \begin{itemize}
 \item
 8 SUTs with 18 meter wind noise reduction system, each of them with 96 inlets;
@@ -453,12 +453,33 @@ capability of wind measurement on H1;
 %=======================================================
 %=======================================================
 \begin{frame}
+\frametitle{PTS requirements}
+\framebox[11cm]{
+\begin{minipage}{10cm}
+PTS specifications are:
+\begin{itemize}
+\item
+bandwidth $[0.02 - 4]$ Hz;
+ \item
+$\pm 5\%$ on the response magnitude
+\item
+the calibration is required at least once a year;
+ \item
+no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirements.
+\end{itemize}
+\end{minipage}
+}
+\end{frame}
+%=======================================================
+%=======================================================
+\begin{frame}
 \frametitle{Results}
-\begin{tabular}{cc}
+\begin{tabular}{c||c}
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot1.pdf}
 &
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot3.pdf}
 \\
+\hline\hline
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot4.pdf}
 &
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5.pdf}
@@ -524,12 +545,13 @@ capability of wind measurement on H1;
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Temporal variability at the 1 Hz frequency value}
-\begin{tabular}{cc}
+\frametitle{Temporal stability of successive gains averaged on 2 days}
+\begin{tabular}{c||c}
 \includegraphics[scale=0.3]{evolutionon1atfreq1.pdf}
 &
 \includegraphics[scale=0.3]{evolutionon3atfreq1.pdf}
 \\
+\hline\hline
 \includegraphics[scale=0.3]{evolutionon4atfreq1.pdf}
 &
 \includegraphics[scale=0.3]{evolutionon5atfreq1.pdf}
@@ -576,7 +598,7 @@ PTS specifications are:
 \item
 bandwidth $[0.02 - 4]$ Hz;
  \item
-$\pm 5\%$ on the response magnitude,;
+$\pm 5\%$ on the response magnitude; more specifically the calibration is required once a year;
  \item
 no requirement  on the phase but $\ldots$ $\pm 5\degree$ has been considered.
 \end{itemize}
@@ -587,9 +609,9 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ has been considered.
 Conclusions:
 \begin{itemize}
 \item
-The experimental results obtained averaging over 4 months fully validate the calibration method;
+The experimental results obtained fully validate the calibration method;
 \item
-The experimental results obtained by couples of 2 days show a permanence (without outliers) in full agreement with the PTS requirements;
+The experimental results obtained by couples of 2 days show a high stability in full agreement with the PTS requirements;
 %\item
 %the small dip present in the curve stays in the PTS requirements and is proved to be an artefact of the NRS and not a default of the SUT or the %measurement process.
 \end{itemize}
@@ -637,7 +659,21 @@ But for sake of simplicity, we keep the common value $F_s$ to all filters of the
 For each frequency bin, an averaging is applied on the $L=9$ segments. If a few number of bins is required the fft algorithm is not needed.
 \end{itemize}
 \end{frame}
-
+%=======================================================
+%=======================================================
+\begin{frame}
+\frametitle{Results}
+\begin{tabular}{c||c}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot1withSensor.pdf}
+&
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot3withSensor.pdf}
+\\
+\hline\hline
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot4withSensor.pdf}
+&
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5withSensor.pdf}
+\end{tabular}
+\end{frame}
 
 \end{document}
 

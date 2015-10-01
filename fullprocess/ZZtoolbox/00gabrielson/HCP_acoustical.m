@@ -41,7 +41,7 @@ arrival_azimuth_degrees   = 0;  %  Azimuth angle: 0 aligns with
 % L_pri = 3.50;  L_sec = 3.48;  L_ter = 2.07; % lengths of pipes 18-m HCP
 %
 Npri  = 4;      Nsec = 12;      Nter = 2;     % number of pipes: 18-m HCP
-L_pri = 5.75;  L_sec = 3.00;   L_ter = 0.85/2;%2.07;  % lengths of pipes 18-m HCP
+L_pri = 5.75;  L_sec = 3.00;    L_ter = 0.85/2;%2.07;  % lengths of pipes 18-m HCP
 %
 %  Primary and secondary pipe radii (not diameter) [m]
 a_pri = 13e-3/2;%0.824*25.4e-3/2; %12e-3/2;  %  DN12
@@ -65,10 +65,10 @@ L_microbarometer = 40e-3;  %     volume (0.0006 m^3 from Alcoverro)
 % L_sec_cavity = L_ter_cavity;
 
 a_ter_cavity = 13e-3/2;   %85e-3/2;  % 85 mm diameter
-L_ter_cavity = 50e-3; %50e-3;0e-3    % 50 mm height
+L_ter_cavity = 50e-3;     %50e-3;0e-3    % 50 mm height
 
-a_sec_cavity = 112e-3/2;
-L_sec_cavity = 100e-3;
+a_sec_cavity = 53.4e-3;
+L_sec_cavity = 112e-3;
 %
 if L_stub == 0
     a_pri_cavity = a_microbarometer;
@@ -76,8 +76,8 @@ if L_stub == 0
 else
 %     a_pri_cavity = a_ter_cavity;
 %     L_pri_cavity = L_ter_cavity;
-    a_pri_cavity = 40e-3/2;
-    L_pri_cavity = 60e-3;
+    a_pri_cavity = 22.6e-3;
+    L_pri_cavity = 40e-3;
 end
 %
 %   Resonance suppressor specs

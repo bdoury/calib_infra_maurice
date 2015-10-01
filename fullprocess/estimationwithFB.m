@@ -7,9 +7,9 @@ FLAGsaveall = 0;
 
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresults0812Hzquad';
+directoryresults      = 'AAresultswithFB';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-filtercharactfilename = 'filtercharacteristics1';
+filtercharactfilename = 'filtercharacteristics';
 directorydatafromIDC  = '../../../AAdataI26/';
 
 %==========================================================================
@@ -27,9 +27,9 @@ if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
     filtercharact(Pfilter).Whigh_Hz = 10;
 end
 %=====================
-MSCthreshold   = 0.97;
+MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 2:8
+for indexofSTA = 1:5
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================

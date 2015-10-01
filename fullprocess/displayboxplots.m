@@ -10,7 +10,7 @@ clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-for ihc = 1:5
+for ihc = 1:2
     switch ihc
         case 1
             coeffsens=1.048;
@@ -140,14 +140,19 @@ for ihc = 1:5
         'fontname','times','fontsize',14)
 
     %========================== PHASE =========
-    anglestime_deg = -angle(meanallRatioPfiltersUZ)*180/pi;
-%     if ihc<=4
-%         anglestime_deg=-anglestime_deg;
-%     end
+    anglestime_rd = angle(meanallRatioPfiltersUZ);
     
-%     anglestime_deg = anglestime_deg + angle(TFsensor4freqRatio)*180/pi;
+    if 0
+        anglestime_rd = anglestime_rd + angle(TFsensor4freqRatio);
+        angltheo_rd   = angle(p_total_NRS)+ angle(TF_ref_sensor);
+    else
+        anglestime_rd = -anglestime_rd;
+        angltheo_rd   = -angle(p_total_NRS);
+        
+    end
+    
     subplot(212)
-    semilogx(allfrqsPfiltersUZ,unwrap(anglestime_deg*pi/180)*180/pi,'.-k'),
+    semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
 
 %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
@@ -165,12 +170,12 @@ for ihc = 1:5
     hold off
     %=============== dipslay
     hold on
-%     semilogx(freq_vector, -unwrap(angle(p_total_NRS))*180/pi, 'r');
-    semilogx(freq_vector, -unwrap(angle(p_total_NRS))*180/pi-5, 'r--','linew',1.5);
-    semilogx(freq_vector, -unwrap(angle(p_total_NRS))*180/pi+5, 'r--','linew',1.5);
+%     semilogx(freq_vector, -unwrap(angltheo_rd)*180/pi, 'r');
+    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi-5, 'r--','linew',1.5);
+    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi+5, 'r--','linew',1.5);
     hold off
-ht = text(0.08, -16,'IMS passband');
-set(ht,'color','m','fontsize',14,'fontname','times')
+    ht = text(0.08, -16,'IMS passband');
+    set(ht,'color','m','fontsize',14,'fontname','times')
     
     %==============================================================
     HorizontalSize = 16;
