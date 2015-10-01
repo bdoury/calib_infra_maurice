@@ -91,15 +91,18 @@ for ihc = 1:5
     
     ICallRatioPfiltersUZ     = stdallRatioPfiltersUZ ./ sqrt(sum(nbofvaluesoverthresholdUZ,2));
     
-    [p_total_NRS_sensor, freq_vector, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
-        HCP_acoustical(allfrqsPfiltersUZ, sensor_UT, ref_sensor, 'nofir');
+    
+    N_freq_vector = 400;
+    freq_vector = logspace(log10(0.001),log10(30),N_freq_vector) .';
+    [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
+        HCP_acoustical(freq_vector, allfrqsPfiltersUZ, sensor_UT, ref_sensor, 'nofir');
     
     absestim = coeffsens * abs(meanallRatioPfiltersUZ) .* abs(TFsensor4freqRatio);
     
     
-    [FreqFitabs_Hz,absRfit] = smoothpolyLL(allfrqsPfiltersUZ, ...
-        coeffsens * abs(meanallRatioPfiltersUZ),...
-        segmentsnumber,polydegrees,logtrain,logfit);
+%     [FreqFitabs_Hz,absRfit] = smoothpolyLL(allfrqsPfiltersUZ, ...
+%         coeffsens * abs(meanallRatioPfiltersUZ),...
+%         segmentsnumber,polydegrees,logtrain,logfit);
     
     figure(ihc)
     clf
@@ -185,9 +188,9 @@ set(ht,'color','m','fontsize',14,'fontname','times')
     fileeps2pdfcmd  = sprintf('!epstopdf %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
     filermcmd       = sprintf('!rm %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
     %
-      eval(fileprintepscmd)
-        eval(fileeps2pdfcmd)
-        eval(filermcmd)
+%       eval(fileprintepscmd)
+%         eval(fileeps2pdfcmd)
+%         eval(filermcmd)
     
     %     fileprintpngcmd = sprintf('print -dpng -loose ../../textes/6distConjointHMSC/figures/3monthsonIS26SUT%i',ihc);
     %     fileprintpngcmd = sprintf('print -dpdf -loose threemonthsonIS26SUT%i',ihc);

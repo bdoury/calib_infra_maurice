@@ -1,6 +1,6 @@
-function [p_totalNRSsensor, freq_vector, p_total_NRS, TF_ref_sensor, ...
+function [p_totalNRSsensor, p_total_NRS, TF_ref_sensor, ...
     TF_ref_sensor4freqRatio] = ...
-    HCP_acoustical(...
+    HCP_acoustical(freq_vector,...
     allfrqsPfilters, sensor_UT, ref_sensor,firflag)
 
 %==========================================================================
@@ -99,8 +99,6 @@ atmos_press = 88000;  %   88000 Pa is roughly "standard"
 %                                  Conrad Observatory
 %
 %   Select frequencies for solution
-N_freq_vector = 400;
-freq_vector = logspace(log10(0.001),log10(30),N_freq_vector) .';
 %
 %
 %     'damping_correction' is an empirical correction factor used in
