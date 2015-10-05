@@ -19,10 +19,10 @@
 Pfilter=1;
 
 filtercharact(Pfilter).designname         = 'butter';
-filtercharact(Pfilter).Norder             = 2;
+filtercharact(Pfilter).Norder             = 0;
 filtercharact(Pfilter).Wlow_Hz            = 0.8;
 filtercharact(Pfilter).Whigh_Hz           = 1.2;
-filtercharact(Pfilter).SCPperiod_sec      = 50;
+filtercharact(Pfilter).SCPperiod_sec      = 500;
 filtercharact(Pfilter).windowshape        = 'hann';
 filtercharact(Pfilter).overlapDFT         = 0.5;
 filtercharact(Pfilter).overlapSCP         = 0;

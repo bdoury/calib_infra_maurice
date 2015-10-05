@@ -10,7 +10,7 @@ clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-for ihc = 1:2
+for ihc = 1:5
     switch ihc
         case 1
             coeffsens=1.048;
@@ -104,7 +104,7 @@ for ihc = 1:2
 %         coeffsens * abs(meanallRatioPfiltersUZ),...
 %         segmentsnumber,polydegrees,logtrain,logfit);
     
-    figure(ihc)
+    figure(ihc+100)
     clf
     %================================================
      subplot(211)
@@ -142,7 +142,7 @@ for ihc = 1:2
     %========================== PHASE =========
     anglestime_rd = angle(meanallRatioPfiltersUZ);
     
-    if 0
+    if 1
         anglestime_rd = anglestime_rd + angle(TFsensor4freqRatio);
         angltheo_rd   = angle(p_total_NRS)+ angle(TF_ref_sensor);
     else
@@ -159,7 +159,7 @@ for ihc = 1:2
         'xticklabel',[0.001 0.01 0.1 1 10])
     set(gca,'fontname','times','fontsize',14)
     set(gca,'xlim',[0.008 10])
-    set(gca,'ylim',[-20 20])
+    set(gca,'ylim',[-40 40])
     grid on
     xlabel('frequency [Hz]')
     ylabel('Phase [deg]')

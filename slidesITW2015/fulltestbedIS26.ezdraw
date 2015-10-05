@@ -18014,7 +18014,7 @@
 	ABRRRQAUUUUAFFFFAH//2Q==
 	</data>
 	<key>DKDChangeTimeStamp</key>
-	<string>2015-09-30 05:33:29 +0000</string>
+	<string>2015-10-05 05:37:38 +0000</string>
 	<key>DKDCreateTimeStamp</key>
 	<string>2015-09-11 13:29:17 +0000</string>
 	<key>DKDDisplayGraphicDetails</key>
@@ -18131,7 +18131,7 @@
 		<key>ExportExpand</key>
 		<string>1</string>
 		<key>ExportFileExtension</key>
-		<string>eps</string>
+		<string>pdf</string>
 		<key>ExportImageAntialias</key>
 		<string>YES</string>
 		<key>ExportImageInterpolation</key>
@@ -18302,7 +18302,7 @@
 					<key>AnimateImage</key>
 					<string>NO</string>
 					<key>Bounds</key>
-					<string>{{375.447873507, 54.7241426991}, {175, 40}}</string>
+					<string>{{375.447873507, 54.724142699}, {175, 40}}</string>
 					<key>Class</key>
 					<string>DKDPDFImage</string>
 					<key>CompositeOperation</key>
@@ -19608,7 +19608,7 @@
 		<string>NO</string>
 	</dict>
 	<key>DKDSaveTimeStamp</key>
-	<string>2015-09-30 05:33:31 +0000</string>
+	<string>2015-10-05 05:37:40 +0000</string>
 	<key>DKDTablet</key>
 	<dict>
 		<key>BrushDynamic</key>
@@ -19729,76 +19729,13 @@
 				</dict>
 			</dict>
 		</array>
-		<string>PatternForToolbarItemIdentifier_0</string>
-		<array>
-			<string>Toolbar_02</string>
-		</array>
-		<string>ChartingMenuToolbarIdentifier_0</string>
-		<array>
-			<string>Flèche épaisse droite</string>
-			<string>Flèche épaisse droite</string>
-			<string>Flèche de zone droite</string>
-			<string>Déchirure droite</string>
-			<string>Accolade droite</string>
-			<string>Tambour droit</string>
-			<string>Dossier</string>
-			<string>Octogone à deux longueurs</string>
-			<string>Rectangle arrondi</string>
-			<string>Triangle vers la droite</string>
-			<string>Trapézoïde droit</string>
-			<string>Parallélogramme supérieur</string>
-			<string>Parallélogramme</string>
-			<string>Pointe de flamme droite</string>
-			<string>Rectangle droit</string>
-			<string>Champignon droit</string>
-		</array>
-		<string>StellateMenuToolbarIdentifier_0</string>
-		<array>
-			<string>Polygone équilatéral</string>
-			<string>Polygone équilatéral</string>
-			<string>Polygone équilatéral libre</string>
-			<string>Étoile en croix</string>
-			<string>Étoile</string>
-			<string>Étoile libre lisse</string>
-			<string>Étoile bancale</string>
-			<string>Étoile bancale lisse</string>
-			<string>Rayon</string>
-		</array>
-		<string>MathMenuToolbarIdentifier_0</string>
-		<array>
-			<string>Parabolique</string>
-			<string>Parabolique</string>
-			<string>Miroir X au cube</string>
-			<string>Quartique</string>
-			<string>Un sur X</string>
-			<string>Exponentielle</string>
-			<string>Tangente</string>
-			<string>Tangente hyperbolique</string>
-			<string>Gaussienne:</string>
-			<string>Onde carrée</string>
-			<string>Onde sinusoïdale</string>
-		</array>
-		<string>TechnicalMenuToolbarIdentifier_0</string>
-		<array>
-			<string>Trajectoire orthogonale</string>
-			<string>Trajectoire orthogonale</string>
-			<string>Ligne automatique</string>
-			<string>Cote gauche</string>
-			<string>Cote externe gauche</string>
-			<string>rapport d'information</string>
-			<string>Bulle de texte arrondie</string>
-			<string>Mur droit</string>
-			<string>Mur libre</string>
-			<string>Pignon</string>
-			<string>Motif des gradients</string>
-		</array>
 	</array>
 	<key>DKDWindowState</key>
 	<dict>
 		<key>CursorMode</key>
 		<string>Nothing</string>
 		<key>DocCenter</key>
-		<string>{288, 142.884955752}</string>
+		<string>{409.074626866, 137.628318584}</string>
 		<key>DocumentFileName</key>
 		<string>/Users/maurice/etudes/ctbto/allJOBs2015/myjob/1TaskOnSensors/textes/6distConjointHMSC/slidesITW2015/fulltestbedIS26.ezdraw</string>
 		<key>DrawersOnMainView</key>
@@ -19818,7 +19755,7 @@
 		<key>OutlineDrawing</key>
 		<string>NO</string>
 		<key>WindowLocation</key>
-		<string>0 128 1280 645 0 0 1280 777 </string>
+		<string>6 157 699 620 0 0 1280 777 </string>
 		<key>ZoomPercent</key>
 		<string>209.298767</string>
 	</dict>

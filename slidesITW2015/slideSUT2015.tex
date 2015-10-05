@@ -350,11 +350,29 @@ the MSC;
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Measurement chain}
+\frametitle{Measurement chain [Kramer and al., ITW2015]}
 
-\figsstit{fulltestbedIS26.pdf}{0.65}
+\begin{tabular}{r||l}
+\hspace{-1cm}
+\begin{minipage}{7cm}
+\figsstit{fulltestbedIS26.pdf}{0.6}
+\end{minipage}
+&
+%\hspace{-0.5cm}
+\begin{minipage}{3cm}
+\begin{eqnarray*}
+\widehat{G_{\mathrm{UT}}}(f)
+\approx 
+\underbrace{\color{red}\frac{\widehat{{S}_{\mathrm{UU}}}(f)}
+                        {\widehat{{S}_{\mathrm{RU}}}(f)}}
+_{\color{red}\text{spectrum ratio}}
+    \times G_{\mathrm{ref}}
+\end{eqnarray*}
+\end{minipage}
+\end{tabular}
 
-\vspace{-24pt}
+
+%\vspace{-24pt}
 \begin{itemize}
 \item
 objective: calibrate the system under test (SUT), i.e. NRS+sensor+digitizer, based on the knowledge of the reference system (SREF);
@@ -373,13 +391,24 @@ acoustic signals is spatially coherent, in all frequency band of interest, regar
 %=======================================================
 \begin{frame}
 \frametitle{Performing process}
+
+
+\begin{center}
+\includegraphics[scale=0.6]{processdetail.pdf}
+\end{center}
+
 \begin{itemize}
 \item
-Stationarity $+$ (MSC close to 1) solves the problem of underdetermination
+ill-posed problem because under-determinated;
 \item
-Typically, if we want $\pm 5\%$ on the gain, theoretical results show that we need an MSC value 0f $0.96$, but unfortunately we only have  an estimate of the true MSC. Therefore to get a confidence level of $90\%$ we have to thresholding at $0.98$.
+to circumvent this issue, stationary and ``almost zero-noise'' time segments are selected. Fortunately it exists a test for that based on the coherence.
+\item
+theoretical results show that to get a $\pm 5\%$ on the gain, the MSC value must be at least $0.96$. 
+\item
+but because we only have  an estimate $\hMSC$, we have to thresholding at about $0.98$. %for a confidence level of $90\%$ 
 \end{itemize}
-\figsstit{processdetail.pdf}{0.8}
+
+%The product F x T is an index of accuracy. Therefore we can reduce the duration in high frequencies if necessary.
 
 \end{frame}
 
@@ -389,9 +418,18 @@ Typically, if we want $\pm 5\%$ on the gain, theoretical results show that we ne
 \begin{frame}
 \frametitle{Manage the stationarity}
 
+\begin{itemize}
+\item
+In relationship with the resolution but also the lack of stationarity, we have considered a sequence of durations in decreasing order with the frequencies and do pre-filtering around these frequencies. However we have noticed that the design is not critical.
+
+\item
+In the presented results the following filter bank, derived from empirical approach has been used. 
+
+\end{itemize}
 
 
-For stationary signals the accuracy on the estimation does depend on the number of time windows we have for averaging the Fourier components. This number appears as the product of the full time duration by the spectral resolution. Hence the idea to use a filter bank with a logarithmic pavement.
+
+
 
 
 \figsstit{filterbank.pdf}{0.45}
@@ -470,21 +508,26 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 \end{minipage}
 }
 \end{frame}
+
+
 %=======================================================
 %=======================================================
 \begin{frame}
 \frametitle{Results}
 \begin{tabular}{c||c}
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot1.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot1withSensor.pdf}
 &
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot3.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot3withSensor.pdf}
 \\
 \hline\hline
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot4.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot4withSensor.pdf}
 &
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5withSensor.pdf}
 \end{tabular}
 \end{frame}
+%=======================================================
+%=======================================================
+
 
 %%=======================================================
 %%=======================================================
@@ -661,19 +704,7 @@ For each frequency bin, an averaging is applied on the $L=9$ segments. If a few 
 \end{frame}
 %=======================================================
 %=======================================================
-\begin{frame}
-\frametitle{Results}
-\begin{tabular}{c||c}
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot1withSensor.pdf}
-&
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot3withSensor.pdf}
-\\
-\hline\hline
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot4withSensor.pdf}
-&
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5withSensor.pdf}
-\end{tabular}
-\end{frame}
+
 
 \end{document}
 

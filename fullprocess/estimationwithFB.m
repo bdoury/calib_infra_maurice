@@ -7,9 +7,9 @@ FLAGsaveall = 0;
 
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresultswithFB';
+directoryresults      = 'AAresultswithFBbis';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-filtercharactfilename = 'filtercharacteristics';
+filtercharactfilename = 'filtercharacteristics2';
 directorydatafromIDC  = '../../../AAdataI26/';
 
 %==========================================================================
@@ -20,8 +20,10 @@ directorydatafromIDC  = '../../../AAdataI26/';
 %==========================================================================
 
 %============== run the filter bank characteristics
-cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
+% cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
+cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
 eval(cmdloadcharact);
+Pfilter = length(filtercharact);
 if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
     filtercharact(Pfilter).Wlow_Hz  = 0.001;
     filtercharact(Pfilter).Whigh_Hz = 10;
@@ -29,7 +31,7 @@ end
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 1:5
+for indexofSTA = [1:2 4:8]
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
