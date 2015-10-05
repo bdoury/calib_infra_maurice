@@ -1,6 +1,7 @@
+clear al
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
-for ihc=1:5
+for ihc=1:1
     
     switch ihc
         case 1
@@ -30,7 +31,7 @@ for ihc=1:5
     end
 
     
-    comload = sprintf('load AAresults0812Hz/resultssta26sensor%i.mat',ihc);
+    comload = sprintf('load AAresults0812Hzbis/resultssta26sensor%i.mat',ihc);
     eval(comload)
     
     Dstart = str2double(fileswithdotmat(1).name(13:15));
