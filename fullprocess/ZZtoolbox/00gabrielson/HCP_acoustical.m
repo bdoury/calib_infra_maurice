@@ -76,8 +76,16 @@ if L_stub == 0
 else
 %     a_pri_cavity = a_ter_cavity;
 %     L_pri_cavity = L_ter_cavity;
-    a_pri_cavity = 22.6e-3;
-    L_pri_cavity = 40e-3;
+    switch ref_sensor    
+        %volume of MB2005 : 0.000603 m3
+        case 'I26DE_BDF_RSP_2015134_MB2005'
+            a_pri_cavity = 0.0916/2;
+            L_pri_cavity = 0.0916;
+            %volume of MB3 : 0.000127 m3
+        case 'I26DE_BDF_RSP_2015134_MB3'
+            a_pri_cavity = 0.0545/2;
+            L_pri_cavity = 0.0545;
+    end
 end
 %
 %   Resonance suppressor specs

@@ -3,12 +3,12 @@ clear
 allcolors = ['g.';'y.';'m.';'r.';'k.';'b.';'rx';'yx';'mx';'rx';'kx';'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 
 filtercharact = struct;
-filtercharact(1).SCPperiod_sec  = 1200 ;
-filtercharact(2).SCPperiod_sec  = 600 ;
-filtercharact(3).SCPperiod_sec  = 300 ;
-filtercharact(4).SCPperiod_sec  = 150 ;
-filtercharact(5).SCPperiod_sec  = 75 ;
-filtercharact(6).SCPperiod_sec  = 35;
+filtercharact(1).SCPperiod_sec  = 1000 ;
+filtercharact(2).SCPperiod_sec  = 500 ;
+filtercharact(3).SCPperiod_sec  = 250 ;
+filtercharact(4).SCPperiod_sec  = 100 ;
+filtercharact(5).SCPperiod_sec  = 50 ;
+filtercharact(6).SCPperiod_sec  = 25;
 
 filtercharact(1).overlapDFT = 0.5;
 filtercharact(2).overlapDFT = 0.5;
@@ -31,12 +31,12 @@ filtercharact(4).ratioDFT2SCP = 5;
 filtercharact(5).ratioDFT2SCP = 5;
 filtercharact(6).ratioDFT2SCP = 5;
 
-filtercharact(1).Norder  = 3 ;
-filtercharact(2).Norder  = 4 ;
+filtercharact(1).Norder  = 2 ;
+filtercharact(2).Norder  = 3 ;
 filtercharact(3).Norder  = 4 ;
 filtercharact(4).Norder  = 4 ;
 filtercharact(5).Norder  = 4 ;
-filtercharact(6).Norder  = 4;
+filtercharact(6).Norder  = 6 ;
 
 M                               = 5;
 filtercharact(1).designname     = 'butter';
@@ -52,10 +52,15 @@ for Pfilter=2:6
     filtercharact(Pfilter).overlapDFT     = 0.5;
 %     filtercharact(Pfilter).SCPperiod_sec  = filtercharact(Pfilter-1).SCPperiod_sec*0.5;
     TFFT_Pfilter                          = filtercharact(Pfilter).SCPperiod_sec/M;
+<<<<<<< HEAD
     filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.08;
      filtercharact(Pfilter-1).Whigh_Hz     = filtercharact(Pfilter).Wlow_Hz;
+=======
+    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.2;
+     filtercharact(Pfilter-1).Whigh_Hz     = 1.1*filtercharact(Pfilter).Wlow_Hz;
+>>>>>>> 785e24338682d1c268fe05ed76fd2acb7a1af0f2
 end
-filtercharact(Pfilter).Whigh_Hz           = 9.5;
+filtercharact(Pfilter).Whigh_Hz           = 5;
 
 scal1 = 1 ./ ([filtercharact(:).SCPperiod_sec] .* ...
     ([filtercharact(:).Whigh_Hz]-[filtercharact(:).Wlow_Hz]));
@@ -82,7 +87,7 @@ for ip=1:P
     semilogx(frqs_Hz, 10*log10(Hf),allcolors(ip),'linew',2)
     hold on
     set(gca,'xlim',[1e-3 10])
-    set(gca,'ylim',[-30 2])
+    set(gca,'ylim',[-20 2])
     set(gca,'color',[1 1 1]*0.9)
     grid on
 end
@@ -120,7 +125,7 @@ for ip=1:P
     loc(2)  = loc(2)-highbar;
     subplot('position',[loc(1) loc(2) lenbar highbar])
     set(gca,'xtick',[],'ytick',[],'box','on')
-    tt=sprintf('%i seconds - [%4.3f %4.2f] Hz',filtercharact(ip).SCPperiod_sec,...
+    tt=sprintf('%i seconds - [%4.2f %4.2f] Hz',filtercharact(ip).SCPperiod_sec,...
         filtercharact(ip).Wlow_Hz,...
         filtercharact(ip).Whigh_Hz);
     text(locx,midy*0.03+0.355,tt,'fontname','times','fontsize',14)

@@ -1,10 +1,10 @@
 %===============================================================
 % This program draws the frequency responses of
-% the filter bank described in the file 
+% the filter bank described in the file
 %      'filtercharactfilename'
 % Also are represented the times in second
 % associated to each filters.
-% 
+%
 % Specifically the filter element writes:
 % %DFT means discrete fourier transform
 % %SCP means spectral components
@@ -20,7 +20,7 @@
 % filtercharact(P).ratioDFT2SCP    = 5;
 % %------
 % P=P+1; etc
-% 
+%
 %===============================================================
 clear all
 figure(1)
@@ -77,11 +77,11 @@ for ip=1:P
             locx = loc(1)+loc(3)*0.12+0.7;
         case 5
             lenbar  = (filtercharact(ip).SCPperiod_sec)/1700;
-             locx = loc(1)+loc(3)*0.12+1;
-       case 6
-            lenbar  = (filtercharact(ip).SCPperiod_sec)/1700;    
-               locx = loc(1)+loc(3)*0.12+1;
- end
+            locx = loc(1)+loc(3)*0.12+1;
+        case 6
+            lenbar  = (filtercharact(ip).SCPperiod_sec)/1700;
+            locx = loc(1)+loc(3)*0.12+1;
+    end
     midy    = (filtercharact(ip).Whigh_Hz+filtercharact(ip).Wlow_Hz)/12;
     loc(2)  = loc(2)-highbar;
     subplot('position',[loc(1) loc(2) lenbar highbar])
@@ -105,24 +105,24 @@ set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
 
-% 
+%
 %         print -depsc -loose ../../textes/6distConjointHMSC/filterbank.eps
-%     !epstopdf ../../textes/6distConjointHMSC/filterbank.eps    
+%     !epstopdf ../../textes/6distConjointHMSC/filterbank.eps
 %     !rm ../../textes/6distConjointHMSC/filterbank.eps
 %      print -depsc -loose ../../slides/7sessionmeeting/filterbank.eps
 %         print -depsc -loose ../../slides/6slidessummary01072915/.eps
-%     !epstopdf ../../slides/6slidessummary01072915/filterbank.eps   
+%     !epstopdf ../../slides/6slidessummary01072915/filterbank.eps
 %     !rm ../../slides/6slidessummary01072915/filterbank.eps
-% 
-    printdirectory  = ' ../slidesITW2015/';
-    fileprintepscmd = sprintf('print -depsc -loose %sfilterbank.eps',printdirectory);
-    fileeps2pdfcmd  = sprintf('!epstopdf %sfilterbank.eps',printdirectory);
-    filermcmd       = sprintf('!rm %sfilterbank.eps',printdirectory);
-    %
-      eval(fileprintepscmd)
-        eval(fileeps2pdfcmd)
-        eval(filermcmd)
-    
+%
+printdirectory  = ' ../slidesITW2015/';
+fileprintepscmd = sprintf('print -depsc -loose %sfilterbank.eps',printdirectory);
+fileeps2pdfcmd  = sprintf('!epstopdf %sfilterbank.eps',printdirectory);
+filermcmd       = sprintf('!rm %sfilterbank.eps',printdirectory);
+%
+%       eval(fileprintepscmd)
+%         eval(fileeps2pdfcmd)
+%         eval(filermcmd)
+
 
 %==== parameters for TeX
 tabFB = [];

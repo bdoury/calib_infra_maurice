@@ -7,7 +7,7 @@ FLAGsaveall = 0;
 
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresultswithFBbis';
+directoryresults      = 'AAresultswithFBquint';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
 filtercharactfilename = 'filtercharacteristics2';
 directorydatafromIDC  = '../../../AAdataI26/';
@@ -31,7 +31,7 @@ end
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = [1:2 4:8]
+for indexofSTA = 1:5
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
