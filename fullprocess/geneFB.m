@@ -52,7 +52,7 @@ for Pfilter=2:6
     filtercharact(Pfilter).overlapDFT     = 0.5;
 %     filtercharact(Pfilter).SCPperiod_sec  = filtercharact(Pfilter-1).SCPperiod_sec*0.5;
     TFFT_Pfilter                          = filtercharact(Pfilter).SCPperiod_sec/M;
-    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.1;
+    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.08;
      filtercharact(Pfilter-1).Whigh_Hz     = filtercharact(Pfilter).Wlow_Hz;
 end
 filtercharact(Pfilter).Whigh_Hz           = 9.5;
