@@ -52,15 +52,14 @@ for Pfilter=2:6
     filtercharact(Pfilter).overlapDFT     = 0.5;
 %     filtercharact(Pfilter).SCPperiod_sec  = filtercharact(Pfilter-1).SCPperiod_sec*0.5;
     TFFT_Pfilter                          = filtercharact(Pfilter).SCPperiod_sec/M;
-<<<<<<< HEAD
-    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.08;
-     filtercharact(Pfilter-1).Whigh_Hz     = filtercharact(Pfilter).Wlow_Hz;
-=======
     filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.2;
      filtercharact(Pfilter-1).Whigh_Hz     = 1.1*filtercharact(Pfilter).Wlow_Hz;
->>>>>>> 785e24338682d1c268fe05ed76fd2acb7a1af0f2
+    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.08;
+     filtercharact(Pfilter-1).Whigh_Hz     = filtercharact(Pfilter).Wlow_Hz;
+    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.2;
+     filtercharact(Pfilter-1).Whigh_Hz     = 1.1*filtercharact(Pfilter).Wlow_Hz;
 end
-filtercharact(Pfilter).Whigh_Hz           = 5;
+filtercharact(Pfilter).Whigh_Hz           = 8;
 
 scal1 = 1 ./ ([filtercharact(:).SCPperiod_sec] .* ...
     ([filtercharact(:).Whigh_Hz]-[filtercharact(:).Wlow_Hz]));

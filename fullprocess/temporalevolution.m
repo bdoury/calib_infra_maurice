@@ -1,9 +1,9 @@
-clear al
+clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 close all
-saveflag = 1;
-for ihc=1:5
+saveflag = 0;
+for ihc=1
     % keep 2
     for ii=2
         switch ii
@@ -46,6 +46,8 @@ for ihc=1:5
         
         
         eval(comload)
+        
+        
         Dstart = str2double(fileswithdotmat(1).name(13:15));
         Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
         if 1
@@ -72,15 +74,15 @@ for ihc=1:5
         
         %===================== plots ==============
         figure(numfig)
-            subplot(211);
+        subplot(211);
         plot(allpraticalvaluesat1Hz,'ok','markersize',6,'markerfacec','k')
         
         hold on
         sigmaonRatio = allSTDmodRatioPfilters(indselect,:) ./ ...
             sqrt(nbofvaluesoverthreshold(indselect,:));
-%         plot(ones(2,1)*(1:size(allRatioPfilters,2)),...
-%             coeffsens*[abs(allRatioPfilters(indselect,:))-sigmaonRatio;...)
-%             abs(allRatioPfilters(indselect,:))+sigmaonRatio],'.-','color',0.6*[1 1 1]);
+        %         plot(ones(2,1)*(1:size(allRatioPfilters,2)),...
+        %             coeffsens*[abs(allRatioPfilters(indselect,:))-sigmaonRatio;...)
+        %             abs(allRatioPfilters(indselect,:))+sigmaonRatio],'.-','color',0.6*[1 1 1]);
         
         
         
@@ -97,15 +99,15 @@ for ihc=1:5
         title(sprintf('IS26 -  sensor #%i, threshold = %4.2f\nday number = %i, T = %i s',...
             ihc, MSCthreshold, 2*doubledaynumber, filtercharact.SCPperiod_sec),'fontname','times','fontsize',14)
         
-            subplot(212);
-%             plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
-%                 'markerfacec','b')
+        subplot(212);
+        %             plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
+        %                 'markerfacec','b')
         semilogy(nbofvaluesoverthreshold(indselect,:),'ob','markersize',6,...
-                 'markerfacec','b')
-%             set(gca,'ylim',[0.98 1])
-            ylabel('number fo values','fontname','times','fontsize',14)
-            grid on
-                set(gca,'fontname','times','fontsize',14)
+            'markerfacec','b')
+        %             set(gca,'ylim',[0.98 1])
+        ylabel('number fo values','fontname','times','fontsize',14)
+        grid on
+        set(gca,'fontname','times','fontsize',14)
         
         
         HorizontalSize = 16;
@@ -124,12 +126,9 @@ for ihc=1:5
         filermcmd       = sprintf('!rm %sevolutionon%iatfreq1.eps',printdirectory,ihc);
         %
         if saveflag
-            
             eval(fileprintepscmd)
             eval(fileeps2pdfcmd)
             eval(filermcmd)
         end
-        
-        
     end
 end

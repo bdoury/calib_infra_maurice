@@ -1,5 +1,5 @@
 function p_inside = PW_response(freqs, sound_speed, arrival_elev,...
-    arrival_azim, xx, yy);
+    arrival_azim, xx, yy)
 %
 %       Plane wave response for multi-inlet pipe model
 %

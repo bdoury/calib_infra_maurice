@@ -4,11 +4,7 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, ...
 %=================================================================
 % This function uses the "records" extracted from the database
 % by the program "convertCSStomatlab.m".
-<<<<<<< HEAD:fullprocess/ZZtoolbox/analyzeSUT.m
 % This function then calls the function "fbankanalysis.m" 
-=======
-% This function thencalls the function "fbankanalysis.m" 
->>>>>>> e518a59897f74aa44d579d6b4e37dafce4bba1aa:fullprocess/analyzeSUT.m
 % of the ZZtoolbox which returns the structure "SUTs".
 % This structure is of general purposes. The program
 % "displayafigure.m" is an example.

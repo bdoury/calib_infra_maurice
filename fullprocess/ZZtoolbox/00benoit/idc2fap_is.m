@@ -1,5 +1,5 @@
 %% Returns normalized complex frequency response from IDC response format (for Infrasound)
-% on input frequency vector f (Hz) 
+% on input frequency vector f (Hz)
 % and IDC format response file
 % by Benoit Doury
 %
@@ -27,12 +27,12 @@ fid = fopen (idc_rsp_file, 'r');
 tline = fgetl(fid);
 jw=1j*f*(2*pi);   %Complex angular frequency vector, in rad/s
 
-%Initiate TF vector 
+%Initiate TF vector
 TF = jw./jw;
 
 % Use FIR or not?
-if exist('include_fir','var') && strcmp(include_fir,'fir') 
-    include_fir = 1; 
+if exist('include_fir','var') && strcmp(include_fir,'fir')
+    include_fir = 1;
 else
     include_fir = 0;
 end
@@ -44,25 +44,25 @@ while ischar(tline)
     if (strfind(tline,'#'))
     else
         if (strfind(tline,'paz'))                     %entering a PAZ stage
-            stage_id = stage_id + 1; 
-            % fprintf('paz, stage %i\n',stage_id); 
+            stage_id = stage_id + 1;
+            % fprintf('paz, stage %i\n',stage_id);
             
             % 1 - Read the PAZ stage into vectors
             tline = fgetl(fid);
             A0 = textscan(tline,'%f');                %read normalization factor
-            tline = fgetl(fid); 
+            tline = fgetl(fid);
             nb_poles = textscan(tline,'%f');          %read number of poles
             p_vector = zeros(nb_poles{1},1);
             for j=1:nb_poles{1},
-                tline = fgetl(fid); 
+                tline = fgetl(fid);
                 pole = textscan(tline,'%f %f %f %f'); %read poles
                 p_vector(j) = pole{1} + 1j*pole{2};
             end
-            tline = fgetl(fid); 
+            tline = fgetl(fid);
             nb_zeros = textscan(tline,'%f');
             z_vector = zeros(nb_zeros{1},2);
             for j=1:nb_zeros{1},
-                tline = fgetl(fid); 
+                tline = fgetl(fid);
                 zero = textscan(tline,'%f %f %f %f'); %read zeroes
                 z_vector(j) = zero{1} + 1j*zero{2};
             end
@@ -82,12 +82,12 @@ while ischar(tline)
         if (strfind(tline,'fir'))                    %entering a FIR stage
             if(include_fir == 1)
                 stage_id = stage_id + 1;
-%                 fprintf('fir stage %i\n',stage_id); 
+                %                 fprintf('fir stage %i\n',stage_id);
                 
                 %1 - Read the FIR into vector
                 tline = fgetl(fid);
                 Decimation = textscan(tline,'%f');   %read decimation factor
-                tline = fgetl(fid); 
+                tline = fgetl(fid);
                 nb_elements = textscan(tline,'%f'); %read number of FIR elements
                 fir_vector = zeros(nb_elements{1},1);
                 for j=1:nb_elements{1},
@@ -99,7 +99,7 @@ while ischar(tline)
                 
                 %2 - Apply FIR to Transfer Function
                 delay=grpdelay(fir_vector);
-%                 fprintf('grpdelay %f \n',delay(1)/40);
+                %                 fprintf('grpdelay %f \n',delay(1)/40);
                 fir=freqz(fir_vector,1,f,Decimation{1});
                 TF=TF.*fir;
             end
@@ -122,7 +122,7 @@ while ischar(tline)
             fap=amp.*exp(1j*phas*pi/180);
             TF=TF.*fap;
         end
-%     disp(tline)
+        %     disp(tline)
     end
     tline = fgetl(fid);
 end

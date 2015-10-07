@@ -3,12 +3,9 @@ clear
 allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
     'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 
-FLAGsaveall = 0;
-
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresultswithFBsix';
-directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
+directoryresults      = 'AAresultswithFBXsepar';
 directorydatafromIDC  = '../../../AAdataI26/';
 
 %==========================================================================
@@ -49,14 +46,16 @@ for indexofSTA = 1:5
     %===================== read data =========================
     fileswithdotmat           = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
     nbmats                    = length(fileswithdotmat);
-    allRatioPfilters          = zeros(10000,nbmats);
-    allfrqsPfilters           = zeros(10000,nbmats);
-    allSTDmodRatioPfilters    = zeros(10000,nbmats);
-    allSTDphaseRatioPfilters  = zeros(10000,nbmats);
-    allmeanMSCcstPfilters     = zeros(10000,nbmats);
-    nbofvaluesoverthreshold   = zeros(10000,nbmats);
+    
+    for ifile=1:nbmats, ifile, tic
+        
+        allRatioPfilters          = zeros(10000,1);
+        allfrqsPfilters           = zeros(10000,1);
+        allSTDmodRatioPfilters    = zeros(10000,1);
+        allSTDphaseRatioPfilters  = zeros(10000,1);
+        allmeanMSCcstPfilters     = zeros(10000,1);
+        nbofvaluesoverthreshold   = zeros(10000,1);
 
-    for ifile=1:nbmats, ifile,tic
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -73,8 +72,8 @@ for indexofSTA = 1:5
         windSpeed   = zeros(34560000,1);
         temperature = zeros(34560000,1);
         windDir     = zeros(34560000,1);
-        Lrecords =length(records);
-        for ir =1:Lrecords
+        Lrecords    = length(records);
+        for ir = 1:Lrecords
             switch records{ir}.channel
                 case 'BDF'
                     Fs_Hz = 20;%records{ir}.Fs_Hz;
@@ -116,7 +115,7 @@ for indexofSTA = 1:5
         signals_centered=signals-ones(size(signals,1),1)*mean(signals);
         
         %============================================
-        % notice that the SUTs is not saved, therefore we have only the 
+        % notice that the SUTs is not saved, therefore we have only the
         % last associated the laxt index which is NBMATS
         [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
             fbankanalysis(signals_centered,filtercharact,Fs_Hz,MSCthreshold);
@@ -145,24 +144,18 @@ for indexofSTA = 1:5
                 sum(not(isnan(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:))),2);
             id1 = id2+1;
         end
-        if FLAGsaveall
-            comsave          = ...
-                sprintf('save %s/s%i/resultssta26sensor%s', ...
-                directoryresultsALL,indexofSTA,filenameonly);
-            eval(comsave);
-        end
-        toc
-    end
-    allRatioPfilters         = allRatioPfilters(1:id1-1,:);
-    allfrqsPfilters          = allfrqsPfilters(1:id1-1,1);
-    allSTDmodRatioPfilters   = allSTDmodRatioPfilters(1:id1-1,:);
-    allSTDphaseRatioPfilters = allSTDphaseRatioPfilters(1:id1-1,:);
-    allmeanMSCcstPfilters    = allmeanMSCcstPfilters(1:id1-1,:);
-    nbofvaluesoverthreshold  = nbofvaluesoverthreshold(1:id1-1,:);
-    
-    if not(FLAGsaveall)
+        allRatioPfilters         = allRatioPfilters(1:id1-1,:);
+        allfrqsPfilters          = allfrqsPfilters(1:id1-1,1);
+        allSTDmodRatioPfilters   = allSTDmodRatioPfilters(1:id1-1,:);
+        allSTDphaseRatioPfilters = allSTDphaseRatioPfilters(1:id1-1,:);
+        allmeanMSCcstPfilters    = allmeanMSCcstPfilters(1:id1-1,:);
+        nbofvaluesoverthreshold  = nbofvaluesoverthreshold(1:id1-1,:);
+        
+        
+        Dstart = str2double(fileswithdotmat(ifile).name(13:15));
+
         comsave          = ...
-            sprintf('save %s/resultssta26sensor%i',directoryresults,indexofSTA);
+            sprintf('save %s/resultssta26sensor%iday%i',directoryresults,indexofSTA,Dstart);
         clear signals
         clear signalsC
         clear signalsH

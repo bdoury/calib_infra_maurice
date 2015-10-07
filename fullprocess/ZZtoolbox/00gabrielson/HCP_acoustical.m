@@ -1,7 +1,7 @@
 function [p_totalNRSsensor, p_total_NRS, TF_ref_sensor, ...
     TF_ref_sensor4freqRatio] = ...
     HCP_acoustical(freq_vector,...
-    allfrqsPfilters, sensor_UT, ref_sensor,firflag)
+    allfrqsPfilters, sensor_UT, ref_sensor, firflag)
 
 %==========================================================================
 %              Thermo-viscous acoustical model for a
@@ -23,7 +23,7 @@ addpath ZZtoolbox/00benoit/
 % HCP_aperture = 36;  HCP_order = 3;  %  36m HCP at I99
 % HCP_aperture = 18;  HCP_order = 2;  %  18m HCP at I99
 %
-arrival_elevation_degrees =  0;  %  Elevation angle: horizontal = 0
+arrival_elevation_degrees = 0;  %  Elevation angle: horizontal = 0
 %    Elevation angle can be a vector.  If it is entered as a vector, then
 %  the response is computed and saved for each angle.  [Max 8 angles]
 arrival_azimuth_degrees   = 0;  %  Azimuth angle: 0 aligns with
@@ -40,8 +40,8 @@ arrival_azimuth_degrees   = 0;  %  Azimuth angle: 0 aligns with
 % Npri = 6;      Nsec = 2;      Nter = 6;     % number of pipes: 18-m HCP
 % L_pri = 3.50;  L_sec = 3.48;  L_ter = 2.07; % lengths of pipes 18-m HCP
 %
-Npri  = 4;      Nsec = 12;      Nter = 2;     % number of pipes: 18-m HCP
-L_pri = 5.75;  L_sec = 3.00;    L_ter = 0.85/2;%2.07;  % lengths of pipes 18-m HCP
+Npri  = 4;     Nsec = 12;       Nter = 2;     % number of pipes: 18-m HCP
+L_pri = 5.75;  L_sec = 3.00;    L_ter = 0.85;%2.07;  % lengths of pipes 18-m HCP
 %
 %  Primary and secondary pipe radii (not diameter) [m]
 a_pri = 13e-3/2;%0.824*25.4e-3/2; %12e-3/2;  %  DN12
@@ -49,7 +49,7 @@ a_sec = 13e-3/2;%0.824*25.4e-3/2; %12e-3/2;  %0.622*25.4e-3/2;   DN12
 a_ter = 13e-3/2;%12e-3/2;  %  DN12
 %
 %  Length of stub from primary manifold to microbarometer [m]
-L_stub = 1.6;%12.24 + 1.16;  
+L_stub = 1.6;%12.24 + 1.16;
 a_stub = a_sec;%36e-3/2; % 36-m HCP
 % % L_stub = 12.24 + 1.16;  a_stub = a_sec; % 18-m HCP
 %
@@ -74,9 +74,9 @@ if L_stub == 0
     a_pri_cavity = a_microbarometer;
     L_pri_cavity = L_microbarometer;
 else
-%     a_pri_cavity = a_ter_cavity;
-%     L_pri_cavity = L_ter_cavity;
-    switch ref_sensor    
+    %     a_pri_cavity = a_ter_cavity;
+    %     L_pri_cavity = L_ter_cavity;
+    switch sensor_UT
         %volume of MB2005 : 0.000603 m3
         case 'I26DE_BDF_RSP_2015134_MB2005'
             a_pri_cavity = 0.0916/2;
@@ -101,7 +101,7 @@ a_rsp = 0.975e-3;  L_rsp = 20e-3;  %  Radius and length of capillary [m]
 %       primary-manifold end of the stub to the microbarometer.
 %
 %   Temperature [deg C] and ambient pressure [Pa]
-tempC = 10;  
+tempC = 10;
 atmos_press = 88000;  %   88000 Pa is roughly "standard"
 %                                  atmospheric pressure at the altitude of
 %                                  Conrad Observatory
@@ -126,10 +126,10 @@ damping_correction = 0;  %  normally set to one
 %        PW_response
 %
 %  Miscellaneous pre-calculations
-tempK =  tempC + 273;  
+tempK =  tempC + 273;
 cc     = 20.05*sqrt(tempK);
-MW_air = 28.97;  
-Rgas   = 8314.3;  
+MW_air = 28.97;
+Rgas   = 8314.3;
 rho    = atmos_press*MW_air/(Rgas*tempK);
 %
 %     The ultimate model result is the ratio of (complex) pressure at the
@@ -137,7 +137,7 @@ rho    = atmos_press*MW_air/(Rgas*tempK);
 p_ratio = zeros(size(freq_vector));  %  Allocate space for pressure ratio
 %
 %   Set length increment for pipe model based on highest frequency
-min_wavelength = cc/freq_vector(end);  
+min_wavelength = cc/freq_vector(end);
 max_dx = min_wavelength/1000;
 %
 %     Set some transfer matrices to the identity matrix.  This permits

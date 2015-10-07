@@ -1,4 +1,4 @@
- %========================== displaySensorRatio.m =========================
+%========================== displaySensorRatio.m =========================
 % this program reads the ratios SUT/SREF estimated by spectral approach
 % and stored in a drectory as AAresults. That consists on 8 files
 % for the 8 sensors of IS26. Each file consists the estimate ratios
@@ -10,28 +10,29 @@ clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-saveflag = 1;
-close all
-for ihc = 1:5
-    for ii=4
+saveflag = 0;
+% close all
+for ihc = 3
+    for ii=[3 4]
         switch ii
             case 1
                 comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
-                numfig = ihc+100;
+                numfig = ihc+1100;
             case 2
                 comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
                 numfig = ihc+200;
             case 3
                 numfig = ihc+300;
-                comload = sprintf('load AAresultswithFBter/resultssta26sensor%i',ihc);
-            case 4
                 comload = sprintf('load AAresultswithFBquint/resultssta26sensor%i',ihc);
+            case 4
+                comload = sprintf('load AAresultswithFBsix/resultssta26sensor%i',ihc);
                 numfig = ihc+400;
         end
         
         switch ihc
             case 1
-                coeffsens=1.048;
+                %                         coeffsens=1.048;
+                coeffsens=1.055;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 2
                 coeffsens=1.1;%.1;
@@ -106,10 +107,10 @@ for ihc = 1:5
         
         stdallRatioPfiltersUZ     = nanstd(allRatioPfiltersUZ,[],2);
         
-        ICallRatioPfiltersUZ      = stdallRatioPfiltersUZ ./ sqrt(sum(nbofvaluesoverthresholdUZ,2));
+        ICallRatioPfiltersUZ      = stdallRatioPfiltersUZ ./ ...
+            sqrt(sum(nbofvaluesoverthresholdUZ,2));
         
-        
-        N_freq_vector = 400;
+        N_freq_vector = 300;
         freq_vector = logspace(log10(0.001),log10(30),N_freq_vector) .';
         [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
             HCP_acoustical(freq_vector, allfrqsPfiltersUZ, sensor_UT, ref_sensor, 'nofir');
@@ -126,6 +127,7 @@ for ihc = 1:5
         %================================================
         subplot(211)
         semilogx(allfrqsPfiltersUZ,20*log10(absestim),'.-k'),
+        semilogx(allfrqsPfiltersUZ,20*log10(absestim),'k','linew',1.5),
         %     hold on
         %         semilogx(ones(2,1)*allfrqsPfiltersUZ',...
         %             [absestim'-ICallRatioPfiltersUZ';...
@@ -138,12 +140,18 @@ for ihc = 1:5
         %     set(gca,'xlim',[0.008 10])
         set(gca,'xlim',[0.015 4.5])
         set(gca,'ylim',2*[-1 1])
+        %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+        %             'xticklabel',[0.001 0.01 0.1 1 10])
+        set(gca,'fontname','times','fontsize',14)
+        %     set(gca,'xlim',[0.008 10])
+        set(gca,'xlim',[0.01 8])
+        set(gca,'ylim',5*[-1 1])
         grid on
         %     xlabel('frequency [Hz]')
         ylabel('Amplitude [dB]','fontname','times','fontsize',14)
         hold on
-        plot([1 1]*0.02,[-45 45],'m','linew',2)
-        plot([1 1]*4,[-45 45],'m','linew',2)
+        plot([1 1]*0.0205,[-45 45],'r','linew',2)
+        plot([1 1]*3.98,[-45 45],'r','linew',2)
         hold off
         
         %=============== dipslay
@@ -156,6 +164,16 @@ for ihc = 1:5
         %         ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
             'fontname','times','fontsize',14)
+        
+        set(gca,'position',[0.1300    0.5056    0.7750    0.3559])
+        set(gca,'xtickLabel',[])
+        
+        ht = text(0.022,-4,'0.02 Hz');
+        set(ht,'color','r','fontsize',14,'fontname','times')
+        ht = text(2.1,-4,'4 Hz');
+        set(ht,'color','r','fontsize',14,'fontname','times')
+        ht = text(0.14, -4,'IMS passband');
+        set(ht,'color','r','fontsize',14,'fontname','times')
         
         %========================== PHASE =========
         anglestime_rd = angle(meanallRatioPfiltersUZ);
@@ -170,6 +188,7 @@ for ihc = 1:5
         end
         
         subplot(212)
+        
         semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
         
         %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
@@ -180,13 +199,26 @@ for ihc = 1:5
         set(gca,'xlim',[0.015 4.5])
         
         set(gca,'ylim',[-20 20])
+        
+        semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'k','linew',1.5),
+        
+        %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
+        %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+        %             'xticklabel',[0.001 0.01 0.1 1 10])
+        set(gca,'fontname','times','fontsize',14)
+        %     set(gca,'xlim',[0.008 10])
+        set(gca,'xlim',[0.01 8])
+        
+        set(gca,'ylim',[-40 40])
+        
         grid on
         xlabel('frequency [Hz]')
         ylabel('Phase [deg]')
         
         hold on
-        plot([1 1]*0.02,[-45 45],'m','linew',2)
-        plot([1 1]*4,[-45 45],'m','linew',2)
+        
+        plot([1 1]*0.0205,[-45 45],'r','linew',2)
+        plot([1 1]*3.98,[-45 45],'r','linew',2)
         hold off
         %=============== dipslay
         hold on
@@ -194,9 +226,8 @@ for ihc = 1:5
         semilogx(freq_vector, unwrap(angltheo_rd)*180/pi-5, 'r--','linew',1.5);
         semilogx(freq_vector, unwrap(angltheo_rd)*180/pi+5, 'r--','linew',1.5);
         hold off
-        ht = text(0.14, -16,'IMS passband');
-        set(ht,'color','m','fontsize',14,'fontname','times')
         
+        set(gca,'position',[ 0.1300    0.1328    0.7750    0.3333])
         %==============================================================
         HorizontalSize = 16;
         VerticalSize   = 10;
@@ -204,6 +235,7 @@ for ihc = 1:5
         set(gcf,'paperunits','centimeters');
         set(gcf,'PaperType','a3');
         set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
+        %         set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
         set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
         set(gcf,'color', [1,1,0.92]);
         set(gcf, 'InvertHardCopy', 'off');
@@ -225,4 +257,16 @@ for ihc = 1:5
         
     end
     
+    if saveflag
+        
+        %             eval(fileprintepscmd)
+        %             eval(fileeps2pdfcmd)
+        %             eval(filermcmd)
+        
+        %                 for alfred
+        fileprintjpgcmd = sprintf('print -dpng -loose ../../../../3monthsonIS26SUT%i%i',ihc,ii);
+        eval(fileprintjpgcmd)
+        
+        
+    end
 end
