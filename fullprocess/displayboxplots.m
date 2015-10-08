@@ -10,9 +10,9 @@ clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-saveflag = 0;
+saveflag = 1;
 % close all
-for ihc = 3
+for ihc = 1:5
     for ii=[4]
         switch ii
             case 1
@@ -126,7 +126,6 @@ for ihc = 3
         clf
         %================================================
         subplot(211)
-        semilogx(allfrqsPfiltersUZ,20*log10(absestim),'.-k'),
         semilogx(allfrqsPfiltersUZ,20*log10(absestim),'k','linew',1.5),
         %     hold on
         %         semilogx(ones(2,1)*allfrqsPfiltersUZ',...
@@ -134,20 +133,12 @@ for ihc = 3
         %             absestim'+ICallRatioPfiltersUZ'],'.-b')
         
         %     boxplot(absestim','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
-        set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
-            'xticklabel',[0.001 0.01 0.1 1 10])
-        set(gca,'fontname','times','fontsize',14)
-        %     set(gca,'xlim',[0.008 10])
-        set(gca,'xlim',[0.015 4.5])
-        set(gca,'ylim',2*[-1 1])
+%         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+%             'xticklabel',[0.001 0.01 0.1 1 10])
+
         %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
         %             'xticklabel',[0.001 0.01 0.1 1 10])
-        set(gca,'fontname','times','fontsize',14)
-        %     set(gca,'xlim',[0.008 10])
-        set(gca,'xlim',[0.01 8])
-        set(gca,'ylim',5*[-1 1])
         grid on
-        %     xlabel('frequency [Hz]')
         ylabel('Amplitude [dB]','fontname','times','fontsize',14)
         hold on
         plot([1 1]*0.0205,[-45 45],'r','linew',2)
@@ -165,14 +156,21 @@ for ihc = 3
         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
             'fontname','times','fontsize',14)
         
-        set(gca,'position',[0.1300    0.5056    0.7750    0.3559])
-        set(gca,'xtickLabel',[])
         
-        ht = text(0.022,-4,'0.02 Hz');
+                
+        set(gca,'fontname','times','fontsize',14)
+        set(gca,'xlim',[0.01 5])
+        set(gca,'ylim',4*[-1 1])
+        set(gca,'xtickLabel',[])
+        %              xlabel('frequency [Hz]')
+        
+        set(gca,'position',[0.1300    0.5056    0.7750    0.3559])
+        
+        ht = text(0.022,-3.4,'0.02 Hz');
         set(ht,'color','r','fontsize',14,'fontname','times')
-        ht = text(2.1,-4,'4 Hz');
+        ht = text(2.1,-3.4,'4 Hz');
         set(ht,'color','r','fontsize',14,'fontname','times')
-        ht = text(0.14, -4,'IMS passband');
+        ht = text(0.14, -3.4,'IMS passband');
         set(ht,'color','r','fontsize',14,'fontname','times')
         
         %========================== PHASE =========
@@ -189,27 +187,17 @@ for ihc = 3
         
         subplot(212)
         
-        semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
+%         semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
         
         %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
-        set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
-            'xticklabel',[0.001 0.01 0.1 1 10])
-        set(gca,'fontname','times','fontsize',14)
-        %     set(gca,'xlim',[0.008 10])
-        set(gca,'xlim',[0.015 4.5])
-        
-        set(gca,'ylim',[-20 20])
-        
+%         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+%             'xticklabel',[0.001 0.01 0.1 1 10])
         semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'k','linew',1.5),
         
         %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
         %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
         %             'xticklabel',[0.001 0.01 0.1 1 10])
         set(gca,'fontname','times','fontsize',14)
-        %     set(gca,'xlim',[0.008 10])
-        set(gca,'xlim',[0.01 8])
-        
-        set(gca,'ylim',[-40 40])
         
         grid on
         xlabel('frequency [Hz]')
@@ -226,6 +214,11 @@ for ihc = 3
         semilogx(freq_vector, unwrap(angltheo_rd)*180/pi-5, 'r--','linew',1.5);
         semilogx(freq_vector, unwrap(angltheo_rd)*180/pi+5, 'r--','linew',1.5);
         hold off
+        
+        set(gca,'fontname','times','fontsize',14)
+        set(gca,'xlim',[0.01 5])
+        set(gca,'ylim',40*[-1 1])
+        xlabel('frequency [Hz]')
         
         set(gca,'position',[ 0.1300    0.1328    0.7750    0.3333])
         %==============================================================
@@ -245,28 +238,20 @@ for ihc = 3
         fileeps2pdfcmd  = sprintf('!epstopdf %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         filermcmd       = sprintf('!rm %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         
-        eval(fileprintepscmd)
-        eval(fileeps2pdfcmd)
-        eval(filermcmd)
-        if saveflag
-            fileprintpngcmd = sprintf('print -dpng -loose ../../textes/6distConjointHMSC/figures/3monthsonIS26SUT%i',ihc);
-            fileprintpngcmd = sprintf('print -dpdf -loose threemonthsonIS26SUT%i',ihc);
-            eval(fileprintpngcmd)
-        end
+%         for alfred
+%         fileprintpngcmd = sprintf('print -dpng -loose ../../textes/6distConjointHMSC/figures/3monthsonIS26SUT%i',ihc);
+%         fileprintpngcmd = sprintf('print -dpdf -loose threemonthsonIS26SUT%i',ihc);
+%         fileprintjpgcmd = sprintf('print -dpng -loose ../../../../3monthsonIS26SUT%i%i',ihc,ii);
+%         eval(fileprintjpgcmd)
+
         
         
     end
     
     if saveflag
-        
-        %             eval(fileprintepscmd)
-        %             eval(fileeps2pdfcmd)
-        %             eval(filermcmd)
-        
-        %                 for alfred
-        fileprintjpgcmd = sprintf('print -dpng -loose ../../../../3monthsonIS26SUT%i%i',ihc,ii);
-        eval(fileprintjpgcmd)
-        
+        eval(fileprintepscmd)
+        eval(fileeps2pdfcmd)
+        eval(filermcmd)
         
     end
 end

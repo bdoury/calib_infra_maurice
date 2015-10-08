@@ -1,4 +1,4 @@
-\documentclass[handout,10pt]{beamer}
+\documentclass[handout,9pt]{beamer}
 %\documentclass[10pt]{beamer}
 %\documentclass[draft, 10pt]{beamer}
 
@@ -354,7 +354,7 @@ the MSC;
 
 
 \begin{center}
-\includegraphics[scale=0.65]{fulltestbedIS26.pdf}
+\includegraphics[scale=0.7]{fulltestbedIS26.pdf}
 \end{center}
 
 
@@ -362,7 +362,8 @@ the MSC;
 %\vspace{-24pt}
 \begin{itemize}
 \item
-the objective is the calibration of the SUT, which consists of the NRS, the sensor and a digitizer, based on the knowledge of the {\bf system of reference (SREF)};
+the objective is the calibration of the SUT, which consists of the NRS, the sensor and a digitizer, based on the knowledge of the 
+  {\bf system of reference (SREF)};
 \item
 2 kinds of signals: acoustic and non acoustic (typically wind) with different ranges of velocity;
 \item
@@ -373,46 +374,75 @@ acoustic signals is spatially coherent, in all frequency band of interest, regar
 
 
 \end{frame}
+%=======================================================
+%=======================================================
+%=======================================================
+\begin{frame}
+\frametitle{Undetermined problem}
+\begin{eqnarray*}
+\left\{
+\renewcommand\arraystretch{1.6}
+\begin{array}{rcl}
+s_{\sut}(t)&=&{\color{blue}h_{\sut}}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sut}}(t))
+\\
+s_{\sref}(t)&=&h_{\sref}(t)\star({\color{blue}\alpha}\times {\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
+%\\
+%\alpha&=&1
+\end{array}\right.
+\end{eqnarray*}
+\begin{itemize}
+\item
+ill-posed problem because under-determinated: 4 unknowns for 2 observations;
+\item
+but with stationary and ``almost 0-noise'' time segments the problem is well-determined
+
+\item
+ the MSC provides a way to test ``almost 0-noise'' time segments;
+\item
+theoretical results show that, to get an accuracy of $\pm 5\%$ on the gain, we need an MSC value greater than $0.96$;
+\item
+but because only an estimate of the $\MSC$ is available, we have to threshold at about $0.98$. %for a confidence level of $90\%$ 
+\end{itemize}
+\end{frame}
 
 %=======================================================
 %=======================================================
 \begin{frame}
 \frametitle{Performing process}
 
-\begin{tabular}{r||l}
-\hspace{-1cm}
-\begin{minipage}{7cm}
-\includegraphics[scale=0.5]{processdetail.pdf}
-\end{minipage}
-&
-%\hspace{-0.5cm}
-\begin{minipage}{3cm}
+\begin{center}
+\includegraphics[scale=0.7]{processdetail.pdf}
+\end{center}
+
+\vspace{-0.5cm}
+
+\begin{eqnarray*}
+\left\{
+\renewcommand\arraystretch{1.6}
+\begin{array}{rcl}
+s_{\sut}(t)&\approx&g_{\sut}(t)\star s(t) 
+\\
+s_{\sref}(t)&\approx&g_{\sref}(t)\star {\color{blue}\alpha} s(t)
+%\\
+%\alpha&=&1
+\end{array}\right.
+\end{eqnarray*}
+
+For stationary and ``almost 0-noise'' time segments we have:
 \begin{eqnarray*}
 \widehat{G_{\mathrm{UT}}}(f)
 \approx G_{\mathrm{ref}} \times
-\underbrace{\color{red}\frac{\widehat{{S}_{\mathrm{UU}}}(f)}
-                        {\widehat{{S}_{\mathrm{RU}}}(f)}}
-_{\color{red}\mathrm{spectrum}\, \mathrm{ratio}}
+%\underbrace{
+\color{red}\frac{\widehat{{S}_{\mathrm{UU}}}(f)}
+                        {\widehat{{S}_{\mathrm{RU}}}(f)}
+                        %}
+%_{\color{red}\mathrm{spectrum}\, \mathrm{ratio}}
 \end{eqnarray*}
-\end{minipage}
-\end{tabular}
-
-
-\begin{itemize}
-\item
-ill-posed problem because under-determinated;
-\item
-to circumvent this issue, stationary and ``almost zero-noise'' time segments are selected. Fortunately it exists a test for that based on the MSC.
-\item
-theoretical results show that to get a $\pm 5\%$ on the gain, we need an MSC value greater than $0.96$. 
-\item
-but because we only have  an estimate $\hMSC$, we have to thresholding at about $0.98$. %for a confidence level of $90\%$ 
-\end{itemize}
+if $\alpha<1$, we underestimate $G_{\sut}$.
 
 %The product F x T is an index of accuracy. Therefore we can reduce the duration in high frequencies if necessary.
 
 \end{frame}
-
 %=======================================================
 %=======================================================
 %=======================================================
@@ -421,30 +451,23 @@ but because we only have  an estimate $\hMSC$, we have to thresholding at about 
 
 \begin{itemize}
 \item
-In relationship with the resolution but also with the lack of stationarity, we have considered a sequence of durations in decreasing order with the frequency followed a pre-filtering. %However we have noticed that the design is not critical.
+In relationship with the resolution but also to take into account  the lack of stationarity, we have considered a sequence of 6 durations in decreasing order with the frequency. A pre-filtering is also performed. %However we have noticed that the design is not critical.
 
 %\item
 %In the following results the filter bank reported on the figure has been used. 
 
 \end{itemize}
 
-
-
-
-
-
-\figsstit{filterbank.pdf}{0.45}
-
+     \figsstit{filterbank.pdf}{0.5}
 
 \end{frame}
-
 %=======================================================
 %=======================================================
 %=======================================================
 \begin{frame}
 \frametitle{NRS effect}
 
-If $v$ denotes the wind velocity, the ratio $\dfrac{v}{f}$ can be viewed as a ``wavelength'' [Alcoverro, al., JASA,
+If $v$ denotes the wind velocity, the ratio $\dfrac{v}{f}$ can be interpreted as a ``wavelength'' [Alcoverro, al., JASA,
 2002]. Therefore
 
 %\bigskip
@@ -485,7 +508,7 @@ If $v$ denotes the wind velocity, the ratio $\dfrac{v}{f}$ can be viewed as a ``
 \item
 each reference sensor has been calibrated in the lab;
 \item
-capability of wind measurement on H1;
+wind velocity and direction are available on H1.
 \end{itemize}
 \end{frame}
 
@@ -514,14 +537,14 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Results}
+\frametitle{Averaging on a few months}
 \begin{tabular}{c||c}
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot1.pdf}
 &
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot3.pdf}
 \\
 \hline\hline
-\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot2.pdf}
+\includegraphics[scale=0.35]{3monthsonIS26SUTboxplot4.pdf}
 &
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5.pdf}
 \end{tabular}
@@ -529,7 +552,23 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Temporal stability of successive gains averaged on 2 days}
+\frametitle{Temporal stability on $100$ random draws of $12$ days}
+\begin{tabular}{c||c}
+\includegraphics[scale=0.35]{randondrawoncoupleofdays1.pdf}
+&
+\includegraphics[scale=0.35]{randondrawoncoupleofdays3.pdf}
+\\
+\hline\hline
+\includegraphics[scale=0.35]{randondrawoncoupleofdays4.pdf}
+&
+\includegraphics[scale=0.35]{randondrawoncoupleofdays5.pdf}
+\end{tabular}
+\end{frame}
+%=======================================================
+%=======================================================
+\begin{frame}
+\frametitle
+{Temporal stability of successive gains at $1$ Hz averaged on $2$ days}
 \begin{tabular}{c||c}
 \includegraphics[scale=0.3]{evolutionon1atfreq1.pdf}
 &
@@ -547,25 +586,25 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 \begin{frame}
 \frametitle{Conclusions}
 
-\framebox[11cm]{
-\begin{minipage}{10cm}
-PTS specifications are:
-\begin{itemize}
-\item
-bandwidth $[0.02 - 4]$ Hz;
- \item
-$\pm 5\%$ on the response magnitude; more specifically the calibration is required once a year;
- \item
-no requirement  on the phase but $\ldots$ $\pm 5\degree$ has been considered.
-\end{itemize}
-\end{minipage}
-}
+%\framebox[11cm]{
+%\begin{minipage}{10cm}
+%PTS specifications are:
+%\begin{itemize}
+%\item
+%bandwidth $[0.02 - 4]$ Hz;
+% \item
+%$\pm 5\%$ on the response magnitude; more specifically the calibration is required once a year;
+% \item
+%no requirement  on the phase but $\ldots$ $\pm 5\degree$ has been considered.
+%\end{itemize}
+%\end{minipage}
+%}
 \framebox[11cm]{
 \begin{minipage}{10cm}
 Conclusions:
 \begin{itemize}
 \item
-The numerical experimental results obtained on a large campaign of measurements fully validate the calibration method;
+The numerical results obtained on a large campaign of measurements fully validate the calibration method;
 \item
 The experimental results obtained by couples of 2 days show a high stability in full agreement with the PTS requirements;
 %\item

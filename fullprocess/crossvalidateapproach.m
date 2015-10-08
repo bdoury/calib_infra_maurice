@@ -40,7 +40,7 @@ end
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 1:5
+for indexofSTA = 4
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
@@ -155,7 +155,7 @@ for indexofSTA = 1:5
         Dstart = str2double(fileswithdotmat(ifile).name(13:15));
 
         comsave          = ...
-            sprintf('save %s/resultssta26sensor%iday%i',directoryresults,indexofSTA,Dstart);
+            sprintf('save %s/s%i/resultssta26sensor%iday%i',directoryresults,indexofSTA,indexofSTA,Dstart);
         clear signals
         clear signalsC
         clear signalsH

@@ -40,8 +40,26 @@ arrival_azimuth_degrees   = 0;  %  Azimuth angle: 0 aligns with
 % Npri = 6;      Nsec = 2;      Nter = 6;     % number of pipes: 18-m HCP
 % L_pri = 3.50;  L_sec = 3.48;  L_ter = 2.07; % lengths of pipes 18-m HCP
 %
+
+
+%====================================================================
 Npri  = 4;     Nsec = 12;       Nter = 2;     % number of pipes: 18-m HCP
-L_pri = 5.75;  L_sec = 3.00;    L_ter = 0.85;%2.07;  % lengths of pipes 18-m HCP
+%====================================================================
+%====================================================================
+L_pri = 4.25;  L_sec = 3.00;    L_ter = 0.85;%2.07;  % lengths of pipes 18-m HCP
+%====================================================================
+%====================================================================
+% the theoretical model does not work with H1 to H5 in IS26
+% 
+% On other way could be to consider that the "ground truth" 
+% can be obtained by averaging of the measureemnts
+% but in this case the dip artefact appears.
+% real values are:
+% L_pri = 5.75;  L_sec = 3.00;    L_ter = 0.85/2;%2.07;  % lengths of pipes 18-m HCP
+%
+%====================================================================
+%====================================================================
+
 %
 %  Primary and secondary pipe radii (not diameter) [m]
 a_pri = 13e-3/2;%0.824*25.4e-3/2; %12e-3/2;  %  DN12
