@@ -7,7 +7,7 @@ FLAGsaveall = 0;
 
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresultswithFBsix';
+directoryresults      = 'AAresultswithFB2ratios';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
 directorydatafromIDC  = '../../../AAdataI26/';
 
@@ -43,19 +43,23 @@ end
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 1:5
+for indexofSTA = 3
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
-    fileswithdotmat           = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
-    nbmats                    = length(fileswithdotmat);
-    allRatioPfilters          = zeros(10000,nbmats);
-    allfrqsPfilters           = zeros(10000,nbmats);
-    allSTDmodRatioPfilters    = zeros(10000,nbmats);
-    allSTDphaseRatioPfilters  = zeros(10000,nbmats);
-    allmeanMSCcstPfilters     = zeros(10000,nbmats);
-    nbofvaluesoverthreshold   = zeros(10000,nbmats);
-
+    fileswithdotmat              = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
+    nbmats                       = length(fileswithdotmat);
+    allfrqsPfilters              = zeros(10000,nbmats);
+    allRatioSupPfilters          = zeros(10000,nbmats);
+    allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
+    allSTDphaseRatioSupPfilters  = zeros(10000,nbmats);
+    
+    allRatioInfPfilters          = zeros(10000,nbmats);
+    allSTDmodRatioInfPfilters    = zeros(10000,nbmats);
+    allSTDphaseRatioInfPfilters  = zeros(10000,nbmats);
+    allmeanMSCcstPfilters        = zeros(10000,nbmats);
+    nbofvaluesoverthreshold      = zeros(10000,nbmats);
+    
     for ifile=1:nbmats, ifile,tic
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
@@ -116,7 +120,7 @@ for indexofSTA = 1:5
         signals_centered=signals-ones(size(signals,1),1)*mean(signals);
         
         %============================================
-        % notice that the SUTs is not saved, therefore we have only the 
+        % notice that the SUTs is not saved, therefore we have only the
         % last associated the laxt index which is NBMATS
         [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
             fbankanalysis(signals_centered,filtercharact,Fs_Hz,MSCthreshold);
@@ -130,13 +134,23 @@ for indexofSTA = 1:5
             idipinf(ip) = SUTs(ip).indexinsidefreqband(1);
             idipsup(ip) = SUTs(ip).indexinsidefreqband(2);
             id2         = id1+(idipsup(ip)-idipinf(ip));
-            allRatioPfilters(id1:id2,ifile) = ...
+            allRatioSupPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.modcst(idipinf(ip):idipsup(ip)) .* ...
                 exp(1i*SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip)));
-            allSTDmodRatioPfilters(id1:id2,ifile) = ...
+            allSTDmodRatioSupPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.stdmodcst(idipinf(ip):idipsup(ip));
-            allSTDphaseRatioPfilters(id1:id2,ifile) = ...
+            allSTDphaseRatioSupPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip));
+            
+            allRatioInfPfilters(id1:id2,ifile) = ...
+                SUTs(ip).estimRinf.modcst(idipinf(ip):idipsup(ip)) .* ...
+                exp(1i*SUTs(ip).estimRinf.phasecst(idipinf(ip):idipsup(ip)));
+            allSTDmodRatioInfPfilters(id1:id2,ifile) = ...
+                SUTs(ip).estimRinf.stdmodcst(idipinf(ip):idipsup(ip));
+            allSTDphaseRatioInfPfilters(id1:id2,ifile) = ...
+                SUTs(ip).estimRinf.phasecst(idipinf(ip):idipsup(ip));
+
+            
             allmeanMSCcstPfilters(id1:id2,ifile) = ...
                 nanmean(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:),2);
             allfrqsPfilters(id1:id2,ifile) = ...
@@ -153,12 +167,17 @@ for indexofSTA = 1:5
         end
         toc
     end
-    allRatioPfilters         = allRatioPfilters(1:id1-1,:);
-    allfrqsPfilters          = allfrqsPfilters(1:id1-1,1);
-    allSTDmodRatioPfilters   = allSTDmodRatioPfilters(1:id1-1,:);
-    allSTDphaseRatioPfilters = allSTDphaseRatioPfilters(1:id1-1,:);
-    allmeanMSCcstPfilters    = allmeanMSCcstPfilters(1:id1-1,:);
-    nbofvaluesoverthreshold  = nbofvaluesoverthreshold(1:id1-1,:);
+    allRatioSupPfilters         = allRatioSupPfilters(1:id1-1,:);
+    allSTDmodRatioSupPfilters   = allSTDmodRatioSupPfilters(1:id1-1,:);
+    allSTDphaseRatioSupPfilters = allSTDphaseRatioSupPfilters(1:id1-1,:);
+
+    allRatioInfPfilters         = allRatioInfPfilters(1:id1-1,:);
+    allSTDmodRatioInfPfilters   = allSTDmodRatioInfPfilters(1:id1-1,:);
+    allSTDphaseRatioInfPfilters = allSTDphaseRatioInfPfilters(1:id1-1,:);
+
+    allfrqsPfilters             = allfrqsPfilters(1:id1-1,1);
+    allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
+    nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
     
     if not(FLAGsaveall)
         comsave          = ...

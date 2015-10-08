@@ -374,6 +374,36 @@ acoustic signals is spatially coherent, in all frequency band of interest, regar
 
 
 \end{frame}
+%=======================================================
+%=======================================================
+%=======================================================
+\begin{frame}
+\frametitle{Undetermined problem}
+\begin{eqnarray*}
+\left\{
+\renewcommand\arraystretch{1.6}
+\begin{array}{rcl}
+s_{\sut}(t)&=&{\color{blue}h_{\sut}}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sut}}(t))
+\\
+s_{\sref}(t)&=&h_{\sref}(t)\star({\color{blue}\alpha}\times {\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
+%\\
+%\alpha&=&1
+\end{array}\right.
+\end{eqnarray*}
+\begin{itemize}
+\item
+ill-posed problem because under-determinated: 4 unknowns for 2 observations;
+\item
+but with stationary and ``almost 0-noise'' time segments the problem is well-determined
+
+\item
+ the MSC provides a way to test ``almost 0-noise'' time segments;
+\item
+theoretical results show that, to get an accuracy of $\pm 5\%$ on the gain, we need an MSC value greater than $0.96$;
+\item
+but because only an estimate of the $\MSC$ is available, we have to threshold at about $0.98$. %for a confidence level of $90\%$ 
+\end{itemize}
+\end{frame}
 
 %=======================================================
 %=======================================================
@@ -381,14 +411,24 @@ acoustic signals is spatially coherent, in all frequency band of interest, regar
 \frametitle{Performing process}
 
 \begin{center}
-\includegraphics[scale=0.6]{processdetail.pdf}
+\includegraphics[scale=0.7]{processdetail.pdf}
 \end{center}
 
-\begin{itemize}
-\item
-ill-posed problem because under-determinated;
-\item
-but for stationary and ``almost 0-noise'' time segments we have:
+\vspace{-0.5cm}
+
+\begin{eqnarray*}
+\left\{
+\renewcommand\arraystretch{1.6}
+\begin{array}{rcl}
+s_{\sut}(t)&\approx&g_{\sut}(t)\star s(t) 
+\\
+s_{\sref}(t)&\approx&g_{\sref}(t)\star {\color{blue}\alpha} s(t)
+%\\
+%\alpha&=&1
+\end{array}\right.
+\end{eqnarray*}
+
+For stationary and ``almost 0-noise'' time segments we have:
 \begin{eqnarray*}
 \widehat{G_{\mathrm{UT}}}(f)
 \approx G_{\mathrm{ref}} \times
@@ -398,20 +438,11 @@ but for stationary and ``almost 0-noise'' time segments we have:
                         %}
 %_{\color{red}\mathrm{spectrum}\, \mathrm{ratio}}
 \end{eqnarray*}
-
-
-\item
- the MSC provides a way to test ``almost 0-noise'' time segments;
-\item
-theoretical results show that, to get an accuracy of $\pm 5\%$ on the gain, we need an MSC value greater than $0.96$;
-\item
-but because only an estimate of the $\MSC$ is available, we have to threshold at about $0.98$. %for a confidence level of $90\%$ 
-\end{itemize}
+if $\alpha<1$, we underestimate $G_{\sut}$.
 
 %The product F x T is an index of accuracy. Therefore we can reduce the duration in high frequencies if necessary.
 
 \end{frame}
-
 %=======================================================
 %=======================================================
 %=======================================================
@@ -427,16 +458,9 @@ In relationship with the resolution but also to take into account  the lack of s
 
 \end{itemize}
 
-
-
-
-
-
-\figsstit{filterbank.pdf}{0.5}
-
+     \figsstit{filterbank.pdf}{0.5}
 
 \end{frame}
-
 %=======================================================
 %=======================================================
 %=======================================================
@@ -546,19 +570,19 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 \begin{frame}
 \frametitle{Conclusions}
 
-\framebox[11cm]{
-\begin{minipage}{10cm}
-PTS specifications are:
-\begin{itemize}
-\item
-bandwidth $[0.02 - 4]$ Hz;
- \item
-$\pm 5\%$ on the response magnitude; more specifically the calibration is required once a year;
- \item
-no requirement  on the phase but $\ldots$ $\pm 5\degree$ has been considered.
-\end{itemize}
-\end{minipage}
-}
+%\framebox[11cm]{
+%\begin{minipage}{10cm}
+%PTS specifications are:
+%\begin{itemize}
+%\item
+%bandwidth $[0.02 - 4]$ Hz;
+% \item
+%$\pm 5\%$ on the response magnitude; more specifically the calibration is required once a year;
+% \item
+%no requirement  on the phase but $\ldots$ $\pm 5\degree$ has been considered.
+%\end{itemize}
+%\end{minipage}
+%}
 \framebox[11cm]{
 \begin{minipage}{10cm}
 Conclusions:

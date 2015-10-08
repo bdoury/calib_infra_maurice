@@ -1,7 +1,7 @@
-%========================== displaySensorRatio.m =========================
-% this program reads the ratios SUT/SREF estimated by spectral approach
+%========================== displaySensorRatioSup.m =========================
+% this program reads the RatioSups SUT/SREF estimated by spectral approach
 % and stored in a drectory as AAresults. That consists on 8 files
-% for the 8 sensors of IS26. Each file consists the estimate ratios
+% for the 8 sensors of IS26. Each file consists the estimate RatioSups
 % on several days of records.
 %
 % this program calls the program theoreticalSUTresponse4IS26.m
@@ -13,13 +13,13 @@ sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
 for ihc = 3
-    for ii=[4]
+    for ii=[2]
         switch ii
             case 1
                 comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
                 numfig = ihc+1100;
             case 2
-                comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
+                comload = sprintf('load AAresultswithFB2Ratios/resultssta26sensor%i',ihc);
                 numfig = ihc+200;
             case 3
                 numfig = ihc+300;
@@ -65,13 +65,18 @@ for ihc = 3
         else
             doubledaynumber = 10;
             permutenbmats = randperm(nbmats);
-            allRatioPfilters = allRatioPfilters(:,permutenbmats(1:doubledaynumber));
+            allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
         end
         
-        allRatioPfilters_ave          = nanmean(allRatioPfilters,2);
-        absallRatioPfilters_ave       = abs(allRatioPfilters_ave);
-        angleallRatioPfilters_ave_deg = angle(allRatioPfilters_ave)*180/pi;
+        allRatioSupPfilters_ave          = nanmean(allRatioSupPfilters,2);
+        absallRatioSupPfilters_ave       = abs(allRatioSupPfilters_ave);
+        angleallRatioSupPfilters_ave_deg = angle(allRatioSupPfilters_ave)*180/pi;
         
+        if exist('allRatioInfPfilters','var')
+            allRatioInfPfilters_ave          = nanmean(allRatioInfPfilters,2);
+            absallRatioInfPfilters_ave       = abs(allRatioInfPfilters_ave);
+            angleallRatioInfPfilters_ave_deg = angle(allRatioInfPfilters_ave)*180/pi;
+        end
         %=======
         if 1
             %======= fit the curve
@@ -94,44 +99,57 @@ for ihc = 3
         
         
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-        allRatioPfiltersU        = allRatioPfilters(inda,:);
+        allfrqsPfiltersUZ        = allfrqsPfiltersU(not(allfrqsPfiltersU==0));
         allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
         nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
-        
-        allRatioPfiltersUZ        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);
-        allmeanMSCcstPfiltersUZ   = allmeanMSCcstPfiltersU(not(allfrqsPfiltersU==0),:);
-        allfrqsPfiltersUZ         = allfrqsPfiltersU(not(allfrqsPfiltersU==0));
-        nbofvaluesoverthresholdUZ = nbofvaluesoverthresholdU(not(allfrqsPfiltersU==0),:);
-        
-        meanallRatioPfiltersUZ    = nanmean(allRatioPfiltersUZ,2);
-        
-        stdallRatioPfiltersUZ     = nanstd(allRatioPfiltersUZ,[],2);
-        
-        ICallRatioPfiltersUZ      = stdallRatioPfiltersUZ ./ ...
+        allmeanMSCcstPfiltersUZ      = allmeanMSCcstPfiltersU(not(allfrqsPfiltersU==0),:);
+        nbofvaluesoverthresholdUZ    = nbofvaluesoverthresholdU(not(allfrqsPfiltersU==0),:);
+
+        allRatioSupPfiltersU         = allRatioSupPfilters(inda,:);
+        allRatioSupPfiltersUZ        = allRatioSupPfiltersU(not(allfrqsPfiltersU==0),:);      
+        meanallRatioSupPfiltersUZ    = nanmean(allRatioSupPfiltersUZ,2);        
+        stdallRatioSupPfiltersUZ     = nanstd(allRatioSupPfiltersUZ,[],2);        
+        ICallRatioSupPfiltersUZ      = stdallRatioSupPfiltersUZ ./ ...
             sqrt(sum(nbofvaluesoverthresholdUZ,2));
+        
+        if exist('allRatioInfPfilters','var')
+            allRatioInfPfiltersU         = allRatioInfPfilters(inda,:);
+            allRatioInfPfiltersUZ        = allRatioInfPfiltersU(not(allfrqsPfiltersU==0),:);
+            meanallRatioInfPfiltersUZ    = nanmean(allRatioInfPfiltersUZ,2);            
+            stdallRatioInfPfiltersUZ     = nanstd(allRatioInfPfiltersUZ,[],2);           
+            ICallRatioInfPfiltersUZ      = stdallRatioInfPfiltersUZ ./ ...
+                sqrt(sum(nbofvaluesoverthresholdUZ,2));
+        end
+
         
         N_freq_vector = 300;
         freq_vector = logspace(log10(0.001),log10(30),N_freq_vector) .';
-        [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
+        [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatioSup] = ...
             HCP_acoustical(freq_vector, allfrqsPfiltersUZ, sensor_UT, ref_sensor, 'nofir');
         
-        absestim = coeffsens * abs(meanallRatioPfiltersUZ) .* abs(TFsensor4freqRatio);
+        absestimSup = coeffsens * abs(meanallRatioSupPfiltersUZ) .* abs(TFsensor4freqRatioSup);
+        absestimInf = coeffsens * abs(meanallRatioInfPfiltersUZ) .* abs(TFsensor4freqRatioSup);
         
         
         %     [FreqFitabs_Hz,absRfit] = smoothpolyLL(allfrqsPfiltersUZ, ...
-        %         coeffsens * abs(meanallRatioPfiltersUZ),...
+        %         coeffsens * abs(meanallRatioSupPfiltersUZ),...
         %         segmentsnumber,polydegrees,logtrain,logfit);
         
         figure(numfig)
         clf
         %================================================
         subplot(211)
-        semilogx(allfrqsPfiltersUZ,20*log10(absestim),'.-k'),
-        semilogx(allfrqsPfiltersUZ,20*log10(absestim),'k','linew',1.5),
+        semilogx(allfrqsPfiltersUZ,20*log10(absestimSup),'k','linew',1.5),
+        
+        %== must be very close to the Sup estimates
+        if exist('allRatioInfPfilters','var')
+            semilogx(allfrqsPfiltersUZ,20*log10(mean([absestimSup, absestimInf],2)),'k','linew',1.5)
+            %                     semilogx(allfrqsPfiltersUZ,20*log10(absestimInf),'b','linew',1.5),
+        end
         %     hold on
         %         semilogx(ones(2,1)*allfrqsPfiltersUZ',...
-        %             [absestim'-ICallRatioPfiltersUZ';...
-        %             absestim'+ICallRatioPfiltersUZ'],'.-b')
+        %             [absestim'-ICallRatioSupPfiltersUZ';...
+        %             absestim'+ICallRatioSupPfiltersUZ'],'.-b')
         
         %     boxplot(absestim','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
@@ -176,20 +194,20 @@ for ihc = 3
         set(ht,'color','r','fontsize',14,'fontname','times')
         
         %========================== PHASE =========
-        anglestime_rd = angle(meanallRatioPfiltersUZ);
+        anglestimeSup_rd = angle(meanallRatioSupPfiltersUZ);
+        anglestimeInf_rd = angle(meanallRatioInfPfiltersUZ);
         
-        if 1
-            anglestime_rd = anglestime_rd + angle(TFsensor4freqRatio);
-            angltheo_rd   = angle(p_total_NRS)+ angle(TF_ref_sensor);
-        else
-            anglestime_rd = -anglestime_rd;
-            angltheo_rd   = -angle(p_total_NRS);
-            
-        end
+        anglestimeSup_rd = anglestimeSup_rd + angle(TFsensor4freqRatioSup);
+        anglestimeInf_rd = anglestimeInf_rd + angle(TFsensor4freqRatioSup);
+        angltheo_rd      = angle(p_total_NRS)+ angle(TF_ref_sensor);
         
         subplot(212)
         
-        semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
+        semilogx(allfrqsPfiltersUZ,unwrap(anglestimeSup_rd)*180/pi,'.-k'),
+        if exist('allRatioInfPfilters','var')
+            semilogx(allfrqsPfiltersUZ,unwrap(angle(mean([anglestimeSup_rd, anglestimeInf_rd],2)))*180/pi,'k','linew',1.5)
+            %                     semilogx(allfrqsPfiltersUZ,20*log10(absestimInf),'b','linew',1.5),
+        end
         
         %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
@@ -200,7 +218,7 @@ for ihc = 3
         
         set(gca,'ylim',[-20 20])
         
-        semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'k','linew',1.5),
+        semilogx(allfrqsPfiltersUZ,unwrap(anglestimeSup_rd)*180/pi,'k','linew',1.5),
         
         %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
         %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
