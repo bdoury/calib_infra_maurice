@@ -15,7 +15,8 @@
 
 %================================================================
 \usepackage{ifthen}
-\usepackage{color,amsmath,amsfonts,amssymb,epsfig,hyperref,graphicx}
+\usepackage{color,amsmath,amsfonts,amssymb,epsfig,hyperref}
+\usepackage{graphicx}
 \usepackage{dsfont}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
@@ -192,8 +193,8 @@
 \def\soi{s_{\mathrm{soi}}}
 \def\ns{s_{\mathrm{son}}}
 
-\def\sut{\mathrm{UT}}
-\def\sref{\mathrm{ref}}
+\def\sut{\mathrm{sut}}
+\def\sref{\mathrm{sref}}
 
 
 \def\ssoi{\utheta_{\mathrm{soi}}}
@@ -385,16 +386,18 @@ acoustic signals is spatially coherent, in all frequency band of interest, regar
 \begin{array}{rcl}
 s_{\sut}(t)&=&{\color{blue}h_{\sut}}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sut}}(t))
 \\
-s_{\sref}(t)&=&h_{\sref}(t)\star({\color{blue}\alpha}\times {\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
+%s_{\sref}(t)&=&h_{\sref}(t)\star({\color{blue}\alpha}\times {\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
+s_{\sref}(t)&=&h_{\sref}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
 %\\
 %\alpha&=&1
 \end{array}\right.
 \end{eqnarray*}
 \begin{itemize}
 \item
-ill-posed problem because under-determinated: 4 unknowns for 2 observations;
+problem is underdetermined: 4 unknowns for 2 observations;
 \item
-but with stationary and ``almost 0-noise'' time segments the problem is well-determined
+
+but with stationarity, uncorrelated noises, and ``almost 0-noise'' time segments, the problem is well-determined
 
 \item
  the MSC provides a way to test ``almost 0-noise'' time segments;
@@ -411,7 +414,7 @@ but because only an estimate of the $\MSC$ is available, we have to threshold at
 \frametitle{Performing process}
 
 \begin{center}
-\includegraphics[scale=0.7]{processdetail.pdf}
+\includegraphics[scale=0.66]{processdetail.pdf}
 \end{center}
 
 \vspace{-0.5cm}
@@ -430,11 +433,11 @@ s_{\sref}(t)&\approx&g_{\sref}(t)\star {\color{blue}\alpha} s(t)
 
 For stationary and ``almost 0-noise'' time segments we have:
 \begin{eqnarray*}
-\widehat{G_{\mathrm{UT}}}(f)
-\approx G_{\mathrm{ref}} \times
+\widehat{G_{\sut}}(f)
+\approx G_{\sref}(f) \times
 %\underbrace{
 \color{red}\frac{\widehat{{S}_{\mathrm{UU}}}(f)}
-                        {\widehat{{S}_{\mathrm{RU}}}(f)}
+                        {\widehat{{S}_{\mathrm{UR}}}(f)}
                         %}
 %_{\color{red}\mathrm{spectrum}\, \mathrm{ratio}}
 \end{eqnarray*}
@@ -451,15 +454,17 @@ if $\alpha<1$, we underestimate $G_{\sut}$.
 
 \begin{itemize}
 \item
-In relationship with the resolution but also to take into account  the lack of stationarity, we have considered a sequence of 6 durations in decreasing order with the frequency. A pre-filtering is also performed. %However we have noticed that the design is not critical.
+In relationship with the resolution but also to take into account the lack of stationarity on real dataset, we have considered a sequence of 6 durations in decreasing order with the frequency. A pre-filtering is also performed. %However we have noticed that the design is not critical.
 
 %\item
 %In the following results the filter bank reported on the figure has been used. 
 
 \end{itemize}
 
-     \figsstit{filterbank.pdf}{0.5}
+     \centering\figsstit{filterbank.pdf}{0.5}
 
+
+Sizing is empirically performed on real data; we have observed that the sizing is not critical.
 \end{frame}
 %=======================================================
 %=======================================================
@@ -549,21 +554,7 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 \includegraphics[scale=0.35]{3monthsonIS26SUTboxplot5.pdf}
 \end{tabular}
 \end{frame}
-%=======================================================
-%=======================================================
-\begin{frame}
-\frametitle{Temporal stability on $100$ random draws of $12$ days}
-\begin{tabular}{c||c}
-\includegraphics[scale=0.35]{randondrawoncoupleofdays1.pdf}
-&
-\includegraphics[scale=0.35]{randondrawoncoupleofdays3.pdf}
-\\
-\hline\hline
-\includegraphics[scale=0.35]{randondrawoncoupleofdays4.pdf}
-&
-\includegraphics[scale=0.35]{randondrawoncoupleofdays5.pdf}
-\end{tabular}
-\end{frame}
+
 %=======================================================
 %=======================================================
 \begin{frame}
@@ -572,10 +563,10 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 \begin{tabular}{c||c}
 \includegraphics[scale=0.3]{evolutionon1atfreq1.pdf}
 &
-\includegraphics[scale=0.3]{evolutionon2atfreq1.pdf}
+\includegraphics[scale=0.3]{evolutionon3atfreq1.pdf}
 \\
 \hline\hline
-\includegraphics[scale=0.3]{evolutionon3atfreq1.pdf}
+\includegraphics[scale=0.3]{evolutionon4atfreq1.pdf}
 &
 \includegraphics[scale=0.3]{evolutionon5atfreq1.pdf}
 \end{tabular}

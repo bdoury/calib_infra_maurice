@@ -2,8 +2,11 @@ clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 close all
-saveflag = 1;
-boot = 0;
+saveflag = 0;
+bootdraw = 0;
+nbdraw=100;
+Ncouples=50;
+
 for ihc=[1,3,4,5]
     % keep 2
     for ii=3
@@ -23,7 +26,7 @@ for ihc=[1,3,4,5]
                 coeffsens=1.02;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 2
-                coeffsens=1.06;%.1;
+                coeffsens=1.09;%.1;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 3
                 coeffsens=1.032;
@@ -48,17 +51,17 @@ for ihc=[1,3,4,5]
         
         eval(comload)
         
-                filtercharact.SCPperiod_sec
-
+        filtercharact.SCPperiod_sec
+        
         Dstart = str2double(fileswithdotmat(1).name(13:15));
         Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
-        if 1
-            doubledaynumber = (Dend-Dstart+3)/2;
-        else
-            doubledaynumber = 10;
-            permutenbmats = randperm(nbmats);
-            allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
-        end
+%         if 1
+%             doubledaynumber = (Dend-Dstart+3)/2;
+%         else
+%             doubledaynumber = 10;
+%             permutenbmats = randperm(nbmats);
+%             allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
+%         end
         
         sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 
@@ -72,25 +75,36 @@ for ihc=[1,3,4,5]
         
         allpraticalvaluesat1Hz = coeffsens*abs(TFsensor4freqRatio)*abs(allRatioSupPfilters(indselect,:)) ./ ...
             expectedvalueat1Hz;
-        nbofcouplesdays=size(allpraticalvaluesat1Hz,2);
+
+        nbofcouplesdays = length(allpraticalvaluesat1Hz);
         %===================== plots ==============
         figure(numfig)
         subplot(211);
         
-        if boot
-            Nfollowing=5;
-            for ii=1:nbdraw
-                PP_ii = randperm(nbofcouplesdays);
-                meanallpraticalvaluesat1Hz_ii=nanmean(allpraticalvaluesat1Hz(:,PP_ii(1:Nfollowing)));
-                
-                plot(ii,20*log10(meanallpraticalvaluesat1Hz_ii),'ok','markersize',6,'markerfacec','k')
-                
-                hold on
-                %             sigmaonRatio = allSTDmodRatioPfilters(indselect,:) ./ ...
-                %                 sqrt(nbofvaluesoverthreshold(indselect,:));
-                %         plot(ones(2,1)*(1:size(allRatioSupPfilters,2)),...
-                %             coeffsens*[abs(allRatioSupPfilters(indselect,:))-sigmaonRatio;...)
-                %             abs(allRatioSupPfilters(indselect,:))+sigmaonRatio],'.-','color',0.6*[1 1 1]);
+        if bootdraw
+            if 0
+                for idraw=0:fix(nbofcouplesdays/Ncouples)-1
+                    allpraticalvaluesat1Hzrand = allpraticalvaluesat1Hz(:,randperm(nbofcouplesdays));
+                    id1=idraw*Ncouples+1;
+                    id2=id1+Ncouples-1;
+                    meanallpraticalvaluesat1Hz_ii=nanmean(allpraticalvaluesat1Hzrand(:,id1:id2));
+                    plot(idraw,20*log10(meanallpraticalvaluesat1Hz_ii),'ok','markersize',6,'markerfacec','k')
+                    hold on
+                end
+            else
+                for idraw=1:nbdraw
+                    PP_ii = randperm(nbofcouplesdays);
+                    meanallpraticalvaluesat1Hz_ii=nanmean(allpraticalvaluesat1Hz(:,PP_ii(1:Ncouples)));
+                    
+                    plot(idraw,20*log10(meanallpraticalvaluesat1Hz_ii),'ok','markersize',6,'markerfacec','k')
+                    
+                    hold on
+                    %             sigmaonRatio = allSTDmodRatioPfilters(indselect,:) ./ ...
+                    %                 sqrt(nbofvaluesoverthreshold(indselect,:));
+                    %         plot(ones(2,1)*(1:size(allRatioSupPfilters,2)),...
+                    %             coeffsens*[abs(allRatioSupPfilters(indselect,:))-sigmaonRatio;...)
+                    %             abs(allRatioSupPfilters(indselect,:))+sigmaonRatio],'.-','color',0.6*[1 1 1]);
+                end
             end
         else
             plot(20*log10(allpraticalvaluesat1Hz),'ok','markersize',6,'markerfacec','k')
@@ -104,15 +118,15 @@ for ihc=[1,3,4,5]
         set(gca,'fontname','times','fontsize',14)
         ylabel('Gain at 1 Hz','fontname','times','fontsize',14)
         grid on
-        if boot
-            set(gca,'xlim',[1 nbdraw]);
+        if bootdraw
+            set(gca,'xlim',[0 idraw]);
         else
-            set(gca,'xlim',[1 ceil(doubledaynumber)])
+            set(gca,'xlim',[1 nbofcouplesdays])
         end
         set(gca,'ylim',[-1.5 1.5])
         
         title(sprintf('IS26 -  sensor #%i, threshold = %4.2f\nday number = %i, T = %i s',...
-            ihc, MSCthreshold, 2*doubledaynumber, filtercharact.SCPperiod_sec),'fontname','times','fontsize',14)
+            ihc, MSCthreshold, 2*nbofcouplesdays, filtercharact.SCPperiod_sec),'fontname','times','fontsize',14)
         
         subplot(212);
         %             plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
@@ -123,7 +137,12 @@ for ihc=[1,3,4,5]
         ylabel('number fo values','fontname','times','fontsize',14)
         grid on
         set(gca,'fontname','times','fontsize',14)
-        
+        if bootdraw
+            set(gca,'xlim',[0 idraw]);
+        else
+            set(gca,'xlim',[1 nbofcouplesdays])
+        end
+
         
         HorizontalSize = 16;
         VerticalSize   = 11;
@@ -142,8 +161,8 @@ for ihc=[1,3,4,5]
         %
         if saveflag
             eval(fileprintepscmd)
-%             eval(fileeps2pdfcmd)
-%             eval(filermcmd)
+            eval(fileeps2pdfcmd)
+            eval(filermcmd)
         end
     end
     
