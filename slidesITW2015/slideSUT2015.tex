@@ -513,7 +513,7 @@ If $v$ denotes the wind velocity, the ratio $\dfrac{v}{f}$ can be interpreted as
 \item
 each reference sensor has been calibrated in the lab;
 \item
-wind velocity and direction are available on H1.
+wind velocity and direction are available at H1.
 \end{itemize}
 \end{frame}
 
@@ -613,6 +613,37 @@ The experimental results obtained by couples of 2 days show a high stability in 
 \end{center}
 \end{frame}
 
+%=======================================================
+%=======================================================
+\def\hat{\widehat}
+\begin{frame}\frametitle{Ratio probability distribution}
+\begin{tabular}{cc}
+\begin{minipage}{6cm}
+\centering\includegraphics[scale=0.6]{theoreticaldistribratios.pdf}
+\end{minipage}
+&
+\begin{minipage}{4cm}
+\begin{eqnarray*}
+\hat{R}_{\sup}&=&\frac{\hat{S}_{UU}}{\hat{S}_{RU}}
+\\
+\hat{R}_{\inf}&=&\frac{\hat{S}_{UR}}{\hat{S}_{RR}}
+\end{eqnarray*}
+\end{minipage}
+\end{tabular}
+
+
+
+\begin{itemize}
+\item
+the r.v. $\hat{R}_{\sup}\geq \hat{R}_{\inf}$, but no reason to have the true ratio between them;
+ \item
+the r.v. $\hat{R}_{\sup}$ and $\hat{R}_{\inf}$ are biased w.r.t. the true ratio;
+\item
+the r.v. $\hat{R}_{\sup}$ and $\hat{R}_{\inf}$ are not independent;
+\item
+the r.v. $\alpha_{1}\hat{R}_{\sup}+\alpha_{2} \hat{R}_{\inf}$ is also biased; we have no way to chose $\alpha_{i}$;
+\end{itemize}
+\end{frame}
 %=======================================================
 %=======================================================
 \begin{frame}\frametitle{NRS effect simulation}
