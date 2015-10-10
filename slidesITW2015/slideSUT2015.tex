@@ -370,7 +370,7 @@ the objective is the calibration of the SUT, which consists of the NRS, the sens
 \item
 non spatially coherent signals are called ``noise'';
 \item
-acoustic signals is spatially coherent, in all frequency band of interest, regarding the size of the SUT. 
+acoustic signal is spatially coherent, in all frequency band of interest, regarding the size of the SUT. 
 \end{itemize}
 
 
@@ -380,14 +380,15 @@ acoustic signals is spatially coherent, in all frequency band of interest, regar
 %=======================================================
 \begin{frame}
 \frametitle{Undetermined problem}
+The model of signals writes:
 \begin{eqnarray*}
 \left\{
 \renewcommand\arraystretch{1.6}
 \begin{array}{rcl}
-s_{\sut}(t)&=&{\color{blue}h_{\sut}}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sut}}(t))
+s_{\sut}(t)&=&{\color{blue}g_{\sut}}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sut}}(t))
 \\
-%s_{\sref}(t)&=&h_{\sref}(t)\star({\color{blue}\alpha}\times {\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
-s_{\sref}(t)&=&h_{\sref}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
+%s_{\sref}(t)&=&g_{\sref}(t)\star({\color{blue}\alpha}\times {\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
+s_{\sref}(t)&=&g_{\sref}(t)\star({\color{blue}s}(t)+{\color{blue}w_{\sref}}(t))
 %\\
 %\alpha&=&1
 \end{array}\right.
@@ -635,7 +636,7 @@ The experimental results obtained by couples of 2 days show a high stability in 
 
 \begin{itemize}
 \item
-the r.v. $\hat{R}_{\sup}\geq \hat{R}_{\inf}$, but no reason to have the true ratio between them;
+the r.v. $\hat{R}_{\sup}\geq \hat{R}_{\inf}$, but no reason for the true ratio to be between them;
  \item
 the r.v. $\hat{R}_{\sup}$ and $\hat{R}_{\inf}$ are biased w.r.t. the true ratio;
 \item
