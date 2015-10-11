@@ -2,12 +2,12 @@ clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 close all
-saveflag = 0;
+saveflag = 1;
 bootdraw = 0;
 nbdraw=100;
 Ncouples=50;
 
-for ihc=[1,3,4,5]
+for ihc=[2]
     % keep 2
     for ii=3
         switch ii
@@ -112,7 +112,7 @@ for ihc=[1,3,4,5]
         end
         
         
-        plot([0 10000], [0 0],'--r','linew',2)
+%         plot([0 10000], [0 0],'--r','linew',2)
         plot([0 10000], 20*log10(1.05*[1 1]),'--r','linew',2)
         plot([0 10000], 20*log10(0.95*[1 1]),'--r','linew',2)
         set(gca,'fontname','times','fontsize',14)
@@ -155,14 +155,14 @@ for ihc=[1,3,4,5]
         set(gcf, 'InvertHardCopy', 'off');
         
         printdirectory  = ' ../slidesITW2015/';
-        fileprintepscmd = sprintf('print -depsc -loose %sevolutionon%iatfreq1.eps',printdirectory,ihc);
+        fileprintepscmd = sprintf('print -depsc -loose %sevolutionon%iatfreq1bis.eps',printdirectory,ihc);
         fileeps2pdfcmd  = sprintf('!epstopdf %sevolutionon%iatfreq1.eps',printdirectory,ihc);
         filermcmd       = sprintf('!rm %sevolutionon%iatfreq1.eps',printdirectory,ihc);
         %
         if saveflag
             eval(fileprintepscmd)
-            eval(fileeps2pdfcmd)
-            eval(filermcmd)
+%             eval(fileeps2pdfcmd)
+%             eval(filermcmd)
         end
     end
     
