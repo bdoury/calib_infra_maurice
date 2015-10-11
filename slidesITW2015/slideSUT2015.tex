@@ -426,7 +426,7 @@ but because only an estimate of the $\MSC$ is available, we have to threshold at
 \begin{array}{rcl}
 s_{\sut}(t)&\approx&g_{\sut}(t)\star s(t) 
 \\
-s_{\sref}(t)&\approx&g_{\sref}(t)\star {\color{blue}\alpha} s(t)
+s_{\sref}(t)&\approx&g_{\sref}(t)\star s(t)
 %\\
 %\alpha&=&1
 \end{array}\right.
@@ -442,7 +442,7 @@ For stationary and ``almost 0-noise'' time segments we have:
                         %}
 %_{\color{red}\mathrm{spectrum}\, \mathrm{ratio}}
 \end{eqnarray*}
-if $\alpha<1$, we underestimate $G_{\sut}$.
+%if $\alpha<1$, we underestimate $G_{\sut}$.
 
 %The product F x T is an index of accuracy. Therefore we can reduce the duration in high frequencies if necessary.
 
@@ -618,17 +618,23 @@ The experimental results obtained by couples of 2 days show a high stability in 
 %=======================================================
 \def\hat{\widehat}
 \begin{frame}\frametitle{Ratio probability distribution}
-\begin{tabular}{cc}
+\begin{tabular}{ccc}
 \begin{minipage}{6cm}
 \centering\includegraphics[scale=0.6]{theoreticaldistribratios.pdf}
 \end{minipage}
-&
+&&
 \begin{minipage}{4cm}
 \begin{eqnarray*}
-\hat{R}_{\sup}&=&\frac{\hat{S}_{UU}}{\hat{S}_{RU}}
+\hat{R}_{\sup}&=&\frac{\hat{S}_{UU}}{|\hat{S}_{RU}|}
 \\
-\hat{R}_{\inf}&=&\frac{\hat{S}_{UR}}{\hat{S}_{RR}}
+\hat{R}_{\inf}&=&\frac{|\hat{S}_{UR}|}{\hat{S}_{RR}}
 \end{eqnarray*}
+\begin{itemize}
+\item
+True spectrum ratio : $1$
+\item
+Power noise ratio: $96$
+\end{itemize}
 \end{minipage}
 \end{tabular}
 
@@ -636,20 +642,20 @@ The experimental results obtained by couples of 2 days show a high stability in 
 
 \begin{itemize}
 \item
-the r.v. $\hat{R}_{\sup}\geq \hat{R}_{\inf}$, but no reason for the true ratio to be between them;
+the r.v. $\hat{R}_{\sup}\geq \hat{R}_{\inf}$, but the true ratio could be outside ...;
  \item
 the r.v. $\hat{R}_{\sup}$ and $\hat{R}_{\inf}$ are biased w.r.t. the true ratio;
 \item
 the r.v. $\hat{R}_{\sup}$ and $\hat{R}_{\inf}$ are not independent;
 \item
-the r.v. $\alpha_{1}\hat{R}_{\sup}+\alpha_{2} \hat{R}_{\inf}$ is also biased; we have no way to chose $\alpha_{i}$;
+the r.v. $\alpha_{1}\hat{R}_{\sup}+\alpha_{2} \hat{R}_{\inf}$ is also biased; we have no way to chose $\alpha_{i}$, except if we know the true power ratio.
 \end{itemize}
 \end{frame}
 %=======================================================
 %=======================================================
 \begin{frame}\frametitle{NRS effect simulation}
 \begin{center}
-\includegraphics[scale=0.36]{GonH.pdf}
+\includegraphics[scale=0.39]{GonH.pdf}
 \end{center}
 \end{frame}
 %=======================================================
