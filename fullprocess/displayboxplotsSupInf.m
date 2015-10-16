@@ -12,11 +12,11 @@ addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
-for ihc = 3
-    for ii=[2]
+for ihc = 1:5
+    for ii=1
         switch ii
             case 1
-                comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
+                comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
                 numfig = ihc+1100;
             case 2
                 comload = sprintf('load AAresultswithFB2Ratios/resultssta26sensor%i',ihc);

@@ -1,3 +1,5 @@
+% ratio at 1 Hz, look for outliers
+%=================================
 clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson

@@ -7,7 +7,7 @@ FLAGsaveall = 0;
 
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresults0614Hz';
+directoryresults      = 'AAresultswithFBbis';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
 directorydatafromIDC  = '../../../AAdataI26/';
 
@@ -25,8 +25,8 @@ directorydatafromIDC  = '../../../AAdataI26/';
 % filtercharactfilename = 'filtercharacteristics.m';
 %======
 % generate by geneFB.m, use LOAD
-filtercharactfilename = 'filtercharacteristics0614Hz';
-cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
+filtercharactfilename = 'filtercharacteristics2';
+cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
 
 %======
 % to select only 1Hz
@@ -43,7 +43,7 @@ end
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = [2,3,5]
+for indexofSTA = 1:8
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================

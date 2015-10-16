@@ -10,8 +10,11 @@ savedirnamefull      ='../../../../AAdataI26/';
 %=== temporary files
 temporary_gparse_dir = '../ZZtoolbox/00pierrick/tempfiles/';
 if not(exist(temporary_gparse_dir,'dir'))
-     rmdir(temporary_gparse_dir,'s')
+    rmdir(temporary_gparse_dir,'s')
      mkdir(temporary_gparse_dir)
+else
+    commandrmparse = sprintf('!rm %s.*',temporary_gparse_dir);
+    eval(commandrmparse);
 end
 if exist('gparse.wfdisc','file')
      !rm gparse*.*;
@@ -23,15 +26,15 @@ password    = 'sqlmomo';
 channel     = '(''BDF'',''BDF'',''LWS'',''LWD'',''LKO'')';
 
 yearstart   =  '2015';
-monthstart  =  '10';
+monthstart  =  '09';
 HMSstart    = '00:00:10';
 yearend     =  '2015';
-monthend    =  '10';
+monthend    =  '09';
 HMSend      = '23:50:10';
 
-for ihc=6:1:8
+for ihc=4:8
     stations    = sprintf(' (''I26H%i'',''I26C%i'') ',ihc,ihc);
-    for daystart_num    =  5 %1:2:25
+    for daystart_num    =  25:2:29 %1:2:25
         if daystart_num<10
             daystart    = ['0' num2str(daystart_num)];
             if daystart_num==9
