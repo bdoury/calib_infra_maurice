@@ -3,63 +3,35 @@ clear
 allcolors = ['g.';'y.';'m.';'r.';'k.';'b.';'rx';'yx';'mx';'rx';'kx';'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 
 M                               = 5;
-
+Pfilter                         = 6;
+listofperiods                   = [1000,500,250,100,50,25];
+listOrder                       = [2 3 4 4 4 6];
 filtercharact = struct;
-filtercharact(1).SCPperiod_sec  = 1000 ;
-filtercharact(2).SCPperiod_sec  = 500 ;
-filtercharact(3).SCPperiod_sec  = 250 ;
-filtercharact(4).SCPperiod_sec  = 100 ;
-filtercharact(5).SCPperiod_sec  = 50 ;
-filtercharact(6).SCPperiod_sec  = 25;
 
-filtercharact(1).overlapDFT = 0.5;
-filtercharact(2).overlapDFT = 0.5;
-filtercharact(3).overlapDFT = 0.5;
-filtercharact(4).overlapDFT = 0.5;
-filtercharact(5).overlapDFT = 0.5;
-filtercharact(6).overlapDFT = 0.5;
-
-filtercharact(1).overlapSCP = 0;
-filtercharact(2).overlapSCP = 0;
-filtercharact(3).overlapSCP = 0;
-filtercharact(4).overlapSCP = 0;
-filtercharact(5).overlapSCP = 0;
-filtercharact(6).overlapSCP = 0;
-
-filtercharact(1).ratioDFT2SCP = M;
-filtercharact(2).ratioDFT2SCP = M;
-filtercharact(3).ratioDFT2SCP = M;
-filtercharact(4).ratioDFT2SCP = M;
-filtercharact(5).ratioDFT2SCP = M;
-filtercharact(6).ratioDFT2SCP = M;
-
-filtercharact(1).Norder  = 2 ;
-filtercharact(2).Norder  = 3 ;
-filtercharact(3).Norder  = 4 ;
-filtercharact(4).Norder  = 4 ;
-filtercharact(5).Norder  = 4 ;
-filtercharact(6).Norder  = 6 ;
-
-filtercharact(1).designname     = 'butter';
-filtercharact(1).windowshape    = 'hann';
+for iP = 1:Pfilter
+    filtercharact(iP).SCPperiod_sec  = listofperiods(iP) ;
+    filtercharact(iP).overlapDFT = 0.5;
+    filtercharact(iP).overlapSCP = 0;
+    filtercharact(iP).ratioDFT2SCP = M;
+    filtercharact(iP).Norder  = listOrder(iP) ;
+    filtercharact(iP).designname     = 'butter';
+    filtercharact(iP).windowshape    = 'hann';
+    filtercharact(iP).overlapDFT     = 0.5;
+end
 filtercharact(1).Wlow_Hz        = 0.005;
 filtercharact(1).overlapDFT     = 0.5;
 TFFT_Pfilter                    = filtercharact(1).SCPperiod_sec/M;
-
-for Pfilter=2:6
-    filtercharact(Pfilter).designname     = 'butter';
-    filtercharact(Pfilter).windowshape    = 'hann';
-    filtercharact(Pfilter).overlapDFT     = 0.5;
-%     filtercharact(Pfilter).SCPperiod_sec  = filtercharact(Pfilter-1).SCPperiod_sec*0.5;
-    TFFT_Pfilter                          = filtercharact(Pfilter).SCPperiod_sec/M;
-    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.2;
-     filtercharact(Pfilter-1).Whigh_Hz     = 1.1*filtercharact(Pfilter).Wlow_Hz;
-    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.08;
-     filtercharact(Pfilter-1).Whigh_Hz     = filtercharact(Pfilter).Wlow_Hz;
-    filtercharact(Pfilter).Wlow_Hz        = (1/TFFT_Pfilter)/0.2;
-     filtercharact(Pfilter-1).Whigh_Hz     = 1.1*filtercharact(Pfilter).Wlow_Hz;
+for iP=2:Pfilter
+    %     filtercharact(Pfilter).SCPperiod_sec  = filtercharact(Pfilter-1).SCPperiod_sec*0.5;
+    TFFT_Pfilter                          = filtercharact(iP).SCPperiod_sec/M;
+    filtercharact(iP).Wlow_Hz        = (1/TFFT_Pfilter)/0.2;
+    filtercharact(iP-1).Whigh_Hz     = 1.1*filtercharact(iP).Wlow_Hz;
+    filtercharact(iP).Wlow_Hz        = (1/TFFT_Pfilter)/0.08;
+    filtercharact(iP-1).Whigh_Hz     = filtercharact(iP).Wlow_Hz;
+    filtercharact(iP).Wlow_Hz        = (1/TFFT_Pfilter)/0.2;
+    filtercharact(iP-1).Whigh_Hz     = 1.1*filtercharact(iP).Wlow_Hz;
 end
-filtercharact(Pfilter).Whigh_Hz           = 8;
+filtercharact(iP).Whigh_Hz           = 8;
 
 scal1 = 1 ./ ([filtercharact(:).SCPperiod_sec] .* ...
     ([filtercharact(:).Whigh_Hz]-[filtercharact(:).Wlow_Hz]));
@@ -68,7 +40,6 @@ scal2 = 2 ./ ([filtercharact(:).SCPperiod_sec] .* ...
     ([filtercharact(:).Whigh_Hz]+[filtercharact(:).Wlow_Hz]));
 
 Fs_Hz                 = 20;
-P                     = length(filtercharact);
 Lfft                  = 16*2048;
 frqs_Hz               = (0:Lfft-1)*Fs_Hz/Lfft;
 %========== plots of the response
@@ -76,7 +47,7 @@ figure(1)
 clf
 %========== end
 
-for ip=1:P
+for ip=1:Pfilter
     subplot(121)
     [filnum,filden] = butter(filtercharact(ip).Norder,...
         2*[filtercharact(ip).Wlow_Hz ...
@@ -98,7 +69,7 @@ loc = get(gca,'position');
 loc(1)  = loc(1)+0.4;
 loc(2)  = 0.92;
 highbar = 0.12;
-for ip=1:P
+for ip=1:Pfilter
     switch ip
         case 1
             lenbar  = (filtercharact(ip).SCPperiod_sec)/2200;
@@ -163,7 +134,7 @@ set(gcf, 'InvertHardCopy', 'off');
 
 %==== parameters for TeX
 tabFB = [];
-for ip = 1:P
+for ip = 1:Pfilter
     tabFB = [tabFB ...
         sprintf('$[%4.3f-%4.2f]$&$%i$\n%s %s',...
         filtercharact(ip).Wlow_Hz, ...

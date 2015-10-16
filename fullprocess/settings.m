@@ -11,15 +11,15 @@ password    = 'sqlmomo';
 channel     = '(''BDF'',''BDF'',''LWS'',''LWD'',''LKO'')';
 
 yearstart   =  '2015';
-monthstart  =  '06';
+monthstart  =  '10';
 HMSstart    = '00:00:10';
 yearend     =  '2015';
-monthend    =  '06';
+monthend    =  '10';
 HMSend      = '23:50:10';
 
-for ihc=1:1
+for ihc=6:1:8
     stations    = sprintf(' (''I26H%i'',''I26C%i'') ',ihc,ihc);
-    for daystart_num    =  6 %1:2:25
+    for daystart_num    =  5 %1:2:25
         if daystart_num<10
             daystart    = ['0' num2str(daystart_num)];
             if daystart_num==9
@@ -42,7 +42,7 @@ for ihc=1:1
         %========== temp fil in the current directory
         temporary_gparse_dir = 'ZZtoolbox/00pierrick/tempfiles/';
         %========== matlab format files are saved into the following directory
-        savedirnamefull  ='../AAdataI26/';
+        savedirnamefull  ='../../../AAdataI26/';
         % %========= for analyzing data =================
         % MSCthreshold     = 0.97;
         % filtercharactfilename = 'filtercharacteristics1';
