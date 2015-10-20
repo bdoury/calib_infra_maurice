@@ -60,7 +60,7 @@ for indexofSTA = 1:8
     allmeanMSCcstPfilters        = zeros(10000,nbmats);
     nbofvaluesoverthreshold      = zeros(10000,nbmats);
     
-    for ifile=1:nbmats, ifile,tic
+    for ifile=1:nbmats, %ifile,tic
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -110,10 +110,9 @@ for indexofSTA = 1:8
                     idWD = idWD + LLWD;
             end
         end
-        signals = signals(1:idSc-1,:);
-        size(signals)
-        windSpeed = windSpeed(1:idWS-1);
-        windDir = windDir(1:idWD-1);
+        signals     = signals(1:idSc-1,:);
+        windSpeed   = windSpeed(1:idWS-1);
+        windDir     = windDir(1:idWD-1);
         temperature = temperature(1:idT-1);
         
         Ts_sec = 1/Fs_Hz;
