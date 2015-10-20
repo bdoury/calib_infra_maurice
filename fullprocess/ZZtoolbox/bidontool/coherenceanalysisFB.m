@@ -421,7 +421,7 @@ for itour=1:1
         if not(iband==1)
             hold on
         else
-            hold off
+            hold off 
         end
         pcolor(frqsFFT_Hz_ii_aff(1:fix(Lfft_ii/2)),[time_sec_ii.SD]/3600,tabMSC(1:fix(Lfft_ii/2),:)');
         ylabel('time - hour','fontsi',13,'fontn','times')
