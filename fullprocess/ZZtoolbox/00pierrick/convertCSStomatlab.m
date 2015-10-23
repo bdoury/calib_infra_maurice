@@ -1,4 +1,4 @@
-function filenamesavemat = convertCSStomatlab(filewfdisc,dirname)
+function [filenamesavemat, records, samprate] = convertCSStomatlab(filewfdisc,dirname)
 %===============================================================
 % convert data from wfdisc into Matlab format .mat
 % results are saved in filenamesavemat
@@ -53,7 +53,4 @@ for is = 1 : length(wfid)
     records{is}.station = station{is};
     records{is}.channel = chan{is};
 end
-cmdsave = sprintf(' save %s records samprate',filenamesavemat);
-cmdsave
-eval(cmdsave)
 %===============================================================
