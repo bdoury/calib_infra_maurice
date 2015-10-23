@@ -97,7 +97,7 @@ function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
 %             yy.SD: time list in second of the SCPs
 %             yy.signals: time list in second of the signals
 %===========================================================
-% included functions: estimSCPs, estimSUT, fbank
+% included functions: estimSCP, estimSUT, fbank
 %===========================================================
 %===========================================================
 overlapDFT       = filtercharacteristics.overlapDFT;

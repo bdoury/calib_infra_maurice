@@ -59,6 +59,11 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %
 %
 %===========================================================
+% used functions:
+%
+%
+%
+%
 %===========================================================
 
 nbblocksAVE = length(allSDs);
