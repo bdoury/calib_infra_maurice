@@ -1,13 +1,14 @@
+% %==========================================================================
 function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
-                 = estimSUT(allSDs, MSCThreshold, flagmedian)
+    = estimSUT(allSDs, MSCThreshold)
 %===========================================================
 % synopsis:
 % estimate the stastitics of interest from the spectral
-%     components. Then extract the values over the 
+%     components. Then extract the values over the
 %     threshold.
 %
 % [Rsup, Rinf, SpMatrix, MSC, Nsupthreshold] ...
-%    = estimSUT(allSDs, MSCThreshold, flagmedian)
+%    = estimSUT(allSDs, MSCThreshold)
 %
 %====
 % Inputs:
@@ -15,59 +16,57 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %            all spectrals components (provided by the function
 %                estimSD.
 %        MSCThreshold: MSC threshold, typicall 0.99
-%        flagmedian: if 1, we take the median, if not we take the mean
-%           Rk: the median is not sensible to the outlayers.
 %
 %====
 % Outputs:
 %       Rsup: ratio SUU on SUR (see document)
 %         structure
 %            Rsup.tabmod: table of the modulus of Rsup
-%            Rsup.tabmodcst: table of the modulus of Rsup with MSC 
+%            Rsup.tabmodcst: table of the modulus of Rsup with MSC
 %                   above the threshold
 %
 %            Rsup.tabphase: table of the phase of Rsup
-%            Rsup.tabphasecst: table of the phaseof Rsup with MSC 
+%            Rsup.tabphasecst: table of the phaseof Rsup with MSC
 %                   above the threshold
 %
 %            Rsup.mod: modulus of Rsup estimated on Rsup.tabmod
 %            Rsup.modcst: modulus of Rsup estimated on Rsup.tabmod
-%            Rsup.stdmodcst: STD estimated on Rsup.tabmod 
+%            Rsup.stdmodcst: STD estimated on Rsup.tabmod
 %                   with MSC above the threshold
-5
 %            Rsup.phase: table of the phases estimated on Rsup.tabphase
 %                   with MSC above the threshold
-%            Rsup.phasecst: phases of Rsup estimated on Rsup.tabphase 
+%            Rsup.phasecst: phases of Rsup estimated on Rsup.tabphase
 %                   with MSC above the threshold;
-%            Rsup.stdphasecst: STD estimated on Rsup.tabphase 
+%            Rsup.stdphasecst: STD estimated on Rsup.tabphase
 %                   with MSC above the threshold
 %
 %       Rinf: ---- idem Rsup
 %
 %       SCPsupeta: spectral components 3 x Lfft
-%           for cells with MSC is over the threshold. 
+%           for cells with MSC is over the threshold.
 %           For each frequency the spectral components is performed
 %           as the mean for all cells over the threshold.
 %
 %       MSC: structure
 %           MSC.tab: table of the MSC
 %           MSC.tabcst: table of the MSC with values above the threshold
-%           MSC.indexcst: index of the 
+%           MSC.indexcst: index of the
 %               table of the MSC with values above the threshold
 %
 %       Nsupthreshold: number of values above the threshold
 %
 %
 %===========================================================
-% used functions:
-%
-%
-%
-%
 %===========================================================
 
-nbblocksAVE = length(allSDs);
-Lfft = length(allSDs(1).UU);
+%================================================
+%================ if weightingflag = 1 ==========
+% a ponderation is applied using the estimated variance
+% of the MSC estimate
+weightingflag = 1;
+
+nbblocksAVE   = length(allSDs);
+Lfft          = length(allSDs(1).UU);
 indextabMSCsupthreshold = false(Lfft,nbblocksAVE);
 indextabMSCsupthreshold([allSDs.MSC]>MSCThreshold) = true;
 Nsupthreshold = sum(sum(indextabMSCsupthreshold));
@@ -92,7 +91,6 @@ tabURwithMSCsupeta = nan(Lfft,nbblocksAVE);
 tabURwithMSCsupeta(indextabMSCsupthreshold) = ...
     (tabUR(indextabMSCsupthreshold));
 
-
 SCPsupeta      = zeros(3,Lfft);
 SCPsupeta(1,:) = nanmean(tabRRwithMSCsupeta,2);
 SCPsupeta(2,:) = nanmean(tabUUwithMSCsupeta,2);
@@ -100,28 +98,44 @@ SCPsupeta(3,:) = nanmean(tabURwithMSCsupeta,2);
 
 %================================================
 %================================================
-%================= on Rsup ======================
+%================= on Rsup, Rinf======================
 tabHUUUR    = [allSDs.Rsup];
-%=============== to extract the 2D median we take the medians 
-%                on x and y axis it is very close to the 
-%                minimum of the L1-norm in R2
+tabHURRR    = [allSDs.Rinf];
+%================================================
+%================================================
+%================= on Rsup ======================
 %===== real/imaginary part without constraint
 tabrealHUUUR = real(tabHUUUR);
 tabimagHUUUR = imag(tabHUUUR);
 tabmodHUUUR  = sqrt(tabrealHUUUR .^2 + tabimagHUUUR .^2);
 tabphaseHUUUR = atan2(tabimagHUUUR,tabrealHUUUR);
 
-if flagmedian
-        hatrealHUUUR = nanmedian(tabrealHUUUR,2);
-        hatimagHUUUR = nanmedian(tabimagHUUUR,2);
-else
-        hatrealHUUUR = nanmean(tabrealHUUUR,2);
-        hatimagHUUUR = nanmean(tabimagHUUUR,2);
-end
+%================================================
+%================================================
+%================= on Rinf ======================
+%===== real/imaginary part without constraint
+tabrealHURRR = real(tabHURRR);
+tabimagHURRR = imag(tabHURRR);
+tabmodHURRR  = sqrt(tabrealHURRR .^2 + tabimagHURRR .^2);
+tabphaseHURRR = atan2(tabimagHURRR, tabrealHURRR);
+
+%================================================
+%================================================
+%================= on Rsup HAT ==================
+hatrealHUUUR = nanmean(tabrealHUUUR,2);
+hatimagHUUUR = nanmean(tabimagHUUUR,2);
 %===== mod/phase part without constraint
 hatmodHUUUR   = sqrt(hatrealHUUUR .^2 + hatimagHUUUR .^2);
 hatphaseHUUUR = atan2(hatimagHUUUR, hatrealHUUUR);
+%================= on Rinf HAT ==================
+hatrealHURRR = nanmean(tabrealHURRR,2);
+hatimagHURRR = nanmean(tabimagHURRR,2);
+%===== mod/phase part without constraint
+hatmodHURRR   = sqrt(hatrealHURRR .^2 + hatimagHURRR .^2);
+hatphaseHURRR = atan2(hatimagHURRR, hatrealHURRR);
 
+%================================================
+%================================================
 %================ on Rsup with constraint ======
 %===== real part with constraint
 tabrealHUUURwithMSCsupeta = nan(Lfft,nbblocksAVE);
@@ -137,53 +151,10 @@ tabmodHUUURwithMSCsupeta = sqrt(...
     tabimagHUUURwithMSCsupeta .^2);
 tabphaseHUUURwithMSCsupeta = atan2(tabimagHUUURwithMSCsupeta,tabrealHUUURwithMSCsupeta);
 
-%===== hat's
-if flagmedian
-    hatrealHUUURwithMSCsupeta = ...
-        nanmedian(tabrealHUUURwithMSCsupeta,2);
-else
-    hatrealHUUURwithMSCsupeta = ...
-        nanmean(tabrealHUUURwithMSCsupeta,2);
-end
-if flagmedian
-    hatimagHUUURwithMSCsupeta = ...
-        nanmedian(tabimagHUUURwithMSCsupeta,2);
-else
-    hatimagHUUURwithMSCsupeta = ...
-        nanmean(tabimagHUUURwithMSCsupeta,2);
-end
-%===== mod/phase part with constraint
-hatmodHUUURwithMSCsupeta = sqrt(...
-    hatrealHUUURwithMSCsupeta .^2+...
-    hatimagHUUURwithMSCsupeta .^2);
-hatphaseHUUURwithMSCsupeta = atan2(...
-    hatimagHUUURwithMSCsupeta,...
-    hatrealHUUURwithMSCsupeta);
-stdmodHUUURwithMSCsupeta = nanstd(tabmodHUUURwithMSCsupeta,[],2);
-stdphaseHUUURwithMSCsupeta = nanstd(tabphaseHUUURwithMSCsupeta,[],2);
 
 %================================================
 %================================================
-%================= on Rinf ======================
-tabHURRR    = [allSDs.Rinf];
-%===== real/imaginary part without constraint
-tabrealHURRR = real(tabHURRR);
-tabimagHURRR = imag(tabHURRR);
-tabmodHURRR  = sqrt(tabrealHURRR .^2 + tabimagHURRR .^2);
-tabphaseHURRR = atan2(tabimagHURRR, tabrealHURRR);
-
-if flagmedian
-        hatrealHURRR = nanmedian(tabrealHURRR,2);
-        hatimagHURRR = nanmedian(tabimagHURRR,2);
-else
-        hatrealHURRR = nanmean(tabrealHURRR,2);
-        hatimagHURRR = nanmean(tabimagHURRR,2);
-end
-%===== mod/phase part without constraint
-hatmodHURRR   = sqrt(hatrealHURRR .^2 + hatimagHURRR .^2);
-hatphaseHURRR = atan2(hatimagHURRR, hatrealHURRR);
-
-%================ on Rinf with constraint ======
+%================ on Rsinf with constraint ======
 %===== real part with constraint
 tabrealHURRRwithMSCsupeta = nan(Lfft,nbblocksAVE);
 tabrealHURRRwithMSCsupeta(indextabMSCsupthreshold) = ...
@@ -197,28 +168,87 @@ tabmodHURRRwithMSCsupeta = sqrt(...
     tabrealHURRRwithMSCsupeta .^2+...
     tabimagHURRRwithMSCsupeta .^2);
 tabphaseHURRRwithMSCsupeta = atan2(tabimagHURRRwithMSCsupeta,tabrealHURRRwithMSCsupeta);
-%===== hat's
-if flagmedian
+
+RsuptheowithMSCsupeta = tabmodHUUURwithMSCsupeta .* ...
+    tabmodHURRRwithMSCsupeta;
+
+%================================================
+%================ if weightingflag = 1 ==========
+% a ponderation is applied using the estimated variance
+% of the MSC estimate
+weightMSCsupeta = (tabMSCwithMSCsupeta .^2) ./  ...
+    (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
+weightMSCinfeta = 1 ./  ...
+    (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
+
+%================================================
+%================================================
+%========== on Rsup HAT with constraint =========
+%========== and weighting coeffs ================
+
+if weightingflag
+    hatrealHUUURwithMSCsupeta = ...
+        nansum(tabrealHUUURwithMSCsupeta .* weightMSCsupeta,2) ...
+        ./ nansum((weightMSCsupeta),2);
+    
+    hatimagHUUURwithMSCsupeta = ...
+        nansum(tabimagHUUURwithMSCsupeta .* weightMSCsupeta,2) ...
+        ./ nansum((weightMSCsupeta),2);
+else
+    hatrealHUUURwithMSCsupeta = ...
+        nanmean(tabrealHUUURwithMSCsupeta,2);
+    
+    hatimagHUUURwithMSCsupeta = ...
+        nanmean(tabimagHUUURwithMSCsupeta,2);
+end
+
+%===== mod/phase part with constraint
+hatmodHUUURwithMSCsupeta = sqrt(...
+    hatrealHUUURwithMSCsupeta .^2+...
+    hatimagHUUURwithMSCsupeta .^2);
+
+hatphaseHUUURwithMSCsupeta = atan2(...
+    hatimagHUUURwithMSCsupeta,...
+    hatrealHUUURwithMSCsupeta);
+
+stdmodHUUURwithMSCsupeta   = nanstd(tabmodHUUURwithMSCsupeta,[],2);
+stdphaseHUUURwithMSCsupeta = nanstd(tabphaseHUUURwithMSCsupeta,[],2);
+
+%================================================
+%================================================
+%========== on Rinf HAT with constraint =========
+%========== and weighting coeffs ================
+
+if weightingflag
     hatrealHURRRwithMSCsupeta = ...
-        nanmedian(tabrealHURRRwithMSCsupeta,2);
+        nansum(tabrealHURRRwithMSCsupeta .* weightMSCinfeta,2) ...
+        ./ nansum((weightMSCinfeta),2);
+    
+    hatimagHURRRwithMSCsupeta = ...
+        nansum(tabimagHURRRwithMSCsupeta .* weightMSCinfeta,2) ...
+        ./ nansum((weightMSCinfeta),2);
 else
     hatrealHURRRwithMSCsupeta = ...
         nanmean(tabrealHURRRwithMSCsupeta,2);
-end
-if flagmedian
-    hatimagHURRRwithMSCsupeta = ...
-        nanmedian(tabimagHURRRwithMSCsupeta,2);
-else
     hatimagHURRRwithMSCsupeta = ...
         nanmean(tabimagHURRRwithMSCsupeta,2);
 end
+
 %===== mod/phase part with constraint
 hatmodHURRRwithMSCsupeta = sqrt(...
     hatrealHURRRwithMSCsupeta .^2+...
     hatimagHURRRwithMSCsupeta .^2);
+
 hatphaseHURRRwithMSCsupeta = atan2(...
     hatimagHURRRwithMSCsupeta,...
     hatrealHURRRwithMSCsupeta);
+
+stdmodHURRRwithMSCsupeta   = nanstd(tabmodHURRRwithMSCsupeta,[],2);
+stdphaseHURRRwithMSCsupeta = nanstd(tabphaseHURRRwithMSCsupeta,[],2);
+
+
+%================ on Rinf with constraint ======
+%===== hat's
 
 Rsup.tabmod = tabmodHUUUR;
 Rsup.tabmodcst = tabmodHUUURwithMSCsupeta;
@@ -240,10 +270,14 @@ Rinf.tabphasecst = tabphaseHURRRwithMSCsupeta;
 Rinf.mod = hatmodHURRR;
 Rinf.phase = hatphaseHURRR;
 Rinf.modcst = hatmodHURRRwithMSCsupeta;
+Rinf.stdmodcst = stdmodHURRRwithMSCsupeta;
 Rinf.phasecst = hatphaseHURRRwithMSCsupeta;
+Rinf.stdphasecst = stdphaseHURRRwithMSCsupeta;
 
 MSC.tab = tabMSC;
 MSC.tabcst = tabMSCwithMSCsupeta;
 MSC.indexcst = indextabMSCsupthreshold;
+MSC.weightMSC = weightMSCsupeta;
 %===========================================================
 %===========================================================
+
