@@ -266,7 +266,7 @@ allSDs    = struct;
 time_sec  = struct;
 NaverageFFTs_with_overlap = round(NaverageFFTs/(1-overlapFFT)-1);
 for ibB=1:NSD,
-    indB1 = (ibB-1)*shiftFFTs+1;
+    indB1 = (ibB-1)*NaverageFFTs_with_overlap+1;
     indB2 = indB1+NaverageFFTs_with_overlap-1;
     indB  = fix(indB1):fix(indB2);
     indB  = indB(indB<= NblocksFFT);

@@ -12,8 +12,8 @@ addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 1;
 % close all
-for ihc = 1:5
-    for ii=[4]
+for ihc = 1:8
+    for ii=[2]
         switch ii
             case 1
                 comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
@@ -47,13 +47,13 @@ for ihc = 1:5
                 coeffsens=1.1;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 6
-                coeffsens=0.97;
+                coeffsens=1;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
             case 7
                 coeffsens=0.97;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
             case 8
-                coeffsens=0.99;
+                coeffsens=1.02;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
         end
         
@@ -65,10 +65,10 @@ for ihc = 1:5
         else
             doubledaynumber = 10;
             permutenbmats = randperm(nbmats);
-            allRatioPfilters = allRatioPfilters(:,permutenbmats(1:doubledaynumber));
+            allRatioPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
         end
         
-        allRatioPfilters_ave          = nanmean(allRatioPfilters,2);
+        allRatioPfilters_ave          = nanmean(allRatioSupPfilters,2);
         absallRatioPfilters_ave       = abs(allRatioPfilters_ave);
         angleallRatioPfilters_ave_deg = angle(allRatioPfilters_ave)*180/pi;
         
@@ -94,7 +94,7 @@ for ihc = 1:5
         
         
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-        allRatioPfiltersU        = allRatioPfilters(inda,:);
+        allRatioPfiltersU        = allRatioSupPfilters(inda,1:62);
         allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
         nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
         

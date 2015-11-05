@@ -50,12 +50,12 @@ L_pri = 4.25;  L_sec = 3.00;    L_ter = 0.85;%2.07;  % lengths of pipes 18-m HCP
 %====================================================================
 %====================================================================
 % the theoretical model does not work with H1 to H5 in IS26
-% 
+%     WARNING: change values for 1 to 5
 % On other way could be to consider that the "ground truth" 
 % can be obtained by averaging of the measureemnts
 % but in this case the dip artefact appears.
 % real values are:
-% L_pri = 5.75;  L_sec = 3.00;    L_ter = 0.85/2;%2.07;  % lengths of pipes 18-m HCP
+%=== here L_pri = 5.75;  L_sec = 3.00;    L_ter = 0.85/2;%2.07;  % lengths of pipes 18-m HCP
 %
 %====================================================================
 %====================================================================

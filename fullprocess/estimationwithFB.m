@@ -9,7 +9,7 @@ addpath ZZtoolbox/
 
 directoryresults      = 'AAresultswithFBbis';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-directorydatafromIDC  = '../../../AAdataI26/';
+directorydatafromIDC  = '../../../../../AAdataI26calib/';
 
 %==========================================================================
 % the data are in a file with the name built as:
@@ -43,12 +43,14 @@ end
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 1:8
+for indexofSTA = 8
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
     nbmats                       = length(fileswithdotmat);
+    
+    
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
@@ -77,7 +79,7 @@ for indexofSTA = 1:8
         windSpeed   = zeros(34560000,1);
         temperature = zeros(34560000,1);
         windDir     = zeros(34560000,1);
-        Lrecords =length(records);
+        Lrecords    =length(records);
         for ir =1:Lrecords
             switch records{ir}.channel
                 case 'BDF'
@@ -110,6 +112,9 @@ for indexofSTA = 1:8
                     idWD = idWD + LLWD;
             end
         end
+        if ifile==63
+            idSc=2e6;
+        end
         signals     = signals(1:idSc-1,:);
         windSpeed   = windSpeed(1:idWS-1);
         windDir     = windDir(1:idWD-1);
@@ -122,7 +127,8 @@ for indexofSTA = 1:8
         % notice that the SUTs is not saved, therefore we have only the
         % last associated the laxt index which is NBMATS
         [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
-            fbankanalysis(signals_centered,filtercharact,Fs_Hz,MSCthreshold);
+            fbankanalysis(signals_centered,...
+            filtercharact,Fs_Hz,MSCthreshold);
         
         %============================================
         P       = length(SUTs);
@@ -148,7 +154,6 @@ for indexofSTA = 1:8
                 SUTs(ip).estimRinf.stdmodcst(idipinf(ip):idipsup(ip));
             allSTDphaseRatioInfPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRinf.phasecst(idipinf(ip):idipsup(ip));
-
             
             allmeanMSCcstPfilters(id1:id2,ifile) = ...
                 nanmean(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:),2);
@@ -164,7 +169,6 @@ for indexofSTA = 1:8
                 directoryresultsALL,indexofSTA,filenameonly);
             eval(comsave);
         end
-        toc
     end
     allRatioSupPfilters         = allRatioSupPfilters(1:id1-1,:);
     allSTDmodRatioSupPfilters   = allSTDmodRatioSupPfilters(1:id1-1,:);

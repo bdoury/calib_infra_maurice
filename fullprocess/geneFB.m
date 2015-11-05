@@ -4,8 +4,8 @@ allcolors = ['g.';'y.';'m.';'r.';'k.';'b.';'rx';'yx';'mx';'rx';'kx';'c.';'k.';'r
 
 M                               = 5;
 Pfilter                         = 6;
-listofperiods                   = [1000,500,250,100,50,25];
-listOrder                       = [2 3 4 4 4 6];
+listofperiods                   = [1000,800,350,150,80,30];
+listOrder                       = [2 2 2 2 3 4];
 filtercharact = struct;
 
 for iP = 1:Pfilter
