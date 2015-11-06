@@ -248,8 +248,19 @@ if exist('smoothwindow','var')
 else
     Hwin     = hamming(Lfft);
 end
-%========= normalisation
-% not useful if only PSD ratios are considered
+%========= 
+% the normalisation below is
+% not useful if we only consider PSD ratios
+%==========================================
+%   <-------- NaverageFFTs = 5 ------->
+%  |******|******|******|******|******|
+%      |******|******|******|******|
+% Given NaverageFFTs, duration to performing the SCP
+% we derive the length of the FFT
+% Then we derive le nb de blocs de FFT
+% NblocsFFT = Ttotal/shiftFFT
+% typically shiftFFT = LFFT/2
+% 
 Hwin = Hwin *sqrt(Lfft/(Hwin'*Hwin));
 for ibF  = 1:NblocksFFT
     ibT  = (ibF-1)*shiftSignal+(1:Lfft);
