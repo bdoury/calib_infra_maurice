@@ -391,6 +391,9 @@ filtercharact(P).ratioDFT2SCP=5;
 For example if {\tt SCPperiod\_sec=500}, {\tt overlapDFT = 0.5} and  {\tt ratioDFT2SCP=5}, the FFTs are computed on $500/5=100$ seconds, then for a sampling frequency of 20 Hz, on 2000 samples. Because the overlap is 0.5 we compute 9 FFTs.
 \end{itemize}
 
+The full length is divided by the 
+
+
 \figscale{overlapFFTs.pdf}{Spectral estimation with $50\%$ overlapping. The variance of the estimate is related to the number of windows. The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. }{}{0.8}
 %=================================
 \subsubsection{Filter bank analysis}

@@ -1,10 +1,12 @@
-%========================== displaySensorRatio.m =========================
+%========================== displaySensorResponse.m =========================
 % this program reads the ratios SUT/SREF estimated by spectral approach
 % and stored in a drectory as AAresults. That consists on 8 files
 % for the 8 sensors of IS26. Each file consists the estimate ratios
 % on several days of records.
 %
-% this program calls the program theoreticalSUTresponse4IS26.m
+% this program calls the function:
+%         - theoreticalSUTresponse4IS26.m 
+% located in ZZtoolbox/00gabrielson
 %
 clear
 addpath ZZtoolbox/

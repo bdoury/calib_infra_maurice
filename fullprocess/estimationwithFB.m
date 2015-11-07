@@ -1,4 +1,8 @@
 %====================== estimationwithFB.m =============================
+%
+% used function
+%     - fbankanalysis.m
+%
 clear
 allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
     'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];

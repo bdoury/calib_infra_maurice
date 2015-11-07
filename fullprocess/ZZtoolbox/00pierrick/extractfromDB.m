@@ -1,5 +1,11 @@
-%============= pipeline.m =========================================
+%============= extractfromDB.m =========================================
 %==== Write the query
+% this programm is called by
+%        - RUNextractfromDB.m which provides the settings
+% used functions:
+%        - convertCSStomatlab
+%
+%
 fid           = fopen(sprintf('%sgparse_temp.par',temporary_gparse_dir),'w');
 fprintf(fid, 'open data_source=%s user=%s password=%s\n', data_source, user, password);
 fprintf(fid, '%s\n',['query wfdisc select * from sel3.wfdisc where sta in ', ...

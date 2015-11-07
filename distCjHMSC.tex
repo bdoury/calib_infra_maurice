@@ -231,6 +231,7 @@
  \def\programs{../../allprogs/}
  \def\programsfullprocess{fullprocess/}
  \def\programsToolbox{fullprocess/ZZtoolbox/}
+ \def\programspierrick{fullprocess/ZZtoolbox/00Pierrick/}
  %============================================
 \chapter{Programs}
  \section{RMSE as function of coherence}
@@ -244,27 +245,31 @@
  \section{Statistical distribution of the ratios}
 {\tiny \verbatiminput{\programs/2progsCIandOthers/CIHestimate.m}}
 
- \newpage
-  \section{Example of filter bank description}
-{\tiny \verbatiminput{\programs/3FBestimatesonIS26/filtercharacteristics0.m}}
   
+\newpage
+%============================================
+  \section{Extraction from DB}
+  
+{\tiny \verbatiminput{\programsfullprocess RUNextractfromDB.m}}
+
+\subsection{Conversion to format {\tt .mat}}
+{\tiny \verbatiminput{\programspierrick convertCSStomatlab.m}}
+
+{\tiny \verbatiminput{\programspierrick extractfromDB.m}}
+
+
+
 \newpage
 %============================================
   \section{Full process}
 
-\subsection{Settings}
-{\tiny \verbatiminput{\programsfullprocess settings.m}}
 
-\subsection{Main program}
-{\tiny \verbatiminput{\programsfullprocess pipeline.m}}
+  \subsection{Example of filter bank description}
+{\tiny \verbatiminput{\programsfullprocess/filtercharacteristics.m}}
 
-\subsection{Conversion to format {\tt .mat}}
-{\tiny \verbatiminput{\programsfullprocess convertCSStomatlab.m}}
+\subsection{Main program for estimation}
+{\tiny \verbatiminput{\programsfullprocess estimationwithFB.m}}
 
-\subsection{Analysis function}
-{\tiny \verbatiminput{\programsfullprocess analyzeSUT.m}}
-
-%{\tiny \verbatiminput{\programsfullprocess displayafigure.m}}
 
 %============================================
 \section{Application program}
@@ -272,14 +277,19 @@ The first following program extracts the final ratio between the SUT and the Sre
 
 The second following program displays the curves taking randomly a given number of records in the previous files.
 
+\subsection{extractSensorRatio.m}
 {\tiny \verbatiminput{\programsfullprocess extractSensorRatio.m}}
 
+\subsection{displaySensorRatio.m}
 {\tiny \verbatiminput{\programsfullprocess displaySensorRatio.m}}
 
 
+\subsection{displaySensorResponse.m}
+{\tiny \verbatiminput{\programsfullprocess displaySensorResponse.m}}
+
 %============================================ 
 \chapter{Toolbox}
-\section{Spectral analysis for SUT}
+\section{Main analysis function: {\tt fbankanalysis.m}}
 {\tiny \verbatiminput{\programsToolbox fbankanalysis.m}}
 
 \section{Cumulative function of $\hMSC$}
@@ -301,6 +311,8 @@ The second following program displays the curves taking randomly a given number 
 %===========================================
 %============================================ 
 \chapter{Miscellaneous utilitaries}
+\section{GeneFB}
+{\tiny \verbatiminput{../../../0progsextract/geneFB}}
 \section{execGPARSE}
 {\tiny \verbatiminput{../../../0progsextract/execGPARSE.m}}
 \section{convertCSS2matlab}
