@@ -9,12 +9,12 @@ bootdraw = 0;
 nbdraw=100;
 Ncouples=50;
 
-for ihc=[2]
+for ihc=1:5
     % keep 2
-    for ii=3
+    for ii=1
         switch ii
             case 1
-                comload = sprintf('load AAresults0812Hz/resultssta26sensor%i',ihc);
+                comload = sprintf('load AAresultsaround1Hz/resultssta26sensor%i',ihc);
                 numfig = ihc+100;
             case 2
                 comload = sprintf('load AAresults0812Hzbis/resultssta26sensor%i',ihc);
@@ -28,7 +28,7 @@ for ihc=[2]
                 coeffsens=1.02;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 2
-                coeffsens=1.09;%.1;
+                coeffsens=1.06;%.1;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 3
                 coeffsens=1.032;

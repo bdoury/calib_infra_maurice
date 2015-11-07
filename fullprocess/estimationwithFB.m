@@ -11,7 +11,6 @@ FLAGsaveall = 0;
 
 addpath ZZtoolbox/
 
-directoryresults      = 'AAresultswithFBbis';
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
 directorydatafromIDC  = '../../../../../AAdataI26calib/';
 
@@ -29,14 +28,17 @@ directorydatafromIDC  = '../../../../../AAdataI26calib/';
 % filtercharactfilename = 'filtercharacteristics.m';
 %======
 % generate by geneFB.m, use LOAD
+if 0
 filtercharactfilename = 'filtercharacteristics2';
 cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
+directoryresults      = 'AAresultswithFBbis';
 
 %======
-% to select only 1Hz
-% filtercharactfilename = 'filtercharacteristics0812Hz.m';
-% cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
-
+else
+filtercharactfilename = 'filtercharacteristics0812Hz.m';
+cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
+directoryresults      = 'AAresultsaround1Hz';
+end
 %======
 eval(cmdloadcharact);
 Pfilter = length(filtercharact);
@@ -47,7 +49,7 @@ end
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 8
+for indexofSTA = 4:8
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================

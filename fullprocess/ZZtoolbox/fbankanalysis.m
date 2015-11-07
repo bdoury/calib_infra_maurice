@@ -255,11 +255,15 @@ end
 %   <-------- NaverageFFTs = 5 ------->
 %  |******|******|******|******|******|
 %      |******|******|******|******|
-% Given NaverageFFTs, duration to performing the SCP
-% we derive the length of the FFT
-% Then we derive le nb de blocs de FFT
+% Given NaverageFFTs and the duration to performing 
+% the spectral components, we derive the length 
+% of the FFT. Then we derive the total nb of FFT blocks
+% in the full file, taking into account the overlap.
 % NblocsFFT = Ttotal/shiftFFT
-% typically shiftFFT = LFFT/2
+%       typically shiftFFT = 1/2
+% We compute all FFTs before to averaging.
+% In another langage it is not necessary
+% to proceed in such a way.
 % 
 Hwin = Hwin *sqrt(Lfft/(Hwin'*Hwin));
 for ibF  = 1:NblocksFFT
@@ -272,7 +276,7 @@ for ibF  = 1:NblocksFFT
     allFFTsRR(:,ibF) = fft(xR_i,Lfft)/sqrtLfft;
 end
 shiftFFTs = fix((1-overlapSD)*NaverageFFTs);
-NSD       = fix(N/Lfft/NaverageFFTs);% fix((NblocksFFT/2-(NaverageFFTs-shiftFFTs))/shiftFFTs);
+NSD       = fix(N/Lfft/NaverageFFTs);
 allSDs    = struct;
 time_sec  = struct;
 NaverageFFTs_with_overlap = round(NaverageFFTs/(1-overlapFFT)-1);
