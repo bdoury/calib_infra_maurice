@@ -1,9 +1,11 @@
-function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
+%========================================================================
+function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
+    filterbank] = ...
     fbankanalysis(sigin, ...
     filtercharacteristics, ...
     Fs_Hz,...
     MSCthreshold)
-%===========================================================
+%========================================================================
 % synopsis:
 %    SUTs = fbankanalysis...
 %          (sigin,filtercharacteristics,Fs_Hz,MSCthreshold)
@@ -15,7 +17,7 @@ function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
 %          Lfft the DFT length
 %          and k the frequency index associated to the
 %          frequency k*Fs_Hz/Lfft
-%===========================================================
+%========================================================================
 % Remark:
 % The 3 parameters, M, Lfft, and stationarity-duration are
 % related by:
@@ -28,7 +30,7 @@ function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
 %    M is defined by xx.ratioDFT2SCP (overlap not applied)
 %    therefore we derive Lfft, regarding the overlap
 %    xx.overlapDFT
-%===========================================================
+%========================================================================
 % Inputs:
 %    sigin: input signals T x 2
 %    filtercharacteristics: structure Px1
@@ -51,13 +53,13 @@ function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
 %     Fs_Hz: sampling frequency in Hz
 %     MSCthreshold: MSC threshold (advised value > 0.99)
 %
-%===========================================================
+%========================================================================
 % Rk: the spectral components are performed on successive DFTs with
 %     overlapping. If M denotes the ratioFFT2DSP and
 %     if overlapFFT is 0.5, the number of DFTs is 9
 %===========================================================
 % Example of filtercharacteristics structure:
-%===========================================================
+%========================================================================
 %         xx.Norder: 4
 %         xx.Wlow_Hz: 0.02
 %         xx.Whigh_Hz: 0.2
@@ -66,7 +68,7 @@ function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
 %         xx.overlapDFT: 0.5
 %         xx.overlapSCP: 0
 %         xx.ratioDFT2SCP: 5.
-%===========================================================
+%========================================================================
 % filtercharact(1).Norder           = 4;
 % filtercharact(1).Wlow_Hz          = 0.02;
 % filtercharact(1).Whigh_Hz         = 0.2;
@@ -75,8 +77,8 @@ function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
 % filtercharact(1).overlapDFT       = 0.5;
 % filtercharact(1).overlapSCP       = 0;
 % filtercharact(1).ratioDFT2SCP     = 5;
-%===========================================================
-%===========================================================
+%========================================================================
+%========================================================================
 % Outputs:
 %     SUTs: structures P x 1
 %         xx.estimRsup: Rsup ratio
@@ -96,10 +98,10 @@ function  [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
 %             yy.FFT: time list in second of the DFTs
 %             yy.SD: time list in second of the SCPs
 %             yy.signals: time list in second of the signals
-%===========================================================
+%========================================================================
 % included functions: estimSCP, estimSUT, fbank
-%===========================================================
-%===========================================================
+%========================================================================
+%========================================================================
 overlapDFT       = filtercharacteristics.overlapDFT;
 overlapSCP       = filtercharacteristics.overlapSCP;
 ratioDFT2SCP     = filtercharacteristics.ratioDFT2SCP;
@@ -147,9 +149,9 @@ for ifilter = 1:P
             SUTs(ifilter).indexinsidefreqband(2),:),2);
     end
 end
-%=======================================================
+%========================================================================
 function [sigout, filterbank] = fbank(sigin,filtercharact,Fs_Hz)
-%=======================================================
+%========================================================================
 P           = length(filtercharact);
 [T,d]       = size(sigin);
 sigout      = zeros(T,d,P);
@@ -184,13 +186,13 @@ for ifilter = 1:P
         
     end
 end
-%=======================================================
+%========================================================================
 function [allSDs, time_sec, frqsFFT_Hz] = ...
     estimSCP(xU,xR,GREF,overlapFFT, ...
     NaverageFFTs, overlapSD, Fs_Hz, smoothwindow)
-%==========================================================================
+%========================================================================
 % Perform the spectral components of the two signals xU et xR.
-%==========================================================================
+%========================================================================
 % The code uses the Welch's approach. The signal is shared into DFT
 % windows of which the length is the length of GREF, with the
 % overlap rate of OVERLAPFFT. Then the specral components is averaged
@@ -221,8 +223,8 @@ function [allSDs, time_sec, frqsFFT_Hz] = ...
 %    time_sec.SD: grid of time for the Spectral Density blocks (in second)
 %    time_sec.signals: grid of time for the samplig period (in second)
 %    frqsFFT_Hz: grid of frequency for the interval [0, Fs_Hz] (in Hz)
-%==========================================================================
-%==========================================================================
+%========================================================================
+%========================================================================
 xU   = xU(:);
 xR   = xR(:);
 N    = length(xU);
@@ -248,10 +250,10 @@ if exist('smoothwindow','var')
 else
     Hwin     = hamming(Lfft);
 end
-%========= 
+%========================================================================
 % the normalisation below is
 % not useful if we only consider PSD ratios
-%==========================================
+%========================================================================
 %   <-------- NaverageFFTs = 5 ------->
 %  |******|******|******|******|******|
 %      |******|******|******|******|
@@ -265,6 +267,7 @@ end
 % In another langage it is not necessary
 % to proceed in such a way.
 % 
+%========================================================================
 Hwin = Hwin *sqrt(Lfft/(Hwin'*Hwin));
 for ibF  = 1:NblocksFFT
     ibT  = (ibF-1)*shiftSignal+(1:Lfft);
@@ -275,19 +278,21 @@ for ibF  = 1:NblocksFFT
     allFFTsUU(:,ibF) = fft(xU_i,Lfft)/sqrtLfft;
     allFFTsRR(:,ibF) = fft(xR_i,Lfft)/sqrtLfft;
 end
+NaverageFFT = fix(NaverageFFTs/(1-overlapFFT))-1;
 shiftFFTs = fix((1-overlapSD)*NaverageFFTs);
-NSD       = fix(N/Lfft/NaverageFFTs);
 allSDs    = struct;
 time_sec  = struct;
-NaverageFFTs_with_overlap = round(NaverageFFTs/(1-overlapFFT)-1);
+NshiftFFTs_with_overlap = max([2*shiftFFTs-1,1]);
+NSD       = fix(NblocksFFT/NshiftFFTs_with_overlap);
 for ibB=1:NSD,
-    indB1 = (ibB-1)*NaverageFFTs_with_overlap+1;
-    indB2 = indB1+NaverageFFTs_with_overlap-1;
+    indB1 = (ibB-1)*NshiftFFTs_with_overlap+1;
+    indB2 = indB1+NaverageFFT-1;
     indB  = fix(indB1):fix(indB2);
     indB  = indB(indB<= NblocksFFT);
     allSDs(ibB).RR  = mean(abs(allFFTsRR(:,indB)) .^ 2,2);
     allSDs(ibB).UU  = mean(abs(allFFTsUU(:,indB)) .^ 2,2);
-    allSDs(ibB).UR  = mean(allFFTsRR(:,indB) .* conj(allFFTsUU(:,indB)),2);
+    allSDs(ibB).UR  = mean(allFFTsRR(:,indB) .* ...
+        conj(allFFTsUU(:,indB)),2);
     allSDs(ibB).MSC = (abs(allSDs(ibB).UR) .^2) ./...
         (allSDs(ibB).RR .* allSDs(ibB).UU);
     allSDs(ibB).Rsup  = allSDs(ibB).UU ./ allSDs(ibB).UR;
@@ -297,12 +302,13 @@ for ibB=1:NSD,
 end
 frqsFFT_Hz = (0:Lfft-1)*Fs_Hz/Lfft;
 time_sec.FFT = ((0:NblocksFFT-1)+1/2)*shiftSignal/Fs_Hz;
-time_sec.SD =  ((0:NSD-1)+1/2)*shiftFFTs*Lfft/Fs_Hz;
+time_sec.SD =  ((0:NSD-1)+1/2)*(shiftSignal/Fs_Hz)* ...
+    NshiftFFTs_with_overlap;
 time_sec.signals =  ((0:N-1)+1/2)/Fs_Hz;
-% %==========================================================================
+%========================================================================
 function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
     = estimSUT(allSDs, MSCThreshold)
-%===========================================================
+%========================================================================
 % synopsis:
 % estimate the stastitics of interest from the spectral
 %     components. Then extract the values over the
@@ -357,13 +363,14 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %       Nsupthreshold: number of values above the threshold
 %
 %
-%===========================================================
-%===========================================================
+%========================================================================
+%========================================================================
 
-%================================================
-%================ if weightingflag = 1 ==========
+%========================================================================
+%================ if weightingflag = 1
 % a ponderation is applied using the estimated variance
 % of the MSC estimate
+%========================================================================
 weightingflag = 1;
 
 nbblocksAVE   = length(allSDs);
@@ -397,32 +404,32 @@ SCPsupeta(1,:) = nanmean(tabRRwithMSCsupeta,2);
 SCPsupeta(2,:) = nanmean(tabUUwithMSCsupeta,2);
 SCPsupeta(3,:) = nanmean(tabURwithMSCsupeta,2);
 
-%================================================
-%================================================
-%================= on Rsup, Rinf======================
+%========================================================================
+%================= on Rsup, Rinf
+%========================================================================
 tabHUUUR    = [allSDs.Rsup];
 tabHURRR    = [allSDs.Rinf];
-%================================================
-%================================================
-%================= on Rsup ======================
+%========================================================================
+%================= on Rsup
 %===== real/imaginary part without constraint
+%========================================================================
 tabrealHUUUR = real(tabHUUUR);
 tabimagHUUUR = imag(tabHUUUR);
 tabmodHUUUR  = sqrt(tabrealHUUUR .^2 + tabimagHUUUR .^2);
 tabphaseHUUUR = atan2(tabimagHUUUR,tabrealHUUUR);
 
-%================================================
-%================================================
-%================= on Rinf ======================
+%========================================================================
+%================= on Rinf
 %===== real/imaginary part without constraint
+%========================================================================
 tabrealHURRR = real(tabHURRR);
 tabimagHURRR = imag(tabHURRR);
 tabmodHURRR  = sqrt(tabrealHURRR .^2 + tabimagHURRR .^2);
 tabphaseHURRR = atan2(tabimagHURRR, tabrealHURRR);
 
-%================================================
-%================================================
-%================= on Rsup HAT ==================
+%========================================================================
+%================= on Rsup HAT
+%========================================================================
 hatrealHUUUR = nanmean(tabrealHUUUR,2);
 hatimagHUUUR = nanmean(tabimagHUUUR,2);
 %===== mod/phase part without constraint
@@ -435,10 +442,10 @@ hatimagHURRR = nanmean(tabimagHURRR,2);
 hatmodHURRR   = sqrt(hatrealHURRR .^2 + hatimagHURRR .^2);
 hatphaseHURRR = atan2(hatimagHURRR, hatrealHURRR);
 
-%================================================
-%================================================
-%================ on Rsup with constraint ======
+%========================================================================
+%================ on Rsup with constraint
 %===== real part with constraint
+%========================================================================
 tabrealHUUURwithMSCsupeta = nan(Lfft,nbblocksAVE);
 tabrealHUUURwithMSCsupeta(indextabMSCsupthreshold) = ...
     (real(tabHUUUR(indextabMSCsupthreshold)));
@@ -450,13 +457,13 @@ tabimagHUUURwithMSCsupeta(indextabMSCsupthreshold) = ...
 tabmodHUUURwithMSCsupeta = sqrt(...
     tabrealHUUURwithMSCsupeta .^2+...
     tabimagHUUURwithMSCsupeta .^2);
-tabphaseHUUURwithMSCsupeta = atan2(tabimagHUUURwithMSCsupeta,tabrealHUUURwithMSCsupeta);
+tabphaseHUUURwithMSCsupeta = atan2(tabimagHUUURwithMSCsupeta,...
+    tabrealHUUURwithMSCsupeta);
 
-
-%================================================
-%================================================
-%================ on Rsinf with constraint ======
+%========================================================================
+%================ on Rsinf with constraint 
 %===== real part with constraint
+%========================================================================
 tabrealHURRRwithMSCsupeta = nan(Lfft,nbblocksAVE);
 tabrealHURRRwithMSCsupeta(indextabMSCsupthreshold) = ...
     (real(tabHURRR(indextabMSCsupthreshold)));
@@ -468,24 +475,25 @@ tabimagHURRRwithMSCsupeta(indextabMSCsupthreshold) = ...
 tabmodHURRRwithMSCsupeta = sqrt(...
     tabrealHURRRwithMSCsupeta .^2+...
     tabimagHURRRwithMSCsupeta .^2);
-tabphaseHURRRwithMSCsupeta = atan2(tabimagHURRRwithMSCsupeta,tabrealHURRRwithMSCsupeta);
+tabphaseHURRRwithMSCsupeta = atan2(tabimagHURRRwithMSCsupeta,...
+    tabrealHURRRwithMSCsupeta);
 
 RsuptheowithMSCsupeta = tabmodHUUURwithMSCsupeta .* ...
     tabmodHURRRwithMSCsupeta;
 
-%================================================
-%================ if weightingflag = 1 ==========
+%========================================================================
+%================ if weightingflag = 1
 % a ponderation is applied using the estimated variance
 % of the MSC estimate
+%========================================================================
 weightMSCsupeta = (tabMSCwithMSCsupeta .^2) ./  ...
     (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
 weightMSCinfeta = 1 ./  ...
     (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
-
-%================================================
-%================================================
-%========== on Rsup HAT with constraint =========
-%========== and weighting coeffs ================
+%========================================================================
+%========== on Rsup HAT with constraint
+%========== and weighting coeffs
+%========================================================================
 
 if weightingflag
     hatrealHUUURwithMSCsupeta = ...
@@ -515,10 +523,10 @@ hatphaseHUUURwithMSCsupeta = atan2(...
 stdmodHUUURwithMSCsupeta   = nanstd(tabmodHUUURwithMSCsupeta,[],2);
 stdphaseHUUURwithMSCsupeta = nanstd(tabphaseHUUURwithMSCsupeta,[],2);
 
-%================================================
-%================================================
-%========== on Rinf HAT with constraint =========
-%========== and weighting coeffs ================
+%========================================================================
+%========== on Rinf HAT with constraint
+%========== and weighting coeffs
+%========================================================================
 
 if weightingflag
     hatrealHURRRwithMSCsupeta = ...
@@ -579,7 +587,5 @@ MSC.tab = tabMSC;
 MSC.tabcst = tabMSCwithMSCsupeta;
 MSC.indexcst = indextabMSCsupthreshold;
 MSC.weightMSC = weightMSCsupeta;
-%===========================================================
-%===========================================================
-
+%========================= END ==========================================
 

@@ -41,22 +41,25 @@ else
 end
 %======
 eval(cmdloadcharact);
+
 Pfilter = length(filtercharact);
 if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
     filtercharact(Pfilter).Wlow_Hz  = 0.001;
     filtercharact(Pfilter).Whigh_Hz = 10;
 end
+
+% problem on channel 2, file 33, i.e. sta2_Y2015_D219.mat
+%??????????
 %=====================
 MSCthreshold   = 0.98;
 %=====================
-for indexofSTA = 4:8
+for indexofSTA = 2
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
     nbmats                       = length(fileswithdotmat);
-    
-    
+
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
@@ -67,8 +70,7 @@ for indexofSTA = 4:8
     allSTDphaseRatioInfPfilters  = zeros(10000,nbmats);
     allmeanMSCcstPfilters        = zeros(10000,nbmats);
     nbofvaluesoverthreshold      = zeros(10000,nbmats);
-    
-    for ifile=1:nbmats, %ifile,tic
+    for ifile=33 %1:nbmats, %ifile,tic
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -118,9 +120,6 @@ for indexofSTA = 4:8
                     idWD = idWD + LLWD;
             end
         end
-        if ifile==63
-            idSc=2e6;
-        end
         signals     = signals(1:idSc-1,:);
         windSpeed   = windSpeed(1:idWS-1);
         windDir     = windDir(1:idWD-1);
@@ -135,7 +134,6 @@ for indexofSTA = 4:8
         [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
             fbankanalysis(signals_centered,...
             filtercharact,Fs_Hz,MSCthreshold);
-        
         %============================================
         P       = length(SUTs);
         idipinf = zeros(P,1);
@@ -179,16 +177,16 @@ for indexofSTA = 4:8
     allRatioSupPfilters         = allRatioSupPfilters(1:id1-1,:);
     allSTDmodRatioSupPfilters   = allSTDmodRatioSupPfilters(1:id1-1,:);
     allSTDphaseRatioSupPfilters = allSTDphaseRatioSupPfilters(1:id1-1,:);
-
+    
     allRatioInfPfilters         = allRatioInfPfilters(1:id1-1,:);
     allSTDmodRatioInfPfilters   = allSTDmodRatioInfPfilters(1:id1-1,:);
     allSTDphaseRatioInfPfilters = allSTDphaseRatioInfPfilters(1:id1-1,:);
-
+    
     allfrqsPfilters             = allfrqsPfilters(1:id1-1,1);
     allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
     nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
     
-    if not(FLAGsaveall)
+    if 0%not(FLAGsaveall)
         comsave          = ...
             sprintf('save %s/resultssta26sensor%i',directoryresults,indexofSTA);
         clear signals
@@ -202,7 +200,7 @@ for indexofSTA = 4:8
         clear temperature
         clear alltimes_sec
         clear SUTs
-        eval(comsave);
+%         eval(comsave);
     end
 end
 %============================ END =========================================

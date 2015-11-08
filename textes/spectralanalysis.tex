@@ -352,53 +352,42 @@ along the recorded data, for a given frequency index $k$, the values  $\hat S_{U
 \item
 Finally the estimation of the SUT response is derived from the SREF response.
 \end{itemize}
-The following shows an example of  process settings:
-\begin{center}
-\small
-\begin{verbatim}
-P=P+1;
-filtercharact(P).designname = 'butter';
-filtercharact(P).Norder=2;
-filtercharact(P).Wlow_Hz=0.02;
-filtercharact(P).Whigh_Hz=0.08;
-filtercharact(P).SCPperiod_sec=100;
-filtercharact(P).windowshape='hann';
-filtercharact(P).overlapDFT=0.5;
-filtercharact(P).overlapSCP=0;
-filtercharact(P).ratioDFT2SCP=5;
-\end{verbatim}
-\end{center}
+
+\subsubsection{Welch's approach for Spectral estimation}
+
 \begin{itemize}
 \item
-{\tt designname} means that the name of the filter model. The Butterworth model is available in Matlab. 
+SCP: for spectral components
 \item
-{\tt Norder} denotes the order of the filter. If 0 there is no filtering. 
-\item
-{\tt Wlow\_Hz} denotes the low bound in Hz of the filter design,
-\item
-{\tt Whigh\_Hz} denotes the high bound in Hz of the filter design,
-\item
-{\tt windowshape} denotes the weighted window. Many windows are available in Matlab. Window is used to do a compromise between the leakage and the bias. Hann's window is commonly used.
-\item
-{\tt SCPperiod\_sec} denotes the time duration expressed in second of the window used for the spectral estimation,
-\item
-{\tt overlapDFT} overlapping rate for the spectral estimation,
-\item
-{\tt overlapSCP} overlapping rate for the different spectral estimates,
-\item
-{\tt ratioDFT2SCP} is an integer which denotes the ratio between the length of the duration fo spectral estimation and the duration for periodogram performing. 
-
-For example if {\tt SCPperiod\_sec=500}, {\tt overlapDFT = 0.5} and  {\tt ratioDFT2SCP=5}, the FFTs are computed on $500/5=100$ seconds, then for a sampling frequency of 20 Hz, on 2000 samples. Because the overlap is 0.5 we compute 9 FFTs.
+DFT for discret Fourier transform (usually computed by FFT). The DFT consists of as many input points and out put points. 
 \end{itemize}
 
-The full length is divided by the 
+In the provided function {\tt fbankanalysis.m} (see annex), from the input values {\tt SCPperiod\_sec} and {\tt ratioDFT2SCP}, we compute the length of the DFT which is the ratio  {\tt SCPperiod\_sec}$/${\tt ratioDFT2SCP}. Using the {\tt overlapDFT} we derive the number of DFTs is needed for computing the SCP.
 
+For example if {\tt SCPperiod\_sec=1000}, {\tt overlapDFT = 0.5} and  {\tt ratioDFT2SCP=5}, the DFTs are computed on $500/5=200$ seconds, then for a sampling frequency of 20 Hz, on $4000$ samples. Because the overlap is 0.5 we shift  of $100$ seconds between 2 successive DFTs. It is worth to notice that the resolution is related to the inverse of the DFT time window length, in our example about $1/200=0.005$ Hz.
+
+In the provided function {\tt fbankanalysis.m}, we then compute all DFTs for the full input signals. For example if the full duration  of signals is $36\,00\times 24$ seconds, we have  $(3600 \times 24)/100=864$ DFTs to compute. Then to compute the SCPs with an overlap {\tt overlapDFT} $=0$, we move on RHS of $9$ DFTs. if {\tt overlapDFT} $=1/10$, we move on $8$ DFTs. That means that the possible overlap for the SCPs are only on the block frontier of the DFTs which has no practical effect.
+
+In practice we advise:
+\begin{itemize}
+\item
+{\tt SCPperiod\_sec} depending of the frequency band to analyze (see section \ref{sss:filterbank}). Lower the analysis frequency band, greater the {\tt SCPperiod\_sec}. But greater the  {\tt SCPperiod\_sec} more difficult could be the probability to find a almost stationary time interval.
+\item
+{\tt ratioDFT2SCP} $=5$. It is worth to notice that if we increase {\tt ratioDFT2SCP}, for fixed  {\tt SCPperiod\_sec} we reduce the DFT time window length and therefore the resolution. We found empirically that  {\tt ratioDFT2SCP} $=5$ is a good value in terms of compromise resolution/accuracy.
+\item
+{\tt overlapDFT} $= 0.5$
+\item
+{\tt overlapSCP} $= 0$
+\end{itemize}
 
 \figscale{overlapFFTs.pdf}{Spectral estimation with $\alpha=50\%$ overlapping for FFT block. The variance of the estimate is related to the number of windows. If the number of disjoint FFT block is $M=5$, and if the length in seconds of the spectral analysis window is 500 seconds, the length in second of the time window for 1 FFT is 100 seconds.
 The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. 
 The overlapping for successive SCP analysis is $\beta=0$.}{}{0.8}
+
+
 %=================================
 \subsubsection{Filter bank analysis}
+\label{sss:filterbank}
 %=================================
 Let us recall that in a first step, the signals are filtered in adjacent bands in such a way to use different periods whose the main interest is to consider short periods, if necessary, in the high frequency bands. The table \ref{tab:freq-duration-tradeoff} is an example of pavement, consisting of $5$ bands with log-spaced filter parameters in the band $(0.01-5)$ Hz with a variable window length\footnote{See also recent PMCC reports.}. Because the two signals are applied to the same filter we can use RII as Butterworth filter. Also because this process is for anlysis, we don't need to downsampling and/or to require perfect recontruction. Even more the bandpass filters can be overlap in the frequency domain. Although a decimation can be used to save computational time, indeed the bandwidths are lower than $F_{s}/2$, that operation is not considering in the following.
 
@@ -430,4 +419,30 @@ $[0.02-0.20]$&$400$
 
 
 %================================
+\subsubsection{Summary of the filter bank settings}
+
+
+
+\begin{itemize}
+\item
+{\tt designname} means that the name of the filter model. The Butterworth model is available in Matlab. 
+\item
+{\tt Norder} denotes the order of the filter. If 0 there is no filtering. 
+\item
+{\tt Wlow\_Hz} denotes the low bound in Hz of the filter design,
+\item
+{\tt Whigh\_Hz} denotes the high bound in Hz of the filter design,
+\item
+{\tt windowshape} denotes the weighted window. Many windows are available in Matlab. Window is used to do a compromise between the leakage and the bias. Hann's window is commonly used.
+\item
+{\tt SCPperiod\_sec} denotes the time duration expressed in second of the window used for the spectral estimation,
+\item
+{\tt overlapDFT} overlapping rate for the spectral estimation,
+\item
+{\tt overlapSCP} overlapping rate for the different spectral estimates,
+\item
+{\tt ratioDFT2SCP} is an integer which denotes the ratio between the length of the duration fo spectral estimation and the duration for periodogram performing. 
+
+\end{itemize}
+
 

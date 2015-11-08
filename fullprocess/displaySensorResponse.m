@@ -14,12 +14,12 @@ addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 1;
 % close all
-for ihc = 1:8
+for ihc = 2
     for ii=[2]
         switch ii
             case 1
                 comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
-                numfig = ihc+1100;
+                numfig = ihc+100;
             case 2
                 comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
                 numfig = ihc+200;
@@ -34,7 +34,7 @@ for ihc = 1:8
         switch ihc
             case 1
                 %                         coeffsens=1.048;
-                coeffsens=1.055;
+                coeffsens=1.04;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 2
                 coeffsens=1.1;%.1;
@@ -96,7 +96,7 @@ for ihc = 1:8
         
         
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-        allRatioPfiltersU        = allRatioSupPfilters(inda,1:62);
+        allRatioPfiltersU        = allRatioSupPfilters(inda,:);
         allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
         nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
         
@@ -162,7 +162,7 @@ for ihc = 1:8
                 
         set(gca,'fontname','times','fontsize',14)
         set(gca,'xlim',[0.01 5])
-        set(gca,'ylim',4*[-1 1])
+        set(gca,'ylim',14*[-1 1])
         set(gca,'xtickLabel',[])
         %              xlabel('frequency [Hz]')
         

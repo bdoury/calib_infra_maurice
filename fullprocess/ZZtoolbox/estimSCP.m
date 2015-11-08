@@ -73,14 +73,15 @@ for ibF  = 1:NblocksFFT
     allFFTsUU(:,ibF) = fft(xU_i,Lfft)/sqrtLfft;
     allFFTsRR(:,ibF) = fft(xR_i,Lfft)/sqrtLfft;
 end
+NaverageFFT = fix(NaverageFFTs/(1-overlapFFT))-1;
 shiftFFTs = fix((1-overlapSD)*NaverageFFTs);
-NSD       = fix(N/Lfft/NaverageFFTs);% fix((NblocksFFT/2-(NaverageFFTs-shiftFFTs))/shiftFFTs);
 allSDs    = struct;
 time_sec  = struct;
-NaverageFFTs_with_overlap = round(NaverageFFTs/(1-overlapFFT)-1);
+NshiftFFTs_with_overlap = max([2*shiftFFTs-1,1]);
+NSD       = fix(NblocksFFT/NshiftFFTs_with_overlap);
 for ibB=1:NSD,
-    indB1 = (ibB-1)*NaverageFFTs_with_overlap+1;
-    indB2 = indB1+NaverageFFTs_with_overlap-1;
+    indB1 = (ibB-1)*NshiftFFTs_with_overlap+1;
+    indB2 = indB1+NaverageFFT-1;
     indB  = fix(indB1):fix(indB2);
     indB  = indB(indB<= NblocksFFT);
     allSDs(ibB).RR  = mean(abs(allFFTsRR(:,indB)) .^ 2,2);
@@ -95,5 +96,6 @@ for ibB=1:NSD,
 end
 frqsFFT_Hz = (0:Lfft-1)*Fs_Hz/Lfft;
 time_sec.FFT = ((0:NblocksFFT-1)+1/2)*shiftSignal/Fs_Hz;
-time_sec.SD =  ((0:NSD-1)+1/2)*shiftFFTs*Lfft/Fs_Hz;
+time_sec.SD =  ((0:NSD-1)+1/2)*(shiftSignal/Fs_Hz)*NshiftFFTs_with_overlap;
 time_sec.signals =  ((0:N-1)+1/2)/Fs_Hz;
+%========================= END ==========================================
