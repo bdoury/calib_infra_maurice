@@ -28,16 +28,16 @@ directorydatafromIDC  = '../../../../../AAdataI26calib/';
 % filtercharactfilename = 'filtercharacteristics.m';
 %======
 % generate by geneFB.m, use LOAD
-if 0
-filtercharactfilename = 'filtercharacteristics2';
-cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
-directoryresults      = 'AAresultswithFBbis';
-
-%======
+if 1
+    filtercharactfilename = 'filtercharacteristics2';
+    cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
+    directoryresults      = 'AAresultswithFBbis';
+    
+    %======
 else
-filtercharactfilename = 'filtercharacteristics0812Hz.m';
-cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
-directoryresults      = 'AAresultsaround1Hz';
+    filtercharactfilename = 'filtercharacteristics0812Hz.m';
+    cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
+    directoryresults      = 'AAresultsaround1Hz';
 end
 %======
 eval(cmdloadcharact);

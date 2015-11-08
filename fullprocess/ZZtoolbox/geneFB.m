@@ -1,6 +1,33 @@
-clear
+%============== geneFB.m ==========================
+% this program built the file .mat which consists  
+% of thecharacteristic of the time/frequency 
+% pavement.
+% the array of the following structures is saved 
+% in a file .mat
+%==================================================
+%     SCPperiod_sec
+%     overlapDFT: typically 0.5
+%     overlapSCP: typically 0
+%     ratioDFT2SCP: 
+%     Norder
+%     designname
+%     windowshape
+%     Wlow_Hz
+%     Whigh_Hz
+%==================================================
+% the length in second of the FFT is :
+%           SCPperiod_sec/ratioDFT2SCP
+% If overlapDFT=0.5, and if ratioDFT2SCP=5,
+% the number of FFTs to perform the SCP is 9
+% If overlapSCP=0, the next SCP is performed by shifting
+% the FFT block with 9
+%
+===================================================
 
-allcolors = ['g.';'y.';'m.';'r.';'k.';'b.';'rx';'yx';'mx';'rx';'kx';'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
+clear
+allcolors = ['g.';'y.';'m.';'r.';'k.';'b.'; ...
+    'rx';'yx';'mx';'rx';'kx';'c.';'k.';'r.';'c.';'m.';'g.';...
+    'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 
 M                               = 5;
 Pfilter                         = 6;
@@ -8,6 +35,13 @@ listofperiods                   = [1000,800,350,150,80,30];
 listOrder                       = [2 2 2 2 3 4];
 filtercharact = struct;
 
+%==== Remark =====================================
+% due to some constraints in programming
+% the value filtercharact(iP).overlapSCP must be
+% 0, 1/M, 2/M, 3/M, ..., M-1/M which corresponds to
+% the frontier of the FFT block.
+% In pratice we advise to take 0
+    
 for iP = 1:Pfilter
     filtercharact(iP).SCPperiod_sec  = listofperiods(iP) ;
     filtercharact(iP).overlapDFT = 0.5;

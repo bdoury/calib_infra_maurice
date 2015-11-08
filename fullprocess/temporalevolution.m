@@ -9,7 +9,7 @@ bootdraw = 0;
 nbdraw=100;
 Ncouples=50;
 
-for ihc=1:5
+for ihc=6
     % keep 2
     for ii=1
         switch ii
@@ -34,7 +34,7 @@ for ihc=1:5
                 coeffsens=1.032;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 4
-                coeffsens=1.05;
+                coeffsens=1.07;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
             case 5
                 coeffsens=1.05;
@@ -109,6 +109,9 @@ for ihc=1:5
                 end
             end
         else
+            
+            indnotsufficient = find(nbofvaluesoverthreshold(indselect,:)<=4);
+            allpraticalvaluesat1Hz(indnotsufficient) = NaN;
             plot(20*log10(allpraticalvaluesat1Hz),'ok','markersize',6,'markerfacec','k')
             hold on
         end

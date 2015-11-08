@@ -394,7 +394,9 @@ For example if {\tt SCPperiod\_sec=500}, {\tt overlapDFT = 0.5} and  {\tt ratioD
 The full length is divided by the 
 
 
-\figscale{overlapFFTs.pdf}{Spectral estimation with $50\%$ overlapping. The variance of the estimate is related to the number of windows. The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. }{}{0.8}
+\figscale{overlapFFTs.pdf}{Spectral estimation with $\alpha=50\%$ overlapping for FFT block. The variance of the estimate is related to the number of windows. If the number of disjoint FFT block is $M=5$, and if the length in seconds of the spectral analysis window is 500 seconds, the length in second of the time window for 1 FFT is 100 seconds.
+The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. 
+The overlapping for successive SCP analysis is $\beta=0$.}{}{0.8}
 %=================================
 \subsubsection{Filter bank analysis}
 %=================================
