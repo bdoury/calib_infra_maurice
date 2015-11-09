@@ -1,4 +1,4 @@
-%========================== displaySensorResponse.m =========================
+%========================== displaySUTresponse.m =========================
 % this program reads the ratios SUT/SREF estimated by spectral approach
 % and stored in a drectory as AAresults. That consists on 8 files
 % for the 8 sensors of IS26. Each file consists the estimate ratios
@@ -12,7 +12,7 @@ clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-saveflag = 1;
+saveflag = 0;
 % close all
 for ihc = 2
     for ii=[2]
@@ -92,11 +92,8 @@ for ihc = 2
             logfit.flag    = 1;
             logfit.N       = 200;
         end
-        reducefreqrange = (1:fix(0.97*length(allfrqsPfilters)));
-        
-        
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-        allRatioPfiltersU        = allRatioSupPfilters(inda,:);
+        allRatioPfiltersU        = allRatioSupPfilters(inda,[31:32 34:53]);
         allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
         nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
         
@@ -157,12 +154,10 @@ for ihc = 2
         %         ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
             'fontname','times','fontsize',14)
-        
-        
-                
+                 
         set(gca,'fontname','times','fontsize',14)
         set(gca,'xlim',[0.01 5])
-        set(gca,'ylim',14*[-1 1])
+        set(gca,'ylim',4*[-1 1])
         set(gca,'xtickLabel',[])
         %              xlabel('frequency [Hz]')
         

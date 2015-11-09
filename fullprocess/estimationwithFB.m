@@ -70,7 +70,8 @@ for indexofSTA = 2
     allSTDphaseRatioInfPfilters  = zeros(10000,nbmats);
     allmeanMSCcstPfilters        = zeros(10000,nbmats);
     nbofvaluesoverthreshold      = zeros(10000,nbmats);
-    for ifile=33 %1:nbmats, %ifile,tic
+    %==================================================
+    for ifile=1:nbmats, %ifile,tic
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -87,8 +88,8 @@ for indexofSTA = 2
         windSpeed   = zeros(34560000,1);
         temperature = zeros(34560000,1);
         windDir     = zeros(34560000,1);
-        Lrecords    =length(records);
-        for ir =1:Lrecords
+        Lrecords    = length(records);
+        for ir = 1:Lrecords
             switch records{ir}.channel
                 case 'BDF'
                     Fs_Hz = 20;%records{ir}.Fs_Hz;
@@ -186,7 +187,7 @@ for indexofSTA = 2
     allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
     nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
     
-    if 0%not(FLAGsaveall)
+    if not(FLAGsaveall)
         comsave          = ...
             sprintf('save %s/resultssta26sensor%i',directoryresults,indexofSTA);
         clear signals
@@ -200,7 +201,7 @@ for indexofSTA = 2
         clear temperature
         clear alltimes_sec
         clear SUTs
-%         eval(comsave);
+        eval(comsave);
     end
 end
 %============================ END =========================================

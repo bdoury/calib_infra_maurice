@@ -353,20 +353,22 @@ along the recorded data, for a given frequency index $k$, the values  $\hat S_{U
 Finally the estimation of the SUT response is derived from the SREF response.
 \end{itemize}
 
-\subsubsection{Welch's approach for Spectral estimation}
-
+%================================
+%================================
+\section{Summary for SUT estimation}
+%================================
 \begin{itemize}
 \item
 SCP: for spectral components
 \item
-DFT for discret Fourier transform (usually computed by FFT). The DFT consists of as many input points and out put points. 
+DFT for discrete Fourier transform (usually computed by FFT). The DFT consists of as many input points and output points. Periodogram refers to the magnitude square of the DFT.
 \end{itemize}
 
 In the provided function {\tt fbankanalysis.m} (see annex), from the input values {\tt SCPperiod\_sec} and {\tt ratioDFT2SCP}, we compute the length of the DFT which is the ratio  {\tt SCPperiod\_sec}$/${\tt ratioDFT2SCP}. Using the {\tt overlapDFT} we derive the number of DFTs is needed for computing the SCP.
 
-For example if {\tt SCPperiod\_sec=1000}, {\tt overlapDFT = 0.5} and  {\tt ratioDFT2SCP=5}, the DFTs are computed on $500/5=200$ seconds, then for a sampling frequency of 20 Hz, on $4000$ samples. Because the overlap is 0.5 we shift  of $100$ seconds between 2 successive DFTs. It is worth to notice that the resolution is related to the inverse of the DFT time window length, in our example about $1/200=0.005$ Hz.
+For example if {\tt SCPperiod\_sec} $=1,\!000$ seconds, {\tt overlapDFT} $= 0.5$ and  {\tt ratioDFT2SCP} $=5$, the DFTs are computed on $500/5=200$ seconds, then for a sampling frequency of 20 Hz, on $4,\!000$ samples. Because the overlap is 0.5 we shift  of $100$ seconds between 2 successive DFTs. It is worth to notice that the resolution is related to the inverse of the DFT time window length, in our example about $1/200=0.005$ Hz.
 
-In the provided function {\tt fbankanalysis.m}, we then compute all DFTs for the full input signals. For example if the full duration  of signals is $36\,00\times 24$ seconds, we have  $(3600 \times 24)/100=864$ DFTs to compute. Then to compute the SCPs with an overlap {\tt overlapDFT} $=0$, we move on RHS of $9$ DFTs. if {\tt overlapDFT} $=1/10$, we move on $8$ DFTs. That means that the possible overlap for the SCPs are only on the block frontier of the DFTs which has no practical effect.
+In the provided function {\tt fbankanalysis.m}, we then compute all DFTs for the full input signals. For example if the full duration  of signals is $3,\!600\times 24$ seconds, we have  $(3,\!600 \times 24)/100=864$ DFTs to compute. Then to compute the SCPs with an overlap {\tt overlapDFT} $=0$, we move on RHS of $9$ DFTs. if {\tt overlapDFT} $=1/10$, we move on $8$ DFTs. That means that the possible overlap for the SCPs are only on the block frontier of the DFTs which has no practical effect.
 
 In practice we advise:
 \begin{itemize}
@@ -441,7 +443,7 @@ $[0.02-0.20]$&$400$
 \item
 {\tt overlapSCP} overlapping rate for the different spectral estimates,
 \item
-{\tt ratioDFT2SCP} is an integer which denotes the ratio between the length of the duration fo spectral estimation and the duration for periodogram performing. 
+{\tt ratioDFT2SCP} is an integer which denotes the ratio between the duration of the spectral estimation window and the duration of the DFT window. 
 
 \end{itemize}
 
