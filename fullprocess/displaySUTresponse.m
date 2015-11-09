@@ -8,7 +8,7 @@
 %         - theoreticalSUTresponse4IS26.m 
 % located in ZZtoolbox/00gabrielson
 %
-clear
+% clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
@@ -92,10 +92,23 @@ for ihc = 2
             logfit.flag    = 1;
             logfit.N       = 200;
         end
+        
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-        allRatioPfiltersU        = allRatioSupPfilters(inda,[31:32 34:53]);
+        allRatioPfiltersU        = allRatioSupPfilters(inda,:);
         allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
         nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
+        
+        % in 2: 33, 34 and 64
+        suppin2 = [23, 33, 34, 56,64];
+        remainindex = setdiff((1:size(allRatioSupPfilters,2)),suppin2);
+        
+        if ihc==2
+            allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
+        else
+            allRatioPfiltersU        = allRatioSupPfilters(inda,:);
+        end
+        
+        allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
         
         allRatioPfiltersUZ        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);
         allmeanMSCcstPfiltersUZ   = allmeanMSCcstPfiltersU(not(allfrqsPfiltersU==0),:);
@@ -252,3 +265,32 @@ for ihc = 2
         
     end
 end
+
+%%
+clf
+remainindex = [];
+for ii=1:nbmats,ii
+    dirmat = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
+    cdeload  = sprintf('load ''%ss%i/%s''',directorydatafromIDC,ihc,dirmat(ii).name);
+    eval(cdeload)
+    
+    Lrecords = length(records);
+    NN = zeros(Lrecords,1);
+    for ir=1:Lrecords
+        NN(ir) = length([records{ir}.data]);
+    end
+    if NN<3, remainindex = [remainindex; ir];end
+%     N1=length([records{1}.data]);
+%     N2=length([records{4}.data]);
+%     signal1_ihc = [records{2}.data];
+%     signal2_ihc = [records{4}.data];
+%     subplot(411)
+%      plot((0:1000:N1-1)/20/60,signal1_ihc(1:1000:N1) ,'r')
+%     subplot(412)
+%      plot((0:1000:N2-1)/20/60,signal2_ihc(1:1000:N2) ,'b')
+%     subplot(212)
+%     semilogx(allfrqsPfiltersUZ,20*log10(abs(allRatioPfiltersUZ(:,ii))),'k','linew',1.5),
+%     drawnow
+%     pause
+end
+    

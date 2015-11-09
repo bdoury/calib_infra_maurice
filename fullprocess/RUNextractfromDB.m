@@ -1,14 +1,14 @@
 %=============== RUNextractfromDB.m ======================================
 clear
 
-addpath   ../ZZtoolbox/
-addpath   ../ZZtoolbox/00pierrick/
+addpath   ZZtoolbox/
+addpath   ZZtoolbox/00pierrick/
 % addpath ../00gabrielson/
 
 %========== matlab format files are saved into the following directory
-savedirnamefull      ='../../../../AAdataI26/';
+savedirnamefull      ='../../../../../AAdataI26calib/';
 %=== temporary files
-temporary_gparse_dir = '../ZZtoolbox/00pierrick/tempfiles/';
+temporary_gparse_dir = 'ZZtoolbox/00pierrick/tempfiles/';
 if not(exist(temporary_gparse_dir,'dir'))
     rmdir(temporary_gparse_dir,'s')
      mkdir(temporary_gparse_dir)
@@ -26,15 +26,16 @@ password    = 'sqlmomo';
 channel     = '(''BDF'',''BDF'',''LWS'',''LWD'',''LKO'')';
 
 yearstart   =  '2015';
-monthstart  =  '09';
+monthstart  =  '06';
 HMSstart    = '00:00:10';
 yearend     =  '2015';
-monthend    =  '09';
+monthend    =  '06';
 HMSend      = '23:50:10';
 
-for ihc=4:8
+for ihc=2
+    savedirnamefull_ihc = sprintf('%ss%i/',savedirnamefull,ihc);
     stations    = sprintf(' (''I26H%i'',''I26C%i'') ',ihc,ihc);
-    for daystart_num    =  25:2:29 %1:2:25
+    for daystart_num    =  27 %1:2:25
         if daystart_num<10
             daystart    = ['0' num2str(daystart_num)];
             if daystart_num==9
@@ -60,8 +61,11 @@ for ihc=4:8
         extractfromDB
         if isnan(filenamesavemat)
             display('***** .wfdisc does not exist');
+        else
+            cdesave = sprintf('save %s records samplerate',filenamesavemat);
+            cdesave
+            eval(cdesave)
         end
-
     end
 end
 %=================================================================

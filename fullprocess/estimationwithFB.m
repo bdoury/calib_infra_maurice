@@ -51,15 +51,14 @@ end
 % problem on channel 2, file 33, i.e. sta2_Y2015_D219.mat
 %??????????
 %=====================
-MSCthreshold   = 0.98;
+MSCthreshold = 0.98;
 %=====================
-for indexofSTA = 2
+for indexofSTA = 1:8
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,indexofSTA,indexofSTA));
     nbmats                       = length(fileswithdotmat);
-
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
@@ -70,8 +69,13 @@ for indexofSTA = 2
     allSTDphaseRatioInfPfilters  = zeros(10000,nbmats);
     allmeanMSCcstPfilters        = zeros(10000,nbmats);
     nbofvaluesoverthreshold      = zeros(10000,nbmats);
+    
+    setimesC_ihc                 = zeros(nbmats,2);
+    setimesH_ihc                 = zeros(nbmats,2);
+    signals_centered_save_ihc    = cell(nbmats,1);
+    problemHC                    = zeros(nbmats,2);
     %==================================================
-    for ifile=1:nbmats, %ifile,tic
+    for ifile=1:nbmats, %ifile,%tic
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -89,17 +93,30 @@ for indexofSTA = 2
         temperature = zeros(34560000,1);
         windDir     = zeros(34560000,1);
         Lrecords    = length(records);
+        cpC=1;
+        cpH=1;
         for ir = 1:Lrecords
             switch records{ir}.channel
                 case 'BDF'
                     Fs_Hz = 20;%records{ir}.Fs_Hz;
                     switch records{ir}.station(4)
                         case 'C'
+                            if cpC==1
+                                cpC=cpC+1;
+                                setimesC_ihc(ifile,1) = records{ir}.stime;
+                            end
+                            auxC = records{ir}.etime;
+                            
                             LLC = length(records{ir}.data);
                             signalsC = [records{ir}.data];
                             signals(idSc:idSc+LLC-1,2)=signalsC;
                             idSc = idSc+LLC;
                         case 'H'
+                            if cpH==1
+                                cpH=cpH+1;
+                                setimesH_ihc(ifile,1) = records{ir}.stime;
+                            end
+                            auxH = records{ir}.etime;
                             LLH = length(records{ir}.data);
                             signalsH = [records{ir}.data];
                             signals(idSh:idSh+LLH-1,1)=signalsH;
@@ -121,13 +138,22 @@ for indexofSTA = 2
                     idWD = idWD + LLWD;
             end
         end
+        if not(idSc==idSh)
+            fprintf('problem with file # %i on %i\nLH = %i and LC = %i\n',ifile,indexofSTA,idSh,idSc)
+            problemHC(ifile,:) = [idSh,idSc];
+        end
+        
+        setimesC_ihc(ifile,2) = auxC;
+        setimesH_ihc(ifile,2) = auxH;
+        
         signals     = signals(1:idSc-1,:);
         windSpeed   = windSpeed(1:idWS-1);
         windDir     = windDir(1:idWD-1);
         temperature = temperature(1:idT-1);
         
         Ts_sec = 1/Fs_Hz;
-        signals_centered=signals-ones(size(signals,1),1)*mean(signals);
+        signals_centered = signals-ones(size(signals,1),1)*mean(signals);
+        signals_centered_save_ihc{ifile} = signals_centered;
         
         %============================================
         % notice that the SUTs is not saved, therefore we have only the
@@ -175,6 +201,7 @@ for indexofSTA = 2
             eval(comsave);
         end
     end
+        
     allRatioSupPfilters         = allRatioSupPfilters(1:id1-1,:);
     allSTDmodRatioSupPfilters   = allSTDmodRatioSupPfilters(1:id1-1,:);
     allSTDphaseRatioSupPfilters = allSTDphaseRatioSupPfilters(1:id1-1,:);
@@ -186,6 +213,7 @@ for indexofSTA = 2
     allfrqsPfilters             = allfrqsPfilters(1:id1-1,1);
     allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
     nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
+    
     
     if not(FLAGsaveall)
         comsave          = ...
@@ -201,6 +229,7 @@ for indexofSTA = 2
         clear temperature
         clear alltimes_sec
         clear SUTs
+        clear signals_centered_save_ihc
         eval(comsave);
     end
 end
