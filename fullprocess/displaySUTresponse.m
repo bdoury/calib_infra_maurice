@@ -102,11 +102,11 @@ for ihc = 2
         suppin2 = [23, 33, 34, 56,64];
         remainindex = setdiff((1:size(allRatioSupPfilters,2)),suppin2);
         
-        if ihc==2
-            allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
-        else
-            allRatioPfiltersU        = allRatioSupPfilters(inda,:);
-        end
+%         if ihc==2
+%             allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
+%         else
+%             allRatioPfiltersU        = allRatioSupPfilters(inda,:);
+%         end
         
         allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
         
@@ -279,7 +279,7 @@ for ii=1:nbmats,ii
     for ir=1:Lrecords
         NN(ir) = length([records{ir}.data]);
     end
-    if NN<3, remainindex = [remainindex; ir];end
+    if length(NN)<3, remainindex = [remainindex; ir];end
 %     N1=length([records{1}.data]);
 %     N2=length([records{4}.data]);
 %     signal1_ihc = [records{2}.data];
