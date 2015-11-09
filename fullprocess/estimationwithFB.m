@@ -53,7 +53,7 @@ end
 %=====================
 MSCthreshold = 0.98;
 %=====================
-for indexofSTA = 1:8
+for indexofSTA = 2
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
@@ -106,9 +106,8 @@ for indexofSTA = 1:8
                                 setimesC_ihc(ifile,1) = records{ir}.stime;
                             end
                             auxC = records{ir}.etime;
-                            
                             LLC = length(records{ir}.data);
-                            signalsC = [records{ir}.data];
+                           signalsC = [records{ir}.data];
                             signals(idSc:idSc+LLC-1,2)=signalsC;
                             idSc = idSc+LLC;
                         case 'H'
@@ -117,7 +116,7 @@ for indexofSTA = 1:8
                                 setimesH_ihc(ifile,1) = records{ir}.stime;
                             end
                             auxH = records{ir}.etime;
-                            LLH = length(records{ir}.data);
+                            LLH = length(records{ir}.data);                           
                             signalsH = [records{ir}.data];
                             signals(idSh:idSh+LLH-1,1)=signalsH;
                             idSh = idSh+LLH;
@@ -138,15 +137,16 @@ for indexofSTA = 1:8
                     idWD = idWD + LLWD;
             end
         end
+        setimesC_ihc(ifile,2) = auxC;
+        setimesH_ihc(ifile,2) = auxH;
+
         if not(idSc==idSh)
             fprintf('problem with file # %i on %i\nLH = %i and LC = %i\n',ifile,indexofSTA,idSh,idSc)
             problemHC(ifile,:) = [idSh,idSc];
         end
+        idScMin = min([idSc, idSh]);
         
-        setimesC_ihc(ifile,2) = auxC;
-        setimesH_ihc(ifile,2) = auxH;
-        
-        signals     = signals(1:idSc-1,:);
+        signals     = signals(1:idScMin-1,:);
         windSpeed   = windSpeed(1:idWS-1);
         windDir     = windDir(1:idWD-1);
         temperature = temperature(1:idT-1);

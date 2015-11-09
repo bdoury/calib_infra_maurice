@@ -5,7 +5,7 @@
 % on several days of records.
 %
 % this program calls the function:
-%         - theoreticalSUTresponse4IS26.m 
+%         - theoreticalSUTresponse4IS26.m
 % located in ZZtoolbox/00gabrielson
 %
 % clear
@@ -60,6 +60,39 @@ for ihc = 2
         end
         
         eval(comload);
+        
+        remainindex = [];
+        for imatfile=1:nbmats,imatfile
+            dirmat = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
+            cdeload  = sprintf('load ''%ss%i/%s''',directorydatafromIDC,ihc,...
+                dirmat(imatfile).name);
+            
+            eval(cdeload)
+            
+            Lrecords = length(records);
+            NN       = zeros(Lrecords,1);
+            maxcurr  = -inf;
+            for ir=1:Lrecords
+                NN(ir) = length([records{ir}.data]);
+                maxcurr = max([maxcurr,max(abs([records{ir}.data]))]);
+            end
+            if and(length(NN)<100, maxcurr<300)
+                remainindex = [remainindex; imatfile];
+            end
+            %     N1=length([records{1}.data]);
+            %     N2=length([records{4}.data]);
+            %     signal1_ihc = [records{2}.data];
+            %     signal2_ihc = [records{4}.data];
+            %     subplot(411)
+            %      plot((0:1000:N1-1)/20/60,signal1_ihc(1:1000:N1) ,'r')
+            %     subplot(412)
+            %      plot((0:1000:N2-1)/20/60,signal2_ihc(1:1000:N2) ,'b')
+            %     subplot(212)
+            %     semilogx(allfrqsPfiltersUZ,20*log10(abs(allRatioPfiltersUZ(:,ii))),'k','linew',1.5),
+            %     drawnow
+            %     pause
+        end       
+%%
         Dstart = str2double(fileswithdotmat(1).name(13:15));
         Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
         if 1
@@ -94,21 +127,10 @@ for ihc = 2
         end
         
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-        allRatioPfiltersU        = allRatioSupPfilters(inda,:);
+        allRatioPfiltersU        = allRatioSupPfilters(inda,[1:32 34:52]);
         allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
         nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
         
-        % in 2: 33, 34 and 64
-        suppin2 = [23, 33, 34, 56,64];
-        remainindex = setdiff((1:size(allRatioSupPfilters,2)),suppin2);
-        
-%         if ihc==2
-%             allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
-%         else
-%             allRatioPfiltersU        = allRatioSupPfilters(inda,:);
-%         end
-        
-        allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
         
         allRatioPfiltersUZ        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);
         allmeanMSCcstPfiltersUZ   = allmeanMSCcstPfiltersU(not(allfrqsPfiltersU==0),:);
@@ -134,7 +156,8 @@ for ihc = 2
         %         coeffsens * abs(meanallRatioPfiltersUZ),...
         %         segmentsnumber,polydegrees,logtrain,logfit);
         
-        figure(numfig)
+
+figure(numfig)
         clf
         %================================================
         subplot(211)
@@ -145,9 +168,9 @@ for ihc = 2
         %             absestim'+ICallRatioPfiltersUZ'],'.-b')
         
         %     boxplot(absestim','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
-%         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
-%             'xticklabel',[0.001 0.01 0.1 1 10])
-
+        %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+        %             'xticklabel',[0.001 0.01 0.1 1 10])
+        
         %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
         %             'xticklabel',[0.001 0.01 0.1 1 10])
         grid on
@@ -167,7 +190,7 @@ for ihc = 2
         %         ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
             'fontname','times','fontsize',14)
-                 
+        
         set(gca,'fontname','times','fontsize',14)
         set(gca,'xlim',[0.01 5])
         set(gca,'ylim',4*[-1 1])
@@ -197,11 +220,11 @@ for ihc = 2
         
         subplot(212)
         
-%         semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
+        %         semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
         
         %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
-%         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
-%             'xticklabel',[0.001 0.01 0.1 1 10])
+        %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+        %             'xticklabel',[0.001 0.01 0.1 1 10])
         semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'k','linew',1.5),
         
         %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
@@ -248,12 +271,12 @@ for ihc = 2
         fileeps2pdfcmd  = sprintf('!epstopdf %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         filermcmd       = sprintf('!rm %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         
-%         for alfred
-%         fileprintpngcmd = sprintf('print -dpng -loose ../../textes/6distConjointHMSC/figures/3monthsonIS26SUT%i',ihc);
-%         fileprintpngcmd = sprintf('print -dpdf -loose threemonthsonIS26SUT%i',ihc);
-%         fileprintjpgcmd = sprintf('print -dpng -loose ../../../../3monthsonIS26SUT%i%i',ihc,ii);
-%         eval(fileprintjpgcmd)
-
+        %         for alfred
+        %         fileprintpngcmd = sprintf('print -dpng -loose ../../textes/6distConjointHMSC/figures/3monthsonIS26SUT%i',ihc);
+        %         fileprintpngcmd = sprintf('print -dpdf -loose threemonthsonIS26SUT%i',ihc);
+        %         fileprintjpgcmd = sprintf('print -dpng -loose ../../../../3monthsonIS26SUT%i%i',ihc,ii);
+        %         eval(fileprintjpgcmd)
+        
         
         
     end
@@ -265,32 +288,3 @@ for ihc = 2
         
     end
 end
-
-%%
-clf
-remainindex = [];
-for ii=1:nbmats,ii
-    dirmat = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
-    cdeload  = sprintf('load ''%ss%i/%s''',directorydatafromIDC,ihc,dirmat(ii).name);
-    eval(cdeload)
-    
-    Lrecords = length(records);
-    NN = zeros(Lrecords,1);
-    for ir=1:Lrecords
-        NN(ir) = length([records{ir}.data]);
-    end
-    if length(NN)<3, remainindex = [remainindex; ir];end
-%     N1=length([records{1}.data]);
-%     N2=length([records{4}.data]);
-%     signal1_ihc = [records{2}.data];
-%     signal2_ihc = [records{4}.data];
-%     subplot(411)
-%      plot((0:1000:N1-1)/20/60,signal1_ihc(1:1000:N1) ,'r')
-%     subplot(412)
-%      plot((0:1000:N2-1)/20/60,signal2_ihc(1:1000:N2) ,'b')
-%     subplot(212)
-%     semilogx(allfrqsPfiltersUZ,20*log10(abs(allRatioPfiltersUZ(:,ii))),'k','linew',1.5),
-%     drawnow
-%     pause
-end
-    
