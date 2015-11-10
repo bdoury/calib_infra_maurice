@@ -29,7 +29,7 @@ The average estimate of the SUT response, interm of gain in dB and phase in degr
 %================================
 \subsection{Full band for $20$ randomly selected days}
 %================================
-\figscale{slidesITW2015/averagedon20days1.pdf}{Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact}. The grey dots report the ratios averaged on a pair of 2 consecutive days, the yellow  disks report the average on 10 pairs of days. }{}{0.8}
+\figscale{slidesITW2015/averagedon20days1.pdf}{Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact}. The grey dots report the ratios averaged on a couple of 2 consecutive days, the yellow  disks report the average on 20 days. }{}{0.8}
 
 
 %================================

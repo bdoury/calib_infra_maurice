@@ -9,7 +9,7 @@
 %         - theoreticalSUTresponse4IS26.m
 % located in ZZtoolbox/00gabrielson
 %
-% clear
+clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 
@@ -18,7 +18,7 @@ directorydatafromIDC  = '../../../AAdataI26calib/';
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
-for ihc = 5
+for ihc = 1
     for ii=[2]
         switch ii
             case 1
@@ -98,7 +98,7 @@ for ihc = 5
         end
         
 %         remainindex = lookatdata(directorydatafromIDC,ihc, 0);
-%         remainindex = (1:nbmats);
+         remainindex = (1:nbmats);
         
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
         allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
@@ -160,10 +160,10 @@ for ihc = 5
         semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*0.95), 'r--','linew',1.5);
         semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*1.05), 'r--','linew',1.5);
         hold off
-        %     title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
-        %         ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
-        title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
-            'fontname','times','fontsize',14)
+            title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
+                ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
+%         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
+%             'fontname','times','fontsize',14)
         
         set(gca,'fontname','times','fontsize',14)
         set(gca,'xlim',[0.01 5])
@@ -244,15 +244,7 @@ for ihc = 5
         fileprintepscmd = sprintf('print -depsc -loose %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         fileeps2pdfcmd  = sprintf('!epstopdf %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         filermcmd       = sprintf('!rm %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
-        
-        %         for alfred
-        %         fileprintpngcmd = sprintf('print -dpng -loose ../../textes/6distConjointHMSC/figures/3monthsonIS26SUT%i',ihc);
-        %         fileprintpngcmd = sprintf('print -dpdf -loose threemonthsonIS26SUT%i',ihc);
-        %         fileprintjpgcmd = sprintf('print -dpng -loose ../../../../3monthsonIS26SUT%i%i',ihc,ii);
-        %         eval(fileprintjpgcmd)
-        
-        
-        
+         
     end
     
     if saveflag

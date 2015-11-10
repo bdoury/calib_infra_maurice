@@ -1,4 +1,4 @@
-% !TEX root = ../calibreport.tex
+% !TEX root = ../distCjHMSC.tex
 %==============================================================
 A multivariate time series $x_{n}$ is said to be a zero-mean wide-sense stationary (WSS) process of second order iif $\esp{x_{n}}=0$, $\trace{\esp{x_{n}x_{n}^{H}}}<+\infty$ and the sequence of covariance matrices\footnote{The superscript $H$ denotes the transposition-conjugaison, $T$ the transposition and $*$ the conjugaison.} $R(h)=\esp{x_{n+h}x_{n}^{H}}$ does not depend on $n$. 
 It follows that $R(h)=R^{H}(-h)$. Therefore if $x_{n}$ is real $R(h)=R^{T}(-h)$.

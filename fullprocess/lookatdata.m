@@ -1,13 +1,15 @@
-function remainindex = lookatdata(directorydatafromIDC,ihc, flaglook)
+% function remainindex = lookatdata(directorydatafromIDC,ihc, flaglook)
 
+directorydatafromIDC = '../../../AAdataI26calib/';
 
 dirmat = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
 nbmats = length(dirmat);
 flagremainindex = zeros(nbmats,1);
 Fs_Hz = 20;
+ihc = 8;
+flaglook = 1;
 
-
-for imatfile=1:nbmats,
+for imatfile=63%1:nbmats,
     cdeload  = sprintf('load ''%ss%i/%s''',directorydatafromIDC,ihc,...
         dirmat(imatfile).name);
     eval(cdeload)

@@ -8,8 +8,8 @@ saveflag = 1;
 bootdraw = 0;
 nbdraw=100;
 Ncouples=50;
-SUFFICIENTNUMBER = 3;
-for ihc=5
+SUFFICIENTNUMBER = 2;
+for ihc=8
     % keep 2
     for ii=1
         switch ii
@@ -49,8 +49,7 @@ for ihc=5
                 coeffsens=0.99;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
         end
-        
-        
+
         eval(comload)
         
         filtercharact.SCPperiod_sec

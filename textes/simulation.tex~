@@ -1,5 +1,4 @@
-% !TEX root = ../calibreport.tex
-
+% !TEX root = ../distCjHMSC.tex
 %======================================
 To investigate the effect the approach, we focuse at first on a short simulation in such a way the groundtruth is available. For that, following the notations of \eqref{eq:model-of-obervation} we take, for $s(t)$, about half an hour of a MB3 sensor record. The signal has a spectrum reported on figure \ref{fig:zeronoideonsutwhiteSOI}. We see that the signal contains the most power in the low frequencies.
 

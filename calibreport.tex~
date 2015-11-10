@@ -185,7 +185,7 @@
 %===========================================
 %===========================================
 %===========================================
-\chapter{Results on IS26 data}
+\chapter{Results on IS26 data (incomplete)}
 \label{chap:IS26results}
 \input{textes/IS26results.tex}
 %===========================================

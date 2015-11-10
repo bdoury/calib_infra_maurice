@@ -10,21 +10,21 @@ clear
 
 addpath ZZtoolbox/
 
-for ihc = 2
+for ihc = 1
     figure(ihc)
-    comload = sprintf('load AAresultswithFBter/resultssta26sensor%i',ihc);
+    comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
     eval(comload);
     Dstart = str2double(fileswithdotmat(1).name(13:15));
     Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
-    if 1
+    if 0
         doubledaynumber = (Dend-Dstart+3)/2;
     else
         doubledaynumber = 10;
         permutenbmats = randperm(nbmats);
-        allRatioPfilters = allRatioPfilters(:,permutenbmats(1:doubledaynumber));
+        allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
     end
     
-    allRatioPfilters_ave          = nanmean(allRatioPfilters,2);
+    allRatioPfilters_ave          = nanmean(allRatioSupPfilters,2);
     absallRatioPfilters_ave       = abs(allRatioPfilters_ave);
     angleallRatioPfilters_ave_deg = angle(allRatioPfilters_ave)*180/pi;
     
@@ -47,10 +47,10 @@ for ihc = 2
     %=======
     figure(ihc)
     subplot(2,1,1)
-    semilogx(allfrqsPfilters,20*log10(abs(allRatioPfilters)),'.', ...
-        'color',0.9*ones(3,1))
+    semilogx(allfrqsPfilters,20*log10(abs(allRatioSupPfilters)),'o','markersize',4, ...
+        'color',0.5*ones(3,1))
     hold on
-    semilogx(allfrqsPfilters,20*log10(absallRatioPfilters_ave),'.')
+    semilogx(allfrqsPfilters,20*log10(absallRatioPfilters_ave),'o','markerfacec','r')
     hold on
     %     semilogx(FreqFitabs_Hz,20*log10(absRfit),'r')
     hold off
@@ -63,16 +63,16 @@ for ihc = 2
     drawnow
     %=====
     subplot(212)
-    semilogx(allfrqsPfilters,angle(allRatioPfilters)*180/pi,'.', ...
-        'color',0.7*ones(3,1))
+    semilogx(allfrqsPfilters,angle(allRatioSupPfilters)*180/pi,'o','markersize',4, ...
+        'color',0.5*ones(3,1))
     hold on
-    semilogx(allfrqsPfilters,angleallRatioPfilters_ave_deg,'.')
+    semilogx(allfrqsPfilters,angleallRatioPfilters_ave_deg,'o','markerfacec','r')
     hold on
     %     semilogx(FreqFitphase_Hz,phaseRfit_deg,'r')
     hold off
     set(gca,'fontname','times','fontsize',10)
     set(gca,'xlim',[0.002 4])
-    set(gca,'ylim',[-15 15])
+    set(gca,'ylim',[-5 5])
     grid on
     xlabel('frequency - Hz')
     ylabel('ratio phase - degree')
@@ -131,23 +131,23 @@ for ihc = 2
             idc_rsp_file = 'I26DE_BDF_RSP_2015134_MB3';
     end
     
-    [p_totalNRSTF, freq_vector, TFsensor, TFsensor4freqRatio] = ...
-        theoreticalSUTresponse4IS26(allfrqsPfilters, idc_rsp_file);
-    
-    p_totalNRSTF_sup = p_totalNRSTF*1.05;
-    p_totalNRSTF_inf = p_totalNRSTF*0.95;
-    
+%     [p_totalNRSTF, freq_vector, TFsensor, TFsensor4freqRatio] = ...
+%         theoreticalSUTresponse4IS26(allfrqsPfilters, idc_rsp_file);
+%     
+%     p_totalNRSTF_sup = p_totalNRSTF*1.05;
+%     p_totalNRSTF_inf = p_totalNRSTF*0.95;
+%     
     %=============== dipslay
-    figure(30+ihc)
-    semilogx(freq_vector, 20*log10(abs(p_totalNRSTF)), 'b');
-    hold on
-    semilogx(freq_vector, 20*log10(abs(p_totalNRSTF_inf)), 'b:');
-    semilogx(freq_vector, 20*log10(abs(p_totalNRSTF_sup)), 'b:');
-    semilogx(allfrqsPfilters, ...
-        20*log10((abs(TFsensor4freqRatio) .* absallRatioPfilters_ave)*coeffsens), '.-g')
-    hold off
-    xlim([0.004, 10])
-    ylim([-2, 4])
+%     figure(30+ihc)
+%     semilogx(freq_vector, 20*log10(abs(p_totalNRSTF)), 'b');
+%     hold on
+%     semilogx(freq_vector, 20*log10(abs(p_totalNRSTF_inf)), 'b:');
+%     semilogx(freq_vector, 20*log10(abs(p_totalNRSTF_sup)), 'b:');
+%     semilogx(allfrqsPfilters, ...
+%         20*log10((abs(TFsensor4freqRatio) .* absallRatioPfilters_ave)*coeffsens), '.-g')
+%     hold off
+%     xlim([0.004, 10])
+%     ylim([-4, 4])
     grid on
     title(sprintf('IS26 -  sensor #%i, threshold = %4.2f\nday number = %i',...
         ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',12)
@@ -160,5 +160,14 @@ for ihc = 2
     set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
     set(gcf,'color', [1,1,0.92]);
     set(gcf, 'InvertHardCopy', 'off');
-    
 end
+
+
+        printdirectory  = ' ../slidesITW2015/';
+        fileprintepscmd = sprintf('print -depsc -loose %saveragedon20days%i.eps',printdirectory,ihc);
+        fileeps2pdfcmd  = sprintf('!epstopdf %saveragedon20days%i.eps',printdirectory,ihc);
+        filermcmd       = sprintf('!rm %saveragedon20days%i.eps',printdirectory,ihc);
+         
+%         eval(fileprintepscmd)
+%         eval(fileeps2pdfcmd)
+%         eval(filermcmd)
