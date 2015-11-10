@@ -1,9 +1,5 @@
 function remainindex = lookatdata(directorydatafromIDC,ihc, flaglook)
 
-clear
-directorydatafromIDC  = '../../../AAdataI26calib/';
-ihc = 2;
-flaglook = 0;
 
 dirmat = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
 nbmats = length(dirmat);
@@ -26,7 +22,8 @@ for imatfile=1:nbmats,
         flagremainindex(imatfile)=1;
     end
     
-    if and(length(NN)<=4,flaglook)
+    if flaglook %and(length(NN)<=4,flaglook)
+        length(NN)
         setimesC_ihc  = zeros(nbmats,2);
         setimesH_ihc  = zeros(nbmats,2);
         signals       = zeros(34560000,2);

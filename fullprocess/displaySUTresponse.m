@@ -1,3 +1,4 @@
+
 %========================== displaySUTresponse.m =========================
 % this program reads the ratios SUT/SREF estimated by spectral approach
 % and stored in a drectory as AAresults. That consists on 8 files
@@ -8,7 +9,7 @@
 %         - theoreticalSUTresponse4IS26.m
 % located in ZZtoolbox/00gabrielson
 %
-clear
+% clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
 
@@ -17,7 +18,7 @@ directorydatafromIDC  = '../../../AAdataI26calib/';
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
-for ihc = 2
+for ihc = 5
     for ii=[2]
         switch ii
             case 1
@@ -97,7 +98,8 @@ for ihc = 2
         end
         
 %         remainindex = lookatdata(directorydatafromIDC,ihc, 0);
-        remainindex = (1:nbmats);
+%         remainindex = (1:nbmats);
+        
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
         allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
         allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,remainindex);
@@ -129,7 +131,7 @@ for ihc = 2
         %         segmentsnumber,polydegrees,logtrain,logfit);
         
 
-figure(numfig)
+        figure(numfig)
         clf
         %================================================
         subplot(211)

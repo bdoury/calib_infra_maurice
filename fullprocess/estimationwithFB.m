@@ -12,7 +12,6 @@ FLAGsaveall = 0;
 addpath ZZtoolbox/
 
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-directorydatafromIDC  = '../../../AAdataI26calib/';
 
 %==========================================================================
 % the data are in a file with the name built as:
@@ -55,7 +54,8 @@ end
 %=====================
 MSCthreshold = 0.98;
 %=====================
-for indexofSTA = 2
+for indexofSTA = 2:8
+    directorydatafromIDC  = '../../../AAdataI26calib/';
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
