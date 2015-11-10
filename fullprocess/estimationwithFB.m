@@ -146,6 +146,7 @@ for indexofSTA = 2
         if not(idSc==idSh)
             fprintf('problem with file # %i on %i\nLH = %i and LC = %i\n',ifile,indexofSTA,idSh,idSc)
             problemHC(ifile,:) = [idSh,idSc];
+            idSc = min([idSc, idSh]);
         end
         idScMin = min([idSc, idSh]);
         
