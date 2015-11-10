@@ -3,7 +3,7 @@ clear
 addpath ZZtoolbox/
 
 saveflag = 1;
-dataresults='AAresultswithFBXsepar/';
+dataresults='AAresultswithFBbis/';
 for indexofSTA = [1,3,4,5]
     
             switch indexofSTA

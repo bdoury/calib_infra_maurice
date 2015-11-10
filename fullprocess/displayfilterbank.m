@@ -122,9 +122,6 @@ filermcmd       = sprintf('!rm %sfilterbank.eps',printdirectory);
 %       eval(fileprintepscmd)
 %         eval(fileeps2pdfcmd)
 %         eval(filermcmd)
-      eval(fileprintepscmd)
-        eval(fileeps2pdfcmd)
-        eval(filermcmd)
 
 
 %==== parameters for TeX

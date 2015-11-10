@@ -8,9 +8,12 @@
 %         - theoreticalSUTresponse4IS26.m
 % located in ZZtoolbox/00gabrielson
 %
-% clear
+clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
+
+directorydatafromIDC  = '../../../AAdataI26calib/';
+
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
@@ -58,40 +61,7 @@ for ihc = 2
                 coeffsens=1.02;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
         end
-        
-        eval(comload);
-        
-        remainindex = [];
-        for imatfile=1:nbmats,imatfile
-            dirmat = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
-            cdeload  = sprintf('load ''%ss%i/%s''',directorydatafromIDC,ihc,...
-                dirmat(imatfile).name);
-            
-            eval(cdeload)
-            
-            Lrecords = length(records);
-            NN       = zeros(Lrecords,1);
-            maxcurr  = -inf;
-            for ir=1:Lrecords
-                NN(ir) = length([records{ir}.data]);
-                maxcurr = max([maxcurr,max(abs([records{ir}.data]))]);
-            end
-            if and(length(NN)<100, maxcurr<300)
-                remainindex = [remainindex; imatfile];
-            end
-            %     N1=length([records{1}.data]);
-            %     N2=length([records{4}.data]);
-            %     signal1_ihc = [records{2}.data];
-            %     signal2_ihc = [records{4}.data];
-            %     subplot(411)
-            %      plot((0:1000:N1-1)/20/60,signal1_ihc(1:1000:N1) ,'r')
-            %     subplot(412)
-            %      plot((0:1000:N2-1)/20/60,signal2_ihc(1:1000:N2) ,'b')
-            %     subplot(212)
-            %     semilogx(allfrqsPfiltersUZ,20*log10(abs(allRatioPfiltersUZ(:,ii))),'k','linew',1.5),
-            %     drawnow
-            %     pause
-        end       
+        eval(comload); 
 %%
         Dstart = str2double(fileswithdotmat(1).name(13:15));
         Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
@@ -126,10 +96,12 @@ for ihc = 2
             logfit.N       = 200;
         end
         
+%         remainindex = lookatdata(directorydatafromIDC,ihc, 0);
+        remainindex = (1:nbmats);
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-        allRatioPfiltersU        = allRatioSupPfilters(inda,[1:32 34:52]);
-        allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,:);
-        nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,:);
+        allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
+        allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,remainindex);
+        nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,remainindex);
         
         
         allRatioPfiltersUZ        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);

@@ -6,7 +6,7 @@ allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
 addpath ZZtoolbox/
 
 directoryresults      = 'AAresultswithFBXsepar';
-directorydatafromIDC  = '../../../AAdataI26/';
+directorydatafromIDC  = '../../../AAdataI26calib/';
 
 %==========================================================================
 % the data are in a file with the name built as:

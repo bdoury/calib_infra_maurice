@@ -8,8 +8,8 @@ saveflag = 1;
 bootdraw = 0;
 nbdraw=100;
 Ncouples=50;
-
-for ihc=6
+SUFFICIENTNUMBER = 3;
+for ihc=5
     % keep 2
     for ii=1
         switch ii
@@ -57,16 +57,16 @@ for ihc=6
         
         Dstart = str2double(fileswithdotmat(1).name(13:15));
         Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
-%         if 1
-%             doubledaynumber = (Dend-Dstart+3)/2;
-%         else
-%             doubledaynumber = 10;
-%             permutenbmats = randperm(nbmats);
-%             allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
-%         end
+        %         if 1
+        %             doubledaynumber = (Dend-Dstart+3)/2;
+        %         else
+        %             doubledaynumber = 10;
+        %             permutenbmats = randperm(nbmats);
+        %             allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
+        %         end
         
         sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-
+        
         N_freq_vector = 1;
         freq_vector   = 1;
         [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
@@ -77,7 +77,7 @@ for ihc=6
         
         allpraticalvaluesat1Hz = coeffsens*abs(TFsensor4freqRatio)*abs(allRatioSupPfilters(indselect,:)) ./ ...
             expectedvalueat1Hz;
-
+        
         nbofcouplesdays = length(allpraticalvaluesat1Hz);
         %===================== plots ==============
         figure(numfig)
@@ -110,14 +110,14 @@ for ihc=6
             end
         else
             
-            indnotsufficient = find(nbofvaluesoverthreshold(indselect,:)<=4);
+            indnotsufficient = find(nbofvaluesoverthreshold(indselect,:)<=SUFFICIENTNUMBER);
             allpraticalvaluesat1Hz(indnotsufficient) = NaN;
             plot(20*log10(allpraticalvaluesat1Hz),'ok','markersize',6,'markerfacec','k')
             hold on
         end
         
         
-%         plot([0 10000], [0 0],'--r','linew',2)
+        %         plot([0 10000], [0 0],'--r','linew',2)
         plot([0 10000], 20*log10(1.05*[1 1]),'--r','linew',2)
         plot([0 10000], 20*log10(0.95*[1 1]),'--r','linew',2)
         set(gca,'fontname','times','fontsize',14)
@@ -147,7 +147,7 @@ for ihc=6
         else
             set(gca,'xlim',[1 nbofcouplesdays])
         end
-
+        
         
         HorizontalSize = 16;
         VerticalSize   = 11;
@@ -166,8 +166,8 @@ for ihc=6
         %
         if saveflag
             eval(fileprintepscmd)
-%             eval(fileeps2pdfcmd)
-%             eval(filermcmd)
+            %             eval(fileeps2pdfcmd)
+            %             eval(filermcmd)
         end
     end
     

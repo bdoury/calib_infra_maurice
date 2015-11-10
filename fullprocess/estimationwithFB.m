@@ -12,7 +12,7 @@ FLAGsaveall = 0;
 addpath ZZtoolbox/
 
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-directorydatafromIDC  = '../../../../../AAdataI26calib/';
+directorydatafromIDC  = '../../../AAdataI26calib/';
 
 %==========================================================================
 % the data are in a file with the name built as:
@@ -29,13 +29,15 @@ directorydatafromIDC  = '../../../../../AAdataI26calib/';
 %======
 % generate by geneFB.m, use LOAD
 if 1
-    filtercharactfilename = 'filtercharacteristics2';
+%     filtercharactfilename = 'filtercharacteristics/filtercharacteristicsNOfilter.m';
+%     cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
+    filtercharactfilename = 'filtercharacteristics/filtercharacteristics2';
     cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
     directoryresults      = 'AAresultswithFBbis';
     
     %======
 else
-    filtercharactfilename = 'filtercharacteristics0812Hz.m';
+    filtercharactfilename = 'filtercharacteristics/filtercharacteristics0812Hz.m';
     cmdloadcharact = sprintf('run(''%s'')',filtercharactfilename);
     directoryresults      = 'AAresultsaround1Hz';
 end
@@ -85,6 +87,8 @@ for indexofSTA = 2
         
         idSc = 1;
         idSh = 1;
+        cpC  = 1;
+        cpH  = 1;
         idWS = 1;
         idWD = 1;
         idT  = 1;
@@ -93,8 +97,7 @@ for indexofSTA = 2
         temperature = zeros(34560000,1);
         windDir     = zeros(34560000,1);
         Lrecords    = length(records);
-        cpC=1;
-        cpH=1;
+
         for ir = 1:Lrecords
             switch records{ir}.channel
                 case 'BDF'
@@ -230,6 +233,7 @@ for indexofSTA = 2
         clear alltimes_sec
         clear SUTs
         clear signals_centered_save_ihc
+        clear directorydatafromIDC
         eval(comsave);
     end
 end

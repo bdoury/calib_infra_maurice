@@ -16,7 +16,7 @@ addpath ZZtoolbox/00gabrielson/
 addpath ZZtoolbox/00benoit/
 %=======
 %
-directorydata = '../../../AAdataI26/';
+directorydata = '../../../AAdataI26calib/';
 %
 %=========================================================================
 addpath ZZtoolbox/
