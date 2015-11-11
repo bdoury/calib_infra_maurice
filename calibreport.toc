@@ -72,21 +72,21 @@
 \contentsline {section}{\numberline {3.}Statistical distribution of the ratios}{84}{section.10.3}
 \contentsline {section}{\numberline {4.}Extraction from DB}{85}{section.10.4}
 \contentsline {subsection}{\numberline {4.1}Conversion to format {\tt .mat}}{85}{subsection.10.4.1}
-\contentsline {section}{\numberline {5.}Full process}{86}{section.10.5}
-\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{86}{subsection.10.5.1}
-\contentsline {subsection}{\numberline {5.2}Main program for estimation}{86}{subsection.10.5.2}
-\contentsline {section}{\numberline {6.}Application program}{88}{section.10.6}
+\contentsline {section}{\numberline {5.}Full process}{87}{section.10.5}
+\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{87}{subsection.10.5.1}
+\contentsline {subsection}{\numberline {5.2}Main program for estimation}{87}{subsection.10.5.2}
+\contentsline {section}{\numberline {6.}Application program}{89}{section.10.6}
 \contentsline {subsection}{\numberline {6.1}extractSensorRatio.m}{89}{subsection.10.6.1}
 \contentsline {subsection}{\numberline {6.2}displaySensorRatio.m}{89}{subsection.10.6.2}
-\contentsline {subsection}{\numberline {6.3}displaySensorResponse.m}{90}{subsection.10.6.3}
-\contentsline {chapter}{\numberline {11}Toolbox}{94}{chapter.11}
-\contentsline {section}{\numberline {1.}Main analysis function: {\tt fbankanalysis.m}}{94}{section.11.1}
-\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{100}{section.11.2}
-\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{100}{section.11.3}
-\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{101}{section.11.4}
-\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{101}{section.11.5}
-\contentsline {section}{\numberline {6.}Polynomial fitter}{103}{section.11.6}
-\contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{105}{chapter.12}
-\contentsline {section}{\numberline {1.}GeneFB}{105}{section.12.1}
-\contentsline {section}{\numberline {2.}execGPARSE}{107}{section.12.2}
-\contentsline {section}{\numberline {3.}convertCSS2matlab}{107}{section.12.3}
+\contentsline {subsection}{\numberline {6.3}displaySensorResponse.m}{91}{subsection.10.6.3}
+\contentsline {chapter}{\numberline {11}Toolbox}{95}{chapter.11}
+\contentsline {section}{\numberline {1.}Main analysis function: {\tt fbankanalysis.m}}{95}{section.11.1}
+\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{101}{section.11.2}
+\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{101}{section.11.3}
+\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.4}
+\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{102}{section.11.5}
+\contentsline {section}{\numberline {6.}Polynomial fitter}{104}{section.11.6}
+\contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{106}{chapter.12}
+\contentsline {section}{\numberline {1.}GeneFB}{106}{section.12.1}
+\contentsline {section}{\numberline {2.}execGPARSE}{108}{section.12.2}
+\contentsline {section}{\numberline {3.}convertCSS2matlab}{108}{section.12.3}
