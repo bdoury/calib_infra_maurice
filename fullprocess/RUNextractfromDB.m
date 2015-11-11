@@ -6,7 +6,7 @@ addpath   ZZtoolbox/00pierrick/
 % addpath ../00gabrielson/
 
 %========== matlab format files are saved into the following directory
-savedirnamefull      ='../../../../../AAdataI26calib/';
+savedirnamefull      = '../../../AAdataI26calib/';
 %=== temporary files
 temporary_gparse_dir = 'ZZtoolbox/00pierrick/tempfiles/';
 if not(exist(temporary_gparse_dir,'dir'))
@@ -26,16 +26,16 @@ password    = 'sqlmomo';
 channel     = '(''BDF'',''BDF'',''LWS'',''LWD'',''LKO'')';
 
 yearstart   =  '2015';
-monthstart  =  '06';
+monthstart  =  '10';
 HMSstart    = '00:00:10';
 yearend     =  '2015';
-monthend    =  '06';
+monthend    =  '10';
 HMSend      = '23:50:10';
 
-for ihc=2
+for ihc=1:8
     savedirnamefull_ihc = sprintf('%ss%i/',savedirnamefull,ihc);
     stations    = sprintf(' (''I26H%i'',''I26C%i'') ',ihc,ihc);
-    for daystart_num    =  27 %1:2:25
+    for daystart_num    =  11:2:29
         if daystart_num<10
             daystart    = ['0' num2str(daystart_num)];
             if daystart_num==9

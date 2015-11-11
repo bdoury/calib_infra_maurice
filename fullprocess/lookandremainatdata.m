@@ -1,31 +1,43 @@
-% function remainindex = lookatdata(directorydatafromIDC,ihc, flaglook)
+% function remainindex = lookandremainatdata...
+%     (directorydatafromIDC,ihc, flaglook)
+%===============================================================
 
+% directorydatafromIDC: directory where are saved the
+% signals in .mat. This directiory contains 8 directories
+% from s1 to s8.
+% ihc: sensor number
+% flaglook: if 1 the signals are displayed.
+
+%===============================================================
+% the 3 following lines have to be removed if it is
+% used as a function
 directorydatafromIDC = '../../../AAdataI26calib/';
-
-dirmat = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
-nbmats = length(dirmat);
-flagremainindex = zeros(nbmats,1);
-Fs_Hz = 20;
-ihc = 8;
+ihc      = 8;
 flaglook = 1;
 
+dirmat          = dir(sprintf('%ss%i/*.mat',directorydatafromIDC,ihc));
+nbmats          = length(dirmat);
+flagremainindex = zeros(nbmats,1);
+Fs_Hz           = 20;
+remainindex     = cell(nbmats,1);
 for imatfile=63%1:nbmats,
     cdeload  = sprintf('load ''%ss%i/%s''',directorydatafromIDC,ihc,...
         dirmat(imatfile).name);
     eval(cdeload)
     Lrecords = length(records);
-    NN       = zeros(Lrecords,1);
+    N_ir     = zeros(Lrecords,1);
     maxcurr  = -inf;
+    stdcurr  = -inf;
     for ir=1:Lrecords
-        NN(ir) = length([records{ir}.data]);
-        maxcurr = max([maxcurr,max(abs([records{ir}.data]))]);
+        N_ir(ir) = length([records{ir}.data]);
+        maxcurr  = max([maxcurr,max(abs([records{ir}.data]))]);
+        stdcurr  = max([stdcurr,std([records{ir}.data])]);
     end
-    if and(length(NN)<=4, maxcurr<300)
+    if maxcurr<4*stdcurr
         flagremainindex(imatfile)=1;
     end
     
     if flaglook %and(length(NN)<=4,flaglook)
-        length(NN)
         setimesC_ihc  = zeros(nbmats,2);
         setimesH_ihc  = zeros(nbmats,2);
         signals       = zeros(34560000,2);
@@ -34,7 +46,7 @@ for imatfile=63%1:nbmats,
         cpC  = 1;
         cpH  = 1;
         
-        for ir=1:min([length(NN),4])
+        for ir=1:Lrecords %min([Lrecords,4])
             if strcmp(records{ir}.channel,'BDF')
                 switch records{ir}.station(4)
                     case 'C'
@@ -72,5 +84,5 @@ for imatfile=63%1:nbmats,
         drawnow
         pause
     end
+    remainindex{imatfile} = find(flagremainindex==1);
 end
-remainindex = find(flagremainindex==1);

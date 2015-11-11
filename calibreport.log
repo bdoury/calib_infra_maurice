@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.10.19)  10 NOV 2015 15:14
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.10.19)  11 NOV 2015 15:31
 entering extended mode
  %&-line parsing enabled.
 **calibreport.tex
@@ -282,11 +282,20 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \c@example=\count120
 \c@lemme=\count121
 \c@proof=\count122
-Package color Info: Redefining color enstrouge on input line 141.
-Package color Info: Redefining color blue on input line 143.
-Package color Info: Redefining color cyan on input line 146.
-Package color Info: Redefining color magenta on input line 147.
+Package color Info: Redefining color enstrouge on input line 140.
+Package color Info: Redefining color blue on input line 142.
+Package color Info: Redefining color cyan on input line 145.
+Package color Info: Redefining color magenta on input line 146.
  (./calibreport.aux
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
 
 LaTeX Warning: Label `' multiply defined.
 
@@ -314,21 +323,21 @@ LaTeX Warning: Label `eq:MSCwind' multiply defined.
 )
 \openout1 = `calibreport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-Package hyperref Info: Link coloring OFF on input line 156.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+Package hyperref Info: Link coloring OFF on input line 155.
  (/usr/share/texmf/tex/latex/hyperref/nameref.sty
 Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
 
@@ -337,8 +346,8 @@ Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
 )
 \c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 156.
-LaTeX Info: Redefining \pageref on input line 156.
+LaTeX Info: Redefining \ref on input line 155.
+LaTeX Info: Redefining \pageref on input line 155.
  (./calibreport.out)
 (./calibreport.out)
 \@outlinefile=\write3
@@ -365,7 +374,7 @@ File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 
 ]
 Chapter 1.
-(./textes/introduction.tex
+(./textes/ch1introduction.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
@@ -447,216 +456,228 @@ LaTeX Warning: Reference `eq:ratio-inf' on page 10 undefined on input line 140.
 
 ) [10]
 Chapter 2.
-(./textes/spectralanalysis.tex [11
+(./textes/ch2spectralanalysis.tex
+<slidesITW2015/fulltestbedIS26.pdf, id=473, 294.26897pt x 114.09616pt>
+File: slidesITW2015/fulltestbedIS26.pdf Graphic file (type pdf)
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
+<use slidesITW2015/fulltestbedIS26.pdf> [11
+
+ <./slidesITW2015/fulltestbedIS26.pdf>] <slidesITW2015/processdetail.pdf, id=49
+7, 386.23576pt x 104.63933pt>
+File: slidesITW2015/processdetail.pdf Graphic file (type pdf)
+
+<use slidesITW2015/processdetail.pdf> [12 <./slidesITW2015/processdetail.pdf>]
+<figures/synoptic.pdf, id=558, 247.5902pt x 127.80809pt>
+File: figures/synoptic.pdf Graphic file (type pdf)
+
+<use figures/synoptic.pdf> [13 <./figures/synoptic.pdf>] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
-[12] <figures/schema-of-observation.pdf, id=488, 420.9865pt x 195.396pt>
+<figures/schema-of-observation.pdf, id=594, 420.9865pt x 195.396pt>
 File: figures/schema-of-observation.pdf Graphic file (type pdf)
 
 <use figures/schema-of-observation.pdf>
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 72.
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 88.
 
 (/usr/share/texmf/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [13 <./figures/schema-of-observation.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
+) [15 <./figures/schema-of-observation.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-[14]
+[16]
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\hbox' on input line 149.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\mathsurround' on input line 149.
+(hyperref)                removing `\hbox' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\z@' on input line 149.
+(hyperref)                removing `\mathsurround' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\z@' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 149.
+(hyperref)                removing `\f@encoding' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\<let>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\f@family' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\f@series' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\afterassignment' on input line 149.
+(hyperref)                removing `\f@shape' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\afterassignment' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@size' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\afterassignment' on input line 149.
+(hyperref)                removing `\f@size' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\afterassignment' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@baselineskip' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\f@baselineskip' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@linespread' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 149.
+(hyperref)                removing `\f@linespread' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\baselinestretch' on input line 149.
+(hyperref)                removing `\<let>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\baselinestretch' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 149.
+(hyperref)                removing `\<def>-command' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\U/msb/m/n/7' on input line 149.
+(hyperref)                removing `\font@name' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 149.
+(hyperref)                removing `\U/msb/m/n/7' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 149.
+(hyperref)                removing `\ignorespaces' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\unskip' on input line 149.
+(hyperref)                removing `\ignorespaces' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\@@italiccorr' on input line 149.
+(hyperref)                removing `\unskip' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 149.
+(hyperref)                removing `\@@italiccorr' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `subscript' on input line 149.
+(hyperref)                removing `math shift' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 149.
+(hyperref)                removing `subscript' on input line 165.
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 202--204
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `math shift' on input line 165.
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 218--220
 
  []
 
-[16] <figures/allHest.pdf, id=656, 341.275pt x 227.85126pt>
+[18] [19] <figures/allHest.pdf, id=765, 341.275pt x 227.85126pt>
 File: figures/allHest.pdf Graphic file (type pdf)
 
-<use figures/allHest.pdf> [17]
-<figures/MSCtestthreshold.pdf, id=664, 341.275pt x 227.85126pt>
+<use figures/allHest.pdf>
+<figures/MSCtestthreshold.pdf, id=766, 341.275pt x 227.85126pt>
 File: figures/MSCtestthreshold.pdf Graphic file (type pdf)
 
-<use figures/MSCtestthreshold.pdf> [18 <./figures/allHest.pdf>]
-<figures/theoreticaldistribratios.pdf, id=675, 341.275pt x 227.85126pt>
+<use figures/MSCtestthreshold.pdf> [20 <./figures/allHest.pdf>]
+<figures/theoreticaldistribratios.pdf, id=779, 341.275pt x 227.85126pt>
 File: figures/theoreticaldistribratios.pdf Graphic file (type pdf)
 
 <use figures/theoreticaldistribratios.pdf>
 
-LaTeX Warning: Reference `eq:ratio-sup' on page 19 undefined on input line 275.
+LaTeX Warning: Reference `eq:ratio-sup' on page 21 undefined on input line 291.
 
 
 
-LaTeX Warning: Reference `eq:ratio-inf' on page 19 undefined on input line 275.
+LaTeX Warning: Reference `eq:ratio-inf' on page 21 undefined on input line 291.
 
 
 
-LaTeX Warning: Reference `eq:ratio-sup' on page 19 undefined on input line 275.
+LaTeX Warning: Reference `eq:ratio-sup' on page 21 undefined on input line 291.
 
 
 
-LaTeX Warning: Reference `eq:ratio-inf' on page 19 undefined on input line 275.
+LaTeX Warning: Reference `eq:ratio-inf' on page 21 undefined on input line 291.
 
 
-[19 <./figures/MSCtestthreshold.pdf>] [20 <./figures/theoreticaldistribratios.p
+[21 <./figures/MSCtestthreshold.pdf>] [22 <./figures/theoreticaldistribratios.p
 df>]
 
 pdfTeX warning: pdflatex (file ./figures/practicalratiodistribution6.pdf): PDF 
 inclusion: found PDF version <1.5>, but at most version <1.4> allowed
-<figures/practicalratiodistribution6.pdf, id=721, 682.55pt x 284.06125pt>
+<figures/practicalratiodistribution6.pdf, id=824, 682.55pt x 284.06125pt>
 File: figures/practicalratiodistribution6.pdf Graphic file (type pdf)
 
-<use figures/practicalratiodistribution6.pdf> [21 <./figures/practicalratiodist
-ribution6.pdf>] [22] [23]
-<figures/overlapFFTs.pdf, id=748, 490.17357pt x 190.63039pt>
+<use figures/practicalratiodistribution6.pdf> [23 <./figures/practicalratiodist
+ribution6.pdf>] [24] [25]
+<figures/overlapFFTs.pdf, id=852, 490.17357pt x 190.63039pt>
 File: figures/overlapFFTs.pdf Graphic file (type pdf)
 
 <use figures/overlapFFTs.pdf>
-<figures/filterbank.pdf, id=751, 341.275pt x 398.48875pt>
+<figures/filterbank.pdf, id=855, 341.275pt x 398.48875pt>
 File: figures/filterbank.pdf Graphic file (type pdf)
 
-<use figures/filterbank.pdf> [24 <./figures/overlapFFTs.pdf>] [25 <./figures/fi
-lterbank.pdf>]) [26]
+<use figures/filterbank.pdf> [26 <./figures/overlapFFTs.pdf>] [27 <./figures/fi
+lterbank.pdf>]) [28]
 Chapter 3.
-(./textes/IS26results.tex [27
+(./textes/ch4IS26results.tex [29
 
 ]
-<slidesITW2015/3monthsonIS26SUTboxplot1.pdf, id=822, 455.7025pt x 284.06125pt>
+<slidesITW2015/3monthsonIS26SUTboxplot1.pdf, id=925, 455.7025pt x 284.06125pt>
 File: slidesITW2015/3monthsonIS26SUTboxplot1.pdf Graphic file (type pdf)
 
 <use slidesITW2015/3monthsonIS26SUTboxplot1.pdf>
@@ -668,7 +689,7 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 30.
 
-<slidesITW2015/averagedon20days1.pdf, id=823, 455.7025pt x 341.275pt>
+<slidesITW2015/averagedon20days1.pdf, id=926, 455.7025pt x 341.275pt>
 File: slidesITW2015/averagedon20days1.pdf Graphic file (type pdf)
 
 <use slidesITW2015/averagedon20days1.pdf>
@@ -680,12 +701,12 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 36.
 
-[28 <./slidesITW2015/3monthsonIS26SUTboxplot1.pdf>] [29 <./slidesITW2015/averag
+[30 <./slidesITW2015/3monthsonIS26SUTboxplot1.pdf>] [31 <./slidesITW2015/averag
 edon20days1.pdf>]
 
 pdfTeX warning: pdflatex (file ./figures/afewdaysonI26C6H6twoMSC.pdf): PDF incl
 usion: found PDF version <1.5>, but at most version <1.4> allowed
-<figures/afewdaysonI26C6H6twoMSC.pdf, id=848, 682.55pt x 284.06125pt>
+<figures/afewdaysonI26C6H6twoMSC.pdf, id=952, 682.55pt x 284.06125pt>
 File: figures/afewdaysonI26C6H6twoMSC.pdf Graphic file (type pdf)
 
 <use figures/afewdaysonI26C6H6twoMSC.pdf>
@@ -693,57 +714,57 @@ File: figures/afewdaysonI26C6H6twoMSC.pdf Graphic file (type pdf)
 pdfTeX warning: pdflatex (file ./figures/afewdaysonI26C4H4knownnoiseratio.pdf):
  PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
 
-<figures/afewdaysonI26C4H4knownnoiseratio.pdf, id=852, 682.55pt x 284.06125pt>
+<figures/afewdaysonI26C4H4knownnoiseratio.pdf, id=956, 682.55pt x 284.06125pt>
 File: figures/afewdaysonI26C4H4knownnoiseratio.pdf Graphic file (type pdf)
 
-<use figures/afewdaysonI26C4H4knownnoiseratio.pdf> [30
+<use figures/afewdaysonI26C4H4knownnoiseratio.pdf> [32
 
- <./figures/afewdaysonI26C6H6twoMSC.pdf>] [31 <./figures/afewdaysonI26C4H4known
+ <./figures/afewdaysonI26C6H6twoMSC.pdf>] [33 <./figures/afewdaysonI26C4H4known
 noiseratio.pdf>]
 
-LaTeX Warning: Reference `fig:C2' on page 32 undefined on input line 61.
+LaTeX Warning: Reference `fig:C2' on page 34 undefined on input line 61.
 
 
-LaTeX Warning: Reference `fig:C5' on page 32 undefined on input line 61.
+LaTeX Warning: Reference `fig:C5' on page 34 undefined on input line 61.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<figures/afewdays1colocation.pdf, id=884, 569.12625pt x 398.48875pt>
+<figures/afewdays1colocation.pdf, id=987, 569.12625pt x 398.48875pt>
 File: figures/afewdays1colocation.pdf Graphic file (type pdf)
 
 <use figures/afewdays1colocation.pdf>
-<figures/signalsanomaly.pdf, id=886, 569.12625pt x 455.7025pt>
+<figures/signalsanomaly.pdf, id=989, 569.12625pt x 455.7025pt>
 File: figures/signalsanomaly.pdf Graphic file (type pdf)
 
 <use figures/signalsanomaly.pdf>
-<figures/filteranomaly.pdf, id=887, 284.06125pt x 227.85126pt>
+<figures/filteranomaly.pdf, id=990, 284.06125pt x 227.85126pt>
 File: figures/filteranomaly.pdf Graphic file (type pdf)
 
-<use figures/filteranomaly.pdf> [32
+<use figures/filteranomaly.pdf> [34
 
  <./figures/afewdays1colocation.pdf>])
-[33 <./figures/signalsanomaly.pdf> <./figures/filteranomaly.pdf>]
+[35 <./figures/signalsanomaly.pdf> <./figures/filteranomaly.pdf>]
 Chapter 4.
-(./textes/windonNRS.tex
+(./textes/ch5windonNRS.tex
 
-LaTeX Warning: Citation `alcoverro:2005' on page 34 undefined on input line 7.
-
-
-LaTeX Warning: Citation `alcoverro:2005' on page 34 undefined on input line 12.
+LaTeX Warning: Citation `alcoverro:2005' on page 36 undefined on input line 7.
 
 
+LaTeX Warning: Citation `alcoverro:2005' on page 36 undefined on input line 12.
 
-LaTeX Warning: Citation `nouvellet_itwb:2013' on page 34 undefined on input lin
+
+
+LaTeX Warning: Citation `nouvellet_itwb:2013' on page 36 undefined on input lin
 e 12.
 
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 34 undefined on input line 12
+LaTeX Warning: Citation `mack_flinn:1971' on page 36 undefined on input line 12
 .
 
-[34
+[36
 
 ]
 
@@ -754,18 +775,18 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 20.
 
-[35] [36]
+[37] [38]
 
-LaTeX Warning: Citation `nouvellet_itwb:2013' on page 37 undefined on input lin
+LaTeX Warning: Citation `nouvellet_itwb:2013' on page 39 undefined on input lin
 e 110.
 
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 37 undefined on input line 13
+LaTeX Warning: Citation `mack_flinn:1971' on page 39 undefined on input line 13
 0.
 
-[37]
+[39]
 
-LaTeX Warning: Citation `alcoverro:2005' on page 38 undefined on input line 151
+LaTeX Warning: Citation `alcoverro:2005' on page 40 undefined on input line 151
 .
 
 
@@ -777,21 +798,21 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 159.
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 38 undefined on input line 161
+LaTeX Warning: Citation `alcoverro:2005' on page 40 undefined on input line 161
 .
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 38 undefined on input line 161
+LaTeX Warning: Citation `alcoverro:2005' on page 40 undefined on input line 161
 .
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 38 undefined on input line 162
+LaTeX Warning: Citation `alcoverro:2005' on page 40 undefined on input line 162
 .
 
-<figures/f05asvond.pdf, id=955, 398.48875pt x 284.06125pt>
+<figures/f05asvond.pdf, id=1058, 398.48875pt x 284.06125pt>
 File: figures/f05asvond.pdf Graphic file (type pdf)
 
-<use figures/f05asvond.pdf> [38]
+<use figures/f05asvond.pdf> [40]
 Underfull \hbox (badness 5161) in paragraph at lines 169--169
 []\OT1/cmr/bx/n/17.28 Application to the \OT1/cmr/m/it/17.28 in-situ \OT1/cmr/b
 x/n/17.28 cal-i-bra-tion
@@ -894,49 +915,49 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `\ignorespaces' on input line 169.
 
 
-LaTeX Warning: Citation `gabrielson:2011' on page 39 undefined on input line 17
+LaTeX Warning: Citation `gabrielson:2011' on page 41 undefined on input line 17
 7.
 
-<figures/bigschema.pdf, id=967, 514.89pt x 212.33388pt>
+<figures/bigschema.pdf, id=1070, 514.89pt x 212.33388pt>
 File: figures/bigschema.pdf Graphic file (type pdf)
 
-<use figures/bigschema.pdf> [39 <./figures/f05asvond.pdf>] [40 <./figures/bigsc
-hema.pdf>] [41] [42] [43]
-<figures/GonH.pdf, id=1072, 569.12625pt x 511.9125pt>
+<use figures/bigschema.pdf> [41 <./figures/f05asvond.pdf>] [42 <./figures/bigsc
+hema.pdf>] [43] [44] [45]
+<figures/GonH.pdf, id=1175, 569.12625pt x 511.9125pt>
 File: figures/GonH.pdf Graphic file (type pdf)
  <use figures/GonH.pdf>
-[44
+[46
 
-] [45 <./figures/GonH.pdf>]
-<figures/twospeeds.pdf, id=1088, 398.48875pt x 341.275pt>
+] [47 <./figures/GonH.pdf>]
+<figures/twospeeds.pdf, id=1191, 398.48875pt x 341.275pt>
 File: figures/twospeeds.pdf Graphic file (type pdf)
 
 <use figures/twospeeds.pdf>
-<figures/twospeedsbis.pdf, id=1089, 398.48875pt x 341.275pt>
+<figures/twospeedsbis.pdf, id=1192, 398.48875pt x 341.275pt>
 File: figures/twospeedsbis.pdf Graphic file (type pdf)
 
 <use figures/twospeedsbis.pdf>
-<figures/twospeedster.pdf, id=1091, 398.48875pt x 341.275pt>
+<figures/twospeedster.pdf, id=1194, 398.48875pt x 341.275pt>
 File: figures/twospeedster.pdf Graphic file (type pdf)
 
-<use figures/twospeedster.pdf>) [46
+<use figures/twospeedster.pdf>) [48
 
- <./figures/twospeeds.pdf>] [47 <./figures/twospeedsbis.pdf> <./figures/twospee
+ <./figures/twospeeds.pdf>] [49 <./figures/twospeedsbis.pdf> <./figures/twospee
 dster.pdf>]
 Chapter 5.
-(./textes/fullprocess.tex) [48
+(./textes/ch6fullprocess.tex) [50
 
-] [49
+] [51
 
 ]
 Chapter 6.
-(./textes/wss.tex [50
+(./textes/a1wss.tex [52
 
-] [51]) [52]
+] [53]) [54]
 Chapter 7.
-(./textes/spectralestimationDistribution.tex [53
+(./textes/a2spectralestimationDistribution.tex [55
 
-] [54]
+] [56]
 Overfull \hbox (18.22597pt too wide) in alignment at lines 72--82
  [][][] []
  []
@@ -947,26 +968,26 @@ Overfull \hbox (18.35542pt too wide) detected at line 122
 \U/dsrom/m/n/12 E [] E [] \OT1/cmr/m/n/12 + 0 = 2^^@[]
  []
 
-[55]
+[57]
 Overfull \hbox (5.07771pt too wide) in alignment at lines 137--146
  [][][] []
  []
 
-[56] [57] [58] [59]
+[58] [59] [60] [61]
 Overfull \hbox (62.75174pt too wide) detected at line 412
 [] [] \OT1/cmr/m/n/12 = [] []
  []
 
-[60]
+[62]
 
-LaTeX Warning: Reference `eq:rectangularsmooth' on page 61 undefined on input l
+LaTeX Warning: Reference `eq:rectangularsmooth' on page 63 undefined on input l
 ine 436.
 
 
-LaTeX Warning: Reference `fig:statsRatiosH2Mp131' on page 61 undefined on input
+LaTeX Warning: Reference `fig:statsRatiosH2Mp131' on page 63 undefined on input
  line 442.
 
-[61] [62]
+[63] [64]
 Underfull \hbox (badness 10000) in paragraph at lines 605--605
 []\OT1/cmr/bx/n/17.28 Some dis-tri-bu-tions re-lated to the
  []
@@ -976,12 +997,12 @@ Overfull \hbox (42.94633pt too wide) in alignment at lines 640--661
  [][][] []
  []
 
-[63]
+[65]
 
-LaTeX Warning: Reference `eq:directestimateHu1' on page 64 undefined on input l
+LaTeX Warning: Reference `eq:directestimateHu1' on page 66 undefined on input l
 ine 669.
 
-[64]
+[66]
 Overfull \hbox (29.09225pt too wide) in alignment at lines 752--767
  [][][] []
  []
@@ -991,9 +1012,9 @@ Overfull \hbox (16.12128pt too wide) in alignment at lines 782--791
  [][][] []
  []
 
-[65]
+[67]
 
-LaTeX Warning: Reference `eq:directestimateHu2' on page 66 undefined on input l
+LaTeX Warning: Reference `eq:directestimateHu2' on page 68 undefined on input l
 ine 837.
 
 
@@ -1001,33 +1022,33 @@ Overfull \hbox (42.94633pt too wide) in alignment at lines 890--910
  [][][] []
  []
 
-[66] [67]
+[68] [69]
 
-LaTeX Warning: Citation `carter:1973' on page 68 undefined on input line 969.
+LaTeX Warning: Citation `carter:1973' on page 70 undefined on input line 969.
 
-[68] <figures/cumulF-MSC.pdf, id=1258, 341.275pt x 341.275pt>
+[70] <figures/cumulF-MSC.pdf, id=1361, 341.275pt x 341.275pt>
 File: figures/cumulF-MSC.pdf Graphic file (type pdf)
 
-<use figures/cumulF-MSC.pdf> [69] [70 <./figures/cumulF-MSC.pdf>]
-<figures/thresholdforC95.pdf, id=1282, 511.9125pt x 341.275pt>
+<use figures/cumulF-MSC.pdf> [71] [72 <./figures/cumulF-MSC.pdf>]
+<figures/thresholdforC95.pdf, id=1385, 511.9125pt x 341.275pt>
 File: figures/thresholdforC95.pdf Graphic file (type pdf)
 
-<use figures/thresholdforC95.pdf> [71] [72 <./figures/thresholdforC95.pdf>]
-<figures/detectMSC.pdf, id=1300, 398.48875pt x 341.275pt>
+<use figures/thresholdforC95.pdf> [73] [74 <./figures/thresholdforC95.pdf>]
+<figures/detectMSC.pdf, id=1404, 398.48875pt x 341.275pt>
 File: figures/detectMSC.pdf Graphic file (type pdf)
 
-<use figures/detectMSC.pdf>) [73 <./figures/detectMSC.pdf>]
+<use figures/detectMSC.pdf>) [75 <./figures/detectMSC.pdf>]
 Chapter 8.
-(./textes/LOC.tex
+(./textes/a3LOC.tex
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 74 undefined on input line 29
+LaTeX Warning: Citation `mack_flinn:1971' on page 76 undefined on input line 29
 .
 
 
-LaTeX Warning: Citation `nouvellet:2012' on page 74 undefined on input line 29.
+LaTeX Warning: Citation `nouvellet:2012' on page 76 undefined on input line 29.
 
 
-[74
+[76
 
 ]
 
@@ -1039,405 +1060,405 @@ Overfull \hbox (16.8035pt too wide) in alignment at lines 64--84
  [][][] []
  []
 
-[75]) [76]
+[77]) [78]
 Chapter 9.
-(./textes/deterministic.tex [77
+(./textes/a4deterministic.tex [79
 
-]) [78] [79
+]) [80] [81
 
 ]
 Chapter 10.
 No file ../../allprogs//2progsCIandOthers/estimHanalysis.m.
-[80
+[82
 
 ]
 No file ../../allprogs//2progsCIandOthers/SigniLevelTestCoherence.m.
-[81]
+[83]
 No file ../../allprogs//2progsCIandOthers/CIHestimate.m.
-[82]
+[84]
 File: fullprocess/RUNextractfromDB.m  (verbatim)
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 255.
+(hyperref)                removing `\f@encoding' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 255.
+(hyperref)                removing `\<let>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 255.
+(hyperref)                removing `\f@family' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 255.
+(hyperref)                removing `\f@series' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 255.
+(hyperref)                removing `\f@shape' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\afterassignment' on input line 255.
+(hyperref)                removing `\afterassignment' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@size' on input line 255.
+(hyperref)                removing `\f@size' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\afterassignment' on input line 255.
+(hyperref)                removing `\afterassignment' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@baselineskip' on input line 255.
+(hyperref)                removing `\f@baselineskip' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@linespread' on input line 255.
+(hyperref)                removing `\f@linespread' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 255.
+(hyperref)                removing `\<let>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\baselinestretch' on input line 255.
+(hyperref)                removing `\baselinestretch' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 255.
+(hyperref)                removing `\<def>-command' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 255.
+(hyperref)                removing `\font@name' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\OT1/cmtt/m/n/14.4' on input line 255.
+(hyperref)                removing `\OT1/cmtt/m/n/14.4' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 255.
+(hyperref)                removing `\ignorespaces' on input line 254.
 
 No file fullprocess/ZZtoolbox/00Pierrick/convertCSStomatlab.m.
 No file fullprocess/ZZtoolbox/00Pierrick/extractfromDB.m.
-[83]
+[85]
 No file fullprocess//filtercharacteristics.m.
 File: fullprocess/estimationwithFB.m  (verbatim)
-[84] [85]
+[86] [87]
 No file fullprocess/extractSensorRatio.m.
 File: fullprocess/displaySensorRatio.m  (verbatim)
-[86] [87]
+[88] [89]
 File: fullprocess/displaySUTresponse.m  (verbatim)
- [88] [89] [90]
+ [90] [91] [92] [93]
 Chapter 11.
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 292.
+(hyperref)                removing `\f@encoding' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 292.
+(hyperref)                removing `\<let>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 292.
+(hyperref)                removing `\f@family' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 292.
+(hyperref)                removing `\f@series' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 292.
+(hyperref)                removing `\f@shape' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\afterassignment' on input line 292.
+(hyperref)                removing `\afterassignment' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@size' on input line 292.
+(hyperref)                removing `\f@size' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\afterassignment' on input line 292.
+(hyperref)                removing `\afterassignment' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@baselineskip' on input line 292.
+(hyperref)                removing `\f@baselineskip' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@linespread' on input line 292.
+(hyperref)                removing `\f@linespread' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 292.
+(hyperref)                removing `\<let>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\baselinestretch' on input line 292.
+(hyperref)                removing `\baselinestretch' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 292.
+(hyperref)                removing `\<def>-command' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 292.
+(hyperref)                removing `\font@name' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\OT1/cmtt/m/n/17.28' on input line 292.
+(hyperref)                removing `\OT1/cmtt/m/n/17.28' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 292.
+(hyperref)                removing `\ignorespaces' on input line 291.
 
 File: fullprocess/ZZtoolbox/fbankanalysis.m  (verbatim)
-[91
+[94
 
-] [92] [93] [94] [95] [96]
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 295.
-
+] [95] [96] [97] [98] [99]
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\setbox' on input line 295.
+(hyperref)                removing `math shift' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\z@' on input line 295.
+(hyperref)                removing `\setbox' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\hbox' on input line 295.
+(hyperref)                removing `\z@' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\frozen@everymath' on input line 295.
+(hyperref)                removing `\hbox' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\@emptytoks' on input line 295.
+(hyperref)                removing `\frozen@everymath' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\mathsurround' on input line 295.
+(hyperref)                removing `\@emptytoks' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\z@' on input line 295.
+(hyperref)                removing `\mathsurround' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 295.
+(hyperref)                removing `\z@' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\textstyle' on input line 295.
+(hyperref)                removing `math shift' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 295.
+(hyperref)                removing `\textstyle' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\mathaccent' on input line 295.
+(hyperref)                removing `math shift' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 295.
+(hyperref)                removing `\mathaccent' on input line 294.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `math shift' on input line 294.
 
 File: fullprocess/ZZtoolbox/cumulFunctionMSC.m  (verbatim)
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 298.
+(hyperref)                removing `math shift' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\setbox' on input line 298.
+(hyperref)                removing `\setbox' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\z@' on input line 298.
+(hyperref)                removing `\z@' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\hbox' on input line 298.
+(hyperref)                removing `\hbox' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\frozen@everymath' on input line 298.
+(hyperref)                removing `\frozen@everymath' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\@emptytoks' on input line 298.
+(hyperref)                removing `\@emptytoks' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\mathsurround' on input line 298.
+(hyperref)                removing `\mathsurround' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\z@' on input line 298.
+(hyperref)                removing `\z@' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 298.
+(hyperref)                removing `math shift' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\textstyle' on input line 298.
+(hyperref)                removing `\textstyle' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 298.
+(hyperref)                removing `math shift' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\mathaccent' on input line 298.
+(hyperref)                removing `\mathaccent' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 298.
+(hyperref)                removing `math shift' on input line 297.
 
 File: fullprocess/ZZtoolbox/invcumulFunctionMSC.m  (verbatim)
-[97]
+[100]
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 301.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\setbox' on input line 301.
+(hyperref)                removing `math shift' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\z@' on input line 301.
+(hyperref)                removing `\setbox' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\hbox' on input line 301.
+(hyperref)                removing `\z@' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\frozen@everymath' on input line 301.
+(hyperref)                removing `\hbox' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\@emptytoks' on input line 301.
+(hyperref)                removing `\frozen@everymath' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\mathsurround' on input line 301.
+(hyperref)                removing `\@emptytoks' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\z@' on input line 301.
+(hyperref)                removing `\mathsurround' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 301.
+(hyperref)                removing `\z@' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\textstyle' on input line 301.
+(hyperref)                removing `math shift' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 301.
+(hyperref)                removing `\textstyle' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\mathaccent' on input line 301.
+(hyperref)                removing `math shift' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 301.
+(hyperref)                removing `\mathaccent' on input line 300.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `math shift' on input line 300.
 
 File: fullprocess/ZZtoolbox/pdfMSC.m  (verbatim)
 File: fullprocess/ZZtoolbox/statsRatiosHbis.m  (verbatim)
-[98] [99]
+[101] [102]
 File: fullprocess/ZZtoolbox/smoothpolyLL.m  (verbatim)
- [100] [101]
+ [103] [104]
 Chapter 12.
 File: fullprocess/ZZtoolbox/geneFB.m  (verbatim)
-[102
+[105
 
-] [103]
+] [106]
 No file ../../../0progsextract/execGPARSE.m.
 No file ../../../0progsextract/convertCSS2matlab.m.
 No file calibreport.bbl.
-[104] (./calibreport.aux)
+[107] (./calibreport.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1447,20 +1468,20 @@ LaTeX Warning: There were multiply-defined labels.
  )
 (\end occurred inside a group at level 5)
 
-### simple group (level 5) entered at line 308 ({)
-### simple group (level 4) entered at line 305 ({)
-### simple group (level 3) entered at line 302 ({)
-### simple group (level 2) entered at line 299 ({)
-### simple group (level 1) entered at line 296 ({)
+### simple group (level 5) entered at line 307 ({)
+### simple group (level 4) entered at line 304 ({)
+### simple group (level 3) entered at line 301 ({)
+### simple group (level 2) entered at line 298 ({)
+### simple group (level 1) entered at line 295 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 4929 strings out of 256216
- 66484 string characters out of 1917071
- 137012 words of memory out of 1500000
- 7742 multiletter control sequences out of 10000+200000
+ 4951 strings out of 256216
+ 67062 string characters out of 1917071
+ 137022 words of memory out of 1500000
+ 7754 multiletter control sequences out of 10000+200000
  19873 words of font info for 83 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 32i,18n,43p,961b,782s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 32i,18n,43p,964b,782s stack positions out of 5000i,500n,6000p,200000b,15000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced bu
 t does not exist, replaced by a fixed one
 
@@ -1489,9 +1510,9 @@ usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1
 s/type1/public/doublestroke/dsrom12.pfb></usr/share/texmf/fonts/type1/public/do
 ublestroke/dsrom8.pfb></usr/share/texmf/fonts/type1/bluesky/ams/msam10.pfb></us
 r/share/texmf/fonts/type1/bluesky/ams/msbm10.pfb>
-Output written on calibreport.pdf (104 pages, 1680670 bytes).
+Output written on calibreport.pdf (107 pages, 1785155 bytes).
 PDF statistics:
- 1602 PDF objects out of 1728 (max. 8388607)
- 306 named destinations out of 1000 (max. 131072)
- 697 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1710 PDF objects out of 1728 (max. 8388607)
+ 313 named destinations out of 1000 (max. 131072)
+ 712 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -18,7 +18,7 @@ directorydatafromIDC  = '../../../AAdataI26calib/';
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
-for ihc = 1
+for ihc = 5
     for ii=[2]
         switch ii
             case 1
@@ -98,7 +98,7 @@ for ihc = 1
         end
         
 %         remainindex = lookatdata(directorydatafromIDC,ihc, 0);
-         remainindex = (1:nbmats);
+         remainindex = [1:64];
         
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
         allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);

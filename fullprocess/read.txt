@@ -1,0 +1,14 @@
+1) extract data from database using
+                - RUNextractfromDB.m
+   this process queries frrm the testbed_archive and save in
+   selected directory as '../../../AAdataI26calib/'
+   This directory is partitioned in 8 directories form s1 to s8
+2) analyze data using
+                - estimationwithFB.m
+   from the selected directory as '../../../AAdataI26calib/'
+   and save results in a selected directory as  'AAresultswithFBbis'
+   with one file by sensor location
+3) display results                 
+                - displaySUTresponse.m
+   from the selected directory as 'AAresultswithFBbis'
+ 
