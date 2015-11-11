@@ -22,9 +22,12 @@
 % If overlapSCP=0, the next SCP is performed by shifting
 % the FFT block with 9
 %
-===================================================
+%===================================================
 
 clear
+
+commandsave = 'save filtercharacteristics/filtercharacteristics filtercharact';
+
 allcolors = ['g.';'y.';'m.';'r.';'k.';'b.'; ...
     'rx';'yx';'mx';'rx';'kx';'c.';'k.';'r.';'c.';'m.';'g.';...
     'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
@@ -176,6 +179,6 @@ for ip = 1:Pfilter
 end
 tabFB
 %====
-save filtercharacteristics2 filtercharact
+eval(commandsave)
 
 filtercharact
