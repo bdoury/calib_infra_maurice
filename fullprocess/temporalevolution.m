@@ -3,22 +3,23 @@
 clear
 addpath ZZtoolbox/
 addpath ZZtoolbox/00gabrielson
-close all
+% close all
+% clf
 saveflag = 1;
 bootdraw = 0;
 nbdraw=100;
 Ncouples=50;
-SUFFICIENTNUMBER = 2;
-for ihc=8
+SUFFICIENTNUMBER =2;
+for ihc=1
     % keep 2
-    for ii=1
+    for ii=2
         switch ii
             case 1
                 comload = sprintf('load AAresultsaround1Hz/resultssta26sensor%i',ihc);
                 numfig = ihc+100;
             case 2
-                comload = sprintf('load AAresults0812Hzbis/resultssta26sensor%i',ihc);
-                numfig = ihc+200;
+                comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
+                numfig = ihc+100;
             case 3
                 numfig = ihc+300;
                 comload = sprintf('load AAresults0614Hz/resultssta26sensor%i',ihc);
@@ -81,7 +82,6 @@ for ihc=8
         %===================== plots ==============
         figure(numfig)
         subplot(211);
-        
         if bootdraw
             if 0
                 for idraw=0:fix(nbofcouplesdays/Ncouples)-1
@@ -111,7 +111,7 @@ for ihc=8
             
             indnotsufficient = find(nbofvaluesoverthreshold(indselect,:)<=SUFFICIENTNUMBER);
             allpraticalvaluesat1Hz(indnotsufficient) = NaN;
-            plot(20*log10(allpraticalvaluesat1Hz),'ok','markersize',6,'markerfacec','k')
+            plot(20*log10(allpraticalvaluesat1Hz),'ok','markersize',6,'markerfacec','b')
             hold on
         end
         
@@ -129,9 +129,9 @@ for ihc=8
         end
         set(gca,'ylim',[-1.5 1.5])
         
-        title(sprintf('IS26 -  sensor #%i, threshold = %4.2f\nday number = %i, T = %i s',...
-            ihc, MSCthreshold, 2*nbofcouplesdays, filtercharact.SCPperiod_sec),'fontname','times','fontsize',14)
-        
+%         title(sprintf('IS26 -  sensor #%i, threshold = %4.2f\nday number = %i, T = %i s',...
+%             ihc, MSCthreshold, 2*nbofcouplesdays, filtercharact.SCPperiod_sec),'fontname','times','fontsize',14)
+        hold off
         subplot(212);
         %             plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
         %                 'markerfacec','b')
@@ -147,7 +147,7 @@ for ihc=8
             set(gca,'xlim',[1 nbofcouplesdays])
         end
         
-        
+         hold off
         HorizontalSize = 16;
         VerticalSize   = 11;
         set(gcf,'units','centimeters');
