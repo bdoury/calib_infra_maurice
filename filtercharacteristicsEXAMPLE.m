@@ -1,16 +1,17 @@
 %===========================================================
-%         xx.Norder: order of the filter
-%         xx.Wlow_Hz:
-%         xx.Whigh_Hz:
-%         xx.SCPperiod_sec: duration in second
+%   filtercharact.designname: filter design (ex. 'butter')
+%   filtercharact.Norder: order of the filter
+%   filtercharact.Wlow_Hz:
+%   filtercharact.Whigh_Hz:
+%   filtercharact.SCPperiod_sec: duration in second
 %                 over which SPC is performed,
 %                 expected as stationarity time
-%         xx.windowshape: window shape for spectral
+%   filtercharact.windowshape: window shape for spectral
 %                 analysis (ex. 'hann' or 'hamming', ...)
-%         xx.overlapDFT: overlap rate for successive
+%   filtercharact.overlapDFT: overlap rate for successive
 %                 DFT (typically 0.5)
-%         xx.overlapSCP: overlap rate for successive
+%   filtercharact.overlapSCP: overlap rate for successive
 %                 spectral components (typically 0)
-%         xx.ratioDFT2SCP: ratio between period_sec and
+%   filtercharact.ratioDFT2SCP: ratio between period_sec and
 %                 DFT duration (typical integer value is 5).
 %===========================================================

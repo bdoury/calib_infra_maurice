@@ -88,16 +88,17 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 %                   the threshold
 %         xx.Nsupthresholdintheband: counts of the number of values
 %                   over the threshold in the filter bandwidth
-%         xx.frqsFFT_Hz: cell P x 1, each cell consists of
-%                   frequency list in Hz of the DFTs
 %         xx.SCP = all spectral components
 %         xx.indexinsidefreqband = P x 1, indices of the
 %                    frequency bounds of each filter
 %                    in the xx.frqsFFT_Hz
-%         xx.alltimes_sec: cell  Px 1, each cell consists of
+%         alltimes_sec: cell  Px 1, each cell consists of
 %             yy.FFT: time list in second of the DFTs
 %             yy.SD: time list in second of the SCPs
 %             yy.signals: time list in second of the signals
+%
+%         frqsFFT_Hz: cell P x 1, each cell consists of
+%                   frequency list in Hz of the DFTs
 %========================================================================
 % included functions: estimSCP, estimSUT, fbank
 %========================================================================

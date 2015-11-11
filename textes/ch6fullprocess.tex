@@ -1,9 +1,12 @@
 % !TEX root = ../calibreport.tex
 
+
+%================================
+\section{3 programs for test}
 The full process consists of
-\begin{itemize}
+\begin{enumerate}
 \item
- move data from the IDC, using {\tt execGPARSE.m}. The data with Matlab format is saved. This data consists of a structure called {\tt records} with the following items:
+ move data from the IDC, using {\tt RUNextractfromDB.m}. The data with Matlab format is saved. This data consists of a structure called {\tt records} with the following items:
  \begin{itemize}
  \item
 {\tt data}: sequence of samples,
@@ -19,7 +22,85 @@ The full process consists of
 Typically in the following we use BDF on H and C.   The three other channels are only provided on H1. Channel LWD yields  the wind speed measurement. The wind sensor is located at about 2 meters above the infrasonic sensor. The frequency sampling depends on the channel. Typically for infrasound signals, the frequency sampling is $20$ Hz, and for wind features is 1 Hz.
     
 \item
- provide the script {\tt filtercharacteristics.m}, following the example given in Annex.
+ using the filtercharacteristics, saved in {\tt filtercharacteristics.mat} and the directory which contains the data from one of the 8 channels, run the program {\tt estimationwithFB.m}. This program saves the useful elements for a display in a selected directory.
  \item
- run the program {\tt ..... }.
+ to display run the program {\tt displaySUTresponse.m} for the file recorded in the selected directory of the previous item.
+\end{enumerate}
+
+
+%================================
+\section{Input of the function {\tt fbankanalysis.m}}
+\begin{itemize}
+\item
+signals: an array of size $N\times 2$ where $N$ is a number of samples, the first column is the signal from the SUT channel and the second for the SREF channel,
+\item
+filter bank settings: see section \ref{sss:filter-bank-settings},
+\item
+$F_s$: sampling frequency in Hz, typically $20$ Hz,
+\item
+MSC threshold: threshold for the MSC, typically $0.98$
 \end{itemize}
+\subsubsection{Summary of the filter bank settings}
+
+\label{sss:filter-bank-settings}
+
+\begin{center}
+{\small\verbatiminput{filtercharacteristicsEXAMPLE.m}}
+\end{center}
+
+\begin{itemize}
+\item
+{\tt designname} means that the name of the filter model. The Butterworth model is available in Matlab. 
+\item
+{\tt Norder} denotes the order of the filter. If 0 there is no filtering. 
+\item
+{\tt Wlow\_Hz} denotes the low bound in Hz of the filter design,
+\item
+{\tt Whigh\_Hz} denotes the high bound in Hz of the filter design,
+\item
+{\tt windowshape} denotes the weighted window. Many windows are available in Matlab. Window is used to do a compromise between the leakage and the bias. Hann's window is commonly used.
+\item
+{\tt SCPperiod\_sec} denotes the time duration expressed in second of the window used for the spectral estimation,
+\item
+{\tt overlapDFT} overlapping rate for the spectral estimation,
+\item
+{\tt overlapSCP} overlapping rate for the different spectral estimates,
+\item
+{\tt ratioDFT2SCP} is an integer which denotes the ratio between the duration of the spectral estimation window and the duration of the DFT window. 
+
+\end{itemize}
+
+
+%================================
+\section{Output of the function {\tt fbankanalysis.m}}
+
+\begin{verbatim}
+% 1) SUTs: structures P x 1
+%         xx.estimRsup: Rsup ratio
+%         xx.estimRinf: Rinf ratio
+%         xx.allMSCs: allMSCs;
+%         xx.Nsupthreshold: count of the number of values over
+%                   the threshold
+%         xx.Nsupthresholdintheband: counts of the number of values
+%                   over the threshold in the filter bandwidth
+%         xx.frqsFFT_Hz: cell P x 1, each cell consists of
+%                   frequency list in Hz of the DFTs
+%         xx.SCP = all spectral components
+%         xx.indexinsidefreqband = P x 1, indices of the
+%                    frequency bounds of each filter
+%                    in the xx.frqsFFT_Hz
+% 2) filteredsignals, 
+% 3) allfrqsFFT_Hz, cell P x 1, each cell for each bank filter consists of
+%             frequency list in Hz of the DFTs
+% 4) alltimes_sec: cell  Px 1, each cell consists of the structure
+%             yy.FFT:     time list in second of the DFTs
+%             yy.SD:      time list in second of the SCPs
+%             yy.signals: time list in second of the signals
+% 5) filterbank
+
+
+
+\end{verbatim}
+
+
+

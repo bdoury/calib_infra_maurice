@@ -436,31 +436,5 @@ $[0.02-0.20]$&$400$
 \figscale{filterbank.pdf}{Filter bank}{fig:filterbank}{1}
 
 
-%================================
-\subsubsection{Summary of the filter bank settings}
-
-
-
-\begin{itemize}
-\item
-{\tt designname} means that the name of the filter model. The Butterworth model is available in Matlab. 
-\item
-{\tt Norder} denotes the order of the filter. If 0 there is no filtering. 
-\item
-{\tt Wlow\_Hz} denotes the low bound in Hz of the filter design,
-\item
-{\tt Whigh\_Hz} denotes the high bound in Hz of the filter design,
-\item
-{\tt windowshape} denotes the weighted window. Many windows are available in Matlab. Window is used to do a compromise between the leakage and the bias. Hann's window is commonly used.
-\item
-{\tt SCPperiod\_sec} denotes the time duration expressed in second of the window used for the spectral estimation,
-\item
-{\tt overlapDFT} overlapping rate for the spectral estimation,
-\item
-{\tt overlapSCP} overlapping rate for the different spectral estimates,
-\item
-{\tt ratioDFT2SCP} is an integer which denotes the ratio between the duration of the spectral estimation window and the duration of the DFT window. 
-
-\end{itemize}
 
 
