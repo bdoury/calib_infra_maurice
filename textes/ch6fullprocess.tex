@@ -45,7 +45,7 @@ MSC threshold: threshold for the MSC, typically $0.98$
 \label{sss:filter-bank-settings}
 
 \begin{center}
-{\small\verbatiminput{filtercharacteristicsEXAMPLE.m}}
+{\tiny\verbatiminput{filtercharacteristicsEXAMPLE.m}}
 \end{center}
 
 \begin{itemize}
@@ -70,7 +70,13 @@ MSC threshold: threshold for the MSC, typically $0.98$
 
 \end{itemize}
 
+\newpage\clearpage
 
+\subsubsection{Calculation scheme}
+\figscale{figures/synoptic.pdf}{The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed along the time in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced. With the current values of the filter bank, the number of frequency values for the full bandwidth estimation is less than $100$ and the averaging is obtained on 2 days.}{}{0.8}
+
+
+\newpage\clearpage
 %================================
 \section{Output of the function {\tt fbankanalysis.m}}
 

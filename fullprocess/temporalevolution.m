@@ -10,7 +10,7 @@ bootdraw = 0;
 nbdraw   = 100;
 Ncouples = 50;
 SUFFICIENTNUMBER = 2;
-for ihc=1:8
+for ihc=4
     comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i.mat',ihc);
     numfig = ihc;
     switch ihc

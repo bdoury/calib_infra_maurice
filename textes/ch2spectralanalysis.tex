@@ -11,18 +11,20 @@ Therefore the main quantity of interest is the frequency response ratio between 
 
 \figscale{slidesITW2015/processdetail.pdf}{$\widehat{S_{UU}}(f)$, $\widehat{S_{RR}}(f)$, $\widehat{S_{UR}}(f)$ denote respectively the spectrum on channel SUT, the spectrum on channel SREF and the cross-spectrum between them. In the absence of noise the ratio between the 2 responses is given by the ratio $\widehat{S_{UU}}(f)/\widehat{S_{RR}}(f)$}{}{0.7}
 
+%Let us remind the DFT expression, associated to the frequency $kF_s/N$, performing on $N$ samples denoted $x(0),\ldots,x(N-1)$:
+%\begin{eqnarray}
+%X_k&=& \frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}x_n \, e^{-2j\pi kn/N}
+%\end{eqnarray}
+%where $k$ goes from $0$ to $N-1$.
 
  \newpage
-\figscale{figures/synoptic.pdf}{The buffer contains the data for a duration in accordance with the DFT analysis. For example for low frequency range the duration could be $200$ seconds. Usually this duration is in accordance with the inverse of the bandwidth of the filter. In the figure it is assumed that the buffer duration is $200$ seconds and the number of DFTs with an overlap of $50\%$ is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, we average to perform the SCPs corresponding to a duration of $1000$ seconds. If the frequency sampling is $F_{s}=20$ Hz, the number of samples for performing the DFT is $N=1000\times 20/5=4000$. It is worth to notice that we can restrict the calculation to the frequency bins of interest in the band of the filter.}{}{1}
+\figscale{figures/synoptic.pdf}{The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced.}{}{1}
 
-Let us recall the DFT expression, associated to the frequency $kF_s/N$, performing on $N$ samples denoted $x(0),\ldots,x(N-1)$:
-\begin{eqnarray}
-X_k&=& \frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}x_n \, e^{-2j\pi kn/N}
-\end{eqnarray}
-where $k$ goes from $0$ to $N-1$.
+
  %==========================================
 %===========================================
 %===========================================
+ \newpage\clearpage
 \section{Objective}
 %===========================================
 The calibration consists to estimate the impulse response of the SUT or equivalently its frequency response. In the absence of {\it a priori} knowledges, i.e. non parametrical approach, the impulse response is defined by a sequence of values whose the number is related to the bounds of the frequency bandwidth. More specifically, in infrasonic system the lowest frequency is $0.02$ Hz, corresponding to periodicities around $50$ s. On the other hand the largest frequency leads to choose the sampling frequency to $20$ Hz. Therefore, in the absence of {\it a priori} knowledges, the impulse response consists of $50\times 20=1000$ real valued points. Hence the frequency response consists of $500$ complex valued points. However these values are obtained via statistical estimators and therefore several sequences  are required to reach a good accuracy.

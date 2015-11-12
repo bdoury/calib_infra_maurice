@@ -227,34 +227,36 @@
 %===========================================
 %===========================================
 \part{Library}
- \def\programs{../../allprogs/}
  \def\programsfullprocess{fullprocess/}
  \def\programsToolbox{fullprocess/ZZtoolbox/}
  \def\programspierrick{fullprocess/ZZtoolbox/00Pierrick/}
  %============================================
 \chapter{Programs}
  \section{RMSE as function of coherence}
-{\tiny \verbatiminput{\programs/2progsCIandOthers/estimHanalysis.m}}
+{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/estimHanalysis.m}}
 
   \newpage
   \section{Test of coherence}
-{\tiny \verbatiminput{\programs/2progsCIandOthers/SigniLevelTestCoherence.m}}
+{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/SigniLevelTestCoherence.m}}
  
  \newpage
  \section{Statistical distribution of the ratios}
-{\tiny \verbatiminput{\programs/2progsCIandOthers/CIHestimate.m}}
+{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/CIHestimate.m}}
 
   
 \newpage
 %============================================
   \section{Extraction from DB}
   
+ \subsubsection{Settings for the query to the database}
 {\tiny \verbatiminput{\programsfullprocess RUNextractfromDB.m}}
 
-\subsection{Conversion to format {\tt .mat}}
+ \subsubsection{Query to the database}
+{\tiny \verbatiminput{\programspierrick extractfromDB.m}}
+
+ \subsubsection{Conversion to format {\tt .mat}}
 {\tiny \verbatiminput{\programspierrick convertCSStomatlab.m}}
 
-{\tiny \verbatiminput{\programspierrick extractfromDB.m}}
 
 
 
@@ -274,13 +276,9 @@
 \section{Application program}
 The first following program extracts the final ratio between the SUT and the Sref sensor response, using the data available in the format {\tt .mat}. The data consist of many files for each of the 8 sensors of IS26. All the ratios are saved in a selected directory.
 
-The second following program displays the curves taking randomly a given number of records in the previous files.
 
-\subsection{extractSensorRatio.m}
-{\tiny \verbatiminput{\programsfullprocess extractSensorRatio.m}}
-
-\subsection{displaySensorRatio.m}
-{\tiny \verbatiminput{\programsfullprocess displaySensorRatio.m}}
+\subsection{temporalevolution.m}
+{\tiny \verbatiminput{\programsfullprocess temporalevolution.m}}
 
 
 \subsection{displaySensorResponse.m}
