@@ -29,7 +29,7 @@ directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
 filtercharactfilename = 'filtercharacteristics/filtercharacteristics1.m';
 cmdloadcharact        = sprintf('run(''%s'')',filtercharactfilename);
 
-directoryresults      = 'AAresultswithFBter';
+directoryresults      = 'AAresultswithFB';
 %======
 
 eval(cmdloadcharact);
@@ -49,7 +49,7 @@ Pfilter = length(filtercharact);
 % ihc==6,ifile==63
 %??????????
 %=====================
-MSCthreshold = 0.96;
+MSCthreshold = 0.94;
 %=====================
 for ihc = 1:8
     directorydatafromIDC  = '../../../AAdataI26calib/';
