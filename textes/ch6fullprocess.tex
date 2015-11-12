@@ -29,6 +29,8 @@ Typically in the following we use BDF on H and C.   The three other channels are
 
 
 %================================
+%================================
+%================================
 \section{Input of the function {\tt fbankanalysis.m}}
 \begin{itemize}
 \item
@@ -40,6 +42,8 @@ $F_s$: sampling frequency in Hz, typically $20$ Hz,
 \item
 MSC threshold: threshold for the MSC, typically $0.98$
 \end{itemize}
+
+%================================
 \subsubsection{Summary of the filter bank settings}
 
 \label{sss:filter-bank-settings}
@@ -72,8 +76,12 @@ MSC threshold: threshold for the MSC, typically $0.98$
 
 \newpage\clearpage
 
+%================================
 \subsubsection{Calculation scheme}
-\figscale{figures/synoptic.pdf}{The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed along the time in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced. With the current values of the filter bank, the number of frequency values for the full bandwidth estimation is less than $100$ and the averaging is obtained on 2 days.}{}{0.8}
+\figscale{figures/synoptic.pdf}{FB analysis}{fig:synoptic}{1}
+
+Let us report to the figure \ref{fig:synoptic}. The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed along the time in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced. With the current values of the filter bank, the number of frequency values for the full bandwidth estimation is less than $100$. In the matlab function (see section \ref{chap:toolbox}) the averaging is obtained on two successive days.
+
 
 
 \newpage\clearpage
@@ -109,4 +117,17 @@ MSC threshold: threshold for the MSC, typically $0.98$
 \end{verbatim}
 
 
+%================================
+\subsubsection{Remark for developper}
+
+It is advised to provide at the output of the FB analysis function, on one hand the response ratios in each of the $P$ frequency bands  with the associated period and on the other the MSC levels greater than the given threeshold. These two elements have the same size. An external function will perform the averaging over a given period of time with the weights as defined in expression \ref{eq:weights}.
+
+It follows that 
+\begin{itemize}
+\item
+ an extra input must be considered to take into account the duration of the averaging. In our code this time is fixed to two consecutive days, i.e. $48$ hours
+\item
+ an extra output must be considered to provide the MSC levels associated to each spectral component. We only consider the time-frequency cells where the current MSC is above the given threshold.
+
+\end{itemize}
 

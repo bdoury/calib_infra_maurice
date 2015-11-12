@@ -560,33 +560,33 @@ stdphaseHURRRwithMSCsupeta = nanstd(tabphaseHURRRwithMSCsupeta,[],2);
 %================ on Rinf with constraint ======
 %===== hat's
 
-Rsup.tabmod = tabmodHUUUR;
-Rsup.tabmodcst = tabmodHUUURwithMSCsupeta;
-Rsup.tabphase = tabphaseHUUUR;
+Rsup.tabmod      = tabmodHUUUR;
+Rsup.tabmodcst   = tabmodHUUURwithMSCsupeta;
+Rsup.tabphase    = tabphaseHUUUR;
 Rsup.tabphasecst = tabphaseHUUURwithMSCsupeta;
 
-Rsup.mod = hatmodHUUUR;
-Rsup.phase = hatphaseHUUUR;
-Rsup.modcst = hatmodHUUURwithMSCsupeta;
-Rsup.stdmodcst = stdmodHUUURwithMSCsupeta;
-Rsup.phasecst = hatphaseHUUURwithMSCsupeta;
+Rsup.mod         = hatmodHUUUR;
+Rsup.phase       = hatphaseHUUUR;
+Rsup.modcst      = hatmodHUUURwithMSCsupeta;
+Rsup.stdmodcst   = stdmodHUUURwithMSCsupeta;
+Rsup.phasecst    = hatphaseHUUURwithMSCsupeta;
 Rsup.stdphasecst = stdphaseHUUURwithMSCsupeta;
 
-Rinf.tabmod = tabmodHURRR;
-Rinf.tabmodcst = tabmodHURRRwithMSCsupeta;
-Rinf.tabphase = tabphaseHURRR;
+Rinf.tabmod      = tabmodHURRR;
+Rinf.tabmodcst   = tabmodHURRRwithMSCsupeta;
+Rinf.tabphase    = tabphaseHURRR;
 Rinf.tabphasecst = tabphaseHURRRwithMSCsupeta;
 
-Rinf.mod = hatmodHURRR;
-Rinf.phase = hatphaseHURRR;
-Rinf.modcst = hatmodHURRRwithMSCsupeta;
-Rinf.stdmodcst = stdmodHURRRwithMSCsupeta;
-Rinf.phasecst = hatphaseHURRRwithMSCsupeta;
+Rinf.mod         = hatmodHURRR;
+Rinf.phase       = hatphaseHURRR;
+Rinf.modcst      = hatmodHURRRwithMSCsupeta;
+Rinf.stdmodcst   = stdmodHURRRwithMSCsupeta;
+Rinf.phasecst    = hatphaseHURRRwithMSCsupeta;
 Rinf.stdphasecst = stdphaseHURRRwithMSCsupeta;
 
-MSC.tab = tabMSC;
-MSC.tabcst = tabMSCwithMSCsupeta;
-MSC.indexcst = indextabMSCsupthreshold;
+MSC.tab       = tabMSC;
+MSC.tabcst    = tabMSCwithMSCsupeta;
+MSC.indexcst  = indextabMSCsupthreshold;
 MSC.weightMSC = weightMSCsupeta;
 %========================= END ==========================================
 

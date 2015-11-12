@@ -25,14 +25,14 @@
 clear all
 figure(1)
 % close all
-filtercharactfilename = 'filtercharacteristics2';
+filtercharactfilename = 'filtercharacteristics/filtercharacteristics1';
 allcolors = ['g.';'y.';'m.';'r.';'k.';'b.';'rx';'yx';'mx';'rx';'kx';'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 
 %===============================================================
 % sampling frequency
 Fs_Hz                 = 20;
-% cmdloadcharact        = sprintf('run(''%s'')',filtercharactfilename);
-cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
+cmdloadcharact        = sprintf('run(''%s'')',filtercharactfilename);
+% cmdloadcharact = sprintf('load(''%s'')',filtercharactfilename);
 eval(cmdloadcharact);
 P                     = length(filtercharact);
 Lfft                  = 16*2048;
