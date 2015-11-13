@@ -18,18 +18,18 @@ directorydatafromIDC  = '../../../AAdataI26calib/';
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
-for ihc = 1
-    for ii=[2]
+for ihc = 3
+    for ii=[3]
         switch ii
             case 1
-                comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
+                comload = sprintf('load AAresultswithFBter/resultssta26sensor%i',ihc+100);
                 numfig = ihc+100;
             case 2
-                comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
+                comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc+100);
                 numfig = ihc+200;
             case 3
                 numfig = ihc+300;
-                comload = sprintf('load AAresultswithFBquint/resultssta26sensor%i',ihc);
+                comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
             case 4
                 comload = sprintf('load AAresultswithFBsix/resultssta26sensor%i',ihc);
                 numfig = ihc+400;
