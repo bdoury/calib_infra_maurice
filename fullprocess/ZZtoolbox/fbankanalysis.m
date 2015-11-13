@@ -132,6 +132,7 @@ for ifilter = 1:P
     %================================================================
     [estimRsup, estimRinf, spectralmatrix, allMSCs, Nsupthreshold] ...
         = estimSUT(allSDs, MSCthreshold);
+    SUTs(ifilter).spectralmatrix = spectralmatrix;
     SUTs(ifilter).estimRsup = estimRsup;
     SUTs(ifilter).estimRinf = estimRinf;
     SUTs(ifilter).allMSCs   = allMSCs;

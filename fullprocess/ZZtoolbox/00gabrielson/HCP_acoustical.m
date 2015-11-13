@@ -16,8 +16,9 @@ function [p_totalNRSsensor, p_total_NRS, TF_ref_sensor, ...
 %                  [May 2012]
 %
 %==========================================================================
-addpath ZZtoolbox/00gabrielson/
-addpath ZZtoolbox/00benoit/
+% 
+% dir ../00benoit/
+% addpath ../00benoit/
 %================= USER INPUT BLOCK =======================================
 %                             (V2_BFH is 18m HCP at I99)
 % HCP_aperture = 36;  HCP_order = 3;  %  36m HCP at I99
