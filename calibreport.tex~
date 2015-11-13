@@ -31,7 +31,7 @@
     \hbox{ \includegraphics[scale=#4]{#1} }
 }
 \begin{center}
-\parbox{14 cm}
+\parbox{12 cm}
 {
     \caption{\protect\small\it  {#2}}
     \label {#3}

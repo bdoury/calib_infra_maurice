@@ -41,13 +41,11 @@ Pfilter = length(filtercharact);
 MSCthreshold = 0.98;
 %=====================
 ihc   = 2;%fix(5*rand)+1;
-ifile = fix(53*rand)+1; %2:4,71
 directorydatafromIDC  = '../../../../AAdataI26calib/';
-%=====================
-% under test = 1, reference = 2
 %===================== read data =========================
 fileswithdotmat              = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,ihc,ihc));
 nbmats                       = length(fileswithdotmat);
+ifile                        = 64;%fix(nbmats*rand)+1;
 
 allfrqsPfilters              = zeros(10000,1);
 allRatioSupPfilters          = zeros(10000,1);
@@ -146,23 +144,29 @@ temperature = temperature(1:idT-1);
 Ts_sec = 1/Fs_Hz;
 signals_centered = signals-ones(size(signals,1),1)*mean(signals);
 
-%======================= WARNING: some manual checks ...
-if and(ihc==2,ifile==33)
-    signals_centered = signals_centered(1:2.4e6,:);
-end
-if and(ihc==2,ifile==62)
-    signals_centered = signals_centered([1:0.5e6 1e6:idScMin-1],:);
-end
-if and(ihc==5,ifile==62)
-    signals_centered = signals_centered(1:2.4e6,:);
-end
-if and(ihc==6,ifile==63)
-    signals_centered = signals_centered(1:2.14e6,:);
-end
-if and(ihc==8,ifile==63)
-    signals_centered = signals_centered(1:2.5e6,:);
-end
-%=======================
+%============ Warning =======================
+%============================================
+%============================================
+%============================================
+%============================================
+% if and(ihc==2,ifile==33)
+%     signals_centered = signals_centered(1:2.4e6,:);
+% end
+% if and(ihc==2,ifile==62)
+%     signals_centered = signals_centered([1:0.5e6 1e6:idScMin-1],:);
+% end
+% if and(ihc==5,ifile==62)
+%     signals_centered = signals_centered(1:2.4e6,:);
+% end
+% if and(ihc==6,ifile==63)
+%     signals_centered = signals_centered(1:2.14e6,:);
+% end
+% if and(ihc==8,ifile==63)
+%     signals_centered = signals_centered(1:2.5e6,:);
+% end
+%============================================
+%============================================
+%============================================
 
 signals_centered_save_ihc{ifile} = signals_centered;
 
@@ -229,67 +233,90 @@ else
     clf
 end
     pos_ip = [0.07    0.1    0.9    0.1];
-    deltay = 1.1*pos_ip(4);
+    deltay = 1.21*pos_ip(4);
     pos_time = pos_ip;
     pos_aux = get(gca,'position');
     pos_ip(2) = pos_aux(2)+deltay;
 
 for ip=1:P
     [nbfrqs,nbtimeslots] = size(SUTs(ip).allMSCs.tabcst((idipinf(ip):idipsup(ip)),:));
-    [ sum(sum(not(isnan((SUTs(ip).allMSCs.tabcst((idipinf(ip):idipsup(ip)),:)))))) ...
-        nbfrqs*nbtimeslots]
+    nbtimes = sum(sum(not(isnan((SUTs(ip).allMSCs.tabcst((idipinf(ip):idipsup(ip)),:))))));
+    [nbtimes  nbfrqs*nbtimeslots]
     subplot('position',pos_ip);
+    allfrqs_ip = allfrqsFFT_Hz{ip}(idipinf(ip):idipsup(ip));
     if constraintflag
         figure(1)
         if ip==1
-            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqsFFT_Hz{ip}(idipinf(ip)+1:idipsup(ip)),...
+            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqs_ip(2:end),...
                 20*log10(SUTs(ip).estimRsup.tabmodcst((idipinf(ip)+1:idipsup(ip)),:)));
-%             hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqsFFT_Hz{ip}(idipinf(ip)+1:idipsup(ip)),...
+                caxis([-20 1])
+
+%             hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqs_ip,...
 %                 (SUTs(ip).allMSCs.tabcst((idipinf(ip)+1:idipsup(ip)),:)));
         else
-            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqsFFT_Hz{ip}(idipinf(ip):idipsup(ip)),...
+            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqs_ip,...
                 20*log10(SUTs(ip).estimRsup.tabmodcst((idipinf(ip):idipsup(ip)),:)));
-%              hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqsFFT_Hz{ip}(idipinf(ip):idipsup(ip)),...
+                caxis([-20 1])
+
+%              hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqs_ip,...
 %                 (SUTs(ip).allMSCs.tabcst((idipinf(ip):idipsup(ip)),:)));           
         end
     else
         figure(2)
         if ip==1
-            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqsFFT_Hz{ip}(idipinf(ip)+1:idipsup(ip)),...
+            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqs_ip(2:end),...
                 20*log10(SUTs(ip).estimRsup.tabmod((idipinf(ip)+1:idipsup(ip)),:)));
         else
-            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqsFFT_Hz{ip}(idipinf(ip):idipsup(ip)),...
+
+            hpcolor=pcolor(alltimes_sec{ip}.SD/3600,allfrqs_ip,...
                 20*log10(SUTs(ip).estimRsup.tabmod((idipinf(ip):idipsup(ip)),:)));
         end
     end
+    
+%                  set(gca,'xlim',[10.5 11.4])
+
     set(gca,'xlim',[0 displayhours])
-    caxis([0 1])
+    caxis([-3 1])
     colorbar
     shading flat
     set(gca,'xtick',[])
     ylabel('Hz','fontname','times','fontsize',10)
-    cmdqq=(sprintf('qq=[%4.2f;%4.2f];',allfrqsFFT_Hz{ip}([idipinf(ip)+1 idipsup(ip)-1])));
+    cmdqq=(sprintf('qq=[%3.2f;%3.2f];',allfrqs_ip([2 end-1])));
     eval(cmdqq)
     set(gca,'ytick',[qq(1),qq(2)])
     %     set(gca,'yscale','log')
-    set(gca,'box','off')
+    set(gca,'box','on')
+    grid off
     pos_aux = get(gca,'position');
     pos_ip(2) = pos_aux(2)+deltay;
     set(gca,'fontname','times','fontsize',10)
     if ip==P
+        if constraintflag
+            title(sprintf('sensor: %i, year: %s, day:%s, threshold = %4.2f',...
+                ihc,filenameonly(6:9),filenameonly(11:13),MSCthreshold),...
+            'fontname','times','fontsize',12)
+        else
         title(sprintf('sensor: %i, year: %s, day:%s',ihc,filenameonly(6:9),filenameonly(11:13)),...
             'fontname','times','fontsize',14)
+        end
+    end
+    if constraintflag
+        text(5,mean(allfrqs_ip([2 end-1])),sprintf('# events = %i',nbtimes))
     end
 end
+%===== time signals
 pos_time(3) = pos_aux(3);
 subplot('position',pos_time);
-plot(alltimes_sec{ip}.signals(1:1000:end)/3600,signals_centered(1:1000:end,:))
-set(gca,'xlim',[0 displayhours])
-set(gca,'ylim',[-10 10])
+% maxsignals = max(max(abs(signals_centered(1:end,:))));
+plot(alltimes_sec{ip}.signals(1:end)/3600,signals_centered(1:end,:))
+
+%              set(gca,'xlim',[10.5 11.4])
+
+             set(gca,'xlim',[0 displayhours])
+set(gca,'ylim',[-12 12])
 set(gca,'ytick',[])
 set(gca,'fontname','times','fontsize',10)
 xlabel('hours','fontname','times','fontsize',10)
-
 
 
 HorizontalSize = 16;
@@ -303,7 +330,7 @@ set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
 
-printdirectory  = ' ../figures/';
+printdirectory  = ' ../../figures/';
 
 if constraintflag
     fileprint = sprintf('%s2daysonIS26SUT%iyear%sday%saboveTH.eps',...

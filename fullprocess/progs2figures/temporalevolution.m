@@ -5,7 +5,7 @@ addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
 
 directorydata = '../AAresultswithFBbis/';
-printdirectory  = ' ../../slidesITW2015/';
+printdirectory  = ' ../../../figures/';
 
 % close all
 % clf
@@ -13,8 +13,8 @@ saveflag = 0;
 bootdraw = 0;
 nbdraw   = 100;
 Ncouples = 50;
-SUFFICIENTNUMBER = 2;
-for ihc=4
+SUFFICIENTNUMBER = 0;
+for ihc=5
     comload = sprintf('load %sresultssta26sensor%i.mat',directorydata,ihc);
     numfig = ihc;
     switch ihc
@@ -47,7 +47,7 @@ for ihc=4
     eval(comload)
     
     freqindselect = find(allfrqsPfilters(:,1)>=1,1,'first');
-
+    
     
     Dstart = str2double(fileswithdotmat(1).name(13:15));
     Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
@@ -59,14 +59,14 @@ for ihc=4
     %             allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
     %         end
     
-%     sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-%     N_freq_vector = 1;
-%     freq_vector   = 1;
-%     [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
-%         HCP_acoustical(freq_vector, freq_vector, sensor_UT, ref_sensor, 'nofir');
-%     expectedvalueat1Hz = abs(p_total_NRS_sensor);
-%     allpraticalvaluesat1Hz = coeffsens*abs(TFsensor4freqRatio)*abs(allRatioSupPfilters(freqindselect,:)) ./ ...
-%         expectedvalueat1Hz;
+    %     sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
+    %     N_freq_vector = 1;
+    %     freq_vector   = 1;
+    %     [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
+    %         HCP_acoustical(freq_vector, freq_vector, sensor_UT, ref_sensor, 'nofir');
+    %     expectedvalueat1Hz = abs(p_total_NRS_sensor);
+    %     allpraticalvaluesat1Hz = coeffsens*abs(TFsensor4freqRatio)*abs(allRatioSupPfilters(freqindselect,:)) ./ ...
+    %         expectedvalueat1Hz;
     
     allpraticalvaluesat1Hz = coeffsens*abs(allRatioSupPfilters(freqindselect,:));
     
@@ -121,8 +121,9 @@ for ihc=4
     end
     set(gca,'ylim',[-1.5 1.5])
     
-    %         title(sprintf('IS26 -  sensor #%i, threshold = %4.2f\nday number = %i, T = %i s',...
-    %             ihc, MSCthreshold, 2*nbofcouplesdays, filtercharact.SCPperiod_sec),'fontname','times','fontsize',14)
+    title(sprintf('IS26 -  sensor #%i, day number = %i, threshold = %4.2f',...
+        ihc, 2*nbofcouplesdays, MSCthreshold),'fontname','times','fontsize',12)
+    
     hold off
     subplot(212);
     %             plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
@@ -141,7 +142,7 @@ for ihc=4
     
     hold off
     HorizontalSize = 16;
-    VerticalSize   = 11;
+    VerticalSize   = 14;
     set(gcf,'units','centimeters');
     set(gcf,'paperunits','centimeters');
     set(gcf,'PaperType','a3');
@@ -155,7 +156,7 @@ for ihc=4
     filermcmd       = sprintf('!rm %sevolutionon%iatfreq1.eps',printdirectory,ihc);
     %
     if saveflag
-        eval(fileprintepscmd)
+        %         eval(fileprintepscmd)
         %             eval(fileeps2pdfcmd)
         %             eval(filermcmd)
     end
