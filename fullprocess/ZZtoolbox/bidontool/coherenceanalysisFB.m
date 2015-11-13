@@ -1,4 +1,4 @@
-clear all
+clear
 allcols = ['b';'k';'r';'c';'m';'g';'k';'r';'c';'m';'g';'k';'r';'c';'m';'g'];
 for itour=1:1
     col=allcols(itour,:);

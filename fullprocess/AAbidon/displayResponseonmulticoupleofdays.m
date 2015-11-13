@@ -1,43 +1,41 @@
+%=================== displayResponseonmulticoupleofdays.m ==========
+% display the rsponse of the SUT using the measurements on
+% each couples of days and SUTs variable 
+%
 clear
+addpath ../ZZtoolbox/
+saveflag    = 1;
+dataresults = '../AAresultswithFBbis/';
 
-addpath ZZtoolbox/
-
-saveflag = 1;
-dataresults='AAresultswithFBbis/';
 for indexofSTA = [1,3,4,5]
-    
-            switch indexofSTA
-            case 1
-                %                         coeffsens=1.048;
-                coeffsens=1.015;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
-            case 2
-                coeffsens=1.1;%.1;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
-            case 3
-                coeffsens=1.04;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
-            case 4
-                coeffsens=1.05;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
-            case 5
-                coeffsens=1.06;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
-            case 6
-                coeffsens=0.97;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
-            case 7
-                coeffsens=0.97;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
-            case 8
-                coeffsens=0.99;
-                ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
-        end
-    
-    
-    
-    
-    filesindir = dir(sprintf('%ss%i/*.mat',dataresults,indexofSTA));
+    switch indexofSTA
+        case 1
+            %                         coeffsens=1.048;
+            coeffsens=1.015;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
+        case 2
+            coeffsens=1.1;%.1;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
+        case 3
+            coeffsens=1.04;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
+        case 4
+            coeffsens=1.05;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
+        case 5
+            coeffsens=1.06;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
+        case 6
+            coeffsens=0.97;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
+        case 7
+            coeffsens=0.97;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
+        case 8
+            coeffsens=0.99;
+            ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
+    end
+    filesindir = dir(sprintf('%s/*.mat',dataresults));
     nbofcouplesdays = length(filesindir);
     allsRatio = zeros(10000,nbofcouplesdays);
     for inday=1:nbofcouplesdays

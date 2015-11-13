@@ -1,17 +1,21 @@
 % ratio at 1 Hz, look for outliers
 %=================================
 clear
-addpath ZZtoolbox/
-addpath ZZtoolbox/00gabrielson
+addpath ../ZZtoolbox/
+addpath ../ZZtoolbox/00gabrielson
+
+directorydata = '../AAresultswithFBbis/';
+printdirectory  = ' ../../slidesITW2015/';
+
 % close all
 % clf
-saveflag = 1;
+saveflag = 0;
 bootdraw = 0;
 nbdraw   = 100;
 Ncouples = 50;
 SUFFICIENTNUMBER = 2;
 for ihc=4
-    comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i.mat',ihc);
+    comload = sprintf('load %sresultssta26sensor%i.mat',directorydata,ihc);
     numfig = ihc;
     switch ihc
         case 1
@@ -146,7 +150,6 @@ for ihc=4
     set(gcf,'color', [1,1,0.92]);
     set(gcf, 'InvertHardCopy', 'off');
     
-    printdirectory  = ' ../slidesITW2015/';
     fileprintepscmd = sprintf('print -depsc -loose %sevolutionon%iatfreq1bis.eps',printdirectory,ihc);
     fileeps2pdfcmd  = sprintf('!epstopdf %sevolutionon%iatfreq1.eps',printdirectory,ihc);
     filermcmd       = sprintf('!rm %sevolutionon%iatfreq1.eps',printdirectory,ihc);

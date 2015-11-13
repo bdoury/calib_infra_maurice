@@ -10,29 +10,22 @@
 % located in ZZtoolbox/00gabrielson
 %
 clear
-addpath ZZtoolbox/
-addpath ZZtoolbox/00gabrielson
+addpath ../ZZtoolbox/
+addpath ../ZZtoolbox/00gabrielson
+addpath ../ZZtoolbox/00benoit
 
-directorydatafromIDC  = '../../../AAdataI26calib/';
+directorydatafromIDC  = '../../../../AAdataI26calib/';
+directoryinputresults = '../AAresultswithFBbis/';
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 % close all
 for ihc = 1
-    for ii=[2]
+    for ii=[1]
         switch ii
             case 1
-                comload = sprintf('load AAresultswithFB/resultssta26sensor%i',ihc);
+                comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
                 numfig = ihc+100;
-            case 2
-                comload = sprintf('load AAresultswithFBbis/resultssta26sensor%i',ihc);
-                numfig = ihc+200;
-            case 3
-                numfig = ihc+300;
-                comload = sprintf('load AAresultswithFBquint/resultssta26sensor%i',ihc);
-            case 4
-                comload = sprintf('load AAresultswithFBsix/resultssta26sensor%i',ihc);
-                numfig = ihc+400;
         end
         
         switch ihc
@@ -62,8 +55,8 @@ for ihc = 1
                 coeffsens=1.02;
                 ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
         end
-        eval(comload); 
-%%
+        eval(comload);
+        %%
         Dstart = str2double(fileswithdotmat(1).name(13:15));
         Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
         if 1
@@ -97,8 +90,8 @@ for ihc = 1
             logfit.N       = 200;
         end
         
-%         remainindex = lookatdata(directorydatafromIDC,ihc, 0);
-         remainindex = [1:size(allRatioSupPfilters,2)];
+        %         remainindex = lookatdata(directorydatafromIDC,ihc, 0);
+        remainindex = [1:60];
         
         [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
         allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
@@ -130,7 +123,7 @@ for ihc = 1
         %         coeffsens * abs(meanallRatioPfiltersUZ),...
         %         segmentsnumber,polydegrees,logtrain,logfit);
         
-
+        
         figure(numfig)
         clf
         %================================================
@@ -160,10 +153,10 @@ for ihc = 1
         semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*0.95), 'r--','linew',1.5);
         semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*1.05), 'r--','linew',1.5);
         hold off
-            title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
-                ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
-%         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
-%             'fontname','times','fontsize',14)
+        title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
+            ihc, MSCthreshold, 2*doubledaynumber),'fontname','times','fontsize',14)
+        %         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
+        %             'fontname','times','fontsize',14)
         
         set(gca,'fontname','times','fontsize',14)
         set(gca,'xlim',[0.01 5])
@@ -244,7 +237,7 @@ for ihc = 1
         fileprintepscmd = sprintf('print -depsc -loose %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         fileeps2pdfcmd  = sprintf('!epstopdf %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
         filermcmd       = sprintf('!rm %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
-         
+        
     end
     
     if saveflag
@@ -254,3 +247,13 @@ for ihc = 1
         
     end
 end
+%%
+% NaverageFFTs = filtercharact(1).ratioDFT2SCP;
+% allT.TUUonUR = linspace(0.6,3,100);
+% allT.TURonRR = linspace(0.6,3,100);
+% allT.MSC     = linspace(0.5,1,100);
+% allT.phase   = linspace(0,2*pi,100);
+% 
+% [statUUonUR, statURonRR, statMSC]    = ...
+%     statsRatiosHbis(allT, HH, NaverageFFTs, 0.7);
+
