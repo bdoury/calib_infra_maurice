@@ -1,7 +1,10 @@
 *.log
 *~
+./DS_Store
 figures/._.DS_Store
 figures/.DS_Store
+fullprocess/.DS_Store
+fullprocess/ZZtoolbox/.DS_Store
 *.aux
 *.bbl
 *.log
