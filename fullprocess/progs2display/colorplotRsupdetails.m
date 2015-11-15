@@ -1,9 +1,9 @@
-%====================== twodaysofanalysis0.m =============================
-% Plot the details of the SUTS performing on 2 succcessive days
-% in the P frequency bands along the 2 days.
+%====================== colorplotRsupdetails.m =============================
+% ColorPlot the details of the Rsups in the P frequency bands 
+% as a function of times (along the 2 days).
 % 
-% The program uses the data form the IDC stored in
-% a given directory, here ../../../../AAdataI26calib/
+% The program uses the data extracted form the IDC and located in
+% a given directory, here ../../../../AAsignals/
 % and also the FB stored in 'filtercharacteristics/filtercharacteristics1.m'
 %==========================================================================
 clear
@@ -12,12 +12,9 @@ allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
 
 addpath ../ZZtoolbox/
 
-%==========================================================================
-% the data are in a file with the name built as:
-%                  sta1_Y2015_D239.mat
-% meaning station number 1, year 2015, days 239 and 240
-% these data have been extracted from IDC testbed
-%==========================================================================
+directorysignals  = '../AAsignals/';
+% directory to save the figures
+printdirectory    = ' ../../figures/';
 
 %============== load the filter bank characteristics =======================
 %  the useful variable is FILTERCHARACT
@@ -40,12 +37,11 @@ Pfilter = length(filtercharact);
 %=====================
 MSCthreshold = 0.98;
 %=====================
-ihc   = 2;%fix(5*rand)+1;
-directorydatafromIDC  = '../../../../AAdataI26calib/';
+ihc   = 1;%fix(5*rand)+1;
 %===================== read data =========================
-fileswithdotmat              = dir(sprintf('%ss%i/sta%i*.mat',directorydatafromIDC,ihc,ihc));
+fileswithdotmat              = dir(sprintf('%ss%i/year*.mat',directorysignals,ihc));
 nbmats                       = length(fileswithdotmat);
-ifile                        = 64;%fix(nbmats*rand)+1;
+ifile                        = 31;%fix(nbmats*rand)+1;
 
 allfrqsPfilters              = zeros(10000,1);
 allRatioSupPfilters          = zeros(10000,1);
@@ -58,118 +54,38 @@ allSTDphaseRatioInfPfilters  = zeros(10000,1);
 allmeanMSCcstPfilters        = zeros(10000,1);
 nbofvaluesoverthreshold      = zeros(10000,1);
 
-setimesC_ihc                 = zeros(1,2);
-setimesH_ihc                 = zeros(1,2);
-signals_centered_save_ihc    = cell(1,1);
-problemHC                    = zeros(1,2);
+
 %==================================================
 fullfilename_i      = fileswithdotmat(ifile).name;
 dotlocation         = strfind(fullfilename_i,'.');
 underscorelocation  = strfind(fullfilename_i,'_');
 filenameonly        = fullfilename_i(setdiff(1:dotlocation-1,underscorelocation));
-commandload         = sprintf('load %ss%i/%s',directorydatafromIDC,ihc,fullfilename_i);
+commandload         = sprintf('load %ss%i/%s',directorysignals,ihc,fullfilename_i);
 eval(commandload)
 
-idSc = 1;
-idSh = 1;
-cpC  = 1;
-cpH  = 1;
-idWS = 1;
-idWD = 1;
-idT  = 1;
-signals     = zeros(34560000,2);
-windSpeed   = zeros(34560000,1);
-temperature = zeros(34560000,1);
-windDir     = zeros(34560000,1);
-Lrecords    = length(records);
-
-for ir = 1:Lrecords
-    switch records{ir}.channel
-        case 'BDF'
-            Fs_Hz = 20;%records{ir}.Fs_Hz;
-            switch records{ir}.station(4)
-                case 'C'
-                    if cpC==1
-                        cpC=cpC+1;
-                        setimesC_ihc(ifile,1) = records{ir}.stime;
-                    end
-                    auxC = records{ir}.etime;
-                    LLC = length(records{ir}.data);
-                    signalsC = [records{ir}.data];
-                    signals(idSc:idSc+LLC-1,2)=signalsC;
-                    idSc = idSc+LLC;
-                case 'H'
-                    if cpH==1
-                        cpH=cpH+1;
-                        setimesH_ihc(ifile,1) = records{ir}.stime;
-                    end
-                    auxH = records{ir}.etime;
-                    LLH = length(records{ir}.data);
-                    signalsH = [records{ir}.data];
-                    signals(idSh:idSh+LLH-1,1)=signalsH;
-                    idSh = idSh+LLH;
-            end
-        case 'LKO'
-            LLT = length(records{ir}.data);
-            temperature(idT:idT+LLT-1) = [records{ir}.data];
-            idT = idT + LLT;
-        case 'LWS'
-            LLWS = length(records{ir}.data);
-            windSpeed(idWS:idWS+LLWS-1) = [records{ir}.data];
-            idWS = idWS + LLWS;
-        case 'LWD'
-            FsWind_Hz = records{ir}.Fs_Hz;
-            LLWD = length(records{ir}.data);
-            Fs_wind_Hz = records{ir}.Fs_Hz;
-            windDir(idWD:idWD+LLWD-1) = [records{ir}.data];
-            idWD = idWD + LLWD;
-    end
+if not(exist('directorysignals','var'))
+    directorysignals    = '../AAsignals/';
 end
-setimesC_ihc(ifile,2) = auxC;
-setimesH_ihc(ifile,2) = auxH;
-
-if not(idSc==idSh)
-    fprintf('problem with file # %i on %i\nLH = %i and LC = %i\n',ifile,ihc,idSh,idSc)
-    problemHC(ifile,:) = [idSh,idSc];
-end
-idScMin = min([idSc, idSh]);
-
-signals     = signals(1:idScMin-1,:);
-
-
-windSpeed   = windSpeed(1:idWS-1);
-windDir     = windDir(1:idWD-1);
-temperature = temperature(1:idT-1);
-
 Ts_sec = 1/Fs_Hz;
-signals_centered = signals-ones(size(signals,1),1)*mean(signals);
 
 %============ Warning =======================
 %============================================
+if and(ihc==2,ifile==33)
+    signals_centered = signals_centered(1:2.4e6,:);
+end
+if and(ihc==2,ifile==62)
+    signals_centered = signals_centered([1:0.5e6 1e6:idScMin-1],:);
+end
+if and(ihc==5,ifile==62)
+    signals_centered = signals_centered(1:2.4e6,:);
+end
+if and(ihc==6,ifile==63)
+    signals_centered = signals_centered(1:2.14e6,:);
+end
+if and(ihc==8,ifile==63)
+    signals_centered = signals_centered(1:2.5e6,:);
+end
 %============================================
-%============================================
-%============================================
-% if and(ihc==2,ifile==33)
-%     signals_centered = signals_centered(1:2.4e6,:);
-% end
-% if and(ihc==2,ifile==62)
-%     signals_centered = signals_centered([1:0.5e6 1e6:idScMin-1],:);
-% end
-% if and(ihc==5,ifile==62)
-%     signals_centered = signals_centered(1:2.4e6,:);
-% end
-% if and(ihc==6,ifile==63)
-%     signals_centered = signals_centered(1:2.14e6,:);
-% end
-% if and(ihc==8,ifile==63)
-%     signals_centered = signals_centered(1:2.5e6,:);
-% end
-%============================================
-%============================================
-%============================================
-
-signals_centered_save_ihc{ifile} = signals_centered;
-
 %============================================
 % notice that the SUTs is not saved, therefore we have only the
 % last associated the laxt index which is NBMATS
@@ -223,7 +139,7 @@ allfrqsPfilters             = allfrqsPfilters(1:id1-1,1);
 allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
 nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
 %%
-constraintflag = 1;
+constraintflag = 0;
 displayhours = fix(size(signals_centered,1)/Fs_Hz/3600);
 if constraintflag
     figure(1)
@@ -329,8 +245,6 @@ set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
 set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
-
-printdirectory  = ' ../../figures/';
 
 if constraintflag
     fileprint = sprintf('%s2daysonIS26SUT%iyear%sday%saboveTH.eps',...

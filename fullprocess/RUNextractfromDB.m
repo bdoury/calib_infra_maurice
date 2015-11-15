@@ -6,7 +6,7 @@ addpath   ZZtoolbox/00pierrick/
 % addpath ../00gabrielson/
 
 %========== matlab format files are saved into the following directory
-savedirnamefull      = '../../../AAdataI26calib/';
+savedirnamefull      = '../../../AAdataI26formatIDC/';
 %=== temporary files
 temporary_gparse_dir = 'ZZtoolbox/00pierrick/tempfiles/';
 if not(exist(temporary_gparse_dir,'dir'))

@@ -3,6 +3,7 @@
 clear
 addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
+addpath ../ZZtoolbox/00benoit
 
 directorydata = '../AAresultswithFBbis/';
 printdirectory  = ' ../../../figures/';
@@ -12,8 +13,8 @@ printdirectory  = ' ../../../figures/';
 saveflag = 0;
 bootdraw = 0;
 nbdraw   = 100;
-Ncouples = 50;
-SUFFICIENTNUMBER = 0;
+Ncouples = 10;
+SUFFICIENTNUMBER = 1;
 for ihc=5
     comload = sprintf('load %sresultssta26sensor%i.mat',directorydata,ihc);
     numfig = ihc;
@@ -28,7 +29,7 @@ for ihc=5
             coeffsens=1.032;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 4
-            coeffsens=1.07;
+            coeffsens=1.05;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 5
             coeffsens=1.05;
@@ -73,7 +74,7 @@ for ihc=5
     nbofcouplesdays = length(allpraticalvaluesat1Hz);
     %===================== plots ==============
     figure(numfig)
-    subplot(211);
+    clf
     if bootdraw
         if 0
             for idraw=0:fix(nbofcouplesdays/Ncouples)-1
@@ -100,7 +101,7 @@ for ihc=5
             end
         end
     else
-        
+        subplot(211);
         indnotsufficient = find(nbofvaluesoverthreshold(freqindselect,:)<=SUFFICIENTNUMBER);
         allpraticalvaluesat1Hz(indnotsufficient) = NaN;
         plot(20*log10(allpraticalvaluesat1Hz),'ok','markersize',6,'markerfacec','b')
@@ -125,21 +126,22 @@ for ihc=5
         ihc, 2*nbofcouplesdays, MSCthreshold),'fontname','times','fontsize',12)
     
     hold off
-    subplot(212);
-    %             plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
-    %                 'markerfacec','b')
-    semilogy(nbofvaluesoverthreshold(freqindselect,:),'ob','markersize',6,...
-        'markerfacec','b')
-    %             set(gca,'ylim',[0.98 1])
-    ylabel('number fo values','fontname','times','fontsize',14)
-    grid on
-    set(gca,'fontname','times','fontsize',14)
-    if bootdraw
-        set(gca,'xlim',[0 idraw]);
-    else
-        set(gca,'xlim',[1 nbofcouplesdays])
+    if not(bootdraw)
+        subplot(212);
+        %             plot(allmeanMSCcstPfilters(indselect,:),'ob','markersize',6,...
+        %                 'markerfacec','b')
+        semilogy(nbofvaluesoverthreshold(freqindselect,:),'ob','markersize',6,...
+            'markerfacec','b')
+        %             set(gca,'ylim',[0.98 1])
+        ylabel('number fo values','fontname','times','fontsize',14)
+        grid on
+        set(gca,'fontname','times','fontsize',14)
+        if bootdraw
+            set(gca,'xlim',[0 idraw]);
+        else
+            set(gca,'xlim',[1 nbofcouplesdays])
+        end
     end
-    
     hold off
     HorizontalSize = 16;
     VerticalSize   = 14;

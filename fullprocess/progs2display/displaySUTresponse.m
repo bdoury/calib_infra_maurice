@@ -1,35 +1,35 @@
-
 %========================== displaySUTresponse.m =========================
 % this program reads the ratios SUT/SREF estimated by spectral approach
 % and stored in a drectory as AAresults. That consists on 8 files
 % for the 8 sensors of IS26. Each file consists the estimate ratios
 % on several days of records.
-%
+%=========
 % this program calls the function:
-%         - theoreticalSUTresponse4IS26.m
-% located in ZZtoolbox/00gabrielson
+%         - HCP_acoustical.m
+% using both ZZtoolbox/00gabrielson and ../ZZtoolbox/00benoit
 %
+%=========================================================================
 clear
 addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
 addpath ../ZZtoolbox/00benoit
 
-directorydatafromIDC  = '../../../../AAdataI26calib/';
+%==== this directory contains the parameters evalauted by the
+% program estimationwithFB.m
 directoryinputresults = '../AAresultswithFB/';
 % directoryinputresults = '../AAresultswithFBter/';
 % directoryinputresults = '../AAresultswithFBbis/';
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
-% close all
 
-for ihc = 2
-    
+remainindex = [1:62];
+
+for ihc = 1   
     comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
     numfig = ihc+100;
     switch ihc
         case 1
-            %                         coeffsens=1.048;
             coeffsens=1.04;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB2005';
         case 2
@@ -88,15 +88,11 @@ for ihc = 2
         logfit.flag    = 1;
         logfit.N       = 200;
     end
-    
-    %         remainindex = lookatdata(directorydatafromIDC,ihc, 0);
-    remainindex = [66];
-    
+       
     [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
     allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
     allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,remainindex);
-    nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,remainindex);
-    
+    nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,remainindex);    
     
     allRatioPfiltersUZ        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);
     allmeanMSCcstPfiltersUZ   = allmeanMSCcstPfiltersU(not(allfrqsPfiltersU==0),:);
@@ -115,13 +111,11 @@ for ihc = 2
     [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
         HCP_acoustical(freq_vector, allfrqsPfiltersUZ, sensor_UT, ref_sensor, 'nofir');
     
-    absestim = coeffsens * abs(meanallRatioPfiltersUZ) .* abs(TFsensor4freqRatio);
-    
+    absestim = coeffsens * abs(meanallRatioPfiltersUZ) .* abs(TFsensor4freqRatio);   
     
     %     [FreqFitabs_Hz,absRfit] = smoothpolyLL(allfrqsPfiltersUZ, ...
     %         coeffsens * abs(meanallRatioPfiltersUZ),...
     %         segmentsnumber,polydegrees,logtrain,logfit);
-    
     
     figure(numfig)
     clf
