@@ -41,15 +41,15 @@ Pfilter = length(filtercharact);
 %=====================
 MSCthreshold = 0.98;
 %=====================
-directorysave2daysignals  = '../AAsignals/';
+directorysave2daysignals  = '../../../../AAdataI26calib/';
 %===================== read data =========================
 % nbmats                       = length(fileswithdotmat);
 
 %==================================================
-for ifile = 27:50,
+for ifile = 62,
     signals = cell(2,1);
-    for ihc   = [1,2]
-        fileswithdotmat     = dir(sprintf('%ss%i/year*.mat',directorysave2daysignals,ihc));
+    for ihc   = [5]
+        fileswithdotmat     = dir(sprintf('%ss%i/s%iyear*.mat',directorysave2daysignals,ihc,ihc));
 
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
@@ -87,16 +87,14 @@ for ifile = 27:50,
     %
     %%
     
-    for is=1:2
+   
         for io=1:2
-        subplot(4,1,2*(is-1)+io)
-        plot(signals{is}(:,io))
+        subplot(2,1,io)
+        plot((0:size(signals{ihc},1)-1)/Fs_Hz/60,signals{ihc}(:,io))
         end
-    end
-    pause
     
     % set(gca,'xlim',[0 displayhours])
-    set(gca,'ylim',[-12 12])
+%     set(gca,'ylim',[-12 12])
     set(gca,'fontname','times','fontsize',10)
     xlabel('hours','fontname','times','fontsize',10)
     

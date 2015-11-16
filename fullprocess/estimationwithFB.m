@@ -24,16 +24,19 @@
 clear
 allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
     'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
+%=====================
+MSCthreshold = 0.98;
+%=====================
 
 FLAGsaveall   = 0;
-FLAGsavesmall = 0;
+FLAGsavesmall = 1;
 addpath ZZtoolbox/
 
 %=== directory of input signals
 directorysignals      = '../../../AAdataI26calib/';
 %=== directory of output results
 directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-directoryresults      = 'AAresultswithFB';% if FLAGsavesmall=1
+directoryresults      = sprintf('AAresultswithFB%i',fix(MSCthreshold*100));% if FLAGsavesmall=1
 
 %============== load the filter bank characteristics =====================
 %  the useful variable is FILTERCHARACT
@@ -63,13 +66,18 @@ end
 
 %=====================
 Pfilter = length(filtercharact);
-%=====================
-MSCthreshold = 0.98;
-%=====================
-for ihc = 1
-    %==== read data
-    fileswithdotmat              = dir(sprintf('%ss%i/year*.mat',...
-        directorysignals,ihc));
+
+% if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
+%     filtercharact(Pfilter).Wlow_Hz  = 0.001;
+%     filtercharact(Pfilter).Whigh_Hz = 10;
+% end
+
+for ihc = 6:8, ihc
+    %=====================
+    % under test = 1, reference = 2
+    %===================== read data =========================
+    fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
+        directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
 
     allfrqsPfilters              = zeros(10000,nbmats);
@@ -82,8 +90,8 @@ for ihc = 1
     allSTDphaseRatioInfPfilters  = zeros(10000,nbmats);
     allmeanMSCcstPfilters        = zeros(10000,nbmats);
     nbofvaluesoverthreshold      = zeros(10000,nbmats);
-    RsupmodtabNoThreshold        = cell(nbmats,Pfilter);
-    MSCtabNoThreshold            = cell(nbmats,Pfilter);
+%     RsupmodtabNoThreshold        = cell(nbmats,Pfilter);
+%     MSCtabNoThreshold            = cell(nbmats,Pfilter);
     spectralmatrixtab            = cell(nbmats,Pfilter);
     %==================================================
     for ifile=1:nbmats, ifile,tic
@@ -96,7 +104,9 @@ for ihc = 1
         commandload         = sprintf('load %ss%i/%s',...
             directorysignals,ihc,fullfilename_i);
         eval(commandload)
-        
+        Ts_sec = 1/Fs_Hz;
+        Ntotal = size(signals_centered,1);
+
         %============ Warning =======================
         %============================================
         %============================================
@@ -107,7 +117,7 @@ for ihc = 1
         
         if and(ihc==2,ifile==62)
             signals_centered = ...
-                signals_centered([1:0.5e6 1e6:idScMin-1],:);
+                signals_centered([1:0.5e6 1e6:Ntotal],:);
         end
         
         if and(ihc==5,ifile==62)
@@ -162,10 +172,10 @@ for ihc = 1
                 sum(not(isnan(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:))),2);
             id1 = id2+1;
             
-            RsupmodtabNoThreshold{ifile,ip} = ...
-                squeeze(SUTs(ip).estimRsup.tabmod(idipinf(ip):idipsup(ip),:));
-            MSCtabNoThreshold{ifile,ip} = ...
-                squeeze(SUTs(ip).allMSCs.tab(idipinf(ip):idipsup(ip),:));
+%             RsupmodtabNoThreshold{ifile,ip} = ...
+%                 squeeze(SUTs(ip).estimRsup.tabmod(idipinf(ip):idipsup(ip),:));
+%             MSCtabNoThreshold{ifile,ip} = ...
+%                 squeeze(SUTs(ip).allMSCs.tab(idipinf(ip):idipsup(ip),:));
             spectralmatrixtab{ifile,ip} = ...
                 squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));
         end

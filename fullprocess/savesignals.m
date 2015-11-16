@@ -11,7 +11,7 @@ clear
 allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
     'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 
-%=============== Warning ===============
+%==================== Warning ===============
 % we have observed huge outliers in the following files:
 % ihc==2, ifile== 33, i.e. sta2_Y2015_D219.mat from sample index 2.4e6
 % ihc==8, ifile==63, i.e. sta8_Y2015_D280.mat from sample index 2.5e6
@@ -22,10 +22,7 @@ allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
 %============================================
 %============================================
 %============================================
-%=====================
-MSCthreshold = 0.98;
-%=====================
-ihc   = 8;
+ihc   = 2;
 directorydatafromIDC  = '../../../AAdataI26formatIDC/';
 % directory to save data
 directorysave2daysignals  = '../../../AAdataI26calib/';
@@ -38,7 +35,7 @@ setimesC_ihc                 = zeros(1,2);
 setimesH_ihc                 = zeros(1,2);
 problemHC                    = zeros(1,2);
 %==================================================
-for ifile = 1:nbmats,ifile
+for ifile = 1:nbmats,[ifile, nbmats]
     fullfilename_i      = fileswithdotmat(ifile).name;
     dotlocation         = strfind(fullfilename_i,'.');
     underscorelocation  = strfind(fullfilename_i,'_');
@@ -125,15 +122,15 @@ for ifile = 1:nbmats,ifile
     
     
     commandsave = sprintf...
-  ('save %ss%i/year%sday%s signals_centered Fs_Hz setimesC_ihc problemHC', ...
-        directorysave2daysignals,ihc,...
+  ('save %ss%i/s%iyear%sday%s signals_centered Fs_Hz setimesC_ihc problemHC', ...
+        directorysave2daysignals,ihc,ihc,...
         filenameonly(6:9),filenameonly(11:13));
     eval(commandsave)
     
     if ihc==1
         commandsaveWIND = sprintf...
- ('save %ss%i/WINDyear%sday%s windSpeed windDir temperature FsWind_Hz', ...
-        directorysave2daysignals,ihc,...
+ ('save %ss%i/WIND%iyear%sday%s windSpeed windDir temperature FsWind_Hz', ...
+        directorysave2daysignals,ihc,ihc,...
         filenameonly(6:9),filenameonly(11:13));
     eval(commandsaveWIND)
     end  
