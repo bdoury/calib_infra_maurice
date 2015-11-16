@@ -17,9 +17,6 @@ Therefore the main quantity of interest is the frequency response ratio between 
 %\end{eqnarray}
 %where $k$ goes from $0$ to $N-1$.
 
- \newpage
-\figscale{figures/synoptic.pdf}{The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced.}{}{1}
-
 
  %==========================================
 %===========================================
@@ -435,8 +432,6 @@ $[0.02-0.20]$&$400$
 }
 \end{center}
 \end{table}
-\figscale{filterbank.pdf}{Filter bank}{fig:filterbank}{1}
-
 
 
 

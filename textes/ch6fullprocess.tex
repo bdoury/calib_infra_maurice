@@ -84,6 +84,27 @@ Let us report to the figure \ref{fig:synoptic}. The DFT buffer contains the data
 
 
 
+
+
+The full calculation is based on the 3 following functions
+\begin{itemize}
+\item 
+filtering function {\tt fbank.m}: 
+\begin{itemize}
+\item
+the function inputs are the two signals, the filter characteristics and the frequency sampling.
+\item
+The filter ouputs are the $P$ output signals.
+\end{itemize}
+\item  
+
+SCP function {\tt estimSCP.m}: the inputs are the two signals, the frequency response of the SREF, 
+the DFT overlap, the SCP overlap, the frequency sampling and the smooth window. The outputs are the SCPs which consist of $P$ time-spectral cells, each of them consists of an array of size $K \times T$ where $K$ is the number of frequency dots and $T$ the number of SCP time windows during the full duration of the considered signals.
+
+\end{itemize}
+
+
+
 \newpage\clearpage
 %================================
 \section{Output of the function {\tt fbankanalysis.m}}
