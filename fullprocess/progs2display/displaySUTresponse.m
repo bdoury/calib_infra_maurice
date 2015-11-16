@@ -23,9 +23,9 @@ directoryinputresults = '../AAresultswithFB/';
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 
-remainindex = [1:62];
+remainindex = [1:63];
 
-for ihc = 1   
+for ihc = 2   
     comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
     numfig = ihc+100;
     switch ihc
@@ -66,67 +66,73 @@ for ihc = 1
         allRatioPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
     end
     
-    allRatioPfilters_ave          = nanmean(allRatioSupPfilters,2);
-    absallRatioPfilters_ave       = abs(allRatioPfilters_ave);
-    angleallRatioPfilters_ave_deg = angle(allRatioPfilters_ave)*180/pi;
+    STDmodRatioPfilters_ave    = nanmean(allSTDmodRatioSupPfilters,2);
+    STDphaseRatioPfilters_ave  = nanmean(allSTDphaseRatioSupPfilters,2);
     
-    %=======
-    if 1
-        %======= fit the curve
-        segmentsnumber = 2;
-        polydegrees    = (0:1:8);
-        logtrain.flag  = 1;
-        logtrain.N     = 115;
-        logfit.flag    = 1;
-        logfit.N       = 115;
-    else
-        %======= fit the curve
-        segmentsnumber = 2;
-        polydegrees    = (0:1:8);
-        logtrain.flag  = 1;
-        logtrain.N     = 50;
-        logfit.flag    = 1;
-        logfit.N       = 200;
-    end
-       
-    [allfrqsPfiltersU, inda] = unique(allfrqsPfilters);
-    allRatioPfiltersU        = allRatioSupPfilters(inda,remainindex);
-    allmeanMSCcstPfiltersU   = allmeanMSCcstPfilters(inda,remainindex);
-    nbofvaluesoverthresholdU = nbofvaluesoverthreshold(inda,remainindex);    
+    %== sort in increasing order
+    [allfrqsPfiltersS, inds]       = sort(allfrqsPfilters);
+    STDmodRatioPfilters_aveS       = STDmodRatioPfilters_ave(inds);
+    STDphaseRatioPfilters_aveS     = STDphaseRatioPfilters_ave(inds);
+    allRatioPfiltersS              = allRatioSupPfilters(inds,remainindex);
+    allmeanMSCcstPfiltersS         = allmeanMSCcstPfilters(inds,remainindex);
+    nbofvaluesoverthresholdS       = nbofvaluesoverthreshold(inds,remainindex);
+
+    %== unique
+    [allfrqsPfiltersUS, inda]      = unique(allfrqsPfiltersS);
+    STDmodRatioPfilters_aveUS      = STDmodRatioPfilters_aveS(inda);
+    STDphaseRatioPfilters_aveUS    = STDphaseRatioPfilters_aveS(inda);
     
-    allRatioPfiltersUZ        = allRatioPfiltersU(not(allfrqsPfiltersU==0),:);
-    allmeanMSCcstPfiltersUZ   = allmeanMSCcstPfiltersU(not(allfrqsPfiltersU==0),:);
-    allfrqsPfiltersUZ         = allfrqsPfiltersU(not(allfrqsPfiltersU==0));
-    nbofvaluesoverthresholdUZ = nbofvaluesoverthresholdU(not(allfrqsPfiltersU==0),:);
+    allRatioPfiltersUS             = allRatioPfiltersS(inda,:);
+    allmeanMSCcstPfiltersUS        = allmeanMSCcstPfiltersS(inda,:);
+    nbofvaluesoverthresholdUS      = nbofvaluesoverthresholdS(inda,:);    
     
-    meanallRatioPfiltersUZ    = nanmean(allRatioPfiltersUZ,2);
+    %== without 0
+    RatioPfiltersUSZ               = allRatioPfiltersUS(not(allfrqsPfiltersUS==0),:);
+    allmeanMSCcstPfiltersUSZ       = allmeanMSCcstPfiltersUS(not(allfrqsPfiltersUS==0),:);
+    allfrqsPfiltersUSZ             = allfrqsPfiltersUS(not(allfrqsPfiltersUS==0));
+    nbofvaluesoverthresholdUSZ     = nbofvaluesoverthresholdUS(not(allfrqsPfiltersUS==0),:);
+    STDmodRatioPfilters_aveUSZ     = STDmodRatioPfilters_aveUS(not(allfrqsPfiltersUS==0));
+    STDphaseRatioPfilters_aveUSZ   = STDphaseRatioPfilters_aveUS(not(allfrqsPfiltersUS==0));
     
-    stdallRatioPfiltersUZ     = nanstd(allRatioPfiltersUZ,[],2);
+    %======
+    modRatioPfiltersUSZ            = abs(RatioPfiltersUSZ);
+    meanmodRatioPfiltersUSZ        = nanmean(modRatioPfiltersUSZ,2);    
+    STDmodPfiltersUSZ              = nanstd(modRatioPfiltersUSZ,[],2);
     
-    ICallRatioPfiltersUZ      = stdallRatioPfiltersUZ ./ ...
-        sqrt(sum(nbofvaluesoverthresholdUZ,2));
+    phaseRatioPfiltersUSZ_rd       = angle(RatioPfiltersUSZ);
+    meanphasePfiltersUSZ_rd        = nanmean(phaseRatioPfiltersUSZ_rd,2);    
+    STDphasePfiltersUSZ_rd         = nanstd(phaseRatioPfiltersUSZ_rd,[],2);
+
+    ICallRatioPfiltersUSZ          = STDmodPfiltersUSZ ./ ...
+        sqrt(sum(nbofvaluesoverthresholdUSZ,2));
+    
+    ICallRatioPfiltersUSZbis       = STDmodRatioPfilters_aveUSZ ./ ...
+        sqrt(sum(nbofvaluesoverthresholdUSZ,2));
     
     N_freq_vector = 300;
-    freq_vector = logspace(log10(0.001),log10(30),N_freq_vector) .';
+    freq_vector   = logspace(log10(0.001),log10(30),N_freq_vector) .';
     [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
-        HCP_acoustical(freq_vector, allfrqsPfiltersUZ, sensor_UT, ref_sensor, 'nofir');
-    
-    absestim = coeffsens * abs(meanallRatioPfiltersUZ) .* abs(TFsensor4freqRatio);   
-    
-    %     [FreqFitabs_Hz,absRfit] = smoothpolyLL(allfrqsPfiltersUZ, ...
-    %         coeffsens * abs(meanallRatioPfiltersUZ),...
-    %         segmentsnumber,polydegrees,logtrain,logfit);
-    
+        HCP_acoustical(freq_vector, allfrqsPfiltersUSZ, sensor_UT, ref_sensor, 'nofir');
+        
+    %================================
+    absestimwithcorrect = coeffsens * meanmodRatioPfiltersUSZ .* abs(TFsensor4freqRatio);   
     figure(numfig)
     clf
     %================================================
     subplot(211)
-    semilogx(allfrqsPfiltersUZ,20*log10(absestim),'k','linew',1.5),
-    %     hold on
-    %         semilogx(ones(2,1)*allfrqsPfiltersUZ',...
-    %             [absestim'-ICallRatioPfiltersUZ';...
-    %             absestim'+ICallRatioPfiltersUZ'],'.-b')
-    
+    semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'k','linew',1.5),
+%         hold on
+%             semilogx(allfrqsPfiltersUZ,...
+%                 abs(meanallRatioPfiltersUZ)-allSTDmodRatioPfilters_aveU,'.-b', ...
+%                 allfrqsPfiltersUZ,...
+%                 abs(meanallRatioPfiltersUZ)+allSTDmodRatioPfilters_aveU,'.-r')
+%             hold on
+%             semilogx(allfrqsPfiltersUZ,...
+%                 abs(meanallRatioPfiltersUZ)-ICallRatioPfiltersUZ,'.g', ...
+%                 allfrqsPfiltersUZ,...
+%                 abs(meanallRatioPfiltersUZ)+ICallRatioPfiltersUZ,'.m')
+%             hold off
+% %     
     %     boxplot(absestim','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
     %             'xticklabel',[0.001 0.01 0.1 1 10])
@@ -167,16 +173,9 @@ for ihc = 1
     set(ht,'color','r','fontsize',14,'fontname','times')
     
     %========================== PHASE =========
-    anglestime_rd = angle(meanallRatioPfiltersUZ);
     
-    if 1
-        anglestime_rd = anglestime_rd + angle(TFsensor4freqRatio);
-        angltheo_rd   = angle(p_total_NRS)+ angle(TF_ref_sensor);
-    else
-        anglestime_rd = -anglestime_rd;
-        angltheo_rd   = -angle(p_total_NRS);
-        
-    end
+    anglewithcorrect_rd = meanphasePfiltersUSZ_rd + angle(TFsensor4freqRatio);
+    angltheo_rd   = angle(p_total_NRS)+ angle(TF_ref_sensor);
     
     subplot(212)
     
@@ -185,7 +184,7 @@ for ihc = 1
     %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
     %             'xticklabel',[0.001 0.01 0.1 1 10])
-    semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'k','linew',1.5),
+    semilogx(allfrqsPfiltersUSZ,unwrap(anglewithcorrect_rd)*180/pi,'k','linew',1.5),
     
     %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
@@ -238,7 +237,16 @@ if saveflag
     eval(fileeps2pdfcmd)
     eval(filermcmd)
 end
-
+%%
+% 
+% semilogx(allfrqsPfilters, sum(nbofvaluesoverthreshold,2),'.')
+% hold on
+% for ip=1:Pfilter
+%     plot(allfrqsFFT_Hz{ip}(idipinf(ip))*ones(2,1),[0 20000],allcolors(ip,1))
+%     plot(allfrqsFFT_Hz{ip}(idipsup(ip))*ones(2,1),[0 20000],allcolors(ip,1))
+%     pause
+% end
+% hold off
 %%
 % NaverageFFTs = filtercharact(1).ratioDFT2SCP;
 % allT.TUUonUR = linspace(0.6,3,100);

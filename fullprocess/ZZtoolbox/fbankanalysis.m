@@ -413,7 +413,7 @@ tabHUUUR    = [allSDs.Rsup];
 tabHURRR    = [allSDs.Rinf];
 %========================================================================
 %================= on Rsup
-%===== real/imaginary part without constraint
+%===== real/imaginary part without constraint on MSC
 %========================================================================
 tabrealHUUUR = real(tabHUUUR);
 tabimagHUUUR = imag(tabHUUUR);
@@ -422,7 +422,7 @@ tabphaseHUUUR = atan2(tabimagHUUUR,tabrealHUUUR);
 
 %========================================================================
 %================= on Rinf
-%===== real/imaginary part without constraint
+%===== real/imaginary part without constraint on MSC
 %========================================================================
 tabrealHURRR = real(tabHURRR);
 tabimagHURRR = imag(tabHURRR);
@@ -430,14 +430,17 @@ tabmodHURRR  = sqrt(tabrealHURRR .^2 + tabimagHURRR .^2);
 tabphaseHURRR = atan2(tabimagHURRR, tabrealHURRR);
 
 %========================================================================
-%================= on Rsup HAT
+%================= Rsup HAT by averaging
 %========================================================================
 hatrealHUUUR = nanmean(tabrealHUUUR,2);
 hatimagHUUUR = nanmean(tabimagHUUUR,2);
 %===== mod/phase part without constraint
 hatmodHUUUR   = sqrt(hatrealHUUUR .^2 + hatimagHUUUR .^2);
 hatphaseHUUUR = atan2(hatimagHUUUR, hatrealHUUUR);
-%================= on Rinf HAT ==================
+
+%========================================================================
+%================= Rinf HAT by averaging
+%========================================================================
 hatrealHURRR = nanmean(tabrealHURRR,2);
 hatimagHURRR = nanmean(tabimagHURRR,2);
 %===== mod/phase part without constraint
@@ -445,9 +448,9 @@ hatmodHURRR   = sqrt(hatrealHURRR .^2 + hatimagHURRR .^2);
 hatphaseHURRR = atan2(hatimagHURRR, hatrealHURRR);
 
 %========================================================================
-%================ on Rsup with constraint
-%===== real part with constraint
+%================ Rsup with constraint on the MSC
 %========================================================================
+%===== real part with constraint
 tabrealHUUURwithMSCsupeta = nan(Lfft,nbblocksAVE);
 tabrealHUUURwithMSCsupeta(indextabMSCsupthreshold) = ...
     (real(tabHUUUR(indextabMSCsupthreshold)));
@@ -459,13 +462,14 @@ tabimagHUUURwithMSCsupeta(indextabMSCsupthreshold) = ...
 tabmodHUUURwithMSCsupeta = sqrt(...
     tabrealHUUURwithMSCsupeta .^2+...
     tabimagHUUURwithMSCsupeta .^2);
+%===== phase with constraint
 tabphaseHUUURwithMSCsupeta = atan2(tabimagHUUURwithMSCsupeta,...
     tabrealHUUURwithMSCsupeta);
 
 %========================================================================
-%================ on Rsinf with constraint 
-%===== real part with constraint
+%================ Rinf with constraint on the MSC
 %========================================================================
+%===== real part with constraint
 tabrealHURRRwithMSCsupeta = nan(Lfft,nbblocksAVE);
 tabrealHURRRwithMSCsupeta(indextabMSCsupthreshold) = ...
     (real(tabHURRR(indextabMSCsupthreshold)));
@@ -477,9 +481,13 @@ tabimagHURRRwithMSCsupeta(indextabMSCsupthreshold) = ...
 tabmodHURRRwithMSCsupeta = sqrt(...
     tabrealHURRRwithMSCsupeta .^2+...
     tabimagHURRRwithMSCsupeta .^2);
+%===== phase with constraint
 tabphaseHURRRwithMSCsupeta = atan2(tabimagHURRRwithMSCsupeta,...
     tabrealHURRRwithMSCsupeta);
 
+
+%========================================================================
+%======= useful to perform the weights
 RsuptheowithMSCsupeta = tabmodHUUURwithMSCsupeta .* ...
     tabmodHURRRwithMSCsupeta;
 
@@ -493,10 +501,8 @@ weightMSCsupeta = (tabMSCwithMSCsupeta .^2) ./  ...
 weightMSCinfeta = 1 ./  ...
     (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
 %========================================================================
-%========== on Rsup HAT with constraint
-%========== and weighting coeffs
+%========== Rsup HAT with constraint and weighting coeffs
 %========================================================================
-
 if weightingflag
     hatrealHUUURwithMSCsupeta = ...
         nansum(tabrealHUUURwithMSCsupeta .* weightMSCsupeta,2) ...
@@ -513,7 +519,7 @@ else
         nanmean(tabimagHUUURwithMSCsupeta,2);
 end
 
-%===== mod/phase part with constraint
+%===== perform module and phase part with constraint
 hatmodHUUURwithMSCsupeta = sqrt(...
     hatrealHUUURwithMSCsupeta .^2+...
     hatimagHUUURwithMSCsupeta .^2);
@@ -522,14 +528,13 @@ hatphaseHUUURwithMSCsupeta = atan2(...
     hatimagHUUURwithMSCsupeta,...
     hatrealHUUURwithMSCsupeta);
 
+%===== perform STD on module and phase
 stdmodHUUURwithMSCsupeta   = nanstd(tabmodHUUURwithMSCsupeta,[],2);
 stdphaseHUUURwithMSCsupeta = nanstd(tabphaseHUUURwithMSCsupeta,[],2);
 
 %========================================================================
-%========== on Rinf HAT with constraint
-%========== and weighting coeffs
+%========== Rinf HAT with constraint and weighting coeffs
 %========================================================================
-
 if weightingflag
     hatrealHURRRwithMSCsupeta = ...
         nansum(tabrealHURRRwithMSCsupeta .* weightMSCinfeta,2) ...
@@ -545,7 +550,7 @@ else
         nanmean(tabimagHURRRwithMSCsupeta,2);
 end
 
-%===== mod/phase part with constraint
+%===== perform module and phase part with constraint
 hatmodHURRRwithMSCsupeta = sqrt(...
     hatrealHURRRwithMSCsupeta .^2+...
     hatimagHURRRwithMSCsupeta .^2);
@@ -554,13 +559,12 @@ hatphaseHURRRwithMSCsupeta = atan2(...
     hatimagHURRRwithMSCsupeta,...
     hatrealHURRRwithMSCsupeta);
 
+%===== perform STD on module and phase
 stdmodHURRRwithMSCsupeta   = nanstd(tabmodHURRRwithMSCsupeta,[],2);
 stdphaseHURRRwithMSCsupeta = nanstd(tabphaseHURRRwithMSCsupeta,[],2);
 
-
-%================ on Rinf with constraint ======
-%===== hat's
-
+%========================================================================
+%=========================== SAVE =======================================
 Rsup.tabmod      = tabmodHUUUR;
 Rsup.tabmodcst   = tabmodHUUURwithMSCsupeta;
 Rsup.tabphase    = tabphaseHUUUR;
@@ -585,9 +589,9 @@ Rinf.stdmodcst   = stdmodHURRRwithMSCsupeta;
 Rinf.phasecst    = hatphaseHURRRwithMSCsupeta;
 Rinf.stdphasecst = stdphaseHURRRwithMSCsupeta;
 
-MSC.tab       = tabMSC;
-MSC.tabcst    = tabMSCwithMSCsupeta;
-MSC.indexcst  = indextabMSCsupthreshold;
-MSC.weightMSC = weightMSCsupeta;
+MSC.tab          = tabMSC;
+MSC.tabcst       = tabMSCwithMSCsupeta;
+MSC.indexcst     = indextabMSCsupthreshold;
+MSC.weightMSC    = weightMSCsupeta;
 %========================= END ==========================================
 

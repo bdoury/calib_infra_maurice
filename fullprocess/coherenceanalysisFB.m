@@ -5,9 +5,6 @@ for itour=1:1
     highB = 0;
     lowB = 1;
     addpath  ../../../ZZtoolbox/
-    %=====================
-    % under test = 1, reference = 2
-    %=====================
     %
     if 1
         %===================== read data =========================

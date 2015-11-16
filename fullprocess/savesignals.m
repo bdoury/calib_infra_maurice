@@ -25,13 +25,13 @@ allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
 %=====================
 MSCthreshold = 0.98;
 %=====================
-ihc   = 3;
+ihc   = 8;
 directorydatafromIDC  = '../../../AAdataI26formatIDC/';
 % directory to save data
 directorysave2daysignals  = '../../../AAdataI26calib/';
 %===================== read data =========================
-fileswithdotmat              = dir(sprintf('%ss%i/sta%i*.mat', ...
-    directorydatafromIDC,ihc,ihc));
+fileswithdotmat              = dir(sprintf('%ss%i/sta*.mat', ...
+    directorydatafromIDC,ihc));
 nbmats                       = length(fileswithdotmat);
 
 setimesC_ihc                 = zeros(1,2);
