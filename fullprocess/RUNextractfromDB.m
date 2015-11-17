@@ -6,7 +6,7 @@ addpath   ZZtoolbox/00pierrick/
 % addpath ../00gabrielson/
 
 %========== matlab format files are saved into the following directory
-savedirnamefull      = '../../../AAdataI26formatIDC/';
+savedirnamefull      = '../../../AAdataIDCwithproblem/';
 %=== temporary files
 temporary_gparse_dir = 'ZZtoolbox/00pierrick/tempfiles/';
 if not(exist(temporary_gparse_dir,'dir'))
@@ -32,10 +32,10 @@ yearend     =  '2015';
 monthend    =  '10';
 HMSend      = '23:50:10';
 
-for ihc=5
+for ihc=1
     savedirnamefull_ihc = sprintf('%ss%i/',savedirnamefull,ihc);
     stations    = sprintf(' (''I26H%i'',''I26C%i'') ',ihc,ihc);
-    for daystart_num    =  5 %:2:29
+    for daystart_num    =  13:2:29
         if daystart_num<10
             daystart    = ['0' num2str(daystart_num)];
             if daystart_num==9

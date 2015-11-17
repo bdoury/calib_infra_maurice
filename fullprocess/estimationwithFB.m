@@ -13,6 +13,7 @@
 
 %=============== Warning ===============
 % we have observed huge outliers in the following files:
+% ihc==1, ifile== 63, i.e.
 % ihc==2, ifile== 33, i.e. sta2_Y2015_D219.mat from sample index 2.4e6
 % ihc==8, ifile==63, i.e. sta8_Y2015_D280.mat from sample index 2.5e6
 % ihc==5,ifile==62
@@ -29,7 +30,7 @@ MSCthreshold = 0.98;
 %=====================
 
 FLAGsaveall   = 0;
-FLAGsavesmall = 1;
+FLAGsavesmall = 0;
 addpath ZZtoolbox/
 
 %=== directory of input signals
@@ -72,7 +73,7 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 7:8, ihc
+for ihc = 1, ihc
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
@@ -111,10 +112,15 @@ for ihc = 7:8, ihc
         %============================================
         %============================================
         %== some manual checks 
+        if and(ihc==1,ifile==63)
+            signals_centered = signals_centered(0.6e6:2.2e6,:);
+        end
+        if and(ihc==1,ifile==64)
+            signals_centered = signals_centered(0.6e6:Ntotal,:);
+        end
         if and(ihc==2,ifile==33)
             signals_centered = signals_centered(1:2.4e6,:);
         end
-        
         if and(ihc==2,ifile==62)
             signals_centered = ...
                 signals_centered([1:0.5e6 1e6:Ntotal],:);
@@ -199,11 +205,11 @@ for ihc = 7:8, ihc
     allfrqsPfilters             = allfrqsPfilters(1:id1-1,1);
     allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
     nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
-
+    toc
     if FLAGsavesmall
         comsave = ...
-            sprintf('save %s/resultssta26sensor%i',...
-            directoryresults,ihc+100);
+            sprintf('save %s/resultssta26sensor%iSuppProblem',...
+            directoryresults,ihc);
         clear signals_centered
         clear filteredsignals
         clear alltimes_sec

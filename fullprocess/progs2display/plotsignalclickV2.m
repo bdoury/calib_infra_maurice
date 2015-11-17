@@ -20,6 +20,7 @@ Pfilter = length(filtercharact);
 %============================================
 %============================================
 %============================================
+% if and(ihc==1,ifile==63)
 % if and(ihc==2,ifile==33)
 %     signals_centered = signals_centered(1:2.4e6,:);
 % end
@@ -39,18 +40,17 @@ Pfilter = length(filtercharact);
 %============================================
 %============================================
 %=====================
-MSCthreshold = 0.98;
-%=====================
 directorysave2daysignals  = '../../../../AAdataI26calib/';
 %===================== read data =========================
 % nbmats                       = length(fileswithdotmat);
 
 %==================================================
-for ifile = 62,
-    signals = cell(2,1);
-    for ihc   = [5]
-        fileswithdotmat     = dir(sprintf('%ss%i/s%iyear*.mat',directorysave2daysignals,ihc,ihc));
-
+for ihc   = 1
+    fileswithdotmat     = dir(sprintf('%ss%i/s%iy*.mat', ...
+        directorysave2daysignals,ihc,ihc));
+    nbmats = length(fileswithdotmat);
+    for ifile = 63%1:nbmats,ifile
+        
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -58,54 +58,48 @@ for ifile = 62,
         commandload         = sprintf('load %ss%i/%s',directorysave2daysignals,...
             ihc,fullfilename_i);
         eval(commandload)
-        signals{ihc} = signals_centered;
+        for is=1:2
+            subplot(2,3,3*is-2)
+            plot((0:size(signals_centered,1)-1)/Fs_Hz/3600,signals_centered(:,is))
+            set(gca,'xlim',[0 size(signals_centered,1)/Fs_Hz/3600])
+                set(gca,'fontname','times','fontsize',10)
+                xlabel('hours','fontname','times','fontsize',10)
+            title(fullfilename_i,'fontname','times','fontsize',8)
+
+        end
+        for is=1:2
+            subplot(2,3,3*is-1)
+            id1=8640*60;id2=8880*60;
+            plot((0:id2-id1)/Fs_Hz/60,signals_centered(id1:id2,is))
+            set(gca,'xlim',[0 (id2-id1)/Fs_Hz/60])
+%             set(gca,'xticklabel',[])
+                set(gca,'fontname','times','fontsize',10)
+                xlabel('minutes','fontname','times','fontsize',10)
+                    title('Zoom on the first burst','fontname','times','fontsize',8)
+        end
+        for is=1:2
+            subplot(2,3,3*is)
+            plot((0:id2-id1)/Fs_Hz/60,signals_centered((id1:id2)+100000,is))
+                        set(gca,'xlim',[0 (id2-id1)/Fs_Hz/60])
+            set(gca,'xticklabel',[])
+            set(gca,'ylim',[-0.5 0.5])
+            set(gca,'fontname','times','fontsize',10)
+            xlabel('minutes','fontname','times','fontsize',10)
+            title('Zoom outside of the bursts','fontname','times','fontsize',8)
+        end
     end
     
-    
-    % [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, filterbank] = ...
-    %     fbankanalysis(signals_centered,...
-    %     filtercharact,Fs_Hz,MSCthreshold);
-    % %============================================
-    % P       = length(SUTs);
-    % idipinf = zeros(P,1);
-    % idipsup = zeros(P,1);
-    % for ip=1:P
-    %     idipinf(ip) = SUTs(ip).indexinsidefreqband(1);
-    %     idipsup(ip) = SUTs(ip).indexinsidefreqband(2);
-    % end
-    % displayhours = fix(size(signals_centered,1)/Fs_Hz/3600);
-    % for ip=1:P
-    %     [nbfrqs,nbtimeslots] = size(SUTs(ip).allMSCs.tabcst((idipinf(ip):idipsup(ip)),:));
-    %     allfrqs_ip = allfrqsFFT_Hz{ip}(idipinf(ip):idipsup(ip));
-    %
-    % end
-    %========= display signals ===
-    
-    
-    %     locations(:,1) = decrac(signals_centered(:,1));
-    %     locations(:,2) = decrac(signals_centered(:,2));
-    %
-    %%
-    
-   
-        for io=1:2
-        subplot(2,1,io)
-        plot((0:size(signals{ihc},1)-1)/Fs_Hz/60,signals{ihc}(:,io))
-        end
-    
-    % set(gca,'xlim',[0 displayhours])
-%     set(gca,'ylim',[-12 12])
+
+
     set(gca,'fontname','times','fontsize',10)
-    xlabel('hours','fontname','times','fontsize',10)
     
     
-    HorizontalSize = 16;
-    VerticalSize   = 14;
+    HorizontalSize = 12;
+    VerticalSize   = 8;
     set(gcf,'units','centimeters');
     set(gcf,'paperunits','centimeters');
     set(gcf,'PaperType','a3');
-    set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
-    set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
+%     set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
     set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
     set(gcf,'color', [1,1,0.92]);
     set(gcf, 'InvertHardCopy', 'off');
@@ -113,15 +107,15 @@ for ifile = 62,
     printdirectory  = ' ../../figures/';
     
     fileprint = sprintf('%sclickdetails%iyear%sday%saboveTH.eps',...
-        printdirectory,ihc,filenameonly(6:9),filenameonly(11:13));
+        printdirectory,ihc,filenameonly(7:10),filenameonly(14:16));
     
     fileprintepscmd = sprintf('print -depsc -loose %s',fileprint);
-    fileeps2pdfcmd  = sprintf('!/Library/TeX/texbin/epstopdf %s',fileprint);
+    fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
     filermcmd       = sprintf('!rm %s',fileprint);
     
     %
-    %         eval(fileprintepscmd)
-    %         eval(fileeps2pdfcmd)
-    %         eval(filermcmd)
+%             eval(fileprintepscmd)
+%             eval(fileeps2pdfcmd)
+% `            eval(filermcmd)
 end
 %============================ END =========================================

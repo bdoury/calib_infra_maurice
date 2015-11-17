@@ -22,11 +22,11 @@ directoryinputresults = '../AAresultswithFB98/';
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
-
-remainindex = [1:62];
+remainindex = [1:71];
 
 for ihc = 1   
-    comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
+
+    comload = sprintf('load %sresultssta26sensor%iSuppProblem',directoryinputresults,ihc);
     numfig = ihc+100;
     switch ihc
         case 1
@@ -56,10 +56,11 @@ for ihc = 1
     end
     eval(comload);
     %%
-    Dstart = str2double(fileswithdotmat(1).name(13:15));
-    Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
+    Dstart = str2double(fileswithdotmat(1).name(14:16));
+    Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(14:16));
     if 1
-        doubledaynumber = (Dend-Dstart+3)/2;
+%         doubledaynumber = (Dend-Dstart+3)/2;
+        doubledaynumber = length(remainindex);
     else
         doubledaynumber = 10;
         permutenbmats = randperm(nbmats);
@@ -225,10 +226,13 @@ for ihc = 1
     set(gcf,'color', [1,1,0.92]);
     set(gcf, 'InvertHardCopy', 'off');
     
-    printdirectory  = ' ../slidesITW2015/';
-    fileprintepscmd = sprintf('print -depsc -loose %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
-    fileeps2pdfcmd  = sprintf('!epstopdf %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
-    filermcmd       = sprintf('!rm %s3monthsonIS26SUTboxplot%i.eps',printdirectory,ihc);
+    printdirectory  = ' ../../figures/';
+
+    fileprint = sprintf('%swithproblemons%iSolved.eps',printdirectory,ihc);
+    
+    fileprintepscmd = sprintf('print -depsc -loose %s',fileprint);
+    fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
+    filermcmd       = sprintf('!rm %s',fileprint);
     
 end
 
