@@ -34,10 +34,12 @@ FLAGsavesmall = 0;
 addpath ZZtoolbox/
 
 %=== directory of input signals
-directorysignals      = '../../../AAdataI26calib/';
+directorysignals    = '../../../AAdataI26calib/';
 %=== directory of output results
-directoryresultsALL   = 'BBresults'; % if FLAGsaveall=1
-directoryresults      = sprintf('AAresultswithFB%i',fix(MSCthreshold*100));% if FLAGsavesmall=1
+% if FLAGsaveall=1
+directoryresultsALL = 'BBresults'; 
+% if FLAGsavesmall=1
+directoryresults    = sprintf('AAresultswithFB%i',fix(MSCthreshold*100));
 
 %============== load the filter bank characteristics =====================
 %  the useful variable is FILTERCHARACT
@@ -153,6 +155,8 @@ for ihc = 1, ihc
         for ip=1:Pfilter
             idipinf(ip) = SUTs(ip).indexinsidefreqband(1);
             idipsup(ip) = SUTs(ip).indexinsidefreqband(2);
+        end
+        for ip=1:Pfilter
             id2         = id1+(idipsup(ip)-idipinf(ip));
             allRatioSupPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.modcst(idipinf(ip):idipsup(ip)) .* ...

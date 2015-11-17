@@ -103,6 +103,15 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 % included functions: estimSCP, estimSUT, fbank
 %========================================================================
 %========================================================================
+
+
+%=== for theoretical STD computation
+allT.TUUonUR = linspace(0.6,2,100);
+allT.TURonRR = linspace(0.6,2,100);
+allT.MSC     = linspace(0.6,1,100);
+allT.phase   = linspace(0,2*pi,100);
+
+%=== for SCP analysis
 overlapDFT       = filtercharacteristics.overlapDFT;
 overlapSCP       = filtercharacteristics.overlapSCP;
 ratioDFT2SCP     = filtercharacteristics.ratioDFT2SCP;
@@ -149,6 +158,20 @@ for ifilter = 1:P
         SUTs(ifilter).Nsupthresholdintheband = ...
             nansum(SUTs(ifilter).allMSCs.indexcst(SUTs(ifilter).indexinsidefreqband(1):...
             SUTs(ifilter).indexinsidefreqband(2),:),2);
+    end
+    indexfrqinside = SUTs(ifilter).indexinsidefreqband(1):SUTs(ifilter).indexinsidefreqband(2);
+    Lindexfrqinside = length(indexfrqinside);
+    for indfreq_ii = 1:Lindexfrqinside
+        ifreq_ii = indexfrqinside(indfreq_ii);
+        elementofR_ii = spectralmatrix(:,ifreq_ii);
+        if any(isnan(elementofR_ii))
+            SUTs(ifilter).theoreticalmodstd(indfreq_ii) = NaN;
+        else
+            RR_ii = [elementofR_ii(1) elementofR_ii(3) ; ...
+                elementofR_ii(3)' elementofR_ii(2)];
+            [statUUonUR, statURonRR, statMSC] = statsRatiosHbis(allT, RR_ii,ratioDFT2SCP , 0.7);
+            SUTs(ifilter).theoreticalmodstd(indfreq_ii) = diff(statUUonUR.CI)/2;
+        end
     end
 end
 %========================================================================
