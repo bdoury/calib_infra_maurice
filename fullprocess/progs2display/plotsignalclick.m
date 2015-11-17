@@ -20,6 +20,7 @@ Pfilter = length(filtercharact);
 %============================================
 %============================================
 %============================================
+% if and(ihc==1,ifile==63)
 % if and(ihc==2,ifile==33)
 %     signals_centered = signals_centered(1:2.4e6,:);
 % end
@@ -39,18 +40,17 @@ Pfilter = length(filtercharact);
 %============================================
 %============================================
 %=====================
-MSCthreshold = 0.98;
-%=====================
 directorysave2daysignals  = '../../../../AAdataI26calib/';
 %===================== read data =========================
 % nbmats                       = length(fileswithdotmat);
 
 %==================================================
-for ifile = 62,
-    signals = cell(2,1);
-    for ihc   = [5]
-        fileswithdotmat     = dir(sprintf('%ss%i/s%iyear*.mat',directorysave2daysignals,ihc,ihc));
-
+for ihc   = 1:2
+    fileswithdotmat     = dir(sprintf('%ss%i/year*.mat', ...
+        directorysave2daysignals,ihc));
+    nbmats = length(fileswithdotmat);
+    for ifile = 1:nbmats,ifile
+        
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
@@ -58,7 +58,11 @@ for ifile = 62,
         commandload         = sprintf('load %ss%i/%s',directorysave2daysignals,...
             ihc,fullfilename_i);
         eval(commandload)
-        signals{ihc} = signals_centered;
+        for is=1:2
+            subplot(2,1,is)
+            plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,is))
+        end
+        pause
     end
     
     
@@ -87,14 +91,11 @@ for ifile = 62,
     %
     %%
     
-   
-        for io=1:2
-        subplot(2,1,io)
-        plot((0:size(signals{ihc},1)-1)/Fs_Hz/60,signals{ihc}(:,io))
-        end
+    
+    
     
     % set(gca,'xlim',[0 displayhours])
-%     set(gca,'ylim',[-12 12])
+    %     set(gca,'ylim',[-12 12])
     set(gca,'fontname','times','fontsize',10)
     xlabel('hours','fontname','times','fontsize',10)
     

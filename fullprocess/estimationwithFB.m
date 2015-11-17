@@ -203,7 +203,7 @@ for ihc = 6:8, ihc
     if FLAGsavesmall
         comsave = ...
             sprintf('save %s/resultssta26sensor%i',...
-            directoryresults,ihc+100);
+            directoryresults,ihc);
         clear signals_centered
         clear filteredsignals
         clear alltimes_sec
