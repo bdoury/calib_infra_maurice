@@ -82,21 +82,21 @@
 \contentsline {section}{\numberline {4.}Extraction from DB}{92}{section.10.4}
 \contentsline {subsubsection}{Settings for the query to the database}{92}{section*.26}
 \contentsline {subsubsection}{Query to the database}{92}{section*.27}
-\contentsline {subsubsection}{Conversion to format {\tt .mat}}{92}{section*.28}
-\contentsline {section}{\numberline {5.}Full process}{93}{section.10.5}
-\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{93}{subsection.10.5.1}
-\contentsline {subsection}{\numberline {5.2}Main program for estimation}{93}{subsection.10.5.2}
-\contentsline {section}{\numberline {6.}Application program}{95}{section.10.6}
-\contentsline {subsection}{\numberline {6.1}temporalevolution.m}{95}{subsection.10.6.1}
-\contentsline {subsection}{\numberline {6.2}displaySensorResponse.m}{95}{subsection.10.6.2}
-\contentsline {chapter}{\numberline {11}Toolbox}{96}{chapter.11}
-\contentsline {section}{\numberline {1.}Main analysis function: {\tt fbankanalysis.m}}{96}{section.11.1}
-\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{101}{section.11.2}
-\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{101}{section.11.3}
-\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.4}
-\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{102}{section.11.5}
-\contentsline {section}{\numberline {6.}Polynomial fitter}{104}{section.11.6}
-\contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{106}{chapter.12}
-\contentsline {section}{\numberline {1.}GeneFB}{106}{section.12.1}
-\contentsline {section}{\numberline {2.}execGPARSE}{107}{section.12.2}
-\contentsline {section}{\numberline {3.}convertCSS2matlab}{107}{section.12.3}
+\contentsline {subsubsection}{Conversion to format {\tt .mat}}{93}{section*.28}
+\contentsline {section}{\numberline {5.}Full process}{94}{section.10.5}
+\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{94}{subsection.10.5.1}
+\contentsline {subsection}{\numberline {5.2}Main program for estimation}{94}{subsection.10.5.2}
+\contentsline {section}{\numberline {6.}Application program}{96}{section.10.6}
+\contentsline {subsection}{\numberline {6.1}temporalevolution.m}{96}{subsection.10.6.1}
+\contentsline {subsection}{\numberline {6.2}displaySensorResponse.m}{96}{subsection.10.6.2}
+\contentsline {chapter}{\numberline {11}Toolbox}{97}{chapter.11}
+\contentsline {section}{\numberline {1.}Main analysis function: {\tt fbankanalysis.m}}{97}{section.11.1}
+\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.2}
+\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.3}
+\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{103}{section.11.4}
+\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{103}{section.11.5}
+\contentsline {section}{\numberline {6.}Polynomial fitter}{105}{section.11.6}
+\contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{107}{chapter.12}
+\contentsline {section}{\numberline {1.}GeneFB}{107}{section.12.1}
+\contentsline {section}{\numberline {2.}execGPARSE}{108}{section.12.2}
+\contentsline {section}{\numberline {3.}convertCSS2matlab}{108}{section.12.3}

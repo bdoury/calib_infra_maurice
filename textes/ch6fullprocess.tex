@@ -89,17 +89,42 @@ Let us report to the figure \ref{fig:synoptic}. The DFT buffer contains the data
 The full calculation is based on the 3 following functions
 \begin{itemize}
 \item 
-filtering function {\tt fbank.m}: 
+function {\tt fbank.m}: 
 \begin{itemize}
 \item
-the function inputs are the two signals, the filter characteristics and the frequency sampling.
+the function inputs are (1) the two signals, on SUT and SREF, (2) the filter characteristics and (3) the frequency sampling.
 \item
-The filter ouputs are the $P$ output signals.
+The filter outputs are the $P\times 2$ output signals.
 \end{itemize}
 \item  
+function {\tt estimSCP.m}: 
+\begin{itemize}
+\item
+the inputs are the $P\times 2$ signals, the frequency response of the SREF, 
+the DFT overlap, the SCP overlap, the frequency sampling and the smooth window. 
 
-SCP function {\tt estimSCP.m}: the inputs are the two signals, the frequency response of the SREF, 
-the DFT overlap, the SCP overlap, the frequency sampling and the smooth window. The outputs are the SCPs which consist of $P$ time-spectral cells, each of them consists of an array of size $K \times T$ where $K$ is the number of frequency dots and $T$ the number of SCP time windows during the full duration of the considered signals.
+\item
+the outputs are the SCPs which consist of $P$ time-spectral structures, each of them consists of an array of size $K \times T$ where $K$ is the number of frequency dots in the associated frequency band and $T$ the number of SCP time slots during the full duration of the analysis.
+\end{itemize}
+
+function {\tt estimSUT.m}: 
+\begin{itemize}
+\item
+the inputs are the SCPs provided by the function {\tt estimSCP.m} and the MSC threshold.
+
+\item
+the outputs are the estimations of the ratio, expression \eqref{eq:ratio-sup-bis-exact}, denoted {\tt Rsup} which consists of $P$ structures. Each structure contains many elements. The most important are: 
+\begin{itemize}
+\item
+the module of the ratio averaged on the different SCP time slots in the time frequency cells where the MSC is over the threshold.
+It is denoted {\tt Rsup.modcst}, and the associated standard deviation.
+\item
+ the phase of the ratio averaged on the different SCP time slots in the time frequency cells where the MSC is over the threshold.
+It is denoted {\tt Rsup.phasecst}, and the associated standard deviation
+\end{itemize}
+It is worth to notice that the variables with the indication {\tt tab} are for the different SCP time slots (without averaging) and the variables with the indication {\tt cst} for the values associated to the time frequency cells where the MSC is over the threshold.
+
+\end{itemize}
 
 \end{itemize}
 
