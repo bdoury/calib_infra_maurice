@@ -72,7 +72,7 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 6:8, ihc
+for ihc = 7:8, ihc
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
