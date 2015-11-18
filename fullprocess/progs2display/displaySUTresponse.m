@@ -16,18 +16,18 @@ addpath ../ZZtoolbox/00benoit
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB98/';
+directoryinputresults = '../AAresultswithFB94/';
 % directoryinputresults = '../AAresultswithFBter/';
 % directoryinputresults = '../AAresultswithFBbis/';
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
-remainindex = [1:71];
+remainindex = [1:62 65:66];
 
-for ihc = 1   
+for ihc = 2   
 
-    comload = sprintf('load %sresultssta26sensor%iSuppProblem',directoryinputresults,ihc);
-    numfig = ihc+100;
+    comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
+    numfig = ihc;
     switch ihc
         case 1
             coeffsens=1.04;

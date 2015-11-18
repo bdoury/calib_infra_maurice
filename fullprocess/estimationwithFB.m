@@ -10,7 +10,21 @@
 %     - fbankanalysis.m
 %
 %=========================================================================
-
+% Rk: 
+% The 3 following quantities do not depend on the
+% index ifile. Therefore they could be performed
+% outside of the loop on ifile. Indeed
+% SUTs(ip).indexinsidefreqband can be performed outside
+% of the function fbankanalysis.m
+% idipinf       = zeros(Pfilter,1);
+% idipsup       = zeros(Pfilter,1);
+% cumsumnbfq_ip = zeros(Pfilter,2);
+% In the following program they are performed at the output
+% of the function fbankanalysis.m
+%=========================================================================
+%
+%
+%
 %=============== Warning ===============
 % we have observed huge outliers in the following files:
 % ihc==1, ifile== 63, i.e.
@@ -79,10 +93,11 @@ for ihc = 1, ihc
     %=====================
     % under test = 1, reference = 2
     %===================== read data =========================
-    fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
-        directorysignals,ihc,ihc));
+    fileswithdotmat              = dir(sprintf('%ss%i/y*.mat',...
+        directorysignals,ihc));
     nbmats                       = length(fileswithdotmat);
 
+    
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
@@ -93,9 +108,7 @@ for ihc = 1, ihc
     allSTDphaseRatioInfPfilters  = zeros(10000,nbmats);
     allmeanMSCcstPfilters        = zeros(10000,nbmats);
     nbofvaluesoverthreshold      = zeros(10000,nbmats);
-%     RsupmodtabNoThreshold        = cell(nbmats,Pfilter);
-%     MSCtabNoThreshold            = cell(nbmats,Pfilter);
-    spectralmatrixtab            = cell(nbmats,Pfilter);
+    allScpPfilters               = zeros(3,10000,nbmats);
     %==================================================
     for ifile=1:nbmats, ifile,tic
         fullfilename_i      = fileswithdotmat(ifile).name;
@@ -149,22 +162,34 @@ for ihc = 1, ihc
             fbankanalysis(signals_centered,...
             filtercharact,Fs_Hz,MSCthreshold);
         %============================================
-        idipinf = zeros(Pfilter,1);
-        idipsup = zeros(Pfilter,1);
+        % These 3 following quantities do not depend on the 
+        % index ifile. Therefore they could be performed
+        % outside of the loop on ifile. Indeed 
+        % SUTs(ip).indexinsidefreqband can be performed outside
+        % of the function fbankanalysis.m
+        idipinf       = zeros(Pfilter,1);
+        idipsup       = zeros(Pfilter,1);
+        cumsumnbfq_ip = zeros(Pfilter,2);
         id1     = 1;
         for ip=1:Pfilter
+            cumsumnbfq_ip(ip,1) = id1;
             idipinf(ip) = SUTs(ip).indexinsidefreqband(1);
             idipsup(ip) = SUTs(ip).indexinsidefreqband(2);
-        end
-        for ip=1:Pfilter
             id2         = id1+(idipsup(ip)-idipinf(ip));
+            cumsumnbfq_ip(ip,2) = id2;
+            id1         = id2+1;
+        end
+        %======
+        for ip=1:Pfilter
+            id1               = cumsumnbfq_ip(ip,1);
+            id2               = cumsumnbfq_ip(ip,2);
             allRatioSupPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.modcst(idipinf(ip):idipsup(ip)) .* ...
                 exp(1i*SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip)));
             allSTDmodRatioSupPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRsup.stdmodcst(idipinf(ip):idipsup(ip));
             allSTDphaseRatioSupPfilters(id1:id2,ifile) = ...
-                SUTs(ip).estimRsup.phasecst(idipinf(ip):idipsup(ip));
+                SUTs(ip).estimRsup.stdphasecst(idipinf(ip):idipsup(ip));
             
             allRatioInfPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRinf.modcst(idipinf(ip):idipsup(ip)) .* ...
@@ -172,7 +197,7 @@ for ihc = 1, ihc
             allSTDmodRatioInfPfilters(id1:id2,ifile) = ...
                 SUTs(ip).estimRinf.stdmodcst(idipinf(ip):idipsup(ip));
             allSTDphaseRatioInfPfilters(id1:id2,ifile) = ...
-                SUTs(ip).estimRinf.phasecst(idipinf(ip):idipsup(ip));
+                SUTs(ip).estimRinf.stdphasecst(idipinf(ip):idipsup(ip));
             
             allmeanMSCcstPfilters(id1:id2,ifile) = ...
                 nanmean(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:),2);
@@ -180,14 +205,8 @@ for ihc = 1, ihc
                 SUTs(ip).frqsFFT_Hz(idipinf(ip):idipsup(ip))';
             nbofvaluesoverthreshold(id1:id2,ifile) = ...
                 sum(not(isnan(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:))),2);
-            id1 = id2+1;
-            
-%             RsupmodtabNoThreshold{ifile,ip} = ...
-%                 squeeze(SUTs(ip).estimRsup.tabmod(idipinf(ip):idipsup(ip),:));
-%             MSCtabNoThreshold{ifile,ip} = ...
-%                 squeeze(SUTs(ip).allMSCs.tab(idipinf(ip):idipsup(ip),:));
-            spectralmatrixtab{ifile,ip} = ...
-                squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));
+            allScpPfilters(:,id1:id2,ifile) = ...
+                squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));    
         end
 %         if FLAGsaveall
 %             comsave = ...
@@ -195,7 +214,7 @@ for ihc = 1, ihc
 %                 directoryresultsALL,ihc,filenameonly);
 %             eval(comsave);
 %         end
-        toc
+         toc
     end
     
     allRatioSupPfilters         = allRatioSupPfilters(1:id1-1,:);
@@ -209,7 +228,9 @@ for ihc = 1, ihc
     allfrqsPfilters             = allfrqsPfilters(1:id1-1,1);
     allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
     nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
-    toc
+    
+    allScpPfilters              = allScpPfilters(:,1:id1-1,:);
+    
     if FLAGsavesmall
         comsave = ...
             sprintf('save %s/resultssta26sensor%iSuppProblem',...
@@ -221,4 +242,47 @@ for ihc = 1, ihc
         eval(comsave);
     end
 end
+save tempfile
 %============================ END =========================================
+%%
+ip=2;
+NaverageFFTs = filtercharact(1).ratioDFT2SCP;
+allT.TUUonUR = linspace(0.7,1.3,100);
+allT.TURonRR = linspace(0.7,1.3,100);
+allT.MSC     = linspace(0.5,1,100);
+allT.phase   = linspace(0,2*pi,100);
+
+
+listifq = cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2);
+Llistifq = length(listifq);
+STDmodtheo_ip = zeros(Llistifq,1);
+
+for indfq=1:Llistifq
+    ifq=listifq(indfq);
+    SCP_ip_ifq = nanmean(allScpPfilters(:,ifq,:),3);
+    if any(isnan(SCP_ip_ifq))
+        STDmodtheo_ip(indfq)=NaN;
+    else
+        RR=[SCP_ip_ifq(1) SCP_ip_ifq(3);SCP_ip_ifq(3)' SCP_ip_ifq(2)];
+        [statUUonUR, statURonRR, statMSC]    = ...
+            statsRatiosHbis(allT, RR, NaverageFFTs, 0.3);
+        STDmodtheo_ip(indfq) = diff(statUUonUR.CI)/2;
+    end
+end
+nbofvalues_ip = sum(nbofvaluesoverthreshold(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
+STDmodempiric_ip = nanmean(...
+    allSTDmodRatioSupPfilters(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
+corrlevel = corr(STDmodtheo_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))), STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))));
+
+[STDmodtheo_ip./(STDmodempiric_ip) (sqrt(nbofvalues_ip))]
+corrlevel
+
+figure(1)
+subplot(121)
+plot( allT.TUUonUR,statURonRR.pdf,'.-')
+hold on
+plot( allT.TUUonUR,statUUonUR.pdf,'.-r')
+hold off
+subplot(122)
+plot(STDmodtheo_ip, STDmodempiric_ip,'.')
+

@@ -1,14 +1,16 @@
 1) extract data from database using
                 - RUNextractfromDB.m
-   this process queries frrm the testbed_archive and save in
-   selected directory as '../../../AAdataI26calib/'
-   This directory is partitioned in 8 directories form s1 to s8
-2) analyze data using
+   this program makes requests at the database and save the records into 
+   a selected directory (here '../../../AAdataI26formatIDC/'). The records 
+   consists of data, name of the channel, etc
+   This directory is partitioned in 8 directories from s1 to s8
+2) savesignals.m read the records and concatenates them into a single file
+   which is saved in a selected directory (here ../../../AAdataI26calib/).
+3) the program
                 - estimationwithFB.m
-   from the selected directory as '../../../AAdataI26calib/'
-   and save results in a selected directory as  'AAresultswithFBbis'
+   is used to anlyze the signals from the selected directory 
+   (here '../../../AAdataI26calib/'). A few part of the results is saved 
+   in a selected directory as  'AAresultswithFB98'
    with one file by sensor location
-3) display results                 
-                - displaySUTresponse.m
-   from the selected directory as 'AAresultswithFBbis'
+4) programs in the directory progs2display allow to display results.
  
