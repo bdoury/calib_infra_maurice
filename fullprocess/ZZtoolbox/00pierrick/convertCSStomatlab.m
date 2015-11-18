@@ -1,4 +1,4 @@
-function [filenamesavemat, records, samprate] = convertCSStomatlab(filewfdisc,dirname)
+function [records, samprate] = convertCSStomatlab(filewfdisc)
 %===============================================================
 % convert data from wfdisc into Matlab format .mat
 % results are saved in filenamesavemat
@@ -32,9 +32,9 @@ while ischar(tline)
     tline           = fgetl(fid);
 end
 fclose(fid);
-DY              = num2str(jdate(1));
-filenamesavemat = sprintf('%ssta%s_Y%s_D%s.mat',...
-    dirname,station{1}(5),DY(1:4),DY(5:end));
+% DY              = num2str(jdate(1));
+% NaNflag = sprintf('%ssta%s_Y%s_D%s.mat',...
+%     dirname,station{1}(5),DY(1:4),DY(5:end));
 % ratiorates    = samprate / min(samprate);
 length_record   = fix(etime-stime) .* samprate;
 % Read waveforms

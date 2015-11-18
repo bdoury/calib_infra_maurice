@@ -23,17 +23,17 @@
 % of the function fbankanalysis.m
 %=========================================================================
 %
-%
-%
-%=============== Warning ===============
+%==================== Warning ===============
 % we have observed huge outliers in the following files:
-% ihc==1, ifile== 63, i.e.
-% ihc==2, ifile== 33, i.e. sta2_Y2015_D219.mat from sample index 2.4e6
-% ihc==8, ifile==63, i.e. sta8_Y2015_D280.mat from sample index 2.5e6
-% ihc==5,ifile==62
-% ihc==6,ifile==63
-% in this version we remove them but in some saved data that has not be
-% done
+% ihc==1, date==2015/10/07 ,from sample index 2.4e6
+% ihc==1, date==2015/10/09 ,from sample index 2.4e6
+% ihc==2, date==2015/08/07 ,from sample index 2.4e6
+% ihc==2, date==2015/10/05 ,from sample index 2.4e6
+% ihc==5, date==2015/10/05
+% ihc==6, date==2015/10/07
+% ihc==8, date==2015/10/07 , from sample index 2.5e6
+% in this version we remove them
+%
 %=========================================================================
 
 clear
@@ -44,7 +44,7 @@ MSCthreshold = 0.98;
 %=====================
 
 FLAGsaveall   = 0;
-FLAGsavesmall = 0;
+FLAGsavesmall = 1;
 addpath ZZtoolbox/
 
 %=== directory of input signals
@@ -53,7 +53,7 @@ directorysignals    = '../../../AAdataI26calib/';
 % if FLAGsaveall=1
 directoryresultsALL = 'BBresults'; 
 % if FLAGsavesmall=1
-directoryresults    = sprintf('AAresultswithFB%i',fix(MSCthreshold*100));
+directoryresults    = sprintf('AAresultswithFB%ibis',fix(MSCthreshold*100));
 
 %============== load the filter bank characteristics =====================
 %  the useful variable is FILTERCHARACT
@@ -89,15 +89,12 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 1, ihc
-    %=====================
-    % under test = 1, reference = 2
+for ihc = 3:8, ihc
     %===================== read data =========================
-    fileswithdotmat              = dir(sprintf('%ss%i/y*.mat',...
-        directorysignals,ihc));
+    fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
+        directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
-
-    
+    nbmats
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
@@ -123,33 +120,44 @@ for ihc = 1, ihc
         Ts_sec = 1/Fs_Hz;
         Ntotal = size(signals_centered,1);
 
+        date_i = sprintf('%s/%s/%s',fullfilename_i(7:10),...
+            fullfilename_i(16:17),fullfilename_i(21:22));
+
+        % ihc==1, date==2015/10/07 ,from sample index 2.4e6
+        % ihc==1, date==2015/10/09 ,from sample index 2.4e6
+        % ihc==2, date==2015/08/07 ,from sample index 2.4e6
+        % ihc==2, date==2015/10/05 ,from sample index 2.4e6
+        % ihc==5, date==2015/10/05
+        % ihc==6, date==2015/10/07
+        % ihc==8, date==2015/10/07 , from sample index 2.5e6
+
         %============ Warning =======================
         %============================================
         %============================================
         %== some manual checks 
-        if and(ihc==1,ifile==63)
+        if and(ihc==1,date_i=='2015/10/07')
             signals_centered = signals_centered(0.6e6:2.2e6,:);
         end
-        if and(ihc==1,ifile==64)
+        if and(ihc==1,date_i=='2015/10/09')
             signals_centered = signals_centered(0.6e6:Ntotal,:);
         end
-        if and(ihc==2,ifile==33)
+        if and(ihc==2,date_i=='2015/08/07')
             signals_centered = signals_centered(1:2.4e6,:);
         end
-        if and(ihc==2,ifile==62)
+        if and(ihc==2,date_i=='2015/10/05')
             signals_centered = ...
                 signals_centered([1:0.5e6 1e6:Ntotal],:);
         end
         
-        if and(ihc==5,ifile==62)
+        if and(ihc==5,date_i=='2015/10/05')
             signals_centered = signals_centered(1:2.4e6,:);
         end
         
-        if and(ihc==6,ifile==63)
+        if and(ihc==6,date_i=='2015/10/07')
             signals_centered = signals_centered(1:2.14e6,:);
         end
         
-        if and(ihc==8,ifile==63)
+        if and(ihc==8,date_i=='2015/10/07')
             signals_centered = signals_centered(1:2.5e6,:);
         end
         %============================================        
@@ -217,23 +225,23 @@ for ihc = 1, ihc
          toc
     end
     
-    allRatioSupPfilters         = allRatioSupPfilters(1:id1-1,:);
-    allSTDmodRatioSupPfilters   = allSTDmodRatioSupPfilters(1:id1-1,:);
-    allSTDphaseRatioSupPfilters = allSTDphaseRatioSupPfilters(1:id1-1,:);
+    allRatioSupPfilters         = allRatioSupPfilters(1:id2,:);
+    allSTDmodRatioSupPfilters   = allSTDmodRatioSupPfilters(1:id2,:);
+    allSTDphaseRatioSupPfilters = allSTDphaseRatioSupPfilters(1:id2,:);
     
-    allRatioInfPfilters         = allRatioInfPfilters(1:id1-1,:);
-    allSTDmodRatioInfPfilters   = allSTDmodRatioInfPfilters(1:id1-1,:);
-    allSTDphaseRatioInfPfilters = allSTDphaseRatioInfPfilters(1:id1-1,:);
+    allRatioInfPfilters         = allRatioInfPfilters(1:id2,:);
+    allSTDmodRatioInfPfilters   = allSTDmodRatioInfPfilters(1:id2,:);
+    allSTDphaseRatioInfPfilters = allSTDphaseRatioInfPfilters(1:id2,:);
     
-    allfrqsPfilters             = allfrqsPfilters(1:id1-1,1);
-    allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id1-1,:);
-    nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id1-1,:);
+    allfrqsPfilters             = allfrqsPfilters(1:id2,1);
+    allmeanMSCcstPfilters       = allmeanMSCcstPfilters(1:id2,:);
+    nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id2,:);
     
-    allScpPfilters              = allScpPfilters(:,1:id1-1,:);
+    allScpPfilters              = allScpPfilters(:,1:id2,:);
     
     if FLAGsavesmall
         comsave = ...
-            sprintf('save %s/resultssta26sensor%iSuppProblem',...
+            sprintf('save %s/resultssta26sensor%i',...
             directoryresults,ihc);
         clear signals_centered
         clear filteredsignals
@@ -242,47 +250,46 @@ for ihc = 1, ihc
         eval(comsave);
     end
 end
-save tempfile
 %============================ END =========================================
 %%
-ip=2;
-NaverageFFTs = filtercharact(1).ratioDFT2SCP;
-allT.TUUonUR = linspace(0.7,1.3,100);
-allT.TURonRR = linspace(0.7,1.3,100);
-allT.MSC     = linspace(0.5,1,100);
-allT.phase   = linspace(0,2*pi,100);
-
-
-listifq = cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2);
-Llistifq = length(listifq);
-STDmodtheo_ip = zeros(Llistifq,1);
-
-for indfq=1:Llistifq
-    ifq=listifq(indfq);
-    SCP_ip_ifq = nanmean(allScpPfilters(:,ifq,:),3);
-    if any(isnan(SCP_ip_ifq))
-        STDmodtheo_ip(indfq)=NaN;
-    else
-        RR=[SCP_ip_ifq(1) SCP_ip_ifq(3);SCP_ip_ifq(3)' SCP_ip_ifq(2)];
-        [statUUonUR, statURonRR, statMSC]    = ...
-            statsRatiosHbis(allT, RR, NaverageFFTs, 0.3);
-        STDmodtheo_ip(indfq) = diff(statUUonUR.CI)/2;
-    end
-end
-nbofvalues_ip = sum(nbofvaluesoverthreshold(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
-STDmodempiric_ip = nanmean(...
-    allSTDmodRatioSupPfilters(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
-corrlevel = corr(STDmodtheo_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))), STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))));
-
-[STDmodtheo_ip./(STDmodempiric_ip) (sqrt(nbofvalues_ip))]
-corrlevel
-
-figure(1)
-subplot(121)
-plot( allT.TUUonUR,statURonRR.pdf,'.-')
-hold on
-plot( allT.TUUonUR,statUUonUR.pdf,'.-r')
-hold off
-subplot(122)
-plot(STDmodtheo_ip, STDmodempiric_ip,'.')
-
+% ip=1;
+% NaverageFFTs = filtercharact(1).ratioDFT2SCP;
+% allT.TUUonUR = linspace(0.7,1.3,100);
+% allT.TURonRR = linspace(0.7,1.3,100);
+% allT.MSC     = linspace(0.5,1,100);
+% allT.phase   = linspace(0,2*pi,100);
+% 
+% 
+% listifq = cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2);
+% Llistifq = length(listifq);
+% STDmodtheo_ip = zeros(Llistifq,1);
+% 
+% for indfq=1:Llistifq
+%     ifq=listifq(indfq);
+%     SCP_ip_ifq = nanmean(allScpPfilters(:,ifq,:),3);
+%     if any(isnan(SCP_ip_ifq))
+%         STDmodtheo_ip(indfq)=NaN;
+%     else
+%         RR=[SCP_ip_ifq(1) SCP_ip_ifq(3);SCP_ip_ifq(3)' SCP_ip_ifq(2)];
+%         [statUUonUR, statURonRR, statMSC]    = ...
+%             statsRatiosHbis(allT, RR, NaverageFFTs, 0.3);
+%         STDmodtheo_ip(indfq) = diff(statUUonUR.CI)/2;
+%     end
+% end
+% nbofvalues_ip = sum(nbofvaluesoverthreshold(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
+% STDmodempiric_ip = nanmean(...
+%     allSTDmodRatioSupPfilters(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
+% corrlevel = corr(STDmodtheo_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))), STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))));
+% 
+% [STDmodtheo_ip./(STDmodempiric_ip) nbofvalues_ip]
+% corrlevel
+% 
+% figure(1)
+% subplot(121)
+% plot( allT.TUUonUR,statURonRR.pdf,'.-')
+% hold on
+% plot( allT.TUUonUR,statUUonUR.pdf,'.-r')
+% hold off
+% subplot(122)
+% plot(STDmodtheo_ip, STDmodempiric_ip,'.')
+% 

@@ -16,13 +16,14 @@ addpath ../ZZtoolbox/00benoit
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB94/';
+directoryinputresults = '../AAresultswithFB98bis/';
 % directoryinputresults = '../AAresultswithFBter/';
 % directoryinputresults = '../AAresultswithFBbis/';
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
-remainindex = [1:62 65:66];
+remainindex = [6:33 34:63 65:75];
+remainindex = [1:66 68:75];
 
 for ihc = 2   
 
@@ -242,22 +243,45 @@ if saveflag
     eval(filermcmd)
 end
 %%
-% 
-% semilogx(allfrqsPfilters, sum(nbofvaluesoverthreshold,2),'.')
-% hold on
-% for ip=1:Pfilter
-%     plot(allfrqsFFT_Hz{ip}(idipinf(ip))*ones(2,1),[0 20000],allcolors(ip,1))
-%     plot(allfrqsFFT_Hz{ip}(idipsup(ip))*ones(2,1),[0 20000],allcolors(ip,1))
-%     pause
-% end
-% hold off
-%%
+
+% ip=1;
 % NaverageFFTs = filtercharact(1).ratioDFT2SCP;
-% allT.TUUonUR = linspace(0.6,3,100);
-% allT.TURonRR = linspace(0.6,3,100);
+% allT.TUUonUR = linspace(0.7,1.3,100);
+% allT.TURonRR = linspace(0.7,1.3,100);
 % allT.MSC     = linspace(0.5,1,100);
 % allT.phase   = linspace(0,2*pi,100);
-%
-% [statUUonUR, statURonRR, statMSC]    = ...
-%     statsRatiosHbis(allT, HH, NaverageFFTs, 0.7);
-
+% 
+% listifq = cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2);
+% Llistifq = length(listifq);
+% STDmodtheo_ip = zeros(Llistifq,1);
+% 
+% for indfq=1:Llistifq
+%     ifq=listifq(indfq);
+%     SCP_ip_ifq = nanmean(allScpPfilters(:,ifq,:),3);
+%     if any(isnan(SCP_ip_ifq))
+%         STDmodtheo_ip(indfq)=NaN;
+%     else
+%         RR=[SCP_ip_ifq(1) SCP_ip_ifq(3);SCP_ip_ifq(3)' SCP_ip_ifq(2)];
+%         [statUUonUR, statURonRR, statMSC]    = ...
+%             statsRatiosHbis(allT, RR, NaverageFFTs, 0.3);
+%         STDmodtheo_ip(indfq) = diff(statUUonUR.CI)/2;
+%     end
+% end
+% nbofvalues_ip = sum(nbofvaluesoverthreshold(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
+% STDmodempiric_ip = nanmean(...
+%     allSTDmodRatioSupPfilters(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
+% corrlevel = corr(STDmodtheo_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))), STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))));
+% 
+% [STDmodtheo_ip./(STDmodempiric_ip) nbofvalues_ip]
+% corrlevel
+% 
+% figure(1)
+% subplot(121)
+% plot( allT.TUUonUR,statURonRR.pdf,'.-')
+% hold on
+% plot( allT.TUUonUR,statUUonUR.pdf,'.-r')
+% hold off
+% subplot(122)
+% plot(STDmodtheo_ip, STDmodempiric_ip,'.')
+% 
+% 
