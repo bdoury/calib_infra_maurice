@@ -9,10 +9,11 @@
 % using both ZZtoolbox/00gabrielson and ../ZZtoolbox/00benoit
 %
 %=========================================================================
-% clear
+clear
 addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
 addpath ../ZZtoolbox/00benoit
+directorysignals    = '../../../../AAdataI26calib/';
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
@@ -24,14 +25,14 @@ sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 %ihc =2  
 
-for ihc = 5
+for ihc = 1
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
     fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
     switch ihc
         case 1
-            remainindex = [1:61 63:70]; % 2015/10/13
+            remainindex = [62];%[1:61 62 63:70]; % 2015/10/13
         case 4
             remainindex = [1:65 67:nbmats]; % 2015/10/11
         otherwise
@@ -130,7 +131,8 @@ for ihc = 5
      clf
     %================================================
     subplot(211)
-    semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'k','linew',1.5),
+    semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'ko',...
+        'markersize',6,'markerfaceco','k'),
 %         hold on
 %             semilogx(allfrqsPfiltersUZ,...
 %                 abs(meanallRatioPfiltersUZ)-allSTDmodRatioPfilters_aveU,'.-b', ...
@@ -169,7 +171,7 @@ for ihc = 5
     
     set(gca,'fontname','times','fontsize',14)
     set(gca,'xlim',[0.01 5])
-     set(gca,'ylim',4*[-1 1])
+%      set(gca,'ylim',4*[-1 1])
     set(gca,'xtickLabel',[])
     %              xlabel('frequency [Hz]')
     
@@ -194,7 +196,8 @@ for ihc = 5
     %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
     %             'xticklabel',[0.001 0.01 0.1 1 10])
-    semilogx(allfrqsPfiltersUSZ,unwrap(anglewithcorrect_rd)*180/pi,'k','linew',1.5),
+    semilogx(allfrqsPfiltersUSZ,unwrap(anglewithcorrect_rd)*180/pi,...
+        'ko','markersize',6,'markerfaceco','k')
     
     %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
     %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...

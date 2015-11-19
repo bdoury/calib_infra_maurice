@@ -92,9 +92,9 @@
 \contentsline {chapter}{\numberline {11}Toolbox}{97}{chapter.11}
 \contentsline {section}{\numberline {1.}Main analysis function: {\tt fbankanalysis.m}}{97}{section.11.1}
 \contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.2}
-\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.3}
+\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{103}{section.11.3}
 \contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{103}{section.11.4}
-\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{103}{section.11.5}
+\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{104}{section.11.5}
 \contentsline {section}{\numberline {6.}Polynomial fitter}{105}{section.11.6}
 \contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{107}{chapter.12}
 \contentsline {section}{\numberline {1.}GeneFB}{107}{section.12.1}

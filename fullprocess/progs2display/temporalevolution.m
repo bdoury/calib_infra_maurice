@@ -5,7 +5,7 @@ addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
 addpath ../ZZtoolbox/00benoit
 
-directorydata = '../AAresultswithFBbis/';
+directorydata = '../AAresultswithFB98bis/';
 printdirectory  = ' ../../../figures/';
 
 % close all
@@ -15,7 +15,7 @@ bootdraw = 0;
 nbdraw   = 100;
 Ncouples = 10;
 SUFFICIENTNUMBER = 1;
-for ihc=5
+for ihc=2
     comload = sprintf('load %sresultssta26sensor%i.mat',directorydata,ihc);
     numfig = ihc;
     switch ihc
@@ -52,13 +52,13 @@ for ihc=5
     
     Dstart = str2double(fileswithdotmat(1).name(13:15));
     Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(13:15));
-    %         if 1
-    %             doubledaynumber = (Dend-Dstart+3)/2;
-    %         else
-    %             doubledaynumber = 10;
-    %             permutenbmats = randperm(nbmats);
-    %             allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
-    %         end
+    if 0
+        doubledaynumber = (Dend-Dstart+3)/2;
+    else
+        doubledaynumber = 30;
+        permutenbmats = randperm(nbmats);
+        allRatioSupPfilters = allRatioSupPfilters(:,permutenbmats(1:doubledaynumber));
+    end
     
     %     sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
     %     N_freq_vector = 1;
