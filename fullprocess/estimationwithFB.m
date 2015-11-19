@@ -44,7 +44,7 @@ MSCthreshold = 0.98;
 %=====================
 
 FLAGsaveall   = 0;
-FLAGsavesmall = 1;
+FLAGsavesmall = 0;
 addpath ZZtoolbox/
 
 %=== directory of input signals
@@ -89,12 +89,12 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 3:8, ihc
+for ihc = 2, ihc
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
-    nbmats
+    nbmats = 1;
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
@@ -108,7 +108,7 @@ for ihc = 3:8, ihc
     allScpPfilters               = zeros(3,10000,nbmats);
     %==================================================
     for ifile=1:nbmats, ifile,tic
-        fullfilename_i      = fileswithdotmat(ifile).name;
+        fullfilename_i      = fileswithdotmat(67).name;%fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
         filenameonly        = fullfilename_i(...
@@ -147,6 +147,10 @@ for ihc = 3:8, ihc
         if and(ihc==2,date_i=='2015/10/05')
             signals_centered = ...
                 signals_centered([1:0.5e6 1e6:Ntotal],:);
+        end
+        if and(ihc==2,date_i=='2015/10/13')
+            signals_centered = ...
+                signals_centered([1e6:2.2e6 2.3e6:Ntotal],:);
         end
         
         if and(ihc==5,date_i=='2015/10/05')

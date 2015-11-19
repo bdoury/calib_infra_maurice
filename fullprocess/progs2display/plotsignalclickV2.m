@@ -45,11 +45,11 @@ directorysave2daysignals  = '../../../../AAdataI26calib/';
 % nbmats                       = length(fileswithdotmat);
 
 %==================================================
-for ihc   = 1
+for ihc   = 2
     fileswithdotmat     = dir(sprintf('%ss%i/s%iy*.mat', ...
         directorysave2daysignals,ihc,ihc));
     nbmats = length(fileswithdotmat);
-    for ifile = 63%1:nbmats,ifile
+    for ifile = 67%1:nbmats,ifile
         
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
@@ -60,8 +60,8 @@ for ihc   = 1
         eval(commandload)
         for is=1:2
             subplot(2,3,3*is-2)
-            plot((0:size(signals_centered,1)-1)/Fs_Hz/3600,signals_centered(:,is))
-            set(gca,'xlim',[0 size(signals_centered,1)/Fs_Hz/3600])
+            plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,is))
+            set(gca,'xlim',[0 size(signals_centered,1)/Fs_Hz/60])
                 set(gca,'fontname','times','fontsize',10)
                 xlabel('hours','fontname','times','fontsize',10)
             title(fullfilename_i,'fontname','times','fontsize',8)
@@ -119,3 +119,14 @@ for ihc   = 1
 % `            eval(filermcmd)
 end
 %============================ END =========================================
+
+
+%%
+figure(2)
+
+subplot(211)
+plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,1))
+
+subplot(212)
+plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,2))
+

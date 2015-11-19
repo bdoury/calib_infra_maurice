@@ -9,7 +9,7 @@
 % using both ZZtoolbox/00gabrielson and ../ZZtoolbox/00benoit
 %
 %=========================================================================
-clear
+% clear
 addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
 addpath ../ZZtoolbox/00benoit
@@ -23,9 +23,9 @@ directoryinputresults = '../AAresultswithFB98bis/';
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 remainindex = [6:33 34:63 65:75];
-remainindex = [1:66 68:75];
+remainindex = [67];
 
-for ihc = 2   
+for ihc = 2 
 
     comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
     numfig = ihc;
@@ -57,8 +57,6 @@ for ihc = 2
     end
     eval(comload);
     %%
-    Dstart = str2double(fileswithdotmat(1).name(14:16));
-    Dend   = str2double(fileswithdotmat(length(fileswithdotmat)).name(14:16));
     if 1
 %         doubledaynumber = (Dend-Dstart+3)/2;
         doubledaynumber = length(remainindex);
@@ -118,8 +116,8 @@ for ihc = 2
         
     %================================
     absestimwithcorrect = coeffsens * meanmodRatioPfiltersUSZ .* abs(TFsensor4freqRatio);   
-    figure(numfig)
-    clf
+%     figure(numfig)
+     clf
     %================================================
     subplot(211)
     semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'k','linew',1.5),
@@ -161,7 +159,7 @@ for ihc = 2
     
     set(gca,'fontname','times','fontsize',14)
     set(gca,'xlim',[0.01 5])
-    set(gca,'ylim',4*[-1 1])
+%     set(gca,'ylim',4*[-1 1])
     set(gca,'xtickLabel',[])
     %              xlabel('frequency [Hz]')
     
@@ -221,7 +219,6 @@ for ihc = 2
     set(gcf,'units','centimeters');
     set(gcf,'paperunits','centimeters');
     set(gcf,'PaperType','a3');
-    set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
     %         set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
     set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
     set(gcf,'color', [1,1,0.92]);
