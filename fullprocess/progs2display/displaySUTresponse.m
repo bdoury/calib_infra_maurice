@@ -22,11 +22,21 @@ directoryinputresults = '../AAresultswithFB98bis/';
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
-remainindex = [6:33 34:63 65:75];
-remainindex = [67];
+%ihc =2  
 
-for ihc = 2 
-
+for ihc = 5
+    % list of the files from 1 to nbmats
+    % if you want a name type fileswithdotmat(#)
+    fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
+        directorysignals,ihc,ihc));
+    switch ihc
+        case 1
+            remainindex = [1:61 63:70]; % 2015/10/13
+        case 4
+            remainindex = [1:65 67:nbmats]; % 2015/10/11
+        otherwise
+            remainindex = [1:nbmats];
+    end
     comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
     numfig = ihc;
     switch ihc
@@ -159,7 +169,7 @@ for ihc = 2
     
     set(gca,'fontname','times','fontsize',14)
     set(gca,'xlim',[0.01 5])
-%     set(gca,'ylim',4*[-1 1])
+     set(gca,'ylim',4*[-1 1])
     set(gca,'xtickLabel',[])
     %              xlabel('frequency [Hz]')
     

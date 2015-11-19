@@ -1,7 +1,6 @@
 function [records, samprate] = convertCSStomatlab(filewfdisc)
 %===============================================================
 % convert data from wfdisc into Matlab format .mat
-% results are saved in filenamesavemat
 %
 %===============================================================
 fid   = fopen(filewfdisc,'r');

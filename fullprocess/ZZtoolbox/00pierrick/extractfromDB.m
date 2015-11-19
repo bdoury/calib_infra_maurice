@@ -25,9 +25,10 @@ commandunix = ...
     temporary_gparse_dir);
 eval(commandunix);
 if exist('gparse.wfdisc','file')
+    nowfdiscflag = 0;
     commandmove = sprintf('!mv gparse*.* %s.',temporary_gparse_dir);
 else
-    filenamesavemat=NaN;
+    nowfdiscflag = 1;
     return
 end
 
