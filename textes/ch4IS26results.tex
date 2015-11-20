@@ -20,17 +20,36 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 %================================
 \section{Results of IS26 - sensor \#1}
 %================================
-In this section we only considered the sensor \#1, but identical results have be obtained on aa seven other sensors.
+In this section we only considered the sensor \#1, but identical results have be obtained on the seven other sensors.
 
-The average estimate of the SUT response, in terms of gain in dB and phase in degree, are reported figure \ref{fig:withoutproblemons1}.The red dashed lines report the theoretical SUT response range requirements, which is $\pm 0.43$ for the gain and $\pm 5\degree$ for the phase. They have be performed taking into account the SREF sensor response and using the model of NRS developped by the IMS.
+
 %================================
 \subsection{SUT response by averaging on $124$ days}
 %================================
+The average estimate of the SUT response, in terms of gain in dB and phase in degree, are reported figure \ref{fig:withoutproblemons1}. The red dashed lines report the theoretical SUT response range requirements, which is $\pm 0.43$ for the gain and $\pm 5\degree$ for the phase. They have be performed taking into account the SREF sensor response and using the model of NRS developped by the IMS.
 \figscale{figures/withoutproblemons1.pdf}{The red dashed lines report the theoretical SUT response range requirement, which is $\pm 0.43$ for the gain and $\pm 5\degree$ for the phase.}{fig:withoutproblemons1}{0.8}
- 
+
+ \newpage\clearpage
+%================================
+\subsection{Using different thresholds on a pair of days}
+%================================
+\figscale{2daysonIS26SUT1year2015day152diffTH}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see  differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}{}{0.8}
+
+
+\newpage\clearpage
+%================================
+\subsection{More details on a pair of days}
+%================================
+\figscale{figures/2daysonIS26SUT1year2015day233.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}{}{1}
+
+\figscale{figures/2daysonIS26SUT1year2015day233aboveTH.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}{}{1}
+
+
+
 \newpage\clearpage
 %================================
 \subsection{Problem with some records}
+\label{ss:problems}
 %================================
 In this section we report a few issues we have observed in the recorded signals of the database {\tt tesbed\_archive} and that can be considered as "true" outliers.
 In figure \ref{fig:withproblemons1} we have considered the same data than those of figure \ref{fig:withoutproblemons1}, adding two days more. These two days induce a burst in the performed SUT response. To identify the origin, we have plotted the signals of these two days figure \ref{fig:clickdetails1year2015day286aboveTH}. We clearly observed huge bursts in two samples locations. If we suppress these 2 bursts and re-introduce the two cleaned days to perform the SUT response, we obtain the curves reported \ref{fig:withproblemons1solved}, which are very similar to the curves figure \ref{fig:withoutproblemons1}. We may conclude than unusual values in the observed signals (outliers) lead to false measurement of the SUT response. Therefore it is very important to identify these outliers before any calibration.
@@ -46,32 +65,18 @@ In figure \ref{fig:withproblemons1} we have considered the same data than those 
 \figscale{figures/withproblemons1Solved.pdf}{Same data than those of figure \ref{fig:withproblemons1} but  suppressing the part of the added signals where  bursts are located. The figure is very similar to the figure \ref{fig:withoutproblemons1}.}{fig:withproblemons1solved}{0.8}
 
 
-\newpage\clearpage
-%================================
-\subsection{SUT response at $1$ Hz for all pairs of days}
-%================================
-
 
 \newpage\clearpage
 %================================
-\subsection{About $48$ hours with different thresholds}
+\subsection{Averaging on $15$ randomly selected pairs of days}
 %================================
-\figscale{2daysonIS26SUT1year2015day152diffTH}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see  differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}{}{0.8}
 
-\newpage\clearpage
-%================================
-\subsection{Full band on about $48$ hours}
-%================================
-\figscale{figures/2daysonIS26SUT1year2015day233.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}{}{1}
-
-\figscale{figures/2daysonIS26SUT1year2015day233aboveTH.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}{}{1}
+To avoid the problems (cited section \ref{ss:problems}) which appear very rarely, it is advised to use a trimmed mean on several pairs of days. Figure \ref{averagedon20days1} we present a draw of randomly chosen pairs of days and a simple mean 
+and the mean excluding $30\%$ of the lowest and highest values.
 
 
-\newpage\clearpage
-%================================
-\subsection{Full band for $20$ randomly selected days}
-%================================
-\figscale{slidesITW2015/averagedon20days1.pdf}{Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact}. The gray dots report the ratios averaged on a pair of 2 consecutive days, the red  disks report the average on 10 pairs of days.}{}{0.8}
+
+\figscale{slidesITW2015/averagedon20days1.pdf}{Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact}. The gray dots report the ratios averaged on a pair of 2 consecutive days, the red  disks report the average on 10 pairs of days.}{averagedon20days1}{0.8}
 
 
 %================================

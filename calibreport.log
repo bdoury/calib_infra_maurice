@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.25)  19 NOV 2015 21:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.25)  20 NOV 2015 07:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -379,9 +379,6 @@ LaTeX Warning: Label `' multiply defined.
 LaTeX Warning: Label `' multiply defined.
 
 
-LaTeX Warning: Label `' multiply defined.
-
-
 LaTeX Warning: Label `eq:model-of-obervation' multiply defined.
 
 
@@ -504,7 +501,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--12
 
  []
 
-<figures/schema-of-observation-simple.pdf, id=409, 201.67746pt x 107.66322pt>
+<figures/schema-of-observation-simple.pdf, id=404, 201.67746pt x 107.66322pt>
 File: figures/schema-of-observation-simple.pdf Graphic file (type pdf)
 
 <use figures/schema-of-observation-simple.pdf>
@@ -573,7 +570,7 @@ LaTeX Warning: Reference `eq:ratio-inf' on page 9 undefined on input line 140.
 ) [9]
 Chapter 2.
 (./textes/ch2spectralanalysis.tex
-<slidesITW2015/fulltestbedIS26.pdf, id=492, 294.26897pt x 114.09616pt>
+<slidesITW2015/fulltestbedIS26.pdf, id=487, 294.26897pt x 114.09616pt>
 File: slidesITW2015/fulltestbedIS26.pdf Graphic file (type pdf)
 
 <use slidesITW2015/fulltestbedIS26.pdf>
@@ -581,7 +578,7 @@ Package pdftex.def Info: slidesITW2015/fulltestbedIS26.pdf used on input line 7
 .
 (pdftex.def)             Requested size: 294.26825pt x 114.09587pt.
 
-<slidesITW2015/processdetail.pdf, id=493, 386.23576pt x 104.63933pt>
+<slidesITW2015/processdetail.pdf, id=488, 386.23576pt x 104.63933pt>
 File: slidesITW2015/processdetail.pdf Graphic file (type pdf)
 
 <use slidesITW2015/processdetail.pdf>
@@ -598,7 +595,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<figures/schema-of-observation.pdf, id=585, 420.9865pt x 195.396pt>
+<figures/schema-of-observation.pdf, id=580, 420.9865pt x 195.396pt>
 File: figures/schema-of-observation.pdf Graphic file (type pdf)
 
 <use figures/schema-of-observation.pdf>
@@ -652,21 +649,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--219
 
  []
 
-[16] <figures/allHest.pdf, id=753, 341.275pt x 227.85126pt>
+[16] <figures/allHest.pdf, id=748, 341.275pt x 227.85126pt>
 File: figures/allHest.pdf Graphic file (type pdf)
 
 <use figures/allHest.pdf>
 Package pdftex.def Info: figures/allHest.pdf used on input line 281.
 (pdftex.def)             Requested size: 273.02036pt x 182.28123pt.
 
-<figures/MSCtestthreshold.pdf, id=754, 341.275pt x 227.85126pt>
+<figures/MSCtestthreshold.pdf, id=749, 341.275pt x 227.85126pt>
 File: figures/MSCtestthreshold.pdf Graphic file (type pdf)
 
 <use figures/MSCtestthreshold.pdf>
 Package pdftex.def Info: figures/MSCtestthreshold.pdf used on input line 283.
 (pdftex.def)             Requested size: 273.02036pt x 182.28123pt.
  [17] [18 <./figures/allHest.pdf> <./figures/MSCtestthreshold.pdf>]
-<figures/theoreticaldistribratios.pdf, id=777, 341.275pt x 227.85126pt>
+<figures/theoreticaldistribratios.pdf, id=772, 341.275pt x 227.85126pt>
 File: figures/theoreticaldistribratios.pdf Graphic file (type pdf)
 
 <use figures/theoreticaldistribratios.pdf>
@@ -691,7 +688,7 @@ LaTeX Warning: Reference `eq:ratio-inf' on page 19 undefined on input line 290.
 
 
 [19 <./figures/theoreticaldistribratios.pdf>]
-<figures/practicalratiodistribution6.pdf, id=806, 682.55pt x 284.06125pt>
+<figures/practicalratiodistribution6.pdf, id=801, 682.55pt x 284.06125pt>
 File: figures/practicalratiodistribution6.pdf Graphic file (type pdf)
 
 <use figures/practicalratiodistribution6.pdf>
@@ -699,7 +696,7 @@ Package pdftex.def Info: figures/practicalratiodistribution6.pdf used on input
 line 346.
 (pdftex.def)             Requested size: 546.04074pt x 227.24928pt.
  [20] [21 <./figures/practicalratiodistribution6.pdf>] [22]
-<figures/overlapFFTs.pdf, id=836, 490.17357pt x 190.63039pt>
+<figures/overlapFFTs.pdf, id=831, 490.17357pt x 190.63039pt>
 File: figures/overlapFFTs.pdf Graphic file (type pdf)
 
 <use figures/overlapFFTs.pdf>
@@ -718,194 +715,166 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 27.
 
-<figures/withoutproblemons1.pdf, id=899, 455.7025pt x 284.06125pt>
+<figures/withoutproblemons1.pdf, id=894, 455.7025pt x 284.06125pt>
 File: figures/withoutproblemons1.pdf Graphic file (type pdf)
 
 <use figures/withoutproblemons1.pdf>
-Package pdftex.def Info: figures/withoutproblemons1.pdf used on input line 29.
+Package pdftex.def Info: figures/withoutproblemons1.pdf used on input line 30.
 (pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
  [26 <./figures/withoutproblemons1.pdf>]
-<figures/withproblemons1.pdf, id=914, 455.7025pt x 284.06125pt>
-File: figures/withproblemons1.pdf Graphic file (type pdf)
-
-<use figures/withproblemons1.pdf>
-Package pdftex.def Info: figures/withproblemons1.pdf used on input line 41.
-(pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
-
-<figures/clickdetails1year2015day286aboveTH.pdf, id=919, 341.275pt x 227.85126p
-t>
-File: figures/clickdetails1year2015day286aboveTH.pdf Graphic file (type pdf)
- <use figures/clickdetails1year2015day286aboveTH.pdf>
-Package pdftex.def Info: figures/clickdetails1year2015day286aboveTH.pdf used on
- input line 44.
-(pdftex.def)             Requested size: 341.27415pt x 227.8507pt.
-
-<figures/withproblemons1Solved.pdf, id=922, 455.7025pt x 284.06125pt>
-File: figures/withproblemons1Solved.pdf Graphic file (type pdf)
-
-<use figures/withproblemons1Solved.pdf>
-Package pdftex.def Info: figures/withproblemons1Solved.pdf used on input line 4
-6.
-(pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
- [27
-
- <./figures/withproblemons1.pdf>]
-[28 <./figures/clickdetails1year2015day286aboveTH.pdf> <./figures/withproblemon
-s1Solved.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 51.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 51.
-
-[29
-
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 57.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 57.
-
-
-<figures/2daysonIS26SUT1year2015day152diffTH.pdf, id=954, 455.7025pt x 398.4887
+<figures/2daysonIS26SUT1year2015day152diffTH.pdf, id=904, 455.7025pt x 398.4887
 5pt>
 File: figures/2daysonIS26SUT1year2015day152diffTH.pdf Graphic file (type pdf)
  <use figures/2daysonIS26SUT1year2015day152diffTH.pdf>
 Package pdftex.def Info: figures/2daysonIS26SUT1year2015day152diffTH.pdf used o
-n input line 59.
+n input line 36.
 (pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
- [30
+ [27
 
  <./figures/2daysonIS26SUT1year2015day152diffTH.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 63.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 63.
-
-<figures/2daysonIS26SUT1year2015day233.pdf, id=970, 455.7025pt x 398.48875pt>
+<figures/2daysonIS26SUT1year2015day233.pdf, id=919, 455.7025pt x 398.48875pt>
 File: figures/2daysonIS26SUT1year2015day233.pdf Graphic file (type pdf)
 
 <use figures/2daysonIS26SUT1year2015day233.pdf>
 Package pdftex.def Info: figures/2daysonIS26SUT1year2015day233.pdf used on inpu
-t line 65.
+t line 43.
 (pdftex.def)             Requested size: 455.70137pt x 398.48778pt.
 
-<figures/2daysonIS26SUT1year2015day233aboveTH.pdf, id=973, 455.7025pt x 398.488
+<figures/2daysonIS26SUT1year2015day233aboveTH.pdf, id=922, 455.7025pt x 398.488
 75pt>
 File: figures/2daysonIS26SUT1year2015day233aboveTH.pdf Graphic file (type pdf)
  <use figures/2daysonIS26SUT1year2015day233aboveTH.pdf>
 Package pdftex.def Info: figures/2daysonIS26SUT1year2015day233aboveTH.pdf used 
-on input line 67.
+on input line 45.
 (pdftex.def)             Requested size: 455.70137pt x 398.48778pt.
- [31
+ [28
 
- <./figures/2daysonIS26SUT1year2015day233.pdf>] [32 <./figures/2daysonIS26SUT1y
-ear2015day233aboveTH.pdf>]
+ <./figures/2daysonIS26SUT1year2015day233.pdf>] [29 <./figures/2daysonIS26SUT1y
+ear2015day233aboveTH.pdf>] <figures/withproblemons1.pdf, id=954, 455.7025pt x 2
+84.06125pt>
+File: figures/withproblemons1.pdf Graphic file (type pdf)
+
+<use figures/withproblemons1.pdf>
+Package pdftex.def Info: figures/withproblemons1.pdf used on input line 60.
+(pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
+
+<figures/clickdetails1year2015day286aboveTH.pdf, id=959, 341.275pt x 227.85126p
+t>
+File: figures/clickdetails1year2015day286aboveTH.pdf Graphic file (type pdf)
+ <use figures/clickdetails1year2015day286aboveTH.pdf>
+Package pdftex.def Info: figures/clickdetails1year2015day286aboveTH.pdf used on
+ input line 63.
+(pdftex.def)             Requested size: 341.27415pt x 227.8507pt.
+
+<figures/withproblemons1Solved.pdf, id=962, 455.7025pt x 284.06125pt>
+File: figures/withproblemons1Solved.pdf Graphic file (type pdf)
+
+<use figures/withproblemons1Solved.pdf>
+Package pdftex.def Info: figures/withproblemons1Solved.pdf used on input line 6
+5.
+(pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
+ [30
+
+ <./figures/withproblemons1.pdf>]
+[31 <./figures/clickdetails1year2015day286aboveTH.pdf> <./figures/withproblemon
+s1Solved.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 72.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 72.
+(hyperref)                removing `math shift' on input line 71.
 
-<slidesITW2015/averagedon20days1.pdf, id=1001, 455.7025pt x 341.275pt>
+<slidesITW2015/averagedon20days1.pdf, id=994, 455.7025pt x 341.275pt>
 File: slidesITW2015/averagedon20days1.pdf Graphic file (type pdf)
 
 <use slidesITW2015/averagedon20days1.pdf>
 Package pdftex.def Info: slidesITW2015/averagedon20days1.pdf used on input line
- 74.
+ 79.
 (pdftex.def)             Requested size: 364.56248pt x 273.02036pt.
- [33
+ [32
 
  <./slidesITW2015/averagedon20days1.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 80.
+(hyperref)                removing `math shift' on input line 85.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 80.
+(hyperref)                removing `math shift' on input line 85.
 
-[34
+[33
 
-] <figures/afewdaysonI26C6H6twoMSC.pdf, id=1019, 682.55pt x 284.06125pt>
+] <figures/afewdaysonI26C6H6twoMSC.pdf, id=1012, 682.55pt x 284.06125pt>
 File: figures/afewdaysonI26C6H6twoMSC.pdf Graphic file (type pdf)
 
 <use figures/afewdaysonI26C6H6twoMSC.pdf>
 Package pdftex.def Info: figures/afewdaysonI26C6H6twoMSC.pdf used on input line
- 94.
+ 99.
 (pdftex.def)             Requested size: 477.78175pt x 198.84149pt.
 
-<figures/afewdaysonI26C4H4knownnoiseratio.pdf, id=1023, 682.55pt x 284.06125pt>
+<figures/afewdaysonI26C4H4knownnoiseratio.pdf, id=1016, 682.55pt x 284.06125pt>
 File: figures/afewdaysonI26C4H4knownnoiseratio.pdf Graphic file (type pdf)
 <use figures/afewdaysonI26C4H4knownnoiseratio.pdf>
 Package pdftex.def Info: figures/afewdaysonI26C4H4knownnoiseratio.pdf used on i
-nput line 98.
+nput line 103.
 (pdftex.def)             Requested size: 477.78175pt x 198.84149pt.
- [35
+ [34
 
- <./figures/afewdaysonI26C6H6twoMSC.pdf>] [36 <./figures/afewdaysonI26C4H4known
+ <./figures/afewdaysonI26C6H6twoMSC.pdf>] [35 <./figures/afewdaysonI26C4H4known
 noiseratio.pdf>]
 
-LaTeX Warning: Reference `fig:C2' on page 37 undefined on input line 105.
+LaTeX Warning: Reference `fig:C2' on page 36 undefined on input line 110.
 
 
-LaTeX Warning: Reference `fig:C5' on page 37 undefined on input line 105.
+LaTeX Warning: Reference `fig:C5' on page 36 undefined on input line 110.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
-<figures/afewdays1colocation.pdf, id=1053, 569.12625pt x 398.48875pt>
+<figures/afewdays1colocation.pdf, id=1046, 569.12625pt x 398.48875pt>
 File: figures/afewdays1colocation.pdf Graphic file (type pdf)
 
 <use figures/afewdays1colocation.pdf>
-Package pdftex.def Info: figures/afewdays1colocation.pdf used on input line 122
+Package pdftex.def Info: figures/afewdays1colocation.pdf used on input line 127
 .
 (pdftex.def)             Requested size: 284.56242pt x 199.24388pt.
 
-<figures/signalsanomaly.pdf, id=1055, 569.12625pt x 455.7025pt>
+<figures/signalsanomaly.pdf, id=1048, 569.12625pt x 455.7025pt>
 File: figures/signalsanomaly.pdf Graphic file (type pdf)
 
 <use figures/signalsanomaly.pdf>
-Package pdftex.def Info: figures/signalsanomaly.pdf used on input line 128.
+Package pdftex.def Info: figures/signalsanomaly.pdf used on input line 133.
 (pdftex.def)             Requested size: 284.56242pt x 227.85068pt.
 
-<figures/filteranomaly.pdf, id=1056, 284.06125pt x 227.85126pt>
+<figures/filteranomaly.pdf, id=1049, 284.06125pt x 227.85126pt>
 File: figures/filteranomaly.pdf Graphic file (type pdf)
 
 <use figures/filteranomaly.pdf>
-Package pdftex.def Info: figures/filteranomaly.pdf used on input line 131.
+Package pdftex.def Info: figures/filteranomaly.pdf used on input line 136.
 (pdftex.def)             Requested size: 142.03026pt x 113.92534pt.
-) [37
+) [36
 
  <./figures/afewdays1colocation.pdf>]
-[38 <./figures/signalsanomaly.pdf> <./figures/filteranomaly.pdf>]
+[37 <./figures/signalsanomaly.pdf> <./figures/filteranomaly.pdf>]
 Chapter 4.
 (./textes/ch5windonNRS.tex
 
-LaTeX Warning: Citation `alcoverro:2005' on page 39 undefined on input line 7.
+LaTeX Warning: Citation `alcoverro:2005' on page 38 undefined on input line 7.
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 39 undefined on input line 12.
+LaTeX Warning: Citation `alcoverro:2005' on page 38 undefined on input line 12.
 
 
 
-LaTeX Warning: Citation `nouvellet_itwb:2013' on page 39 undefined on input lin
+LaTeX Warning: Citation `nouvellet_itwb:2013' on page 38 undefined on input lin
 e 12.
 
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 39 undefined on input line 12
+LaTeX Warning: Citation `mack_flinn:1971' on page 38 undefined on input line 12
 .
 
 
@@ -916,23 +885,23 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 20.
 
-[39
+[38
 
-] [40]
+] [39]
 
-LaTeX Warning: Citation `nouvellet_itwb:2013' on page 41 undefined on input lin
+LaTeX Warning: Citation `nouvellet_itwb:2013' on page 40 undefined on input lin
 e 110.
 
-[41]
+[40]
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 42 undefined on input line 13
+LaTeX Warning: Citation `mack_flinn:1971' on page 41 undefined on input line 13
 0.
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 42 undefined on input line 151
+LaTeX Warning: Citation `alcoverro:2005' on page 41 undefined on input line 151
 .
 
-[42]
+[41]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 159.
@@ -942,88 +911,88 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 159.
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 43 undefined on input line 161
+LaTeX Warning: Citation `alcoverro:2005' on page 42 undefined on input line 161
 .
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 43 undefined on input line 161
+LaTeX Warning: Citation `alcoverro:2005' on page 42 undefined on input line 161
 .
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 43 undefined on input line 162
+LaTeX Warning: Citation `alcoverro:2005' on page 42 undefined on input line 162
 .
 
-<figures/f05asvond.pdf, id=1126, 398.48875pt x 284.06125pt>
+<figures/f05asvond.pdf, id=1119, 398.48875pt x 284.06125pt>
 File: figures/f05asvond.pdf Graphic file (type pdf)
 
 <use figures/f05asvond.pdf>
 Package pdftex.def Info: figures/f05asvond.pdf used on input line 163.
 (pdftex.def)             Requested size: 318.79143pt x 227.24928pt.
- [43 <./figures/f05asvond.pdf>]
+ [42 <./figures/f05asvond.pdf>]
 Underfull \hbox (badness 5161) in paragraph at lines 169--169
 []\OT1/cmr/bx/n/17.28 Application to the \OT1/cmr/m/it/17.28 in-situ \OT1/cmr/b
 x/n/17.28 cal-i-bra-tion
  []
 
 
-LaTeX Warning: Citation `gabrielson:2011' on page 44 undefined on input line 17
+LaTeX Warning: Citation `gabrielson:2011' on page 43 undefined on input line 17
 7.
 
-<figures/bigschema.pdf, id=1139, 514.89pt x 212.33388pt>
+<figures/bigschema.pdf, id=1131, 514.89pt x 212.33388pt>
 File: figures/bigschema.pdf Graphic file (type pdf)
 
 <use figures/bigschema.pdf>
 Package pdftex.def Info: figures/bigschema.pdf used on input line 181.
 (pdftex.def)             Requested size: 308.93637pt x 127.4013pt.
- [44 <./figures/bigschema.pdf>] [45] [46] [47]
-<figures/GonH.pdf, id=1234, 569.12625pt x 511.9125pt>
+ [43 <./figures/bigschema.pdf>] [44] [45] [46]
+<figures/GonH.pdf, id=1227, 569.12625pt x 511.9125pt>
 File: figures/GonH.pdf Graphic file (type pdf)
  <use figures/GonH.pdf>
 Package pdftex.def Info: figures/GonH.pdf used on input line 359.
 (pdftex.def)             Requested size: 398.38567pt x 358.3363pt.
 
-[48
+[47
 
-] [49 <./figures/GonH.pdf>]
-<figures/twospeeds.pdf, id=1250, 398.48875pt x 341.275pt>
+] [48 <./figures/GonH.pdf>]
+<figures/twospeeds.pdf, id=1242, 398.48875pt x 341.275pt>
 File: figures/twospeeds.pdf Graphic file (type pdf)
 
 <use figures/twospeeds.pdf>
 Package pdftex.def Info: figures/twospeeds.pdf used on input line 369.
 (pdftex.def)             Requested size: 318.79143pt x 273.02036pt.
 
-<figures/twospeedsbis.pdf, id=1251, 398.48875pt x 341.275pt>
+<figures/twospeedsbis.pdf, id=1243, 398.48875pt x 341.275pt>
 File: figures/twospeedsbis.pdf Graphic file (type pdf)
 
 <use figures/twospeedsbis.pdf>
 Package pdftex.def Info: figures/twospeedsbis.pdf used on input line 371.
 (pdftex.def)             Requested size: 278.94022pt x 238.89085pt.
 
-<figures/twospeedster.pdf, id=1253, 398.48875pt x 341.275pt>
+<figures/twospeedster.pdf, id=1245, 398.48875pt x 341.275pt>
 File: figures/twospeedster.pdf Graphic file (type pdf)
 
 <use figures/twospeedster.pdf>
 Package pdftex.def Info: figures/twospeedster.pdf used on input line 373.
 (pdftex.def)             Requested size: 278.94022pt x 238.89085pt.
-) [50
+) [49
 
- <./figures/twospeeds.pdf>] [51 <./figures/twospeedsbis.pdf> <./figures/twospee
+ <./figures/twospeeds.pdf>] [50 <./figures/twospeedsbis.pdf> <./figures/twospee
 dster.pdf>]
 Chapter 5.
-(./textes/ch6fullprocess.tex [52
+(./textes/ch6fullprocess.tex [51
 
 ]
 File: filtercharacteristicsEXAMPLE.m  (verbatim)
- [53]
-<figures/synoptic.pdf, id=1292, 399.90224pt x 271.41148pt>
+ [52]
+<figures/synoptic.pdf, id=1285, 399.90224pt x 271.41148pt>
 File: figures/synoptic.pdf Graphic file (type pdf)
 
 <use figures/synoptic.pdf>
 Package pdftex.def Info: figures/synoptic.pdf used on input line 81.
 (pdftex.def)             Requested size: 399.90125pt x 271.41081pt.
- [54
+ [53
 
- <./figures/synoptic.pdf>] [55]
+ <./figures/synoptic.pdf>] [54]
 Overfull \hbox (23.7252pt too wide) in paragraph at lines 144--144
 []\OT1/cmtt/m/n/12 %         xx.Nsupthresholdintheband: counts of the number of
  values[] 
@@ -1041,24 +1010,24 @@ Overfull \hbox (17.5502pt too wide) in paragraph at lines 155--155
 ucture[] 
  []
 
-) [56
+) [55
 
-] [57
+] [56
 
 ]
 Chapter 6.
-(./textes/a1wss.tex [58
+(./textes/a1wss.tex [57
 
-]) [59]
+]) [58]
 Chapter 7.
-(./textes/a2spectralestimationDistribution.tex [60
+(./textes/a2spectralestimationDistribution.tex [59
 
 ]
 Overfull \hbox (18.22597pt too wide) in alignment at lines 72--82
  [][][] []
  []
 
-[61]
+[60]
 Overfull \hbox (18.35542pt too wide) detected at line 122
 \U/dsrom/m/n/12 E [] \OT1/cmr/m/n/12 = \U/dsrom/m/n/12 E [] \OT1/cmr/m/n/12 = 2
 \U/dsrom/m/n/12 E [] E [] \OT1/cmr/m/n/12 + 0 = 2^^@[]
@@ -1069,21 +1038,21 @@ Overfull \hbox (5.07771pt too wide) in alignment at lines 137--146
  [][][] []
  []
 
-[62] [63] [64] [65]
+[61] [62] [63] [64]
 Overfull \hbox (62.75174pt too wide) detected at line 412
 [] [] \OT1/cmr/m/n/12 = [] []
  []
 
-[66]
+[65]
 
-LaTeX Warning: Reference `eq:rectangularsmooth' on page 67 undefined on input l
+LaTeX Warning: Reference `eq:rectangularsmooth' on page 66 undefined on input l
 ine 436.
 
 
-LaTeX Warning: Reference `fig:statsRatiosH2Mp131' on page 67 undefined on input
+LaTeX Warning: Reference `fig:statsRatiosH2Mp131' on page 66 undefined on input
  line 442.
 
-[67] [68]
+[66] [67]
 Underfull \hbox (badness 10000) in paragraph at lines 605--605
 []\OT1/cmr/bx/n/17.28 Some dis-tri-bu-tions re-lated to the
  []
@@ -1093,9 +1062,9 @@ Overfull \hbox (42.94633pt too wide) in alignment at lines 640--661
  [][][] []
  []
 
-[69]
+[68]
 
-LaTeX Warning: Reference `eq:directestimateHu1' on page 70 undefined on input l
+LaTeX Warning: Reference `eq:directestimateHu1' on page 69 undefined on input l
 ine 669.
 
 
@@ -1103,56 +1072,56 @@ Overfull \hbox (29.09225pt too wide) in alignment at lines 752--767
  [][][] []
  []
 
-[70]
+[69]
 Overfull \hbox (16.12128pt too wide) in alignment at lines 782--791
  [][][] []
  []
 
 
-LaTeX Warning: Reference `eq:directestimateHu2' on page 71 undefined on input l
+LaTeX Warning: Reference `eq:directestimateHu2' on page 70 undefined on input l
 ine 837.
 
-[71]
+[70]
 Overfull \hbox (42.94633pt too wide) in alignment at lines 890--910
  [][][] []
  []
 
-[72] [73]
+[71] [72]
 
-LaTeX Warning: Citation `carter:1973' on page 74 undefined on input line 969.
+LaTeX Warning: Citation `carter:1973' on page 73 undefined on input line 969.
 
-[74] <figures/cumulF-MSC.pdf, id=1462, 341.275pt x 341.275pt>
+[73] <figures/cumulF-MSC.pdf, id=1455, 341.275pt x 341.275pt>
 File: figures/cumulF-MSC.pdf Graphic file (type pdf)
 
 <use figures/cumulF-MSC.pdf>
 Package pdftex.def Info: figures/cumulF-MSC.pdf used on input line 1020.
 (pdftex.def)             Requested size: 273.02036pt x 273.02036pt.
- [75 <./figures/cumulF-MSC.pdf>]
-<figures/thresholdforC95.pdf, id=1480, 511.9125pt x 341.275pt>
+ [74 <./figures/cumulF-MSC.pdf>]
+<figures/thresholdforC95.pdf, id=1473, 511.9125pt x 341.275pt>
 File: figures/thresholdforC95.pdf Graphic file (type pdf)
 
 <use figures/thresholdforC95.pdf>
 Package pdftex.def Info: figures/thresholdforC95.pdf used on input line 1046.
 (pdftex.def)             Requested size: 409.53056pt x 273.02036pt.
- [76]
-<figures/detectMSC.pdf, id=1487, 398.48875pt x 341.275pt>
+ [75]
+<figures/detectMSC.pdf, id=1480, 398.48875pt x 341.275pt>
 File: figures/detectMSC.pdf Graphic file (type pdf)
 
 <use figures/detectMSC.pdf>
 Package pdftex.def Info: figures/detectMSC.pdf used on input line 1052.
 (pdftex.def)             Requested size: 318.79143pt x 273.02036pt.
-) [77 <./figures/thresholdforC95.pdf>] [78 <./figures/detectMSC.pdf>]
+) [76 <./figures/thresholdforC95.pdf>] [77 <./figures/detectMSC.pdf>]
 Chapter 8.
 (./textes/a3LOC.tex
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 79 undefined on input line 29
+LaTeX Warning: Citation `mack_flinn:1971' on page 78 undefined on input line 29
 .
 
 
-LaTeX Warning: Citation `nouvellet:2012' on page 79 undefined on input line 29.
+LaTeX Warning: Citation `nouvellet:2012' on page 78 undefined on input line 29.
 
 
-[79
+[78
 
 ]
 
@@ -1164,37 +1133,37 @@ Overfull \hbox (16.8035pt too wide) in alignment at lines 64--84
  [][][] []
  []
 
-) [80]
+) [79]
 Chapter 9.
-(./textes/a4deterministic.tex [81
+(./textes/a4deterministic.tex [80
 
-]) [82] [83
+]) [81] [82
 
 ]
 Chapter 10.
 File: fullprocess//progsCIandOthers/estimHanalysis.m  (verbatim)
-[84
+[83
 
-] [85] [86]
+] [84] [85]
 File: fullprocess//progsCIandOthers/SigniLevelTestCoherence.m  (verbatim)
- [87]
+ [86]
 File: fullprocess//progsCIandOthers/CIHestimate.m  (verbatim)
- [88] [89]
+ [87] [88]
 Overfull \hbox (88.13187pt too wide) in paragraph at lines 248--248
 []    \OT1/cmtt/m/n/6 text0 = sprintf('True ratio HUT/HREF = %i,\nTrue MSC = % 
 4.2f\nNoise power ratio = %2i (%4.1f dB)\nSmoothing window number = %i\nLruns =
  %i',  ...[] 
  []
 
-[90] [91]
+[89] [90]
 File: fullprocess/RUNextractfromDB.m  (verbatim)
 File: fullprocess/ZZtoolbox/00Pierrick/extractfromDB.m  (verbatim)
- [92]
+ [91]
 File: fullprocess/ZZtoolbox/00Pierrick/convertCSStomatlab.m  (verbatim)
- [93]
+ [92]
 No file fullprocess//filtercharacteristics.m.
 File: fullprocess/estimationwithFB.m  (verbatim)
-[94] [95]
+[93] [94]
 Overfull \hbox (139.1326pt too wide) in paragraph at lines 276--276
 []\OT1/cmtt/m/n/6 % corrlevel = corr(STDmodtheo_ip(and(not(isnan(STDmodtheo_ip)
 ),not(STDmodempiric_ip==0))), STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),no
@@ -1203,12 +1172,12 @@ t(STDmodempiric_ip==0))));[]
 
 No file fullprocess/temporalevolution.m.
 No file fullprocess/displaySUTresponse.m.
-[96]
+[95]
 Chapter 11.
 File: fullprocess/ZZtoolbox/fbankanalysis.m  (verbatim)
-[97
+[96
 
-] [98] [99] [100] [101]
+] [97] [98] [99] [100]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 297.
@@ -1262,7 +1231,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 297.
 
 File: fullprocess/ZZtoolbox/cumulFunctionMSC.m  (verbatim)
-[102]
+[101]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 300.
@@ -1370,25 +1339,25 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 File: fullprocess/ZZtoolbox/pdfMSC.m  (verbatim)
 File: fullprocess/ZZtoolbox/statsRatiosHbis.m  (verbatim)
-[103] [104]
+[102] [103]
 File: fullprocess/ZZtoolbox/smoothpolyLL.m  (verbatim)
- [105] [106]
+ [104] [105]
 Chapter 12.
 File: fullprocess/ZZtoolbox/geneFB.m  (verbatim)
-[107
+[106
 
 ]
 No file ../../../0progsextract/execGPARSE.m.
 No file ../../../0progsextract/convertCSS2matlab.m.
 No file calibreport.bbl.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 327.
-[108]
+[107]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 327.
  (./calibreport.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 327.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 327.
 Package rerunfilecheck Info: File `calibreport.out' has not changed.
-(rerunfilecheck)             Checksum: 32BD53903032A1BFCC48ED6C9DC95A03;5397.
+(rerunfilecheck)             Checksum: 118C04C01393F59F2BE15C7EAAFB206D;5316.
 
 
 LaTeX Warning: There were undefined references.
@@ -1407,10 +1376,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 327.
 ### simple group (level 1) entered at line 298 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 7619 strings out of 493089
- 111771 string characters out of 6134842
- 213926 words of memory out of 5000000
- 10567 multiletter control sequences out of 15000+600000
+ 7618 strings out of 493089
+ 111761 string characters out of 6134842
+ 214302 words of memory out of 5000000
+ 10568 multiletter control sequences out of 15000+600000
  19695 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  32i,18n,43p,1092b,771s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1451,10 +1420,10 @@ nts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on calibreport.pdf (108 pages, 1813534 bytes).
+Output written on calibreport.pdf (107 pages, 1813436 bytes).
 PDF statistics:
- 1805 PDF objects out of 2073 (max. 8388607)
- 1548 compressed objects within 16 object streams
- 331 named destinations out of 1000 (max. 500000)
- 761 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1797 PDF objects out of 2073 (max. 8388607)
+ 1541 compressed objects within 16 object streams
+ 329 named destinations out of 1000 (max. 500000)
+ 753 words of extra memory for PDF output out of 10000 (max. 10000000)
 

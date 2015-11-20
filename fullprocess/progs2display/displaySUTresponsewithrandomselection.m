@@ -24,7 +24,10 @@ directoryinputresults = '../AAresultswithFB98bis/';
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 
-for ihc = 4
+for ihc = 1
+    numfig = ihc;
+    randomlychosenflag      = 1;
+    randomlydoubledaynumber = 30;
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
     fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
@@ -66,7 +69,25 @@ for ihc = 4
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
     end
     %%
-    doubledaynumber = length(remainindex);
+    if not(randomlychosenflag)
+        %         doubledaynumber = (Dend-Dstart+3)/2;
+        doubledaynumber = length(remainindex);
+    else
+        permutenbmats = randperm(length(remainindex));
+        indrandomlychosen = ...
+            remainindex(permutenbmats(1:randomlydoubledaynumber));
+        allRatioSupPfilters = ...
+            allRatioSupPfilters(:,indrandomlychosen);
+        allSTDmodRatioSupPfilters = ...
+            allSTDmodRatioSupPfilters(:,indrandomlychosen);
+        allSTDphaseRatioSupPfilters = ...
+            allSTDphaseRatioSupPfilters(:,indrandomlychosen);
+        allmeanMSCcstPfilters = ...
+            allmeanMSCcstPfilters(:,indrandomlychosen);
+        nbofvaluesoverthreshold = ...
+            nbofvaluesoverthreshold(:,indrandomlychosen);
+        
+    end
     
     STDmodRatioPfilters_ave        = nanmedian(allSTDmodRatioSupPfilters,2);
     STDphaseRatioPfilters_ave      = nanmedian(allSTDphaseRatioSupPfilters,2);
@@ -99,7 +120,8 @@ for ihc = 4
     modRatioPfiltersUSZ            = abs(RatioPfiltersUSZ);
     phaseRatioPfiltersUSZ_rd       = angle(RatioPfiltersUSZ);
     %====== averaging by MEDIAN to avoid outliers
-    meanmodRatioPfiltersUSZ        = trimmean(modRatioPfiltersUSZ,30,2);
+    trimmeanmodRatioPfiltersUSZ    = trimmean(modRatioPfiltersUSZ,30,2);
+    meanmodRatioPfiltersUSZ        = nanmean(modRatioPfiltersUSZ,2);
     meanphasePfiltersUSZ_rd        = trimmean(phaseRatioPfiltersUSZ_rd,30,2);
     %====== STDs
     STDmodPfiltersUSZ              = nanstd(modRatioPfiltersUSZ,[],2);
@@ -111,83 +133,86 @@ for ihc = 4
     ICallRatioPfiltersUSZbis       = STDmodRatioPfilters_aveUSZ ./ ...
         sqrt(sum(nbofvaluesoverthresholdUSZ,2));
     
-    N_freq_vector = 300;
-    freq_vector   = logspace(log10(0.001),log10(30),N_freq_vector) .';
-    [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
-        HCP_acoustical(freq_vector, allfrqsPfiltersUSZ, sensor_UT, ref_sensor, 'nofir');
-    
-    %================================
-    absestimwithcorrect = coeffsens * meanmodRatioPfiltersUSZ .* abs(TFsensor4freqRatio);
     %================================================
-    subplot(211)
-    semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'ko',...
-        'markersize',3,'markerfaceco','k'),
+%     figure(numfig)
+    clf
+%     subplot(211)
+    semilogx(allfrqsPfiltersUSZ,(modRatioPfiltersUSZ),'.',...
+        'color',0.7*[1 1 1]);
+    hold on
+    semilogx(allfrqsPfiltersUSZ,(meanmodRatioPfiltersUSZ),'ko',...
+        'markersize',6,'markerfaceco','r'),
+    semilogx(allfrqsPfiltersUSZ,(trimmeanmodRatioPfiltersUSZ),'ko',...
+        'markersize',6,'markerfaceco','b'),
+    hold off
+    
+    %         hold on
+    %             semilogx(allfrqsPfiltersUZ,...
+    %                 abs(meanallRatioPfiltersUZ)-allSTDmodRatioPfilters_aveU,'.-b', ...
+    %                 allfrqsPfiltersUZ,...
+    %                 abs(meanallRatioPfiltersUZ)+allSTDmodRatioPfilters_aveU,'.-r')
+    %             hold on
+    %             semilogx(allfrqsPfiltersUZ,...
+    %                 abs(meanallRatioPfiltersUZ)-ICallRatioPfiltersUZ,'.g', ...
+    %                 allfrqsPfiltersUZ,...
+    %                 abs(meanallRatioPfiltersUZ)+ICallRatioPfiltersUZ,'.m')
+    %             hold off
+    % %
+%         boxplot(modRatioPfiltersUSZ','position',allfrqsPfiltersUSZ,'symbol','','whisker',0);
+%             set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+%                 'xticklabel',[0.001 0.01 0.1 1 10])
+    
+    %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+    %             'xticklabel',[0.001 0.01 0.1 1 10])
     grid on
     ylabel('Amplitude [dB]','fontname','times','fontsize',14)
-    hold on
-    plot([1 1]*0.0205,[-45 45],'r','linew',2)
-    plot([1 1]*3.98,[-45 45],'r','linew',2)
-    hold off
     
     %=============== dipslay
-    hold on
-    %      semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)), 'r');
-    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*0.95), 'r--','linew',1.5);
-    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*1.05), 'r--','linew',1.5);
     hold off
     title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
-        ihc, MSCthreshold, 2*nbmats),'fontname','times','fontsize',14)
+        ihc, MSCthreshold, 2*randomlydoubledaynumber),'fontname','times','fontsize',14)
     %         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
     %             'fontname','times','fontsize',14)
     
     set(gca,'fontname','times','fontsize',14)
     set(gca,'xlim',[0.01 5])
-    set(gca,'ylim',4*[-1 1])
+     set(gca,'ylim',[0.8 1.2])
     set(gca,'xtickLabel',[])
     %              xlabel('frequency [Hz]')
     
-    set(gca,'position',[0.1300    0.5056    0.7750    0.3559])
     
-    ht = text(0.022,-3.4,'0.02 Hz');
-    set(ht,'color','r','fontsize',14,'fontname','times')
-    ht = text(2.1,-3.4,'4 Hz');
-    set(ht,'color','r','fontsize',14,'fontname','times')
-    ht = text(0.14, -3.4,'IMS passband');
-    set(ht,'color','r','fontsize',14,'fontname','times')
     
     %========================== PHASE =========
-    
-    anglewithcorrect_rd = meanphasePfiltersUSZ_rd + angle(TFsensor4freqRatio);
-    angltheo_rd   = angle(p_total_NRS)+ angle(TF_ref_sensor);
-    
-    subplot(212)
-    semilogx(allfrqsPfiltersUSZ,unwrap(anglewithcorrect_rd)*180/pi,...
-        'ko','markersize',3,'markerfaceco','k')
-    
-    set(gca,'fontname','times','fontsize',14)
-    
-    grid on
+    if 0
+        anglewithoutcorrect_rd = meanphasePfiltersUSZ_rd;
+        %     set(gca,'position',[ 0.1300    0.1328    0.7750    0.3333])
+        %     set(gca,'position',[0.1300    0.5056    0.7750    0.3559])
+        subplot(212)
+        
+        %         semilogx(allfrqsPfiltersUZ,unwrap(anglestime_rd)*180/pi,'.-k'),
+        
+        %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
+        %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+        %             'xticklabel',[0.001 0.01 0.1 1 10])
+        semilogx(allfrqsPfiltersUSZ,unwrap(anglewithoutcorrect_rd)*180/pi,...
+            'ko','markersize',6,'markerfaceco','R')
+        
+        %     boxplot(anglestime_deg','position',allfrqsPfiltersUZ,'symbol','','whisker',0);
+        %         set(gca,'xscale','log','xtick',[0.001 0.01 0.1 1 10],...
+        %             'xticklabel',[0.001 0.01 0.1 1 10])
+        set(gca,'fontname','times','fontsize',14)
+        
+        grid on
+        xlabel('frequency [Hz]')
+        ylabel('Phase [deg]')
+        %=============== dipslay
+        
+        set(gca,'fontname','times','fontsize',14)
+        set(gca,'xlim',[0.01 5])
+        set(gca,'ylim',40*[-1 1])
+    end
     xlabel('frequency [Hz]')
-    ylabel('Phase [deg]')
     
-    hold on
-    
-    plot([1 1]*0.0205,[-45 45],'r','linew',2)
-    plot([1 1]*3.98,[-45 45],'r','linew',2)
-    hold off
-    %=============== dipslay
-    hold on
-    %     semilogx(freq_vector, -unwrap(angltheo_rd)*180/pi, 'r');
-    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi-5, 'r--','linew',1.5);
-    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi+5, 'r--','linew',1.5);
-    hold off
-    
-    set(gca,'fontname','times','fontsize',14)
-    set(gca,'xlim',[0.01 5])
-    set(gca,'ylim',40*[-1 1])
-    xlabel('frequency [Hz]')
-    
-    set(gca,'position',[ 0.1300    0.1328    0.7750    0.3333])
     %==============================================================
     HorizontalSize = 16;
     VerticalSize   = 10;
