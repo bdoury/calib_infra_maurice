@@ -45,11 +45,11 @@ directorysave2daysignals  = '../../../../AAdataI26calib/';
 % nbmats                       = length(fileswithdotmat);
 
 %==================================================
-for ihc   = 2
+for ihc   = 1
     fileswithdotmat     = dir(sprintf('%ss%i/s%iy*.mat', ...
         directorysave2daysignals,ihc,ihc));
     nbmats = length(fileswithdotmat);
-    for ifile = 67%1:nbmats,ifile
+    for ifile = 62%1:nbmats,ifile
         
         fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
@@ -57,15 +57,20 @@ for ihc   = 2
         filenameonly        = fullfilename_i(setdiff(1:dotlocation-1,underscorelocation));
         commandload         = sprintf('load %ss%i/%s',directorysave2daysignals,...
             ihc,fullfilename_i);
+        date_ii = sprintf('%s/%s/%s',filenameonly(7:10),filenameonly(16:17),filenameonly(21:22));
         eval(commandload)
         for is=1:2
             subplot(2,3,3*is-2)
-            plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,is))
-            set(gca,'xlim',[0 size(signals_centered,1)/Fs_Hz/60])
+            plot((0:size(signals_centered,1)-1)/Fs_Hz/3600,signals_centered(:,is))
+            set(gca,'xlim',[0 size(signals_centered,1)/Fs_Hz/3600])
                 set(gca,'fontname','times','fontsize',10)
-                xlabel('hours','fontname','times','fontsize',10)
-            title(fullfilename_i,'fontname','times','fontsize',8)
-
+                    xlabel('hours','fontname','times','fontsize',10)
+                if is==1
+                    title(sprintf('%s on H1',date_ii),'fontname','times','fontsize',8)
+                else
+                     title(sprintf('%s on C1',date_ii),'fontname','times','fontsize',8)
+               end
+                
         end
         for is=1:2
             subplot(2,3,3*is-1)
@@ -73,9 +78,15 @@ for ihc   = 2
             plot((0:id2-id1)/Fs_Hz/60,signals_centered(id1:id2,is))
             set(gca,'xlim',[0 (id2-id1)/Fs_Hz/60])
 %             set(gca,'xticklabel',[])
+            if is ==1
                 set(gca,'fontname','times','fontsize',10)
                 xlabel('minutes','fontname','times','fontsize',10)
                     title('Zoom on the first burst','fontname','times','fontsize',8)
+            else
+                set(gca,'fontname','times','fontsize',10)
+                xlabel('minutes','fontname','times','fontsize',10)
+                    title('Zoom on the second burst','fontname','times','fontsize',8)
+            end
         end
         for is=1:2
             subplot(2,3,3*is)
@@ -94,8 +105,8 @@ for ihc   = 2
     set(gca,'fontname','times','fontsize',10)
     
     
-    HorizontalSize = 12;
-    VerticalSize   = 8;
+    HorizontalSize = 14;
+    VerticalSize   = 12;
     set(gcf,'units','centimeters');
     set(gcf,'paperunits','centimeters');
     set(gcf,'PaperType','a3');
@@ -114,19 +125,19 @@ for ihc   = 2
     filermcmd       = sprintf('!rm %s',fileprint);
     
     %
-%             eval(fileprintepscmd)
-%             eval(fileeps2pdfcmd)
-% `            eval(filermcmd)
+            eval(fileprintepscmd)
+            eval(fileeps2pdfcmd)
+            eval(filermcmd)
 end
 %============================ END =========================================
 
 
 %%
-figure(2)
-
-subplot(211)
-plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,1))
-
-subplot(212)
-plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,2))
+% figure(2)
+% 
+% subplot(211)
+% plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,1))
+% 
+% subplot(212)
+% plot((0:size(signals_centered,1)-1)/Fs_Hz/60,signals_centered(:,2))
 

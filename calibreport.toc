@@ -25,77 +25,78 @@
 \contentsline {subsection}{\numberline {1.2}Using different thresholds on a pair of days}{27}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {1.3}More details on a pair of days}{28}{subsection.3.1.3}
 \contentsline {subsection}{\numberline {1.4}Problem with some records}{30}{subsection.3.1.4}
-\contentsline {subsection}{\numberline {1.5}Averaging on $15$ randomly selected pairs of days}{32}{subsection.3.1.5}
-\contentsline {subsection}{\numberline {1.6}Stability at $1$ Hz}{33}{subsection.3.1.6}
-\contentsline {section}{\numberline {2.}Comments}{34}{section.3.2}
-\contentsline {subsection}{\numberline {2.1}About the selected MSC threshold}{34}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {2.2}Dip on the curves}{36}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Wind effect on NRS}{38}{chapter.4}
-\contentsline {section}{\numberline {1.}Introduction}{38}{section.4.1}
-\contentsline {section}{\numberline {2.}Model for wind turbulences}{38}{section.4.2}
-\contentsline {subsection}{\numberline {2.1}Stationary $M$-ary process}{39}{subsection.4.2.1}
-\contentsline {subsubsection}{Spectral description}{39}{section*.7}
-\contentsline {subsubsection}{WSS filtering}{40}{section*.8}
-\contentsline {subsection}{\numberline {2.2}Wind noise model}{40}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {2.3}Coherence level as a function of $v/d$}{42}{subsection.4.2.3}
-\contentsline {section}{\numberline {3.}Application to the {\it in-situ} calibration method}{43}{section.4.3}
-\contentsline {subsubsection}{MSC}{45}{section*.9}
-\contentsline {subsubsection}{Frequency response ratio}{47}{section*.10}
-\contentsline {section}{\numberline {4.}Results in I26}{49}{section.4.4}
-\contentsline {chapter}{\numberline {5}Full process}{51}{chapter.5}
-\contentsline {section}{\numberline {1.}3 programs for test}{51}{section.5.1}
-\contentsline {section}{\numberline {2.}Input of the function {\tt fbankanalysis.m}}{51}{section.5.2}
-\contentsline {subsubsection}{Summary of the filter bank settings}{52}{section*.11}
-\contentsline {subsubsection}{Calculation scheme}{53}{section*.12}
-\contentsline {section}{\numberline {3.}Output of the function {\tt fbankanalysis.m}}{55}{section.5.3}
-\contentsline {subsubsection}{Remark for developper}{55}{section*.13}
-\contentsline {part}{II\hspace {1em}Annexes}{56}{part.2}
-\contentsline {chapter}{\numberline {6}Wide sense stationary process}{57}{chapter.6}
-\contentsline {chapter}{\numberline {7}Theoretical results on spectral estimation}{59}{chapter.7}
-\contentsline {section}{\numberline {1.}Non parametrical spectral estimation}{59}{section.7.1}
-\contentsline {section}{\numberline {2.}More periodogram properties}{60}{section.7.2}
-\contentsline {subsubsection}{Properties of the periodogram}{63}{section*.14}
-\contentsline {section}{\numberline {3.}Second order moments for the smoothed periodogram}{64}{section.7.3}
-\contentsline {section}{\numberline {4.}Approximate variances}{65}{section.7.4}
-\contentsline {subsubsection}{$\delta $-method}{65}{section*.15}
-\contentsline {subsubsection}{Approximate variance of $\qopname \relax o{arg}\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}$}{65}{section*.16}
-\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(1)}|$}{66}{section*.17}
-\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(2)}|$}{67}{section*.18}
-\contentsline {subsubsection}{Summary}{68}{section*.19}
-\contentsline {subsubsection}{Estimator based on eigen-decomposition (uncompleted)}{68}{section*.20}
-\contentsline {section}{\numberline {5.}Some distributions related to the smoothed periodogram}{68}{section.7.5}
-\contentsline {subsubsection}{Wiskart's distribution}{68}{section*.21}
-\contentsline {subsubsection}{Ratio distributions}{69}{section*.22}
-\contentsline {subsubsection}{Phase distribution (not completed)}{71}{section*.23}
-\contentsline {section}{\numberline {6.}MSC distribution}{73}{section.7.6}
-\contentsline {section}{\numberline {7.}MSC detection}{75}{section.7.7}
-\contentsline {chapter}{\numberline {8}LOC}{78}{chapter.8}
-\contentsline {subsubsection}{Coherence model}{78}{section*.24}
-\contentsline {chapter}{\numberline {9}Remark on deterministic representation}{80}{chapter.9}
-\contentsline {subsubsection}{Remark on a deterministic approach}{80}{section*.25}
-\contentsline {part}{III\hspace {1em}Library}{82}{part.3}
-\contentsline {chapter}{\numberline {10}Programs}{83}{chapter.10}
-\contentsline {section}{\numberline {1.}RMSE as function of coherence}{83}{section.10.1}
-\contentsline {section}{\numberline {2.}Test of coherence}{86}{section.10.2}
-\contentsline {section}{\numberline {3.}Statistical distribution of the ratios}{87}{section.10.3}
-\contentsline {section}{\numberline {4.}Extraction from DB}{91}{section.10.4}
-\contentsline {subsubsection}{Settings for the query to the database}{91}{section*.26}
-\contentsline {subsubsection}{Query to the database}{91}{section*.27}
-\contentsline {subsubsection}{Conversion to format {\tt .mat}}{92}{section*.28}
-\contentsline {section}{\numberline {5.}Full process}{93}{section.10.5}
-\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{93}{subsection.10.5.1}
-\contentsline {subsection}{\numberline {5.2}Main program for estimation}{93}{subsection.10.5.2}
-\contentsline {section}{\numberline {6.}Application program}{95}{section.10.6}
-\contentsline {subsection}{\numberline {6.1}temporalevolution.m}{95}{subsection.10.6.1}
-\contentsline {subsection}{\numberline {6.2}displaySensorResponse.m}{95}{subsection.10.6.2}
-\contentsline {chapter}{\numberline {11}Toolbox}{96}{chapter.11}
-\contentsline {section}{\numberline {1.}Main analysis function: {\tt fbankanalysis.m}}{96}{section.11.1}
-\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{101}{section.11.2}
-\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.3}
-\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.4}
-\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{103}{section.11.5}
-\contentsline {section}{\numberline {6.}Polynomial fitter}{104}{section.11.6}
-\contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{106}{chapter.12}
-\contentsline {section}{\numberline {1.}GeneFB}{106}{section.12.1}
-\contentsline {section}{\numberline {2.}execGPARSE}{107}{section.12.2}
-\contentsline {section}{\numberline {3.}convertCSS2matlab}{107}{section.12.3}
+\contentsline {subsubsection}{Synchronization problem}{33}{section*.7}
+\contentsline {subsection}{\numberline {1.5}Averaging on randomly selected pairs of days}{34}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {1.6}Stability at $1$ Hz}{35}{subsection.3.1.6}
+\contentsline {section}{\numberline {2.}Comments}{36}{section.3.2}
+\contentsline {subsection}{\numberline {2.1}About the selected MSC threshold}{36}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {2.2}Dip on the curves}{38}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Wind effect on NRS}{40}{chapter.4}
+\contentsline {section}{\numberline {1.}Introduction}{40}{section.4.1}
+\contentsline {section}{\numberline {2.}Model for wind turbulences}{40}{section.4.2}
+\contentsline {subsection}{\numberline {2.1}Stationary $M$-ary process}{41}{subsection.4.2.1}
+\contentsline {subsubsection}{Spectral description}{41}{section*.8}
+\contentsline {subsubsection}{WSS filtering}{42}{section*.9}
+\contentsline {subsection}{\numberline {2.2}Wind noise model}{42}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {2.3}Coherence level as a function of $v/d$}{44}{subsection.4.2.3}
+\contentsline {section}{\numberline {3.}Application to the {\it in-situ} calibration method}{45}{section.4.3}
+\contentsline {subsubsection}{MSC}{47}{section*.10}
+\contentsline {subsubsection}{Frequency response ratio}{49}{section*.11}
+\contentsline {section}{\numberline {4.}Results in I26}{51}{section.4.4}
+\contentsline {chapter}{\numberline {5}Full process}{53}{chapter.5}
+\contentsline {section}{\numberline {1.}3 programs for test}{53}{section.5.1}
+\contentsline {section}{\numberline {2.}Input of the function {\tt fbankanalysis.m}}{53}{section.5.2}
+\contentsline {subsubsection}{Summary of the filter bank settings}{54}{section*.12}
+\contentsline {subsubsection}{Calculation scheme}{55}{section*.13}
+\contentsline {section}{\numberline {3.}Output of the function {\tt fbankanalysis.m}}{57}{section.5.3}
+\contentsline {subsubsection}{Remark for developper}{57}{section*.14}
+\contentsline {part}{II\hspace {1em}Annexes}{58}{part.2}
+\contentsline {chapter}{\numberline {6}Wide sense stationary process}{59}{chapter.6}
+\contentsline {chapter}{\numberline {7}Theoretical results on spectral estimation}{61}{chapter.7}
+\contentsline {section}{\numberline {1.}Non parametrical spectral estimation}{61}{section.7.1}
+\contentsline {section}{\numberline {2.}More periodogram properties}{62}{section.7.2}
+\contentsline {subsubsection}{Properties of the periodogram}{65}{section*.15}
+\contentsline {section}{\numberline {3.}Second order moments for the smoothed periodogram}{66}{section.7.3}
+\contentsline {section}{\numberline {4.}Approximate variances}{67}{section.7.4}
+\contentsline {subsubsection}{$\delta $-method}{67}{section*.16}
+\contentsline {subsubsection}{Approximate variance of $\qopname \relax o{arg}\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}$}{67}{section*.17}
+\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(1)}|$}{68}{section*.18}
+\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(2)}|$}{69}{section*.19}
+\contentsline {subsubsection}{Summary}{70}{section*.20}
+\contentsline {subsubsection}{Estimator based on eigen-decomposition (uncompleted)}{70}{section*.21}
+\contentsline {section}{\numberline {5.}Some distributions related to the smoothed periodogram}{70}{section.7.5}
+\contentsline {subsubsection}{Wiskart's distribution}{70}{section*.22}
+\contentsline {subsubsection}{Ratio distributions}{71}{section*.23}
+\contentsline {subsubsection}{Phase distribution (not completed)}{73}{section*.24}
+\contentsline {section}{\numberline {6.}MSC distribution}{75}{section.7.6}
+\contentsline {section}{\numberline {7.}MSC detection}{77}{section.7.7}
+\contentsline {chapter}{\numberline {8}LOC}{80}{chapter.8}
+\contentsline {subsubsection}{Coherence model}{80}{section*.25}
+\contentsline {chapter}{\numberline {9}Remark on deterministic representation}{82}{chapter.9}
+\contentsline {subsubsection}{Remark on a deterministic approach}{82}{section*.26}
+\contentsline {part}{III\hspace {1em}Library}{84}{part.3}
+\contentsline {chapter}{\numberline {10}Programs}{85}{chapter.10}
+\contentsline {section}{\numberline {1.}RMSE as function of coherence}{85}{section.10.1}
+\contentsline {section}{\numberline {2.}Test of coherence}{88}{section.10.2}
+\contentsline {section}{\numberline {3.}Statistical distribution of the ratios}{89}{section.10.3}
+\contentsline {section}{\numberline {4.}Extraction from DB}{93}{section.10.4}
+\contentsline {subsubsection}{Settings for the query to the database}{93}{section*.27}
+\contentsline {subsubsection}{Query to the database}{93}{section*.28}
+\contentsline {subsubsection}{Conversion to format {\tt .mat}}{93}{section*.29}
+\contentsline {section}{\numberline {5.}Full process}{94}{section.10.5}
+\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{94}{subsection.10.5.1}
+\contentsline {subsection}{\numberline {5.2}Main program for estimation}{94}{subsection.10.5.2}
+\contentsline {section}{\numberline {6.}Application program}{96}{section.10.6}
+\contentsline {subsection}{\numberline {6.1}temporalevolution.m}{96}{subsection.10.6.1}
+\contentsline {subsection}{\numberline {6.2}displaySensorResponse.m}{96}{subsection.10.6.2}
+\contentsline {chapter}{\numberline {11}Toolbox}{97}{chapter.11}
+\contentsline {section}{\numberline {1.}Main analysis function: {\tt fbankanalysis.m}}{97}{section.11.1}
+\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{102}{section.11.2}
+\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{103}{section.11.3}
+\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{103}{section.11.4}
+\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{104}{section.11.5}
+\contentsline {section}{\numberline {6.}Polynomial fitter}{105}{section.11.6}
+\contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{107}{chapter.12}
+\contentsline {section}{\numberline {1.}GeneFB}{107}{section.12.1}
+\contentsline {section}{\numberline {2.}execGPARSE}{108}{section.12.2}
+\contentsline {section}{\numberline {3.}convertCSS2matlab}{108}{section.12.3}

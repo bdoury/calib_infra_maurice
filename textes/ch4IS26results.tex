@@ -60,24 +60,26 @@ In figure \ref{fig:withproblemons1} we have considered the same data than those 
 \figscale{figures/withproblemons1.pdf}{Same data than those of figure \ref{fig:withoutproblemons1} but  adding two days more. We observe that a few values seem to be outliers. The data of these two days are reported figure \ref{fig:clickdetails1year2015day286aboveTH}. We see large bursts that are at the origin of the ouliers.}{fig:withproblemons1}{0.8}
 
 
-\figscale{figures/clickdetails1year2015day286aboveTH.pdf}{Two days data added in the protocol to obtain the figure \ref{fig:withoutproblemons1}. We observe large bursts that can be considered as outliers, as they appear hugely different of the observed values outside of the bursts.}{fig:clickdetails1year2015day286aboveTH}{1}
+\figscale{figures/clickdetails1year2015dayth1aboveTH.pdf}{Two days data added in the protocol to obtain the figure \ref{fig:withoutproblemons1}. We observe large bursts that can be considered as outliers, as they appear hugely greater than the observed values outside of the bursts.}{fig:clickdetails1year2015day286aboveTH}{1}
 
 \figscale{figures/withproblemons1Solved.pdf}{Same data than those of figure \ref{fig:withproblemons1} but  suppressing the part of the added signals where  bursts are located. The figure is very similar to the figure \ref{fig:withoutproblemons1}.}{fig:withproblemons1solved}{0.8}
 
+\newpage\clearpage
+\subsubsection{Synchronization problem}
+Another problem is the full desynchronization of the two sensor signals, as for example the 2015/08/09 on the sensor 1. A part of the trace is reported on figure \ref{fig:fillshift} but the shift is on the complete duration.
 
+\figscale{figures/fillshift.pdf}{Time shift on the full duration.}{fig:fillshift}{0.8}
 
 \newpage\clearpage
 %================================
-\subsection{Averaging on $15$ randomly selected pairs of days}
+\subsection{Averaging on randomly selected pairs of days}
 %================================
 
-To avoid the problems (cited section \ref{ss:problems}) which appear very rarely, it is advised to use a trimmed mean on several pairs of days. Figure \ref{averagedon20days1} we present a draw of randomly chosen pairs of days and a simple mean 
-and the mean excluding $30\%$ of the lowest and highest values.
+To avoid the problems, cited section \ref{ss:problems}, which appear very rarely, it is advised to use a trimmed mean on several pairs of days. Figure \ref{fig:withtrimmeanonstation1}, randomly selected pairs of days are reported with a simple mean 
+and a trimmed mean excluding $30\%$ of the lowest and highest values. We see that the outlier present in the red curves is suppressed automatically by the trimmed mean. This outlier is due to the data of the 13th of October in station 1 and at the origin of the clich we see on figure \ref{fig:withoutproblemons1}.   
 
 
-
-\figscale{slidesITW2015/averagedon20days1.pdf}{Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact}. The gray dots report the ratios averaged on a pair of 2 consecutive days, the red  disks report the average on 10 pairs of days.}{averagedon20days1}{0.8}
-
+\figscale{figures/withtrimmeanonstation1.pdf}{Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact}. The gray points report the ratios averaged on a pair of 2 consecutive days, the red points report the simple mean on 15 pairs of days, the blue  the trimmed mean excluding $30\%$ of the lowest and highest values}{fig:withtrimmeanonstation1}{0.8}
 
 %================================
 \newpage\clearpage

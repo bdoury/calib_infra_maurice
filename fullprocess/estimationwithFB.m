@@ -24,7 +24,9 @@
 %=========================================================================
 %
 %==================== Warning ===============
-% we have observed huge outliers in the following files:
+% we have observed huge outliers/problems in the following files:
+% ihc==1, date==2015/08/09 , shift between the 2 signals for the full
+% duration
 % ihc==1, date==2015/10/07 ,from sample index 2.4e6
 % ihc==1, date==2015/10/09 ,from sample index 2.4e6
 % ihc==2, date==2015/08/07 ,from sample index 2.4e6
@@ -37,16 +39,14 @@
 %=========================================================================
 
 clear
-allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
-    'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
+addpath ZZtoolbox/
+
 %=====================
 MSCthreshold = 0.98;
 %=====================
 
 FLAGsaveall   = 0;
 FLAGsavesmall = 1;
-addpath ZZtoolbox/
-
 %=== directory of input signals
 directorysignals    = '../../../AAdataI26calib/';
 %=== directory of output results
@@ -83,7 +83,6 @@ end
 
 %=====================
 Pfilter = length(filtercharact);
-
 % if and(Pfilter==1, filtercharact(Pfilter).Norder==0)
 %     filtercharact(Pfilter).Wlow_Hz  = 0.001;
 %     filtercharact(Pfilter).Whigh_Hz = 10;
@@ -121,14 +120,6 @@ for ihc = 1, ihc
 
         date_i = sprintf('%s/%s/%s',fullfilename_i(7:10),...
             fullfilename_i(16:17),fullfilename_i(21:22));
-
-        % ihc==1, date==2015/10/07 ,from sample index 2.4e6
-        % ihc==1, date==2015/10/09 ,from sample index 2.4e6
-        % ihc==2, date==2015/08/07 ,from sample index 2.4e6
-        % ihc==2, date==2015/10/05 ,from sample index 2.4e6
-        % ihc==5, date==2015/10/05
-        % ihc==6, date==2015/10/07
-        % ihc==8, date==2015/10/07 , from sample index 2.5e6
 
         %============ Warning =======================
         %============================================
@@ -173,9 +164,10 @@ for ihc = 1, ihc
             fbankanalysis(signals_centered,...
             filtercharact,Fs_Hz,MSCthreshold);
         %============================================
-        % These 3 following quantities do not depend on the 
-        % index ifile. Therefore they could be performed
-        % outside of the loop on ifile. Indeed 
+        % These three quantities, idipinf, idipsup and cumsumnbfq_ip
+        % do not depend on the index ifile and do depend only on the
+        % filtercharac parameters. Therefore they could be performed
+        % outside of the loop on ifile. The variable 
         % SUTs(ip).indexinsidefreqband can be performed outside
         % of the function fbankanalysis.m
         idipinf       = zeros(Pfilter,1);
@@ -254,45 +246,3 @@ for ihc = 1, ihc
     end
 end
 %============================ END =========================================
-%%
-% ip=1;
-% NaverageFFTs = filtercharact(1).ratioDFT2SCP;
-% allT.TUUonUR = linspace(0.7,1.3,100);
-% allT.TURonRR = linspace(0.7,1.3,100);
-% allT.MSC     = linspace(0.5,1,100);
-% allT.phase   = linspace(0,2*pi,100);
-% 
-% 
-% listifq = cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2);
-% Llistifq = length(listifq);
-% STDmodtheo_ip = zeros(Llistifq,1);
-% 
-% for indfq=1:Llistifq
-%     ifq=listifq(indfq);
-%     SCP_ip_ifq = nanmean(allScpPfilters(:,ifq,:),3);
-%     if any(isnan(SCP_ip_ifq))
-%         STDmodtheo_ip(indfq)=NaN;
-%     else
-%         RR=[SCP_ip_ifq(1) SCP_ip_ifq(3);SCP_ip_ifq(3)' SCP_ip_ifq(2)];
-%         [statUUonUR, statURonRR, statMSC]    = ...
-%             statsRatiosHbis(allT, RR, NaverageFFTs, 0.3);
-%         STDmodtheo_ip(indfq) = diff(statUUonUR.CI)/2;
-%     end
-% end
-% nbofvalues_ip = sum(nbofvaluesoverthreshold(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
-% STDmodempiric_ip = nanmean(...
-%     allSTDmodRatioSupPfilters(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),2);
-% corrlevel = corr(STDmodtheo_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))), STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0))));
-% 
-% [STDmodtheo_ip./(STDmodempiric_ip) nbofvalues_ip]
-% corrlevel
-% 
-% figure(1)
-% subplot(121)
-% plot( allT.TUUonUR,statURonRR.pdf,'.-')
-% hold on
-% plot( allT.TUUonUR,statUUonUR.pdf,'.-r')
-% hold off
-% subplot(122)
-% plot(STDmodtheo_ip, STDmodempiric_ip,'.')
-% 

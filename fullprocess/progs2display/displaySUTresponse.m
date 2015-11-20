@@ -23,8 +23,9 @@ directoryinputresults = '../AAresultswithFB98bis/';
 
 sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
+trimmeanflag = 1;
 
-for ihc = 4
+for ihc = 1
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
     fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
@@ -33,7 +34,9 @@ for ihc = 4
     eval(comload);
     switch ihc
         case 1
-            remainindex = [1:61 62 63:70]; % 2015/10/13
+            remainindex = [1:34 36:61 63:70]; % 2015/10/13
+        case 2
+            remainindex = [10:40]; % 2015/10/13
         case 4
             remainindex = [1:65 66 67:nbmats]; % 2015/10/11
         otherwise
@@ -66,8 +69,19 @@ for ihc = 4
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
     end
     %%
-    doubledaynumber = length(remainindex);
     
+    allRatioSupPfilters          = allRatioSupPfilters(:,remainindex);
+    allSTDmodRatioSupPfilters    = allSTDmodRatioSupPfilters(:,remainindex);
+    allSTDphaseRatioSupPfilters  = allSTDphaseRatioSupPfilters(:,remainindex);
+    
+    allRatioInfPfilters          = allRatioInfPfilters(:,remainindex);
+    allSTDmodRatioInfPfilters    = allSTDmodRatioInfPfilters(:,remainindex);
+    allSTDphaseRatioInfPfilters  = allSTDphaseRatioInfPfilters(:,remainindex);
+    allmeanMSCcstPfilters        = allmeanMSCcstPfilters(:,remainindex);
+    nbofvaluesoverthreshold      = nbofvaluesoverthreshold(:,remainindex);
+    allScpPfilters               = allScpPfilters(:,:,remainindex);
+
+
     STDmodRatioPfilters_ave        = nanmedian(allSTDmodRatioSupPfilters,2);
     STDphaseRatioPfilters_ave      = nanmedian(allSTDphaseRatioSupPfilters,2);
     
@@ -98,9 +112,14 @@ for ihc = 4
     %====== absolute and arg of the ratios
     modRatioPfiltersUSZ            = abs(RatioPfiltersUSZ);
     phaseRatioPfiltersUSZ_rd       = angle(RatioPfiltersUSZ);
-    %====== averaging by MEDIAN to avoid outliers
-    meanmodRatioPfiltersUSZ        = trimmean(modRatioPfiltersUSZ,30,2);
-    meanphasePfiltersUSZ_rd        = trimmean(phaseRatioPfiltersUSZ_rd,30,2);
+    %====== averaging by TRIMMEAN to avoid outliers
+    if trimmeanflag
+        meanmodRatioPfiltersUSZ        = trimmean(modRatioPfiltersUSZ,30,2);
+        meanphasePfiltersUSZ_rd        = trimmean(phaseRatioPfiltersUSZ_rd,30,2);
+    else
+        meanmodRatioPfiltersUSZ        = nanmean(modRatioPfiltersUSZ,2);
+        meanphasePfiltersUSZ_rd        = nanmean(phaseRatioPfiltersUSZ_rd,2);
+    end
     %====== STDs
     STDmodPfiltersUSZ              = nanstd(modRatioPfiltersUSZ,[],2);
     STDphasePfiltersUSZ_rd         = nanstd(phaseRatioPfiltersUSZ_rd,[],2);
@@ -167,7 +186,7 @@ for ihc = 4
     set(gca,'fontname','times','fontsize',14)
     
     grid on
-    xlabel('frequency [Hz]')
+    xlabel('frequdoubledaynumberency [Hz]')
     ylabel('Phase [deg]')
     
     hold on
