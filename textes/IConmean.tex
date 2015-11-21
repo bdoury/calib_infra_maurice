@@ -1,0 +1,47 @@
+
+% !TEX root = ../calibreport.tex
+%==============================================================
+
+
+We consider a sequence of $N$ data modeled as $N$ i.i.d. r.v. denoted $X_{n}$. An estimator of the mean is given by
+\begin{eqnarray*}
+\hat \mu_{N} &=&\frac{1}{N}\sum_{n=1}^{N}X_{n}
+\end{eqnarray*}
+We let
+\begin{eqnarray*}
+\hat\sigma_{N}^{2} &=& \frac{1}{N-1}\sum_{n=1}^{N}(X_{n}-\hat \mu)^{2}
+\end{eqnarray*}
+To provide a confidence interval (CI) for $\hat\mu_{N}$ we have
+\begin{itemize}
+\item
+if $X_{n}$ are gaussian with mean $\mu$ and variance $\sigma^{2}$ both unknown, it is show that the CI can be derived from the law of Student with $N-1$ d.o.f. more specifically we have:
+\begin{eqnarray*}
+\frac{\sqrt{N}(\hat \mu_{N} -\mu)}{\hat\sigma_{N}}&\sim&T_{N-1}
+\end{eqnarray*}
+leading to the CI:
+\begin{eqnarray*}
+\hat\mu_{N}-\alpha\frac{\hat\sigma_{N}}{\sqrt{N}}
+&
+ \leq\mu\leq
+&
+\hat\mu_{N}+\alpha\frac{\hat\sigma_{N}}{\sqrt{N}}
+\end{eqnarray*}
+
+\item
+for large $N$ (limit central theorem), it is shown that 
+\begin{eqnarray*}
+\frac{\hat\sigma_{N}}{\sqrt{N}}
+\end{eqnarray*}
+leading to the CI:
+\begin{eqnarray*}
+\hat\mu_{N}-\beta\frac{\hat\sigma_{N}}{\sqrt{N}}
+&
+ \leq\mu\leq
+&
+\hat\mu_{N}+\beta\frac{\hat\sigma_{N}}{\sqrt{N}}
+\end{eqnarray*}
+
+\item
+for limit central theorem, 
+
+\end{itemize}

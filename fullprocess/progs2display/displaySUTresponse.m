@@ -25,7 +25,7 @@ sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag = 0;
 trimmeanflag = 1;
 
-for ihc = 1
+for ihc = 4
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
     fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
@@ -36,7 +36,7 @@ for ihc = 1
         case 1
             remainindex = [1:34 36:61 63:70]; % 2015/10/13
         case 2
-            remainindex = [10:40]; % 2015/10/13
+            remainindex = [1:nbmats]; % 2015/10/13
         case 4
             remainindex = [1:65 66 67:nbmats]; % 2015/10/11
         otherwise

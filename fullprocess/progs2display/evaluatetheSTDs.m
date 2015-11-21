@@ -1,7 +1,6 @@
-% this program reads the ratios SUT/SREF estimated by spectral approach
-% and stored in a drectory as AAresults. That consists on 8 files
-% for the 8 sensors of IS26. Each file consists the estimate ratios
-% on several days of records.
+% this program performs theoretical STDs for a group of randomly
+% selected pairs of days, and also the STDs obtained on the 
+% estimates.
 %
 %=========================================================================
 clear
@@ -12,9 +11,16 @@ directorysignals    = '../../../../AAdataI26calib/';
 % program estimationwithFB.m
 directoryinputresults = '../AAresultswithFB98bis/';
 
-randomlydoubledaynumber = 5;
+%======== to compute theoretical integrals
+allT.TUUonUR   = linspace(0.6,2,100);
+allT.TURonRR   = linspace(0.6,2,100);
+allT.MSC       = linspace(0.6,1,100);
+allT.phase     = linspace(-pi,pi,100);
+alphaSTDforRsup = (1-normcdf(1))*2; % ci at 1 sigma
 
-for ihc = 1
+randomlydoubledaynumber = 15;
+
+for ihc = 2
     numfig = ihc;
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
@@ -32,7 +38,6 @@ for ihc = 1
     end
     %%
     
-    
     allRatioSupPfilters          = allRatioSupPfilters(:,remainindex);
     allSTDmodRatioSupPfilters    = allSTDmodRatioSupPfilters(:,remainindex);
     allSTDphaseRatioSupPfilters  = allSTDphaseRatioSupPfilters(:,remainindex);
@@ -45,8 +50,7 @@ for ihc = 1
     allScpPfilters               = allScpPfilters(:,:,remainindex);
     %%
     permutenbmats = randperm(length(remainindex));
-    indrandomlychosen = ...
-        remainindex(permutenbmats(1:randomlydoubledaynumber));
+    indrandomlychosen = permutenbmats(1:randomlydoubledaynumber);
     allRatioSupPfilters = ...
         allRatioSupPfilters(:,indrandomlychosen);
     allSTDmodRatioSupPfilters = ...
@@ -108,49 +112,52 @@ for ihc = 1
         sqrt(sum(nbofvaluesoverthresholdUSZ,2));
 end
 %%
-   NaverageFFTs   = filtercharact(1).ratioDFT2SCP;
-    allT.TUUonUR  = linspace(0.7,1.3,50);
-    allT.TURonRR  = linspace(0.7,1.3,50);
-    allT.MSC      = linspace(0.5,1,50);
-    allT.phase    = linspace(0,2*pi,50);
-    LfqsUSZ       = length(allfrqsPfiltersUSZ);
-    twolistsSTDs  = zeros(LfqsUSZ,2);
-    STDmodtheo    = zeros(LfqsUSZ,1);
- 
-    for indfq=1:LfqsUSZ
-        SCP_ifq = nanmean(allScpPfiltersUSZ(:,indfq,:),3);
-        if any(isnan(SCP_ifq))
-            STDmodtheo_ifq=NaN;
-        else
-            RR_ifq = [SCP_ifq(1) SCP_ifq(3)';SCP_ifq(3) SCP_ifq(2)];
-            [statUUonUR, statURonRR, statMSC]    = ...
-                statsRatiosHbis(allT, RR_ifq, NaverageFFTs, 0.3);
-            STDmodtheo(indfq) = diff(statUUonUR.CI)/2;
-        end
+NaverageFFTs   = filtercharact(1).ratioDFT2SCP;
+LfqsUSZ       = length(allfrqsPfiltersUSZ);
+twolistsSTDs  = zeros(LfqsUSZ,2);
+STDmodtheoUSZ    = zeros(LfqsUSZ,1);
+STDphasetheoUSZ  = zeros(LfqsUSZ,1);
+
+for indfq=1:LfqsUSZ
+    SCP_ifq = nanmean(allScpPfiltersUSZ(:,indfq,:),3);
+    if any(isnan(SCP_ifq))
+        STDmodtheoUSZ(indfq)=NaN;
+    else
+        RR_ifq = [SCP_ifq(1) SCP_ifq(3)';SCP_ifq(3) SCP_ifq(2)];
+        [statUUonUR, statURonRR, statMSC, stdPhase_degree]    = ...
+            statsRatiosHbis(allT, RR_ifq, NaverageFFTs, alphaSTDforRsup);
+        STDmodtheoUSZ(indfq) = diff(statUUonUR.CI)/2;
+        STDphasetheoUSZ(indfq) = stdPhase_degree;
     end
-    
-    plot(STDmodPfiltersUSZ, STDmodtheo,'or')
-    set(gca,'xlim',[0 0.1],'ylim',[0 0.1])
-    
-%     STDmodempiric_ip = trimmean(...
-%         allSTDmodRatioSupPfilters(cumsumnbfq_ip(ip,1):cumsumnbfq_ip(ip,2),:),30,2);
-% 
-%     twolists = [STDmodtheo_ifq, ...
-%         STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),not(STDmodempiric_ip==0)))];
-%     
-%     % corrlevel = corr(twolists);
-%     
-%     twolistsSTDs = 
+end
 
+% [nanmean(STDmodtheo), nanstd(STDmodtheo)],
+% [nanmean(STDmodRatioPfilters_aveUSZ), nanstd(STDmodRatioPfilters_aveUSZ)],
+% [nanmean(STDmodPfiltersUSZ), nanstd(STDmodPfiltersUSZ)]
+%%
+% probaIC 70%, 1.6449 for 90%  and 1.96 for 95%
+probaIC = 0.95;
+alphaCI = -norminv((1-probaIC)/2);
 
-[nanmean(STDmodtheo), nanstd(STDmodtheo)], 
-[nanmean(STDmodRatioPfilters_aveUSZ), nanstd(STDmodRatioPfilters_aveUSZ)],
-[nanmean(STDmodPfiltersUSZ), nanstd(STDmodPfiltersUSZ)]
-
- figure(2)
-plot(mean( nbofvaluesoverthresholdUSZ,2), STDmodtheo,'.')
-%================================== 
-% figure(2)
+sumnbofvaluesoverthresholdUSZ = sum(nbofvaluesoverthresholdUSZ,2);
+CItheoUSZ = alphaCI * STDmodtheoUSZ ./ sumnbofvaluesoverthresholdUSZ;
+CIPfiltersUSZ = alphaCI * STDmodPfiltersUSZ ./ sumnbofvaluesoverthresholdUSZ;
+CIRatioPfilters_aveUSZ = alphaCI * STDmodRatioPfilters_aveUSZ ./ ...
+    sumnbofvaluesoverthresholdUSZ;
+CISTDphasetheoUSZ = STDphasetheoUSZ ./ sumnbofvaluesoverthresholdUSZ;
+figure(2)
+subplot(311)
+loglog(allfrqsPfiltersUSZ,sumnbofvaluesoverthresholdUSZ,'.')
+grid on
+subplot(312)
+loglog(allfrqsPfiltersUSZ, [CItheoUSZ ...
+    CIPfiltersUSZ CIRatioPfilters_aveUSZ],'.')
+grid on
+subplot(313)
+loglog(allfrqsPfiltersUSZ, CISTDphasetheoUSZ,'.')
+grid on
+%==================================
+%
 % plot(allT.TUUonUR,statURonRR.pdf,'.-')
 % hold on
 % plot(allT.TUUonUR,statUUonUR.pdf,'.-r')

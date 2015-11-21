@@ -40,9 +40,9 @@ The average estimate of the SUT response, in terms of gain in dB and phase in de
 %================================
 \subsection{More details on a pair of days}
 %================================
-\figscale{figures/2daysonIS26SUT1year2015day233.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}{}{1}
+\figscale{figures/2daysonIS26SUT1year2015day233.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}{}{0.8}
 
-\figscale{figures/2daysonIS26SUT1year2015day233aboveTH.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}{}{1}
+\figscale{figures/2daysonIS26SUT1year2015day233aboveTH.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}{}{0.8}
 
 
 
@@ -75,7 +75,10 @@ Another problem is the full desynchronization of the two sensor signals, as for 
 \subsection{Averaging on randomly selected pairs of days}
 %================================
 
-To avoid the problems, cited section \ref{ss:problems}, which appear very rarely, it is advised to use a trimmed mean on several pairs of days. Figure \ref{fig:withtrimmeanonstation1}, randomly selected pairs of days are reported with a simple mean 
+
+Let us remain that a malfunction of short duration can be regarded as an outlier and can be removed from the useful data. It follows that during an averaging of the estimated responses we can remove what happen very rarely. For this reason we suppress a short percent of the extreme values, which is less brutale than the median approach. This kind of averaging is often called trimmed mean.
+
+Therefore to avoid the problems, cited section \ref{ss:problems}, which appear very rarely, it is advised to use a trimmed mean on several pairs of days. Figure \ref{fig:withtrimmeanonstation1}, randomly selected pairs of days are reported with a simple mean 
 and a trimmed mean excluding $30\%$ of the lowest and highest values. We see that the outlier present in the red curves is suppressed automatically by the trimmed mean. This outlier is due to the data of the 13th of October in station 1 and at the origin of the clich we see on figure \ref{fig:withoutproblemons1}.   
 
 
@@ -84,8 +87,22 @@ and a trimmed mean excluding $30\%$ of the lowest and highest values. We see tha
 %================================
 \newpage\clearpage
 %================================
-\subsection{Stability at $1$ Hz}
+\subsection{Stability at different frequency values}
 %================================
+
+For different frequencies we draw randomly between the all pairs of days a certain number of them. We apply an averaging with trimming $20\%$ of the extreme values. The results are reported figure \ref{fig:averagingonagivenpairsofdays}.
+
+At first we report figure \ref{fig:evolutionon1atfreq1Hz} the Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact} at 1 Hz for all pairs of successive days. Our database consists of $70$ pairs of days. The selected frequency is 1 Hz. It appears one point at the limit of the requirements of the PTS.
+
+\figscale{figures/evolutionon1atfreq1Hz.pdf}{$140$ pairs of days have been studied between the $1$st of June to the $30$th October $2015$. Top: the value of theSup ratio at $1$ Hz in a range centered on the measures with a width of $\pm 5\%$. For thus duration of $48$ hours a few points are outside the range. Therefore the idea to average on a few pairs, e.g. figure \ref{fig:evolutionon1atdifffreq} the averaging is on 1 month. Bottom: the number of points over the threshold at the frequency of $1$ Hz. Some pairs of  days the number is only $1$. They correspond to the points in top figure outside of the requirement range. }{fig:evolutionon1atfreq1Hz}{0.8}
+
+%================================
+\newpage\clearpage
+
+We repeat the same operations by taking $15$ pairs of days (i.e. $1$ month) at different frequencies and with a trimmed mean excluding the $30\%$ extreme values. We observe that the frequencies around the dip is a little bit more unstable. Complementary  results are given section \ref{ss:ciandstdsection}
+
+\figscale{figures/evolutionon1atdifffreq.pdf}{Randomly draw in the sequence of pairs of days.}{fig:evolutionon1atdifffreq}{0.8}
+
 
 %================================
 \newpage\clearpage
@@ -109,9 +126,7 @@ On the other hand if the ratio between the two noise levels are perfectly known 
 %================================
 \subsection{Dip on the curves}
 %================================
-For the figures \ref{fig:C2} to \ref{fig:C5} associated to the MB2005, an important dip around 0.1 Hz is observed. 
-
-Also we have reported figure \ref{fig:afewdays1colocation} a few days on the location H2C2. The different colors are for different days. The distribution seems to be uniform and does not depend on the day. The ratio seems to be different of 1.\\*
+In all previous figures we observe an important dip around 0.1 Hz.  Also we have reported figure \ref{fig:afewdays1colocation} the ratio \eqref{eq:ratio-sup-bis-exact} for a few days on the location H2C2. The different colors are for different days. The distribution seems to be uniform and does not depend on the day. The ratio seems to be different of 1.\\*
 
 If the MSC is about 0.99, meaning that the noises on the two sensors are negligible, and if the two sensors have the same response, the only reason to get a ratio less than 1, is that the acoustical SOI on the SUT is attenuated, may due to the noise system reduction. That would write: it exists $\alpha\in\mathbb{C}$ with $|\alpha|<1$ s.t.:
 \begin{eqnarray}

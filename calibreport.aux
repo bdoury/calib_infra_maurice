@@ -1,16 +1,21 @@
 \relax 
-\ifx\hyper@anchor\@undefined
-\global \let \oldcontentsline\contentsline
-\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
-\global \let \oldnewlabel\newlabel
-\gdef \newlabel#1#2{\newlabelxx{#1}#2}
-\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\let \contentsline\oldcontentsline
-\let \newlabel\oldnewlabel}
-\else
-\global \let \hyper@last\relax 
-\fi
-
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{plain}
 \@writefile{toc}{\contentsline {part}{I\hspace  {1em}Theoretical aspects}{4}{part.1}}
 \citation{?}
@@ -20,288 +25,295 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.}Objective}{5}{section.1.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces \small \it  {Measurement process. SUT denotes the sensor under test, it consists of a sensor and its noise reduction system. SREF denotes the reference sensor. SUT and SREF are assumed to be linear filters. $e_{u}(t)$ and $e_{u}(t)$ denote the non observable input signals. $x_{u}(t)$ and $x_{r}(t)$ are sampled and recorded.}}}{6}{figure.1.1}}
-\newlabel{fig:schema-of-observation-simple}{{1.1}{6}{\protect \small \it {Measurement process. SUT denotes the sensor under test, it consists of a sensor and its noise reduction system. SREF denotes the reference sensor. SUT and SREF are assumed to be linear filters. $e_{u}(t)$ and $e_{u}(t)$ denote the non observable input signals. $x_{u}(t)$ and $x_{r}(t)$ are sampled and recorded.}\relax }{figure.1.1}{}}
-\newlabel{eq:model-signal-introduction}{{1.1}{6}{Objective\relax }{equation.1.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}Experimental testbed}{7}{section.1.2}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces \small \it  sensor specifications: all sensors have the same theoretical sensitivity of $0.02$ V/Pa. The MB3s have self noise lower than that of the MB2005s. The sites associated to the ''Wind Noise Reduction System" are labelled H whereas the sites of reference sensors are labelled C. In the site 1, we have wind informations, as direction, velocity, etc}}{7}{table.1.1}}
-\newlabel{tab:sensor-specifications}{{1.1}{7}{\protect \small \it sensor specifications: all sensors have the same theoretical sensitivity of $0.02$ V/Pa. The MB3s have self noise lower than that of the MB2005s. The sites associated to the ''Wind Noise Reduction System" are labelled H whereas the sites of reference sensors are labelled C. In the site 1, we have wind informations, as direction, velocity, etc\relax }{table.1.1}{}}
+\newlabel{fig:schema-of-observation-simple}{{1.1}{6}{\protect \small \it {Measurement process. SUT denotes the sensor under test, it consists of a sensor and its noise reduction system. SREF denotes the reference sensor. SUT and SREF are assumed to be linear filters. $e_{u}(t)$ and $e_{u}(t)$ denote the non observable input signals. $x_{u}(t)$ and $x_{r}(t)$ are sampled and recorded.}}{figure.1.1}{}}
+\newlabel{eq:model-signal-introduction}{{1.1}{6}{Objective}{equation.1.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}Experimental testbed}{8}{section.1.2}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces \small \it  sensor specifications: all sensors have the same theoretical sensitivity of $0.02$ V/Pa. The MB3s have self noise lower than that of the MB2005s. The sites associated to the ''Wind Noise Reduction System" are labelled H whereas the sites of reference sensors are labelled C. In the site 1, we have wind informations, as direction, velocity, etc}}{8}{table.1.1}}
+\newlabel{tab:sensor-specifications}{{1.1}{8}{\protect \small \it sensor specifications: all sensors have the same theoretical sensitivity of $0.02$ V/Pa. The MB3s have self noise lower than that of the MB2005s. The sites associated to the ''Wind Noise Reduction System" are labelled H whereas the sites of reference sensors are labelled C. In the site 1, we have wind informations, as direction, velocity, etc}{table.1.1}{}}
 \citation{frazier:2013}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}Main issue}{8}{section.1.3}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Spectral analysis for SUT estimation}{10}{chapter.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}Main issue}{9}{section.1.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Spectral analysis for SUT estimation}{11}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:spectralanalysis}{{2}{10}{Spectral analysis for SUT estimation\relax }{chapter.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces \small \it  {The calibration systems consists of two channels: (i) the SUT with the noise reduction system (NRS), the sensor and the digitizer and (ii) the SREF with the sensor and the digitizer. Because the two digitizers are identical, the response ratio between the two channels does not depend on the digitizer. It follows that the response ratio corrected by the SREF response is an estimate of the SUT response, including the sensor and the NRS.}}}{10}{figure.2.1}}
-\newlabel{}{{2.1}{10}{\protect \small \it {The calibration systems consists of two channels: (i) the SUT with the noise reduction system (NRS), the sensor and the digitizer and (ii) the SREF with the sensor and the digitizer. Because the two digitizers are identical, the response ratio between the two channels does not depend on the digitizer. It follows that the response ratio corrected by the SREF response is an estimate of the SUT response, including the sensor and the NRS.}\relax }{figure.2.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces \small \it  {$\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{UU}$}\mathaccent "0362{S_{UU}}(f)$, $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{RR}$}\mathaccent "0362{S_{RR}}(f)$, $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{UR}$}\mathaccent "0362{S_{UR}}(f)$ denote respectively the spectrum on channel SUT, the spectrum on channel SREF and the cross-spectrum between them. In the absence of noise the ratio between the 2 responses is given by the ratio $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{UU}$}\mathaccent "0362{S_{UU}}(f)/\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{RR}$}\mathaccent "0362{S_{RR}}(f)$}}}{11}{figure.2.2}}
-\newlabel{}{{2.2}{11}{\protect \small \it {$\widehat {S_{UU}}(f)$, $\widehat {S_{RR}}(f)$, $\widehat {S_{UR}}(f)$ denote respectively the spectrum on channel SUT, the spectrum on channel SREF and the cross-spectrum between them. In the absence of noise the ratio between the 2 responses is given by the ratio $\widehat {S_{UU}}(f)/\widehat {S_{RR}}(f)$}\relax }{figure.2.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}Objective}{12}{section.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{Remark on the deterministic approach (more details page \pageref  {ann:deterministic-approach})}{12}{section*.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}Observation model}{12}{section.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Continuous time model}{13}{subsection.2.2.1}}
-\newlabel{eq:model-of-excitation}{{2.1}{13}{Continuous time model\relax }{equation.2.1}{}}
-\newlabel{eq:model-of-obervation}{{2.2}{13}{Continuous time model\relax }{equation.2.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces \small \it  {Basic observation schema. $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S$}\mathaccent "0362{S}_{UU}(f)$, $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S$}\mathaccent "0362{S}_{RR}(f)$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S$}\mathaccent "0362{S}_{UR}(f)$ represent the three estimated spectral components under stationary assumptions}}}{13}{figure.2.3}}
-\newlabel{fig:general-schema}{{2.3}{13}{\protect \small \it {Basic observation schema. $\hat S_{UU}(f)$, $\hat S_{RR}(f)$ and $\hat S_{UR}(f)$ represent the three estimated spectral components under stationary assumptions}\relax }{figure.2.3}{}}
-\newlabel{eq:spectral-model}{{2.3}{14}{Continuous time model\relax }{equation.2.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Discrete time model}{14}{subsection.2.2.2}}
-\newlabel{eq:spectral-model-discrete}{{2.4}{15}{Discrete time model\relax }{equation.2.4}{}}
-\newlabel{eq:exact-MSC}{{2.5}{15}{Discrete time model\relax }{equation.2.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Resolution of \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:spectral-model-discrete}\unskip \@@italiccorr )}} w.r.t. $G_{{u},k}$}{15}{subsection.2.2.3}}
-\newlabel{eq:phase-estimation}{{2.6}{15}{Resolution of \eqref {eq:spectral-model-discrete} w.r.t. $G_{\ut ,k}$\relax }{equation.2.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Case of known noise level ratio}{15}{section*.3}}
-\newlabel{eq:known-noise-ratio}{{2.7}{15}{Case of known noise level ratio\relax }{equation.2.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Under-determination}{15}{section*.4}}
-\newlabel{eq:ratio-sup-bis-exact}{{2.8}{16}{Under-determination\relax }{equation.2.8}{}}
-\newlabel{eq:ratio-inf-bis-exact}{{2.9}{16}{Under-determination\relax }{equation.2.9}{}}
-\newlabel{eq:MSC-continuous-frequency}{{2.10}{16}{Under-determination\relax }{equation.2.10}{}}
-\newlabel{eq:coherence-in-our-model}{{2.11}{16}{Under-determination\relax }{equation.2.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}Spectral analysis}{16}{section.2.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}MSC test}{17}{subsection.2.3.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces \small \it  {Simulation: for simulating the sensors are two different IIR(2,2) with important resonances are used. The commun coherent signal $s(t)$ is white. The length of the frequency analysis is $300$ seconds, i.e. $6000$ points. The spectral components are performed on $M$ times this duration. The root mean square error is performed by integrating on the full band. These curves have been obtained with the program {\tt  estimHanalysis}.}}}{18}{figure.2.4}}
-\newlabel{fig:allHest}{{2.4}{18}{\protect \small \it {Simulation: for simulating the sensors are two different IIR(2,2) with important resonances are used. The commun coherent signal $s(t)$ is white. The length of the frequency analysis is $300$ seconds, i.e. $6000$ points. The spectral components are performed on $M$ times this duration. The root mean square error is performed by integrating on the full band. These curves have been obtained with the program {\tt estimHanalysis}.}\relax }{figure.2.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces \small \it  {Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$ for different values of the number $M$ of averaging under the hypothesis that the MSC is $0.96$. These curves provide the threshold to test the hypothesis $H_{0}=\{\mathrm  {MSC}>0.96\}$ with a confidence level of $90\%$.}}}{18}{figure.2.5}}
-\newlabel{fig:MSCtestthreshold}{{2.5}{18}{\protect \small \it {Cumulative function of $\hMSC $ for different values of the number $M$ of averaging under the hypothesis that the MSC is $0.96$. These curves provide the threshold to test the hypothesis $H_{0}=\{\MSC >0.96\}$ with a confidence level of $90\%$.}\relax }{figure.2.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces \small \it  {Asymptotic distributions of the two ratios present in the formulas \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup}\unskip \@@italiccorr )}} and \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-inf}\unskip \@@italiccorr )}}. These distributions depend on the $\mathrm  {MSC}$, but also on the noise levels and that is not known in practical case. These curves are obtained with the program {\tt  CIHestimate.m}. The expressions are proved in the annex (see also the provided toolbox).}}}{19}{figure.2.6}}
-\newlabel{fig:theoreticaldistribratios}{{2.6}{19}{\protect \small \it {Asymptotic distributions of the two ratios present in the formulas \eqref {eq:ratio-sup} and \eqref {eq:ratio-inf}. These distributions depend on the $\MSC $, but also on the noise levels and that is not known in practical case. These curves are obtained with the program {\tt CIHestimate.m}. The expressions are proved in the annex (see also the provided toolbox).}\relax }{figure.2.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}SUT estimation}{19}{subsection.2.3.2}}
-\newlabel{eq:weithted-average-Ratio}{{2.14}{20}{SUT estimation\relax }{equation.2.14}{}}
-\newlabel{eq:estimated-Ratio}{{2.15}{20}{SUT estimation\relax }{equation.2.15}{}}
-\newlabel{eq:weights}{{2.16}{20}{SUT estimation\relax }{equation.2.16}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Remark}{20}{section*.5}}
-\newlabel{eq:spectral-model-discrete-ell}{{2.18}{20}{Remark\relax }{equation.2.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces \small \it  {Left: $R_{\qopname  \relax m{inf}}$, right: $R_{\qopname  \relax m{sup}}$. The values are obtained in the band of interest of the filter 3. The selected MSC threshold is $0.95$.}}}{21}{figure.2.7}}
-\newlabel{fig:practicalratiodistribution}{{2.7}{21}{\protect \small \it {Left: $R_{\inf }$, right: $R_{\sup }$. The values are obtained in the band of interest of the filter 3. The selected MSC threshold is $0.95$.}\relax }{figure.2.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.}Using a filter bank}{21}{section.2.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.}Summary for SUT estimation}{22}{section.2.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces \small \it  {Spectral estimation with $\alpha =50\%$ overlapping for FFT block. The variance of the estimate is related to the number of windows. If the number of disjoint FFT block is $M=5$, and if the length in seconds of the spectral analysis window is 500 seconds, the length in second of the time window for 1 FFT is 100 seconds. The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. The overlapping for successive SCP analysis is $\beta =0$.}}}{23}{figure.2.8}}
-\newlabel{}{{2.8}{23}{\protect \small \it {Spectral estimation with $\alpha =50\%$ overlapping for FFT block. The variance of the estimate is related to the number of windows. If the number of disjoint FFT block is $M=5$, and if the length in seconds of the spectral analysis window is 500 seconds, the length in second of the time window for 1 FFT is 100 seconds. The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. The overlapping for successive SCP analysis is $\beta =0$.}\relax }{figure.2.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Filter bank analysis}{23}{section*.6}}
-\newlabel{sss:filterbank}{{5.}{23}{Filter bank analysis\relax }{section*.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces \small \it  }}{24}{table.2.1}}
-\newlabel{tab:freq-duration-tradeoff}{{2.1}{24}{\protect \small \it \relax }{table.2.1}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Results on IS26 data}{25}{chapter.3}}
+\newlabel{chap:spectralanalysis}{{2}{11}{Spectral analysis for SUT estimation}{chapter.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces \small \it  {The calibration systems consists of two channels: (i) the SUT with the noise reduction system (NRS), the sensor and the digitizer and (ii) the SREF with the sensor and the digitizer. Because the two digitizers are identical, the response ratio between the two channels does not depend on the digitizer. It follows that the response ratio corrected by the SREF response is an estimate of the SUT response, including the sensor and the NRS.}}}{11}{figure.2.1}}
+\newlabel{}{{2.1}{11}{\protect \small \it {The calibration systems consists of two channels: (i) the SUT with the noise reduction system (NRS), the sensor and the digitizer and (ii) the SREF with the sensor and the digitizer. Because the two digitizers are identical, the response ratio between the two channels does not depend on the digitizer. It follows that the response ratio corrected by the SREF response is an estimate of the SUT response, including the sensor and the NRS.}}{figure.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces \small \it  {$\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{UU}$}\mathaccent "0362{S_{UU}}(f)$, $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{RR}$}\mathaccent "0362{S_{RR}}(f)$, $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{UR}$}\mathaccent "0362{S_{UR}}(f)$ denote respectively the spectrum on channel SUT, the spectrum on channel SREF and the cross-spectrum between them. In the absence of noise the ratio between the 2 responses is given by the ratio $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{UU}$}\mathaccent "0362{S_{UU}}(f)/\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S_{RR}$}\mathaccent "0362{S_{RR}}(f)$}}}{12}{figure.2.2}}
+\newlabel{}{{2.2}{12}{\protect \small \it {$\widehat {S_{UU}}(f)$, $\widehat {S_{RR}}(f)$, $\widehat {S_{UR}}(f)$ denote respectively the spectrum on channel SUT, the spectrum on channel SREF and the cross-spectrum between them. In the absence of noise the ratio between the 2 responses is given by the ratio $\widehat {S_{UU}}(f)/\widehat {S_{RR}}(f)$}}{figure.2.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}Objective}{13}{section.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Remark on the deterministic approach (more details page \pageref  {ann:deterministic-approach})}{13}{section*.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}Observation model}{13}{section.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Continuous time model}{14}{subsection.2.2.1}}
+\newlabel{eq:model-of-excitation}{{2.1}{14}{Continuous time model}{equation.2.2.1}{}}
+\newlabel{eq:model-of-obervation}{{2.2}{14}{Continuous time model}{equation.2.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces \small \it  {Basic observation schema. $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S$}\mathaccent "0362{S}_{UU}(f)$, $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S$}\mathaccent "0362{S}_{RR}(f)$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle S$}\mathaccent "0362{S}_{UR}(f)$ represent the three estimated spectral components under stationary assumptions}}}{14}{figure.2.3}}
+\newlabel{fig:general-schema}{{2.3}{14}{\protect \small \it {Basic observation schema. $\hat S_{UU}(f)$, $\hat S_{RR}(f)$ and $\hat S_{UR}(f)$ represent the three estimated spectral components under stationary assumptions}}{figure.2.3}{}}
+\newlabel{eq:spectral-model}{{2.3}{15}{Continuous time model}{equation.2.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Discrete time model}{15}{subsection.2.2.2}}
+\newlabel{eq:spectral-model-discrete}{{2.4}{16}{Discrete time model}{equation.2.2.4}{}}
+\newlabel{eq:exact-MSC}{{2.5}{16}{Discrete time model}{equation.2.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Resolution of \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:spectral-model-discrete}\unskip \@@italiccorr )}} w.r.t. $G_{{u},k}$}{16}{subsection.2.2.3}}
+\newlabel{eq:phase-estimation}{{2.6}{16}{Resolution of \eqref {eq:spectral-model-discrete} w.r.t. $G_{\ut ,k}$}{equation.2.2.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Case of known noise level ratio}{16}{section*.3}}
+\newlabel{eq:known-noise-ratio}{{2.7}{16}{Case of known noise level ratio}{equation.2.2.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Under-determination}{16}{section*.4}}
+\newlabel{eq:ratio-sup-bis-exact}{{2.8}{17}{Under-determination}{equation.2.2.8}{}}
+\newlabel{eq:ratio-inf-bis-exact}{{2.9}{17}{Under-determination}{equation.2.2.9}{}}
+\newlabel{eq:MSC-continuous-frequency}{{2.10}{17}{Under-determination}{equation.2.2.10}{}}
+\newlabel{eq:coherence-in-our-model}{{2.11}{17}{Under-determination}{equation.2.2.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}Spectral analysis}{17}{section.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}MSC test}{18}{subsection.2.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces \small \it  {Simulation: for simulating the sensors are two different IIR(2,2) with important resonances are used. The commun coherent signal $s(t)$ is white. The length of the frequency analysis is $300$ seconds, i.e. $6000$ points. The spectral components are performed on $M$ times this duration. The root mean square error is performed by integrating on the full band. These curves have been obtained with the program {\tt  estimHanalysis}.}}}{19}{figure.2.4}}
+\newlabel{fig:allHest}{{2.4}{19}{\protect \small \it {Simulation: for simulating the sensors are two different IIR(2,2) with important resonances are used. The commun coherent signal $s(t)$ is white. The length of the frequency analysis is $300$ seconds, i.e. $6000$ points. The spectral components are performed on $M$ times this duration. The root mean square error is performed by integrating on the full band. These curves have been obtained with the program {\tt estimHanalysis}.}}{figure.2.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces \small \it  {Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$ for different values of the number $M$ of averaging under the hypothesis that the MSC is $0.96$. These curves provide the threshold to test the hypothesis $H_{0}=\{\mathrm  {MSC}>0.96\}$ with a confidence level of $90\%$.}}}{19}{figure.2.5}}
+\newlabel{fig:MSCtestthreshold}{{2.5}{19}{\protect \small \it {Cumulative function of $\hMSC $ for different values of the number $M$ of averaging under the hypothesis that the MSC is $0.96$. These curves provide the threshold to test the hypothesis $H_{0}=\{\MSC >0.96\}$ with a confidence level of $90\%$.}}{figure.2.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces \small \it  {Asymptotic distributions of the two ratios present in the formulas \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup}\unskip \@@italiccorr )}} and \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-inf}\unskip \@@italiccorr )}}. These distributions depend on the $\mathrm  {MSC}$, but also on the noise levels and that is not known in practical case. These curves are obtained with the program {\tt  CIHestimate.m}. The expressions are proved in the annex (see also the provided toolbox).}}}{20}{figure.2.6}}
+\newlabel{fig:theoreticaldistribratios}{{2.6}{20}{\protect \small \it {Asymptotic distributions of the two ratios present in the formulas \eqref {eq:ratio-sup} and \eqref {eq:ratio-inf}. These distributions depend on the $\MSC $, but also on the noise levels and that is not known in practical case. These curves are obtained with the program {\tt CIHestimate.m}. The expressions are proved in the annex (see also the provided toolbox).}}{figure.2.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}SUT estimation}{20}{subsection.2.3.2}}
+\newlabel{eq:weithted-average-Ratio}{{2.14}{21}{SUT estimation}{equation.2.3.14}{}}
+\newlabel{eq:estimated-Ratio}{{2.15}{21}{SUT estimation}{equation.2.3.15}{}}
+\newlabel{eq:weights}{{2.16}{21}{SUT estimation}{equation.2.3.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Remark}{21}{section*.5}}
+\newlabel{eq:spectral-model-discrete-ell}{{2.18}{21}{Remark}{equation.2.3.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces \small \it  {Left: $R_{\qopname  \relax m{inf}}$, right: $R_{\qopname  \relax m{sup}}$. The values are obtained in the band of interest of the filter 3. The selected MSC threshold is $0.95$.}}}{22}{figure.2.7}}
+\newlabel{fig:practicalratiodistribution}{{2.7}{22}{\protect \small \it {Left: $R_{\inf }$, right: $R_{\sup }$. The values are obtained in the band of interest of the filter 3. The selected MSC threshold is $0.95$.}}{figure.2.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.}Using a filter bank}{22}{section.2.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.}Summary for SUT estimation}{23}{section.2.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces \small \it  {Spectral estimation with $\alpha =50\%$ overlapping for FFT block. The variance of the estimate is related to the number of windows. If the number of disjoint FFT block is $M=5$, and if the length in seconds of the spectral analysis window is 500 seconds, the length in second of the time window for 1 FFT is 100 seconds. The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. The overlapping for successive SCP analysis is $\beta =0$.}}}{24}{figure.2.8}}
+\newlabel{}{{2.8}{24}{\protect \small \it {Spectral estimation with $\alpha =50\%$ overlapping for FFT block. The variance of the estimate is related to the number of windows. If the number of disjoint FFT block is $M=5$, and if the length in seconds of the spectral analysis window is 500 seconds, the length in second of the time window for 1 FFT is 100 seconds. The frequency resolution is related to the length of the FFT which is $100$ seconds, hence $0.01$ Hz. The window shape is related to the leakage which is defined as the effect of transferring energy from the bands where the energy is high to the bands where the energy is low. The overlapping for successive SCP analysis is $\beta =0$.}}{figure.2.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Filter bank analysis}{24}{section*.6}}
+\newlabel{sss:filterbank}{{5.}{24}{Filter bank analysis}{section*.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces \small \it  }}{25}{table.2.1}}
+\newlabel{tab:freq-duration-tradeoff}{{2.1}{25}{\protect \small \it }{table.2.1}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Results on IS26 data}{26}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:IS26results}{{3}{25}{Results on IS26 data\relax }{chapter.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}Results of IS26 - sensor \#1}{26}{section.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}SUT response by averaging on $124$ days}{26}{subsection.3.1.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \small \it  {The red dashed lines report the theoretical SUT response range requirement, which is $\pm 0.43$ for the gain and $\pm 5^{\circ }$ for the phase.}}}{26}{figure.3.1}}
-\newlabel{fig:withoutproblemons1}{{3.1}{26}{\protect \small \it {The red dashed lines report the theoretical SUT response range requirement, which is $\pm 0.43$ for the gain and $\pm 5\degree $ for the phase.}\relax }{figure.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Using different thresholds on a pair of days}{27}{subsection.3.1.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces \small \it  {Sup ratio in dB given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}}}{27}{figure.3.2}}
-\newlabel{}{{3.2}{27}{\protect \small \it {Sup ratio in dB given by the expression \eqref {eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}\relax }{figure.3.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}More details on a pair of days}{28}{subsection.3.1.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces \small \it  {Sup ratio in dB given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}} for 2 successive days into the $P=6$ frequency bands.}}}{28}{figure.3.3}}
-\newlabel{}{{3.3}{28}{\protect \small \it {Sup ratio in dB given by the expression \eqref {eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}\relax }{figure.3.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \small \it  {Sup ratio in dB given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}}}{29}{figure.3.4}}
-\newlabel{}{{3.4}{29}{\protect \small \it {Sup ratio in dB given by the expression \eqref {eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}\relax }{figure.3.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Problem with some records}{30}{subsection.3.1.4}}
-\newlabel{ss:problems}{{1.4}{30}{Problem with some records\relax }{subsection.3.1.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces \small \it  {Same data than those of figure \ref  {fig:withoutproblemons1} but adding two days more. We observe that a few values seem to be outliers. The data of these two days are reported figure \ref  {fig:clickdetails1year2015day286aboveTH}. We see large bursts that are at the origin of the ouliers.}}}{30}{figure.3.5}}
-\newlabel{fig:withproblemons1}{{3.5}{30}{\protect \small \it {Same data than those of figure \ref {fig:withoutproblemons1} but adding two days more. We observe that a few values seem to be outliers. The data of these two days are reported figure \ref {fig:clickdetails1year2015day286aboveTH}. We see large bursts that are at the origin of the ouliers.}\relax }{figure.3.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces \small \it  {Two days data added in the protocol to obtain the figure \ref  {fig:withoutproblemons1}. We observe large bursts that can be considered as outliers, as they appear hugely greater than the observed values outside of the bursts.}}}{31}{figure.3.6}}
-\newlabel{fig:clickdetails1year2015day286aboveTH}{{3.6}{31}{\protect \small \it {Two days data added in the protocol to obtain the figure \ref {fig:withoutproblemons1}. We observe large bursts that can be considered as outliers, as they appear hugely greater than the observed values outside of the bursts.}\relax }{figure.3.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces \small \it  {Same data than those of figure \ref  {fig:withproblemons1} but suppressing the part of the added signals where bursts are located. The figure is very similar to the figure \ref  {fig:withoutproblemons1}.}}}{32}{figure.3.7}}
-\newlabel{fig:withproblemons1solved}{{3.7}{32}{\protect \small \it {Same data than those of figure \ref {fig:withproblemons1} but suppressing the part of the added signals where bursts are located. The figure is very similar to the figure \ref {fig:withoutproblemons1}.}\relax }{figure.3.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Synchronization problem}{33}{section*.7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces \small \it  {Time shift on the full duration.}}}{33}{figure.3.8}}
-\newlabel{fig:fillshift}{{3.8}{33}{\protect \small \it {Time shift on the full duration.}\relax }{figure.3.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Averaging on randomly selected pairs of days}{34}{subsection.3.1.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces \small \it  {Sup ratio given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}}. The gray points report the ratios averaged on a pair of 2 consecutive days, the red points report the simple mean on 15 pairs of days, the blue the trimmed mean excluding $30\%$ of the lowest and highest values}}}{34}{figure.3.9}}
-\newlabel{fig:withtrimmeanonstation1}{{3.9}{34}{\protect \small \it {Sup ratio given by the expression \eqref {eq:ratio-sup-bis-exact}. The gray points report the ratios averaged on a pair of 2 consecutive days, the red points report the simple mean on 15 pairs of days, the blue the trimmed mean excluding $30\%$ of the lowest and highest values}\relax }{figure.3.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Stability at $1$ Hz}{35}{subsection.3.1.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}Comments}{36}{section.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}About the selected MSC threshold}{36}{subsection.3.2.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces \small \it  {Couple H6C6, for two MSC thresholds.}}}{36}{figure.3.10}}
-\newlabel{fig:afewdaysonI26C6H6twoMSC}{{3.10}{36}{\protect \small \it {Couple H6C6, for two MSC thresholds.}\relax }{figure.3.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces \small \it  {Couple H4C4, for two MSC thresholds with formula \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:known-noise-ratio}\unskip \@@italiccorr )}}.}}}{37}{figure.3.11}}
-\newlabel{fig:afewdaysonI26C4H4knownnoiseratio}{{3.11}{37}{\protect \small \it {Couple H4C4, for two MSC thresholds with formula \eqref {eq:known-noise-ratio}.}\relax }{figure.3.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Dip on the curves}{38}{subsection.3.2.2}}
-\newlabel{eq:model-of-obervation}{{3.1}{38}{Dip on the curves\relax }{equation.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces \small \it  {a few days on H2C2. Only the band $[0.08-0.12]$ Hz is selected. The coherence is above $0.99$. The different colors for the different days.}}}{38}{figure.3.12}}
-\newlabel{fig:afewdays1colocation}{{3.12}{38}{\protect \small \it {a few days on H2C2. Only the band $[0.08-0.12]$ Hz is selected. The coherence is above $0.99$. The different colors for the different days.}\relax }{figure.3.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Filtered signals}}{39}{figure.3.13}}
-\newlabel{fig:filteredsignals}{{3.13}{39}{Filtered signals\relax }{figure.3.13}{}}
+\newlabel{chap:IS26results}{{3}{26}{Results on IS26 data}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}Results of IS26 - sensor \#1}{27}{section.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}SUT response by averaging on $124$ days}{27}{subsection.3.1.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \small \it  {The red dashed lines report the theoretical SUT response range requirement, which is $\pm 0.43$ for the gain and $\pm 5^{\circ }$ for the phase.}}}{27}{figure.3.1}}
+\newlabel{fig:withoutproblemons1}{{3.1}{27}{\protect \small \it {The red dashed lines report the theoretical SUT response range requirement, which is $\pm 0.43$ for the gain and $\pm 5\degree $ for the phase.}}{figure.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Using different thresholds on a pair of days}{28}{subsection.3.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces \small \it  {Sup ratio in dB given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}}}{28}{figure.3.2}}
+\newlabel{}{{3.2}{28}{\protect \small \it {Sup ratio in dB given by the expression \eqref {eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}}{figure.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}More details on a pair of days}{29}{subsection.3.1.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces \small \it  {Sup ratio in dB given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}} for 2 successive days into the $P=6$ frequency bands.}}}{29}{figure.3.3}}
+\newlabel{}{{3.3}{29}{\protect \small \it {Sup ratio in dB given by the expression \eqref {eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}}{figure.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \small \it  {Sup ratio in dB given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}}}{30}{figure.3.4}}
+\newlabel{}{{3.4}{30}{\protect \small \it {Sup ratio in dB given by the expression \eqref {eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}}{figure.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Problem with some records}{31}{subsection.3.1.4}}
+\newlabel{ss:problems}{{1.4}{31}{Problem with some records}{subsection.3.1.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces \small \it  {Same data than those of figure \ref  {fig:withoutproblemons1} but adding two days more. We observe that a few values seem to be outliers. The data of these two days are reported figure \ref  {fig:clickdetails1year2015day286aboveTH}. We see large bursts that are at the origin of the ouliers.}}}{31}{figure.3.5}}
+\newlabel{fig:withproblemons1}{{3.5}{31}{\protect \small \it {Same data than those of figure \ref {fig:withoutproblemons1} but adding two days more. We observe that a few values seem to be outliers. The data of these two days are reported figure \ref {fig:clickdetails1year2015day286aboveTH}. We see large bursts that are at the origin of the ouliers.}}{figure.3.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces \small \it  {Two days data added in the protocol to obtain the figure \ref  {fig:withoutproblemons1}. We observe large bursts that can be considered as outliers, as they appear hugely greater than the observed values outside of the bursts.}}}{32}{figure.3.6}}
+\newlabel{fig:clickdetails1year2015day286aboveTH}{{3.6}{32}{\protect \small \it {Two days data added in the protocol to obtain the figure \ref {fig:withoutproblemons1}. We observe large bursts that can be considered as outliers, as they appear hugely greater than the observed values outside of the bursts.}}{figure.3.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces \small \it  {Same data than those of figure \ref  {fig:withproblemons1} but suppressing the part of the added signals where bursts are located. The figure is very similar to the figure \ref  {fig:withoutproblemons1}.}}}{33}{figure.3.7}}
+\newlabel{fig:withproblemons1solved}{{3.7}{33}{\protect \small \it {Same data than those of figure \ref {fig:withproblemons1} but suppressing the part of the added signals where bursts are located. The figure is very similar to the figure \ref {fig:withoutproblemons1}.}}{figure.3.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Synchronization problem}{34}{section*.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces \small \it  {Time shift on the full duration.}}}{34}{figure.3.8}}
+\newlabel{fig:fillshift}{{3.8}{34}{\protect \small \it {Time shift on the full duration.}}{figure.3.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Averaging on randomly selected pairs of days}{35}{subsection.3.1.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces \small \it  {Sup ratio given by the expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:ratio-sup-bis-exact}\unskip \@@italiccorr )}}. The gray points report the ratios averaged on a pair of 2 consecutive days, the red points report the simple mean on 15 pairs of days, the blue the trimmed mean excluding $30\%$ of the lowest and highest values}}}{35}{figure.3.9}}
+\newlabel{fig:withtrimmeanonstation1}{{3.9}{35}{\protect \small \it {Sup ratio given by the expression \eqref {eq:ratio-sup-bis-exact}. The gray points report the ratios averaged on a pair of 2 consecutive days, the red points report the simple mean on 15 pairs of days, the blue the trimmed mean excluding $30\%$ of the lowest and highest values}}{figure.3.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Stability at different frequency values}{36}{subsection.3.1.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces \small \it  {$140$ pairs of days have been studied between the $1$st of June to the $30$th October $2015$. Top: the value of theSup ratio at $1$ Hz in a range centered on the measures with a width of $\pm 5\%$. For thus duration of $48$ hours a few points are outside the range. Therefore the idea to average on a few pairs, e.g. figure \ref  {fig:evolutionon1atdifffreq} the averaging is on 1 month. Bottom: the number of points over the threshold at the frequency of $1$ Hz. Some pairs of days the number is only $1$. They correspond to the points in top figure outside of the requirement range. }}}{36}{figure.3.10}}
+\newlabel{fig:evolutionon1atfreq1Hz}{{3.10}{36}{\protect \small \it {$140$ pairs of days have been studied between the $1$st of June to the $30$th October $2015$. Top: the value of theSup ratio at $1$ Hz in a range centered on the measures with a width of $\pm 5\%$. For thus duration of $48$ hours a few points are outside the range. Therefore the idea to average on a few pairs, e.g. figure \ref {fig:evolutionon1atdifffreq} the averaging is on 1 month. Bottom: the number of points over the threshold at the frequency of $1$ Hz. Some pairs of days the number is only $1$. They correspond to the points in top figure outside of the requirement range. }}{figure.3.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces \small \it  {Randomly draw in the sequence of pairs of days.}}}{37}{figure.3.11}}
+\newlabel{fig:evolutionon1atdifffreq}{{3.11}{37}{\protect \small \it {Randomly draw in the sequence of pairs of days.}}{figure.3.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}Comments}{38}{section.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}About the selected MSC threshold}{38}{subsection.3.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces \small \it  {Couple H6C6, for two MSC thresholds.}}}{38}{figure.3.12}}
+\newlabel{fig:afewdaysonI26C6H6twoMSC}{{3.12}{38}{\protect \small \it {Couple H6C6, for two MSC thresholds.}}{figure.3.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces \small \it  {Couple H4C4, for two MSC thresholds with formula \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:known-noise-ratio}\unskip \@@italiccorr )}}.}}}{39}{figure.3.13}}
+\newlabel{fig:afewdaysonI26C4H4knownnoiseratio}{{3.13}{39}{\protect \small \it {Couple H4C4, for two MSC thresholds with formula \eqref {eq:known-noise-ratio}.}}{figure.3.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Dip on the curves}{40}{subsection.3.2.2}}
+\newlabel{eq:model-of-obervation}{{3.1}{40}{Dip on the curves}{equation.3.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces \small \it  {a few days on H2C2. Only the band $[0.08-0.12]$ Hz is selected. The coherence is above $0.99$. The different colors for the different days.}}}{40}{figure.3.14}}
+\newlabel{fig:afewdays1colocation}{{3.14}{40}{\protect \small \it {a few days on H2C2. Only the band $[0.08-0.12]$ Hz is selected. The coherence is above $0.99$. The different colors for the different days.}}{figure.3.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces Filtered signals}}{41}{figure.3.15}}
+\newlabel{fig:filteredsignals}{{3.15}{41}{Filtered signals}{figure.3.15}{}}
 \citation{alcoverro:2005}
 \citation{alcoverro:2005}
 \citation{nouvellet_itwb:2013}
 \citation{mack_flinn:1971}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Wind effect on NRS}{40}{chapter.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Wind effect on NRS}{42}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:windonNRS}{{4}{40}{Wind effect on NRS\relax }{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}Introduction}{40}{section.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}Model for wind turbulences}{40}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Stationary $M$-ary process}{41}{subsection.4.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{Spectral description}{41}{section*.8}}
-\newlabel{eq:correlationcoherence}{{4.2}{41}{Spectral description\relax }{equation.4.2}{}}
-\newlabel{eq:def-generalMSC}{{4.3}{41}{Spectral description\relax }{equation.4.3}{}}
+\newlabel{chap:windonNRS}{{4}{42}{Wind effect on NRS}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}Introduction}{42}{section.4.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}Model for wind turbulences}{42}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Stationary $M$-ary process}{43}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Spectral description}{43}{section*.8}}
+\newlabel{eq:correlationcoherence}{{4.2}{43}{Spectral description}{equation.4.2.2}{}}
+\newlabel{eq:def-generalMSC}{{4.3}{43}{Spectral description}{equation.4.2.3}{}}
 \citation{nouvellet_itwb:2013}
-\newlabel{eq:reverse-def-generalMSC}{{4.4}{42}{Spectral description\relax }{equation.4.4}{}}
-\newlabel{eq:spectral-content}{{4.5}{42}{Spectral description\relax }{equation.4.5}{}}
-\newlabel{eq:coherence-matrix}{{4.6}{42}{Spectral description\relax }{equation.4.6}{}}
-\newlabel{eq:def-coherence-function}{{4.7}{42}{Spectral description\relax }{equation.4.7}{}}
-\newlabel{eq:rhomlfeq1}{{4.8}{42}{Spectral description\relax }{equation.4.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{WSS filtering}{42}{section*.9}}
-\newlabel{eq:filteringMIMO}{{4.10}{42}{WSS filtering\relax }{equation.4.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Wind noise model}{42}{subsection.4.2.2}}
+\newlabel{eq:reverse-def-generalMSC}{{4.4}{44}{Spectral description}{equation.4.2.4}{}}
+\newlabel{eq:spectral-content}{{4.5}{44}{Spectral description}{equation.4.2.5}{}}
+\newlabel{eq:coherence-matrix}{{4.6}{44}{Spectral description}{equation.4.2.6}{}}
+\newlabel{eq:def-coherence-function}{{4.7}{44}{Spectral description}{equation.4.2.7}{}}
+\newlabel{eq:rhomlfeq1}{{4.8}{44}{Spectral description}{equation.4.2.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{WSS filtering}{44}{section*.9}}
+\newlabel{eq:filteringMIMO}{{4.10}{44}{WSS filtering}{equation.4.2.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Wind noise model}{44}{subsection.4.2.2}}
 \citation{mack_flinn:1971}
 \citation{alcoverro:2005}
-\newlabel{eq:sm-general-random}{{4.11}{43}{Wind noise model\relax }{equation.4.11}{}}
-\newlabel{eq:randomnesswn}{{4.12}{43}{Wind noise model\relax }{equation.4.12}{}}
-\newlabel{eq:Cfr1r2Gaussian}{{4.13}{43}{Wind noise model\relax }{equation.4.13}{}}
-\newlabel{eq:MSCwind}{{4.14}{43}{Wind noise model\relax }{equation.4.14}{}}
+\newlabel{eq:sm-general-random}{{4.11}{45}{Wind noise model}{equation.4.2.11}{}}
+\newlabel{eq:randomnesswn}{{4.12}{45}{Wind noise model}{equation.4.2.12}{}}
+\newlabel{eq:Cfr1r2Gaussian}{{4.13}{45}{Wind noise model}{equation.4.2.13}{}}
+\newlabel{eq:MSCwind}{{4.14}{45}{Wind noise model}{equation.4.2.14}{}}
 \citation{alcoverro:2005}
 \citation{alcoverro:2005}
 \citation{alcoverro:2005}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Coherence level as a function of $v/d$}{44}{subsection.4.2.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces \small \it  {Frequency $f_c$ associated with the MSC level $0.5$ as a function of $v/d$. }}}{44}{figure.4.1}}
-\newlabel{fig:f05asvond}{{4.1}{44}{\protect \small \it {Frequency $f_c$ associated with the MSC level $0.5$ as a function of $v/d$. }\relax }{figure.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Coherence level as a function of $v/d$}{46}{subsection.4.2.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces \small \it  {Frequency $f_c$ associated with the MSC level $0.5$ as a function of $v/d$. }}}{46}{figure.4.1}}
+\newlabel{fig:f05asvond}{{4.1}{46}{\protect \small \it {Frequency $f_c$ associated with the MSC level $0.5$ as a function of $v/d$. }}{figure.4.1}{}}
 \citation{gabrielson:2011}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}Application to the {\it  in-situ} calibration method}{45}{section.4.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \small \it  {$S_{x}(f)$ spectral matrix de dimension $(M+1)$, $S_{y}(f)$ spectral matrix de dimension $2$, $S_{z}(f)$ spectral matrix de dimension $2$}}}{45}{figure.4.2}}
-\newlabel{fig:bigschema}{{4.2}{45}{\protect \small \it {$S_{x}(f)$ spectral matrix de dimension $(M+1)$, $S_{y}(f)$ spectral matrix de dimension $2$, $S_{z}(f)$ spectral matrix de dimension $2$}\relax }{figure.4.2}{}}
-\newlabel{eq:Sxf}{{4.15}{45}{Application to the {\it in-situ} calibration method\relax }{equation.4.15}{}}
-\newlabel{eq:spectral-content}{{4.16}{45}{Application to the {\it in-situ} calibration method\relax }{equation.4.16}{}}
-\newlabel{eq:Syf}{{4.17}{46}{Application to the {\it in-situ} calibration method\relax }{equation.4.17}{}}
-\newlabel{eq:Syentries}{{4.18}{46}{Application to the {\it in-situ} calibration method\relax }{}{}}
-\newlabel{eq:Syentries}{{4.18}{46}{Application to the {\it in-situ} calibration method\relax }{equation.4.18}{}}
-\newlabel{eq:Syentries-idealcase}{{4.22}{46}{Application to the {\it in-situ} calibration method\relax }{equation.4.22}{}}
-\@writefile{toc}{\contentsline {subsubsection}{MSC}{47}{section*.10}}
-\newlabel{eq:RsuponM}{{4.26}{47}{MSC\relax }{equation.4.26}{}}
-\newlabel{eq:RsuponM-rho}{{4.27}{47}{MSC\relax }{equation.4.27}{}}
-\newlabel{eq:MSCHF}{{4.28}{47}{MSC\relax }{equation.4.28}{}}
-\newlabel{eq:MSCBF}{{4.29}{47}{MSC\relax }{equation.4.29}{}}
-\newlabel{eq:MSCMidF}{{4.30}{47}{MSC\relax }{equation.4.30}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Frequency response ratio}{49}{section*.11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces \small \it  {The top curve represents the spectral ratio $\rho (f)$. The two following curves report the magnitude and the phase of the ratio The blue parts of corresponding to an MSC greater than $0.95$. For frequencies over $0.4$ Hz up to $4$ Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the high frequency part the curves are related to a known resonance effect. For frequencies under $0.08$ Hz and even for low values of $\mathrm  {SNR}$, the coherence is very high, because the wind turbulences appear as spatially coherent. In the mid frequency range we can have simultaneously a high MSC and a ratio less than $1$.}}}{50}{figure.4.3}}
-\newlabel{fig:GonH}{{4.3}{50}{\protect \small \it {The top curve represents the spectral ratio $\rho (f)$. The two following curves report the magnitude and the phase of the ratio The blue parts of corresponding to an MSC greater than $0.95$. For frequencies over $0.4$ Hz up to $4$ Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the high frequency part the curves are related to a known resonance effect. For frequencies under $0.08$ Hz and even for low values of $\SNR $, the coherence is very high, because the wind turbulences appear as spatially coherent. In the mid frequency range we can have simultaneously a high MSC and a ratio less than $1$.}\relax }{figure.4.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.}Results in I26}{51}{section.4.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces \small \it  {Top figure: averaging of the wind speed on plain curve, standard deviation around the averaging in dotted curve. Markers indicate the two parts of interest. Bottom figure: curves associated to the two parts of interest. The shift between them has a ratio of about $4$ which is about the ratio of the speed means od the two parts of interest.}}}{51}{figure.4.4}}
-\newlabel{fig:twospeeds}{{4.4}{51}{\protect \small \it {Top figure: averaging of the wind speed on plain curve, standard deviation around the averaging in dotted curve. Markers indicate the two parts of interest. Bottom figure: curves associated to the two parts of interest. The shift between them has a ratio of about $4$ which is about the ratio of the speed means od the two parts of interest.}\relax }{figure.4.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces \small \it  {see figure \ref  {fig:twospeeds}}}}{52}{figure.4.5}}
-\newlabel{fig:twospeedsbis}{{4.5}{52}{\protect \small \it {see figure \ref {fig:twospeeds}}\relax }{figure.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces \small \it  {see figure \ref  {fig:twospeeds}}}}{52}{figure.4.6}}
-\newlabel{fig:twospeedster}{{4.6}{52}{\protect \small \it {see figure \ref {fig:twospeeds}}\relax }{figure.4.6}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Full process}{53}{chapter.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}Application to the {\it  in-situ} calibration method}{47}{section.4.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \small \it  {$S_{x}(f)$ spectral matrix de dimension $(M+1)$, $S_{y}(f)$ spectral matrix de dimension $2$, $S_{z}(f)$ spectral matrix de dimension $2$}}}{47}{figure.4.2}}
+\newlabel{fig:bigschema}{{4.2}{47}{\protect \small \it {$S_{x}(f)$ spectral matrix de dimension $(M+1)$, $S_{y}(f)$ spectral matrix de dimension $2$, $S_{z}(f)$ spectral matrix de dimension $2$}}{figure.4.2}{}}
+\newlabel{eq:Sxf}{{4.15}{47}{Application to the {\it in-situ} calibration method}{equation.4.3.15}{}}
+\newlabel{eq:spectral-content}{{4.16}{47}{Application to the {\it in-situ} calibration method}{equation.4.3.16}{}}
+\newlabel{eq:Syf}{{4.17}{48}{Application to the {\it in-situ} calibration method}{equation.4.3.17}{}}
+\newlabel{eq:Syentries}{{4.18}{48}{Application to the {\it in-situ} calibration method}{}{}}
+\newlabel{eq:Syentries}{{4.18}{48}{Application to the {\it in-situ} calibration method}{equation.4.3.18}{}}
+\newlabel{eq:Syentries-idealcase}{{4.22}{48}{Application to the {\it in-situ} calibration method}{equation.4.3.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{MSC}{49}{section*.10}}
+\newlabel{eq:RsuponM}{{4.26}{49}{MSC}{equation.4.3.26}{}}
+\newlabel{eq:RsuponM-rho}{{4.27}{49}{MSC}{equation.4.3.27}{}}
+\newlabel{eq:MSCHF}{{4.28}{49}{MSC}{equation.4.3.28}{}}
+\newlabel{eq:MSCBF}{{4.29}{49}{MSC}{equation.4.3.29}{}}
+\newlabel{eq:MSCMidF}{{4.30}{49}{MSC}{equation.4.3.30}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Frequency response ratio}{51}{section*.11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces \small \it  {The top curve represents the spectral ratio $\rho (f)$. The two following curves report the magnitude and the phase of the ratio The blue parts of corresponding to an MSC greater than $0.95$. For frequencies over $0.4$ Hz up to $4$ Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the high frequency part the curves are related to a known resonance effect. For frequencies under $0.08$ Hz and even for low values of $\mathrm  {SNR}$, the coherence is very high, because the wind turbulences appear as spatially coherent. In the mid frequency range we can have simultaneously a high MSC and a ratio less than $1$.}}}{52}{figure.4.3}}
+\newlabel{fig:GonH}{{4.3}{52}{\protect \small \it {The top curve represents the spectral ratio $\rho (f)$. The two following curves report the magnitude and the phase of the ratio The blue parts of corresponding to an MSC greater than $0.95$. For frequencies over $0.4$ Hz up to $4$ Hz and for low noise levels, the curves reproduce the response of the NRS. In particular on the high frequency part the curves are related to a known resonance effect. For frequencies under $0.08$ Hz and even for low values of $\SNR $, the coherence is very high, because the wind turbulences appear as spatially coherent. In the mid frequency range we can have simultaneously a high MSC and a ratio less than $1$.}}{figure.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.}Results in I26}{53}{section.4.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces \small \it  {Top figure: averaging of the wind speed on plain curve, standard deviation around the averaging in dotted curve. Markers indicate the two parts of interest. Bottom figure: curves associated to the two parts of interest. The shift between them has a ratio of about $4$ which is about the ratio of the speed means od the two parts of interest.}}}{53}{figure.4.4}}
+\newlabel{fig:twospeeds}{{4.4}{53}{\protect \small \it {Top figure: averaging of the wind speed on plain curve, standard deviation around the averaging in dotted curve. Markers indicate the two parts of interest. Bottom figure: curves associated to the two parts of interest. The shift between them has a ratio of about $4$ which is about the ratio of the speed means od the two parts of interest.}}{figure.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces \small \it  {see figure \ref  {fig:twospeeds}}}}{54}{figure.4.5}}
+\newlabel{fig:twospeedsbis}{{4.5}{54}{\protect \small \it {see figure \ref {fig:twospeeds}}}{figure.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces \small \it  {see figure \ref  {fig:twospeeds}}}}{54}{figure.4.6}}
+\newlabel{fig:twospeedster}{{4.6}{54}{\protect \small \it {see figure \ref {fig:twospeeds}}}{figure.4.6}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Full process}{55}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:fullprocess}{{5}{53}{Full process\relax }{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}3 programs for test}{53}{section.5.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}Input of the function {\tt  fbankanalysis.m}}{53}{section.5.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Summary of the filter bank settings}{54}{section*.12}}
-\newlabel{sss:filter-bank-settings}{{2.}{54}{Summary of the filter bank settings\relax }{section*.12}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Calculation scheme}{55}{section*.13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces \small \it  {FB analysis}}}{55}{figure.5.1}}
-\newlabel{fig:synoptic}{{5.1}{55}{\protect \small \it {FB analysis}\relax }{figure.5.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}Output of the function {\tt  fbankanalysis.m}}{57}{section.5.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Remark for developper}{57}{section*.14}}
-\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Annexes}{58}{part.2}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Wide sense stationary process}{59}{chapter.6}}
+\newlabel{chap:fullprocess}{{5}{55}{Full process}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}3 programs for test}{55}{section.5.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}Input of the function {\tt  fbankanalysis.m}}{55}{section.5.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Summary of the filter bank settings}{56}{section*.12}}
+\newlabel{sss:filter-bank-settings}{{2.}{56}{Summary of the filter bank settings}{section*.12}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Calculation scheme}{57}{section*.13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces \small \it  {FB analysis}}}{57}{figure.5.1}}
+\newlabel{fig:synoptic}{{5.1}{57}{\protect \small \it {FB analysis}}{figure.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}Output of the function {\tt  fbankanalysis.m}}{59}{section.5.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Remark for developper}{59}{section*.14}}
+\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Annexes}{60}{part.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Confidence interval on the mean}{61}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:wss}{{6}{59}{Wide sense stationary process\relax }{chapter.6}{}}
-\newlabel{eq:defCSD}{{6.1}{59}{Wide sense stationary process\relax }{equation.6.1}{}}
-\newlabel{eq:defMSC}{{6.2}{60}{Wide sense stationary process\relax }{equation.6.2}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Theoretical results on spectral estimation}{61}{chapter.7}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Wide sense stationary process}{63}{chapter.7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:spectral-estimation}{{7}{61}{Theoretical results on spectral estimation\relax }{chapter.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}Non parametrical spectral estimation}{61}{section.7.1}}
-\newlabel{eq:smoothedperiodogram}{{7.1}{61}{Non parametrical spectral estimation\relax }{equation.7.1}{}}
-\newlabel{eq:MSEk}{{7.2}{62}{Non parametrical spectral estimation\relax }{equation.7.2}{}}
-\newlabel{eq:biassmoothperiodogram}{{7.3}{62}{Non parametrical spectral estimation\relax }{equation.7.3}{}}
-\newlabel{eq:varGammak}{{7.4}{62}{Non parametrical spectral estimation\relax }{equation.7.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}More periodogram properties}{62}{section.7.2}}
-\newlabel{ann:peridogramproperties}{{2.}{62}{More periodogram properties\relax }{section.7.2}{}}
-\newlabel{eq:4moment}{{7.5}{63}{More periodogram properties\relax }{equation.7.5}{}}
-\newlabel{eq:defperiodogram}{{7.6}{63}{More periodogram properties\relax }{equation.7.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Properties of the periodogram}{65}{section*.15}}
-\newlabel{eq:smoothperiodogram}{{7.10}{65}{Properties of the periodogram\relax }{equation.7.10}{}}
-\newlabel{eq:recallbiassmoothperiodogram}{{7.11}{65}{Properties of the periodogram\relax }{equation.7.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}Second order moments for the smoothed periodogram}{66}{section.7.3}}
-\newlabel{eq:deferiosmooth}{{7.12}{66}{Second order moments for the smoothed periodogram\relax }{equation.7.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.}Approximate variances}{67}{section.7.4}}
-\newlabel{ss:varianceexpressions}{{4.}{67}{Approximate variances\relax }{section.7.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{$\delta $-method}{67}{section*.16}}
-\@writefile{toc}{\contentsline {subsubsection}{Approximate variance of $\qopname  \relax o{arg}\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}$}{67}{section*.17}}
-\@writefile{toc}{\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(1)}|$}{68}{section*.18}}
-\@writefile{toc}{\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(2)}|$}{69}{section*.19}}
-\@writefile{toc}{\contentsline {subsubsection}{Summary}{70}{section*.20}}
-\newlabel{eq:var12on22}{{7.14}{70}{Summary\relax }{equation.7.14}{}}
-\newlabel{eq:var11on21}{{7.15}{70}{Summary\relax }{equation.7.15}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Estimator based on eigen-decomposition (uncompleted)}{70}{section*.21}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.}Some distributions related to the smoothed periodogram}{70}{section.7.5}}
-\@writefile{toc}{\contentsline {subsubsection}{Wiskart's distribution}{70}{section*.22}}
-\newlabel{eq:wiskart}{{7.16}{71}{Wiskart's distribution\relax }{equation.7.16}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Ratio distributions}{71}{section*.23}}
-\newlabel{eq:RonA2distribution}{{7.21}{72}{Ratio distributions\relax }{equation.7.21}{}}
-\newlabel{eq:A1onRdistribution}{{7.22}{73}{Ratio distributions\relax }{equation.7.22}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Phase distribution (not completed)}{73}{section*.24}}
-\newlabel{eq:wiskart}{{7.23}{73}{Phase distribution (not completed)\relax }{equation.7.23}{}}
+\newlabel{ann:wss}{{7}{63}{Wide sense stationary process}{chapter.7}{}}
+\newlabel{eq:defCSD}{{7.1}{63}{Wide sense stationary process}{equation.7.0.1}{}}
+\newlabel{eq:defMSC}{{7.2}{64}{Wide sense stationary process}{equation.7.0.2}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Theoretical results on spectral estimation}{65}{chapter.8}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ann:spectral-estimation}{{8}{65}{Theoretical results on spectral estimation}{chapter.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}Non parametrical spectral estimation}{65}{section.8.1}}
+\newlabel{eq:smoothedperiodogram}{{8.1}{65}{Non parametrical spectral estimation}{equation.8.1.1}{}}
+\newlabel{eq:MSEk}{{8.2}{66}{Non parametrical spectral estimation}{equation.8.1.2}{}}
+\newlabel{eq:biassmoothperiodogram}{{8.3}{66}{Non parametrical spectral estimation}{equation.8.1.3}{}}
+\newlabel{eq:varGammak}{{8.4}{66}{Non parametrical spectral estimation}{equation.8.1.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}More periodogram properties}{66}{section.8.2}}
+\newlabel{ann:peridogramproperties}{{2.}{66}{More periodogram properties}{section.8.2}{}}
+\newlabel{eq:4moment}{{8.5}{67}{More periodogram properties}{equation.8.2.5}{}}
+\newlabel{eq:defperiodogram}{{8.6}{67}{More periodogram properties}{equation.8.2.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Properties of the periodogram}{69}{section*.15}}
+\newlabel{eq:smoothperiodogram}{{8.10}{69}{Properties of the periodogram}{equation.8.2.10}{}}
+\newlabel{eq:recallbiassmoothperiodogram}{{8.11}{69}{Properties of the periodogram}{equation.8.2.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}Second order moments for the smoothed periodogram}{70}{section.8.3}}
+\newlabel{eq:deferiosmooth}{{8.12}{70}{Second order moments for the smoothed periodogram}{equation.8.3.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.}Approximate variances}{71}{section.8.4}}
+\newlabel{ss:varianceexpressions}{{4.}{71}{Approximate variances}{section.8.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{$\delta $-method}{71}{section*.16}}
+\@writefile{toc}{\contentsline {subsubsection}{Approximate variance of $\qopname  \relax o{arg}\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}$}{71}{section*.17}}
+\@writefile{toc}{\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(1)}|$}{72}{section*.18}}
+\@writefile{toc}{\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \lambda $}\mathaccent "0362{\lambda }_{k}^{(2)}|$}{73}{section*.19}}
+\@writefile{toc}{\contentsline {subsubsection}{Summary}{74}{section*.20}}
+\newlabel{eq:var12on22}{{8.14}{74}{Summary}{equation.8.4.14}{}}
+\newlabel{eq:var11on21}{{8.15}{74}{Summary}{equation.8.4.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Estimator based on eigen-decomposition (uncompleted)}{74}{section*.21}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.}Some distributions related to the smoothed periodogram}{74}{section.8.5}}
+\@writefile{toc}{\contentsline {subsubsection}{Wiskart's distribution}{74}{section*.22}}
+\newlabel{eq:wiskart}{{8.16}{75}{Wiskart's distribution}{equation.8.5.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Ratio distributions}{75}{section*.23}}
+\newlabel{eq:RonA2distribution}{{8.21}{76}{Ratio distributions}{equation.8.5.21}{}}
+\newlabel{eq:A1onRdistribution}{{8.22}{77}{Ratio distributions}{equation.8.5.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Phase distribution (not completed)}{77}{section*.24}}
+\newlabel{eq:wiskart}{{8.23}{77}{Phase distribution (not completed)}{equation.8.5.23}{}}
 \citation{carter:1973}
-\@writefile{toc}{\contentsline {section}{\numberline {6.}MSC distribution}{75}{section.7.6}}
-\newlabel{eq:MSCestimate}{{7.24}{75}{MSC distribution\relax }{equation.7.24}{}}
-\newlabel{eq:pdf-MSC}{{7.25}{75}{MSC distribution\relax }{equation.7.25}{}}
-\newlabel{eq:cumulF-MSC}{{7.26}{75}{MSC distribution\relax }{equation.7.26}{}}
-\newlabel{eq:Trecursion}{{7.27}{75}{MSC distribution\relax }{equation.7.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces \small \it  {Cumulative function of the MSC estimate given by expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:MSCestimate}\unskip \@@italiccorr )}}. The true values of the MSC are from $0.1$ to $0.9$ by step $0.1$ from the left to the right. In blue, the values obtained by simulation on $40960$ samples. In red the theoretical expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:cumulF-MSC}\unskip \@@italiccorr )}}.}}}{76}{figure.7.1}}
-\newlabel{fig:cumulF-MSC}{{7.1}{76}{\protect \small \it {Cumulative function of the MSC estimate given by expression \eqref {eq:MSCestimate}. The true values of the MSC are from $0.1$ to $0.9$ by step $0.1$ from the left to the right. In blue, the values obtained by simulation on $40960$ samples. In red the theoretical expression \eqref {eq:cumulF-MSC}.}\relax }{figure.7.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.}MSC detection}{77}{section.7.7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces \small \it  {Threshold at $95\%$ and $N_{d}=20,30,40,50$ as a function of the value on test.}}}{78}{figure.7.2}}
-\newlabel{fig:thresholdforC95}{{7.2}{78}{\protect \small \it {Threshold at $95\%$ and $N_{d}=20,30,40,50$ as a function of the value on test.}\relax }{figure.7.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces \small \it  {Monte-Carlo simulations on 1000 runs. In red the true value of the MSC. In green, the threshold derived from the analytical expression in such a way that the probability to be over this value is less than $5\%$. In black the Monte-Carlo estimates. It has been verified that $5\%$ are over the threshold.}}}{79}{figure.7.3}}
-\newlabel{fig:detectMSC}{{7.3}{79}{\protect \small \it {Monte-Carlo simulations on 1000 runs. In red the true value of the MSC. In green, the threshold derived from the analytical expression in such a way that the probability to be over this value is less than $5\%$. In black the Monte-Carlo estimates. It has been verified that $5\%$ are over the threshold.}\relax }{figure.7.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.}MSC distribution}{79}{section.8.6}}
+\newlabel{eq:MSCestimate}{{8.24}{79}{MSC distribution}{equation.8.6.24}{}}
+\newlabel{eq:pdf-MSC}{{8.25}{79}{MSC distribution}{equation.8.6.25}{}}
+\newlabel{eq:cumulF-MSC}{{8.26}{79}{MSC distribution}{equation.8.6.26}{}}
+\newlabel{eq:Trecursion}{{8.27}{79}{MSC distribution}{equation.8.6.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces \small \it  {Cumulative function of the MSC estimate given by expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:MSCestimate}\unskip \@@italiccorr )}}. The true values of the MSC are from $0.1$ to $0.9$ by step $0.1$ from the left to the right. In blue, the values obtained by simulation on $40960$ samples. In red the theoretical expression \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:cumulF-MSC}\unskip \@@italiccorr )}}.}}}{80}{figure.8.1}}
+\newlabel{fig:cumulF-MSC}{{8.1}{80}{\protect \small \it {Cumulative function of the MSC estimate given by expression \eqref {eq:MSCestimate}. The true values of the MSC are from $0.1$ to $0.9$ by step $0.1$ from the left to the right. In blue, the values obtained by simulation on $40960$ samples. In red the theoretical expression \eqref {eq:cumulF-MSC}.}}{figure.8.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.}MSC detection}{81}{section.8.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces \small \it  {Threshold at $95\%$ and $N_{d}=20,30,40,50$ as a function of the value on test.}}}{82}{figure.8.2}}
+\newlabel{fig:thresholdforC95}{{8.2}{82}{\protect \small \it {Threshold at $95\%$ and $N_{d}=20,30,40,50$ as a function of the value on test.}}{figure.8.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces \small \it  {Monte-Carlo simulations on 1000 runs. In red the true value of the MSC. In green, the threshold derived from the analytical expression in such a way that the probability to be over this value is less than $5\%$. In black the Monte-Carlo estimates. It has been verified that $5\%$ are over the threshold.}}}{83}{figure.8.3}}
+\newlabel{fig:detectMSC}{{8.3}{83}{\protect \small \it {Monte-Carlo simulations on 1000 runs. In red the true value of the MSC. In green, the threshold derived from the analytical expression in such a way that the probability to be over this value is less than $5\%$. In black the Monte-Carlo estimates. It has been verified that $5\%$ are over the threshold.}}{figure.8.3}{}}
 \citation{mack_flinn:1971}
 \citation{nouvellet:2012}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}LOC}{80}{chapter.8}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}LOC}{84}{chapter.9}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{eq:delaymatrixpuredelay}{{8.1}{80}{LOC\relax }{equation.8.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Coherence model}{80}{section*.25}}
-\newlabel{eq:randomnesswn}{{8.2}{80}{Coherence model\relax }{equation.8.2}{}}
-\newlabel{eq:tehtaxyz}{{8.3}{81}{Coherence model\relax }{}{}}
-\newlabel{eq:aec2theta}{{8.3}{81}{Coherence model\relax }{equation.8.3}{}}
-\newlabel{eq:Cfr1r2Gaussian}{{8.4}{81}{Coherence model\relax }{equation.8.4}{}}
-\newlabel{eq:MSCwind}{{8.5}{81}{Coherence model\relax }{equation.8.5}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Remark on deterministic representation}{82}{chapter.9}}
+\newlabel{eq:delaymatrixpuredelay}{{9.1}{84}{LOC}{equation.9.0.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Coherence model}{84}{section*.25}}
+\newlabel{eq:randomnesswn}{{9.2}{84}{Coherence model}{equation.9.0.2}{}}
+\newlabel{eq:tehtaxyz}{{9.3}{85}{Coherence model}{}{}}
+\newlabel{eq:aec2theta}{{9.3}{85}{Coherence model}{equation.9.0.3}{}}
+\newlabel{eq:Cfr1r2Gaussian}{{9.4}{85}{Coherence model}{equation.9.0.4}{}}
+\newlabel{eq:MSCwind}{{9.5}{85}{Coherence model}{equation.9.0.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Remark on deterministic representation}{86}{chapter.10}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {subsubsection}{Remark on a deterministic approach}{82}{section*.26}}
-\newlabel{ann:deterministic-approach}{{9}{82}{Remark on a deterministic approach\relax }{section*.26}{}}
-\newlabel{eq:approx}{{9.1}{82}{Remark on a deterministic approach\relax }{equation.9.1}{}}
-\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Library}{84}{part.3}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {10}Programs}{85}{chapter.10}}
+\@writefile{toc}{\contentsline {subsubsection}{Remark on a deterministic approach}{86}{section*.26}}
+\newlabel{ann:deterministic-approach}{{10}{86}{Remark on a deterministic approach}{section*.26}{}}
+\newlabel{eq:approx}{{10.1}{86}{Remark on a deterministic approach}{equation.10.0.1}{}}
+\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Library}{88}{part.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {11}Programs}{89}{chapter.11}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}RMSE as function of coherence}{85}{section.10.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}Test of coherence}{88}{section.10.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}Statistical distribution of the ratios}{89}{section.10.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.}Extraction from DB}{93}{section.10.4}}
-\@writefile{toc}{\contentsline {subsubsection}{Settings for the query to the database}{93}{section*.27}}
-\@writefile{toc}{\contentsline {subsubsection}{Query to the database}{93}{section*.28}}
-\@writefile{toc}{\contentsline {subsubsection}{Conversion to format {\tt  .mat}}{93}{section*.29}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.}Full process}{94}{section.10.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{94}{subsection.10.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Main program for estimation}{94}{subsection.10.5.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.}Application program}{96}{section.10.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}temporalevolution.m}{96}{subsection.10.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}displaySensorResponse.m}{96}{subsection.10.6.2}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {11}Toolbox}{97}{chapter.11}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}RMSE as function of coherence}{89}{section.11.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}Test of coherence}{92}{section.11.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}Statistical distribution of the ratios}{93}{section.11.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.}Extraction from DB}{97}{section.11.4}}
+\@writefile{toc}{\contentsline {subsubsection}{Settings for the query to the database}{97}{section*.27}}
+\@writefile{toc}{\contentsline {subsubsection}{Query to the database}{97}{section*.28}}
+\@writefile{toc}{\contentsline {subsubsection}{Conversion to format {\tt  .mat}}{98}{section*.29}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.}Full process}{99}{section.11.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Example of filter bank description}{99}{subsection.11.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Main program for estimation}{99}{subsection.11.5.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.}Application program}{101}{section.11.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}temporalevolution.m}{101}{subsection.11.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}displaySensorResponse.m}{101}{subsection.11.6.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {12}Toolbox}{102}{chapter.12}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:toolbox}{{11}{97}{Toolbox\relax }{chapter.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}Main analysis function: {\tt  fbankanalysis.m}}{97}{section.11.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$}{102}{section.11.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$}{103}{section.11.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$}{103}{section.11.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{104}{section.11.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.}Polynomial fitter}{105}{section.11.6}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {12}Miscellaneous utilitaries}{107}{chapter.12}}
+\newlabel{chap:toolbox}{{12}{102}{Toolbox}{chapter.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}Main analysis function: {\tt  fbankanalysis.m}}{102}{section.12.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$}{109}{section.12.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$}{109}{section.12.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm  {MSC}$}\mathaccent "0362{\mathrm  {MSC}}$}{110}{section.12.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.}Statistics of the spectral ratios}{110}{section.12.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.}Polynomial fitter}{112}{section.12.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {13}Miscellaneous utilitaries}{114}{chapter.13}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.}GeneFB}{107}{section.12.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.}GeneFB}{114}{section.13.1}}
 \bibdata{../../../allbib}
-\@writefile{toc}{\contentsline {section}{\numberline {2.}execGPARSE}{108}{section.12.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.}convertCSS2matlab}{108}{section.12.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.}execGPARSE}{115}{section.13.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.}convertCSS2matlab}{115}{section.13.3}}

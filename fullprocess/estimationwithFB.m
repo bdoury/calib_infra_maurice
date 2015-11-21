@@ -46,7 +46,9 @@ MSCthreshold = 0.98;
 %=====================
 
 FLAGsaveall   = 0;
-FLAGsavesmall = 1;
+FLAGsavesmall = 0;
+
+%=====================
 %=== directory of input signals
 directorysignals    = '../../../AAdataI26calib/';
 %=== directory of output results
@@ -93,10 +95,13 @@ for ihc = 1, ihc
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
+    nbmats = 1;
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
     allSTDphaseRatioSupPfilters  = zeros(10000,nbmats);
+    theoreticalmodstd            = zeros(10000,nbmats);
+    theoreticalphasestd_deg      = zeros(10000,nbmats);
     
     allRatioInfPfilters          = zeros(10000,nbmats);
     allSTDmodRatioInfPfilters    = zeros(10000,nbmats);
@@ -105,8 +110,9 @@ for ihc = 1, ihc
     nbofvaluesoverthreshold      = zeros(10000,nbmats);
     allScpPfilters               = zeros(3,10000,nbmats);
     %==================================================
-    for ifile=1:nbmats, ifile,tic
-        fullfilename_i      = fileswithdotmat(ifile).name;
+    for ifile=1:nbmats, ifile,
+        tic
+        fullfilename_i      = fileswithdotmat(12).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
         filenameonly        = fullfilename_i(...
@@ -162,7 +168,7 @@ for ihc = 1, ihc
         [SUTs, filteredsignals, allfrqsFFT_Hz, ...
             alltimes_sec, filterbank] = ...
             fbankanalysis(signals_centered,...
-            filtercharact,Fs_Hz,MSCthreshold);
+            filtercharact,Fs_Hz,MSCthreshold,1);
         %============================================
         % These three quantities, idipinf, idipsup and cumsumnbfq_ip
         % do not depend on the index ifile and do depend only on the
@@ -209,7 +215,11 @@ for ihc = 1, ihc
             nbofvaluesoverthreshold(id1:id2,ifile) = ...
                 sum(not(isnan(SUTs(ip).allMSCs.tabcst(idipinf(ip):idipsup(ip),:))),2);
             allScpPfilters(:,id1:id2,ifile) = ...
-                squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));    
+                squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));
+            
+            theoreticalmodstd(id1:id2,ifile) = SUTs(ip).theomodstdforRsup;
+            theoreticalphasestd_deg(id1:id2,ifile) = ...
+                SUTs(ip).stdPhase_degree;
         end
 %         if FLAGsaveall
 %             comsave = ...
@@ -233,6 +243,9 @@ for ihc = 1, ihc
     nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id2,:);
     
     allScpPfilters              = allScpPfilters(:,1:id2,:);
+    
+    theoreticalmodstd           = theoreticalmodstd(1:id2,:);
+    theoreticalphasestd_deg     = theoreticalphasestd_deg(1:id2,:);
     
     if FLAGsavesmall
         comsave = ...

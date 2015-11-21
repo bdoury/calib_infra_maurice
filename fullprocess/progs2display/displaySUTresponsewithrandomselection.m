@@ -49,9 +49,8 @@ for ihc = 2
     allScpPfilters               = allScpPfilters(:,:,remainindex);
     
     
-    permutenbmats = randperm(length(remainindex));
-    indrandomlychosen = ...
-        remainindex(permutenbmats(1:randomlydoubledaynumber));
+    permutenbmats     = randperm(length(remainindex));
+    indrandomlychosen = permutenbmats(1:randomlydoubledaynumber);
     allRatioSupPfilters = ...
         allRatioSupPfilters(:,indrandomlychosen);
     allSTDmodRatioSupPfilters = ...
