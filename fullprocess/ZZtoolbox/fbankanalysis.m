@@ -102,7 +102,7 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 %         frqsFFT_Hz: cell P x 1, each cell consists of
 %                   frequency list in Hz of the DFTs
 %========================================================================
-% included functions: estimSCP, estimSUT, fbank,
+% included functions: estimSCP, estimSUT, fbank, theoreticalStats
 %========================================================================
 %========================================================================
 if nargin == 4

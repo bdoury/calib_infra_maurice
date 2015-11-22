@@ -1,5 +1,5 @@
-%====================== colorplotRsupdetails.m =============================
-% ColorPlot the details of the Rsups in the P frequency bands 
+%====================== plotRsupdetails.m =============================
+% Plot the details of the Rsups in the P frequency bands 
 % as a function of times (along the 2 days).
 % 
 % The program uses the data extracted form the IDC and located in

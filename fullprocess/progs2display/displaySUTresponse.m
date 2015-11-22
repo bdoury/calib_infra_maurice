@@ -18,14 +18,13 @@ directorysignals    = '../../../../AAdataI26calib/';
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
 directoryinputresults = '../AAresultswithFB98bis/';
-% directoryinputresults = '../AAresultswithFBter/';
-% directoryinputresults = '../AAresultswithFBbis/';
 
-sensor_UT = 'I26DE_BDF_RSP_2015134_MB3';
-saveflag = 0;
-trimmeanflag = 1;
+sensor_UT    = 'I26DE_BDF_RSP_2015134_MB3';
+saveflag     = 1;
+trimmeanflag = 0;
+remainindex1 = [1:61 62 63:70];
 
-for ihc = 4
+for ihc = 1
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
     fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
@@ -34,7 +33,7 @@ for ihc = 4
     eval(comload);
     switch ihc
         case 1
-            remainindex = [1:34 36:61 63:70]; % 2015/10/13
+            remainindex = remainindex1; % 2015/10/13
         case 2
             remainindex = [1:nbmats]; % 2015/10/13
         case 4
@@ -69,7 +68,7 @@ for ihc = 4
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
     end
     %%
-    
+    nbdoubledays                 = length(remainindex);
     allRatioSupPfilters          = allRatioSupPfilters(:,remainindex);
     allSTDmodRatioSupPfilters    = allSTDmodRatioSupPfilters(:,remainindex);
     allSTDphaseRatioSupPfilters  = allSTDphaseRatioSupPfilters(:,remainindex);
@@ -139,8 +138,8 @@ for ihc = 4
     absestimwithcorrect = coeffsens * meanmodRatioPfiltersUSZ .* abs(TFsensor4freqRatio);
     %================================================
     subplot(211)
-    semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'ko',...
-        'markersize',3,'markerfaceco','k'),
+    semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'ko-',...
+        'markersize',4,'markerfaceco','k'),
     grid on
     ylabel('Amplitude [dB]','fontname','times','fontsize',14)
     hold on
@@ -155,7 +154,7 @@ for ihc = 4
     semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*1.05), 'r--','linew',1.5);
     hold off
     title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
-        ihc, MSCthreshold, 2*nbmats),'fontname','times','fontsize',14)
+        ihc, MSCthreshold, 2*nbdoubledays),'fontname','times','fontsize',14)
     %         title(sprintf('IS26 -  sensor H%i\ndashed line: +/-5%s for amplitude, +/- 5 degrees for phase', ihc,'%'),...
     %             'fontname','times','fontsize',14)
     
@@ -181,7 +180,7 @@ for ihc = 4
     
     subplot(212)
     semilogx(allfrqsPfiltersUSZ,unwrap(anglewithcorrect_rd)*180/pi,...
-        'ko','markersize',3,'markerfaceco','k')
+        'ko-','markersize',4,'markerfaceco','k')
     
     set(gca,'fontname','times','fontsize',14)
     
@@ -209,29 +208,36 @@ for ihc = 4
     set(gca,'position',[ 0.1300    0.1328    0.7750    0.3333])
     %==============================================================
     HorizontalSize = 16;
-    VerticalSize   = 10;
+    VerticalSize   = 14;
     set(gcf,'units','centimeters');
     set(gcf,'paperunits','centimeters');
     set(gcf,'PaperType','a3');
-    %         set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
+            set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
     set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
     set(gcf,'color', [1,1,0.92]);
     set(gcf, 'InvertHardCopy', 'off');
     
     printdirectory  = ' ../../figures/';
     
-    fileprint = sprintf('%swithproblemons%iSolved.eps',printdirectory,ihc);
+    
+    if trimmeanflag==1
+        fileprint = sprintf('%swithproblemons%iSolved.eps',printdirectory,ihc);
+    elseif nbdoubledays<nbmats
+        fileprint = sprintf('%swithoutproblemons%i.eps',printdirectory,ihc);
+    else
+        fileprint = sprintf('%swithproblemons%i.eps',printdirectory,ihc);
+    end
     
     fileprintepscmd = sprintf('print -depsc -loose %s',fileprint);
     fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
     filermcmd       = sprintf('!rm %s',fileprint);
     
 end
-
+figure(1)
 if saveflag
     eval(fileprintepscmd)
-    eval(fileeps2pdfcmd)
-    eval(filermcmd)
+%     eval(fileeps2pdfcmd)
+%     eval(filermcmd)
 end
 %%
 

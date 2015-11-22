@@ -1,6 +1,9 @@
 % !TEX root = ../calibreport.tex
 %================================
-The results of this section reports the estimation for the eight SUT given in the table \ref{tab:sensor-specifications}.
+
+In this chapter we only considered the sensor \#1, but identical results have be obtained on the seven other sensors.
+
+The results of this chapter reports the estimation for the eight SUT given in the table \ref{tab:sensor-specifications}.
 The analysis is on the data from IS26. Each query on the DB is on 2 consecutive days from the 1st of June to the 9th of October, saying about 130 days. For each file a spectral analysis is processed leading to an SUT response estimate. From the spectral components we perform, in each frequency band and for each time interval, the response of the system under test (SUT) using the known response of the reference sensor. These responses includes both the sensor and the digitizer. These responses are averaged over the full set of time intervals over the all days. The  MSC threshold is fixed to $0.98$. 
 
 Let us remain the PTS specifications:
@@ -16,53 +19,35 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 \end{itemize}
 
 
- \newpage
 %================================
-\section{Results of IS26 - sensor \#1}
-%================================
-In this section we only considered the sensor \#1, but identical results have be obtained on the seven other sensors.
-
-
-%================================
-\subsection{SUT response by averaging on $124$ days}
+\section{SUT response by averaging on 5 months - June to October 2015}
 %================================
 The average estimate of the SUT response, in terms of gain in dB and phase in degree, are reported figure \ref{fig:withoutproblemons1}. The red dashed lines report the theoretical SUT response range requirements, which is $\pm 0.43$ for the gain and $\pm 5\degree$ for the phase. They have be performed taking into account the SREF sensor response and using the model of NRS developped by the IMS.
 \figscale{figures/withoutproblemons1.pdf}{The red dashed lines report the theoretical SUT response range requirement, which is $\pm 0.43$ for the gain and $\pm 5\degree$ for the phase.}{fig:withoutproblemons1}{0.8}
 
  \newpage\clearpage
 %================================
-\subsection{Using different thresholds on a pair of days}
+\section{Using different thresholds on two succesive days}
 %================================
-\figscale{2daysonIS26SUT1year2015day152diffTH}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see  differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}{}{0.8}
-
-
-\newpage\clearpage
-%================================
-\subsection{More details on a pair of days}
-%================================
-\figscale{figures/2daysonIS26SUT1year2015day233.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}{}{0.8}
-
-\figscale{figures/2daysonIS26SUT1year2015day233aboveTH.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}{}{0.8}
+\figscale{sensor120150601withdifferentthreshold}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for different values of the MSC threshold. The gray dots report the values associated to the MSC greater than the threshold. The color dots report the weighted averagings on the gray values. We see larger dispersion lower the MSC threshold. Also we see  differences between the associated averagings, meanind that a bias is present. Theoretically (under regular assumptions) the bias is larger for lower MSC threshold.}{}{0.8}
 
 
 
 \newpage\clearpage
 %================================
-\subsection{Problem with some records}
+\section{Problem with some records}
 \label{ss:problems}
 %================================
 In this section we report a few issues we have observed in the recorded signals of the database {\tt tesbed\_archive} and that can be considered as "true" outliers.
 In figure \ref{fig:withproblemons1} we have considered the same data than those of figure \ref{fig:withoutproblemons1}, adding two days more. These two days induce a burst in the performed SUT response. To identify the origin, we have plotted the signals of these two days figure \ref{fig:clickdetails1year2015day286aboveTH}. We clearly observed huge bursts in two samples locations. If we suppress these 2 bursts and re-introduce the two cleaned days to perform the SUT response, we obtain the curves reported \ref{fig:withproblemons1solved}, which are very similar to the curves figure \ref{fig:withoutproblemons1}. We may conclude than unusual values in the observed signals (outliers) lead to false measurement of the SUT response. Therefore it is very important to identify these outliers before any calibration.
 
 
-
-
-\figscale{figures/withproblemons1.pdf}{Same data than those of figure \ref{fig:withoutproblemons1} but  adding two days more. We observe that a few values seem to be outliers. The data of these two days are reported figure \ref{fig:clickdetails1year2015day286aboveTH}. We see large bursts that are at the origin of the ouliers.}{fig:withproblemons1}{0.8}
+\figscale{figures/withproblemons1.pdf}{Same data than those of figure \ref{fig:withoutproblemons1} but  adding the two days with a problem described figure \ref{fig:clickdetails1year2015day286aboveTH}. We observe that a few values seem to be outliers. The data of these two days are reported figure \ref{fig:clickdetails1year2015day286aboveTHwithproblemons1}. We see large bursts that are at the origin of the ouliers.}{fig:withproblemons1}{0.8}
 
 
 \figscale{figures/clickdetails1year2015dayth1aboveTH.pdf}{Two days data added in the protocol to obtain the figure \ref{fig:withoutproblemons1}. We observe large bursts that can be considered as outliers, as they appear hugely greater than the observed values outside of the bursts.}{fig:clickdetails1year2015day286aboveTH}{1}
 
-\figscale{figures/withproblemons1Solved.pdf}{Same data than those of figure \ref{fig:withproblemons1} but  suppressing the part of the added signals where  bursts are located. The figure is very similar to the figure \ref{fig:withoutproblemons1}.}{fig:withproblemons1solved}{0.8}
+\figscale{figures/withproblemons1Solved.pdf}{Same data than those of figure \ref{fig:withproblemons1} but  using a trimming mean taking into account the click problem described  figure \ref{fig:clickdetails1year2015day286aboveTH}. The figure is very similar to the figure \ref{fig:withoutproblemons1} without the outlier pair of days. It is worth to notice that we can only suppress the part of the signals reported figure \ref{fig:clickdetails1year2015day286aboveTH} to obtain the same results.}{fig:withproblemons1solved}{0.8}
 
 \newpage\clearpage
 \subsubsection{Synchronization problem}
@@ -72,14 +57,14 @@ Another problem is the full desynchronization of the two sensor signals, as for 
 
 \newpage\clearpage
 %================================
-\subsection{Averaging on randomly selected pairs of days}
+\section{Averaging on randomly selected pairs of days}
 %================================
 
 
 Let us remain that a malfunction of short duration can be regarded as an outlier and can be removed from the useful data. It follows that during an averaging of the estimated responses we can remove what happen very rarely. For this reason we suppress a short percent of the extreme values, which is less brutale than the median approach. This kind of averaging is often called trimmed mean.
 
 Therefore to avoid the problems, cited section \ref{ss:problems}, which appear very rarely, it is advised to use a trimmed mean on several pairs of days. Figure \ref{fig:withtrimmeanonstation1}, randomly selected pairs of days are reported with a simple mean 
-and a trimmed mean excluding $30\%$ of the lowest and highest values. We see that the outlier present in the red curves is suppressed automatically by the trimmed mean. This outlier is due to the data of the 13th of October in station 1 and at the origin of the clich we see on figure \ref{fig:withoutproblemons1}.   
+and a trimmed mean excluding $30\%$ of the lowest and highest values. We see that the outlier present in the red curves is suppressed automatically by the trimmed mean. This outlier is due to the data of the 13th of October in station 1 and at the origin of the click we see on figure \ref{fig:withoutproblemons1}.   
 
 
 \figscale{figures/withtrimmeanonstation1.pdf}{Sup ratio given by the expression \eqref{eq:ratio-sup-bis-exact}. The gray points report the ratios averaged on a pair of 2 consecutive days, the red points report the simple mean on 15 pairs of days, the blue  the trimmed mean excluding $30\%$ of the lowest and highest values}{fig:withtrimmeanonstation1}{0.8}
@@ -87,7 +72,7 @@ and a trimmed mean excluding $30\%$ of the lowest and highest values. We see tha
 %================================
 \newpage\clearpage
 %================================
-\subsection{Stability at different frequency values}
+\section{Stability at different frequency values}
 %================================
 
 For different frequencies we draw randomly between the all pairs of days a certain number of them. We apply an averaging with trimming $20\%$ of the extreme values. The results are reported figure \ref{fig:averagingonagivenpairsofdays}.
@@ -107,10 +92,23 @@ We repeat the same operations by taking $15$ pairs of days (i.e. $1$ month) at d
 %================================
 \newpage\clearpage
 %================================
+\section{Standard deviation and Confidence interval}
 %================================
-\section{Comments}
+This section is devoted to the calculation of the standard deviation (STD) of the estimators and therefore to a confidence interval (CI) for the module and the phase of the SUT response. We restrict the graphics to the SUP ratio. To extend to the SUT response we have just to multiply by the SREF response. This section is associated to the program {\tt evaluatetheSTDs.m}, see section
+\ref{s:toolbox}.
+
+The protocol consists to draw randomly a selected number of days and averaging on them. Because we are concern with estimation during long periods of time, it is advised to use trimmed mean.
+
+We present  two empirical values of the STD obtained by very similar calculations on the empirical dispersion observed during the measurement. One is obtained taking the STDs performed in the main function {\tt fbanalysis.m} on the time duration of analysis, in your case it is $48$ hours and then averaging, the other by performed STD on the sequence of Sup ratios of the selected number of days. It is just to verify that these 2 values are very close. Of course these values assume that we have enough samples to give an accurate value. 
+
+We present theoretical values of the STD derived from the estimation of spectral matrix at each frequency bin and averaged on the selected number of days and using the function developed {\tt statsRatiosHbis.m}, see  chapter \ref{s:toolbox}.
+
+
+\figscale{figures/STDandCIonSensor1year2015month10day29.pdf}{Top figure: number of counts  above the threshold averaging on the number of randomly selected days as a function of the frequency. We observe a large number in the low and high frequencies but a few round $0.5$ Hz. Mid figure: the CI on the module of the Sup ratio as a function of the frequency. Bottom figure: the CI on the phase of the Sup ratio as a function of the frequency. As expected the CIs are large in the frequency band where a few number of counts are observed. We also observed that the theoretical values are in good agreement with the empirical, as expected, mainly where the number of counts is large.}{}{0.7}
 %================================
-\subsection{About the selected MSC threshold}
+\newpage\clearpage
+%================================
+\section{About the selected MSC threshold}
 %================================
 We said that we can not choose a too low value for the MSC threshold because the underdetermination. That appears clearly on figure \ref{fig:afewdaysonI26C6H6twoMSC}.
 When the  MSC threshold is $0.7$, there is a large discrepancy between the estimated ratios, see \eqref{eq:estimated-Ratio} and we outline that there is no way to solve the underdetermination. But for an MSC threshold of $0.95$, the two curves are very close.
@@ -121,40 +119,16 @@ On the other hand if the ratio between the two noise levels are perfectly known 
 
 \figscale{afewdaysonI26C4H4knownnoiseratio.pdf}{Couple H4C4, for two MSC thresholds with formula \eqref{eq:known-noise-ratio}.}{fig:afewdaysonI26C4H4knownnoiseratio}{0.7}
 
-%================================
+
+
+
 \newpage\clearpage
 %================================
-\subsection{Dip on the curves}
+\section{More details on a pair of days}
 %================================
-In all previous figures we observe an important dip around 0.1 Hz.  Also we have reported figure \ref{fig:afewdays1colocation} the ratio \eqref{eq:ratio-sup-bis-exact} for a few days on the location H2C2. The different colors are for different days. The distribution seems to be uniform and does not depend on the day. The ratio seems to be different of 1.\\*
+\figscale{figures/2daysonIS26SUT1year2015day233.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands.}{}{0.8}
 
-If the MSC is about 0.99, meaning that the noises on the two sensors are negligible, and if the two sensors have the same response, the only reason to get a ratio less than 1, is that the acoustical SOI on the SUT is attenuated, may due to the noise system reduction. That would write: it exists $\alpha\in\mathbb{C}$ with $|\alpha|<1$ s.t.:
-\begin{eqnarray}
-\label{eq:model-of-obervation}
-\left\{
-\renewcommand\arraystretch{1.6}
-\begin{array}{rcl}
-x_{\ut}(t)&=&g_{\ut}  \star (\alpha s(t))
-\\
-x_{\rf}(t)&=&g_{\rf}  \star s(t)
-\end{array}
-\right.
-\end{eqnarray}
-
-\figscale{afewdays1colocation.pdf}{a few days on H2C2. Only the band $[0.08-0.12]$ Hz is selected. The coherence is above $0.99$. The different colors for the different days.}{fig:afewdays1colocation}{0.5}
+\figscale{figures/2daysonIS26SUT1year2015day233aboveTH.pdf}{Sup ratio in dB given by the expression \eqref{eq:ratio-sup-bis-exact} for 2 successive days into the $P=6$ frequency bands for MSC above the threshold. We observe a very few events in the frequency mid-ranges, in this case we have to use a very long period of time to reduce the dispersion.}{}{0.8}
 
 
-Another way to see the response differences between the 2 sensors in the band  $[0.08-0.12]$ Hz (gain ratio different of 1), appears figure \ref{fig:filteredsignals}. A zoom of the signals is plotted. It consists of about 1 minute, around a position where the observed coherence is above $0.99$. We see that the signal on the SREF  is bigger than this on the SUT. There is no way and no reason to reject this time window since the difference can be due either to the loss of gain or a unknown transfer function. 
-\begin{figure}%{20cm}
-\begin{minipage}{10cm}
-              \includegraphics[scale=0.5]{signalsanomaly.pdf}
-\end{minipage}
-\begin{minipage}[c]{8cm}
-              \includegraphics[scale=0.5]{filteranomaly.pdf}    
-
-\end{minipage}
-\centering
-\caption{Filtered signals}
-\label{fig:filteredsignals}
-\end{figure}
 

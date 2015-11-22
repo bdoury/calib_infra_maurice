@@ -66,8 +66,8 @@
  \newcommand{\momo}[1]{\marginpar{\color{blue}\footnotesize{MOMO:}
                 \color{blue}\footnotesize{ #1}}}
 %%============================================================================
-\def\thesection{\arabic{section}.}
-\def\thesubsection{\arabic{section}.\arabic{subsection}}
+%\def\thesection{\arabic{section}.}
+%\def\thesubsection{\arabic{section}.\arabic{subsection}}
 %\def\thesubsubsection{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 %\def\thefigure{\arabic{figure}}
 %\def\theequation{\arabic{equation}}
@@ -191,7 +191,7 @@
 %===========================================
 %===========================================
 %===========================================
-\chapter{Results on IS26 data}
+\chapter{Results of IS26 - sensor \#1}
 \label{chap:IS26results}
 \input{textes/ch4IS26results.tex}
 %===========================================
@@ -234,94 +234,13 @@
 
 %===========================================
 %===========================================
-%===========================================
-%===========================================
 \part{Library}
  %============================================
 \chapter{Programs}
- \section{RMSE as function of coherence}
-{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/estimHanalysis.m}}
+For practical reasons related to the use of {\tt GIT}, the directory consisting of the signals extracted for the {\tt testbed\_archive} database are outside of the directory {\tt fullprocess}. 
 
-  \newpage
-  \section{Test of coherence}
-{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/SigniLevelTestCoherence.m}}
- 
- \newpage
- \section{Statistical distribution of the ratios}
-{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/CIHestimate.m}}
+ \input{textes/chapPrograms.tex}
 
-  
-\newpage
-%============================================
-  \section{Extraction from DB}
-  
- \subsubsection{Settings for the query to the database}
-{\tiny \verbatiminput{\programsfullprocess RUNextractfromDB.m}}
-
- \subsubsection{Query to the database}
-{\tiny \verbatiminput{\programspierrick extractfromDB.m}}
-
- \subsubsection{Conversion to format {\tt .mat}}
-{\tiny \verbatiminput{\programspierrick convertCSStomatlab.m}}
-
-
-
-
-\newpage
-%============================================
-  \section{Full process}
-
-
-  \subsection{Example of filter bank description}
-{\tiny \verbatiminput{\programsfullprocess/filtercharacteristics.m}}
-
-\subsection{Main program for estimation}
-{\tiny \verbatiminput{\programsfullprocess estimationwithFB.m}}
-
-
-%============================================
-\section{Application program}
-The first following program extracts the final ratio between the SUT and the Sref sensor response, using the data available in the format {\tt .mat}. The data consist of many files for each of the 8 sensors of IS26. All the ratios are saved in a selected directory.
-
-
-\subsection{temporalevolution.m}
-{\tiny \verbatiminput{\programsfullprocess temporalevolution.m}}
-
-
-\subsection{displaySensorResponse.m}
-{\tiny \verbatiminput{\programsfullprocess displaySUTresponse.m}}
-
-%============================================ 
-\chapter{Toolbox}
-\label{chap:toolbox}
-\section{Main analysis function: {\tt fbankanalysis.m}}
-{\tiny \verbatiminput{\programsToolbox fbankanalysis.m}}
-
-\section{Cumulative function of $\hMSC$}
-{\tiny \verbatiminput{\programsToolbox cumulFunctionMSC.m}
-
-\section{Inverse cumulative function of $\hMSC$}
-{\tiny \verbatiminput{\programsToolbox invcumulFunctionMSC.m}
-
-\section{Probability density function of $\hMSC$}
-{\tiny \verbatiminput{\programsToolbox pdfMSC.m}
-
- \section{Statistics of the spectral ratios}
-{\tiny \verbatiminput{\programsToolbox statsRatiosHbis.m}
-
- \section{Polynomial fitter}
-{\tiny \verbatiminput{\programsToolbox smoothpolyLL.m}
-
-
-%===========================================
-%============================================ 
-\chapter{Miscellaneous utilitaries}
-\section{GeneFB}
-{\tiny \verbatiminput{\programsToolbox geneFB.m}}
-\section{execGPARSE}
-{\tiny \verbatiminput{../../../0progsextract/execGPARSE.m}}
-\section{convertCSS2matlab}
-{\tiny \verbatiminput{../../../0progsextract/convertCSS2matlab.m}}
 
 %===========================================
 %===========================================

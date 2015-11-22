@@ -1,5 +1,10 @@
-% ratio at 1 Hz, look for outliers
-%=================================
+%============= temporalevolution.m ============
+% ratio at different frequency values,
+% The program displays either the sequence of
+% the pairs of days or the randomly selection
+% of a few number of them. We also apply
+% trimmed mean.
+%=====================================================
 clear
 addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
@@ -7,22 +12,16 @@ addpath ../ZZtoolbox/00benoit
 
 directorydata = '../AAresultswithFB98bis/';
 printdirectory  = ' ../../figures/';
+saveflag = 0;
+bootdraw = 1;
+nbdraw   = 100;
+Ncouples = 15;
+trimmingpercent = 30;
+numberthreshold = 0;
 
-% close all
-% clf
-
-    saveflag = 0;
-    bootdraw = 1;
-    nbdraw   = 100;
-    Ncouples = 15;
-    trimmingpercent = 30;
-    
-
-    
 cp=0;
 for  selectedfrequency_Hz = [0.05 0.1 0.5 1]
     cp=cp+1;
-    SUFFICIENTNUMBER = 0;
     for ihc=1
         comload = sprintf('load %sresultssta26sensor%i.mat',directorydata,ihc);
         numfig = ihc;
@@ -58,7 +57,7 @@ for  selectedfrequency_Hz = [0.05 0.1 0.5 1]
             doubledaynumber = nbmats;
             subplot(211);
             indnotsufficient = ...
-                find(nbofvaluesoverthreshold(freqindselect,:)<=SUFFICIENTNUMBER);
+                find(nbofvaluesoverthreshold(freqindselect,:)<=numberthreshold);
             allpraticalvaluesatselectfreq_Hz(indnotsufficient) = NaN;
             mmcenter = nanmean(allpraticalvaluesatselectfreq_Hz);
             allpraticalvaluesatselectfreq_Hz = ...
@@ -78,14 +77,14 @@ for  selectedfrequency_Hz = [0.05 0.1 0.5 1]
         xlabel('draw number','fontname','times','fontsize',12)
         set(gca,'fontname','times','fontsize',12)
         set(gca,'xlim',[1 nbdraw])
-%         set(gca,'ylim',[-1 1])
-        
+        set(gca,'ylim',[-1 1])      
 %         title(sprintf('IS26 -  sensor #%i, day number = %i, threshold = %4.2f',...
 %             ihc, 2*doubledaynumber, MSCthreshold),'fontname','times','fontsize',12)
-if cp==1
-title(sprintf('station %i, day number = %i\ntrimming at %i%s',...
-            ihc, 2*doubledaynumber,trimmingpercent,'%'),'fontname','times','fontsize',12)
-end        
+        
+        if cp==1
+            title(sprintf('station %i, day number = %i\ntrimming at %i%s',...
+                ihc, 2*doubledaynumber,trimmingpercent,'%'),'fontname','times','fontsize',12)
+        end
         hold off
         if not(bootdraw)
             subplot(212);

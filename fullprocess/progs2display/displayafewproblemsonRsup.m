@@ -1,17 +1,11 @@
-%====================== estimationwithFB.m ===============================
-% ihc==1, date==2015/10/07
-% ihc==1, date==2015/10/09
-% ihc==2, date==2015/08/07
-% ihc==2, date==2015/10/05
-% ihc==2, date==2015/10/13
-% ihc==5, date==2015/10/05
-% ihc==6, date==2015/10/07
-% ihc==8, date==2015/10/07
-
-%============ Warning =======================
-%============================================
-%============================================
-% %== some manual checks
+%================ displayafewproblemsonRsup.m ============================
+% This program plots the signals and some problems
+% inputs are the directory of NON analyzed signals,
+% the station number and the date 
+%===========================================
+% used the function fbankanalysis.m
+%
+%== non exhaustive list of some manually checks problems
 % if and(ihc==1,date_i=='2015/10/07')
 %     signals_centered = signals_centered(0.6e6:2.2e6,:);
 % end
@@ -149,7 +143,6 @@ if flagnofile_i
     return
 end
 %==================================================
-
 commandload         = sprintf('load %ss%i/%s',...
     directorysignals,ihc,fullfilename_select);
 eval(commandload)
@@ -295,8 +288,4 @@ set(gcf,'PaperType','a3');
 set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
-
-if FLAGprint
-end
-
-
+%==============================================================

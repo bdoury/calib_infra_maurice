@@ -1,5 +1,5 @@
 function [stat11on21, stat12on22, statMSC, stdPhase_degree] = ...
-    statsRatiosHbis(allT, G, N, a)
+    theoreticalStats(allT, G, N, a)
 
 % stat11on21, stat12on22 or statUUonUR, statURonRR
 %===============================================

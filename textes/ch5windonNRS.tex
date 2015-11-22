@@ -1,7 +1,48 @@
 % !TEX root = ../calibreport.tex
 %============================================
 %============================================
+\section{Dip on the curves}
+%============================================
+In all previous figures we observe an important dip around 0.1 Hz.  Also we have reported figure \ref{fig:afewdays1colocation} the ratio \eqref{eq:ratio-sup-bis-exact} for a few days on the location H2C2. The different colors are for different days. The distribution seems to be uniform and does not depend on the day. The ratio seems to be different of 1.\\*
+
+If the MSC is about 0.99, meaning that the noises on the two sensors are negligible, and if the two sensors have the same response, the only reason to get a ratio less than 1, is that the acoustical SOI on the SUT is attenuated, may due to the noise system reduction. That would write: it exists $\alpha\in\mathbb{C}$ with $|\alpha|<1$ s.t.:
+\begin{eqnarray}
+\label{eq:model-of-obervation}
+\left\{
+\renewcommand\arraystretch{1.6}
+\begin{array}{rcl}
+x_{\ut}(t)&=&g_{\ut}  \star (\alpha s(t))
+\\
+x_{\rf}(t)&=&g_{\rf}  \star s(t)
+\end{array}
+\right.
+\end{eqnarray}
+
+\figscale{afewdays1colocation.pdf}{a few days on H2C2. Only the band $[0.08-0.12]$ Hz is selected. The coherence is above $0.99$. The different colors for the different days.}{fig:afewdays1colocation}{0.5}
+
+In the following of this chapter we consider a simple wind model leading to a loss of coherence which can explain the dip. 
+
+%Another way to see the response differences between the 2 sensors in the band  $[0.08-0.12]$ Hz (gain ratio different of 1), appears figure \ref{fig:filteredsignals}. A zoom of the signals is plotted. It consists of about 1 minute, around a position where the observed coherence is above $0.99$. We see that the signal on the SREF  is bigger than this on the SUT. There is no way and no reason to reject this time window since the difference can be due either to the loss of gain or a unknown transfer function. 
+%\begin{figure}%{20cm}
+%\begin{minipage}{10cm}
+%              \includegraphics[scale=0.5]{signalsanomaly.pdf}
+%\end{minipage}
+%\begin{minipage}[c]{8cm}
+%              \includegraphics[scale=0.5]{filteranomaly.pdf}    
+%
+%\end{minipage}
+%\centering
+%\caption{Filtered signals}
+%\label{fig:filteredsignals}
+%\end{figure}
+%
+
+
+\clearpage
+%============================================
+%============================================
 \section{Introduction}
+%============================================
 The noise reduction system (NSR) commonly used in front of the infrasonic sensors in the IMS stations is based on the property that the wind noise appears as spatially uncorrelated at the air inlets of the NRS. Therefore by summation, the SNR is improved in the ratio of the number of inlets. 
 
 Unfortunately this gain is reduced in low frequencies as it has been observed by Alcoverro and al. \cite{alcoverro:2005}. This effect is characterized by the parameter $\zeta=v/f$ where $v$ denotes the wind velocity and $f$ the frequency. $\zeta$ can be interpreted as a ``wavelength'' and must be compared to the inlet inter-distances. If $\zeta$ is of the same order of magnitude of the inter distances, spatial coherence increases. It is not a good news, at first because the noise reduction  is lower. Another drawback occurs when we want to calibrate the sensor by using a second sensor without NRS. In this case the levels of the coherent part will be different and we have no way to identify it.

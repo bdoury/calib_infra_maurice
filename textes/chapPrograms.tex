@@ -1,0 +1,117 @@
+% !TEX root = ../calibreport.tex
+%================================
+%============================================ 
+\section{Toolbox}
+\label{s:toolbox}
+{\tiny \verbatiminput{\programsToolbox fbankanalysis.m}}
+
+\section{Cumulative function of $\hMSC$}
+{\tiny \verbatiminput{\programsToolbox cumulFunctionMSC.m}
+
+\section{Inverse cumulative function of $\hMSC$}
+{\tiny \verbatiminput{\programsToolbox invcumulFunctionMSC.m}
+
+\section{Probability density function of $\hMSC$}
+{\tiny \verbatiminput{\programsToolbox pdfMSC.m}
+
+ \section{Statistics of the spectral ratios}
+{\tiny \verbatiminput{\programsToolbox theoreticalStats.m}
+
+ \section{Polynomial fitter}
+{\tiny \verbatiminput{\programsToolbox smoothpolyLL.m}
+
+%============================================
+ \section{Full process}
+
+ \subsection{Example of filter bank description}
+{\tiny \verbatiminput{\programsfullprocess filtercharacteristics/filtercharacteristics1.m}}
+
+ \clearpage
+\subsection{Main program for estimation}
+{\tiny \verbatiminput{\programsfullprocess estimationwithFB.m}}
+
+
+ \clearpage
+%============================================
+\section{Application programs}
+The following program are used to draw several figures of the report.
+
+\subsection{displaySUTresponse.m}
+{\tiny \verbatiminput{\programsfullprocess progs2display/displaySUTresponse.m}}
+
+  \clearpage
+\subsection{evaluatetheSTDs.m}
+{\tiny \verbatiminput{\programsfullprocess progs2display/evaluatetheSTDs.m}}
+
+ \clearpage
+\subsection{temporalevolution.m}
+{\tiny \verbatiminput{\programsfullprocess progs2display/temporalevolution.m}}
+
+ \clearpage
+\subsection{RsupAsFreqfor3threshold.m}
+{\tiny \verbatiminput{\programsfullprocess progs2display/RsupAsFreqfor3threshold.m}}
+
+ \clearpage
+\subsection{displayafewproblemsonRsup.m}
+{\tiny \verbatiminput{\programsfullprocess progs2display/displayafewproblemsonRsup.m}}
+
+ \clearpage
+\subsection{plotsignalwithproblem.m}
+{\tiny \verbatiminput{\programsfullprocess progs2display/plotsignalwithproblem.m}}
+
+ \clearpage
+\subsection{plotRsupdetails.m}
+{\tiny \verbatiminput{\programsfullprocess progs2display/plotRsupdetails.m}}
+
+
+%============================================ 
+\chapter{Extraction form DB}
+
+ \clearpage
+\section{RUNextractfromDB}
+{\tiny \verbatiminput{\programsfullprocess RUNextractfromDB.m}}
+
+ \clearpage
+\section{execGPARSE}
+{\tiny \verbatiminput{\programsToolbox 00pierrick/extractfromDB.m}}
+
+ \clearpage
+\section{convertCSS2matlab}
+{\tiny \verbatiminput{\programsToolbox 00pierrick/convertCSStomatlab.m}}
+
+ \clearpage
+\section{savesignals}
+{\tiny \verbatiminput{\programsToolbox 00pierrick/savesignals.m}}
+
+
+%============================================ 
+\chapter{Miscellaneous utilities}
+\section{GeneFB}
+{\tiny \verbatiminput{\programsToolbox geneFB.m}}
+
+ \section{RMSE as function of coherence}
+{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/estimHanalysis.m}}
+
+  \newpage
+  \section{Test of coherence}
+{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/SigniLevelTestCoherence.m}}
+ 
+ \newpage
+ \section{Statistical distribution of the ratios}
+{\tiny \verbatiminput{\programsfullprocess/progsCIandOthers/CIHestimate.m}}
+
+  
+\newpage
+%============================================
+  \section{Extraction from DB}
+  
+ \subsubsection{Settings for the query to the database}
+{\tiny \verbatiminput{\programsfullprocess RUNextractfromDB.m}}
+
+ \subsubsection{Query to the database}
+{\tiny \verbatiminput{\programspierrick extractfromDB.m}}
+
+ \subsubsection{Conversion to format {\tt .mat}}
+{\tiny \verbatiminput{\programspierrick convertCSStomatlab.m}}
+
+

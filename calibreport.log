@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.25)  21 NOV 2015 17:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.25)  22 NOV 2015 12:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -379,6 +379,9 @@ LaTeX Warning: Label `' multiply defined.
 LaTeX Warning: Label `' multiply defined.
 
 
+LaTeX Warning: Label `' multiply defined.
+
+
 LaTeX Warning: Label `eq:model-of-obervation' multiply defined.
 
 
@@ -506,7 +509,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--16
 
  []
 
-<figures/schema-of-observation-simple.pdf, id=409, 201.67746pt x 107.66322pt>
+<figures/schema-of-observation-simple.pdf, id=439, 201.67746pt x 107.66322pt>
 File: figures/schema-of-observation-simple.pdf Graphic file (type pdf)
 
 <use figures/schema-of-observation-simple.pdf>
@@ -577,7 +580,7 @@ LaTeX Warning: Reference `eq:ratio-inf' on page 10 undefined on input line 144.
 ) [10]
 Chapter 2.
 (./textes/ch2spectralanalysis.tex
-<slidesITW2015/fulltestbedIS26.pdf, id=496, 294.26897pt x 114.09616pt>
+<slidesITW2015/fulltestbedIS26.pdf, id=526, 294.26897pt x 114.09616pt>
 File: slidesITW2015/fulltestbedIS26.pdf Graphic file (type pdf)
 
 <use slidesITW2015/fulltestbedIS26.pdf>
@@ -585,7 +588,7 @@ Package pdftex.def Info: slidesITW2015/fulltestbedIS26.pdf used on input line 7
 .
 (pdftex.def)             Requested size: 294.26825pt x 114.09587pt.
 
-<slidesITW2015/processdetail.pdf, id=497, 386.23576pt x 104.63933pt>
+<slidesITW2015/processdetail.pdf, id=527, 386.23576pt x 104.63933pt>
 File: slidesITW2015/processdetail.pdf Graphic file (type pdf)
 
 <use slidesITW2015/processdetail.pdf>
@@ -602,7 +605,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<figures/schema-of-observation.pdf, id=590, 420.9865pt x 195.396pt>
+<figures/schema-of-observation.pdf, id=621, 420.9865pt x 195.396pt>
 File: figures/schema-of-observation.pdf Graphic file (type pdf)
 
 <use figures/schema-of-observation.pdf>
@@ -656,21 +659,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--219
 
  []
 
-[17] <figures/allHest.pdf, id=757, 341.275pt x 227.85126pt>
+[17] <figures/allHest.pdf, id=787, 341.275pt x 227.85126pt>
 File: figures/allHest.pdf Graphic file (type pdf)
 
 <use figures/allHest.pdf>
 Package pdftex.def Info: figures/allHest.pdf used on input line 281.
 (pdftex.def)             Requested size: 273.02036pt x 182.28123pt.
 
-<figures/MSCtestthreshold.pdf, id=758, 341.275pt x 227.85126pt>
+<figures/MSCtestthreshold.pdf, id=788, 341.275pt x 227.85126pt>
 File: figures/MSCtestthreshold.pdf Graphic file (type pdf)
 
 <use figures/MSCtestthreshold.pdf>
 Package pdftex.def Info: figures/MSCtestthreshold.pdf used on input line 283.
 (pdftex.def)             Requested size: 273.02036pt x 182.28123pt.
  [18] [19 <./figures/allHest.pdf> <./figures/MSCtestthreshold.pdf>]
-<figures/theoreticaldistribratios.pdf, id=782, 341.275pt x 227.85126pt>
+<figures/theoreticaldistribratios.pdf, id=812, 341.275pt x 227.85126pt>
 File: figures/theoreticaldistribratios.pdf Graphic file (type pdf)
 
 <use figures/theoreticaldistribratios.pdf>
@@ -695,7 +698,7 @@ LaTeX Warning: Reference `eq:ratio-inf' on page 20 undefined on input line 290.
 
 
 [20 <./figures/theoreticaldistribratios.pdf>]
-<figures/practicalratiodistribution6.pdf, id=810, 682.55pt x 284.06125pt>
+<figures/practicalratiodistribution6.pdf, id=840, 682.55pt x 284.06125pt>
 File: figures/practicalratiodistribution6.pdf Graphic file (type pdf)
 
 <use figures/practicalratiodistribution6.pdf>
@@ -703,7 +706,7 @@ Package pdftex.def Info: figures/practicalratiodistribution6.pdf used on input
 line 346.
 (pdftex.def)             Requested size: 546.04074pt x 227.24928pt.
  [21] [22 <./figures/practicalratiodistribution6.pdf>] [23]
-<figures/overlapFFTs.pdf, id=840, 490.17357pt x 190.63039pt>
+<figures/overlapFFTs.pdf, id=871, 490.17357pt x 190.63039pt>
 File: figures/overlapFFTs.pdf Graphic file (type pdf)
 
 <use figures/overlapFFTs.pdf>
@@ -711,306 +714,308 @@ Package pdftex.def Info: figures/overlapFFTs.pdf used on input line 402.
 (pdftex.def)             Requested size: 392.13937pt x 152.5045pt.
  [24 <./figures/overlapFFTs.pdf>]) [25]
 Chapter 3.
-(./textes/ch4IS26results.tex [26
-
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 27.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 27.
-
-<figures/withoutproblemons1.pdf, id=903, 455.7025pt x 284.06125pt>
+(./textes/ch4IS26results.tex
+<figures/withoutproblemons1.pdf, id=929, 455.7025pt x 398.48875pt>
 File: figures/withoutproblemons1.pdf Graphic file (type pdf)
 
 <use figures/withoutproblemons1.pdf>
-Package pdftex.def Info: figures/withoutproblemons1.pdf used on input line 30.
-(pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
- [27 <./figures/withoutproblemons1.pdf>]
-<figures/2daysonIS26SUT1year2015day152diffTH.pdf, id=913, 455.7025pt x 398.4887
-5pt>
-File: figures/2daysonIS26SUT1year2015day152diffTH.pdf Graphic file (type pdf)
- <use figures/2daysonIS26SUT1year2015day152diffTH.pdf>
-Package pdftex.def Info: figures/2daysonIS26SUT1year2015day152diffTH.pdf used o
-n input line 36.
+Package pdftex.def Info: figures/withoutproblemons1.pdf used on input line 26.
+(pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
+ [26
+
+] [27 <./figures/withoutproblemons1.pdf>]
+<figures/sensor120150601withdifferentthreshold.pdf, id=947, 455.7025pt x 398.48
+875pt>
+File: figures/sensor120150601withdifferentthreshold.pdf Graphic file (type pdf)
+
+ <use figures/sensor120150601withdifferentthreshold.pdf>
+Package pdftex.def Info: figures/sensor120150601withdifferentthreshold.pdf used
+ on input line 32.
 (pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
  [28
 
- <./figures/2daysonIS26SUT1year2015day152diffTH.pdf>]
-<figures/2daysonIS26SUT1year2015day233.pdf, id=928, 455.7025pt x 398.48875pt>
-File: figures/2daysonIS26SUT1year2015day233.pdf Graphic file (type pdf)
-
-<use figures/2daysonIS26SUT1year2015day233.pdf>
-Package pdftex.def Info: figures/2daysonIS26SUT1year2015day233.pdf used on inpu
-t line 43.
-(pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
-
-<figures/2daysonIS26SUT1year2015day233aboveTH.pdf, id=931, 455.7025pt x 398.488
-75pt>
-File: figures/2daysonIS26SUT1year2015day233aboveTH.pdf Graphic file (type pdf)
- <use figures/2daysonIS26SUT1year2015day233aboveTH.pdf>
-Package pdftex.def Info: figures/2daysonIS26SUT1year2015day233aboveTH.pdf used 
-on input line 45.
-(pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
- [29
-
- <./figures/2daysonIS26SUT1year2015day233.pdf>] [30 <./figures/2daysonIS26SUT1y
-ear2015day233aboveTH.pdf>] <figures/withproblemons1.pdf, id=963, 455.7025pt x 2
-84.06125pt>
+ <./figures/sensor120150601withdifferentthreshold.pdf>]
+<figures/withproblemons1.pdf, id=968, 455.7025pt x 398.48875pt>
 File: figures/withproblemons1.pdf Graphic file (type pdf)
 
 <use figures/withproblemons1.pdf>
-Package pdftex.def Info: figures/withproblemons1.pdf used on input line 60.
-(pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
+Package pdftex.def Info: figures/withproblemons1.pdf used on input line 45.
+(pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
 
-<figures/clickdetails1year2015dayth1aboveTH.pdf, id=968, 398.48875pt x 341.275p
+
+LaTeX Warning: Reference `fig:clickdetails1year2015day286aboveTHwithproblemons1
+' on page 29 undefined on input line 45.
+
+
+LaTeX Warning: Reference `fig:clickdetails1year2015day286aboveTHwithproblemons1
+' on page 29 undefined on input line 45.
+
+
+<figures/clickdetails1year2015dayth1aboveTH.pdf, id=973, 398.48875pt x 341.275p
 t>
 File: figures/clickdetails1year2015dayth1aboveTH.pdf Graphic file (type pdf)
  <use figures/clickdetails1year2015dayth1aboveTH.pdf>
 Package pdftex.def Info: figures/clickdetails1year2015dayth1aboveTH.pdf used on
- input line 63.
+ input line 48.
 (pdftex.def)             Requested size: 398.48778pt x 341.27415pt.
 
-<figures/withproblemons1Solved.pdf, id=971, 455.7025pt x 284.06125pt>
+<figures/withproblemons1Solved.pdf, id=976, 455.7025pt x 398.48875pt>
 File: figures/withproblemons1Solved.pdf Graphic file (type pdf)
 
 <use figures/withproblemons1Solved.pdf>
-Package pdftex.def Info: figures/withproblemons1Solved.pdf used on input line 6
-5.
-(pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
- [31
+Package pdftex.def Info: figures/withproblemons1Solved.pdf used on input line 5
+0.
+(pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
+ [29
 
  <./figures/withproblemons1.pdf>]
-[32 <./figures/clickdetails1year2015dayth1aboveTH.pdf>] [33 <./figures/withprob
-lemons1Solved.pdf>] <figures/fillshift.pdf, id=1006, 385.44pt x 253.94875pt>
+[30 <./figures/clickdetails1year2015dayth1aboveTH.pdf>] [31 <./figures/withprob
+lemons1Solved.pdf>] <figures/fillshift.pdf, id=1023, 385.44pt x 253.94875pt>
 File: figures/fillshift.pdf Graphic file (type pdf)
 
 <use figures/fillshift.pdf>
-Package pdftex.def Info: figures/fillshift.pdf used on input line 71.
+Package pdftex.def Info: figures/fillshift.pdf used on input line 56.
 (pdftex.def)             Requested size: 308.35242pt x 203.15926pt.
- [34
+ [32
 
  <./figures/fillshift.pdf>]
-<figures/withtrimmeanonstation1.pdf, id=1020, 455.7025pt x 284.06125pt>
+<figures/withtrimmeanonstation1.pdf, id=1037, 455.7025pt x 284.06125pt>
 File: figures/withtrimmeanonstation1.pdf Graphic file (type pdf)
 
 <use figures/withtrimmeanonstation1.pdf>
 Package pdftex.def Info: figures/withtrimmeanonstation1.pdf used on input line 
-85.
+70.
 (pdftex.def)             Requested size: 364.56248pt x 227.24928pt.
- [35
+ [33
 
  <./figures/withtrimmeanonstation1.pdf>]
 
-LaTeX Warning: Reference `fig:averagingonagivenpairsofdays' on page 36 undefine
-d on input line 93.
+LaTeX Warning: Reference `fig:averagingonagivenpairsofdays' on page 34 undefine
+d on input line 78.
 
-<figures/evolutionon1atfreq1Hz.pdf, id=1034, 455.7025pt x 341.275pt>
+<figures/evolutionon1atfreq1Hz.pdf, id=1051, 455.7025pt x 341.275pt>
 File: figures/evolutionon1atfreq1Hz.pdf Graphic file (type pdf)
 
 <use figures/evolutionon1atfreq1Hz.pdf>
-Package pdftex.def Info: figures/evolutionon1atfreq1Hz.pdf used on input line 9
-7.
+Package pdftex.def Info: figures/evolutionon1atfreq1Hz.pdf used on input line 8
+2.
 (pdftex.def)             Requested size: 364.56248pt x 273.02036pt.
- [36
+ [34
 
  <./figures/evolutionon1atfreq1Hz.pdf>]
 
-LaTeX Warning: Reference `ss:ciandstdsection' on page 37 undefined on input lin
-e 102.
+LaTeX Warning: Reference `ss:ciandstdsection' on page 35 undefined on input lin
+e 87.
 
-<figures/evolutionon1atdifffreq.pdf, id=1051, 455.7025pt x 398.48875pt>
+<figures/evolutionon1atdifffreq.pdf, id=1068, 455.7025pt x 398.48875pt>
 File: figures/evolutionon1atdifffreq.pdf Graphic file (type pdf)
 
 <use figures/evolutionon1atdifffreq.pdf>
 Package pdftex.def Info: figures/evolutionon1atdifffreq.pdf used on input line 
-104.
+89.
 (pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
- [37
+ [35
 
- <./figures/evolutionon1atdifffreq.pdf>] <figures/afewdaysonI26C6H6twoMSC.pdf, 
-id=1067, 682.55pt x 284.06125pt>
+ <./figures/evolutionon1atdifffreq.pdf>]
+<figures/STDandCIonSensor1year2015month10day29.pdf, id=1083, 455.7025pt x 569.1
+2625pt>
+File: figures/STDandCIonSensor1year2015month10day29.pdf Graphic file (type pdf)
+
+ <use figures/STDandCIonSensor1year2015month10day29.pdf>
+Package pdftex.def Info: figures/STDandCIonSensor1year2015month10day29.pdf used
+ on input line 107.
+(pdftex.def)             Requested size: 318.98956pt x 398.38567pt.
+ [36
+
+] [37 <./figures/STDandCIonSensor1year2015month10day29.pdf>]
+<figures/afewdaysonI26C6H6twoMSC.pdf, id=1107, 682.55pt x 284.06125pt>
 File: figures/afewdaysonI26C6H6twoMSC.pdf Graphic file (type pdf)
 
 <use figures/afewdaysonI26C6H6twoMSC.pdf>
 Package pdftex.def Info: figures/afewdaysonI26C6H6twoMSC.pdf used on input line
- 118.
+ 116.
 (pdftex.def)             Requested size: 477.78175pt x 198.84149pt.
 
-<figures/afewdaysonI26C4H4knownnoiseratio.pdf, id=1071, 682.55pt x 284.06125pt>
+<figures/afewdaysonI26C4H4knownnoiseratio.pdf, id=1111, 682.55pt x 284.06125pt>
 File: figures/afewdaysonI26C4H4knownnoiseratio.pdf Graphic file (type pdf)
 <use figures/afewdaysonI26C4H4knownnoiseratio.pdf>
 Package pdftex.def Info: figures/afewdaysonI26C4H4knownnoiseratio.pdf used on i
-nput line 122.
+nput line 120.
 (pdftex.def)             Requested size: 477.78175pt x 198.84149pt.
  [38
 
  <./figures/afewdaysonI26C6H6twoMSC.pdf>] [39 <./figures/afewdaysonI26C4H4known
 noiseratio.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
+<figures/2daysonIS26SUT1year2015day233.pdf, id=1141, 455.7025pt x 398.48875pt>
+File: figures/2daysonIS26SUT1year2015day233.pdf Graphic file (type pdf)
+
+<use figures/2daysonIS26SUT1year2015day233.pdf>
+Package pdftex.def Info: figures/2daysonIS26SUT1year2015day233.pdf used on inpu
+t line 129.
+(pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
+
+<figures/2daysonIS26SUT1year2015day233aboveTH.pdf, id=1144, 455.7025pt x 398.48
+875pt>
+File: figures/2daysonIS26SUT1year2015day233aboveTH.pdf Graphic file (type pdf)
+ <use figures/2daysonIS26SUT1year2015day233aboveTH.pdf>
+Package pdftex.def Info: figures/2daysonIS26SUT1year2015day233aboveTH.pdf used 
+on input line 131.
+(pdftex.def)             Requested size: 364.56248pt x 318.79143pt.
+) [40
+
+ <./figures/2daysonIS26SUT1year2015day233.pdf>] [41 <./figures/2daysonIS26SUT1y
+ear2015day233aboveTH.pdf>]
+Chapter 4.
+(./textes/ch5windonNRS.tex
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
 
  []
 
-<figures/afewdays1colocation.pdf, id=1102, 569.12625pt x 398.48875pt>
+<figures/afewdays1colocation.pdf, id=1173, 569.12625pt x 398.48875pt>
 File: figures/afewdays1colocation.pdf Graphic file (type pdf)
 
 <use figures/afewdays1colocation.pdf>
-Package pdftex.def Info: figures/afewdays1colocation.pdf used on input line 144
-.
+Package pdftex.def Info: figures/afewdays1colocation.pdf used on input line 21.
+
 (pdftex.def)             Requested size: 284.56242pt x 199.24388pt.
+ [42
 
-<figures/signalsanomaly.pdf, id=1104, 569.12625pt x 455.7025pt>
-File: figures/signalsanomaly.pdf Graphic file (type pdf)
+] [43 <./figures/afewdays1colocation.pdf>]
 
-<use figures/signalsanomaly.pdf>
-Package pdftex.def Info: figures/signalsanomaly.pdf used on input line 150.
-(pdftex.def)             Requested size: 284.56242pt x 227.85068pt.
-
-<figures/filteranomaly.pdf, id=1105, 284.06125pt x 227.85126pt>
-File: figures/filteranomaly.pdf Graphic file (type pdf)
-
-<use figures/filteranomaly.pdf>
-Package pdftex.def Info: figures/filteranomaly.pdf used on input line 153.
-(pdftex.def)             Requested size: 142.03026pt x 113.92534pt.
-) [40
-
- <./figures/afewdays1colocation.pdf>]
-[41 <./figures/signalsanomaly.pdf> <./figures/filteranomaly.pdf>]
-Chapter 4.
-(./textes/ch5windonNRS.tex
-
-LaTeX Warning: Citation `alcoverro:2005' on page 42 undefined on input line 7.
-
-
-LaTeX Warning: Citation `alcoverro:2005' on page 42 undefined on input line 12.
+LaTeX Warning: Citation `alcoverro:2005' on page 44 undefined on input line 48.
 
 
 
-LaTeX Warning: Citation `nouvellet_itwb:2013' on page 42 undefined on input lin
-e 12.
+LaTeX Warning: Citation `alcoverro:2005' on page 44 undefined on input line 53.
 
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 42 undefined on input line 12
-.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 20.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 20.
-
-[42
-
-] [43]
 
 LaTeX Warning: Citation `nouvellet_itwb:2013' on page 44 undefined on input lin
-e 110.
-
-[44]
-
-LaTeX Warning: Citation `mack_flinn:1971' on page 45 undefined on input line 13
-0.
+e 53.
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 45 undefined on input line 151
+LaTeX Warning: Citation `mack_flinn:1971' on page 44 undefined on input line 53
 .
-
-[45]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 159.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 159.
+(hyperref)                removing `math shift' on input line 61.
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 46 undefined on input line 161
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 61.
+
+[44
+
+] [45]
+
+LaTeX Warning: Citation `nouvellet_itwb:2013' on page 46 undefined on input lin
+e 151.
+
+[46]
+
+LaTeX Warning: Citation `mack_flinn:1971' on page 47 undefined on input line 17
+1.
+
+
+LaTeX Warning: Citation `alcoverro:2005' on page 47 undefined on input line 192
 .
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 46 undefined on input line 161
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 200.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 200.
+
+
+LaTeX Warning: Citation `alcoverro:2005' on page 47 undefined on input line 202
 .
 
 
-LaTeX Warning: Citation `alcoverro:2005' on page 46 undefined on input line 162
+LaTeX Warning: Citation `alcoverro:2005' on page 47 undefined on input line 202
 .
 
-<figures/f05asvond.pdf, id=1175, 398.48875pt x 284.06125pt>
+
+LaTeX Warning: Citation `alcoverro:2005' on page 47 undefined on input line 203
+.
+
+<figures/f05asvond.pdf, id=1223, 398.48875pt x 284.06125pt>
 File: figures/f05asvond.pdf Graphic file (type pdf)
 
 <use figures/f05asvond.pdf>
-Package pdftex.def Info: figures/f05asvond.pdf used on input line 163.
+Package pdftex.def Info: figures/f05asvond.pdf used on input line 204.
 (pdftex.def)             Requested size: 318.79143pt x 227.24928pt.
- [46 <./figures/f05asvond.pdf>]
-Underfull \hbox (badness 5161) in paragraph at lines 169--169
+ [47] [48 <./figures/f05asvond.pdf>]
+Underfull \hbox (badness 2626) in paragraph at lines 210--210
 []\OT1/cmr/bx/n/17.28 Application to the \OT1/cmr/m/it/17.28 in-situ \OT1/cmr/b
 x/n/17.28 cal-i-bra-tion
  []
 
 
-LaTeX Warning: Citation `gabrielson:2011' on page 47 undefined on input line 17
-7.
+LaTeX Warning: Citation `gabrielson:2011' on page 49 undefined on input line 21
+8.
 
-<figures/bigschema.pdf, id=1187, 514.89pt x 212.33388pt>
+<figures/bigschema.pdf, id=1244, 514.89pt x 212.33388pt>
 File: figures/bigschema.pdf Graphic file (type pdf)
 
 <use figures/bigschema.pdf>
-Package pdftex.def Info: figures/bigschema.pdf used on input line 181.
+Package pdftex.def Info: figures/bigschema.pdf used on input line 222.
 (pdftex.def)             Requested size: 308.93637pt x 127.4013pt.
- [47 <./figures/bigschema.pdf>] [48] [49] [50]
-<figures/GonH.pdf, id=1283, 569.12625pt x 511.9125pt>
+ [49 <./figures/bigschema.pdf>] [50] [51] [52]
+<figures/GonH.pdf, id=1340, 569.12625pt x 511.9125pt>
 File: figures/GonH.pdf Graphic file (type pdf)
  <use figures/GonH.pdf>
-Package pdftex.def Info: figures/GonH.pdf used on input line 359.
+Package pdftex.def Info: figures/GonH.pdf used on input line 400.
 (pdftex.def)             Requested size: 398.38567pt x 358.3363pt.
 
-[51
+[53
 
-] [52 <./figures/GonH.pdf>]
-<figures/twospeeds.pdf, id=1298, 398.48875pt x 341.275pt>
+] [54 <./figures/GonH.pdf>]
+<figures/twospeeds.pdf, id=1355, 398.48875pt x 341.275pt>
 File: figures/twospeeds.pdf Graphic file (type pdf)
 
 <use figures/twospeeds.pdf>
-Package pdftex.def Info: figures/twospeeds.pdf used on input line 369.
+Package pdftex.def Info: figures/twospeeds.pdf used on input line 410.
 (pdftex.def)             Requested size: 318.79143pt x 273.02036pt.
 
-<figures/twospeedsbis.pdf, id=1299, 398.48875pt x 341.275pt>
+<figures/twospeedsbis.pdf, id=1356, 398.48875pt x 341.275pt>
 File: figures/twospeedsbis.pdf Graphic file (type pdf)
 
 <use figures/twospeedsbis.pdf>
-Package pdftex.def Info: figures/twospeedsbis.pdf used on input line 371.
+Package pdftex.def Info: figures/twospeedsbis.pdf used on input line 412.
 (pdftex.def)             Requested size: 278.94022pt x 238.89085pt.
 
-<figures/twospeedster.pdf, id=1301, 398.48875pt x 341.275pt>
+<figures/twospeedster.pdf, id=1358, 398.48875pt x 341.275pt>
 File: figures/twospeedster.pdf Graphic file (type pdf)
 
 <use figures/twospeedster.pdf>
-Package pdftex.def Info: figures/twospeedster.pdf used on input line 373.
+Package pdftex.def Info: figures/twospeedster.pdf used on input line 414.
 (pdftex.def)             Requested size: 278.94022pt x 238.89085pt.
-) [53
+) [55
 
- <./figures/twospeeds.pdf>] [54 <./figures/twospeedsbis.pdf> <./figures/twospee
+ <./figures/twospeeds.pdf>] [56 <./figures/twospeedsbis.pdf> <./figures/twospee
 dster.pdf>]
 Chapter 5.
-(./textes/ch6fullprocess.tex [55
+(./textes/ch6fullprocess.tex [57
 
 ]
 File: filtercharacteristicsEXAMPLE.m  (verbatim)
- [56]
-<figures/synoptic.pdf, id=1342, 399.90224pt x 271.41148pt>
+ [58]
+<figures/synoptic.pdf, id=1399, 399.90224pt x 271.41148pt>
 File: figures/synoptic.pdf Graphic file (type pdf)
 
 <use figures/synoptic.pdf>
 Package pdftex.def Info: figures/synoptic.pdf used on input line 81.
 (pdftex.def)             Requested size: 399.90125pt x 271.41081pt.
- [57
 
- <./figures/synoptic.pdf>] [58]
+
+LaTeX Warning: Reference `chap:toolbox' on page 59 undefined on input line 83.
+
+[59
+
+ <./figures/synoptic.pdf>] [60]
 Overfull \hbox (23.7252pt too wide) in paragraph at lines 144--144
 []\OT1/cmtt/m/n/12 %         xx.Nsupthresholdintheband: counts of the number of
  values[] 
@@ -1028,28 +1033,28 @@ Overfull \hbox (17.5502pt too wide) in paragraph at lines 155--155
 ucture[] 
  []
 
-) [59
+) [61
 
-] [60
+] [62
 
 ]
 Chapter 6.
-(./textes/IConmean.tex [61
-
-]) [62]
-Chapter 7.
-(./textes/a1wss.tex [63
+(./textes/IConmean.tex [63
 
 ]) [64]
+Chapter 7.
+(./textes/a1wss.tex [65
+
+]) [66]
 Chapter 8.
-(./textes/a2spectralestimationDistribution.tex [65
+(./textes/a2spectralestimationDistribution.tex [67
 
 ]
 Overfull \hbox (18.22597pt too wide) in alignment at lines 72--82
  [][][] []
  []
 
-[66]
+[68]
 Overfull \hbox (18.35542pt too wide) detected at line 122
 \U/dsrom/m/n/12 E [] \OT1/cmr/m/n/12 = \U/dsrom/m/n/12 E [] \OT1/cmr/m/n/12 = 2
 \U/dsrom/m/n/12 E [] E [] \OT1/cmr/m/n/12 + 0 = 2^^@[]
@@ -1060,21 +1065,21 @@ Overfull \hbox (5.07771pt too wide) in alignment at lines 137--146
  [][][] []
  []
 
-[67] [68] [69] [70]
+[69] [70] [71] [72]
 Overfull \hbox (62.75174pt too wide) detected at line 412
 [] [] \OT1/cmr/m/n/12 = [] []
  []
 
-[71]
+[73]
 
-LaTeX Warning: Reference `eq:rectangularsmooth' on page 72 undefined on input l
+LaTeX Warning: Reference `eq:rectangularsmooth' on page 74 undefined on input l
 ine 436.
 
 
-LaTeX Warning: Reference `fig:statsRatiosH2Mp131' on page 72 undefined on input
+LaTeX Warning: Reference `fig:statsRatiosH2Mp131' on page 74 undefined on input
  line 442.
 
-[72] [73]
+[74] [75]
 Underfull \hbox (badness 10000) in paragraph at lines 605--605
 []\OT1/cmr/bx/n/17.28 Some dis-tri-bu-tions re-lated to the
  []
@@ -1084,9 +1089,9 @@ Overfull \hbox (42.94633pt too wide) in alignment at lines 640--661
  [][][] []
  []
 
-[74]
+[76]
 
-LaTeX Warning: Reference `eq:directestimateHu1' on page 75 undefined on input l
+LaTeX Warning: Reference `eq:directestimateHu1' on page 77 undefined on input l
 ine 669.
 
 
@@ -1094,56 +1099,56 @@ Overfull \hbox (29.09225pt too wide) in alignment at lines 752--767
  [][][] []
  []
 
-[75]
+[77]
 Overfull \hbox (16.12128pt too wide) in alignment at lines 782--791
  [][][] []
  []
 
 
-LaTeX Warning: Reference `eq:directestimateHu2' on page 76 undefined on input l
+LaTeX Warning: Reference `eq:directestimateHu2' on page 78 undefined on input l
 ine 837.
 
-[76]
+[78]
 Overfull \hbox (42.94633pt too wide) in alignment at lines 890--910
  [][][] []
  []
 
-[77] [78]
+[79] [80]
 
-LaTeX Warning: Citation `carter:1973' on page 79 undefined on input line 969.
+LaTeX Warning: Citation `carter:1973' on page 81 undefined on input line 969.
 
-[79] <figures/cumulF-MSC.pdf, id=1519, 341.275pt x 341.275pt>
+[81] <figures/cumulF-MSC.pdf, id=1575, 341.275pt x 341.275pt>
 File: figures/cumulF-MSC.pdf Graphic file (type pdf)
 
 <use figures/cumulF-MSC.pdf>
 Package pdftex.def Info: figures/cumulF-MSC.pdf used on input line 1020.
 (pdftex.def)             Requested size: 273.02036pt x 273.02036pt.
- [80 <./figures/cumulF-MSC.pdf>]
-<figures/thresholdforC95.pdf, id=1537, 511.9125pt x 341.275pt>
+ [82 <./figures/cumulF-MSC.pdf>]
+<figures/thresholdforC95.pdf, id=1593, 511.9125pt x 341.275pt>
 File: figures/thresholdforC95.pdf Graphic file (type pdf)
 
 <use figures/thresholdforC95.pdf>
 Package pdftex.def Info: figures/thresholdforC95.pdf used on input line 1046.
 (pdftex.def)             Requested size: 409.53056pt x 273.02036pt.
- [81]
-<figures/detectMSC.pdf, id=1544, 398.48875pt x 341.275pt>
+ [83]
+<figures/detectMSC.pdf, id=1601, 398.48875pt x 341.275pt>
 File: figures/detectMSC.pdf Graphic file (type pdf)
 
 <use figures/detectMSC.pdf>
 Package pdftex.def Info: figures/detectMSC.pdf used on input line 1052.
 (pdftex.def)             Requested size: 318.79143pt x 273.02036pt.
-) [82 <./figures/thresholdforC95.pdf>] [83 <./figures/detectMSC.pdf>]
+) [84 <./figures/thresholdforC95.pdf>] [85 <./figures/detectMSC.pdf>]
 Chapter 9.
 (./textes/a3LOC.tex
 
-LaTeX Warning: Citation `mack_flinn:1971' on page 84 undefined on input line 29
+LaTeX Warning: Citation `mack_flinn:1971' on page 86 undefined on input line 29
 .
 
 
-LaTeX Warning: Citation `nouvellet:2012' on page 84 undefined on input line 29.
+LaTeX Warning: Citation `nouvellet:2012' on page 86 undefined on input line 29.
 
 
-[84
+[86
 
 ]
 
@@ -1155,225 +1160,277 @@ Overfull \hbox (16.8035pt too wide) in alignment at lines 64--84
  [][][] []
  []
 
-) [85]
+) [87]
 Chapter 10.
-(./textes/a4deterministic.tex [86
+(./textes/a4deterministic.tex [88
 
-]) [87] [88
+]) [89] [90
 
 ]
 Chapter 11.
-File: fullprocess//progsCIandOthers/estimHanalysis.m  (verbatim)
-[89
+(./textes/chapPrograms.tex
+File: fullprocess/ZZtoolbox/fbankanalysis.m  (verbatim)
+ [91
 
-] [90] [91]
+] [92] [93] [94] [95] [96] [97]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\setbox' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\hbox' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\frozen@everymath' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@emptytoks' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathsurround' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\textstyle' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathaccent' on input line 8.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 8.
+
+File: fullprocess/ZZtoolbox/cumulFunctionMSC.m  (verbatim)
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\setbox' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\hbox' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\frozen@everymath' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@emptytoks' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathsurround' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\textstyle' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathaccent' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
+File: fullprocess/ZZtoolbox/invcumulFunctionMSC.m  (verbatim)
+[98]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\setbox' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\hbox' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\frozen@everymath' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@emptytoks' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathsurround' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\textstyle' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathaccent' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 14.
+
+File: fullprocess/ZZtoolbox/pdfMSC.m  (verbatim)
+File: fullprocess/ZZtoolbox/theoreticalStats.m  (verbatim)
+[99] [100]
+File: fullprocess/ZZtoolbox/smoothpolyLL.m  (verbatim)
+ [101]
+File: fullprocess/filtercharacteristics/filtercharacteristics1.m  (verbatim)
+ [102]
+File: fullprocess/estimationwithFB.m  (verbatim)
+ [103
+
+] [104] [105]
+File: fullprocess/progs2display/displaySUTresponse.m  (verbatim)
+ [106
+
+] [107]
+Overfull \hbox (139.1326pt too wide) in paragraph at lines 40--40
+[]\OT1/cmtt/m/n/6 % corrlevel = corr(STDmodtheo_ip(and(not(isnan(STDmodtheo_ip)
+),not(STDmodempiric_ip==0))), STDmodempiric_ip(and(not(isnan(STDmodtheo_ip)),no
+t(STDmodempiric_ip==0))));[] 
+ []
+
+[108]
+File: fullprocess/progs2display/evaluatetheSTDs.m  (verbatim)
+ [109
+
+] [110]
+File: fullprocess/progs2display/temporalevolution.m  (verbatim)
+ [111
+
+] [112]
+File: fullprocess/progs2display/RsupAsFreqfor3threshold.m  (verbatim)
+ [113
+
+] [114]
+File: fullprocess/progs2display/displayafewproblemsonRsup.m  (verbatim)
+ [115
+
+] [116] [117]
+File: fullprocess/progs2display/plotsignalwithproblem.m  (verbatim)
+ [118
+
+] [119]
+File: fullprocess/progs2display/plotRsupdetails.m  (verbatim)
+
+[120
+
+] [121] [122]
+Chapter 12.
+[123
+
+]
+File: fullprocess/RUNextractfromDB.m  (verbatim)
+ [124
+
+]
+File: fullprocess/ZZtoolbox/00pierrick/extractfromDB.m  (verbatim)
+ [125
+
+]
+File: fullprocess/ZZtoolbox/00pierrick/convertCSStomatlab.m  (verbatim)
+ [126
+
+]
+File: fullprocess/ZZtoolbox/00pierrick/savesignals.m  (verbatim)
+ [127
+
+]
+Chapter 13.
+File: fullprocess/ZZtoolbox/geneFB.m  (verbatim)
+[128
+
+]
+File: fullprocess//progsCIandOthers/estimHanalysis.m  (verbatim)
+ [129] [130] [131] [132]
 File: fullprocess//progsCIandOthers/SigniLevelTestCoherence.m  (verbatim)
- [92]
+ [133]
 File: fullprocess//progsCIandOthers/CIHestimate.m  (verbatim)
- [93] [94]
-Overfull \hbox (88.13187pt too wide) in paragraph at lines 251--251
+ [134] [135]
+Overfull \hbox (88.13187pt too wide) in paragraph at lines 101--101
 []    \OT1/cmtt/m/n/6 text0 = sprintf('True ratio HUT/HREF = %i,\nTrue MSC = % 
 4.2f\nNoise power ratio = %2i (%4.1f dB)\nSmoothing window number = %i\nLruns =
  %i',  ...[] 
  []
 
-[95] [96]
+[136] [137]
 File: fullprocess/RUNextractfromDB.m  (verbatim)
 File: fullprocess/ZZtoolbox/00Pierrick/extractfromDB.m  (verbatim)
- [97]
+ [138]
 File: fullprocess/ZZtoolbox/00Pierrick/convertCSStomatlab.m  (verbatim)
- [98]
-No file fullprocess//filtercharacteristics.m.
-File: fullprocess/estimationwithFB.m  (verbatim)
-[99] [100]
-No file fullprocess/temporalevolution.m.
-No file fullprocess/displaySUTresponse.m.
-[101]
-Chapter 12.
-File: fullprocess/ZZtoolbox/fbankanalysis.m  (verbatim)
-[102
-
-] [103] [104] [105] [106] [107] [108]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\frozen@everymath' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@emptytoks' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\textstyle' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathaccent' on input line 300.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 300.
-
-File: fullprocess/ZZtoolbox/cumulFunctionMSC.m  (verbatim)
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\frozen@everymath' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@emptytoks' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\textstyle' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathaccent' on input line 303.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 303.
-
-File: fullprocess/ZZtoolbox/invcumulFunctionMSC.m  (verbatim)
-[109]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\frozen@everymath' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@emptytoks' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\textstyle' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathaccent' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
-
-File: fullprocess/ZZtoolbox/pdfMSC.m  (verbatim)
-File: fullprocess/ZZtoolbox/statsRatiosHbis.m  (verbatim)
-[110]
-File: fullprocess/ZZtoolbox/smoothpolyLL.m  (verbatim)
- [111] [112] [113]
-Chapter 13.
-File: fullprocess/ZZtoolbox/geneFB.m  (verbatim)
-[114
-
-]
-No file ../../../0progsextract/execGPARSE.m.
-No file ../../../0progsextract/convertCSS2matlab.m.
+)
 No file calibreport.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 330.
-[115]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 330.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 249.
+[139]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 249.
  (./calibreport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 330.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 330.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 249.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 249.
 Package rerunfilecheck Info: File `calibreport.out' has not changed.
-(rerunfilecheck)             Checksum: B611E827B855494D3D7650F42A3DE456;5409.
+(rerunfilecheck)             Checksum: 6857C6767B2C2D3A6D7E19AD494BD414;5834.
 
 
 LaTeX Warning: There were undefined references.
@@ -1381,24 +1438,24 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 330.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 249.
  )
 (\end occurred inside a group at level 5)
 
-### simple group (level 5) entered at line 313 ({)
-### simple group (level 4) entered at line 310 ({)
-### simple group (level 3) entered at line 307 ({)
-### simple group (level 2) entered at line 304 ({)
-### simple group (level 1) entered at line 301 ({)
+### simple group (level 5) entered at line 21 ({)
+### simple group (level 4) entered at line 18 ({)
+### simple group (level 3) entered at line 15 ({)
+### simple group (level 2) entered at line 12 ({)
+### simple group (level 1) entered at line 9 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 7653 strings out of 493089
- 112531 string characters out of 6134842
- 215420 words of memory out of 5000000
- 10584 multiletter control sequences out of 15000+600000
+ 7704 strings out of 493089
+ 113678 string characters out of 6134842
+ 215758 words of memory out of 5000000
+ 10598 multiletter control sequences out of 15000+600000
  19695 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,18n,43p,1092b,771s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,18n,43p,1092b,781s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced bu
 t does not exist, replaced by a fixed one
 
@@ -1436,10 +1493,10 @@ nts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on calibreport.pdf (115 pages, 1977115 bytes).
+Output written on calibreport.pdf (139 pages, 2116274 bytes).
 PDF statistics:
- 1874 PDF objects out of 2073 (max. 8388607)
- 1601 compressed objects within 17 object streams
- 342 named destinations out of 1000 (max. 500000)
- 776 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2029 PDF objects out of 2073 (max. 8388607)
+ 1720 compressed objects within 18 object streams
+ 372 named destinations out of 1000 (max. 500000)
+ 819 words of extra memory for PDF output out of 10000 (max. 10000000)
 

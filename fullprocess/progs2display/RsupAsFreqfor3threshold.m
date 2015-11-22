@@ -1,18 +1,17 @@
-%====================== RsupAsFreq3threshold.m =============================
+%====================== RsupAsFreq3forthreshold.m =============================
 % We plot the all values of the Rsup s.t. the MSC is above the threshold
 % for 3 values of MSCthreshold. The goal is to show that if we
 % choose MSCthreshold to low, we have many values but with possible
 % important bias.
+% Do analysis using hhe function fbanalysis.m
 %
-%====================== estimationwithFB.m =============================
 clear
 allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
     'c.';'k.';'r.';'c.';'m.';'g.';'b.';'k.';'r.';'c.';'m.';'g.';'k.'];
 
 addpath ../ZZtoolbox/
 
-directoryresults  = 'AAresultswithFBXsepar';
-directorysignals  = '../AAsignals/';
+directorysignals  = '../../../../AAdataI26calib/';
 printdirectory    = '../../figures/';
 
 %============== load the filter bank characteristics =======================
@@ -25,16 +24,6 @@ filtercharactfilename = '../filtercharacteristics/filtercharacteristics1.m';
 cmdloadcharact        = sprintf('run(''%s'')',filtercharactfilename);
 %======
 eval(cmdloadcharact);
-P = length(filtercharact);
-%=============== Warning
-% we have observed huge outliers in the following files:
-% ihc==2, ifile== 33, i.e. sta2_Y2015_D219.mat from sample index 2.4e6
-% ihc==8, ifile==63, i.e. sta8_Y2015_D280.mat from sample index 2.5e6
-% ihc==5,ifile==62
-% ihc==6,ifile==63
-%??????????
-%=====================
-
 %======
 eval(cmdloadcharact);
 Pfilter = length(filtercharact);
@@ -46,7 +35,7 @@ end
 ihc             = 1;
 ifile           = 1;
 
-fileswithdotmat = dir(sprintf('%ss%i/year*.mat',directorysignals,ihc));
+fileswithdotmat = dir(sprintf('%ss%i/s%iyear*.mat',directorysignals,ihc,ihc));
 nbmats          = length(fileswithdotmat);
 %==================================================
 fullfilename_i      = fileswithdotmat(ifile).name;
@@ -58,14 +47,20 @@ eval(commandload)
 
 Ts_sec = 1/Fs_Hz;
 
-fileswithdotmat = dir(sprintf('%ss%i/year*.mat',directorysignals,ihc));
-nbmats          = length(fileswithdotmat);
-
-%==================== WARNING: some manual checks ...
+%============ examples ======================
+%=========== non exhaustive list ============
+if and(ihc==1,ifile==62)
+    disp('**** unschronized signals')
+    return
+end
+if and(ihc==1,ifile==35)
+    disp('**** huge clicks')
+    return
+end
 if and(ihc==2,ifile==33)
     signals_centered = signals_centered(1:2.4e6,:);
 end
-if and(ihc==2,ifile==62)
+if and(ihc==2,ifile==67)
     signals_centered = signals_centered([1:0.5e6 1e6:idScMin-1],:);
 end
 if and(ihc==5,ifile==62)
@@ -77,7 +72,7 @@ end
 if and(ihc==8,ifile==63)
     signals_centered = signals_centered(1:2.5e6,:);
 end
-
+%================================================
 listMSCth = [0.7 .8 .98];
 LlistMSCth = length(listMSCth);
 Rsup_im = cell(LlistMSCth,Pfilter);
@@ -88,26 +83,32 @@ for im = 1:LlistMSCth
         fbankanalysis(signals_centered,...
         filtercharact,Fs_Hz,MSCthreshold);
     %============================================
-    P       = length(SUTs);
-    idipinf = zeros(P,1);
-    idipsup = zeros(P,1);
+    idipinf = zeros(Pfilter,1);
+    idipsup = zeros(Pfilter,1);
     for ip=1:Pfilter
         ind1 = SUTs(ip).indexinsidefreqband(1);
         ind2 = SUTs(ip).indexinsidefreqband(2);
         Rsuptab_im{im,ip} = SUTs(ip).estimRsup.tabmodcst(ind1:ind2,:);
-        Rsup_im{im,ip}   = SUTs(ip).estimRsup.modcst(ind1:ind2,:);
+        Rsup_im{im,ip}    = SUTs(ip).estimRsup.modcst(ind1:ind2,:);
     end
 end
+date_ii = sprintf('%s/%s/%s',filenameonly(7:10),filenameonly(16:17),filenameonly(21:22));
 %%
+figure(1)
+disp('*** wait, it could be long!!')
 for im = 1:LlistMSCth
     for ip=1:Pfilter
         subplot(LlistMSCth+1,1,im)
         ind1 = SUTs(ip).indexinsidefreqband(1);
         ind2 = SUTs(ip).indexinsidefreqband(2);
         [nbfrqs,nbtimeslots] = size([Rsup_im{im,ip}]);
-        semilogx(allfrqsFFT_Hz{ip}(ind1:ind2), ([Rsuptab_im{im,ip}]),'.','color',0.7*ones(3,1))
+        semilogx(allfrqsFFT_Hz{ip}(ind1:ind2), ...
+            ([Rsuptab_im{im,ip}]),'.','color',0.7*ones(3,1))
         hold on
-        semilogx(allfrqsFFT_Hz{ip}(ind1:ind2), ([Rsup_im{im,ip}]), allcolors(im,:))
+        semilogx(allfrqsFFT_Hz{ip}(ind1:ind2), ...
+            ([Rsup_im{im,ip}]), 'o', 'color',allcolors(im,1),...
+            'markerfacec',allcolors(im,1))
+        hold on
         grid on
         
         set(gca,'xlim',[0.05 5])
@@ -115,13 +116,13 @@ for im = 1:LlistMSCth
         set(gca,'xticklabel',[])
         set(gca,'ytick',[0 1 2])
         set(gca,'fontname','times','fontsize',10)
-        txt1 = sprintf('Threshold = %5.2f',  listMSCth(im),...
+        txt1 = sprintf('Threshold = %5.2f', listMSCth(im),...
             'fontname','times','fontsize',10);
         text(0,02,1.5,txt1)
         if im==1
-            title(sprintf('sensor: %i, year: %s, day:%s, threshold = %4.2f',...
-                ihc,filenameonly(6:9),filenameonly(11:13),listMSCth(im)),...
-                'fontname','times','fontsize',12)
+            title(sprintf('sensor %i, %s, threshold = %4.2f',...
+                ihc,date_ii,...
+                listMSCth(im)),'fontname','times','fontsize',12)
         else
             title(sprintf('threshold = %4.2f',listMSCth(im)),'fontname','times','fontsize',12)
         end
@@ -133,7 +134,6 @@ for im = 1:LlistMSCth
         set(gca,'xlim',[0.05 5])
         xlabel('frequency - Hz','fontname','times','fontsize',12)
         set(gca,'fontname','times','fontsize',10)
-        
     end
 end
 hold off
@@ -148,12 +148,15 @@ set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
 
-fileprint = sprintf('%s2daysonIS26SUT%iyear%sday%sdiffTH.eps',...
-    printdirectory,ihc,filenameonly(6:9),filenameonly(11:13));
+%==
+date_ii_ws = sprintf('%s%s%s',filenameonly(7:10),filenameonly(16:17),filenameonly(21:22));
+fileprint = sprintf('%ssensor%i%swithdifferentthreshold.eps',...
+    printdirectory,ihc,date_ii_ws);
 
 fileprintepscmd = sprintf('print -depsc -loose %s',fileprint);
 fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
 filermcmd       = sprintf('!rm %s',fileprint);
+
 
 %
 %         eval(fileprintepscmd)
