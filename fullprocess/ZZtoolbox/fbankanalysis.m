@@ -94,7 +94,7 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 %                    frequency bounds of each filter
 %                    in the xx.frqsFFT_Hz
 %         xx.theomodstdforRsup: theoretical STD of the module estimate
-%         xx.stdPhase_degree: theoretical STD of the phase estimate
+%         xx.stdPhase_rad: theoretical STD of the phase estimate
 %
 %         alltimes_sec: cell  Px 1, each cell consists of
 %             yy.FFT: time list in second of the DFTs
