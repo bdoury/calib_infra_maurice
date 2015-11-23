@@ -1,7 +1,27 @@
 
 % !TEX root = ../calibreport.tex
 %==============================================================
+\section{Trimmed mean}
+%==============================================================
+The classical estimator of the mean writes:
+\begin{eqnarray*}
+\hat \mu^{(1)}_{N} &=&\frac{1}{N}\sum_{n=1}^{N}X_{n}
+\end{eqnarray*}
+It is well known that this estimator is sensitive to the presence of outliers. In this case it is well known that the median is more robust. The median writes
+\begin{eqnarray*}
+\hat \mu^{(2)}_{N} &=&X_{(N/2)}
+\end{eqnarray*}
+where $X_{(n)}$ denotes the $n$-th value of the ordered sequence.
 
+The trimmed mean is a compromise between the mean and the median. It consists to remove a given percent of the extreme values:
+\begin{eqnarray*}
+\hat \mu^{(3)}_{N} &=&\frac{1}{\lfloor N(1-2\alpha)\rfloor}\sum_{n=\lfloor \alpha N \rfloor }^{\lfloor N((1-\alpha)\rfloor }X_{n}
+\end{eqnarray*}
+where $\alpha$ is between $0$ and $0.5$
+
+%==============================================================
+\section{Confidence interval on the mean}
+%==============================================================
 
 We consider a sequence of $N$ data modeled as $N$ i.i.d. r.v. denoted $X_{n}$. An estimator of the mean is given by
 \begin{eqnarray*}
@@ -14,7 +34,7 @@ We let
 To provide a confidence interval (CI) for $\hat\mu_{N}$ we have
 \begin{itemize}
 \item
-if $X_{n}$ are gaussian with mean $\mu$ and variance $\sigma^{2}$ both unknown, it is show that the CI can be derived from the law of Student with $N-1$ d.o.f. more specifically we have:
+if $X_{n}$ are gaussian with mean $\mu$ and variance $\sigma^{2}$ both unknown, it is show that the CI can be derived from the Student distribution with $N-1$ d.o.f. more specifically we have:
 \begin{eqnarray*}
 \frac{\sqrt{N}(\hat \mu_{N} -\mu)}{\hat\sigma_{N}}&\sim&T_{N-1}
 \end{eqnarray*}
@@ -43,5 +63,11 @@ leading to the CI:
 
 \item
 for limit central theorem, 
-
 \end{itemize}
+
+
+
+
+%==============================================================
+\section{Confidence interval on an estimator}
+%==============================================================

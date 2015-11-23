@@ -2,36 +2,30 @@
 
 
 %================================
-\section{Programs for test}
-The full process consists of
+\section{Full process}
+To perform an estimate of the SUT response, execute the following steps:
 \begin{enumerate}
 \item
- move data from the IDC, using {\tt RUNextractfromDB.m}. The data with Matlab format is saved. This data consists of a structure called {\tt records} with the following items:
- \begin{itemize}
+extract the data from the IDC, using {\tt RUNextractfromDB.m}. 
+ 
+Provide the useful settings. There are 2 kinds of data in the database, the data from the acoustic sensors and the data from the wind sensors on site 1 only. The acoustic data consist of 2 signals sampled at 20 Hz and starting and ending epochs. They are saved in Matlab format. 
+\item
+perform the analysis, using the program {\tt estimationwithFB.m}.
+
+Provide the filter bank characteristics, an example is given in {\tt filtercharacteristics.m} and set the directory which contains the data of the $8$ sites. The program saves the useful elements for display purposes in a selected directory.
  \item
-{\tt data}: sequence of samples,
- \item
-{\tt Fs\_Hz}: sampling frequency,
-\item
-{\tt stime}, {\tt time}: start and end times, 
-\item
-{\tt station}: I26C1--I26C8 or I26H1--I26H8
-\item
-{\tt channel}: 'BDF' or 'LKO' or 'LWD' or 'LWS'
- \end{itemize}   
-Typically in the following we use BDF on H and C.   The three other channels are only provided on H1. Channel LWD yields  the wind speed measurement. The wind sensor is located at about 2 meters above the infrasonic sensor. The frequency sampling depends on the channel. Typically for infrasound signals, the frequency sampling is $20$ Hz, and for wind features is 1 Hz.
-    
-\item
- using the filtercharacteristics, saved in {\tt filtercharacteristics.mat} and the directory which contains the data from one of the 8 channels, run the program {\tt estimationwithFB.m}. This program saves the useful elements for a display in a selected directory.
- \item
- to display run the program {\tt displaySUTresponse.m} for the file recorded in the selected directory of the previous item.
+display results using the program as {\tt displaySUTresponse.m} .
+
 \end{enumerate}
 
 
 %================================
 %================================
 %================================
-\section{Input of the function {\tt fbankanalysis.m}}
+\section{The main function {\tt fbankanalysis.m}}
+The function {\tt fbankanalysis.m}  gathers the all analysis functions. More specifically the inputs are the signals for a given duration, typically 48 hours, and a MSC threshold, and the outputs the estimated SUT responses with different features as the time slots where the MSC is above the  threshold.
+
+\subsection{Inputs}
 \begin{itemize}
 \item
 signals: an array of size $N\times 2$ where $N$ is a number of samples, the first column is the signal from the SUT channel and the second for the SREF channel,
@@ -44,13 +38,13 @@ MSC threshold: threshold for the MSC, typically $0.98$
 \end{itemize}
 
 %================================
-\subsubsection{Summary of the filter bank settings}
+\subsection{Summary of the filter bank settings}
 
 \label{sss:filter-bank-settings}
 
-\begin{center}
-{\tiny\verbatiminput{filtercharacteristicsEXAMPLE.m}}
-\end{center}
+
+{\small\verbatiminput{filtercharacteristicsEXAMPLE.m}}
+
 
 \begin{itemize}
 \item
@@ -77,14 +71,10 @@ MSC threshold: threshold for the MSC, typically $0.98$
 \newpage\clearpage
 
 %================================
-\subsubsection{Calculation scheme}
+\subsection{Calculation scheme}
 \figscale{figures/synoptic.pdf}{FB analysis}{fig:synoptic}{1}
 
 Let us report to the figure \ref{fig:synoptic}. The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed along the time in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced. With the current values of the filter bank, the number of frequency values for the full bandwidth estimation is less than $100$. In the matlab function (see section \ref{chap:toolbox}) the averaging is obtained on two successive days.
-
-
-
-
 
 The full calculation is based on the 3 following functions
 \begin{itemize}
@@ -132,38 +122,14 @@ It is worth to notice that the variables with the indication {\tt tab} are for t
 
 \newpage\clearpage
 %================================
-\section{Output of the function {\tt fbankanalysis.m}}
+\subsection{Output of the function {\tt fbankanalysis.m}}
 
-\begin{verbatim}
-% 1) SUTs: structures P x 1
-%         xx.estimRsup: Rsup ratio
-%         xx.estimRinf: Rinf ratio
-%         xx.allMSCs: allMSCs;
-%         xx.Nsupthreshold: count of the number of values over
-%                   the threshold
-%         xx.Nsupthresholdintheband: counts of the number of values
-%                   over the threshold in the filter bandwidth
-%         xx.frqsFFT_Hz: cell P x 1, each cell consists of
-%                   frequency list in Hz of the DFTs
-%         xx.SCP = all spectral components
-%         xx.indexinsidefreqband = P x 1, indices of the
-%                    frequency bounds of each filter
-%                    in the xx.frqsFFT_Hz
-% 2) filteredsignals, 
-% 3) allfrqsFFT_Hz, cell P x 1, each cell for each bank filter consists of
-%             frequency list in Hz of the DFTs
-% 4) alltimes_sec: cell  Px 1, each cell consists of the structure
-%             yy.FFT:     time list in second of the DFTs
-%             yy.SD:      time list in second of the SCPs
-%             yy.signals: time list in second of the signals
-% 5) filterbank
+{\small\verbatiminput{fbanalysisoutputs.m}}
 
+The structures {\tt xx.estimRsup}, {\tt xx.estimRinf} and {\tt xx.allMSCs}  are described in the chapter \ref{ch:programs} and shortly reported below:
 
-
-\end{verbatim}
-
-
-%================================
+  {\small \verbatiminput{RsupRinfMSC.m}}
+%================================
 \subsubsection{Remark for developper}
 
 It is advised to provide at the output of the FB analysis function, on one hand the response ratios in each of the $P$ frequency bands  with the associated period and on the other the MSC levels greater than the given threeshold. These two elements have the same size. An external function will perform the averaging over a given period of time with the weights as defined in expression \ref{eq:weights}.

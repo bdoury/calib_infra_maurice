@@ -9,7 +9,7 @@
 % \includepdf[pages=-]{../CoherePart_CR1nov2012/rapportCoherence.pdf}
 %\usepackage{pdfpages}
 %============================================
- \textheight 23cm
+ \textheight 21cm
 % \doublespace
 %  \oddsidemargin -0.5cm
 % \evensidemargin +1.5cm
@@ -166,59 +166,43 @@
 \tableofcontents
 %===========================================
 %===========================================
-%===========================================
+%============ part 1 ==========================
 %===========================================
 \part{Theoretical aspects}
 %===========================================
-%===========================================
 \chapter{Problem position}
 \input{textes/ch1introduction.tex}
-%===========================================
-
-%===========================================
 %===========================================
 \chapter{Spectral analysis for SUT estimation}
 \label{chap:spectralanalysis}
 \input{textes/ch2spectralanalysis.tex}
 %===========================================
-
-%%===========================================
-%%===========================================
-%\chapter{Simulation}
-%\input{textes/ch3simulation.tex}
-%%===========================================
-
+\chapter{Wind effect on NRS}
+\label{chap:windonNRS}
+\input{textes/ch5windonNRS.tex}
 %===========================================
 %===========================================
+%===========================================
+%============ part 2 ==========================
+%===========================================
+\part{Numerical results}
+%===========================================
+\chapter{Full process}
+\label{chap:fullprocess}
+\input{textes/ch6fullprocess.tex}
 %===========================================
 \chapter{Results of IS26 - sensor \#1}
 \label{chap:IS26results}
 \input{textes/ch4IS26results.tex}
 %===========================================
 
-
 %===========================================
 %===========================================
 %===========================================
-\chapter{Wind effect on NRS}
-\label{chap:windonNRS}
-\input{textes/ch5windonNRS.tex}
-%===========================================
-
-%===========================================
-%===========================================
-%===========================================
-\chapter{Full process}
-\label{chap:fullprocess}
-\input{textes/ch6fullprocess.tex}
-%===========================================
-
-%===========================================
-%===========================================
-%===========================================
+%============ part 3 ==========================
 %===========================================
 \part{Annexes}
-\chapter{Confidence interval on the mean}
+\chapter{Statistic for mean estimation}
 \input{textes/IConmean}
 %===========================================
 \chapter{Wide sense stationary process}
@@ -237,6 +221,7 @@
 \part{Library}
  %============================================
 \chapter{Programs}
+\label{ch:programs}
 For practical reasons related to the use of {\tt GIT}, the directory consisting of the signals extracted for the {\tt testbed\_archive} database are outside of the directory {\tt fullprocess}. 
 
  \input{textes/chapPrograms.tex}
@@ -248,6 +233,12 @@ For practical reasons related to the use of {\tt GIT}, the directory consisting 
 
 \end{document}
 
+%===========================================
+%%===========================================
+%%===========================================
+%\chapter{Simulation}
+%\input{textes/ch3simulation.tex}
+%%===========================================
 
 
 %\chapter{Spectral Estimation}

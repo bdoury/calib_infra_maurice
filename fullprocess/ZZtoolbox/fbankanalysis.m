@@ -50,11 +50,10 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 %         xx.overlapSCP: overlap rate for successive
 %                 spectral components (typically 0)
 %         xx.ratioDFT2SCP: ratio between period_sec and
-%                 DFT duration (typical integer value is 5).
-%     Fs_Hz: sampling frequency in Hz
-%     MSCthreshold: MSC threshold (advised value > 0.99)
+%                 DFT duration (typical integer value is 5)
+     Fs_Hz: sampling frequency in Hz
+%     MSCthreshold: MSC threshold (advised value > 0.98)
 %     flagtheoreticalSTDs: if 1, the field
-%         xx.theomodstdforRsup is performed
 %========================================================================
 % Rk: the spectral components are performed on successive DFTs with
 %     overlapping. If M denotes the ratioFFT2DSP and
@@ -94,6 +93,9 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 %         xx.indexinsidefreqband = P x 1, indices of the
 %                    frequency bounds of each filter
 %                    in the xx.frqsFFT_Hz
+%         xx.theomodstdforRsup: theoretical STD of the module estimate
+%         xx.stdPhase_degree: theoretical STD of the phase estimate
+%
 %         alltimes_sec: cell  Px 1, each cell consists of
 %             yy.FFT: time list in second of the DFTs
 %             yy.SD: time list in second of the SCPs
