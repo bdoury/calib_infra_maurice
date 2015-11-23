@@ -101,7 +101,7 @@ for ihc = 1, ihc
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
     allSTDphaseRatioSupPfilters  = zeros(10000,nbmats);
     theoreticalmodstd            = zeros(10000,nbmats);
-    theoreticalphasestd_deg      = zeros(10000,nbmats);
+    theoreticalphasestd_rad      = zeros(10000,nbmats);
     
     allRatioInfPfilters          = zeros(10000,nbmats);
     allSTDmodRatioInfPfilters    = zeros(10000,nbmats);
@@ -218,8 +218,8 @@ for ihc = 1, ihc
                 squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));
             
             theoreticalmodstd(id1:id2,ifile) = SUTs(ip).theomodstdforRsup;
-            theoreticalphasestd_deg(id1:id2,ifile) = ...
-                SUTs(ip).stdPhase_degree;
+            theoreticalphasestd_rad(id1:id2,ifile) = ...
+                SUTs(ip).stdPhase_rad;
         end
 %         if FLAGsaveall
 %             comsave = ...
@@ -245,7 +245,7 @@ for ihc = 1, ihc
     allScpPfilters              = allScpPfilters(:,1:id2,:);
     
     theoreticalmodstd           = theoreticalmodstd(1:id2,:);
-    theoreticalphasestd_deg     = theoreticalphasestd_deg(1:id2,:);
+    theoreticalphasestd_rad     = theoreticalphasestd_rad(1:id2,:);
     
     if FLAGsavesmall
         comsave = ...

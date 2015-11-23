@@ -176,7 +176,7 @@ for ihc = 1
     %========================== PHASE =========
     
     anglewithcorrect_rd = meanphasePfiltersUSZ_rd + angle(TFsensor4freqRatio);
-    angltheo_rd   = angle(p_total_NRS)+ angle(TF_ref_sensor);
+    angltheo_rd         = angle(p_total_NRS)+ angle(TF_ref_sensor);
     
     subplot(212)
     semilogx(allfrqsPfiltersUSZ,unwrap(anglewithcorrect_rd)*180/pi,...

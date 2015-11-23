@@ -117,7 +117,7 @@ for ihc = 1
 end
 %%
 % this part can be removed because these values are
-% perofmred on the last version of fbanalysis.m 
+% performed on the last version of fbanalysis.m 
 %====
 NaverageFFTs     = filtercharact(1).ratioDFT2SCP;
 LfqsUSZ          = length(allfrqsPfiltersUSZ);
