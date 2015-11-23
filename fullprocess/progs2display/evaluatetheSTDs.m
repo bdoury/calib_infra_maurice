@@ -16,7 +16,7 @@ directoryinputresults = '../AAresultswithFB98bis/';
 allT.TUUonUR    = linspace(0.6,2,100);
 allT.TURonRR    = linspace(0.6,2,100);
 allT.MSC        = linspace(0.6,1,100);
-allT.phase      = linspace(-pi,pi,100);
+allT.phase_rd   = linspace(-pi,pi,100);
 % critical region at +/-1 sigma
 alphaSTDforRsup = (1-normcdf(1))*2; 
 probaIC         = 0.90;
@@ -101,7 +101,7 @@ for ihc = 1
     %====== absolute and arg of the ratios
     modRatioPfiltersUSZ          = abs(RatioPfiltersUSZ);
     phaseRatioPfiltersUSZ_rd     = angle(RatioPfiltersUSZ);
-    %====== averaging by MEDIAN to avoid outliers
+    %====== averaging by TRIMMEAN to avoid outliers
     trimmeanmodRatioPfiltersUSZ  = trimmean(modRatioPfiltersUSZ,30,2);
     meanmodRatioPfiltersUSZ      = nanmean(modRatioPfiltersUSZ,2);
     meanphasePfiltersUSZ_rd      = trimmean(phaseRatioPfiltersUSZ_rd,30,2);
@@ -122,29 +122,32 @@ end
 NaverageFFTs     = filtercharact(1).ratioDFT2SCP;
 LfqsUSZ          = length(allfrqsPfiltersUSZ);
 twolistsSTDs     = zeros(LfqsUSZ,2);
-STDmodtheoUSZ_degree    = zeros(LfqsUSZ,1);
-STDphasetheoUSZ_degree  = zeros(LfqsUSZ,1);
+STDmodtheoUSZ_rd    = zeros(LfqsUSZ,1);
+STDphasetheoUSZ_rd  = zeros(LfqsUSZ,1);
 
 for indfq=1:LfqsUSZ
     SCP_ifq = nanmean(allScpPfiltersUSZ(:,indfq,:),3);
     if any(isnan(SCP_ifq))
-        STDmodtheoUSZ_degree(indfq)=NaN;
+        STDmodtheoUSZ_rd(indfq)=NaN;
     else
         RR_ifq = [SCP_ifq(1) SCP_ifq(3)';SCP_ifq(3) SCP_ifq(2)];
-        [statUUonUR, statURonRR, statMSC, stdPhase_degree]    = ...
+        [statUUonUR, statURonRR, statMSC, stdPhase_rd]    = ...
             theoreticalStats(allT, RR_ifq, NaverageFFTs, alphaSTDforRsup);
-        STDmodtheoUSZ_degree(indfq) = diff(statUUonUR.CI)/2;
-        STDphasetheoUSZ_degree(indfq) = stdPhase_degree;
+        STDmodtheoUSZ_rd(indfq) = diff(statUUonUR.CI)/2;
+        STDphasetheoUSZ_rd(indfq) = stdPhase_rd;
     end
 end
 sumnbofvaluesoverthresholdUSZ = sum(nbofvaluesoverthresholdUSZ,2);
-CItheoUSZ = alphaCI * STDmodtheoUSZ_degree ./ sumnbofvaluesoverthresholdUSZ;
+CItheoUSZ = alphaCI * STDmodtheoUSZ_rd ./ sumnbofvaluesoverthresholdUSZ;
 CIPfiltersUSZ = alphaCI * STDmodPfiltersUSZ ./ sumnbofvaluesoverthresholdUSZ;
 CImodPfilters_aveUSZ = alphaCI * STDmodRatioPfilters_aveUSZ ./ ...
     sumnbofvaluesoverthresholdUSZ;
-CISTDphasePfilters_aveUSZ_degree = (180/pi)*alphaCI * STDphaseRatioPfilters_aveUSZ ./ ...
+
+CISTDphasePfiltersUSZ_degree       = (180/pi) * alphaCI * STDphasePfiltersUSZ_rd./ ...
     sumnbofvaluesoverthresholdUSZ;
-CISTDphasetheoUSZ_degree = STDphasetheoUSZ_degree ./ sumnbofvaluesoverthresholdUSZ;
+CISTDphasePfilters_aveUSZ_degree   = (180/pi) * alphaCI * STDphaseRatioPfilters_aveUSZ ./ ...
+    sumnbofvaluesoverthresholdUSZ;
+CISTDphasetheoUSZ_degree = (180/pi) * alphaCI * STDphasetheoUSZ_rd ./ sumnbofvaluesoverthresholdUSZ;
 %%
 figure(2)
 subplot(311)
@@ -168,6 +171,8 @@ subplot(313)
 loglog(allfrqsPfiltersUSZ, CISTDphasetheoUSZ_degree,'ob','markerfacec','b')
 hold on
 loglog(allfrqsPfiltersUSZ, CISTDphasePfilters_aveUSZ_degree,'or','markerfacec','r')
+hold on
+loglog(allfrqsPfiltersUSZ, CISTDphasePfiltersUSZ_degree,'og','markerfacec','g')
 hold off
 grid on
 ylabel(sprintf('CI at %i%s\non the phase - degree',probaIC*100,'%'), ...

@@ -51,7 +51,7 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 %                 spectral components (typically 0)
 %         xx.ratioDFT2SCP: ratio between period_sec and
 %                 DFT duration (typical integer value is 5)
-     Fs_Hz: sampling frequency in Hz
+%     Fs_Hz: sampling frequency in Hz
 %     MSCthreshold: MSC threshold (advised value > 0.98)
 %     flagtheoreticalSTDs: if 1, the field
 %========================================================================
@@ -115,7 +115,7 @@ if flagtheoreticalSTDs
     allT.TUUonUR   = linspace(0.6,2,100);
     allT.TURonRR   = linspace(0.6,2,100);
     allT.MSC       = linspace(0.6,1,100);
-    allT.phase     = linspace(0,2*pi,100);
+    allT.phase     = linspace(-pi,pi,100);
     alphaCIforRsup = (1-normcdf(1))*2; % ci at 1 sigma
 end
 %=== for SCP analysis
@@ -175,15 +175,15 @@ for ifilter = 1:P
             elementofR_ii = spectralmatrix(:,ifreq_ii);
             if any(isnan(elementofR_ii))
                 SUTs(ifilter).theomodstdforRsup(indfreq_ii) = NaN;
-                SUTs(ifilter).stdPhase_degree(indfreq_ii) = NaN;
+                SUTs(ifilter).stdPhase_rad(indfreq_ii) = NaN;
             else
                 RR_ii = [elementofR_ii(1) elementofR_ii(3) ; ...
                     elementofR_ii(3)' elementofR_ii(2)];
-                [statUUonUR, statURonRR, statMSC, stdphase_degree] = ...
+                [statUUonUR, statURonRR, statMSC, stdPhase_rad] = ...
                     theoreticalStats(allT, RR_ii,ratioDFT2SCP, alphaCIforRsup);
                 SUTs(ifilter).theomodstdforRsup(indfreq_ii) = ...
                     diff(statUUonUR.CI)/2;
-                SUTs(ifilter).stdPhase_degree(indfreq_ii) = stdphase_degree;
+                SUTs(ifilter).stdPhase_rad(indfreq_ii) = stdPhase_rad;
             end
         end
     end
@@ -632,7 +632,7 @@ MSC.indexcst     = indextabMSCsupthreshold;
 MSC.weightMSC    = weightMSCsupeta;
 %========================= END of analysis ===============================
 %=========================================================================
-function [stat11on21, stat12on22, statMSC, stdPhase_degree] = ...
+function [stat11on21, stat12on22, statMSC, stdPhase_rad] = ...
     theoreticalStats(allT, G, N, alpha)
 %=========================================================================
 % perform
@@ -678,17 +678,16 @@ lambda = sqrt(G(2,2)/G(1,1));
 % (1*2*...*(N-1))^(1/N)
 gammaNm1P = exp(sum(log(1:N-1))/N);
 MSC_theo = abs(G(2,1)) ^2/G(1,1)/G(2,2);
-phase_HUminusHR_degree = -atan2(imag(G(2,1)),real(G(2,1)))*180/pi;
+phase_HUminusHR_rad = -atan2(imag(G(2,1)),real(G(2,1)));
 %======================================================================
 %====================== phase =========================================
 %======================================================================
 
-stdPhase_degree  = ...
-    180*asin(sqrt((1-MSC_theo)/N/MSC_theo/2))/pi;
+stdPhase_rad  = asin(sqrt((1-MSC_theo)/N/MSC_theo/2));
 statPhasepsd = ...
-    (1/sqrt(2*pi)/stdPhase_degree)* ...
-    exp(-(allT.phase-phase_HUminusHR_degree) .^2/...
-    (2 * stdPhase_degree^2));
+    (1/sqrt(2*pi)/stdPhase_rad)* ...
+    exp(-(allT.phase-phase_HUminusHR_rad) .^2/...
+    (2 * stdPhase_rad^2));
 %======================================================================
 %====================== first ratio ===================================
 %======================================================================

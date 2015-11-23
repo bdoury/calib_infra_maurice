@@ -1,4 +1,4 @@
-function [stat11on21, stat12on22, statMSC, stdPhase_degree] = ...
+function [stat11on21, stat12on22, statMSC, stdPhase_rd] = ...
     theoreticalStats(allT, G, N, a)
 
 % stat11on21, stat12on22 or statUUonUR, statURonRR
@@ -42,17 +42,16 @@ lambda = sqrt(G(2,2)/G(1,1));
 % (1*2*...*(N-1))^(1/N)
 gammaNm1P = exp(sum(log(1:N-1))/N);
 MSC_theo = abs(G(2,1)) ^2/G(1,1)/G(2,2);
-phase_HUminusHR_degree = -atan2(imag(G(2,1)),real(G(2,1)))*180/pi;
+phase_HUminusHR_rd = -atan2(imag(G(2,1)),real(G(2,1)));
 %======================================================================
 %====================== phase =========================================
 %======================================================================
-
-stdPhase_degree  = ...
-    180*asin(sqrt((1-MSC_theo)/N/MSC_theo/2))/pi;
-stdPhase_degreepsd = ...
-    (1/sqrt(2*pi)/stdPhase_degree)* ...
-    exp(-(allT.phase-phase_HUminusHR_degree) .^2/...
-    (2 * stdPhase_degree^2));
+%== delta method
+stdPhase_rd  = asin(sqrt((1-MSC_theo)/N/MSC_theo/2));
+stdPhase_rdpsd = ...
+    (1/sqrt(2*pi)/stdPhase_rd)* ...
+    exp(-(allT.phase_rd-phase_HUminusHR_rd) .^2/...
+    (2 * stdPhase_rd^2));
 
 %======================================================================
 %====================== first ratio ===================================
