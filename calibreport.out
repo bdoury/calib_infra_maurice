@@ -22,10 +22,10 @@
 \BOOKMARK [2][-]{subsection.3.3.2}{Wind noise model}{section.3.3}% 22
 \BOOKMARK [2][-]{subsection.3.3.3}{Coherence level as a function of v/d}{section.3.3}% 23
 \BOOKMARK [1][-]{section.3.4}{Application to the in-situ calibration method}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.5}{Results in I26}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.5}{Numerical results in I26}{chapter.3}% 25
 \BOOKMARK [-1][-]{part.2}{II Numerical results}{}% 26
 \BOOKMARK [0][-]{chapter.4}{Full process}{part.2}% 27
-\BOOKMARK [1][-]{section.4.1}{Full process}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.1}{Launch a process}{chapter.4}% 28
 \BOOKMARK [1][-]{section.4.2}{The main function fbankanalysis.m}{chapter.4}% 29
 \BOOKMARK [2][-]{subsection.4.2.1}{Inputs}{section.4.2}% 30
 \BOOKMARK [2][-]{subsection.4.2.2}{Summary of the filter bank settings}{section.4.2}% 31
@@ -44,45 +44,44 @@
 \BOOKMARK [0][-]{chapter.6}{Statistic for mean estimation}{part.3}% 44
 \BOOKMARK [1][-]{section.6.1}{Trimmed mean}{chapter.6}% 45
 \BOOKMARK [1][-]{section.6.2}{Confidence interval on the mean}{chapter.6}% 46
-\BOOKMARK [1][-]{section.6.3}{Confidence interval on an estimator}{chapter.6}% 47
-\BOOKMARK [0][-]{chapter.7}{Wide sense stationary process}{part.3}% 48
-\BOOKMARK [0][-]{chapter.8}{Theoretical results on spectral estimation}{part.3}% 49
-\BOOKMARK [1][-]{section.8.1}{Non parametrical spectral estimation}{chapter.8}% 50
-\BOOKMARK [1][-]{section.8.2}{More periodogram properties}{chapter.8}% 51
-\BOOKMARK [1][-]{section.8.3}{Second order moments for the smoothed periodogram}{chapter.8}% 52
-\BOOKMARK [1][-]{section.8.4}{Approximate variances}{chapter.8}% 53
-\BOOKMARK [1][-]{section.8.5}{Some distributions related to the smoothed periodogram}{chapter.8}% 54
-\BOOKMARK [1][-]{section.8.6}{MSC distribution}{chapter.8}% 55
-\BOOKMARK [1][-]{section.8.7}{MSC detection}{chapter.8}% 56
-\BOOKMARK [0][-]{chapter.9}{LOC}{part.3}% 57
-\BOOKMARK [0][-]{chapter.10}{Remark on deterministic representation}{part.3}% 58
-\BOOKMARK [-1][-]{part.4}{IV Library}{}% 59
-\BOOKMARK [0][-]{chapter.11}{Programs}{part.4}% 60
-\BOOKMARK [1][-]{section.11.1}{Toolbox}{chapter.11}% 61
-\BOOKMARK [1][-]{section.11.2}{Cumulative function of MSC"0362MSC}{chapter.11}% 62
-\BOOKMARK [1][-]{section.11.3}{Inverse cumulative function of MSC"0362MSC}{chapter.11}% 63
-\BOOKMARK [1][-]{section.11.4}{Probability density function of MSC"0362MSC}{chapter.11}% 64
-\BOOKMARK [1][-]{section.11.5}{Statistics of the spectral ratios}{chapter.11}% 65
-\BOOKMARK [1][-]{section.11.6}{Polynomial fitter}{chapter.11}% 66
-\BOOKMARK [1][-]{section.11.7}{Full process}{chapter.11}% 67
-\BOOKMARK [2][-]{subsection.11.7.1}{Example of filter bank description}{section.11.7}% 68
-\BOOKMARK [2][-]{subsection.11.7.2}{Main program for estimation}{section.11.7}% 69
-\BOOKMARK [1][-]{section.11.8}{Application programs}{chapter.11}% 70
-\BOOKMARK [2][-]{subsection.11.8.1}{displaySUTresponse.m}{section.11.8}% 71
-\BOOKMARK [2][-]{subsection.11.8.2}{evaluatetheSTDs.m}{section.11.8}% 72
-\BOOKMARK [2][-]{subsection.11.8.3}{temporalevolution.m}{section.11.8}% 73
-\BOOKMARK [2][-]{subsection.11.8.4}{RsupAsFreqfor3threshold.m}{section.11.8}% 74
-\BOOKMARK [2][-]{subsection.11.8.5}{displayafewproblemsonRsup.m}{section.11.8}% 75
-\BOOKMARK [2][-]{subsection.11.8.6}{plotsignalwithproblem.m}{section.11.8}% 76
-\BOOKMARK [2][-]{subsection.11.8.7}{plotRsupdetails.m}{section.11.8}% 77
-\BOOKMARK [0][-]{chapter.12}{Extraction form DB}{part.4}% 78
-\BOOKMARK [1][-]{section.12.1}{RUNextractfromDB}{chapter.12}% 79
-\BOOKMARK [1][-]{section.12.2}{execGPARSE}{chapter.12}% 80
-\BOOKMARK [1][-]{section.12.3}{convertCSS2matlab}{chapter.12}% 81
-\BOOKMARK [1][-]{section.12.4}{savesignals}{chapter.12}% 82
-\BOOKMARK [0][-]{chapter.13}{Miscellaneous utilities}{part.4}% 83
-\BOOKMARK [1][-]{section.13.1}{GeneFB}{chapter.13}% 84
-\BOOKMARK [1][-]{section.13.2}{RMSE as function of coherence}{chapter.13}% 85
-\BOOKMARK [1][-]{section.13.3}{Test of coherence}{chapter.13}% 86
-\BOOKMARK [1][-]{section.13.4}{Statistical distribution of the ratios}{chapter.13}% 87
-\BOOKMARK [1][-]{section.13.5}{Extraction from DB}{chapter.13}% 88
+\BOOKMARK [0][-]{chapter.7}{Wide sense stationary process}{part.3}% 47
+\BOOKMARK [0][-]{chapter.8}{Theoretical results on spectral estimation}{part.3}% 48
+\BOOKMARK [1][-]{section.8.1}{Non parametrical spectral estimation}{chapter.8}% 49
+\BOOKMARK [1][-]{section.8.2}{More periodogram properties}{chapter.8}% 50
+\BOOKMARK [1][-]{section.8.3}{Second order moments for the smoothed periodogram}{chapter.8}% 51
+\BOOKMARK [1][-]{section.8.4}{Some distributions related to the smoothed periodogram}{chapter.8}% 52
+\BOOKMARK [1][-]{section.8.5}{Approximate variances}{chapter.8}% 53
+\BOOKMARK [1][-]{section.8.6}{MSC distribution}{chapter.8}% 54
+\BOOKMARK [1][-]{section.8.7}{MSC detection}{chapter.8}% 55
+\BOOKMARK [0][-]{chapter.9}{LOC}{part.3}% 56
+\BOOKMARK [0][-]{chapter.10}{Remark on deterministic representation}{part.3}% 57
+\BOOKMARK [-1][-]{part.4}{IV Library}{}% 58
+\BOOKMARK [0][-]{chapter.11}{Programs}{part.4}% 59
+\BOOKMARK [1][-]{section.11.1}{Toolbox}{chapter.11}% 60
+\BOOKMARK [1][-]{section.11.2}{Cumulative function of MSC"0362MSC}{chapter.11}% 61
+\BOOKMARK [1][-]{section.11.3}{Inverse cumulative function of MSC"0362MSC}{chapter.11}% 62
+\BOOKMARK [1][-]{section.11.4}{Probability density function of MSC"0362MSC}{chapter.11}% 63
+\BOOKMARK [1][-]{section.11.5}{Statistics of the spectral ratios}{chapter.11}% 64
+\BOOKMARK [1][-]{section.11.6}{Polynomial fitter}{chapter.11}% 65
+\BOOKMARK [1][-]{section.11.7}{Full process}{chapter.11}% 66
+\BOOKMARK [2][-]{subsection.11.7.1}{Example of filter bank description}{section.11.7}% 67
+\BOOKMARK [2][-]{subsection.11.7.2}{Main program for estimation}{section.11.7}% 68
+\BOOKMARK [1][-]{section.11.8}{Application programs}{chapter.11}% 69
+\BOOKMARK [2][-]{subsection.11.8.1}{displaySUTresponse.m}{section.11.8}% 70
+\BOOKMARK [2][-]{subsection.11.8.2}{evaluatetheSTDs.m}{section.11.8}% 71
+\BOOKMARK [2][-]{subsection.11.8.3}{temporalevolution.m}{section.11.8}% 72
+\BOOKMARK [2][-]{subsection.11.8.4}{RsupAsFreqfor3threshold.m}{section.11.8}% 73
+\BOOKMARK [2][-]{subsection.11.8.5}{displayafewproblemsonRsup.m}{section.11.8}% 74
+\BOOKMARK [2][-]{subsection.11.8.6}{plotsignalwithproblem.m}{section.11.8}% 75
+\BOOKMARK [2][-]{subsection.11.8.7}{plotRsupdetails.m}{section.11.8}% 76
+\BOOKMARK [0][-]{chapter.12}{Extraction form DB}{part.4}% 77
+\BOOKMARK [1][-]{section.12.1}{RUNextractfromDB}{chapter.12}% 78
+\BOOKMARK [1][-]{section.12.2}{execGPARSE}{chapter.12}% 79
+\BOOKMARK [1][-]{section.12.3}{convertCSS2matlab}{chapter.12}% 80
+\BOOKMARK [1][-]{section.12.4}{savesignals}{chapter.12}% 81
+\BOOKMARK [0][-]{chapter.13}{Miscellaneous utilities}{part.4}% 82
+\BOOKMARK [1][-]{section.13.1}{GeneFB}{chapter.13}% 83
+\BOOKMARK [1][-]{section.13.2}{RMSE as function of coherence}{chapter.13}% 84
+\BOOKMARK [1][-]{section.13.3}{Test of coherence}{chapter.13}% 85
+\BOOKMARK [1][-]{section.13.4}{Statistical distribution of the ratios}{chapter.13}% 86
+\BOOKMARK [1][-]{section.13.5}{Extraction from DB}{chapter.13}% 87
