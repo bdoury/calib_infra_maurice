@@ -2,13 +2,13 @@
 
 
 %================================
-\section{Full process}
+\section{Launch a process}
 To perform an estimate of the SUT response, execute the following steps:
 \begin{enumerate}
 \item
 extract the data from the IDC, using {\tt RUNextractfromDB.m}. 
  
-Provide the useful settings. There are 2 kinds of data in the database, the data from the acoustic sensors and the data from the wind sensors on site 1 only. The acoustic data consist of 2 signals sampled at 20 Hz and starting and ending epochs. They are saved in Matlab format. 
+Provide the useful settings. There are 2 kinds of data in the database, the data from the acoustic sensors and the data from the wind sensors on site 1 only. The acoustic data consist of 2 signals sampled at 20 Hz and starting and ending epochs. They are saved in Matlab format into a given directory. 
 \item
 perform the analysis, using the program {\tt estimationwithFB.m}.
 
@@ -23,7 +23,7 @@ display results using the program as {\tt displaySUTresponse.m} .
 %================================
 %================================
 \section{The main function {\tt fbankanalysis.m}}
-The function {\tt fbankanalysis.m}  gathers the all analysis functions. More specifically the inputs are the signals for a given duration, typically 48 hours, and a MSC threshold, and the outputs the estimated SUT responses with different features as the time slots where the MSC is above the  threshold.
+The function {\tt fbankanalysis.m} (see page \pageref{s:fbankanalysis})  gathers the all analysis functions. More specifically the inputs are the signals for a given duration, typically 48 hours, and a MSC threshold, and the outputs the estimated SUT responses with different features as the time slots where the MSC is above the  threshold.
 
 \subsection{Inputs}
 \begin{itemize}
@@ -72,9 +72,12 @@ MSC threshold: threshold for the MSC, typically $0.98$
 
 %================================
 \subsection{Calculation scheme}
-\figscale{figures/synoptic.pdf}{FB analysis}{fig:synoptic}{1}
+\figscale{figures/synoptic.pdf}{FB analysis: in our procedure the analysis is made over several SCP periods. Typically in our used procedure we consider about $48$ hours, because the maximum SCP window time is $1000$ seconds, in the low frequency bandwidth, that gives at least $170$ SCP estimates. In the high frequency bandwidth, the  SCP window time is around $50$ seconds leading to a number of estimates of around $3400$. These estimates are averaged taking into account a weight associated to the MSC level. Closer the MSC to $1$, higher the weight.}{fig:synoptic}{0.9}
 
-Let us report to the figure \ref{fig:synoptic}. The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed along the time in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced. With the current values of the filter bank, the number of frequency values for the full bandwidth estimation is less than $100$. In the matlab function (see section \ref{chap:toolbox}) the averaging is obtained on two successive days.
+Let us report to the figure \ref{fig:synoptic}. The DFT buffer contains the data for a duration in accordance with the DFT analysis. Usually this duration is in the inverse of the bandwidth of the filter. The filter bandwidth is log-scaled in the frequency domain. If the SCP time window is $1000$ seconds and the DFT buffer duration is  a fifth i.e. $200$ seconds with an overlap of $50\%$, the number of DFTs  is $9$. In this case the DFTs can be performed each time we progress in the buffer of $100$ seconds. After 5 times the DFT duration, a weighted averaging is performed along the time in each filter bandwidth to obtain the SCPs taking into account the cells whose the MSC is above a given threshold, typically $0.98$. The frequencies inside each bandwidth is uniformly spaced. With the current values of the filter bank, the number of frequency values for the full bandwidth estimation is less than $100$. In the Matlab function (see section \ref{s:toolbox}) the averaging is obtained on two successive days.
+
+It is possible to analyse the signals taking time slots equal to the maximum SCP window time i.e. $1000$ seconds for all the frequencies inside the different frequency bandwidths of the filters. It is worth to notice that, in this case, the sampling periods for the different outputs are not equal, that complicate the following procedure. Then at the output, we concatenate the different streams to get an full averaging over several months. In our approach we simplify the calculation by doing a first averaging on a large number of SCP windows, in such a way the time dependency disappears.
+
 
 The full calculation is based on the 3 following functions
 \begin{itemize}
@@ -124,12 +127,15 @@ It is worth to notice that the variables with the indication {\tt tab} are for t
 %================================
 \subsection{Output of the function {\tt fbankanalysis.m}}
 
+Let us notice that all phases are expressed in RADIAN. To get degree multiply by $180/\pi$.
+
 {\small\verbatiminput{fbanalysisoutputs.m}}
 
 The structures {\tt xx.estimRsup}, {\tt xx.estimRinf} and {\tt xx.allMSCs}  are described in the chapter \ref{ch:programs} and shortly reported below:
 
   {\small \verbatiminput{RsupRinfMSC.m}}
-%================================
+
+%================================
 \subsubsection{Remark for developper}
 
 It is advised to provide at the output of the FB analysis function, on one hand the response ratios in each of the $P$ frequency bands  with the associated period and on the other the MSC levels greater than the given threeshold. These two elements have the same size. An external function will perform the averaging over a given period of time with the weights as defined in expression \ref{eq:weights}.

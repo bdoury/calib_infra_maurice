@@ -353,253 +353,7 @@ $$
 $$
 
 
-%========================================
-%========================================
-%========================================
-\section{Approximate variances}
-\label{ss:varianceexpressions}
-%========================================
-\subsubsection{$\delta$-method}
 
-The so called $\delta$-method allows to derive the covariance of 
-$$
- Z = f(Y)
-$$
-from the covariance of $Y$ where $f:\mathds{R}^{m}\mapsto \mathds{R}^{q}$. 
-We let $\mu_{Y}=\esp{Y}$. Using the first order Taylor expansion of $f$ in the neighborhood  of $\mu_{Y}$, we write
-$$
- Z \approx f(\mu_{Y}) + J_{\mu_{Y}}(Y-\mu_{Y})
-$$
-where $J_{\mu_{Y}}$ is the Jacobian of $f$, which is a matrix of size $m\times q$, performed in $y=\mu_{Y}$.
-Therefore at first order
-$$
- \esp{Z} \approx f(\mu_{Y}) + J_{\mu_{Y}}\esp{Y-\mu_{Y}}=f(\mu_{Y})+0
-$$
-then
-$$
- Z-\esp{Z}\approx J_{\mu_{Y}}(Y-\mu_{Y})
-$$
-therefore, according to the definition $\cov{Z} = \esp{(Z-\esp{Z})(Z-\esp{Z})^{H}}$, we have
-$$
- \cov{Z} \approx 
- J_{\mu_{Y}}\cov{Y}J_{\mu_{Y}}^{H}
-$$
-
-%===========================================================
-\subsubsection{Approximate variance of $\arg \hat\lambda_{k}$}%\hat \phi$}
-
-$$
- \tan(\phi) = \frac{\Gamma_{1,2,I} }{\Gamma_{1,2,R}}
-$$
-
-
-Then
-$$
- d\phi =
- \frac{\Gamma_{1,2,R}d\Gamma_{1,2,I}-\Gamma_{1,2,I}d\Gamma_{1,2,R}}
-      {|\Gamma_{1,2}|^{2}}
-$$
-Therefore
-$$
- \var{\hat \phi}=\frac{1}{|\Gamma_{1,2}|^{4}}
- \left(
- \Gamma_{1,2,R}^{2}\var{\hat \Gamma_{1,2,I}}
- +
- \Gamma_{1,2,I}^{2}\var{\hat \Gamma_{1,2,R}}
- -
- 2\Gamma_{1,2,R}\Gamma_{1,2,I}\var{\hat \Gamma_{1,2,R},\hat \Gamma_{1,2,I}}
- \right)
-$$
-Using that 
-\begin{eqnarray*}
- \var{\hat \Gamma_{1,2,R}}
- &=&
- \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2}\Gamma_{1,2,R}^{2}-\frac{1}{2}\Gamma_{1,2,I}^{2}
-\end{eqnarray*}
-
-\begin{eqnarray*}
- \var{\hat \Gamma_{1,2,I}}
- &=&
- \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2}
- \Gamma_{1,2,I}^{2}-\frac{1}{2}\Gamma_{1,2,R}^{2}
-\end{eqnarray*}
-and
-\begin{eqnarray*}
- \cov{\hat \Gamma_{1,2,R},\hat \Gamma_{1,2,I}}
- &=&
-\Gamma_{1,2,R}\Gamma_{1,2,I}
-\end{eqnarray*}
-we get
-$$
- \var{\hat \phi}=\frac{1-\mu}{2\mu}
-$$
-Now if we smooth on a rectangular window with weights $1/(2M+1)$ see equation \eqref{eq:rectangularsmooth}, the variance
-is given by
-$$
- \var{\hat \phi}=\frac{1}{2M+1}\frac{1-\mu}{2\mu}
-$$
-We can approximate the distribution of $\hat \phi$ by a gaussian with mean $\phi$ and variance 
-$\frac{1}{2M+1}\frac{1-\mu}{2\mu}$. The green curve of the third figure of \ref{fig:statsRatiosH2Mp131} uses this approximation.
-%===========================================================
-\subsubsection{Approximate variance of $|\hat\lambda_{k}^{(1)}|$}%$|\hat\Gamma_{1,2}|/\Gamma_{2,2}$}
-We have
-$$
- R_{1}=\frac{\sqrt{\Gamma_{1,2,R}^{2}+\Gamma_{1,2,I}^{2}}}{\Gamma_{2,2}}
-$$
-Then
-\begin{eqnarray*}
-  dR_{1} &=&
- \frac{\Gamma_{1,2,R}d\Gamma_{1,2,R}+\Gamma_{1,2,I}d\Gamma_{1,2,I}}
-      {\Gamma_{2,2}\sqrt{\Gamma_{1,2,R}^{2}+\Gamma_{1,2,I}^{2}}}
-      -\frac{\sqrt{\Gamma_{1,2,R}^{2}+\Gamma_{1,2,I}^{2}}}{\Gamma_{2,2}^{2}}d\Gamma_{2,2}
- \\
- &=&
-  \frac{\Gamma_{2,2}\Gamma_{1,2,R}d\Gamma_{1,2,R}+\Gamma_{2,2}\Gamma_{1,2,I}d\Gamma_{1,2,I}
-   -|\Gamma_{1,2}|^{2}d\Gamma_{2,2}}
-      {\Gamma_{2,2}^{2}|\Gamma_{1,2}|}
-\end{eqnarray*}
-Therefore we have to determine the expression of the variances of $\hat\Gamma_{1,2,R}$, $\hat\Gamma_{1,2,I}$, $\hat\Gamma_{2,2}$, and the 3 covariances $\cov{\hat\Gamma_{1,2,R},\hat\Gamma_{1,2,I}}$, $\cov{\hat\Gamma_{1,2,R},\hat\Gamma_{2,2}}$
-and
-$\cov{\hat\Gamma_{1,2,I},\hat\Gamma_{2,2}}$.
-
-$$
- \esp{\hat\Gamma_{1,2,R},\hat\Gamma_{2,2}}
- =
- \frac{1}{2}\esp{(\hat\Gamma_{1,2}+\hat\Gamma_{1,2}^{*})\hat\Gamma_{2,2}}
- =
- \frac{1}{2}\esp{(X_{1}X_{2}^{*}+X_{1}^{*}X_{2})X_{2}X_{2}^{*}}
-$$
-
-$$
-\frac{1}{2}\esp{X_{1}X_{2}^{*} X_{2}X_{2}^{*}}
-+
-\frac{1}{2}\esp{X_{1}^{*}X_{2} X_{2}X_{2}^{*}}
-=\Gamma_{1,2}\Gamma_{2,2}+\Gamma_{1,2}^{*}\Gamma_{2,2}
-=
-2\Gamma_{1,2,R}\Gamma_{2,2}
-$$
-$$
- \cov{\hat\Gamma_{1,2,R},\hat\Gamma_{2,2}}=
- \Gamma_{1,2,R}\Gamma_{2,2}
-$$
-Similarly
-$$
- \cov{\hat\Gamma_{1,2,I},\hat\Gamma_{2,2}}=
- \Gamma_{1,2,I}\Gamma_{2,2}
-$$
-Then
-\begin{eqnarray}
- \var{R_{1}} = \frac{1}{\Gamma_{2,2}^{4}|\Gamma_{1,2}|^{2}}
- \left(
- A+B+C+D+E+F
- \right)
-\end{eqnarray}
-$$
- A =\Gamma_{2,2}^{2}\Gamma_{1,2,R}^{2}
- \left(
-  \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2}\Gamma_{1,2,R}^{2}-\frac{1}{2}\Gamma_{1,2,I}^{2}
-  \right)
-$$
-$$
- B =\Gamma_{2,2}^{2}\Gamma_{1,2,I}^{2}
- \left(
-\frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2} \Gamma_{1,2,I}^{2}-\frac{1}{2}\Gamma_{1,2,R}^{2}
-   \right)
-$$
-$$
- C = |\Gamma_{1,2}|^{4}\Gamma_{2,2}^{2}
-$$
-$$
- D = 2\Gamma_{2,2}^{2}|\Gamma_{1,2}|^{2}\Gamma_{1,2,R}\Gamma_{1,2,I}
-$$
-$$
- E = -2|\Gamma_{1,2}|^{2}\Gamma_{2,2}^{2}\Gamma_{1,2,R}^{2}
-$$
-$$
- F = -2|\Gamma_{1,2}|^{2}\Gamma_{2,2}^{2}\Gamma_{1,2,I}^{2}
-$$
-$$
- E+F = -2\Gamma_{2,2}^{2}|\Gamma_{1,2}|^{4}
-$$
-$$
- A+B = \Gamma_{2,2}^{2}
- \left(
- \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}|\Gamma_{1,2}|^{2}
- +
- \frac{1}{2}|\Gamma_{1,2}|^{4}
- -2\Gamma_{1,2,R}^{2}\Gamma_{1,2,I}^{2}
- \right)
-$$
-
-$$
- A+B+D+E+F = \Gamma_{2,2}^{2}
- \left(
- \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}|\Gamma_{1,2}|^{2}
- +
- \frac{1}{2}|\Gamma_{1,2}|^{4}-2|\Gamma_{1,2}|^{4}
- \right)
-$$
-
-\begin{eqnarray*}
- \var{|\Gamma_{1,2}|/\hat\Gamma_{2,2}} =\frac{1}{2}
- \left(
-  \frac{\Gamma_{1,1}\Gamma_{2,2}-|\Gamma_{1,2}|^{2}}
-  {\Gamma_{2,2}^{2}}
- \right)
-\end{eqnarray*} 
- 
-%\begin{eqnarray}
-% \sigma({R_{1}}) =\frac{\sqrt{\det(\Gamma)}}{\Gamma_{2,2}\sqrt{2(2M+1})}
-%\end{eqnarray} 
-
-%===========================================================
-\subsubsection{Approximate variance of $|\hat\lambda_{k}^{(2)}|$}%$\hat\Gamma_{1,1}/|\Gamma_{2,1}|$}
-From the previous section we have
-\begin{eqnarray*}
- \var{|\hat\Gamma_{2,1}|/\hat\Gamma_{1,1}} =\frac{1}{2}
- \left(
-  \frac{\Gamma_{1,1}\Gamma_{2,2}-|\Gamma_{1,2}|^{2}}
-  {\Gamma_{1,1}^{2}}
- \right)
-\end{eqnarray*} 
-then
-\begin{eqnarray*}
- \var{\hat\Gamma_{1,1}/|\hat\Gamma_{2,1}|} =\frac{1}{2}
- \left(
-  (\Gamma_{1,1}\Gamma_{2,2}-|\Gamma_{1,2}|^{2})
-  \frac{\Gamma_{1,1}^{2}}{|\Gamma_{1,2}|^{4}}
- \right)
-\end{eqnarray*} 
-
-%===========================================================
-\subsubsection{Summary}
-We can rewritten the 2 last expressions using
-$$
- \mu=\frac{|\Gamma_{1,2}|^{2}}{\Gamma_{1,1}\Gamma_{2,2}}
-$$
-and the averaging on $(2M+1)$:
-\begin{eqnarray}
-\label{eq:var12on22}
- \var{|\hat\Gamma_{1,2}|/\hat\Gamma_{2,2}} =\frac{1}{2(2M+1)}
-   \frac{\Gamma_{1,1}}{\Gamma_{2,2}} (1-\mu)
-\end{eqnarray} 
-and
-\begin{eqnarray}
-\label{eq:var11on21}
- \var{\hat\Gamma_{1,1}/|\hat\Gamma_{2,1}|} 
-  =\frac{1}{2(2M+1)}\frac{\Gamma_{1,1}}{\Gamma_{2,2}}
-  \frac{1-\mu}{\mu^{2}}
-\end{eqnarray} 
-Where $\mu$ is close to 1, the 2 formulas are equivalent.
-%================================================
-%================================================
- \subsubsection{Estimator based on eigen-decomposition (uncompleted)}
-$$
- \lambda_{k}^{(3)}
- = \frac{
- \Gamma_{1,1} -\Gamma_{2,2} + ((\Gamma_{1,1} - \Gamma_{2,2})^2 + 4|\Gamma_{1,2}|^{2})^{1/2}
- }{2\Gamma_{1,2}^{*}}
-$$
 %==============================================================
 %==============================================================
 \section{Some distributions related to the smoothed periodogram}
@@ -853,9 +607,8 @@ $$
 
 
 %==============================================================
-\subsubsection{Phase distribution (not completed)}
+\subsubsection{Phase distribution-direct approach}
 %==============================================================
-
 We consider the sequence of $2M+1$ bivariate random gaussian complex independent variables
 $$
  X_{m}\simiid\mathcal{N}_{c}(0,\Gamma)
@@ -909,11 +662,11 @@ The distribution of $(A_{1},A_{2},R,\Phi)$ writes:
  \times\mathds{1}(\phi\in(0,2\pi))
 \end{eqnarray}
 We have
-$$
+\begin{eqnarray*}
  \int_{0}^{\sqrt{a_{1}a_{2}}} P(r)e^{-\mu r}dr = 
  \left[\frac{-1}{\mu}e^{-\mu r}\sum_{s=0}^{2K-3}\frac{1}{\mu^{s}}P^{(s)}(r)
  \right]_{0}^{\sqrt{a_{1}a_{2}}}
-$$
+\end{eqnarray*}
 Here $\mu = 2\rho\sigma_{1}\sigma_{2}\cos(\theta-\phi)/|\Gamma|$ and
 \begin{eqnarray*}
  P(r)&=&r(a_{1}a_{2}-r^{2})^{K-2}=\sum_{q=0}^{K-2}(-1)^{q}
@@ -926,7 +679,7 @@ Here $\mu = 2\rho\sigma_{1}\sigma_{2}\cos(\theta-\phi)/|\Gamma|$ and
  \sum_{q=1}^{K-2}(-1)^{q}
 (a_{1}a_{2})^{K-2-q}r^{2q-1}C_{K-2}^{q}
  \\
- \vdots
+ &\vdots
  \\
  P^{(2K-4)}(r)&=&-(K-2)(a_{1}a_{2})^{K-3}r^{3}
  \\
@@ -949,12 +702,248 @@ $$
 $$
 
 \dots
+%========================================
+%========================================
+%========================================
+\section{Approximate variances}
+\label{ss:varianceexpressions}
+%========================================
+\subsubsection{$\delta$-method}
 
-(uncompleted $\ldots$)
+The so called $\delta$-method allows to derive the covariance of 
+\begin{eqnarray*}
+ Z = f(Y)
+\end{eqnarray*}
+from the covariance of $Y$ where $f:\mathds{R}^{m}\mapsto \mathds{R}^{q}$. 
+We let $\mu_{Y}=\esp{Y}$. Using the first order Taylor expansion of $f$ in the neighborhood  of $\mu_{Y}$, we write
+\begin{eqnarray*}
+Z \approx f(\mu_{Y}) + J_{\mu_{Y}}(Y-\mu_{Y})
+\end{eqnarray*}
+where $J_{\mu_{Y}}$ is the Jacobian of $f$
+\begin{eqnarray*}
+ J_{y}=\begin{bmatrix}
+ \frac{\partial f_{1}}{\partial y_{1}}
+ &\cdots
+ & \frac{\partial f_{1}}{\partial y_{m}}
+ \\
+ \vdots
+ \\
+  \frac{\partial f_{q}}{\partial y_{1}}
+ &\cdots
+ & \frac{\partial f_{q}}{\partial y_{m}}
+ \end{bmatrix}
+\end{eqnarray*}
+which is a matrix of size $m\times q$, performed in $y=\mu_{Y}$.
+Therefore at first order
+\begin{eqnarray*}
+ \esp{Z} \approx f(\mu_{Y}) + J_{\mu_{Y}}\esp{Y-\mu_{Y}}=f(\mu_{Y})+0
+\end{eqnarray*}
+then
+\begin{eqnarray*}
+ Z-\esp{Z}\approx J_{\mu_{Y}}(Y-\mu_{Y})
+\end{eqnarray*}
+therefore, according to the definition $\cov{Z} = \esp{(Z-\esp{Z})(Z-\esp{Z})^{H}}$, we have
+\begin{eqnarray*}
+ \cov{Z} \approx 
+ J_{\mu_{Y}}\cov{Y}J_{\mu_{Y}}^{H}
+\end{eqnarray*}
 
+%===========================================================
+\subsubsection{Approximate variance of the phase estimate of the ratio}
+We have
+\begin{eqnarray*}
+ \tan(\phi) = \frac{\Gamma_{1,2,I} }{\Gamma_{1,2,R}}
+\end{eqnarray*}
+Then
+\begin{eqnarray*}
+ d\phi =
+ \frac{\Gamma_{1,2,R}d\Gamma_{1,2,I}-\Gamma_{1,2,I}d\Gamma_{1,2,R}}
+      {|\Gamma_{1,2}|^{2}}
+\end{eqnarray*}
+Therefore
+\begin{eqnarray*}
+ \var{\hat \phi}&=&\frac{1}{|\Gamma_{1,2}|^{4}}
+ \left(
+ \Gamma_{1,2,R}^{2}\var{\hat \Gamma_{1,2,I}}
+ +
+ \Gamma_{1,2,I}^{2}\var{\hat \Gamma_{1,2,R}} \right .
+ \\
+ && \left .
+ -2\Gamma_{1,2,R}\Gamma_{1,2,I}\var{\hat \Gamma_{1,2,R},\hat \Gamma_{1,2,I}}
+ \right)
+\end{eqnarray*}
+Using that 
+\begin{eqnarray*}
+ \var{\hat \Gamma_{1,2,R}}
+ &=&
+ \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2}\Gamma_{1,2,R}^{2}-\frac{1}{2}\Gamma_{1,2,I}^{2}
+\end{eqnarray*}
 
+\begin{eqnarray*}
+ \var{\hat \Gamma_{1,2,I}}
+ &=&
+ \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2}
+ \Gamma_{1,2,I}^{2}-\frac{1}{2}\Gamma_{1,2,R}^{2}
+\end{eqnarray*}
+and
+\begin{eqnarray*}
+ \cov{\hat \Gamma_{1,2,R},\hat \Gamma_{1,2,I}}
+ &=&
+\Gamma_{1,2,R}\Gamma_{1,2,I}
+\end{eqnarray*}
+we get
+\begin{eqnarray*}
+ \var{\hat \phi}=\frac{1-\mu}{2\mu}
+\end{eqnarray*}
+Now if we smooth on a rectangular window with weights $1/(2M+1)$ see equation \eqref{eq:rectangularsmooth}, the variance
+is given by
+\begin{eqnarray*}
+ \var{\hat \phi}=\frac{1}{2M+1}\frac{1-\mu}{2\mu}
+\end{eqnarray*}
+We can approximate the distribution of $\hat \phi$ by a gaussian with mean $\phi$ and variance 
+$\frac{1}{2M+1}\frac{1-\mu}{2\mu}$. 
+%===========================================================
+\subsubsection{Approximate variance of $|\hat\Gamma_{1,2}|/\Gamma_{2,2}$}
+We have
+\begin{eqnarray*}
+ R_{1}=\frac{\sqrt{\Gamma_{1,2,R}^{2}+\Gamma_{1,2,I}^{2}}}{\Gamma_{2,2}}
+\end{eqnarray*}
+Then
+\begin{eqnarray*}
+  dR_{1} &=&
+ \frac{\Gamma_{1,2,R}d\Gamma_{1,2,R}+\Gamma_{1,2,I}d\Gamma_{1,2,I}}
+      {\Gamma_{2,2}\sqrt{\Gamma_{1,2,R}^{2}+\Gamma_{1,2,I}^{2}}}
+      -\frac{\sqrt{\Gamma_{1,2,R}^{2}+\Gamma_{1,2,I}^{2}}}{\Gamma_{2,2}^{2}}d\Gamma_{2,2}
+ \\
+ &=&
+  \frac{\Gamma_{2,2}\Gamma_{1,2,R}d\Gamma_{1,2,R}+\Gamma_{2,2}\Gamma_{1,2,I}d\Gamma_{1,2,I}
+   -|\Gamma_{1,2}|^{2}d\Gamma_{2,2}}
+      {\Gamma_{2,2}^{2}|\Gamma_{1,2}|}
+\end{eqnarray*}
+Therefore we have to determine the expression of the variances of $\hat\Gamma_{1,2,R}$, $\hat\Gamma_{1,2,I}$, $\hat\Gamma_{2,2}$, and the 3 covariances $\cov{\hat\Gamma_{1,2,R},\hat\Gamma_{1,2,I}}$, $\cov{\hat\Gamma_{1,2,R},\hat\Gamma_{2,2}}$
+and
+$\cov{\hat\Gamma_{1,2,I},\hat\Gamma_{2,2}}$. First we have:
+\begin{eqnarray*}
+ \esp{\hat\Gamma_{1,2,R},\hat\Gamma_{2,2}}
+ =
+ \frac{1}{2}\esp{(\hat\Gamma_{1,2}+\hat\Gamma_{1,2}^{*})\hat\Gamma_{2,2}}
+ =
+ \frac{1}{2}\esp{(X_{1}X_{2}^{*}+X_{1}^{*}X_{2})X_{2}X_{2}^{*}}
+\end{eqnarray*}
 
+\begin{eqnarray*}
+\frac{1}{2}\esp{X_{1}X_{2}^{*} X_{2}X_{2}^{*}}
++
+\frac{1}{2}\esp{X_{1}^{*}X_{2} X_{2}X_{2}^{*}}
+=\Gamma_{1,2}\Gamma_{2,2}+\Gamma_{1,2}^{*}\Gamma_{2,2}
+=
+2\Gamma_{1,2,R}\Gamma_{2,2}
+\end{eqnarray*}
+\begin{eqnarray*}
+ \cov{\hat\Gamma_{1,2,R},\hat\Gamma_{2,2}}=
+ \Gamma_{1,2,R}\Gamma_{2,2}
+\end{eqnarray*}
+Similarly
+\begin{eqnarray*}
+ \cov{\hat\Gamma_{1,2,I},\hat\Gamma_{2,2}}=
+ \Gamma_{1,2,I}\Gamma_{2,2}
+\end{eqnarray*}
+Then
+\begin{eqnarray}
+ \var{R_{1}} = \frac{1}{\Gamma_{2,2}^{4}|\Gamma_{1,2}|^{2}}
+ \left(
+ A+B+C+D+E+F
+ \right)
+\end{eqnarray}
+\begin{eqnarray*}
+ A &=&\Gamma_{2,2}^{2}\Gamma_{1,2,R}^{2}
+ \left(
+  \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2}\Gamma_{1,2,R}^{2}-\frac{1}{2}\Gamma_{1,2,I}^{2}
+  \right)
+\\
+ B &=&\Gamma_{2,2}^{2}\Gamma_{1,2,I}^{2}
+ \left(
+\frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}+\frac{1}{2} \Gamma_{1,2,I}^{2}-\frac{1}{2}\Gamma_{1,2,R}^{2}
+   \right)
+\\
+ C &=& |\Gamma_{1,2}|^{4}\Gamma_{2,2}^{2}
+\\
+ D &=& 2\Gamma_{2,2}^{2}|\Gamma_{1,2}|^{2}\Gamma_{1,2,R}\Gamma_{1,2,I}
+\\
+ E &=& -2|\Gamma_{1,2}|^{2}\Gamma_{2,2}^{2}\Gamma_{1,2,R}^{2}
+\\
+ F &=& -2|\Gamma_{1,2}|^{2}\Gamma_{2,2}^{2}\Gamma_{1,2,I}^{2}
+\\
+ E+F &=& -2\Gamma_{2,2}^{2}|\Gamma_{1,2}|^{4}
+\\
+ A+B &=& \Gamma_{2,2}^{2}
+ \left(
+ \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}|\Gamma_{1,2}|^{2}
+ +
+ \frac{1}{2}|\Gamma_{1,2}|^{4}
+ -2\Gamma_{1,2,R}^{2}\Gamma_{1,2,I}^{2}
+ \right)
+\end{eqnarray*}
+Finally
+\begin{eqnarray*}
+ A+B+D+E+F = \Gamma_{2,2}^{2}
+ \left(
+ \frac{1}{2}\Gamma_{1,1}\Gamma_{2,2}|\Gamma_{1,2}|^{2}
+ +
+ \frac{1}{2}|\Gamma_{1,2}|^{4}-2|\Gamma_{1,2}|^{4}
+ \right)
+\end{eqnarray*}
+and
+\begin{eqnarray*}
+ \var{|\Gamma_{1,2}|/\hat\Gamma_{2,2}} =\frac{1}{2}
+ \left(
+  \frac{\Gamma_{1,1}\Gamma_{2,2}-|\Gamma_{1,2}|^{2}}
+  {\Gamma_{2,2}^{2}}
+ \right)
+\end{eqnarray*} 
+ 
+%\begin{eqnarray}
+% \sigma({R_{1}}) =\frac{\sqrt{\det(\Gamma)}}{\Gamma_{2,2}\sqrt{2(2M+1})}
+%\end{eqnarray} 
 
+%===========================================================
+\subsubsection{Approximate variance of $\hat\Gamma_{1,1}/|\Gamma_{2,1}|$}
+From the previous section we have
+\begin{eqnarray*}
+ \var{|\hat\Gamma_{2,1}|/\hat\Gamma_{1,1}} =\frac{1}{2}
+ \left(
+  \frac{\Gamma_{1,1}\Gamma_{2,2}-|\Gamma_{1,2}|^{2}}
+  {\Gamma_{1,1}^{2}}
+ \right)
+\end{eqnarray*} 
+then
+\begin{eqnarray*}
+ \var{\hat\Gamma_{1,1}/|\hat\Gamma_{2,1}|} =\frac{1}{2}
+ \left(
+  (\Gamma_{1,1}\Gamma_{2,2}-|\Gamma_{1,2}|^{2})
+  \frac{\Gamma_{1,1}^{2}}{|\Gamma_{1,2}|^{4}}
+ \right)
+\end{eqnarray*} 
+%===========================================================
+\subsubsection{Summary}
+We can rewritten the 2 last expressions using
+\begin{eqnarray*}
+ \mu=\frac{|\Gamma_{1,2}|^{2}}{\Gamma_{1,1}\Gamma_{2,2}}
+\end{eqnarray*}
+and the averaging on $(2M+1)$:
+\begin{eqnarray}
+\label{eq:var12on22}
+ \var{|\hat\Gamma_{1,2}|/\hat\Gamma_{2,2}} =\frac{1}{2(2M+1)}
+   \frac{\Gamma_{1,1}}{\Gamma_{2,2}} (1-\mu)
+\end{eqnarray} 
+and
+\begin{eqnarray}
+\label{eq:var11on21}
+ \var{\hat\Gamma_{1,1}/|\hat\Gamma_{2,1}|} 
+  =\frac{1}{2(2M+1)}\frac{\Gamma_{1,1}}{\Gamma_{2,2}}
+  \frac{1-\mu}{\mu^{2}}
+\end{eqnarray} 
+Where $\mu$ is close to 1, the 2 formulas are equivalent.
 
 %==============================================================
 %==============================================================
@@ -989,7 +978,7 @@ F(c,\MSC)
  \frac{1-\MSC}{1-c\times\MSC}
  \right)^{N_{d}} \times
   \\
- &&
+ &&\hspace{-2cm}
  \sum_{k=0}^{N_{d}-2}\left(\frac{1-c}{1-c\times\MSC}\right)^{k}
   {}_{2}F_{1}(-k,1-N_{d};1;c\times\MSC)
 \end{eqnarray}

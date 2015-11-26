@@ -3,6 +3,9 @@
 %==============================================================
 \section{Trimmed mean}
 %==============================================================
+In the proposed procedure we compute an estimation of the Sup ratio by weighted averaging on a few number of spectral component period. On our process that is about $48$ hours for a maximum size of the spectral component period of $1000$ seconds, i.e. about $170$ samples. 
+
+Taking several of such periods, we have to compute a mean. To get a robust averaging it is common to use the trimmed mean.
 The classical estimator of the mean writes:
 \begin{eqnarray*}
 \hat \mu^{(1)}_{N} &=&\frac{1}{N}\sum_{n=1}^{N}X_{n}
@@ -68,6 +71,7 @@ for limit central theorem,
 
 
 
-%==============================================================
-\section{Confidence interval on an estimator}
-%==============================================================
+
+
+
+
