@@ -10,7 +10,7 @@ directorysignals    = '../../../../AAdataI26calib/';
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB98bis/';
+directoryinputresults = '../AAresultswithFB98ter/';
 
 %======== to compute theoretical integrals
 allT.TUUonUR    = linspace(0.6,2,100);
@@ -21,9 +21,9 @@ allT.phase_rd   = linspace(-pi,pi,100);
 alphaSTDforRsup = (1-normcdf(1))*2; 
 probaIC         = 0.90;
 alphaCI         = -norminv((1-probaIC)/2);
-drawnumber      = 15;
+drawnumber      = 5;
 
-for ihc = 1
+for ihc = 2
     numfig = ihc;
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
@@ -171,8 +171,8 @@ subplot(313)
 loglog(allfrqsPfiltersUSZ, CISTDphasetheoUSZ_degree,'ob','markerfacec','b')
 hold on
 loglog(allfrqsPfiltersUSZ, CISTDphasePfilters_aveUSZ_degree,'or','markerfacec','r')
-hold on
-loglog(allfrqsPfiltersUSZ, CISTDphasePfiltersUSZ_degree,'og','markerfacec','g')
+% hold on
+% loglog(allfrqsPfiltersUSZ, CISTDphasePfiltersUSZ_degree,'og','markerfacec','g')
 hold off
 grid on
 ylabel(sprintf('CI at %i%s\non the phase - degree',probaIC*100,'%'), ...

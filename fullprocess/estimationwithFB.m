@@ -46,7 +46,7 @@ MSCthreshold = 0.98;
 %=====================
 
 FLAGsaveall   = 0;
-FLAGsavesmall = 0;
+FLAGsavesmall = 1;
 
 %=====================
 %=== directory of input signals
@@ -55,7 +55,7 @@ directorysignals    = '../../../AAdataI26calib/';
 % if FLAGsaveall=1
 directoryresultsALL = 'BBresults'; 
 % if FLAGsavesmall=1
-directoryresults    = sprintf('AAresultswithFB%ibis',fix(MSCthreshold*100));
+directoryresults    = sprintf('AAresultswithFB%iter',fix(MSCthreshold*100));
 
 %============== load the filter bank characteristics =====================
 %  the useful variable is FILTERCHARACT
@@ -90,12 +90,11 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 1, ihc
+for ihc = 1:8, ihc
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
-    nbmats = 1;
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
@@ -112,7 +111,7 @@ for ihc = 1, ihc
     %==================================================
     for ifile=1:nbmats, ifile,
         tic
-        fullfilename_i      = fileswithdotmat(12).name;
+        fullfilename_i      = fileswithdotmat(ifile).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
         filenameonly        = fullfilename_i(...
