@@ -18,12 +18,10 @@ allT.TURonRR    = linspace(0.6,2,100);
 allT.MSC        = linspace(0.6,1,100);
 allT.phase_rd   = linspace(-pi,pi,100);
 % critical region at +/-1 sigma
-alphaSTDforRsup = (1-normcdf(1))*2; 
-probaIC         = 0.90;
-alphaCI         = -norminv((1-probaIC)/2);
-drawnumber      = 5;
+alphaCI         = 0.1;
+randdrawnumber  = 10;
 
-for ihc = 2
+for ihc = 1
     numfig = ihc;
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
@@ -51,9 +49,12 @@ for ihc = 2
     allmeanMSCcstPfilters        = allmeanMSCcstPfilters(:,remainindex);
     nbofvaluesoverthreshold      = nbofvaluesoverthreshold(:,remainindex);
     allScpPfilters               = allScpPfilters(:,:,remainindex);
+    alltheoreticalmodstd         = theoreticalmodstd(:,remainindex);
+    alltheoreticalphasestd_rad   = theoreticalphasestd_rad(:,remainindex);
+    
     %%
     permutenbmats                = randperm(length(remainindex));
-    indrandomlychosen            = permutenbmats(1:drawnumber);
+    indrandomlychosen            = permutenbmats(1:randdrawnumber);
     allRatioSupPfilters          = ...
         allRatioSupPfilters(:,indrandomlychosen);
     allSTDmodRatioSupPfilters    = ...
@@ -66,38 +67,48 @@ for ihc = 2
         nbofvaluesoverthreshold(:,indrandomlychosen);
     allScpPfilters               = ...
         allScpPfilters(:,:,indrandomlychosen);
-    
+    alltheoreticalmodstd         = ...
+        alltheoreticalmodstd(:,indrandomlychosen);
+    alltheoreticalphasestd_rad   = ...
+        alltheoreticalphasestd_rad(:,indrandomlychosen);
+
     STDmodRatioPfilters_ave      = nanmedian(allSTDmodRatioSupPfilters,2);
     STDphaseRatioPfilters_ave    = nanmedian(allSTDphaseRatioSupPfilters,2);
     
-    %== sort in increasing order
-    [allfrqsPfiltersS, inds]     = sort(allfrqsPfilters);
-    allRatioPfiltersS            = allRatioSupPfilters(inds,:);
-    allmeanMSCcstPfiltersS       = allmeanMSCcstPfilters(inds,:);
-    STDmodRatioPfilters_aveS     = STDmodRatioPfilters_ave(inds);
-    STDphaseRatioPfilters_aveS   = STDphaseRatioPfilters_ave(inds);
-    nbofvaluesoverthresholdS     = nbofvaluesoverthreshold(inds,:);
-    allScpPfiltersS              = allScpPfilters(:,inds,:);
+    %== sort in increasing order, S as sort 
+    [allfrqsPfiltersS, indS]     = sort(allfrqsPfilters);
+    allRatioPfiltersS            = allRatioSupPfilters(indS,:);
+    allmeanMSCcstPfiltersS       = allmeanMSCcstPfilters(indS,:);
+    STDmodRatioPfilters_aveS     = STDmodRatioPfilters_ave(indS);
+    STDphaseRatioPfilters_aveS   = STDphaseRatioPfilters_ave(indS);
+    nbofvaluesoverthresholdS     = nbofvaluesoverthreshold(indS,:);
+    allScpPfiltersS              = allScpPfilters(:,indS,:);
+    alltheoreticalmodstdS        = alltheoreticalmodstd(indS,:);
+    alltheoreticalphasestd_radS  = alltheoreticalphasestd_rad(indS,:);
     
-    %== unique frequency value
-    [allfrqsPfiltersUS, inda]    = unique(allfrqsPfiltersS);
-    allRatioPfiltersUS           = allRatioPfiltersS(inda,:);
-    allmeanMSCcstPfiltersUS      = allmeanMSCcstPfiltersS(inda,:);
-    STDmodRatioPfilters_aveUS    = STDmodRatioPfilters_aveS(inda);
-    STDphaseRatioPfilters_aveUS  = STDphaseRatioPfilters_aveS(inda);
-    nbofvaluesoverthresholdUS    = nbofvaluesoverthresholdS(inda,:);
-    allScpPfiltersUS             = allScpPfiltersS(:,inda,:);
-  
+    %== unique frequency value, U as unique
+    [allfrqsPfiltersUS, indU]    = unique(allfrqsPfiltersS);
+    allRatioPfiltersUS           = allRatioPfiltersS(indU,:);
+    allmeanMSCcstPfiltersUS      = allmeanMSCcstPfiltersS(indU,:);
+    STDmodRatioPfilters_aveUS    = STDmodRatioPfilters_aveS(indU);
+    STDphaseRatioPfilters_aveUS  = STDphaseRatioPfilters_aveS(indU);
+    nbofvaluesoverthresholdUS    = nbofvaluesoverthresholdS(indU,:);
+    allScpPfiltersUS             = allScpPfiltersS(:,indU,:);
+    alltheoreticalmodstdUS       = alltheoreticalmodstdS(indU,:);
+    alltheoreticalphasestd_radUS = alltheoreticalphasestd_radS(indU,:);
+
     %== without 0 frequency values
-    indz                         = find(not(allfrqsPfiltersUS==0));
-    allfrqsPfiltersUSZ           = allfrqsPfiltersUS(indz);
-    RatioPfiltersUSZ             = allRatioPfiltersUS(indz,:);
-    allmeanMSCcstPfiltersUSZ     = allmeanMSCcstPfiltersUS(indz,:);
-    STDmodRatioPfilters_aveUSZ   = STDmodRatioPfilters_aveUS(indz);
-    STDphaseRatioPfilters_aveUSZ = STDphaseRatioPfilters_aveUS(indz);
-    nbofvaluesoverthresholdUSZ   = nbofvaluesoverthresholdUS(indz,:);
-    allScpPfiltersUSZ            = allScpPfiltersS(:,indz,:);
-    
+    indZ                         = find(not(allfrqsPfiltersUS==0));
+    allfrqsPfiltersUSZ           = allfrqsPfiltersUS(indZ);
+    RatioPfiltersUSZ             = allRatioPfiltersUS(indZ,:);
+    allmeanMSCcstPfiltersUSZ     = allmeanMSCcstPfiltersUS(indZ,:);
+    STDmodRatioPfilters_aveUSZ   = STDmodRatioPfilters_aveUS(indZ);
+    STDphaseRatioPfilters_aveUSZ = STDphaseRatioPfilters_aveUS(indZ);
+    nbofvaluesoverthresholdUSZ   = nbofvaluesoverthresholdUS(indZ,:);
+    allScpPfiltersUSZ            = allScpPfiltersS(:,indZ,:);
+    alltheoreticalmodstdUSZ      = alltheoreticalmodstdUS(indZ,:);
+    alltheoreticalphasestdUSZ_rd = alltheoreticalphasestd_radUS(indZ,:);
+
     %====== absolute and arg of the ratios
     modRatioPfiltersUSZ          = abs(RatioPfiltersUSZ);
     phaseRatioPfiltersUSZ_rd     = angle(RatioPfiltersUSZ);
@@ -116,69 +127,75 @@ for ihc = 2
         sqrt(sum(nbofvaluesoverthresholdUSZ,2));
 end
 %%
-% this part can be removed because these values are
-% performed on the last version of fbanalysis.m 
+% this part performs the theoretical values of the STDs using an averaging
+% for the spectral matrix SCP_ifq. Results could be more accurate. It is
+% indexed by 1: CImodtheoUSZ_1 and CIphasetheoUSZ_1_degree.
+%     
 %====
-NaverageFFTs     = filtercharact(1).ratioDFT2SCP;
-LfqsUSZ          = length(allfrqsPfiltersUSZ);
-twolistsSTDs     = zeros(LfqsUSZ,2);
-STDmodtheoUSZ_rd    = zeros(LfqsUSZ,1);
-STDphasetheoUSZ_rd  = zeros(LfqsUSZ,1);
+NaverageFFTs        = filtercharact(1).ratioDFT2SCP;
+LfqsUSZ             = length(allfrqsPfiltersUSZ);
+% spectral matrix averaged on the selected number of records
+% given by randdrawnumber for the full band of interest
+meanSPsUSZ          = squeeze(nanmean(allScpPfiltersUSZ,3));
 
-for indfq=1:LfqsUSZ
-    SCP_ifq = nanmean(allScpPfiltersUSZ(:,indfq,:),3);
-    if any(isnan(SCP_ifq))
-        STDmodtheoUSZ_rd(indfq)=NaN;
-    else
-        RR_ifq = [SCP_ifq(1) SCP_ifq(3)';SCP_ifq(3) SCP_ifq(2)];
-        [statUUonUR, statURonRR, statMSC, stdPhase_rd]    = ...
-            theoreticalStats(allT, RR_ifq, NaverageFFTs, alphaSTDforRsup);
-        STDmodtheoUSZ_rd(indfq) = diff(statUUonUR.CI)/2;
-        STDphasetheoUSZ_rd(indfq) = stdPhase_rd;
-    end
-end
+[STDmodtheoUSZ,STDphasetheoUSZ_rd] = ...
+    averageSTDcomputation(allT,NaverageFFTs, meanSPsUSZ, ...
+    allfrqsPfiltersUSZ, alphaCI);
 sumnbofvaluesoverthresholdUSZ = sum(nbofvaluesoverthresholdUSZ,2);
-CItheoUSZ = alphaCI * STDmodtheoUSZ_rd ./ sumnbofvaluesoverthresholdUSZ;
-CIPfiltersUSZ = alphaCI * STDmodPfiltersUSZ ./ sumnbofvaluesoverthresholdUSZ;
+
+% CIPfiltersUSZ = alphaCI * STDmodPfiltersUSZ ./ sumnbofvaluesoverthresholdUSZ;
 CImodPfilters_aveUSZ = alphaCI * STDmodRatioPfilters_aveUSZ ./ ...
     sumnbofvaluesoverthresholdUSZ;
 
-CISTDphasePfiltersUSZ_degree       = (180/pi) * alphaCI * STDphasePfiltersUSZ_rd./ ...
+CImodtheoUSZ = alphaCI * STDmodtheoUSZ ./ sumnbofvaluesoverthresholdUSZ;
+% CImodtheoUSZ_2 = alphaCI * nanmean(alltheoreticalmodstdUSZ,2) ./ ...
+%     sumnbofvaluesoverthresholdUSZ;
+
+
+% CISTDphasePfiltersUSZ_degree       = (180/pi) * alphaCI * STDphasePfiltersUSZ_rd./ ...
+%     sumnbofvaluesoverthresholdUSZ;
+CIphasePfilters_aveUSZ_degree   = (180/pi) * alphaCI * STDphaseRatioPfilters_aveUSZ ./ ...
     sumnbofvaluesoverthresholdUSZ;
-CISTDphasePfilters_aveUSZ_degree   = (180/pi) * alphaCI * STDphaseRatioPfilters_aveUSZ ./ ...
-    sumnbofvaluesoverthresholdUSZ;
-CISTDphasetheoUSZ_degree = (180/pi) * alphaCI * STDphasetheoUSZ_rd ./ sumnbofvaluesoverthresholdUSZ;
+
+CIphasetheoUSZ_degree = (180/pi) * alphaCI * STDphasetheoUSZ_rd ./ sumnbofvaluesoverthresholdUSZ;
+% CIphasetheoUSZ_2_degree = (180/pi) * alphaCI * nanmean(alltheoreticalphasestdUSZ_rd,2) ./ ...
+%     sumnbofvaluesoverthresholdUSZ;
+
 %%
 figure(2)
 subplot(311)
 loglog(allfrqsPfiltersUSZ,sumnbofvaluesoverthresholdUSZ,'ob','markerfacec','b')
 title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
-    ihc, MSCthreshold, 2*drawnumber),'fontname','times','fontsize',14)
+    ihc, MSCthreshold, 2*randdrawnumber),'fontname','times','fontsize',14)
 ylabel('counts above the threshold','fontname','times','fontsize',12)
 grid on
 subplot(312)
-loglog(allfrqsPfiltersUSZ, CItheoUSZ, 'ob','markerfacec','b')
+loglog(allfrqsPfiltersUSZ, CImodtheoUSZ, 'ok','markerfacec','k')
 hold on
 loglog(allfrqsPfiltersUSZ, CImodPfilters_aveUSZ,'or','markerfacec','r')
 hold off
 grid on
-ylabel(sprintf('CI at %i%s\non the module',probaIC*100,'%'), ...
+ylabel(sprintf('CI at %i%s\non the ratio module',(1-alphaCI)*100,'%'), ...
     'fontname','times','fontsize',12)
 hl=legend('theoretical','emprirically');
 set(hl,'fontname','times','fontsize',12)
+posl = get(hl,'position');
+set(hl,'position',[0.2 posl(2:4)])
 
 subplot(313)
-loglog(allfrqsPfiltersUSZ, CISTDphasetheoUSZ_degree,'ob','markerfacec','b')
+loglog(allfrqsPfiltersUSZ, CIphasetheoUSZ_degree,'ok','markerfacec','k')
 hold on
-loglog(allfrqsPfiltersUSZ, CISTDphasePfilters_aveUSZ_degree,'or','markerfacec','r')
+loglog(allfrqsPfiltersUSZ, CIphasePfilters_aveUSZ_degree,'or','markerfacec','r')
 % hold on
 % loglog(allfrqsPfiltersUSZ, CISTDphasePfiltersUSZ_degree,'og','markerfacec','g')
 hold off
 grid on
-ylabel(sprintf('CI at %i%s\non the phase - degree',probaIC*100,'%'), ...
+ylabel(sprintf('CI at %i%s\non the ratio phase - degree',(1-alphaCI)*100,'%'), ...
     'fontname','times','fontsize',12)
 hl=legend('theoretical','emprirically');
 set(hl,'fontname','times','fontsize',12)
+posl = get(hl,'position');
+set(hl,'position',[0.2 posl(2:4)])
 %==================================
 %
 % plot(allT.TUUonUR,statURonRR.pdf,'.-')
@@ -187,7 +204,7 @@ set(hl,'fontname','times','fontsize',12)
 % hold off
 
 HorizontalSize = 16;
-VerticalSize   = 20;
+VerticalSize   = 22;
 set(gcf,'units','centimeters');
 set(gcf,'paperunits','centimeters');
 set(gcf,'PaperType','a3');
@@ -198,15 +215,15 @@ set(gcf, 'InvertHardCopy', 'off');
 
 printdirectory  = ' ../../figures/';
 
-fileprint = sprintf('%sSTDandCIonSensor%iyear%smonth%sday%s.eps',...
+fileprint = sprintf('%sSTDandCIonSensor%iyear%smonth%sday%snumber%i.eps',...
     printdirectory,ihc,filenameonly(7:10),filenameonly(16:17),...
-    filenameonly(21:22));
+    filenameonly(21:22),randdrawnumber);
 
 fileprintepscmd = sprintf('print -depsc -loose %s',fileprint);
 fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
 filermcmd       = sprintf('!rm %s',fileprint);
 
 %
-%     eval(fileprintepscmd)
-%     eval(fileeps2pdfcmd)
-%     eval(filermcmd)
+    eval(fileprintepscmd)
+    eval(fileeps2pdfcmd)
+    eval(filermcmd)
