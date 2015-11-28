@@ -2,19 +2,20 @@ function [STATSmodUUonRU, STATSmodURonRR, statMSC, ...
     STDphase_rd, statPhasepsd] = ...
     theoreticalStats(allT, Smatrix, N, alphaCI)
 %=========================================================================
-% Compute the probability density functions, the STDs 
-% and the CI (at alphaCI) of:
+% Compute, for a given frequency, the probability density functions, 
+% the STDs and the CI (at alphaCI) of:
 %    - the ratio modules:
 %
-%             |Smatrix(1,2)|                  Smatrix(1,1)
-%    Rinf =  ---------------   and   Rsup =  --------------
-%              Smatrix(2,2)                  |Smatrix(2,1)|
+%               |Smatrix(1,2)|                  Smatrix(1,1)
+%      Rinf =  ---------------   and   Rsup =  --------------
+%                Smatrix(2,2)                  |Smatrix(2,1)|
 %    - the phase
 %                phase = arg Smatrix(1,2)
 %    - the MSC 
-%                        |Smatrix(1,2)|^2
+%                          |Smatrix(1,2)|^2
 %                MSC = -------------------------
 %                       Smatrix(1,1)Smatrix(2,2)
+% Rk:  |Smatrix(1,2)| = |Smatrix(2,1)| because Smatrix is positive
 %=========================================================================
 % Used Matlab functions
 %    INTEGRAL on R2013

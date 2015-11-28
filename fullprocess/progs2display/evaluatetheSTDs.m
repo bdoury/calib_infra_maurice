@@ -127,39 +127,35 @@ for ihc = 1
         sqrt(sum(nbofvaluesoverthresholdUSZ,2));
 end
 %%
-% this part performs the theoretical values of the STDs using an averaging
-% for the spectral matrix SCP_ifq. Results could be more accurate. It is
-% indexed by 1: CImodtheoUSZ_1 and CIphasetheoUSZ_1_degree.
-%     
+% this COMMENT part performs the theoretical values of the STDs 
+% using an averaging for the spectral matrix SCP_ifq over many couples 
+% of pairs of days. Results could be more accurate (?).
+% 
 %====
-NaverageFFTs        = filtercharact(1).ratioDFT2SCP;
-LfqsUSZ             = length(allfrqsPfiltersUSZ);
+% NaverageFFTs        = filtercharact(1).ratioDFT2SCP;
+% LfqsUSZ             = length(allfrqsPfiltersUSZ);
 % spectral matrix averaged on the selected number of records
 % given by randdrawnumber for the full band of interest
-meanSPsUSZ          = squeeze(nanmean(allScpPfiltersUSZ,3));
-
-[STDmodtheoUSZ,STDphasetheoUSZ_rd] = ...
-    averageSTDcomputation(allT,NaverageFFTs, meanSPsUSZ, ...
-    allfrqsPfiltersUSZ, alphaCI);
+% meanSPsUSZ          = squeeze(nanmean(allScpPfiltersUSZ,3));
+% [STDmodtheoUSZ_out,STDphasetheoUSZ_rd_out] = ...
+%     averageSTDcomputation(allT,NaverageFFTs, meanSPsUSZ, ...
+%     allfrqsPfiltersUSZ, alphaCI);
+% CImodtheoUSZ_out = alphaCI * STDmodtheoUSZ_out ./ sumnbofvaluesoverthresholdUSZ;
+% CIphasetheoUSZ_degree_out = (180/pi) * alphaCI * STDphasetheoUSZ_rd_out ./ ...
+%       sumnbofvaluesoverthresholdUSZ;
+%====
 sumnbofvaluesoverthresholdUSZ = sum(nbofvaluesoverthresholdUSZ,2);
-
-% CIPfiltersUSZ = alphaCI * STDmodPfiltersUSZ ./ sumnbofvaluesoverthresholdUSZ;
+CIPfiltersUSZ = alphaCI * STDmodPfiltersUSZ ./ sumnbofvaluesoverthresholdUSZ;
 CImodPfilters_aveUSZ = alphaCI * STDmodRatioPfilters_aveUSZ ./ ...
     sumnbofvaluesoverthresholdUSZ;
-
-CImodtheoUSZ = alphaCI * STDmodtheoUSZ ./ sumnbofvaluesoverthresholdUSZ;
-% CImodtheoUSZ_2 = alphaCI * nanmean(alltheoreticalmodstdUSZ,2) ./ ...
-%     sumnbofvaluesoverthresholdUSZ;
-
-
-% CISTDphasePfiltersUSZ_degree       = (180/pi) * alphaCI * STDphasePfiltersUSZ_rd./ ...
-%     sumnbofvaluesoverthresholdUSZ;
+CImodtheoUSZ_in = alphaCI * nanmean(alltheoreticalmodstdUSZ,2) ./ ...
+     sumnbofvaluesoverthresholdUSZ;
+CISTDphasePfiltersUSZ_degree       = (180/pi) * alphaCI * STDphasePfiltersUSZ_rd./ ...
+     sumnbofvaluesoverthresholdUSZ;
 CIphasePfilters_aveUSZ_degree   = (180/pi) * alphaCI * STDphaseRatioPfilters_aveUSZ ./ ...
     sumnbofvaluesoverthresholdUSZ;
-
-CIphasetheoUSZ_degree = (180/pi) * alphaCI * STDphasetheoUSZ_rd ./ sumnbofvaluesoverthresholdUSZ;
-% CIphasetheoUSZ_2_degree = (180/pi) * alphaCI * nanmean(alltheoreticalphasestdUSZ_rd,2) ./ ...
-%     sumnbofvaluesoverthresholdUSZ;
+CIphasetheoUSZ_degree_in = (180/pi) * alphaCI * nanmean(alltheoreticalphasestdUSZ_rd,2) ./ ...
+    sumnbofvaluesoverthresholdUSZ;
 
 %%
 figure(2)
@@ -170,7 +166,7 @@ title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
 ylabel('counts above the threshold','fontname','times','fontsize',12)
 grid on
 subplot(312)
-loglog(allfrqsPfiltersUSZ, CImodtheoUSZ, 'ok','markerfacec','k')
+loglog(allfrqsPfiltersUSZ, CImodtheoUSZ_in, 'ok','markerfacec','k')
 hold on
 loglog(allfrqsPfiltersUSZ, CImodPfilters_aveUSZ,'or','markerfacec','r')
 hold off
@@ -183,11 +179,10 @@ posl = get(hl,'position');
 set(hl,'position',[0.2 posl(2:4)])
 
 subplot(313)
-loglog(allfrqsPfiltersUSZ, CIphasetheoUSZ_degree,'ok','markerfacec','k')
+loglog(allfrqsPfiltersUSZ, CIphasetheoUSZ_degree_in,'ok','markerfacec','k')
 hold on
-loglog(allfrqsPfiltersUSZ, CIphasePfilters_aveUSZ_degree,'or','markerfacec','r')
-% hold on
-% loglog(allfrqsPfiltersUSZ, CISTDphasePfiltersUSZ_degree,'og','markerfacec','g')
+% loglog(allfrqsPfiltersUSZ, CIphasePfilters_aveUSZ_degree,'or','markerfacec','r')
+loglog(allfrqsPfiltersUSZ, CISTDphasePfiltersUSZ_degree,'og','markerfacec','g')
 hold off
 grid on
 ylabel(sprintf('CI at %i%s\non the ratio phase - degree',(1-alphaCI)*100,'%'), ...

@@ -87,26 +87,26 @@
 \contentsline {section}{\numberline {11.6}Polynomial fitter}{111}{section.11.6}
 \contentsline {section}{\numberline {11.7}Full process}{112}{section.11.7}
 \contentsline {subsection}{\numberline {11.7.1}Example of filter bank description}{112}{subsection.11.7.1}
-\contentsline {subsection}{\numberline {11.7.2}Main program for estimation}{113}{subsection.11.7.2}
-\contentsline {section}{\numberline {11.8}Application programs}{116}{section.11.8}
-\contentsline {subsection}{\numberline {11.8.1}displaySUTresponse.m}{116}{subsection.11.8.1}
-\contentsline {subsection}{\numberline {11.8.2}evaluatetheSTDs.m}{119}{subsection.11.8.2}
-\contentsline {subsection}{\numberline {11.8.3}temporalevolution.m}{122}{subsection.11.8.3}
-\contentsline {subsection}{\numberline {11.8.4}RsupAsFreqfor3threshold.m}{124}{subsection.11.8.4}
-\contentsline {subsection}{\numberline {11.8.5}displayafewproblemsonRsup.m}{126}{subsection.11.8.5}
-\contentsline {subsection}{\numberline {11.8.6}plotsignalwithproblem.m}{129}{subsection.11.8.6}
-\contentsline {subsection}{\numberline {11.8.7}plotRsupdetails.m}{131}{subsection.11.8.7}
-\contentsline {chapter}{\numberline {12}Extraction form DB}{134}{chapter.12}
-\contentsline {section}{\numberline {12.1}RUNextractfromDB}{135}{section.12.1}
-\contentsline {section}{\numberline {12.2}execGPARSE}{136}{section.12.2}
-\contentsline {section}{\numberline {12.3}convertCSS2matlab}{137}{section.12.3}
-\contentsline {section}{\numberline {12.4}savesignals}{138}{section.12.4}
-\contentsline {chapter}{\numberline {13}Miscellaneous utilities}{140}{chapter.13}
-\contentsline {section}{\numberline {13.1}GeneFB}{140}{section.13.1}
-\contentsline {section}{\numberline {13.2}RMSE as function of coherence}{142}{section.13.2}
-\contentsline {section}{\numberline {13.3}Test of coherence}{145}{section.13.3}
-\contentsline {section}{\numberline {13.4}Statistical distribution of the ratios}{146}{section.13.4}
-\contentsline {section}{\numberline {13.5}Extraction from DB}{150}{section.13.5}
-\contentsline {subsubsection}{Settings for the query to the database}{150}{section*.24}
-\contentsline {subsubsection}{Query to the database}{150}{section*.25}
-\contentsline {subsubsection}{Conversion to format {\tt .mat}}{151}{section*.26}
+\contentsline {subsection}{\numberline {11.7.2}Main program for estimation}{114}{subsection.11.7.2}
+\contentsline {section}{\numberline {11.8}Application programs}{117}{section.11.8}
+\contentsline {subsection}{\numberline {11.8.1}displaySUTresponse.m}{117}{subsection.11.8.1}
+\contentsline {subsection}{\numberline {11.8.2}evaluatetheSTDs.m}{120}{subsection.11.8.2}
+\contentsline {subsection}{\numberline {11.8.3}temporalevolution.m}{123}{subsection.11.8.3}
+\contentsline {subsection}{\numberline {11.8.4}RsupAsFreqfor3threshold.m}{125}{subsection.11.8.4}
+\contentsline {subsection}{\numberline {11.8.5}displayafewproblemsonRsup.m}{127}{subsection.11.8.5}
+\contentsline {subsection}{\numberline {11.8.6}plotsignalwithproblem.m}{130}{subsection.11.8.6}
+\contentsline {subsection}{\numberline {11.8.7}plotRsupdetails.m}{132}{subsection.11.8.7}
+\contentsline {chapter}{\numberline {12}Extraction form DB}{135}{chapter.12}
+\contentsline {section}{\numberline {12.1}RUNextractfromDB}{136}{section.12.1}
+\contentsline {section}{\numberline {12.2}execGPARSE}{137}{section.12.2}
+\contentsline {section}{\numberline {12.3}convertCSS2matlab}{138}{section.12.3}
+\contentsline {section}{\numberline {12.4}savesignals}{139}{section.12.4}
+\contentsline {chapter}{\numberline {13}Miscellaneous utilities}{141}{chapter.13}
+\contentsline {section}{\numberline {13.1}GeneFB}{141}{section.13.1}
+\contentsline {section}{\numberline {13.2}RMSE as function of coherence}{143}{section.13.2}
+\contentsline {section}{\numberline {13.3}Test of coherence}{146}{section.13.3}
+\contentsline {section}{\numberline {13.4}Statistical distribution of the ratios}{147}{section.13.4}
+\contentsline {section}{\numberline {13.5}Extraction from DB}{151}{section.13.5}
+\contentsline {subsubsection}{Settings for the query to the database}{151}{section*.24}
+\contentsline {subsubsection}{Query to the database}{151}{section*.25}
+\contentsline {subsubsection}{Conversion to format {\tt .mat}}{152}{section*.26}
