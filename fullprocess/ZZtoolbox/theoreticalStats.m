@@ -1,6 +1,6 @@
 function [STATSmodUUonRU, STATSmodURonRR, statMSC, ...
     STDphase_rd, statPhasepsd] = ...
-    theoreticalStatsV2(allT, Smatrix, N, alphaCI)
+    theoreticalStats(allT, Smatrix, N, alphaCI)
 %=========================================================================
 % Compute the probability density functions, the STDs 
 % and the CI (at alphaCI) of:
