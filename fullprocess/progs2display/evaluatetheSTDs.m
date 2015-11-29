@@ -165,6 +165,8 @@ title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
     ihc, MSCthreshold, 2*randdrawnumber),'fontname','times','fontsize',14)
 ylabel('counts above the threshold','fontname','times','fontsize',12)
 grid on
+set(gca,'xlim',[0.01 6],'ylim',[0 10000])
+
 subplot(312)
 loglog(allfrqsPfiltersUSZ, CImodtheoUSZ_in, 'ok','markerfacec','k')
 hold on
@@ -177,6 +179,7 @@ hl=legend('theoretical','emprirically');
 set(hl,'fontname','times','fontsize',12)
 posl = get(hl,'position');
 set(hl,'position',[0.2 posl(2:4)])
+set(gca,'xlim',[0.01 6])%,'ylim',[0.0001 1])
 
 subplot(313)
 loglog(allfrqsPfiltersUSZ, CIphasetheoUSZ_degree_in,'ok','markerfacec','k')
@@ -191,6 +194,8 @@ hl=legend('theoretical','emprirically');
 set(hl,'fontname','times','fontsize',12)
 posl = get(hl,'position');
 set(hl,'position',[0.2 posl(2:4)])
+set(gca,'xlim',[0.01 6],'ylim',[0.0001 0.1])
+
 %==================================
 %
 % plot(allT.TUUonUR,statURonRR.pdf,'.-')
@@ -203,14 +208,14 @@ VerticalSize   = 22;
 set(gcf,'units','centimeters');
 set(gcf,'paperunits','centimeters');
 set(gcf,'PaperType','a3');
-    set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
+set(gcf,'position',[0 5 HorizontalSize VerticalSize]);
 set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
 
 printdirectory  = ' ../../figures/';
 
-fileprint = sprintf('%sSTDandCIonSensor%iyear%smonth%sday%snumber%i.eps',...
+fileprint = sprintf('%sSTDandCIonSensor%iyear%smonth%sday%snumber%iV2.eps',...
     printdirectory,ihc,filenameonly(7:10),filenameonly(16:17),...
     filenameonly(21:22),randdrawnumber);
 
@@ -219,6 +224,6 @@ fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
 filermcmd       = sprintf('!rm %s',fileprint);
 
 %
-    eval(fileprintepscmd)
-    eval(fileeps2pdfcmd)
-    eval(filermcmd)
+%     eval(fileprintepscmd)
+%     eval(fileeps2pdfcmd)
+%     eval(filermcmd)
