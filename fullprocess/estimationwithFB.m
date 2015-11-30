@@ -61,7 +61,7 @@ directorysignals    = '../../../AAdataI26calib/';
 % if FLAGsaveall=1
 directoryresultsALL = 'BBresults'; 
 % if FLAGsavesmall=1
-directoryresults    = sprintf('AAresultswithFB%i',fix(MSCthreshold*100));
+directoryresults    = sprintf('AAresultswithFB%iter',fix(MSCthreshold*100));
 
 %============== load the filter bank characteristics =====================
 %  the useful variable is FILTERCHARACT

@@ -17,12 +17,12 @@ directorysignals    = '../../../../AAdataI26calib/';
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB98bis/';
+directoryinputresults = '../AAresultswithFB98/';
 
 sensor_UT    = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag     = 1;
 trimmeanflag = 0;
-remainindex1 = [1:61 62 63:70];
+remainindex1 = [1:61  63:70];
 
 for ihc = 1
     % list of the files from 1 to nbmats

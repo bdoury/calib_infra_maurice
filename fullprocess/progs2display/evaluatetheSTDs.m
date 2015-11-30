@@ -49,12 +49,12 @@ for ihc = 1
     allmeanMSCcstPfilters        = allmeanMSCcstPfilters(:,remainindex);
     nbofvaluesoverthreshold      = nbofvaluesoverthreshold(:,remainindex);
     allScpPfilters               = allScpPfilters(:,:,remainindex);
-    alltheoreticalmodstd         = theoreticalmodstd(:,remainindex);
-    alltheoreticalphasestd_rad   = theoreticalphasestd_rad(:,remainindex);
+    alltheoreticalmodstd         = theoreticalSTDmod(:,remainindex);
+    alltheoreticalphasestd_rad   = theoreticalSTDphase_rad(:,remainindex);
     
     %%
     permutenbmats                = randperm(length(remainindex));
-    indrandomlychosen            = permutenbmats(1:randdrawnumber);
+    indrandomlychosen            = (1:10) ; permutenbmats(1:randdrawnumber);
     allRatioSupPfilters          = ...
         allRatioSupPfilters(:,indrandomlychosen);
     allSTDmodRatioSupPfilters    = ...
