@@ -96,13 +96,11 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 5, ihc
+for ihc = 1:8, ihc
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
-    
-    
     %====== Useful evaluated parameters for general purposes
     % 10000 means that we dont  know here the values. It is 
     % adjusted at the end of the loop.
@@ -230,9 +228,9 @@ for ihc = 5, ihc
             allScpPfilters(:,id1:id2,ifile) = ...
                 squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));
             
-            theoreticalSTDmod(id1:id2,ifile) = SUTs(ip).theomodstdforRsup;
+            theoreticalSTDmod(id1:id2,ifile) = SUTs(ip).theoSTDmodonRsup;
             theoreticalSTDphase_rad(id1:id2,ifile) = ...
-                SUTs(ip).stdPhase_rad;
+                SUTs(ip).theoSTDphase_rd;
         end
 %         if FLAGsaveall
 %             comsave = ...
