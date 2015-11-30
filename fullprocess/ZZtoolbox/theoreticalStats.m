@@ -1,168 +1,163 @@
-function [stat11on21, stat12on22, statMSC, stdPhase_rd] = ...
-    theoreticalStats(allT, G, N, a)
-
-% stat11on21, stat12on22 or statUUonUR, statURonRR
-%===============================================
-% Compute the probabiity density function of
-% the ratios:
+function [STATSmodUUonRU, STATSmodURonRR, statMSC, ...
+    STDphase_rd, statPhasepsd] = ...
+    theoreticalStats(allT, Smatrix, N, alphaCI)
+%=========================================================================
+% Compute, for a given frequency, the probability density functions, 
+% the STDs and the CI (at alphaCI) of:
+%    - the ratio modules:
 %
-%       |G(1,2)|             G(1,1)
-%      ----------   and    ----------
-%        G(2,2)             |G(2,1)|
-% where G is a positive matrix.
-%
-% Derive the confidence interval at 100alpha%
-% To  integrate use:
+%               |Smatrix(1,2)|                  Smatrix(1,1)
+%      Rinf =  ---------------   and   Rsup =  --------------
+%                Smatrix(2,2)                  |Smatrix(2,1)|
+%    - the phase
+%                phase = arg Smatrix(1,2)
+%    - the MSC 
+%                          |Smatrix(1,2)|^2
+%                MSC = -------------------------
+%                       Smatrix(1,1)Smatrix(2,2)
+% Rk:  |Smatrix(1,2)| = |Smatrix(2,1)| because Smatrix is positive
+%=========================================================================
+% Used Matlab functions
 %    INTEGRAL on R2013
 %    QUADGK   on R2010
-% 
-% Inputs : 
+%    besseli
+%=========================================================================
+% Inputs :
 %       - allT:
-%             allT.T11on21: list of values of S11/abs(S21)
-%             allT.T12on22: list of values of S12/abs(S22)
-%             allT.phase: list of values of arg(S22)
+%             allT.TUUonUR: list of values range of SUU/abs(SUR)
+%             allT.TURonRR: list of values range of abs(SUR)/SRR
+%             allT.phase:   list of values of arg(S12)
 %             allT.MSC: list of values of MSC
-%       - G: 2 x 2 spectral matrix at one frequency bin
+%       - Smatrix: is the 2 x 2 spectral matrix at one frequency bin
+%                   | Smatrix(1,1) Smatrix(1,2) |
+%                   | Smatrix(2,1) Smatrix(2,2) |
+%        Smatrix(1,1) is spectrum on SUT, Smatrix(2,2) is spectrum on SREF
 %       - N: window length for averaging FFT frames
-%       - a: level of confidence, typically 0.05%
-%======================================================================
-% old notations
-% 1=Reference, 2=Undertest
-allT.T11on21 = allT.TUUonUR;
-allT.T12on22 = allT.TURonRR;
-% we need to re-arrange G
-G = [G(2,2) G(2,1);G(1,2) G(1,1)];
-% values of MSC
-valMSC = allT.MSC;
-
-%=======================================
-rho = abs(G(1,2)/sqrt(G(1,1)*G(2,2)));
-rho2 = rho ^2;
-lambda = sqrt(G(2,2)/G(1,1));
-% (1*2*...*(N-1))^(1/N)
-gammaNm1P = exp(sum(log(1:N-1))/N);
-MSC_theo = abs(G(2,1)) ^2/G(1,1)/G(2,2);
-phase_HUminusHR_rd = -atan2(imag(G(2,1)),real(G(2,1)));
+%       - alphaCI: level of confidence, typical values 0.05, 0.15, 0.3
+%  for example for alphaCI = 2*(1-normcdf(1)) about 0.31,then CI = 2*sigma
+%=========================================================================
+% STATSmodUUonRU structure
+%              pdf: probability density function
+%              median
+%              mean
+%              cumul: cumulative function
+%              CI: confidence interval
+% STATSmodURonRR structure
+%              pdf: probability density function
+%              median
+%              mean
+%              cumul: cumulative function
+%              CI: confidence interval
+% statMSC structure, 
+%              pdf: probability density function
+%              CI: confidence interval
+% STDphase_rd : std on the pahse
+% statPhasepsd : probability density function of the phase
+%=========================================================================
+% values of MSC range
+valMSC              = allT.MSC;
+%=======
+rho                 = abs(Smatrix(1,2)/sqrt(Smatrix(1,1)*Smatrix(2,2)));
+MSC_theo            = rho ^2;
+lambda              = sqrt(Smatrix(1,1)/Smatrix(2,2));
+% performs (1*2*...*(N-1))^(1/N)
+gammaNm1P           = exp(sum(log(1:N-1))/N);
+phase_HUminusHR_rad = -atan2(imag(Smatrix(1,2)),real(Smatrix(1,2)));
 %======================================================================
 %====================== phase =========================================
 %======================================================================
-%== delta method
-stdPhase_rd  = asin(sqrt((1-MSC_theo)/N/MSC_theo/2));
-stdPhase_rdpsd = ...
-    (1/sqrt(2*pi)/stdPhase_rd)* ...
-    exp(-(allT.phase_rd-phase_HUminusHR_rd) .^2/...
-    (2 * stdPhase_rd^2));
-
+STDphase_rd  = asin(sqrt((1-MSC_theo)/N/MSC_theo/2));
+statPhasepsd = ...
+    (1/sqrt(2*pi)/STDphase_rd)* ...
+    exp(-(allT.phase_rd-phase_HUminusHR_rad) .^2/...
+    (2 * STDphase_rd^2));
 %======================================================================
 %====================== first ratio ===================================
 %======================================================================
-T = allT.T12on22;
-T = T(:);
-
-zeta = (1-rho2) ./ (2*rho*lambda * T)/gammaNm1P;
-cst  = lambda/rho;
-
-xi = ((1+lambda*lambda*(T .* T))) ./(2*rho*lambda*T);
-xim1 = xi-1;
-
-LT = length(T);
-p12on22 = zeros(LT,1);
-
+TURonRR         = allT.TURonRR;
+TURonRR         = TURonRR(:);
+zeta      = (1-MSC_theo) ./ (2*rho*lambda * TURonRR)/gammaNm1P;
+cst       = lambda/rho;
+xi        = ((1+lambda*lambda*(TURonRR .* TURonRR))) ./(2*rho*lambda*TURonRR);
+xim1      = xi-1;
+LT        = length(TURonRR);
+pURonRR   = zeros(LT,1);
 for it=1:LT
     if exist('integral','file')
-        p12on22(it)   = cst * integral(@(x) myf(x,xim1(it), ...
+        pURonRR(it)   = cst * integral(@(x) myf(x,xim1(it), ...
             zeta(it),N),0,inf);
     else
-        p12on22(it)   = cst * quadgk(@(x) myf(x,xim1(it), ...
+        pURonRR(it)   = cst * quadgk(@(x) myf(x,xim1(it), ...
             zeta(it),N),0,inf);
     end
 end
-stat12on22.pdf = p12on22;
-
-valMSC = valMSC(:);
-statMSC.pdf   = pdfMSC(valMSC,rho2,N);
-statMSC.CI(1) = invcumulFunctionMSC(a/2,rho2,N);
-statMSC.CI(2) = invcumulFunctionMSC(1-a/2,rho2,N);
-
+STATSmodURonRR.pdf = pURonRR;
+valMSC             = valMSC(:);
+statMSC.pdf        = pdfMSC(valMSC,MSC_theo,N);
+statMSC.CI(1)      = invcumulFunctionMSC(alphaCI/2,MSC_theo,N);
+statMSC.CI(2)      = invcumulFunctionMSC(1-alphaCI/2,MSC_theo,N);
 %======================================================================
 %===================== second ratio ===================================
 %======================================================================
-Tper = 1 ./ allT.T11on21;
-Tper = Tper(:);
-Gper = [G(2,2) G(2,1);G(1,2) G(1,1)];
-rho = abs(Gper(1,2)/sqrt(Gper(1,1)*Gper(2,2)));
-rho2 = rho ^2;
-lambda = sqrt(Gper(2,2)/Gper(1,1));
-
-
-zeta = (1-rho2) ./ (2*rho*lambda * Tper)/gammaNm1P;
-cst  = lambda/rho;
-
-xi = ((1+lambda*lambda*(Tper .* Tper))) ./(2*rho*lambda*Tper);
-xim1 = xi-1;
-
-LTper = length(Tper);
-p11on21 = zeros(LTper,1);
-
+TUUonUR   = allT.TUUonUR;
+TUUonUR   = TUUonUR(:);
+Tper      = 1 ./ TUUonUR;
+lambda    = sqrt(Smatrix(2,2)/Smatrix(1,1));
+zeta      = (1-MSC_theo) ./ (2*rho*lambda * Tper)/gammaNm1P;
+cst       = lambda/rho;
+xi        = ((1+lambda*lambda*(Tper .* Tper))) ./ (2*rho*lambda*Tper);
+xim1      = xi-1;
+LTper     = length(Tper);
+pUUonRU   = zeros(LTper,1);
 for it=1:LTper
     if exist('integral','file')
-        p11on21(it)   = cst * integral(@(x) myf(x,xim1(it), ...
+        pUUonRU(it)   = cst * integral(@(x) myf(x,xim1(it), ...
             zeta(it),N),0,inf);
     else
-        p11on21(it)   = cst * quadgk(@(x) myf(x,xim1(it), ...
+        pUUonRU(it)   = cst * quadgk(@(x) myf(x,xim1(it), ...
             zeta(it),N),0,inf);
     end
 end
-stat11on21.pdf = p11on21 .* (Tper .* Tper) ;
-cumul12on22 = cumsum(stat12on22.pdf)*...
-    (allT.T12on22(2)-allT.T12on22(1));
-stat12on22.mean = ...
-    sum(stat12on22.pdf .* allT.T12on22')*...
-    (allT.T12on22(2)-allT.T12on22(1));
-stat12on22.median = allT.T12on22(find(cumul12on22>0.5,1,'first'));
-stat12on22.cumul = (cumul12on22);
-
-cumul11on21 = cumsum(stat11on21.pdf)*...
-    (allT.T11on21(2)-allT.T11on21(1));
-stat11on21.median = allT.T11on21(find(cumul11on21>0.5,1,'first'));
-stat11on21.mean = ...
-    sum(stat11on21.pdf .* allT.T11on21')*...
-    (allT.T11on21(2)-allT.T11on21(1));
-stat11on21.cumul = (cumul11on21);
-
+STATSmodUUonRU.pdf = pUUonRU .* (Tper .* Tper) ;
+cumul12on22 = cumsum(STATSmodURonRR.pdf) * (TURonRR(2)-TURonRR(1));
+STATSmodURonRR.mean = ...
+    sum(STATSmodURonRR.pdf .* TURonRR) * (TURonRR(2)-TURonRR(1));
+STATSmodURonRR.median = TURonRR(find(cumul12on22>0.5,1,'first'));
+STATSmodURonRR.cumul = (cumul12on22);
+cumul11on21 = cumsum(STATSmodUUonRU.pdf) * (TUUonUR(2)-TUUonUR(1));
+STATSmodUUonRU.median = TUUonUR(find(cumul11on21>0.5,1,'first'));
+STATSmodUUonRU.mean = ...
+    sum(STATSmodUUonRU.pdf .* TUUonUR) * (TUUonUR(2)-TUUonUR(1));
+STATSmodUUonRU.cumul = (cumul11on21);
 if nargin == 4
-    
-    id1         = find(cumul12on22<a/2,1,'last');
+    id1         = find(cumul12on22<alphaCI/2,1,'last');
     if isempty(id1)
-        stat12on22.CI(1) = NaN;
+        STATSmodURonRR.CI(1) = NaN;
     else
-        stat12on22.CI(1) = allT.T12on22(id1);
+        STATSmodURonRR.CI(1) = TURonRR(id1);
     end
-    id2         = find(cumul12on22>1-a/2,1,'first');
+    id2         = find(cumul12on22>1-alphaCI/2,1,'first');
     if isempty(id2)
-        stat12on22.CI(2) = NaN;
+        STATSmodURonRR.CI(2) = NaN;
     else
-        stat12on22.CI(2) = allT.T12on22(id2);
+        STATSmodURonRR.CI(2) = TURonRR(id2);
     end
     
-    id1         = find(cumul11on21<a/2,1,'last');
+    id1         = find(cumul11on21<alphaCI/2,1,'last');
     if isempty(id1)
-        stat11on21.CI(1) = NaN;
+        STATSmodUUonRU.CI(1) = NaN;
     else
-        stat11on21.CI(1) = allT.T11on21(id1);
+        STATSmodUUonRU.CI(1) = TUUonUR(id1);
     end
-    id2         = find(cumul11on21>1-a/2,1,'first');
+    id2         = find(cumul11on21>1-alphaCI/2,1,'first');
     if isempty(id2)
-        stat11on21.CI(2) = NaN;
+        STATSmodUUonRU.CI(2) = NaN;
     else
-        stat11on21.CI(2) = allT.T11on21(id2);
+        STATSmodUUonRU.CI(2) = TUUonUR(id2);
     end
 end
-%===============================================
+%=========================================================================
 function f = myf(x,xim1,zeta,N)
 aux_var = N*log(zeta .* x) -xim1 .* x;
 f       = besseli(0,x,1) .* exp(aux_var) ;
-%===============================================
-
-
-
+%=========================================================================

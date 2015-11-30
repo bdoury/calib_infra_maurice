@@ -20,7 +20,7 @@ no requirement  on the phase but $\ldots$ $\pm 5\degree$ as for seismic requirem
 
 
 %================================
-\section{SUT response by averaging on 5 months - June to October 2015}
+\section{SUT response by averaging from June to October 2015}
 %================================
 The average estimate of the SUT response, in terms of gain in dB and phase in degree, are reported figure \ref{fig:withoutproblemons1}. The red dashed lines report the theoretical SUT response range requirements, which is $\pm 0.43$ for the gain and $\pm 5\degree$ for the phase. They have be performed taking into account the SREF sensor response and using the model of NRS developped by the IMS.
 \figscale{figures/withoutproblemons1.pdf}{The red dashed lines report the theoretical SUT response range requirement, which is $\pm 0.43$ for the gain and $\pm 5\degree$ for the phase.}{fig:withoutproblemons1}{0.8}
@@ -94,20 +94,28 @@ We repeat the same operations by taking $15$ pairs of days (i.e. $1$ month) at d
 \section{Standard deviation and Confidence interval}
 %================================
 This section is devoted to the calculation of the standard deviation (STD) of the estimators and therefore to a confidence interval (CI) for the module and the phase of the SUT response. We restrict the graphics to the SUP ratio. To extend to the SUT response we have just to multiply by the SREF response. This section is associated to the program {\tt evaluatetheSTDs.m}, see section
-\ref{s:toolbox}.
+\ref{ss:displaySUTresponse}.
 
 The protocol consists to draw randomly a selected number of days and averaging on them. Because we are concern with estimation during long periods of time, it is advised to use trimmed mean.
 
 We present  two empirical values of the STD obtained by very similar calculations on the empirical dispersion observed during the measurement. One is obtained taking the STDs performed in the main function {\tt fbanalysis.m} on the time duration of analysis, in your case about $48$ hours and then averaging, the other by performed STD on the sequence of Sup ratios of the selected number of days. It is just to verify that these two values are very close. Of course these values assume that we have enough samples to give an accurate value. 
 
-We present theoretical values of the STD derived from the estimation of spectral matrix at each frequency bin and averaged on the selected number of days and using the function  {\tt statsRatiosHbis.m}, included in the function {\tt fbankanalysis.m} see  section \ref{s:fbankanalysis}.
+Results are reported figures \ref{fig:STDandCIonSensor1year2015month10day29number10} and \ref{fig:STDandCIonSensor1year2015month10day29number10V2} for 2 random drawns.
 
+%We present theoretical values of the STD derived from the estimation of spectral matrix at each frequency bin and averaged on the selected number of days and using the function  {\tt theoreticalStats.m}, included in the function {\tt fbankanalysis.m} see  section \ref{s:fbankanalysis}.
 
+<<<<<<< HEAD
 \figscale{figures/STDandCIonSensor1year2015month10day29number10.pdf}{Top figure: number of counts  above the threshold averaging on the number of randomly selected days as a function of the frequency. We observe a large number in the low and high frequencies but a few round $0.5$ Hz. Mid figure: the CI on the module of the Sup ratio as a function of the frequency. Bottom figure: the CI on the phase of the Sup ratio as a function of the frequency. As expected the CIs are large in the frequency band where a few number of counts are observed. We also observed that the theoretical values are in good agreement with the empirical, as expected, mainly where the number of counts is large.}{}{0.7}
 
 \figscale{figures/STDandCIonSensor1year2015month10day29number20.pdf}{Top figure: number of counts  above the threshold averaging on the number of randomly selected days as a function of the frequency. We observe a large number in the low and high frequencies but a few round $0.5$ Hz. Mid figure: the CI on the module of the Sup ratio as a function of the frequency. Bottom figure: the CI on the phase of the Sup ratio as a function of the frequency. As expected the CIs are large in the frequency band where a few number of counts are observed. We also observed that the theoretical values are in good agreement with the empirical, as expected, mainly where the number of counts is large.}{}{0.7}
 
 \figscale{figures/STDandCIonSensor1year2015month10day29number30.pdf}{Top figure: number of counts  above the threshold averaging on the number of randomly selected days as a function of the frequency. We observe a large number in the low and high frequencies but a few round $0.5$ Hz. Mid figure: the CI on the module of the Sup ratio as a function of the frequency. Bottom figure: the CI on the phase of the Sup ratio as a function of the frequency. As expected the CIs are large in the frequency band where a few number of counts are observed. We also observed that the theoretical values are in good agreement with the empirical, as expected, mainly where the number of counts is large.}{}{0.7}
+=======
+\figscale{figures/STDandCIonSensor1year2015month10day29number10.pdf}{Top figure: number of counts  above the threshold averaging on the number of randomly selected days as a function of the frequency. We observe a large number in the low and high frequencies but a few round $0.5$ Hz. Mid figure: the CI on the module of the Sup ratio as a function of the frequency. Bottom figure: the CI on the phase of the Sup ratio as a function of the frequency. As expected the CIs are large in the frequency band where a few number of counts are observed. We also observed that the theoretical values are in good agreement with the empirical, as expected, mainly where the number of counts is large.}{fig:STDandCIonSensor1year2015month10day29number10}{0.7}
+%================================
+\newpage\clearpage
+\figscale{figures/STDandCIonSensor1year2015month10day29number10V2.pdf}{Top figure: number of counts  above the threshold averaging on the number of randomly selected days as a function of the frequency. We observe a large number in the low and high frequencies but a few round $0.5$ Hz. Mid figure: the CI on the module of the Sup ratio as a function of the frequency. Bottom figure: the CI on the phase of the Sup ratio as a function of the frequency. As expected the CIs are large in the frequency band where a few number of counts are observed. We also observed that the theoretical values are in good agreement with the empirical, as expected, mainly where the number of counts is large.}{fig:STDandCIonSensor1year2015month10day29number10V2}{0.7}
+>>>>>>> 30b9ee2e6a248ef8a3eb9fd5a9457153605502cc
 %================================
 \newpage\clearpage
 %================================

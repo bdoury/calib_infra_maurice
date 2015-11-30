@@ -1,7 +1,13 @@
 %====================== estimationwithFB.m ===============================
-% program evaluates some parameters from the signals
-% located in directorysignals. These parameters are 
-% saved in directoryresults.
+% Program evaluates some parameters from the signals
+% located in the directory directorysignals. 
+% The signals correspond to the pair of sensors 
+% SUT/SREF during a given duration T, typically 48 hours.
+% 
+% The evaluated parameters consist of the ratios, the STDs, etc
+% They are obtained by averaging on the period T.
+% They are saved in directoryresults.
+% 
 % Then for display use programs in the directory
 % progs2display.
 %
@@ -19,8 +25,8 @@
 % idipinf       = zeros(Pfilter,1);
 % idipsup       = zeros(Pfilter,1);
 % cumsumnbfq_ip = zeros(Pfilter,2);
-% In the following program they are performed at the output
-% of the function fbankanalysis.m
+% In the following program they are performed at each step of the loop
+% using a quatity performed by the function fbankanalysis.m
 %=========================================================================
 %
 %==================== Warning ===============
@@ -95,13 +101,20 @@ for ihc = 5, ihc
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
+    
+    
+    %====== Useful evaluated parameters for general purposes
+    % 10000 means that we dont  know here the values. It is 
+    % adjusted at the end of the loop.
     allfrqsPfilters              = zeros(10000,nbmats);
     allRatioSupPfilters          = zeros(10000,nbmats);
     allSTDmodRatioSupPfilters    = zeros(10000,nbmats);
     allSTDphaseRatioSupPfilters  = zeros(10000,nbmats);
-    theoreticalmodstd            = zeros(10000,nbmats);
-    theoreticalphasestd_rad      = zeros(10000,nbmats);
+    theoreticalSTDmod            = zeros(10000,nbmats);
+    theoreticalSTDphase_rad      = zeros(10000,nbmats);
     
+    % the RatioInf associated parameters are not considered
+    % in the final use.
     allRatioInfPfilters          = zeros(10000,nbmats);
     allSTDmodRatioInfPfilters    = zeros(10000,nbmats);
     allSTDphaseRatioInfPfilters  = zeros(10000,nbmats);
@@ -172,9 +185,10 @@ for ihc = 5, ihc
         % These three quantities, idipinf, idipsup and cumsumnbfq_ip
         % do not depend on the index ifile and do depend only on the
         % filtercharac parameters. Therefore they could be performed
-        % outside of the loop on ifile. The variable 
-        % SUTs(ip).indexinsidefreqband can be performed outside
-        % of the function fbankanalysis.m
+        % outside of the loop on ifile. Indeed the variable 
+        % SUTs(ip).indexinsidefreqband, provided by the function
+        % fbankanalysis can be performed outside
+        % 
         idipinf       = zeros(Pfilter,1);
         idipsup       = zeros(Pfilter,1);
         cumsumnbfq_ip = zeros(Pfilter,2);
@@ -187,7 +201,7 @@ for ihc = 5, ihc
             cumsumnbfq_ip(ip,2) = id2;
             id1         = id2+1;
         end
-        %======
+        %====== Useful evaluated parameters for general purposes
         for ip=1:Pfilter
             id1               = cumsumnbfq_ip(ip,1);
             id2               = cumsumnbfq_ip(ip,2);
@@ -216,8 +230,8 @@ for ihc = 5, ihc
             allScpPfilters(:,id1:id2,ifile) = ...
                 squeeze(SUTs(ip).spectralmatrix(:,idipinf(ip):idipsup(ip)));
             
-            theoreticalmodstd(id1:id2,ifile) = SUTs(ip).theomodstdforRsup;
-            theoreticalphasestd_rad(id1:id2,ifile) = ...
+            theoreticalSTDmod(id1:id2,ifile) = SUTs(ip).theomodstdforRsup;
+            theoreticalSTDphase_rad(id1:id2,ifile) = ...
                 SUTs(ip).stdPhase_rad;
         end
 %         if FLAGsaveall
@@ -243,8 +257,8 @@ for ihc = 5, ihc
     
     allScpPfilters              = allScpPfilters(:,1:id2,:);
     
-    theoreticalmodstd           = theoreticalmodstd(1:id2,:);
-    theoreticalphasestd_rad     = theoreticalphasestd_rad(1:id2,:);
+    theoreticalSTDmod           = theoreticalSTDmod(1:id2,:);
+    theoreticalSTDphase_rad     = theoreticalSTDphase_rad(1:id2,:);
     
     if FLAGsavesmall
         comsave = ...

@@ -42,13 +42,14 @@
 \contentsline {subsection}{\numberline {4.2.4}Output of the function {\tt fbankanalysis.m}}{49}{subsection.4.2.4}
 \contentsline {subsubsection}{Remark for developper}{50}{section*.11}
 \contentsline {chapter}{\numberline {5}Results of IS26 - sensor \#1}{51}{chapter.5}
-\contentsline {section}{\numberline {5.1}SUT response by averaging on 5 months - June to October 2015}{51}{section.5.1}
+\contentsline {section}{\numberline {5.1}SUT response by averaging from June to October 2015}{51}{section.5.1}
 \contentsline {section}{\numberline {5.2}Using different thresholds on two succesive days}{53}{section.5.2}
 \contentsline {section}{\numberline {5.3}Problem with some records}{54}{section.5.3}
 \contentsline {subsubsection}{Synchronization problem}{57}{section*.12}
 \contentsline {section}{\numberline {5.4}Averaging on randomly selected pairs of days}{57}{section.5.4}
 \contentsline {section}{\numberline {5.5}Stability at different frequency values}{59}{section.5.5}
 \contentsline {section}{\numberline {5.6}Standard deviation and Confidence interval}{61}{section.5.6}
+<<<<<<< HEAD
 \contentsline {section}{\numberline {5.7}About the selected MSC threshold}{65}{section.5.7}
 \contentsline {section}{\numberline {5.8}More details on a pair of days}{67}{section.5.8}
 \contentsline {part}{III\hspace {1em}Annexes}{69}{part.3}
@@ -87,6 +88,46 @@
 \contentsline {section}{\numberline {11.6}Polynomial fitter}{113}{section.11.6}
 \contentsline {section}{\numberline {11.7}Full process}{114}{section.11.7}
 \contentsline {subsection}{\numberline {11.7.1}Example of filter bank description}{114}{subsection.11.7.1}
+=======
+\contentsline {section}{\numberline {5.7}About the selected MSC threshold}{64}{section.5.7}
+\contentsline {section}{\numberline {5.8}More details on a pair of days}{66}{section.5.8}
+\contentsline {part}{III\hspace {1em}Annexes}{68}{part.3}
+\contentsline {chapter}{\numberline {6}Statistic for mean estimation}{69}{chapter.6}
+\contentsline {section}{\numberline {6.1}Trimmed mean}{69}{section.6.1}
+\contentsline {section}{\numberline {6.2}Confidence interval on the mean}{70}{section.6.2}
+\contentsline {chapter}{\numberline {7}Wide sense stationary process}{71}{chapter.7}
+\contentsline {chapter}{\numberline {8}Theoretical results on spectral estimation}{74}{chapter.8}
+\contentsline {section}{\numberline {8.1}Non parametrical spectral estimation}{74}{section.8.1}
+\contentsline {section}{\numberline {8.2}More periodogram properties}{75}{section.8.2}
+\contentsline {subsubsection}{Properties of the periodogram}{78}{section*.13}
+\contentsline {section}{\numberline {8.3}Second order moments for the smoothed periodogram}{79}{section.8.3}
+\contentsline {section}{\numberline {8.4}Some distributions related to the smoothed periodogram}{80}{section.8.4}
+\contentsline {subsubsection}{Wiskart's distribution}{80}{section*.14}
+\contentsline {subsubsection}{Ratio distributions}{81}{section*.15}
+\contentsline {subsubsection}{Phase distribution-direct approach}{83}{section*.16}
+\contentsline {section}{\numberline {8.5}Approximate variances}{85}{section.8.5}
+\contentsline {subsubsection}{$\delta $-method}{85}{section*.17}
+\contentsline {subsubsection}{Approximate variance of the phase estimate of the ratio}{86}{section*.18}
+\contentsline {subsubsection}{Approximate variance of $|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \Gamma $}\mathaccent "0362{\Gamma }_{1,2}|/\Gamma _{2,2}$}{87}{section*.19}
+\contentsline {subsubsection}{Approximate variance of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \Gamma $}\mathaccent "0362{\Gamma }_{1,1}/|\Gamma _{2,1}|$}{88}{section*.20}
+\contentsline {subsubsection}{Summary}{88}{section*.21}
+\contentsline {section}{\numberline {8.6}MSC distribution}{89}{section.8.6}
+\contentsline {section}{\numberline {8.7}MSC detection}{92}{section.8.7}
+\contentsline {chapter}{\numberline {9}LOC}{95}{chapter.9}
+\contentsline {subsubsection}{Coherence model}{95}{section*.22}
+\contentsline {chapter}{\numberline {10}Remark on deterministic representation}{98}{chapter.10}
+\contentsline {subsubsection}{Remark on a deterministic approach}{98}{section*.23}
+\contentsline {part}{IV\hspace {1em}Library}{100}{part.4}
+\contentsline {chapter}{\numberline {11}Programs}{101}{chapter.11}
+\contentsline {section}{\numberline {11.1}Toolbox}{101}{section.11.1}
+\contentsline {section}{\numberline {11.2}Cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{109}{section.11.2}
+\contentsline {section}{\numberline {11.3}Inverse cumulative function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{109}{section.11.3}
+\contentsline {section}{\numberline {11.4}Probability density function of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathrm {MSC}$}\mathaccent "0362{\mathrm {MSC}}$}{110}{section.11.4}
+\contentsline {section}{\numberline {11.5}Statistics of the spectral ratios}{110}{section.11.5}
+\contentsline {section}{\numberline {11.6}Polynomial fitter}{112}{section.11.6}
+\contentsline {section}{\numberline {11.7}Full process}{113}{section.11.7}
+\contentsline {subsection}{\numberline {11.7.1}Example of filter bank description}{113}{subsection.11.7.1}
+>>>>>>> 30b9ee2e6a248ef8a3eb9fd5a9457153605502cc
 \contentsline {subsection}{\numberline {11.7.2}Main program for estimation}{115}{subsection.11.7.2}
 \contentsline {section}{\numberline {11.8}Application programs}{118}{section.11.8}
 \contentsline {subsection}{\numberline {11.8.1}displaySUTresponse.m}{118}{subsection.11.8.1}
@@ -109,4 +150,8 @@
 \contentsline {section}{\numberline {13.5}Extraction from DB}{152}{section.13.5}
 \contentsline {subsubsection}{Settings for the query to the database}{152}{section*.24}
 \contentsline {subsubsection}{Query to the database}{152}{section*.25}
+<<<<<<< HEAD
 \contentsline {subsubsection}{Conversion to format {\tt .mat}}{152}{section*.26}
+=======
+\contentsline {subsubsection}{Conversion to format {\tt .mat}}{153}{section*.26}
+>>>>>>> 30b9ee2e6a248ef8a3eb9fd5a9457153605502cc

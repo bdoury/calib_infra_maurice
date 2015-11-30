@@ -41,7 +41,7 @@
 %=======================================================================
 %
 clear
-addpath  /Users/maurice/etudes/ctbto/allJOBs2015/myjob/1TaskOnSensors/textes/6distConjointHMSC/fullprocess/ZZtoolbox/
+addpath  ../ZZtoolbox/
 
 %====================================================
 % R=1, U=2
@@ -51,7 +51,6 @@ addpath  /Users/maurice/etudes/ctbto/allJOBs2015/myjob/1TaskOnSensors/textes/6di
 
 % global factor for the spectral matrices(no effect)
 gammafactor            = 5;
-% true HUonHR
 absHUonHR              = 1;
 phase_HUminusHR_degree = 20;
 argHUonHR_rad          = phase_HUminusHR_degree*pi/180;
@@ -186,13 +185,15 @@ pdfmean_MC       = hmean /Lruns/(binmean(2)-binmean(1));
 [hmym,binmym]    = hist(hatabslambda_MC,100);
 pdfmym_MC        = hmym /Lruns/(binmym(2)-binmym(1));
 
-%============ theoretical expressions
+%============ variable ranges
 allT.TUUonUR     = binRsup;
 allT.TURonRR     = binRinf;
-allT.MSC         = 0;
+allT.MSC         = linspace(0.6,1,100);
 allT.phase       = binarg;
 [hatpdfGsup, hatpdfGinf, hatMSC, hatPhase] = ...
-    statsRatiosHbis(allT,spectralmatrix,twoMminus1,0.05);
+    theoreticalStats(allT,spectralmatrix,twoMminus1,0.05);
+[hatpdfGsupP, hatpdfGinfP, hatMSCP, hatPhaseP] = ...
+    theoreticalStatsV2(allT,spectralmatrix,twoMminus1,0.05);
 
 %%
 stdapMLEdeltamethod                 = ...
@@ -219,17 +220,32 @@ if 1
     plot(binRsup,hatpdfGsup.pdf,'r','linew',2)
     hold off
    
- 
+    figure(2)
+    clf
+    subplot(2,1,1)
+    bar(binRsup,pdfRsup_MC)
+    hold on
+    plot(binRsup,hatpdfGsupP.pdf,'r','linew',2)
+    hold off
+
     %== title
     title(sprintf('sensor gain ratio = %5.1f, true MSC = % 4.2f,\nnoise ratio = %2i, M = %i',...
         absHUonHR, MSC_true, Ninlets, (twoMminus1+1)/2),'fontsize',12)
     
    %===========================================
     
+       figure(1)
     subplot(2,1,2)
     bar(binRinf,pdfRinf_MC)
     hold on
     plot(binRinf,hatpdfGinf.pdf,'r','linew',2)
+    hold off
+    
+    figure(2)
+    subplot(2,1,2)
+    bar(binRinf,pdfRinf_MC)
+    hold on
+    plot(binRinf,hatpdfGinfP.pdf,'r','linew',2)
     hold off
     
     %     %===========================================

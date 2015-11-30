@@ -23,17 +23,6 @@
 				<array>
 					<dict>
 						<key>BinIndex</key>
-						<string>10</string>
-						<key>BinMatches</key>
-						<array>
-							<dict>
-								<key>CenterLock</key>
-								<string>YES</string>
-							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>BinIndex</key>
 						<string>14</string>
 						<key>BinMatches</key>
 						<array>
@@ -86,7 +75,7 @@
 								<key>LineRGB</key>
 								<string>rgb 0 0 0 1</string>
 								<key>LineWidth</key>
-								<string>0.25</string>
+								<string>1.5</string>
 								<key>MiterLimit</key>
 								<string>10</string>
 								<key>StrokePosition</key>
@@ -106,7 +95,27 @@
 								<key>LineRGB</key>
 								<string>rgb 0 0 0 1</string>
 								<key>LineWidth</key>
-								<string>2.892822265625</string>
+								<string>0.25</string>
+								<key>MiterLimit</key>
+								<string>10</string>
+								<key>StrokePosition</key>
+								<string>Front</string>
+								<key>WindingRule</key>
+								<string>Non-Zero</string>
+							</dict>
+							<dict>
+								<key>DrawsFill</key>
+								<string>NO</string>
+								<key>DrawsLine</key>
+								<string>YES</string>
+								<key>LineCapStyle</key>
+								<string>Square</string>
+								<key>LineJoinStyle</key>
+								<string>Miter</string>
+								<key>LineRGB</key>
+								<string>rgb 1 0.58824 1 1</string>
+								<key>LineWidth</key>
+								<string>5</string>
 								<key>MiterLimit</key>
 								<string>10</string>
 								<key>StrokePosition</key>
@@ -193,7 +202,7 @@
 								<key>DrawsLine</key>
 								<string>YES</string>
 								<key>FillRGB</key>
-								<string>rgb 1 0.58824 1 1</string>
+								<string>rgb 0.66667 1 0.66667 1</string>
 								<key>LineCapStyle</key>
 								<string>Square</string>
 								<key>LineJoinStyle</key>
@@ -247,46 +256,6 @@
 								<key>DrawsLine</key>
 								<string>NO</string>
 								<key>FillRGB</key>
-								<string>rgb 0 0 0 1</string>
-								<key>LineCapStyle</key>
-								<string>Square</string>
-								<key>LineJoinStyle</key>
-								<string>Miter</string>
-								<key>LineWidth</key>
-								<string>0.25</string>
-								<key>MiterLimit</key>
-								<string>10</string>
-								<key>StrokePosition</key>
-								<string>Front</string>
-								<key>WindingRule</key>
-								<string>Non-Zero</string>
-							</dict>
-							<dict>
-								<key>DrawsFill</key>
-								<string>YES</string>
-								<key>DrawsLine</key>
-								<string>NO</string>
-								<key>FillRGB</key>
-								<string>rgb 1 0.11548 0.0819 1</string>
-								<key>LineCapStyle</key>
-								<string>Square</string>
-								<key>LineJoinStyle</key>
-								<string>Miter</string>
-								<key>LineWidth</key>
-								<string>0.5</string>
-								<key>MiterLimit</key>
-								<string>10</string>
-								<key>StrokePosition</key>
-								<string>Front</string>
-								<key>WindingRule</key>
-								<string>Non-Zero</string>
-							</dict>
-							<dict>
-								<key>DrawsFill</key>
-								<string>YES</string>
-								<key>DrawsLine</key>
-								<string>NO</string>
-								<key>FillRGB</key>
 								<string>rgb 0.58824 1 1 1</string>
 								<key>LineCapStyle</key>
 								<string>Square</string>
@@ -307,7 +276,7 @@
 								<key>DrawsLine</key>
 								<string>NO</string>
 								<key>FillRGB</key>
-								<string>rgb 1 0.58824 1 1</string>
+								<string>rgb 1 1 0.58824 1</string>
 								<key>LineCapStyle</key>
 								<string>Square</string>
 								<key>LineJoinStyle</key>
@@ -327,7 +296,7 @@
 								<key>DrawsLine</key>
 								<string>NO</string>
 								<key>FillRGB</key>
-								<string>rgb 1 1 0.58824 1</string>
+								<string>rgb 0.66667 1 0.66667 1</string>
 								<key>LineCapStyle</key>
 								<string>Square</string>
 								<key>LineJoinStyle</key>
@@ -422,155 +391,31 @@
 									<string>4</string>
 								</array>
 							</dict>
-						</array>
-					</dict>
-				</array>
-				<key>NHashBins</key>
-				<string>16</string>
-			</dict>
-			<dict>
-				<key>Class_Store</key>
-				<string>DKDArrow</string>
-				<key>Match_Hashes</key>
-				<array>
-					<dict>
-						<key>BinIndex</key>
-						<string>3</string>
-						<key>BinMatches</key>
-						<array>
 							<dict>
-								<key>ArrowAngle</key>
-								<string>160</string>
-								<key>ArrowArchiveVersion</key>
-								<string>1</string>
-								<key>ArrowBackEnd</key>
+								<key>DashName</key>
+								<string>Short</string>
+								<key>DashOn</key>
 								<string>YES</string>
-								<key>ArrowForEachSegment</key>
-								<string>NO</string>
-								<key>ArrowForm</key>
-								<string>solid curved</string>
-								<key>ArrowFrontEnd</key>
-								<string>NO</string>
-								<key>ArrowLineWidthFraction</key>
-								<string>0.25</string>
-								<key>ArrowOffset</key>
+								<key>DashPhaseFraction</key>
 								<string>0</string>
-								<key>ArrowSize</key>
-								<string>8</string>
-								<key>ReferenceArrow</key>
-								<string>Relief</string>
-								<key>UseCurveFillAndStroke</key>
-								<string>YES</string>
-							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>BinIndex</key>
-						<string>5</string>
-						<key>BinMatches</key>
-						<array>
-							<dict>
-								<key>ArrowAngle</key>
-								<string>160</string>
-								<key>ArrowArchiveVersion</key>
-								<string>1</string>
-								<key>ArrowBackEnd</key>
-								<string>NO</string>
-								<key>ArrowForEachSegment</key>
-								<string>NO</string>
-								<key>ArrowForm</key>
-								<string>solid curved</string>
-								<key>ArrowFrontEnd</key>
-								<string>YES</string>
-								<key>ArrowLineWidthFraction</key>
-								<string>0.25</string>
-								<key>ArrowOffset</key>
-								<string>0</string>
-								<key>ArrowSize</key>
-								<string>8</string>
-								<key>ReferenceArrow</key>
-								<string>Relief</string>
-								<key>UseCurveFillAndStroke</key>
-								<string>YES</string>
+								<key>DashSequence</key>
+								<array>
+									<string>4</string>
+									<string>4</string>
+								</array>
 							</dict>
 							<dict>
-								<key>ArrowAngle</key>
-								<string>160</string>
-								<key>ArrowArchiveVersion</key>
-								<string>1</string>
-								<key>ArrowBackEnd</key>
-								<string>NO</string>
-								<key>ArrowForEachSegment</key>
-								<string>NO</string>
-								<key>ArrowForm</key>
-								<string>open curved</string>
-								<key>ArrowFrontEnd</key>
+								<key>DashName</key>
+								<string>Short</string>
+								<key>DashOn</key>
 								<string>YES</string>
-								<key>ArrowLineWidthFraction</key>
-								<string>0.25</string>
-								<key>ArrowOffset</key>
+								<key>DashPhaseFraction</key>
 								<string>0</string>
-								<key>ArrowSize</key>
-								<string>8</string>
-								<key>ReferenceArrow</key>
-								<string>Relief</string>
-								<key>UseCurveFillAndStroke</key>
-								<string>YES</string>
-							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>BinIndex</key>
-						<string>11</string>
-						<key>BinMatches</key>
-						<array>
-							<dict>
-								<key>ArrowAngle</key>
-								<string>160</string>
-								<key>ArrowArchiveVersion</key>
-								<string>1</string>
-								<key>ArrowBackEnd</key>
-								<string>YES</string>
-								<key>ArrowForEachSegment</key>
-								<string>NO</string>
-								<key>ArrowForm</key>
-								<string>open curved</string>
-								<key>ArrowFrontEnd</key>
-								<string>NO</string>
-								<key>ArrowLineWidthFraction</key>
-								<string>0.25</string>
-								<key>ArrowOffset</key>
-								<string>0</string>
-								<key>ArrowSize</key>
-								<string>9.055949984573</string>
-								<key>ReferenceArrow</key>
-								<string>Relief</string>
-								<key>UseCurveFillAndStroke</key>
-								<string>YES</string>
-							</dict>
-							<dict>
-								<key>ArrowAngle</key>
-								<string>160</string>
-								<key>ArrowArchiveVersion</key>
-								<string>1</string>
-								<key>ArrowBackEnd</key>
-								<string>YES</string>
-								<key>ArrowForEachSegment</key>
-								<string>NO</string>
-								<key>ArrowForm</key>
-								<string>solid curved</string>
-								<key>ArrowFrontEnd</key>
-								<string>NO</string>
-								<key>ArrowLineWidthFraction</key>
-								<string>0.25</string>
-								<key>ArrowOffset</key>
-								<string>0</string>
-								<key>ArrowSize</key>
-								<string>9.249770547461</string>
-								<key>ReferenceArrow</key>
-								<string>Relief</string>
-								<key>UseCurveFillAndStroke</key>
-								<string>YES</string>
+								<key>DashSequence</key>
+								<array>
+									<string>4</string>
+									<string>4</string>
+								</array>
 							</dict>
 						</array>
 					</dict>
@@ -660,6 +505,20 @@
 								<key>Size</key>
 								<string>9</string>
 							</dict>
+							<dict>
+								<key>Name</key>
+								<string>Times New Roman</string>
+								<key>Size</key>
+								<string>14</string>
+								<key>Traits</key>
+								<string>1</string>
+							</dict>
+							<dict>
+								<key>Name</key>
+								<string>Times New Roman</string>
+								<key>Size</key>
+								<string>14</string>
+							</dict>
 						</array>
 					</dict>
 				</array>
@@ -700,37 +559,13 @@
 							</dict>
 							<dict>
 								<key>Font</key>
-								<string>0</string>
-								<key>ForeColor</key>
-								<string>white 0 1</string>
-								<key>Paragraph</key>
-								<string>0</string>
-							</dict>
-							<dict>
-								<key>Font</key>
-								<string>16</string>
-								<key>ForeColor</key>
-								<string>rgb 0 0 0 1</string>
-								<key>Paragraph</key>
-								<string>0</string>
-							</dict>
-							<dict>
-								<key>Font</key>
 								<string>32</string>
 								<key>Paragraph</key>
 								<string>0</string>
 							</dict>
 							<dict>
 								<key>Font</key>
-								<string>32</string>
-								<key>ForeColor</key>
-								<string>rgb 0 0 0 1</string>
-								<key>Paragraph</key>
-								<string>0</string>
-							</dict>
-							<dict>
-								<key>Font</key>
-								<string>0</string>
+								<string>48</string>
 								<key>ForeColor</key>
 								<string>rgb 0 0 0 1</string>
 								<key>Paragraph</key>
@@ -738,9 +573,94 @@
 							</dict>
 							<dict>
 								<key>Font</key>
-								<string>0</string>
+								<string>64</string>
+								<key>ForeColor</key>
+								<string>rgb 0 0 0 1</string>
 								<key>Paragraph</key>
 								<string>16</string>
+							</dict>
+							<dict>
+								<key>Font</key>
+								<string>64</string>
+								<key>Paragraph</key>
+								<string>16</string>
+							</dict>
+							<dict>
+								<key>Font</key>
+								<string>48</string>
+								<key>Paragraph</key>
+								<string>16</string>
+							</dict>
+						</array>
+					</dict>
+				</array>
+				<key>NHashBins</key>
+				<string>16</string>
+			</dict>
+			<dict>
+				<key>Class_Store</key>
+				<string>DKDArrow</string>
+				<key>Match_Hashes</key>
+				<array>
+					<dict>
+						<key>BinIndex</key>
+						<string>5</string>
+						<key>BinMatches</key>
+						<array>
+							<dict>
+								<key>ArrowAngle</key>
+								<string>160</string>
+								<key>ArrowArchiveVersion</key>
+								<string>1</string>
+								<key>ArrowBackEnd</key>
+								<string>NO</string>
+								<key>ArrowForEachSegment</key>
+								<string>NO</string>
+								<key>ArrowForm</key>
+								<string>solid curved</string>
+								<key>ArrowFrontEnd</key>
+								<string>YES</string>
+								<key>ArrowLineWidthFraction</key>
+								<string>0.25</string>
+								<key>ArrowOffset</key>
+								<string>0</string>
+								<key>ArrowSize</key>
+								<string>8</string>
+								<key>ReferenceArrow</key>
+								<string>Relief</string>
+								<key>UseCurveFillAndStroke</key>
+								<string>YES</string>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>BinIndex</key>
+						<string>11</string>
+						<key>BinMatches</key>
+						<array>
+							<dict>
+								<key>ArrowAngle</key>
+								<string>160</string>
+								<key>ArrowArchiveVersion</key>
+								<string>1</string>
+								<key>ArrowBackEnd</key>
+								<string>YES</string>
+								<key>ArrowForEachSegment</key>
+								<string>NO</string>
+								<key>ArrowForm</key>
+								<string>solid curved</string>
+								<key>ArrowFrontEnd</key>
+								<string>NO</string>
+								<key>ArrowLineWidthFraction</key>
+								<string>0.25</string>
+								<key>ArrowOffset</key>
+								<string>0</string>
+								<key>ArrowSize</key>
+								<string>9.055949984573</string>
+								<key>ReferenceArrow</key>
+								<string>Relief</string>
+								<key>UseCurveFillAndStroke</key>
+								<string>YES</string>
 							</dict>
 						</array>
 					</dict>
@@ -779,196 +699,242 @@
 	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
 	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
 	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//09yiiipGFFFFABRRRQAUUUUAFFFF
-	ABRRRQAUUUUAFFFFABRRRQAUVk6rdz2qp5PG7OWxnpVuwmkuLVZZRhj+vvQBbooooAKK
-	KKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAC
-	iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/9Tc
-	oooqRhRRRQAUUUUAFFFFABRRRQAUUVCJlL7MHqRn6DNAE1FQidSCcEAEjJx2/GlWZC20
-	nByRg+3WgCWimebFnG4Z+tPBBGQcigAooooARgrDDgEe9KMAYFZGr21zcInkDcATlf5G
-	rdhFLDapHN94fp7UAXKKKKACiiigAooooAKKKKACqk0jrJgdAAeD6nHpVumtGjHLKCen
-	IrSL0OeafNsVFuHU4bkZb/0LApzTyDIKY2gE8+pI9ParBiiPVR37evX86PKixjaOgHTs
-	KdyeV9iuLk5OV74HPo230pzySeSrgbSSox9SBT3t4nXbtA+gHrn+dPESBAmAQORmi4uV
-	9it9pYADbk5xyf8Aa2+n404XJZSVUZAyefr/AIVN5MWc7Fz16fjSiKIEEKMjgcetFw5f
-	Iri4bO3GWOMc8dM+lLHc+Y4AXAPQ5/2Q3T8am8mLGNi/l6U7y0B3BRnrnH4UXDlfYdRR
-	RWctzph8KCiiikUFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
-	BRRRQAUUUUAFFFFABRRRQAUUUUAf/9XcoooqRhRRRQAUUUUAFFFFABRRRQAVHFF5a4OC
-	SSScYzk5qSigCt9n+R1yMuTzj1pGti2fm67u397H+FWqKAKwtz82SvzAA4GB1J9fep0U
-	ogUnOO5p1FABRRRQBXuLqC1UNMcZ6VLFLHNGJIzlT0NU7+wW9Vfm2sucHGetT2tutrAI
-	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
-	tJS0AP2iqguVIJ28ghcZ5BJwMirmRVY28bcsxJwAD3GDkdvWsFfqMSSVoioZR8xxndx0
-	J9PahpgI432kGTsc8cZ5xUhjDFGZiShyOnoR6e9OdFkKkk/Kc/oR/WjUCM3FuoyT+h9M
-	/wAqV5ok65PToD3IH9aiFrGBjex7dvTb6elPECBSodsEg444I5z09qNQHCaLHJ7kd/XF
-	OjkikJCHJHsR7d/pUX2aLJyx5zn3yc46U+OJI23BieMc/XPp70agSsABTKexBFMrSF7a
-	iCiiirAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoo
-	ooAKKKKACiiigAooooAKKKKACiiigAooooA//9XcoooqRhRRRQAUUUUAFFFFABRRRQAU
+	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
+	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
+	UUUAFFFFABRRRQAUUUUAFFFFABRRRQB//9TcoooqRhRRRQAUUUUAFFFFABRRRQAUUUUA
+	FFFFABRRRQAUUUUAFFFFABRTWDFcKcHjmjB243H68U0rkSmo7jqKbg7cbj9eKMHbjcfr
+	xT5WL2sR1FNwduNx+vFGDtxuP14o5WHtYjqKbg7cbj9eKMHbjcfrxRysPaxHUU3B243H
+	68UYO3G4/XijlYe1iOopuDtxuP14owduNx+vFHKw9rEdRTcHbjcfrxRg7cbj9eKOVh7W
+	I6imEOFwpyffFPpNWKjJS2CiiikUFFFFABRRRQAUUUUAFFFFABRRRQAUUU0ugbaSMntQ
+	A6ioxKm3cxAHODkdqXzYv76/n60APoppdFOCQCfeo1mBLl8KqttBz1wOaAJqKOvIooAK
+	KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//1dyiiipGFFFFABRRRQAUUUUA
+	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUANYEjj1H86dTWBI49R/OkkYqhYdRWkNjnq7j6
+	KjxL/eX8j/jRiX+8v5H/ABqjIkoqPEv95fyP+NGJf7y/kf8AGgCSio8S/wB5fyP+NRSz
+	GABpmG0nHAPp+NAWLNFU/wC0LP8Av/of8KP7Qs/7/wCh/wAKLj5WXKKp/wBoWf8Af/Q/
+	4Uf2hZ/3/wBD/hRcOVlyiqf9oWf9/wDQ/wCFH9oWf9/9D/hRcOVlp9235etOqi2oWu35
+	X5+h/wAKd9vtP7/6H/Cokb0lZFyiqf2+0/v/AKH/AAo+32n9/wDQ/wCFQalyiqgvrRmC
+	h+WIA4PU/hVugAooooAKKKKACiiigAooooAKreVJ5rSjAJBGO2f4T7cdas0UAZbKIxsI
+	ztTYwB5OeeM9asPbMzM3HLL+Crzj86uUUAU1gl3qX2kB2Y+/XHbsKQW8vlojYBU7iQe5
+	PzfUHNXaKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/1tyiiipG
+	FFFFABRRRQAUUUUAFFFFABRRRQAxywPFN3PUtFUpLsWpLsRbno3PUtFPmXYOZdiLc9G5
+	6loo5l2DmXYi3PSFnqaijmXYOZdiLLsMe45p0uPLbPTHalYEjj1H86HXchUcZqk7nLWe
+	qIcS/wC1+YoxL/tfmKk/e/7P60fvfVf1pmRHiX/a/MUYl/2vzFSfvf8AZ/Wj97/s/rQB
+	HiX/AGvzFJyHUybuvGSMZwal/e/7P61HJD52FmCsoOcYoAm3p6ijenqKr/YbP/nkn5Uf
+	YbP/AJ5J+VAaFjenqKN6eoqv9hs/+eSflR9hs/8Ankn5UBoWN6eoo3p6iq/2Gz/55J+V
+	H2Gz/wCeSflQGhM7jb8pGafvX1FVGsbXb8sSZ+gp32Gz/wCeSflUSN6WxZ3r6ijevqKr
+	fYbP/nkn5UfYbP8A55J+VQajbwgrERz+9T+dXKxowBZQAdBMP/QzWzQAUUUUAFFFFABR
+	RRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA
+	UUUUAf/X3KKKKkYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA1gSOP
+	Ufzp1NYEjj1H86dWkDnrbhWfd/aftELQjKqcn34/wzWhUb/eT/e/oaoyTJKKKhUyuu4F
+	QD7f/XoAmoqNS4fa+ORkYqSgAoqG5OLeQg4wp5/CoGumBbgYG7Ptgjr9RzQFi7RVUTv5
+	e/APXBBGOvHemC6JBJIGF3YI5PB5oCxdorPFyd3mEjgMOvHDAZ/KrsbFkDHBJ9OlANCv
+	u2/L1p1Nfdt+XrTqiZvR2CiiioNjHT/jzg/67D/0M1sVjp/x5wf9dh/6Ga2KACiiigAo
+	ooqlEydWztYKKhnlMMe8DccgAZxkk4ojlLu8ZGCmM4ORzT5Be18iaiqSXBdt27au8pgq
+	ecHHWljuTwsgyWdlGB/dz/hS5R+08i5RUDXMK5LNjAJ6HoOv1pPtEZb73AUkjB7HrT5Q
+	9r5FiioVuIWBIb7oBOQRwe9PSRJCQp+6cHijlF7XyH0VUFxukIJ2qr7OQecgd/qakNzC
+	OCepK9D1HajlH7XyJ6KhNxCEEm7gjOeenrTDcoQ+CV2MFyQSOcf40coe18izRUfnRhtm
+	eScfj6Z9aYtzA/3W7E9COB1/KjlF7XyJ6Karq+dvY4ORj+dOo5A9t5BRRRUtWNIyurhR
+	RRSKCiiigAooooAKKKKACiiigD//0NyiiipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
+	FFFFABRRRQAUUUUANYEjj1H86dTWBI49R/OnVpA5624VG/3k/wB7+hqSo3+8n+9/Q1Rk
+	Oc7ULegzQg2oq+gApsvMZHrgfnUlAEb8Oje5H51JUcv3M+hB/KpKAGSOI0LnkCmloZFA
+	LAhumD6emKdKnmRsmcZFQG2JYMGxzuPHfOfWgFYlV4QpKMCB75oSaJ1DAgZGcE89M/yq
+	BbVlKkOMqAOnoCPX3oFoAF+b7oUfXHBP4jigehM88aI0hIIX0I5xR9oi3hMjnPPbIIGP
+	1qGS1Zy5Dgbtw6dmA9/ala1Zs/MP4u394g+vtQGhZfdt+XrTqa27b8vWnVEzajsFFFFQ
+	bGOn/HnB/wBdh/6Ga2Kx0/484P8ArsP/AEM1sUAFFFFABRRRVqSMJUm3crzRNK8YwCin
+	c2e/HFTqqqMKAB7UtFPmQvZSKIgm2gHbxKX6noST6daVYJVKt8vyyM3Xs2fbrzV2ilzI
+	fs5Gb9kl8h4cJnBVW7nPrxViWKV5N4x/q2Xr3OPb2q1RRzIPZyMyWF0jLPtx5ap1PUHr
+	06c1ZtW3BjgZJyWVtwPbrgelWqKOZB7NlJoJiHxtyZA68+mODx7UiwTCRXO3iRn6noRj
+	0q9RRzIPZyKEdvcRFWXaTgqwJOOuQRxTnt5SJFXb87qwyfTGe3tV2ijmQezkUhbvnacb
+	RIZAc8884/M0xbaYKgIU7VcEEnB3dO1aFFHMg9nIgt4miUqTxn5RnOB6ZqeiinzIXspB
+	RRRUN3NYRsrMKKKKRYUUUUAFFFFABRRRQAUUUUAf/9HcoooqRhRRRQAUUUUAFFFFABRR
+	RQAUUUUAFFFFABRRRQAUUUUAFFFFADWBI49R/OnU1gSOPUfzp1aQOetuIzBRk1A8qbk6
+	/e9D6GrFNZSSp9Dn9CKoyG+anv8Akf8ACjzV9G/75P8AhUlFAEfmr6N/3yf8KPNX0b8j
+	UlFAEfmj0b8jVNb8G4a3MbZHcDI/H0rQpAAvAGKA0FooooEFFFFADX3bfl606mvu2/L1
+	p1RM6KOwUUUVBsY6f8ecH/XYf+hmtisdP+POD/rsP/QzWxQAUUUUAFFFFABRRRQAUUUU
+	AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/S
+	3KKKKkYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUVmCCGa6uGmGdpXuR/D7VEDpJGRuI
+	/wCB0AbFFY//ABKvRvyej/iVejfk9AGxRWP/AMSr0b8no/4lXo35PQBrsCRgHBpGDH7p
+	x+FZP/Eq9G/J6P8AiVejfk9NMlxT3NZgx+6cfhQwY/dOPwrJ/wCJV6N+T0f8Sr0b8np3
+	YuSPY1mDH7px+FDBj904/Csn/iVejfk9H/Eq9G/J6LsOSPY1mDH7px+FDBj904/Csn/i
+	Vejfk9H/ABKvRvyei7Dkj2NZgx+6cfhQwY/dOPwrJ/4lXo35PR/xKvRvyei7Dkj2NZgx
+	+6cfhQwY/dOPwrJ/4lXo35PR/wASr0b8nouw5I9jWYMfunH4UMGP3Tj8Kyf+JV6N+T0f
+	8Sr0b8nouw5I9jWYMcYOPWnVj/8AEq9G/J6P+JV6N+T0mUklsbFFY/8AxKvRvyej/iVe
+	jfk9IYJ/x5wf9dh/6Ga2KyHltdkMFtnAlUgYb1yeSK16ACiiigAooooAKKKKACiiigAo
+	oooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/09yi
+	iipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAUov+Pi5+q/8AoNPsf+POL/dFMi/4+Ln6
+	r/6DT7H/AI84v90UAWqb8zNhSBjqMf8A16dQu3ccdeM1MnZADBgcggAdcj/69Nzu+ZGX
+	aOvf9c1I4LKQvBp1Zc7EQ53fMjLtHXv+uaM7vmRl2jr3/XNTUUc7Ahzu+ZGXaOvf9c0Z
+	3fMjLtHXv+uamqkJ5AFZtpBkKYAx3IB6+1HMwJ87vmRl2jr3/XNGd3zIy7R17/rmq6zz
+	NbmUbchdx+U47+9TJLlhG+CxG7jjj86OZgOzu+ZGXaOvf9c0Z3fMjLtHXv8Armm/aUD+
+	Xg55Hbtj375qJrk4wg79T/v7cdaOaQE+d3zIy7R17/rmjO75kZdo69/1zSGRmhLxKSem
+	PocHv/WoftLEfKAfujpjJYZ/CjmYE+d3zIy7R17/AK5ozu+ZGXaOvf8AXNNSY8LJhTk/
+	z4/pStOitswTzjj1xnH5UczAXO75kZdo69/1zRnd8yMu0de/65pv2lCoKgnIyMDPHH+N
+	M+0ZYYUhfmznvt445o5pAS53fMjLtHXv+uaM7vmRl2jr3/XNR/a4+PlOO54452+vrVqj
+	mYEOd3zIy7R17/rmjO75kZdo69/1zU1FHOwIc7vmRl2jr3/XNKPnOY2BHfv/AFqWm5O/
+	GOMUc7AaytnIIA75H/16OvNPbGDnpUYxgY6VcG3uMWiiitACiiigAooooAKKKKAIZZSj
+	oigEtnqcYA79KY07oFyoyzYHzcYxnPShoPMnZ5QpTbtA6/X+lJNC8kobarKqkAMe5/A0
+	ASwy+cm/GOSPyPUe1KZUxlSDyB1HemRxvFAsQO4gY571EIHjVMnKoSx9cYwB74oAsmSM
+	HaWGfTNKskbHCsDxng1QhBJwoGfmZDkEDPPPfP5077K6qVjI4RVGT15+bP1FAFqSZFjd
+	1IJUZwDTlcHCkjdjkZqqYJSWJ2/M6n/gK9vzqWKJ1kaRsDcBkDnnuR+lAFiiiigAoooo
+	AKKKKACiiigAooooAKKKKACiiigD/9TcoooqRhRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
+	AFKL/j4ufqv/AKDT7H/jzi/3RTIv+Pi5+q/+g1Da3Iit443jlyqgH5DQBp0Lt3HHXjNZ
+	U+piBlPlvtPHKlT+GetaFtMk6l1BU8Z3DBqJ7ATuCykKcGlLKv3jikcFlIU4NNIBmXP9
+	1v5isoq7sIXzE/vD86PMT+8PzqTanoKpRDMu08q37wH26Y/ka09n5iuWfMT+8PzqIR26
+	4II6lhk55PU9as7V9BVeJVM0mQO39aPZ+YXALAIvJBG3GMZ7fWgCAMGyMr05/CpZAioT
+	gDsPqelQW68lXGTH8uT39/yxR7PzC44rbl9525znOe4GKaYrbv8AX7x7nd6+tWtq+gqt
+	bKCGyO/9KOTzC4oEIXYGwM54buTn1o2wBgwIyMY59KnYRqpZgAByaqQKd5jfnb82f97/
+	AAOaPZ+YXJCsDEEkcHPX3z/MUpWDfvJG76/h0qYquDwKgtVUwKSB3/nR7PzC4my3wBkD
+	aSRg469aQx2xG0kY5/i/vde9STorJ5anazcAj86S3xInmMuC3Y9scH9aPZ+YXIlihEm4
+	MMeme+c+vrVjen94fnRMqiNiAKIVXyU4H3R/Kj2fmFw8xP7w/OjzE/vD86gnO1w6DOzG
+	5R3Dcfp1qykaqoXGcDqaPZ+YXEDoTgEUZO/HbFJKqgLgfxCoJZpY5NqRM4xnIx1/E1Eo
+	2dgLLYwc9KjGMDHSq6XTPL5EkTR7lJySOg+hqwMYGOlXTQ0LRRRWgwooooAKKKKACiii
+	gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//V3KKK
+	KkYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBmidILqfzA3zFcYUnt7Cpvt1v/ALf/AHw3
+	+FXKKAMifULaKVZChbPGSpBH51p280U6mSPPOM5BFBijZ/MZQWHQnnH0qRdu4468ZqJ7
+	AOcFlIU4NDIGIJzkehxQ4LKQpwadWIhmwep/M/41GEdmYK2ADjkk9gfWp6iBZGb5ScnP
+	GPQe9XB66sQnkyf3/wD0L/4qoIwXOUOCSQevb1+arLSSFSFQg9jx/jUaApIXCNyAMcdu
+	/Xvx+VaXXcBxikAJ3/8AoX/xVMjWSRA4bGf97/GpjIxBGxv0/wAajiLxxhChOM9Mev1o
+	uu4COkiIX3ZwM4Gc/wDoVNjjLf6tuMA5GcHP/AqlZ3bACEcgnp2/GmxZiUqEY8k9vy69
+	qLx7gI6SIu4tnH+9/jQiSOofdjIz/F/jT3Z3XaEIz9P8aI2dEClDwMdv8aLruAhikAyX
+	/n/8VUMILqvlnAIJ78c9D83XNTu7spUIRn6f402PMbOwRvmOcccfr680XXcBkokijL7s
+	47fN/jUnkyf3/wD0L/4qmz75YiioQT64/wAal8xv7jfp/jRddwIJVaNQXbIJA7//ABVO
+	SJyMK2AOB17f8CpZC0nDIduCCOO/HrSxs6IEKsSByeOT69aLruAmx1dQzZB9CR/WpNg9
+	T+Z/xppLO6naQBnrj+hqWs5vXRgM8te+Tj1JpcnfjtinU3J347YqLjKcuPt0eenlv/MV
+	ZGMDHSq0uPt0eenlv/MVZGMDHStYDQtFFFaAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
+	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//9bcoooqRhRRRQAUUUUAFFFF
+	ABRRRQAUUUUAFFFFABRRRQAULt3HHXjNFC7dxx14zUT2Aia6tBlGlQHoRuAP86b9qs9u
+	3zkx/v8A9c1FZxxskhZQT5r9R71c8mH+4v5CsnYRB9qs9u3zkx/v/wBc0farPbt85Mf7
+	/wDXNT+TD/cX8hR5MP8AcX8hS0Ag+1We3b5yY/3/AOuaPtVnt2+cmP8Af/rmp/Jh/uL+
+	Qo8mH+4v5CjQCD7VZ7dvnJj/AH/65o+1We3b5yY/3/65qfyYf7i/kKPJh/uL+Qo0Ag+1
+	We3b5yY/3/65o+1We3b5yY/3/wCuan8mH+4v5CjyYf7i/kKNAIPtVnt2+cmP9/8Armj7
+	VZ7dvnJj/f8A65qfyYf7i/kKPJh/uL+Qo0Ag+1We3b5yY/3/AOuaPtVnt2+cmP8Af/rm
+	p/Jh/uL+Qo8mH+4v5CjQCD7VZ7dvnJj/AH/65o+1We3b5yY/3/65qfyYf7i/kKPJh/uL
+	+Qo0Ag+1We3b5yY/3/65o+1We3b5yY/3/wCuan8mH+4v5CjyYf7i/kKNAIPtVnt2+cmP
+	9/8Armj7VZ7dvnJj/f8A65qfyYf7i/kKPJh/uL+Qo0Ag+1We3b5yY/3/AOuaUXVmowJk
+	/Fwf61N5MP8AcX8hR5MP9xfyFGgFEywzXyeW6sPLfOCD3FXRjAx0o8qJckKBxjIHagYw
+	MdK1gNC0UUVoAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFF
+	FFABRRRQAUUUUAFFFFAH/9fcoooqRhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
+	Lt3HHXjNFC7dxx14zUT2ArWP+rk/66v/ADq7VKx/1cn/AF1f+dXaxe4hhfDbQpOBnjHe
+	mmQggFDycDp/jTTjzjnH3R1+ppZcb4+n3u/0NACtIVUsUOBz2/xp29v7h/T/ABqOfHlN
+	06HrUrYzzj8aAGLIWUMEODz2/wAaBISSAh4OD0/xpsePKTOOg60Lje+cfe7/AEFADvMO
+	7bsOcZ7f40GQggFDycDp/jTTjzucfd7/AFpZcb4+n3u/0NACtIVBYocD6f407e39w/p/
+	jUc+PLPTp3qVsZ5x+NADFkLKGCHBGe3+NAkJJAQ8HB6f402PHlJnH3R1oXG984+93+go
+	Ad5h3bdhzjPb/Gnq24HgjBxzURx53OPujr9TT4/4v940ASUUUUgCiiigAooooARsYOel
+	RjGBjpUjYwc9KjGMDHStaYIWiiitRhTgMmm05etTLYB20VC7qr+WAWbGcDHT8asVRuo0
+	kcZ3I6jKuoJ69uP5VipMZKJUJVVBLMu7HoPemNcKpVSj5ZtoHHXGfX0qGHzo5hNOp/eR
+	qDgZwwzxx9akucu8BUNw+SQDwNpGenFO7AnikjmTeuRgkEHqCOooicSjcAQpAIJ7g0eV
+	HHC0ajjk465J5rOVNkcfyHmAqQFP3uOtF33A1too2isZoyVdtjbhHHt+U/eGc49xVuNQ
+	07CVGLBiQ2DjaR69PbFF33Atgq20pyp7in7RWTHG6xwKiFXVWB4Iwcd/xpskbtAxRGGY
+	cMuDktxj6nrzTu+4GxtFG0VVt1CTyhVIU7SOCBnHNXKlyfcCIjBpKc3Wm1uthBRRRTAK
+	KKKACiiigAooooAKKKKACiiigD//0NyiiipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
+	FFFFABQu3ccdeM0ULt3HHXjNRPYChC1zBvTyGbLswIK9Cc+tV31C8S58oQlgedvGR+Iy
+	PzrbpAoHQYzzWV/IRWWRjJuZWUlRx17mldizIQG4OTx7GpR/rm/3V/makpAVZJN6Oqhs
+	4Ixj2qUyZ7MPwoT70n+9/QVLQBVik/dJw3QdqBJtLswYDOensKlh/wBSn+6KJv8AUv8A
+	7poAjLHzd2GAxjpRJJl04YfN6exqzUT/AHo/97+hoAjlYshADdPSnmUbsYYHr0qaoj/r
+	h/un+YoAjjYiNQQwIAB4pEk+d+GHzensKtVEn3pP97+goAj3HzS2GAwB0p8DBwzDoWPW
+	pqr233D/ALxoAllz5bY64NQwbedjEgHHPc8cj/61SyjdE6+oNQ2gUI23GM9gAOg9KOgF
+	qiiikAUUUUAIwBUg9MVQFnxxNLj/AHv/AK1X2xg56VGMYGOla0+oIoxo8V6I/Md1MZOG
+	OeQRV+qZ/wCQgv8A1yb+Yq5WowpQcUlFIB240bjTaKXKgHbjRuNNoo5UA7caNxptFHKg
+	HbjRuNNoo5UA7caNxptFHKgHbjRuNNoo5UApOaSiiqAKKKKACiiigAooooAKKKKACiii
+	gAooooA//9HcoooqRhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAULt3HHXjNFC7d
+	xx14zUT2AkooorARWfyvOPmAH5R1Ge5o/wBF/ur+VOLFZmwpPyjpj1Pqaf5jf3G/T/Gm
+	BF/ov91fyo/0X+6v5VL5jf3G/T/GjzG/uN+n+NAEX+i/3V/Kj/Rf7q/lUvmN/cb9P8aP
+	Mb+436f40ARf6L/dX8qP9F/ur+VS+Y39xv0/xo8xv7jfp/jQBF/ov91fyo/0X+6v5VL5
+	jf3G/T/GjzG/uN+n+NAEX+i/3V/Kj/Rf7q/lUvmN/cb9P8aPMb+436f40ARf6L/dX8qd
+	Bsw2wADcelP8xv7jfp/jTYiTuJGPmPWgB0pIiYj0PtVe1Z/mVgevUnOOBx1JqxKwWNiT
+	jg9OvTtUVt9w4I69AMY4HrR0As0UUUgCiiigBGxg56VGMYGOlSNjBz0qMYwMdK1pgiof
+	+Qgv/XJv5irlUz/yEF/65N/MVcrUYUUUUAFFI27advXHFUo7ghBI7MSCEZMDIYkUAXqK
+	gFxHyDkEEjB9uaUTqwyAxOASMcjPrQBNRVb7SNxBU437B7nGac1wqruKnjGR3Geg+tAE
+	9FQxszTSc/KuFx79T/MUvnpgtztGfm7cdaAJaKrtcogJYEYAbHfB4oW5Rn2AHO7b+OM0
+	AWKKrLdxEBiCoIY5PT5etK1yiBiwI2gNjvg8UAWKKgFxHznIw23nucZ/lTTdRqASG5Ut
+	26L+NAFmiqzXIVjkHaqhifr0qwrbhnBH1oAWiiigAooooAKKKKACiiigAooooA//0tyi
+	iipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABQu3ccdeM0ULt3HHXjNRPYCSiii
+	sBEBBMzYbb8o9PU0uG/56H9P8KkKI3LAH60nlx/3R+VMBmG/56H9P8KMN/z0P6f4U/y4
+	/wC6Pyo8uP8Auj8qAIn3KMiTuB27nFOw3/PQ/p/hTvKj/uj8qorOmFJRSWUHrxyCfT2p
+	gXMN/wA9D+n+FGG/56H9P8KrLNEzBfLXJOO3oD+fPSrnlx/3R+VIBmG/56H9P8Ka+5VJ
+	En8ql8uP+6Pyo8qP+6PyoAZhv+eh/T/CjDf89D+n+FP8uP8Auj8qPLj/ALo/KgBmG/56
+	H9P8KIcgNk5+Y80/y4/7o/KnABRgDAoAa8ayLtbP4HH8qERYwQueTnkk/wA6fRSAKKKK
+	ACiiigBGxg56VGMYGOlSNjBz0qMYwMdK1pgiof8AkIL/ANcm/mKuVTP/ACEF/wCuTfzF
+	XK1GFFFFADJE3rjJXkHI9qrNA3nKRnGdzNx1AwBirlFAFf7Mm5WUkFc88c565zTxEFkL
+	gn5sZH0qWigCBLdEKnJO0sRn1aka2VmLFjywfHHUDH9KsUUAMjjEYIBJySeffmoxbqIj
+	CSSuMD2plzI8bR7DgFhu+hOP5mk82SS52RnCKuT7knA/DrQBKYEY7mySSCf+A9B9Kikg
+	KIWhyXG4jpyW7n6VCtw6xeYxJdcKyHH3yQB+FXAkg2kuSc88DBoAjFrH5YRsnC7R7Cnm
+	3Rjlskkgn329B9KmooArm2Tg7jkMWzx3/Cle3STcWJyyhT9B/jU9FAEPkDczbj8xyRxj
+	pjH0qREEaKi9FAA/CnUUAFFFFABRRRQAUUUUAFFFFABRRRQB/9PcoooqRhRRRQAUUUUA
+	FFFFABRRRQAUUUUAFFFFABRRRQAULt3HHXjNFJgckd6mSurAS0VEBgYyfzoAwMZP51n7
+	NisS0VEBgYyfzoAwMZP50ezYWJaKiAwMZP50AYGMn86PZsLEtFRAYGMn86AMDGT+dHs2
+	FiWiogMDGT+dAGBjJ/Oj2bCxLRUQGBjJ/OgDAxk/nR7NhYloqIDAxk/nQBgYyfzo9mws
+	S0VEBgYyfzoAwMZP50ezYWJaKiAwMZP50AYGMn86PZsLEtFRAYGMn86AMDGT+dHs2FiW
+	iogMDGT+dAGBjJ/Oj2bCxI2MHPSoxjAx0o2/KVySD6mlAwMCrjGwymf+Qgv/AFyb+Yq5
+	VM/8hBf+uTfzFXKsAooooAKKKKACiiigAooooAhkgWTdvJIbHH+6c037OuWIZgWI6Y42
+	9McVYooArtbRuHDkkvjJ78dMfSplUr95i31x/SnUUAFFFFABRRRQAUUUUAFFFFABRRRQ
+	AUUUUAFFFFABRRRQB//U3KKKKkYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVUvGkVEEb
+	bCzqpIweD9at1TvOkX/XVaAD7Pcf8/Dfkv8AhR9nuP8An4b8l/wq5RQBT+z3H/Pw35L/
+	AIUfZ7j/AJ+G/Jf8KuUUAU/s9x/z8N+S/wCFH2e4/wCfhvyX/CrlFAFP7Pcf8/Dfkv8A
+	hR9nuP8An4b8l/wq5RQBT+z3H/Pw35L/AIUfZ7j/AJ+G/Jf8KuUUAU/s9x/z8N+S/wCF
+	H2e4/wCfhvyX/CrlFAFP7Pcf8/Dfkv8AhR9nuP8An4b8l/wq5RQBT+z3H/Pw35L/AIUf
+	Z7j/AJ+G/Jf8KuUUAU/s9x/z8N+S/wCFH2e4/wCfhvyX/CrlFAFP7Pcf8/Dfkv8AhR9n
+	uP8An4b8l/wq5RQBT+z3H/Pw35L/AIUfZ7j/AJ+G/Jf8KuUUAU/s9x/z8N+S/wCFH2e4
+	/wCfhvyX/CrlFAFP7Pcf8/Dfkv8AhR9nuP8An4b8l/wq5RQBVitmSbzpJC52lRkAdTnt
+	VqiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+	gAooooAKKKKAP//V3KKKKkYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVTvOkX/XVauVT
+	vOkX/XVaALlFFFABTNzFiABgcGn00EEnHY8/lSbJm7LQMvu4AxRl93AGKWip5mZc7Ey+
+	7gDFGX3cAYpaKOZhzsTL7uAMUZfdwBiloo5mHOxMvu4AxRl93AGKWijmYc7Ey+7gDFGX
+	3cAYpaKOZhzsTL7uAMUZfdwBiloo5mHOxMvu4AxRl93AGKWijmYc7Ey+7gDFGX3cAYpa
+	KOZhzsTL7uAMUZfdwBiloo5mHOwVt2fY4paapBzjscU6qRstgooopjCiiigAooooAKKY
+	8kcYy7Bc8cnFKrq43KQR6ilcnmQ6ijNGaLoOZBRRmjNF0HMgoozRmi6DmQUUZpNy7tue
+	cZxRdBzIWijNGaLoOZBRRRTKCiiigAooooAKKKKACiiigAooooAKKKKAP//W3KKKKkYU
+	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAVTvOkX/XVauVTvOkX/XVaALlFFFABTQQScdjz
+	+VRtcQpJ5cjBWPTPGfpTwVJOPXn8qmWxFTYdRRRUGAUVEBL5xYsNmOBjnPrmqY85XDfN
+	noeO2/6elOw7GjRVJHn+QMW+bnlffp2xxURac4kw25VbBA69CO3eiwWNKiqEjTOGBBI5
+	yMejDGPqKaTKZNxDZ6fd4xvHt6UWCxo0VniWdQS249P4f9ojjj0q5CSYlLHJxyfeiwWJ
+	KKKKQgooooAKKKKACiiigBFIOcdjinU1SDnHY4p1aI6Y7BRRRTGFFFFABQaKKTFLYp3n
+	3Y8f89E/nTArwyBN2DMzMSO3HQZq40aPjeobHIyM0rIrjDAEe9TYx5WZ4uJtqM/Azhiu
+	OzYyR6HHap7XcVfcxPzsOfYmp/KjyDtHHA4pwRVyVABPJx3osHK+xnJLP8jF8hy6kYHG
+	M4P6U6KSZhCrOcypuzgcHA4H55qxDbLEm1sMSTk4x1Oal8qPaE2jA6DHAosPlfYpRTyy
+	gKzBGCBs44JyQfw4/WnJNK5ZgygBmUg+2cdvx61bMUbFSyglemR0+lHkxbi+1dzDBOOT
+	RYXK+xR8+bYfvblPzLxkDHbsaJJ5QGKPx5aMDj1OKu+TFjG0YHtQYYm5ZFORjkdhRYfK
+	+xV82VS6E7trqM4GcEA9KsQeb5eZTk5P5Z4/Smy2ySDChRk5OVyD9afDCIU2rjrngYH4
+	CiwuVk1FFFUjZbBRRRTGFFFFABRRRQAUUUUAFFFFABRRRQB//9fcoooqRhRRRQAUUUUA
+	FFFFABRRRQAUUUUAFFFFABUcsUcy7JVDDrg1JRQBT/s+y/55LR/Z9l/zyWrlFAGY2lWr
+	yb2GFHRV4/Or0aRxgxxDaFOMVLTQQScdjz+VTLYipsLRRRUGBH5sZkMOfnAzj2pBPGxw
+	D+h9cfzqTAzuxz0zVbZbrIX3DPPf16/rTGP+0RHowxzn8BmmtcoHA7c5ODxjH+NRFYfL
+	AEoOAQuSO4x6elOS3Dx/M2QQRkY6NjvigehMLiLucclefUHFCTB5GQdAAc/XP+FIIAG3
+	KzDknt35x0ojgWLOGJ4C89gM4/nQLQDLBINrc9+R6DP8jQZ4U+XPTjAB+lItsijGScMG
+	59QMdval8gdNzY3bgOODnPp60BoO86PJGeR7H/Pam/aIuueDjGAe/Pp7VFJbdWVjknJy
+	R6k8cGnrbjKuWORjpjHAI9PegNCQTRsQAc56fln+VS1Ujt2jkBB+UAAZx0Ax6dfxq3QD
+	CiiikIKKKKAEUg5x2OKdTVIOcdjinVojpjsFFFFMYUUUUAFFFFABRRRQAUUUUAFFFFAB
+	RRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//Q3KKKKkYUUUUA
+	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABTQQScdjz+VOpoIJOOx5/KplsRU2Foo
+	oqDAiEbecZN5wRjb2+tRRI6SE4IUgnBwcHPb2NWqKY7lJI5FjtwVOUHzdOPlI9aSOKZG
+	B7FixGeBk5q9RRcLlRxPufAPXjngjjI+vWozHcZ/ixnj5u276+lX6KLhcz1WYylMsCuC
+	Oe249ee60KlxlCwY7duee4BBPX6Voe9FFwuZ4juDywbIzjnplR7+uaV0uirYznBxz/s8
+	d+uav0UXC5FEHUMGz944yc8VLRRSEFFFFABRRRQAikHOOxxTqapBzjscU6tEdMdgooop
+	jCiiigAooooAKKKKACiiigAoqncMVkVmz5f3Tg4Kk9DxTln24jxk79gOeuBkmgC1RVWO
+	5LsgK4DlgDn07/Q1HdybGT72FBdtpxwOPUdz+lAF6iqYlaCLbId7IpZjntzjnvStcSKX
+	JUYRASM87j2oAt0VWM4jVhgny8Bjnue3uas0AFFFFABRRRQAUUUUAFFFFABRRRQAUUUU
+	AFFFFAH/0dyiiipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUwFdxUde9
+	PopNXFJX0GBlY4HagMrHA7U+ilykezQwMrHA7UBlY4Han0UcoezQwMrHA7UBlY4Han0U
+	coezQwMrHA7UBlY4Han0UcoezQwMrHA7UBlY4Han0UcoezQwMrHA7UBlY4Han0UcoezQ
+	wMrHA7UBlY4Han0UcoezQwMrHA7UBlY4Han0UcoezQwMrHA7UBlY4Han0UcoezQ1SDnA
+	706iiqNEgooooAKKKKACiiigAopCQoLHoKrGdxEJSBhgMDvliAP580AWqKpvcSKSigE7
+	1Ue+eT+QphkkmCJkAM5zx1Vfx70AWfJiYluuTk8nBI9qY0C7S0IG/kgknGTUUc4WPdwu
+	4GQntjPHHqabC8ip5aAb8b2z0yxJoAtxQpEqgDkDHrxSmGMuXIyWG08np9Kri4kMm0Ab
+	d5UfQDn9eKX7QwhE+BtYDA78kAfz5oAk+ywEYIOMAdT0HTvTjBEd2R94gnk9RjH8qWMy
+	HO/A54+nvVRbhgqMAPnDO3XhR0PX6UAW/Kjzux3z+I71JVD7RIMPJgBI97gep6CpGmnU
+	qMDLMAB+ZP6UAW6KqmWZZDEdpYrlcA9c/WkFyWdMY2sC3vtHf8aALYIPSioLYfuQx6vl
+	j+PP6VPQAUUUUAFFFFABRRRQAUUUUAFFFFAH/9LcoooqRhRRRQAUUUUAFFFFABRRRQAU
+	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
+	FFFFABRRRQAUUUUAFFFFABRRRQAUwRxqu0KAPTFPooAbsQYwBx0piwqpzgcAgADAAJqW
+	igCMwxEAFFwBgcdj2pfLj3BtoyOAcU+igBuxBghRxnHHTPWk8qIKU2jB6jHFPooAQKoG
+	0AAelN8qPG3aMY24x29PpT6KAG+XHz8o5GDx29KBGi42qBjpgU6igBMDO7HPTNMEMQ6I
+	o6jp69akooAAABgDAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/T3KKKKkYUUUUAFFFF
+	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
+	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
+	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//1NyiiipGFFFFABRRRQAUUUUA
+	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
+	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
+	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//9XcoooqRhRRRQAUUUUAFFFFABRRRQAU
 	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
 	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
 	ABRRRQAUUUUAFFFFABRRRQAUUUUAf//W3KKKKkYUUUUAFFFFABRRRQAUUUUAFFFFABRR
@@ -1020,34 +986,10 @@
 	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//1tyiiipG
 	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
 	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
-	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//9fcoooqRhRRRQAU
-	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
-	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
-	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf//Q3KKKKkYUUUUAFFFFABRR
-	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
-	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
-	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//0dyiiipGFFFFABRRRQAUUUUAFFFF
-	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
-	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
-	UUUAFFFFABRRRQAUUUUAFFFFABRRRQB//9LcoooqRhRRRQAUUUUAFFFFABRRRQAUUUUA
-	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
-	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
-	RQAUUUUAFFFFABRRRQAUUUUAf//T3KKKKkYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
-	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
-	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
-	ABRRRQAUUUUAFFFFAH//1NyiiipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
-	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
-	UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
-	FFFFABRRRQB//9XcoooqRhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
-	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRR
-	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
-	UUUAf//W3KKKKkYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUA
-	FFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
-	ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//
-	2Q==
+	RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//9k=
 	</data>
 	<key>DKDChangeTimeStamp</key>
-	<string>2015-11-30 00:12:30 +0000</string>
+	<string>2015-11-30 15:05:56 +0000</string>
 	<key>DKDCreateTimeStamp</key>
 	<string>2014-06-25 16:45:58 +0000</string>
 	<key>DKDDisplayGraphicDetails</key>
@@ -1333,7 +1275,7 @@
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{123.826171875, 195.461588542}, {188.826171875, 134.3515625}}</string>
+					<string>{{139.159505208, 195.461588542}, {188.826171875, 134.3515625}}</string>
 					<key>Class</key>
 					<string>DKDRectangle</string>
 					<key>DKDLockInfo</key>
@@ -1346,8 +1288,41 @@
 					<string>9</string>
 				</dict>
 				<dict>
+					<key>AttributedText</key>
+					<dict>
+						<key>String</key>
+						<string>filter</string>
+						<key>TextAttribute</key>
+						<string>0</string>
+					</dict>
 					<key>Bounds</key>
-					<string>{{208.99609375, 101.966796875}, {124.0390625, 88.77734375}}</string>
+					<string>{{175.689597688, 124.771403108}, {41.9207515209, 16.134459317}}</string>
+					<key>Class</key>
+					<string>DKDTextArea</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>38C95C1D</string>
+					<key>GraphicStyle</key>
+					<string>10</string>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{151.101450606, 199.582751062}, {164.659741427, 41.9848756324}}</string>
+					<key>Class</key>
+					<string>DKDRectangle</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezDashPattern</key>
+					<string>24</string>
+					<key>GraphicID</key>
+					<string>2F07C52D</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{166.429921429, 90.466796875}, {112.529296875, 88.77734375}}</string>
 					<key>Class</key>
 					<string>DKDRectangle</string>
 					<key>DKDLockInfo</key>
@@ -1360,22 +1335,8 @@
 					<string>25</string>
 				</dict>
 				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>11</string>
-					<key>GraphicID</key>
-					<string>F25BA81D</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M191.725679791,129.370760985 L229.268736973,129.370760985</string>
-				</dict>
-				<dict>
 					<key>Bounds</key>
-					<string>{{230.7363255, 114.737036782}, {46.3480710733, 20.6431940346}}</string>
+					<string>{{175.152992167, 117.178443032}, {46.3480710733, 6.7017877846}}</string>
 					<key>Class</key>
 					<string>DKDRectangle</string>
 					<key>DKDLockInfo</key>
@@ -1386,53 +1347,8 @@
 					<string>8</string>
 				</dict>
 				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>filter</string>
-						<key>TextAttribute</key>
-						<string>0</string>
-					</dict>
 					<key>Bounds</key>
-					<string>{{242.772931021, 136.271403108}, {41.9207515209, 16.134459317}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>38C95C1D</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>11</string>
-					<key>GraphicID</key>
-					<string>11658F1D</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M191.725679791,122.358280877 L229.268736974,122.358280877</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{135.768117273, 199.582751062}, {164.659741427, 41.9848756324}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>2F07C52D</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{223.560096406, 139.066888312}, {58.868376285, 44.928209711}}</string>
+					<string>{{180.993924085, 127.566888312}, {58.868376285, 44.928209711}}</string>
 					<key>Class</key>
 					<string>DKDGroup</string>
 					<key>DKDLockInfo</key>
@@ -1453,7 +1369,7 @@
 							<key>GraphicStyle</key>
 							<string>8</string>
 							<key>SVGPath</key>
-							<string>M231.91912289,139.066888312 L231.91912289,183.995098023</string>
+							<string>M189.352950569,127.566888312 L189.352950569,172.495098023</string>
 						</dict>
 						<dict>
 							<key>Class</key>
@@ -1467,7 +1383,7 @@
 							<key>GraphicStyle</key>
 							<string>8</string>
 							<key>SVGPath</key>
-							<string>M282.428472691,177.647444538 L223.560096406,178.2848813</string>
+							<string>M239.86230037,166.147444538 L180.993924085,166.7848813</string>
 						</dict>
 						<dict>
 							<key>Class</key>
@@ -1479,25 +1395,13 @@
 							<key>GraphicStyle</key>
 							<string>8</string>
 							<key>SVGPath</key>
-							<string>M240.959534167,171.170981753 L243.778705776,151.128837215 L254.294437685,151.188996435 L258.047657415,171.216571306</string>
+							<string>M198.393361846,159.670981753 L201.212533455,139.628837215 L211.728265364,139.688996435 L215.481485094,159.716571306</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{114.285794559, 114.823652554}, {76.3497303653, 20.6431940346}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>3F2FCF2D</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{141.198620624, 215.890163973}, {153.607086815, 21.534774128}}</string>
+					<string>{{156.531953957, 215.890163973}, {153.607086815, 21.534774128}}</string>
 					<key>Class</key>
 					<string>DKDGroup</string>
 					<key>DKDLockInfo</key>
@@ -1508,7 +1412,7 @@
 					<array>
 						<dict>
 							<key>Bounds</key>
-							<string>{{141.198620624, 215.890163973}, {29.6234908664, 9.847307281063}}</string>
+							<string>{{156.531953957, 215.890163973}, {29.6234908664, 9.847307281063}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1520,7 +1424,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{171.984057783, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
+							<string>{{187.317391116, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1532,7 +1436,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{203.337559069, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
+							<string>{{218.670892402, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1544,7 +1448,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{234.122996228, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
+							<string>{{249.456329561, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1556,7 +1460,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{265.182216573, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
+							<string>{{280.515549906, 215.890163973}, {29.6234908664, 9.847307281075}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1568,7 +1472,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{155.223580841, 227.57763082}, {29.6234908664, 9.847307281063}}</string>
+							<string>{{170.556914174, 227.57763082}, {29.6234908664, 9.847307281063}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1580,7 +1484,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{186.009017999, 227.57763082}, {29.6234908664, 9.847307281075}}</string>
+							<string>{{201.342351332, 227.57763082}, {29.6234908664, 9.847307281075}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1592,7 +1496,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{217.362519285, 227.57763082}, {29.6234908664, 9.847307281075}}</string>
+							<string>{{232.695852618, 227.57763082}, {29.6234908664, 9.847307281075}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1604,7 +1508,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{248.147956444, 227.57763082}, {29.6234908664, 9.847307281075}}</string>
+							<string>{{263.481289777, 227.57763082}, {29.6234908664, 9.847307281075}}</string>
 							<key>Class</key>
 							<string>DKDRectangle</string>
 							<key>DKDLockInfo</key>
@@ -1624,9 +1528,9 @@
 					<key>GraphicID</key>
 					<string>4AAC652D</string>
 					<key>GraphicStyle</key>
-					<string>8</string>
+					<string>24</string>
 					<key>SVGPath</key>
-					<string>M278.141022744,127.878724775 L317.586268372,127.878724775</string>
+					<string>M222.408600869,120.506979983 L304.741608456,120.506979983</string>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -1636,23 +1540,9 @@
 					<key>GraphicID</key>
 					<string>E8E51C3D</string>
 					<key>GraphicStyle</key>
-					<string>8</string>
+					<string>24</string>
 					<key>SVGPath</key>
-					<string>M317.586268372,127.878724775 L317.586268372,217.937904865</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>21</string>
-					<key>GraphicID</key>
-					<string>6D02704D</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M301.403193572,217.937904865 L317.586268372,217.937904865</string>
+					<string>M305.178065247,120.506979983 L305.178065247,184.546854237</string>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -1662,9 +1552,9 @@
 					<key>GraphicID</key>
 					<string>2EC3084D</string>
 					<key>GraphicStyle</key>
-					<string>8</string>
+					<string>24</string>
 					<key>SVGPath</key>
-					<string>M278.141022744,124.493071761 L321.866199463,124.493071761</string>
+					<string>M222.109772744,111.004790511 L310.194324463,111.004790511</string>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -1674,23 +1564,9 @@
 					<key>GraphicID</key>
 					<string>4EC3084D</string>
 					<key>GraphicStyle</key>
-					<string>8</string>
+					<string>24</string>
 					<key>SVGPath</key>
-					<string>M321.866199463,124.493071761 L321.866199463,212.381621555</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>21</string>
-					<key>GraphicID</key>
-					<string>5EC3084D</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M300.4278587,212.381621555 L321.866199463,212.381621555</string>
+					<string>M310.194324463,111.004790511 L310.194324463,190.60133305</string>
 				</dict>
 				<dict>
 					<key>AttributedText</key>
@@ -1701,7 +1577,7 @@
 						<string>16</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{163.875090177, 200.381595106}, {115.411787232, 13.8349609375}}</string>
+					<string>{{179.20842351, 200.381595106}, {115.411787232, 13.8349609375}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1715,83 +1591,12 @@
 					<key>AttributedText</key>
 					<dict>
 						<key>String</key>
-						<string>DFT buffer</string>
-						<key>TextAttribute</key>
-						<string>0</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{124.240130059, 137.887403482}, {64.3190094898, 13.8349609375}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>F46ED3CD</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>11</string>
-					<key>GraphicID</key>
-					<string>7DD035CD</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M75.8010058017,128.523373392 L113.344062985,128.523373392</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>11</string>
-					<key>GraphicID</key>
-					<string>9DD035CD</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M75.8010058017,121.510893284 L113.344062985,121.510893284</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>N samples</string>
-						<key>TextAttributes</key>
-						<array>
-							<string>{0, 1}</string>
-							<string>32</string>
-							<string>{1, 8}</string>
-							<string>48</string>
-						</array>
-					</dict>
-					<key>Bounds</key>
-					<string>{{125.344482054, 119.141075212}, {52.1076549759, 14.1274099576}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>1F91937E</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
 						<string>N</string>
 						<key>TextAttribute</key>
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{147.34086978, 214.849020127}, {19.666015625, 15}}</string>
+					<string>{{162.674203113, 214.849020127}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1810,7 +1615,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{177.442696901, 214.849020127}, {19.666015625, 15}}</string>
+					<string>{{192.776030234, 214.849020127}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1829,7 +1634,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{210.623471391, 214.849020127}, {19.666015625, 15}}</string>
+					<string>{{225.956804724, 214.849020127}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1848,7 +1653,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{240.279968638, 214.849020127}, {19.666015625, 15}}</string>
+					<string>{{255.613301971, 214.849020127}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1867,7 +1672,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{269.936465886, 214.849020127}, {19.666015625, 15}}</string>
+					<string>{{285.269799219, 214.849020127}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1886,7 +1691,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{162.576308339, 226.698805673}, {19.666015625, 15}}</string>
+					<string>{{177.909641672, 226.698805673}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1905,7 +1710,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{192.67813546, 226.698805673}, {19.666015625, 15}}</string>
+					<string>{{208.011468793, 226.698805673}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1924,7 +1729,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{225.85890995, 226.698805673}, {19.666015625, 15}}</string>
+					<string>{{241.192243283, 226.698805673}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1943,7 +1748,7 @@
 						<string>32</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{255.515407197, 226.698805673}, {19.666015625, 15}}</string>
+					<string>{{270.84874053, 226.698805673}, {19.666015625, 15}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -1958,118 +1763,14 @@
 					<string>DKDLine</string>
 					<key>DKDLockInfo</key>
 					<string>14</string>
-					<key>GraphicID</key>
-					<string>99FE31D7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M97.8289894917,219.591408348 L135.372046674,219.591408348</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>SCPs</string>
-						<key>TextAttribute</key>
-						<string>16</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{92.7382861967, 203.089512712}, {34.3999410732, 11.4248046875}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>E62DE2D7</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{146.929930643, 152.534990432}, {6.787748654056, 34.336549267}}</string>
-					<key>Class</key>
-					<string>DKDGroup</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>E5013AD7</string>
-					<key>GroupGraphics</key>
-					<array>
-						<dict>
-							<key>Bounds</key>
-							<string>{{146.929930643, 180.083791044}, {6.787748654056, 6.787748654056}}</string>
-							<key>Class</key>
-							<string>DKDCircle</string>
-							<key>DKDLockInfo</key>
-							<string>10</string>
-							<key>GraphicID</key>
-							<string>B5013AD7</string>
-							<key>GraphicStyle</key>
-							<string>11</string>
-						</dict>
-						<dict>
-							<key>Bounds</key>
-							<string>{{146.929930643, 166.309390738}, {6.787748654056, 6.787748654056}}</string>
-							<key>Class</key>
-							<string>DKDCircle</string>
-							<key>DKDLockInfo</key>
-							<string>10</string>
-							<key>GraphicID</key>
-							<string>C5013AD7</string>
-							<key>GraphicStyle</key>
-							<string>11</string>
-						</dict>
-						<dict>
-							<key>Bounds</key>
-							<string>{{146.929930643, 152.534990432}, {6.787748654056, 6.787748654056}}</string>
-							<key>Class</key>
-							<string>DKDCircle</string>
-							<key>DKDLockInfo</key>
-							<string>10</string>
-							<key>GraphicID</key>
-							<string>D5013AD7</string>
-							<key>GraphicStyle</key>
-							<string>11</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>P Filters</string>
-						<key>TextAttributes</key>
-						<array>
-							<string>{0, 1}</string>
-							<string>64</string>
-							<string>{1, 8}</string>
-							<string>0</string>
-						</array>
-					</dict>
-					<key>Bounds</key>
-					<string>{{82.7791385787, 90.503204449}, {46.0921747974, 13.8349609375}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>D93A3BD7</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
 					<key>DkBezArrow</key>
 					<string>11</string>
 					<key>GraphicID</key>
 					<string>7AC8FFD7</string>
 					<key>GraphicStyle</key>
-					<string>8</string>
+					<string>24</string>
 					<key>SVGPath</key>
-					<string>M97.7457993577,277.355164195 L137.036817993,277.355164195</string>
+					<string>M145.662466024,277.355164195 L161.95348466,277.355164195</string>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -2079,9 +1780,9 @@
 					<key>GraphicID</key>
 					<string>DE85A0E7</string>
 					<key>GraphicStyle</key>
-					<string>8</string>
+					<string>24</string>
 					<key>SVGPath</key>
-					<string>M97.7457993577,219.836442251 L97.7457993577,277.355164195</string>
+					<string>M145.662466024,247.759114583 L145.662466024,277.355164195</string>
 				</dict>
 				<dict>
 					<key>AttributedText</key>
@@ -2093,7 +1794,7 @@ bandwidth</string>
 						<string>0</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{261.102358104, 148.657470816}, {52.0379390209, 26.124693692}}</string>
+					<string>{{225.10072233, 134.921142691}, {52.0379390209, 26.124693692}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -2107,460 +1808,12 @@ bandwidth</string>
 					<key>AttributedText</key>
 					<dict>
 						<key>String</key>
-						<string>lin-scale
-in each bandwidth</string>
-						<key>TextAttribute</key>
-						<string>0</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{43.2115885417, 278.345703125}, {84.9129390209, 25.778990567}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>5EE969F7</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{138.556029158, 261.273366879}, {102.626019274, 50.9653601695}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>3EA322E7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>9266D3E7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M138.556029158,278.074883239 L241.18204843,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>6A21E3E7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M138.556029158,288.231842277 L241.18204843,288.231842277</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>CB9B85E7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M138.556029158,295.003148304 L241.18204843,295.003148304</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>DB9B85E7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M138.556029158,301.774454329 L241.18204843,301.774454329</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>EB9B85E7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M138.556029158,306.852933848 L241.18204843,306.852933848</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>2BE51BF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M148.711588542,261.647135417 L148.711588542,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>512EBBF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M158.294921875,261.647135417 L158.294921875,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>A08CEBF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M167.878255209,261.647135417 L167.878255209,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>5391FBF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M177.461588542,261.647135417 L177.461588542,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>E8F4FBF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M187.044921875,261.647135417 L187.044921875,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>A50AFBF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M196.628255209,261.647135417 L196.628255209,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>94ACFBF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M206.211588542,261.647135417 L206.211588542,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>BFE10CF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M215.794921875,261.647135417 L215.794921875,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>4C860CF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M225.378255209,261.647135417 L225.378255209,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>94FC0CF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M234.961588542,261.647135417 L234.961588542,278.074883239</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>9E156FF7</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M153.411197917,278.074883239 L153.411197917,288.231842277</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>FD041408</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M167.856510417,278.082695739 L167.856510417,288.239654777</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>24538408</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M182.301822917,278.09050824 L182.301822917,288.247467278</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>15F88408</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M196.747135417,278.09832074 L196.747135417,288.255279778</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>45FD8408</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M211.192447917,278.10613324 L211.192447917,288.263092278</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>DF039408</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M225.637760417,278.113945741 L225.637760417,288.270904779</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>447B9408</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M240.083072917,278.121758241 L240.083072917,288.278717279</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>CAE22508</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M173.677897136,306.970214844 L173.677897136,312.271441892</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>50E57608</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M214.051106771,306.852933848 L214.051106771,312.238727048</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezDashPattern</key>
-					<string>24</string>
-					<key>GraphicID</key>
-					<string>A1391908</string>
-					<key>GraphicStyle</key>
-					<string>24</string>
-					<key>SVGPath</key>
-					<string>M138.614908855,264.227539062 L241.244164816,264.227539062</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezDashPattern</key>
-					<string>40</string>
-					<key>GraphicID</key>
-					<string>D3334A08</string>
-					<key>GraphicStyle</key>
-					<string>24</string>
-					<key>SVGPath</key>
-					<string>M138.614908855,267.677539062 L241.244164816,267.677539062</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezDashPattern</key>
-					<string>56</string>
-					<key>GraphicID</key>
-					<string>4AFA8A08</string>
-					<key>GraphicStyle</key>
-					<string>24</string>
-					<key>SVGPath</key>
-					<string>M138.614908855,271.127539061 L241.244164816,271.127539061</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezDashPattern</key>
-					<string>72</string>
-					<key>GraphicID</key>
-					<string>D2849A08</string>
-					<key>GraphicStyle</key>
-					<string>24</string>
-					<key>SVGPath</key>
-					<string>M138.614908855,274.577539061 L241.244164816,274.577539061</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{140.622591146, 262.034733073}, {6.04931640625, 1.2255859375}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>90280C08</string>
-					<key>GraphicStyle</key>
-					<string>27</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{150.34296875, 265.38889974}, {6.04931640625, 1.2255859375}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>4569DF08</string>
-					<key>GraphicStyle</key>
-					<string>27</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{159.885611979, 265.328515625}, {6.04931640625, 1.2255859375}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>6A652018</string>
-					<key>GraphicStyle</key>
-					<string>27</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{169.428255208, 265.268131512}, {6.04931640625, 1.2255859375}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>B0757018</string>
-					<key>GraphicStyle</key>
-					<string>27</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{169.428255208, 269.077864585}, {6.04931640625, 1.22558593775}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>0675A018</string>
-					<key>GraphicStyle</key>
-					<string>27</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{169.428255208, 272.317773439}, {6.04931640625, 1.2255859375}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>08BD1118</string>
-					<key>GraphicStyle</key>
-					<string>27</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
 						<string>time</string>
 						<key>TextAttribute</key>
-						<string>80</string>
+						<string>48</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{179.192057292, 311.932617188}, {34.3999410732, 11.4248046875}}</string>
+					<string>{{194.525390625, 311.932617188}, {34.3999410732, 11.4248046875}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -2576,10 +1829,10 @@ in each bandwidth</string>
 						<key>String</key>
 						<string>frequency</string>
 						<key>TextAttribute</key>
-						<string>80</string>
+						<string>48</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{222.657877605, 276.639648438}, {47.7847066982, 10.986328125}}</string>
+					<string>{{256.810857784, 282.551523884}, {47.7847066982, 10.986328125}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -2595,159 +1848,17 @@ in each bandwidth</string>
 					<key>AttributedText</key>
 					<dict>
 						<key>String</key>
-						<string>weighted
-averaging</string>
-						<key>TextAttribute</key>
-						<string>96</string>
+						<string>P filtering functions</string>
+						<key>TextAttributes</key>
+						<array>
+							<string>{0, 2}</string>
+							<string>64</string>
+							<string>{2, 19}</string>
+							<string>80</string>
+						</array>
 					</dict>
 					<key>Bounds</key>
-					<string>{{252.26171875, 269.634114583}, {50.7762202709, 24.278990567}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>3EA11918</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>27</string>
-					<key>GraphicID</key>
-					<string>9B253028</string>
-					<key>GraphicStyle</key>
-					<string>40</string>
-					<key>SVGPath</key>
-					<string>M259.526862159,297.412760417 L289.530598959,297.412760417</string>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{321.194661459, 252.920572917}, {122.091796875, 62.90234375}}</string>
-					<key>Class</key>
-					<string>DKDRectangle</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezDashPattern</key>
-					<string>8</string>
-					<key>GraphicID</key>
-					<string>D3332C28</string>
-					<key>GraphicStyle</key>
-					<string>57</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDBezier</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>7B232428</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M336.145833334,289.978515625 C341.820997243,274.467116558 390.266046533,290.987805076 397.612630209,260.228515625</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>3</string>
-					<key>GraphicID</key>
-					<string>32218718</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M336.165108824,294.713457109 L435.476562501,294.713457109</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>frequency</string>
-						<key>TextAttribute</key>
-						<string>80</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{356.661458334, 297.235026042}, {57.4468160732, 10.986328125}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>17C4AA18</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>DKDLine</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>DkBezArrow</key>
-					<string>3</string>
-					<key>GraphicID</key>
-					<string>873D0628</string>
-					<key>GraphicStyle</key>
-					<string>8</string>
-					<key>SVGPath</key>
-					<string>M341.059895834,302.657552083 L341.059895834,259.111886086</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>response ratio</string>
-						<key>TextAttribute</key>
-						<string>80</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{299.613932292, 276.91796875}, {63.6733785732, 13.419921875}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>78BCD628</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-					<key>RotateRadiansText</key>
-					<string>4.712388980385</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>red: MSC above a threshold</string>
-						<key>TextAttribute</key>
-						<string>96</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{134.127604167, 248.48828125}, {123.077001521, 12.120787442}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>48C1F458</string>
-					<key>GraphicStyle</key>
-					<string>10</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>filtering function</string>
-						<key>TextAttribute</key>
-						<string>112</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{228.740234375, 79.94140625}, {78.8170563648, 14.1826171875}}</string>
+					<string>{{338.250389316, 136.612203664}, {146.924360463, 17.4560546875}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -2755,29 +1866,7 @@ averaging</string>
 					<key>GraphicID</key>
 					<string>004EFF9D</string>
 					<key>GraphicStyle</key>
-					<string>43</string>
-				</dict>
-				<dict>
-					<key>AttributedText</key>
-					<dict>
-						<key>String</key>
-						<string>• spectral components
-• spectral response ratios
-• confidence intervals
-</string>
-						<key>TextAttribute</key>
-						<string>16</string>
-					</dict>
-					<key>Bounds</key>
-					<string>{{325.233235677, 209.585286458}, {115.651367188, 37.208984375}}</string>
-					<key>Class</key>
-					<string>DKDTextArea</string>
-					<key>DKDLockInfo</key>
-					<string>14</string>
-					<key>GraphicID</key>
-					<string>051E4AAD</string>
-					<key>GraphicStyle</key>
-					<string>59</string>
+					<string>11</string>
 				</dict>
 				<dict>
 					<key>AttributedText</key>
@@ -2785,10 +1874,10 @@ averaging</string>
 						<key>String</key>
 						<string>SCP function</string>
 						<key>TextAttribute</key>
-						<string>128</string>
+						<string>96</string>
 					</dict>
 					<key>Bounds</key>
-					<string>{{191.5390625, 337.87109375}, {69.6845703125, 12.4677734375}}</string>
+					<string>{{365.125060843, 258.843177532}, {100.8255879, 16.0516904634}}</string>
 					<key>Class</key>
 					<string>DKDTextArea</string>
 					<key>DKDLockInfo</key>
@@ -2796,56 +1885,698 @@ averaging</string>
 					<key>GraphicID</key>
 					<string>610226BD</string>
 					<key>GraphicStyle</key>
-					<string>75</string>
+					<string>27</string>
 				</dict>
 				<dict>
-					<key>Bounds</key>
-					<string>{{147.724201476, 73.9288706403}, {6.787748654056, 34.3365492661}}</string>
 					<key>Class</key>
-					<string>DKDGroup</string>
+					<string>DKDLine</string>
 					<key>DKDLockInfo</key>
 					<string>14</string>
 					<key>GraphicID</key>
-					<string>D9706DED</string>
-					<key>GroupGraphics</key>
-					<array>
-						<dict>
-							<key>Bounds</key>
-							<string>{{147.724201476, 101.477671252}, {6.787748654056, 6.787748654056}}</string>
-							<key>Class</key>
-							<string>DKDCircle</string>
-							<key>DKDLockInfo</key>
-							<string>10</string>
-							<key>GraphicID</key>
-							<string>99706DED</string>
-							<key>GraphicStyle</key>
-							<string>11</string>
-						</dict>
-						<dict>
-							<key>Bounds</key>
-							<string>{{147.724201476, 87.7032709463}, {6.787748654056, 6.787748654056}}</string>
-							<key>Class</key>
-							<string>DKDCircle</string>
-							<key>DKDLockInfo</key>
-							<string>10</string>
-							<key>GraphicID</key>
-							<string>B9706DED</string>
-							<key>GraphicStyle</key>
-							<string>11</string>
-						</dict>
-						<dict>
-							<key>Bounds</key>
-							<string>{{147.724201476, 73.9288706403}, {6.787748654056, 6.787748654056}}</string>
-							<key>Class</key>
-							<string>DKDCircle</string>
-							<key>DKDLockInfo</key>
-							<string>10</string>
-							<key>GraphicID</key>
-							<string>C9706DED</string>
-							<key>GraphicStyle</key>
-							<string>11</string>
-						</dict>
-					</array>
+					<string>776C0B0B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M146.787065696,247.759114583 L324.475260417,247.759114583</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>3B2B0D0B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M324.475260417,221.460756025 L324.475260417,247.759114583</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>390ABD0B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M315.761192033,221.460756025 L324.475260417,221.460756025</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>E38FC85B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M114.836588542,185.070545719 L305.178065247,185.070545719</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>32F5795B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M120.552734375,190.820545719 L310.194324463,190.820545719</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>FE9ADA5B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M114.836588542,185.4453125 L114.836588542,230.617533986</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>611A6B5B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M120.552734375,191.032552083 L120.552734375,222.097779495</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezArrow</key>
+					<string>11</string>
+					<key>GraphicID</key>
+					<string>A17D0C5B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M120.552734375,222.276388153 L139.299620207,222.276388153</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezArrow</key>
+					<string>11</string>
+					<key>GraphicID</key>
+					<string>0C821E5B</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M115.518880209,230.617533986 L139.159505208,230.617533986</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>7F17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M163.472695825,278.074883239 L266.098715097,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>9F17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M264.999739584,278.121758241 L264.999739584,288.278717279</string>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{163.472695825, 261.273366879}, {102.626019274, 50.9653601695}}</string>
+					<key>Class</key>
+					<string>DKDRectangle</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>AF17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>BF17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M163.472695825,288.231842277 L266.098715097,288.231842277</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>CF17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M163.472695825,295.003148304 L266.098715097,295.003148304</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>DF17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M163.472695825,301.774454329 L266.098715097,301.774454329</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>EF17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M163.472695825,306.852933848 L266.098715097,306.852933848</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>FF17B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M173.628255209,261.647135417 L173.628255209,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>0027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M183.211588542,261.647135417 L183.211588542,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>1027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M192.794921876,261.647135417 L192.794921876,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>2027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M202.378255209,261.647135417 L202.378255209,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>3027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M211.961588542,261.647135417 L211.961588542,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>4027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M221.544921876,261.647135417 L221.544921876,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>5027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M231.128255209,261.647135417 L231.128255209,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>6027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M240.711588542,261.647135417 L240.711588542,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>7027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M250.294921876,261.647135417 L250.294921876,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>8027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M259.878255209,261.647135417 L259.878255209,278.074883239</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>9027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M178.327864584,278.074883239 L178.327864584,288.231842277</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>A027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M192.773177084,278.082695739 L192.773177084,288.239654777</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>B027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M207.218489584,278.09050824 L207.218489584,288.247467278</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>C027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M221.663802084,278.09832074 L221.663802084,288.255279778</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>D027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M236.109114584,278.10613324 L236.109114584,288.263092278</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>E027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M250.554427084,278.113945741 L250.554427084,288.270904779</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>F027B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M198.594563803,306.970214844 L198.594563803,312.271441892</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>0127B76B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+					<key>SVGPath</key>
+					<string>M238.967773438,306.852933848 L238.967773438,312.238727048</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezDashPattern</key>
+					<string>40</string>
+					<key>GraphicID</key>
+					<string>1127B76B</string>
+					<key>GraphicStyle</key>
+					<string>40</string>
+					<key>SVGPath</key>
+					<string>M163.531575522,264.227539062 L266.160831483,264.227539062</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezDashPattern</key>
+					<string>56</string>
+					<key>GraphicID</key>
+					<string>2127B76B</string>
+					<key>GraphicStyle</key>
+					<string>40</string>
+					<key>SVGPath</key>
+					<string>M163.531575522,267.677539062 L266.160831483,267.677539062</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezDashPattern</key>
+					<string>72</string>
+					<key>GraphicID</key>
+					<string>3127B76B</string>
+					<key>GraphicStyle</key>
+					<string>40</string>
+					<key>SVGPath</key>
+					<string>M163.531575522,271.127539061 L266.160831483,271.127539061</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezDashPattern</key>
+					<string>88</string>
+					<key>GraphicID</key>
+					<string>4127B76B</string>
+					<key>GraphicStyle</key>
+					<string>40</string>
+					<key>SVGPath</key>
+					<string>M163.531575522,274.577539061 L266.160831483,274.577539061</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezArrow</key>
+					<string>11</string>
+					<key>GraphicID</key>
+					<string>11658F1D</string>
+					<key>GraphicStyle</key>
+					<string>56</string>
+					<key>SVGPath</key>
+					<string>M101.950940208,116.86739546 L166.429921429,116.86739546</string>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{175.152992166, 107.595109699}, {46.3480710733, 6.7017877846}}</string>
+					<key>Class</key>
+					<string>DKDRectangle</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>2C8DFF6B</string>
+					<key>GraphicStyle</key>
+					<string>8</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>30398C1E</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M328.538747847,274.082560507 L339.848789479,274.082560507</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>40398C1E</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M340.28524627,274.082560507 L340.28524627,338.122434761</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>50398C1E</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M126.089595844,338.646126243 L340.28524627,338.646126243</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>60398C1E</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M126.089595844,339.020893024 L126.089595844,384.19311451</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>DKDLine</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezArrow</key>
+					<string>11</string>
+					<key>GraphicID</key>
+					<string>70398C1E</string>
+					<key>GraphicStyle</key>
+					<string>24</string>
+					<key>SVGPath</key>
+					<string>M126.394164751,384.759554435 L154.407470656,384.759554435</string>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{154.407470656, 356.224238955}, {151.743571372, 66.7691271552}}</string>
+					<key>Class</key>
+					<string>DKDRectangle</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>DkBezDashPattern</key>
+					<string>104</string>
+					<key>GraphicID</key>
+					<string>CEB7312E</string>
+					<key>GraphicStyle</key>
+					<string>57</string>
+				</dict>
+				<dict>
+					<key>AttributedText</key>
+					<dict>
+						<key>String</key>
+						<string>• thresholding
+• weighted averaging
+• STDs computation
+</string>
+						<key>TextAttribute</key>
+						<string>16</string>
+					</dict>
+					<key>Bounds</key>
+					<string>{{173.13782487, 373.762246052}, {105.820248704, 44.4832300647}}</string>
+					<key>Class</key>
+					<string>DKDTextArea</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>22E95B2E</string>
+					<key>GraphicStyle</key>
+					<string>10</string>
+				</dict>
+				<dict>
+					<key>AttributedText</key>
+					<dict>
+						<key>String</key>
+						<string>Post processing</string>
+						<key>TextAttribute</key>
+						<string>96</string>
+					</dict>
+					<key>Bounds</key>
+					<string>{{365.264081151, 364.934691992}, {100.8255879, 16.0516904634}}</string>
+					<key>Class</key>
+					<string>DKDTextArea</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>21EB4B3E</string>
+					<key>GraphicStyle</key>
+					<string>43</string>
+				</dict>
+				<dict>
+					<key>AttributedText</key>
+					<dict>
+						<key>String</key>
+						<string>signals</string>
+						<key>TextAttribute</key>
+						<string>64</string>
+					</dict>
+					<key>Bounds</key>
+					<string>{{379.58193475, 88.501940107}, {66.7949634781, 19.2154835668}}</string>
+					<key>Class</key>
+					<string>DKDTextArea</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>76CE9F3E</string>
+					<key>GraphicStyle</key>
+					<string>10</string>
+				</dict>
+				<dict>
+					<key>AttributedText</key>
+					<dict>
+						<key>String</key>
+						<string>Spectral components
+MSC
+</string>
+						<key>TextAttribute</key>
+						<string>64</string>
+					</dict>
+					<key>Bounds</key>
+					<string>{{362.415997647, 294.462258447}, {139.190692121, 35.4378030711}}</string>
+					<key>Class</key>
+					<string>DKDTextArea</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>AD76A04E</string>
+					<key>GraphicStyle</key>
+					<string>10</string>
+				</dict>
+				<dict>
+					<key>AttributedText</key>
+					<dict>
+						<key>String</key>
+						<string>FB signals</string>
+						<key>TextAttribute</key>
+						<string>112</string>
+					</dict>
+					<key>Bounds</key>
+					<string>{{365.764718024, 192.75899111}, {132.063079067, 19.8719692888}}</string>
+					<key>Class</key>
+					<string>DKDTextArea</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>27DD224E</string>
+					<key>GraphicStyle</key>
+					<string>10</string>
+				</dict>
+				<dict>
+					<key>AttributedText</key>
+					<dict>
+						<key>String</key>
+						<string>Sup Ratio
+confidence interval
+</string>
+						<key>TextAttribute</key>
+						<string>64</string>
+					</dict>
+					<key>Bounds</key>
+					<string>{{359.27638191, 405.404094828}, {139.190692121, 35.4378030711}}</string>
+					<key>Class</key>
+					<string>DKDTextArea</string>
+					<key>DKDLockInfo</key>
+					<string>14</string>
+					<key>GraphicID</key>
+					<string>0E96254E</string>
+					<key>GraphicStyle</key>
+					<string>10</string>
 				</dict>
 			</array>
 			<key>HideDimensions</key>
@@ -2979,7 +2710,7 @@ averaging</string>
 		<string>NO</string>
 	</dict>
 	<key>DKDSaveTimeStamp</key>
-	<string>2015-11-30 00:13:19 +0000</string>
+	<string>2015-11-30 15:06:11 +0000</string>
 	<key>DKDTablet</key>
 	<dict>
 		<key>BrushDynamic</key>
@@ -3151,15 +2882,29 @@ averaging</string>
 			<string>Étoile bancale lisse</string>
 			<string>Rayon</string>
 		</array>
+		<string>MathMenuToolbarIdentifier_0</string>
+		<array>
+			<string>Parabolique</string>
+			<string>Parabolique</string>
+			<string>Miroir X au cube</string>
+			<string>Quartique</string>
+			<string>Un sur X</string>
+			<string>Exponentielle</string>
+			<string>Tangente</string>
+			<string>Tangente hyperbolique</string>
+			<string>Gaussienne:</string>
+			<string>Onde carrée</string>
+			<string>Onde sinusoïdale</string>
+		</array>
 	</array>
 	<key>DKDWindowState</key>
 	<dict>
 		<key>CursorMode</key>
 		<string>Nothing</string>
 		<key>DocCenter</key>
-		<string>{263.25, 205.25}</string>
+		<string>{288, 284.948275862}</string>
 		<key>DocumentFileName</key>
-		<string>/Users/maurice/etudes/ctbto/allJOBs2015/myjob/1taskcalibration/figures/synoptic.ezdraw</string>
+		<string>/Users/maurice/etudes/ctbto/allJOBs2015/myjob/1taskcalibration/figures/synopticV2.ezdraw</string>
 		<key>DrawersOnMainView</key>
 		<string>YES</string>
 		<key>GDetailsLayersDrawerEdgePreference</key>
@@ -3177,9 +2922,9 @@ averaging</string>
 		<key>OutlineDrawing</key>
 		<string>NO</string>
 		<key>WindowLocation</key>
-		<string>85 119 886 658 0 0 1280 777 </string>
+		<string>101 119 915 658 0 0 1280 777 </string>
 		<key>ZoomPercent</key>
-		<string>200.000000</string>
+		<string>138.131986</string>
 	</dict>
 	<key>GroupEdit</key>
 	<string>Fixed</string>
