@@ -1,11 +1,11 @@
 function [allSDs, time_sec, frqsFFT_Hz] = ...
-    estimSCP(xU,xR,GREF,overlapFFT, ...
+    estimSCP(xU,xR,Lfft,overlapFFT, ...
     NaverageFFTs, overlapSD, Fs_Hz, smoothwindow)
 %==========================================================================
 % Perform the spectral components of the two signals xU et xR.
 %==========================================================================
 % The code uses the Welch's approach. The signal is shared into DFT
-% windows of which the length is the length of GREF, with the
+% windows of which the length is Lfft, with the
 % overlap rate of OVERLAPFFT. Then the specral components is averaged
 % on NaverageFFTs DFT blocks. Therefore each spectral block corresponds
 % to a time period reported in TIME_SEC.
@@ -13,7 +13,7 @@ function [allSDs, time_sec, frqsFFT_Hz] = ...
 % Inputs:
 %    xU: signal observed on the SUT (T x 1)
 %    xR: signal observed on the SREF (T x 1)
-%    GREF: frequency response of the SREF (Lfft x 1)
+%    Lfft: length og the FFTs
 %    overlapFFT: between 0 and 1, overlap on the FFT block
 %    NaverageFFTs: number of FFT-length to averaging
 %    overlapSD: between 0 and 1, overlap on the averaging
@@ -39,7 +39,6 @@ function [allSDs, time_sec, frqsFFT_Hz] = ...
 xU   = xU(:);
 xR   = xR(:);
 N    = length(xU);
-Lfft = length(GREF);
 sqrtLfft    = sqrt(Lfft);
 shiftSignal = fix((1-overlapFFT)*Lfft);
 NblocksFFT  = fix((N-(Lfft-shiftSignal))/shiftSignal);

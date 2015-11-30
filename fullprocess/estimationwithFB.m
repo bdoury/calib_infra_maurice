@@ -55,7 +55,7 @@ directorysignals    = '../../../AAdataI26calib/';
 % if FLAGsaveall=1
 directoryresultsALL = 'BBresults'; 
 % if FLAGsavesmall=1
-directoryresults    = sprintf('AAresultswithFB%iter',fix(MSCthreshold*100));
+directoryresults    = sprintf('AAresultswithFB%i',fix(MSCthreshold*100));
 
 %============== load the filter bank characteristics =====================
 %  the useful variable is FILTERCHARACT
@@ -90,7 +90,7 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 1:8, ihc
+for ihc = 5, ihc
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));

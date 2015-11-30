@@ -25,6 +25,8 @@ display results using the program as {\tt displaySUTresponse.m} .
 \section{The main function {\tt fbankanalysis.m}}
 The function {\tt fbankanalysis.m} (see page \pageref{s:fbankanalysis})  gathers the all analysis functions. More specifically the inputs are the signals for a given duration, typically 48 hours, and a MSC threshold, and the outputs the estimated SUT responses with different features as the time slots where the MSC is above the  threshold.
 
+It follows that for the theoretical STD computation, it would be more accurate to do outside of the functions in such a way we can average the estiamted value of the spectral matrix. That is provided by the function {\tt averageSTDcomputation.m}.
+
 \subsection{Inputs}
 \begin{itemize}
 \item
