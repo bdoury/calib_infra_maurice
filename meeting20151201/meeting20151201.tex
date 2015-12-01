@@ -232,13 +232,51 @@
 %=======================================================
 %=======================================================
 \begin{frame}
-\frametitle{Main function}
+\frametitle{Main function \alert{\tt fbanalysis.m}}
 
 \figsstit{../figures/synopticV2.pdf}{0.6}
 
 
 %In the presented results the analysis time duration is 48 hours to be large enough to allow an averaging on a sufficient number of events in each T/F cell.
 %
+
+\end{frame}
+
+%=======================================================
+\begin{frame}
+\frametitle{Settings}
+\begin{itemize}
+\item
+Different time period, regarding the frequency bandwidth, are considered, leading to different numbers of samples. Hence, using the FFT, we have different numbers of frequency bins. 
+
+But only a few  of them are kept depending on the  filter frequency bandwidth. For example with the considered FB, we have in the full band, $70$ frequency bins from $0.005$ Hz to $5.75$ Hz.
+
+That means that we can perform the $70$ spectral components using the direct formula.
+
+%\begin{tabular}{cccc}
+%$11$ frequencies on the first band, 
+%\\
+%$11$ frequencies on the first band 
+%\\
+%$15$ frequencies on the second band 
+%\\
+%$11$ frequencies on the third band 
+%\\
+%$12$ frequencies on the forth band 
+%\\
+%$6$ frequencies on the fifth band 
+%\\
+%$19$ frequencies on the sixth band 
+%\end{tabular}
+
+
+\item
+ the function {\tt fbanalysis.m} performs an averaging on the time slots, typically a pair of days, giving around $175$, $250$, $700$, $1100$, $6000$ and $9000$ time slots regarding the  filter frequency bandwidth.
+ 
+ \item
+Outside of the  function {\tt fbanalysis.m}, an external averaging is applied on several pairs of days.
+
+\end{itemize}
 
 \end{frame}
 \end{document}
