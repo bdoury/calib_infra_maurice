@@ -17,7 +17,7 @@ directorysignals    = '../../../../AAdataI26calib/';
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB98_5/';
+directoryinputresults = '../AAresultswithFB98/';
 
 sensor_UT    = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag     = 1;

@@ -461,19 +461,23 @@ tabHURRR    = [allSDs.Rinf];
 %========================================================================
 %================= on Rsup
 %===== real/imaginary part without constraint on MSC
+% RK in Matlab we can also use:
+% sqrt(mean(real(z))^2+mean(imag(z))^2) = abs(mean(z))
+% and 
+% atan2(mean(imag(z),mean(real(z)) = angle(mean(z))
 %========================================================================
-tabrealHUUUR = real(tabHUUUR);
-tabimagHUUUR = imag(tabHUUUR);
-tabmodHUUUR  = sqrt(tabrealHUUUR .^2 + tabimagHUUUR .^2);
+tabrealHUUUR  = real(tabHUUUR);
+tabimagHUUUR  = imag(tabHUUUR);
+tabmodHUUUR   = sqrt(tabrealHUUUR .^2 + tabimagHUUUR .^2);
 tabphaseHUUUR = atan2(tabimagHUUUR,tabrealHUUUR);
 
 %========================================================================
 %================= on Rinf
 %===== real/imaginary part without constraint on MSC
 %========================================================================
-tabrealHURRR = real(tabHURRR);
-tabimagHURRR = imag(tabHURRR);
-tabmodHURRR  = sqrt(tabrealHURRR .^2 + tabimagHURRR .^2);
+tabrealHURRR  = real(tabHURRR);
+tabimagHURRR  = imag(tabHURRR);
+tabmodHURRR   = sqrt(tabrealHURRR .^2 + tabimagHURRR .^2);
 tabphaseHURRR = atan2(tabimagHURRR, tabrealHURRR);
 
 %========================================================================
