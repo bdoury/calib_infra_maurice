@@ -17,14 +17,14 @@ directorysignals    = '../../../../AAdataI26calib/';
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB98/';
+directoryinputresults = '../AAresultswithFB98_5/';
 
 sensor_UT    = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag     = 1;
 trimmeanflag = 0;
-remainindex1 = [1:61  63:70];
-
 for ihc = 1
+    numfig = ihc;
+    figure(numfig);
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
     fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
@@ -33,11 +33,11 @@ for ihc = 1
     eval(comload);
     switch ihc
         case 1
-            remainindex = remainindex1; % 2015/10/13
+            remainindex = [1:61  63:70]; %2015/10/13
         case 2
-            remainindex = [1:nbmats]; % 2015/10/13
+            remainindex = [1:nbmats]; %[1:nbmats]; % 2015/10/13
         case 4
-            remainindex = [1:65 66 67:nbmats]; % 2015/10/11
+            remainindex = [1:65  67:nbmats]; % 2015/10/11
         otherwise
             remainindex = [1:nbmats];
     end
@@ -64,7 +64,7 @@ for ihc = 1
             coeffsens=0.97;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
         case 8
-            coeffsens=1.02;
+            coeffsens=1.01;
             ref_sensor = 'I26DE_BDF_RSP_2015134_MB3';
     end
     %%
@@ -233,7 +233,7 @@ for ihc = 1
     filermcmd       = sprintf('!rm %s',fileprint);
     
 end
-figure(1)
+figure(numfig)
 if saveflag
     eval(fileprintepscmd)
 %     eval(fileeps2pdfcmd)
@@ -272,7 +272,7 @@ end
 % [STDmodtheo_ip./(STDmodempiric_ip) nbofvalues_ip]
 % corrlevel
 %
-% figure(1)
+% figure(numfig)
 % subplot(121)
 % plot( allT.TUUonUR,statURonRR.pdf,'.-')
 % hold on

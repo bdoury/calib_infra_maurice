@@ -12,7 +12,7 @@ allcolors = ['b.';'r.';'m.';'c.';'g.';'k.';'rx';'yx';'mx';'rx';'kx';...
 
 addpath ../ZZtoolbox/
 
-directorysignals  = '../AAsignals/';
+directorysignals  = '../../../../AAdataI26calib/';
 % directory to save the figures
 printdirectory    = ' ../../figures/';
 
@@ -39,7 +39,7 @@ MSCthreshold = 0.98;
 %=====================
 ihc   = 1;%fix(5*rand)+1;
 %===================== read data =========================
-fileswithdotmat              = dir(sprintf('%ss%i/year*.mat',directorysignals,ihc));
+fileswithdotmat              = dir(sprintf('%ss%i/s%iyear*.mat',directorysignals,ihc,ihc));
 nbmats                       = length(fileswithdotmat);
 ifile                        = 31;%fix(nbmats*rand)+1;
 

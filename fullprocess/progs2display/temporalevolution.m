@@ -10,7 +10,7 @@ addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
 addpath ../ZZtoolbox/00benoit
 
-directorydata = '../AAresultswithFB98bis/';
+directorydata = '../AAresultswithFB98/';
 printdirectory  = ' ../../figures/';
 saveflag = 0;
 bootdraw = 1;
@@ -22,7 +22,7 @@ numberthreshold = 0;
 cp=0;
 for  selectedfrequency_Hz = [0.05 0.1 0.5 1]
     cp=cp+1;
-    for ihc=1
+    for ihc=2
         comload = sprintf('load %sresultssta26sensor%i.mat',directorydata,ihc);
         numfig = ihc;
         

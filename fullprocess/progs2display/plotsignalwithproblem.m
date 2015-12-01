@@ -11,7 +11,7 @@ directorysignals  = '../../../../AAdataI26calib/';
 %== station number
 ihc               = 1;
 %== selected date
-date_select       = '2015/08/09';
+date_select       = '2015/07/09';
 
 %============ examples ======================
 %=========== non exhaustive list ============

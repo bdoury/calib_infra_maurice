@@ -10,7 +10,7 @@ directorysignals    = '../../../../AAdataI26calib/';
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB98ter/';
+directoryinputresults = '../AAresultswithFB98/';
 
 %======== to compute theoretical integrals
 allT.TUUonUR    = linspace(0.6,2,100);
@@ -19,9 +19,9 @@ allT.MSC        = linspace(0.6,1,100);
 allT.phase_rd   = linspace(-pi,pi,100);
 % critical region at +/-1 sigma
 alphaCI         = 0.1;
-randdrawnumber  = 10;
+randdrawnumber  = 15;
 
-for ihc = 1
+for ihc = 2
     numfig = ihc;
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)
@@ -54,7 +54,7 @@ for ihc = 1
     
     %%
     permutenbmats                = randperm(length(remainindex));
-    indrandomlychosen            = (1:10) ; permutenbmats(1:randdrawnumber);
+    indrandomlychosen            = permutenbmats(1:randdrawnumber);
     allRatioSupPfilters          = ...
         allRatioSupPfilters(:,indrandomlychosen);
     allSTDmodRatioSupPfilters    = ...

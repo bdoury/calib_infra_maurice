@@ -48,20 +48,19 @@ clear
 addpath ZZtoolbox/
 
 %=====================
-MSCthreshold = 0.98;
-%=====================
-
-FLAGsaveall   = 0;
-FLAGsavesmall = 1;
+MSCthreshold     = 0.98;
+FLAGsaveall      = 0;
+FLAGsavesmall    = 1;
+nofilterbankflag = 0;
 
 %=====================
 %=== directory of input signals
 directorysignals    = '../../../AAdataI26calib/';
-%=== directory of output results
+%=== directory of output results (huge records)
 % if FLAGsaveall=1
 directoryresultsALL = 'BBresults'; 
 % if FLAGsavesmall=1
-directoryresults    = sprintf('AAresultswithFB%iter',fix(MSCthreshold*100));
+directoryresults    = sprintf('AAresultswithFB%i_10',fix(MSCthreshold*100));
 
 %============== load the filter bank characteristics =====================
 %  the useful variable is FILTERCHARACT
@@ -74,9 +73,8 @@ cmdloadfilter         = sprintf('run(''%s'')',filtercharactfilename);
 eval(cmdloadfilter);
 
 %======
-nofilterflag = 0;
 
-if nofilterflag
+if nofilterbankflag
     clear filtercharact;
     filtercharact(1).designname     = 'butter';
     filtercharact(1).Norder         = 2;
@@ -96,7 +94,7 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
 
-for ihc = 1:8, ihc
+for ihc = 1 %:8, ihc
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
