@@ -50,7 +50,7 @@ eval(cmdloadfilter);
 %=====================
 Pfilter                = length(filtercharact);
 filterbank             = cell(Pfilter,1);
-nbfrequenciesbyband    = 10;
+nbfrequenciesbyband    = 15;
 allfreqsinfilters_Hz   = zeros(nbfrequenciesbyband,Pfilter);
 windshape              = cell(Pfilter,1);
 for ifilter = 1:Pfilter
@@ -58,7 +58,7 @@ for ifilter = 1:Pfilter
     fhigh   = filtercharact(ifilter).Whigh_Hz/Fs_Hz;
     fname   = filtercharact(ifilter).designname;
     forder  = filtercharact(ifilter).Norder;
-    allfreqsinfilters_Hz(:,ifilter) =linspace( ...
+    allfreqsinfilters_Hz(:,ifilter) = linspace( ...
         filtercharact(ifilter).Wlow_Hz,...
         filtercharact(ifilter).Whigh_Hz,...
         nbfrequenciesbyband);
@@ -89,7 +89,7 @@ for ifilter = 1:Pfilter
 end
 ihc   = 1;
 %===================== read data =========================
-fileswithdotmat   = dir(sprintf('%ss%i/s%iy*.mat',...
+fileswithdotmat    = dir(sprintf('%ss%i/s%iy*.mat',...
     directorysignals,ihc,ihc));
 nbmats             = length(fileswithdotmat);
 ifile              = input(sprintf('select a number between 1 and %i : ',nbmats));
@@ -132,8 +132,9 @@ end
 %============================================
 %============================================
 % in each band we perform DFTs then SCPs
-tabRsup   = cell(Pfilter,1);
-% tabMSC    = cell(Pfilter,1);
+tabRsup    = cell(Pfilter,1);
+tabR1122   = cell(Pfilter,1);
+tabMSC     = cell(Pfilter,1);
 
 for ifilter = 1:Pfilter
     SCPperiod_sec   = filtercharact(ifilter).SCPperiod_sec;
@@ -150,6 +151,8 @@ for ifilter = 1:Pfilter
     SCP_ifreq22     = zeros(nbfrequenciesbyband,NSCPwindows-1);
     SCP_ifreq12     = zeros(nbfrequenciesbyband,NSCPwindows-1);
     
+
+    
     for iwindowSCP  = 1:NSCPwindows-1
         id0   = (iwindowSCP-1)*lengthSCP;
         id1   = 0;
@@ -158,9 +161,9 @@ for ifilter = 1:Pfilter
             cpDFT  = cpDFT+1;
             id1    = id0 + (cpDFT-1)*DFTshift+1;
             id2    = id1+lengthDFT-1;
-            sigaux = sigout(id1:id2,:);
-            sigauxW(:,1) = sigaux(:,2) .* windshape{ifilter};
-            sigauxW(:,2) = sigaux(:,1) .* windshape{ifilter};
+            sigaux = sigout(id1:id2,:,ifilter);
+            sigauxW(:,1) = sigaux(:,1) .* windshape{ifilter};
+            sigauxW(:,2) = sigaux(:,2) .* windshape{ifilter};
             for ifreq = 1:nbfrequenciesbyband
                 fq_aux   = allfreqsinfilters_Hz(ifreq,ifilter)/Fs_Hz;
                 EXPVect  = exp(-2j*pi*fq_aux*listindex);
@@ -175,15 +178,38 @@ for ifilter = 1:Pfilter
             end
         end
     end
-    tabRsup_ifilter  = SCP_ifreq11 ./ SCP_ifreq12;
-    tabMSC_ifilter   = (abs(SCP_ifreq12) .^2) ./ (SCP_ifreq11 .* SCP_ifreq22);
+    tabMSC_ifilter   = (abs(SCP_ifreq12) .^2) ./ ...
+        (SCP_ifreq11 .* SCP_ifreq22);
+    ind_ifilter = (tabMSC_ifilter>0.98);
+    tabMSC_ifilter_overTH = NaN(size(tabMSC_ifilter));
+    tabMSC_ifilter_overTH(ind_ifilter) = ...
+        tabMSC_ifilter(ind_ifilter);
+    tabMSC{ifilter}  = tabMSC_ifilter_overTH;
+
+    tabRsup_ifilter  = SCP_ifreq11 ./ conj(SCP_ifreq12);
     tabRsup_ifilter_overTH = NaN(size(tabRsup_ifilter));
-    tabRsup_ifilter_overTH(tabMSC_ifilter>0.98) = tabRsup_ifilter(tabMSC_ifilter>0.98);
+    tabRsup_ifilter_overTH(ind_ifilter) = ...
+        tabRsup_ifilter(ind_ifilter);
     tabRsup{ifilter} = tabRsup_ifilter_overTH;
+
+    tabR1122_ifilter  = SCP_ifreq11 ./ SCP_ifreq22;
+    tabR1122_ifilter_overTH = NaN(size(tabR1122_ifilter));
+    tabR1122_ifilter_overTH(ind_ifilter) = ...
+        tabR1122_ifilter(ind_ifilter);
+    tabR1122{ifilter} = tabR1122_ifilter_overTH;
 end
 R = zeros(nbfrequenciesbyband,Pfilter);
+
 for  ifilter = 1:Pfilter
-    R(:,ifilter) = nanmean([tabRsup{ifilter}],2);
+    tabMSC_ifilter  = tabMSC{ifilter};
+    tabRsup_ifilter = tabRsup{ifilter};
+    tabR1122_ifilter = tabR1122{ifilter};
+    
+    weightMSCsupeta = (tabMSC_ifilter .^2) ./  ...
+        (1-tabMSC_ifilter) .* tabR1122_ifilter;
+
+    R(:,ifilter) = nansum(tabRsup_ifilter .* weightMSCsupeta,2) ...
+        ./ nansum(weightMSCsupeta,2);
 end
-
-
+Rlin        = reshape(R,nbfrequenciesbyband*Pfilter,1);
+allfreqslin = reshape(allfreqsinfilters_Hz,nbfrequenciesbyband*Pfilter,1);

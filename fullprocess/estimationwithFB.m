@@ -50,7 +50,7 @@ addpath ZZtoolbox/
 %=====================
 MSCthreshold     = 0.98;
 FLAGsaveall      = 0;
-FLAGsavesmall    = 1;
+FLAGsavesmall    = 0;
 nofilterbankflag = 0;
 
 %=====================
@@ -99,6 +99,7 @@ for ihc = 1 %:8, ihc
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
     nbmats                       = length(fileswithdotmat);
+    nbmats=1;
     %====== Useful evaluated parameters for general purposes
     % 10000 means that we dont  know here the values. It is 
     % adjusted at the end of the loop.
@@ -120,7 +121,7 @@ for ihc = 1 %:8, ihc
     %==================================================
     for ifile=1:nbmats, ifile,
         tic
-        fullfilename_i      = fileswithdotmat(ifile).name;
+        fullfilename_i      = fileswithdotmat(20).name;
         dotlocation         = strfind(fullfilename_i,'.');
         underscorelocation  = strfind(fullfilename_i,'_');
         filenameonly        = fullfilename_i(...

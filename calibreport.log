@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.25)  1 DEC 2015 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.25)  1 DEC 2015 16:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1459,15 +1459,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
  (./calibreport.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 233.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 233.
+Package rerunfilecheck Info: File `calibreport.out' has not changed.
+(rerunfilecheck)             Checksum: 7FA10C0DD2ABE55FA57DE8BED7818D3A;6247.
 
-
-Package rerunfilecheck Warning: File `calibreport.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `calibreport.out':
-(rerunfilecheck)             Before: 68135943DFDF9B65A3A56AF318C3B3D7;6246
-(rerunfilecheck)             After:  7FA10C0DD2ABE55FA57DE8BED7818D3A;6247.
 
 LaTeX Warning: There were undefined references.
 
@@ -1487,7 +1481,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 233.
 Here is how much of TeX's memory you used:
  7757 strings out of 493089
  115169 string characters out of 6134842
- 217179 words of memory out of 5000000
+ 217185 words of memory out of 5000000
  10623 multiletter control sequences out of 15000+600000
  19864 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1529,7 +1523,7 @@ nts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on calibreport.pdf (157 pages, 2122248 bytes).
+Output written on calibreport.pdf (157 pages, 2122321 bytes).
 PDF statistics:
  2158 PDF objects out of 2487 (max. 8388607)
  1828 compressed objects within 19 object streams
