@@ -13,12 +13,12 @@ directorysignals    = '../../../../AAdataI26calib/';
 
 %==== this directory contains the parameters evalauted by the
 % program estimationwithFB.m
-directoryinputresults = '../AAresultswithFB98bis/';
+directoryinputresults = '../AAresultswithFB98/';
 
 saveflag                = 0;
 randomlydoubledaynumber = 15;
 
-for ihc = 2
+for ihc = 1
     numfig = ihc;
     % list of the files from 1 to nbmats
     % if you want a name type fileswithdotmat(#)

@@ -53,7 +53,9 @@ function [SUTs, filteredsignals, allfrqsFFT_Hz, alltimes_sec, ...
 %                 DFT duration (typical integer value is 5)
 %     Fs_Hz: sampling frequency in Hz
 %     MSCthreshold: MSC threshold (advised value > 0.98)
-%     flagtheoreticalSTDs: if 1, the field
+%     flagtheoreticalSTDs: if 1, the theoretical STDs 
+%         (fields xx.theoSTDmodonRsup and theoSTDphase_rd of SUT variable) 
+%         are performed
 %========================================================================
 % Rk: the spectral components are performed on successive DFTs with
 %     overlapping. If M denotes the ratioFFT2DSP and
@@ -360,7 +362,8 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %
 %====
 % Inputs:
-%        allSDs:
+%        allSDs, also called SCP in other programs:
+%        SD (Spectral Density) = SCP (Spectral ComPonent)
 %            all spectrals components (provided by the function
 %                estimSD.
 %        MSCThreshold: MSC threshold, typicall 0.99
@@ -378,7 +381,9 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %                   above the threshold
 %
 %            Rsup.mod: modulus of Rsup estimated on Rsup.tabmod
-%            Rsup.modcst: modulus of Rsup estimated on Rsup.tabmod
+%            Rsup.modcst: modulus of Rsup estimated on Rsup.tabmod above
+%            threshold
+%
 %            Rsup.stdmodcst: STD estimated on Rsup.tabmod
 %                   with MSC above the threshold
 %            Rsup.phase: table of the phases estimated on Rsup.tabphase
@@ -400,8 +405,10 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %           MSC.tabcst: table of the MSC with values above the threshold
 %           MSC.indexcst: index of the
 %               table of the MSC with values above the threshold
-%
-%       Nsupthreshold: number of values above the threshold
+%           MSC.tabweightMSC: table of weights for averaging the Rsup (see formula
+%           2.14 to 2.17 in calibreport.pdf)
+%       
+%       Nsupthreshold: number of values above the threshold 
 %
 %
 %========================================================================
@@ -461,7 +468,8 @@ tabHURRR    = [allSDs.Rinf];
 %========================================================================
 %================= on Rsup
 %===== real/imaginary part without constraint on MSC
-% RK in Matlab we can also use:
+%========================================================================
+% Remark: in Matlab we can also use:
 % sqrt(mean(real(z))^2+mean(imag(z))^2) = abs(mean(z))
 % and 
 % atan2(mean(imag(z),mean(real(z)) = angle(mean(z))
@@ -547,7 +555,7 @@ RsuptheowithMSCsupeta = tabmodHUUURwithMSCsupeta .* ...
 % a ponderation is applied using the estimated variance
 % of the MSC estimate
 %========================================================================
-weightMSCsupeta = (tabMSCwithMSCsupeta .^2) ./  ...
+tabweightMSCsupeta = (tabMSCwithMSCsupeta .^2) ./  ...
     (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
 weightMSCinfeta = 1 ./  ...
     (1-tabMSCwithMSCsupeta) .* RsuptheowithMSCsupeta;
@@ -556,12 +564,12 @@ weightMSCinfeta = 1 ./  ...
 %========================================================================
 if weightingflag
     hatrealHUUURwithMSCsupeta = ...
-        nansum(tabrealHUUURwithMSCsupeta .* weightMSCsupeta,2) ...
-        ./ nansum((weightMSCsupeta),2);
+        nansum(tabrealHUUURwithMSCsupeta .* tabweightMSCsupeta,2) ...
+        ./ nansum((tabweightMSCsupeta),2);
     
     hatimagHUUURwithMSCsupeta = ...
-        nansum(tabimagHUUURwithMSCsupeta .* weightMSCsupeta,2) ...
-        ./ nansum((weightMSCsupeta),2);
+        nansum(tabimagHUUURwithMSCsupeta .* tabweightMSCsupeta,2) ...
+        ./ nansum((tabweightMSCsupeta),2);
 else
     hatrealHUUURwithMSCsupeta = ...
         nanmean(tabrealHUUURwithMSCsupeta,2);
@@ -643,7 +651,7 @@ Rinf.stdphasecst = stdphaseHURRRwithMSCsupeta;
 MSC.tab          = tabMSC;
 MSC.tabcst       = tabMSCwithMSCsupeta;
 MSC.indexcst     = indextabMSCsupthreshold;
-MSC.weightMSC    = weightMSCsupeta;
+MSC.tabweightMSC    = tabweightMSCsupeta;
 %========================= END of analysis ===============================
 %=========================================================================
 function [STATSmodUUonRU, STATSmodURonRR, statMSC, ...

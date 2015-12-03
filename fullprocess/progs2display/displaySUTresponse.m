@@ -22,7 +22,7 @@ directoryinputresults = '../AAresultswithFB98/';
 sensor_UT    = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag     = 1;
 trimmeanflag = 0;
-for ihc = 1
+for ihc = 1:8
     numfig = ihc;
     figure(numfig);
     % list of the files from 1 to nbmats
@@ -93,52 +93,52 @@ for ihc = 1
     nbofvaluesoverthresholdS       = nbofvaluesoverthreshold(inds,:);
     
     %== unique frequency value
-    [allfrqsPfiltersUS, inda]      = unique(allfrqsPfiltersS);
-    allRatioPfiltersUS             = allRatioPfiltersS(inda,:);
-    allmeanMSCcstPfiltersUS        = allmeanMSCcstPfiltersS(inda,:);
-    STDmodRatioPfilters_aveUS      = STDmodRatioPfilters_aveS(inda);
-    STDphaseRatioPfilters_aveUS    = STDphaseRatioPfilters_aveS(inda);
-    nbofvaluesoverthresholdUS      = nbofvaluesoverthresholdS(inda,:);
+    [allfrqsPfiltersSU, indu]      = unique(allfrqsPfiltersS);
+    allRatioPfiltersUS             = allRatioPfiltersS(indu,:);
+    allmeanMSCcstPfiltersUS        = allmeanMSCcstPfiltersS(indu,:);
+    STDmodRatioPfilters_aveUS      = STDmodRatioPfilters_aveS(indu);
+    STDphaseRatioPfilters_aveUS    = STDphaseRatioPfilters_aveS(indu);
+    nbofvaluesoverthresholdUS      = nbofvaluesoverthresholdS(indu,:);
     
     %== without 0 frequency values
-    allfrqsPfiltersUSZ             = allfrqsPfiltersUS(not(allfrqsPfiltersUS==0));
-    RatioPfiltersUSZ               = allRatioPfiltersUS(not(allfrqsPfiltersUS==0),:);
-    allmeanMSCcstPfiltersUSZ       = allmeanMSCcstPfiltersUS(not(allfrqsPfiltersUS==0),:);
-    STDmodRatioPfilters_aveUSZ     = STDmodRatioPfilters_aveUS(not(allfrqsPfiltersUS==0));
-    STDphaseRatioPfilters_aveUSZ   = STDphaseRatioPfilters_aveUS(not(allfrqsPfiltersUS==0));
-    nbofvaluesoverthresholdUSZ     = nbofvaluesoverthresholdUS(not(allfrqsPfiltersUS==0),:);
+    allfrqsPfiltersSUZ             = allfrqsPfiltersSU(not(allfrqsPfiltersSU==0));
+    RatioPfiltersSUZ               = allRatioPfiltersUS(not(allfrqsPfiltersSU==0),:);
+    allmeanMSCcstPfiltersSUZ       = allmeanMSCcstPfiltersUS(not(allfrqsPfiltersSU==0),:);
+    STDmodRatioPfilters_aveSUZ     = STDmodRatioPfilters_aveUS(not(allfrqsPfiltersSU==0));
+    STDphaseRatioPfilters_aveSUZ   = STDphaseRatioPfilters_aveUS(not(allfrqsPfiltersSU==0));
+    nbofvaluesoverthresholdSUZ     = nbofvaluesoverthresholdUS(not(allfrqsPfiltersSU==0),:);
     
     %====== absolute and arg of the ratios
-    modRatioPfiltersUSZ            = abs(RatioPfiltersUSZ);
-    phaseRatioPfiltersUSZ_rd       = angle(RatioPfiltersUSZ);
+    modRatioPfiltersSUZ            = abs(RatioPfiltersSUZ);
+    phaseRatioPfiltersSUZ_rd       = angle(RatioPfiltersSUZ);
     %====== averaging by TRIMMEAN to avoid outliers
     if trimmeanflag
-        meanmodRatioPfiltersUSZ        = trimmean(modRatioPfiltersUSZ,30,2);
-        meanphasePfiltersUSZ_rd        = trimmean(phaseRatioPfiltersUSZ_rd,30,2);
+        meanmodRatioPfiltersSUZ        = trimmean(modRatioPfiltersSUZ,30,2);
+        meanphasePfiltersSUZ_rd        = trimmean(phaseRatioPfiltersSUZ_rd,30,2);
     else
-        meanmodRatioPfiltersUSZ        = nanmean(modRatioPfiltersUSZ,2);
-        meanphasePfiltersUSZ_rd        = nanmean(phaseRatioPfiltersUSZ_rd,2);
+        meanmodRatioPfiltersSUZ        = nanmean(modRatioPfiltersSUZ,2);
+        meanphasePfiltersSUZ_rd        = nanmean(phaseRatioPfiltersSUZ_rd,2);
     end
     %====== STDs
-    STDmodPfiltersUSZ              = nanstd(modRatioPfiltersUSZ,[],2);
-    STDphasePfiltersUSZ_rd         = nanstd(phaseRatioPfiltersUSZ_rd,[],2);
+    STDmodPfiltersSUZ              = nanstd(modRatioPfiltersSUZ,[],2);
+    STDphasePfiltersSUZ_rd         = nanstd(phaseRatioPfiltersSUZ_rd,[],2);
     
-    ICallRatioPfiltersUSZ          = STDmodPfiltersUSZ ./ ...
-        sqrt(sum(nbofvaluesoverthresholdUSZ,2));
+    ICallRatioPfiltersSUZ          = STDmodPfiltersSUZ ./ ...
+        sqrt(sum(nbofvaluesoverthresholdSUZ,2));
     
-    ICallRatioPfiltersUSZbis       = STDmodRatioPfilters_aveUSZ ./ ...
-        sqrt(sum(nbofvaluesoverthresholdUSZ,2));
+    ICallRatioPfiltersSUZbis       = STDmodRatioPfilters_aveSUZ ./ ...
+        sqrt(sum(nbofvaluesoverthresholdSUZ,2));
     
     N_freq_vector = 300;
     freq_vector   = logspace(log10(0.001),log10(30),N_freq_vector) .';
     [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
-        HCP_acoustical(freq_vector, allfrqsPfiltersUSZ, sensor_UT, ref_sensor, 'nofir');
+        HCP_acoustical(freq_vector, allfrqsPfiltersSUZ, sensor_UT, ref_sensor, 'nofir');
     
     %================================
-    absestimwithcorrect = coeffsens * meanmodRatioPfiltersUSZ .* abs(TFsensor4freqRatio);
+    absestimwithcorrect = coeffsens * meanmodRatioPfiltersSUZ .* abs(TFsensor4freqRatio);
     %================================================
     subplot(211)
-    semilogx(allfrqsPfiltersUSZ,20*log10(absestimwithcorrect),'ko-',...
+    semilogx(allfrqsPfiltersSUZ,20*log10(absestimwithcorrect),'ko-',...
         'markersize',4,'markerfaceco','k'),
     grid on
     ylabel('Amplitude [dB]','fontname','times','fontsize',14)
@@ -175,11 +175,11 @@ for ihc = 1
     
     %========================== PHASE =========
     
-    anglewithcorrect_rd = meanphasePfiltersUSZ_rd + angle(TFsensor4freqRatio);
+    anglewithcorrect_rd = meanphasePfiltersSUZ_rd + angle(TFsensor4freqRatio);
     angltheo_rd         = angle(p_total_NRS)+ angle(TF_ref_sensor);
     
     subplot(212)
-    semilogx(allfrqsPfiltersUSZ,unwrap(anglewithcorrect_rd)*180/pi,...
+    semilogx(allfrqsPfiltersSUZ,unwrap(anglewithcorrect_rd)*180/pi,...
         'ko-','markersize',4,'markerfaceco','k')
     
     set(gca,'fontname','times','fontsize',14)

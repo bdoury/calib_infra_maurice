@@ -31,6 +31,14 @@ addpath ZZtoolbox/
 MSCthreshold     = 0.98;
 FLAGsavesmall    = 1;
 Fs_Hz            = 20;
+nbfrequenciesbyband    = 15;
+
+%==== List of inputs to the developper
+% - filter.num and .den 
+% - allfreqsinfilter_Hz
+% - Fs_Hz
+% - the signals (signals_centered variable in the following)
+
 %=====================
 %=== directory of input signals
 directorysignals    = '../../../AAdataI26calib/';
@@ -50,7 +58,6 @@ eval(cmdloadfilter);
 %=====================
 Pfilter                = length(filtercharact);
 filterbank             = cell(Pfilter,1);
-nbfrequenciesbyband    = 15;
 allfreqsinfilters_Hz   = zeros(nbfrequenciesbyband,Pfilter);
 windshape              = cell(Pfilter,1);
 for ifilter = 1:Pfilter
@@ -87,6 +94,8 @@ for ifilter = 1:Pfilter
     filterbank{ifilter}.num = filnum;
     filterbank{ifilter}.den = filden;
 end
+
+
 ihc   = 1;
 %===================== read data =========================
 fileswithdotmat    = dir(sprintf('%ss%i/s%iy*.mat',...
@@ -140,6 +149,7 @@ for ifilter = 1:Pfilter
     SCPperiod_sec   = filtercharact(ifilter).SCPperiod_sec;
     overlapDFT      = filtercharact(ifilter).overlapDFT;
     ratioDFT2SCP    = filtercharact(ifilter).ratioDFT2SCP;
+    % Computation
     lengthDFT       = fix(SCPperiod_sec*Fs_Hz/ratioDFT2SCP);
     lengthSCP       = fix(SCPperiod_sec*Fs_Hz);
     DFTshift        = fix((1-overlapDFT)*lengthDFT);
@@ -213,3 +223,11 @@ for  ifilter = 1:Pfilter
 end
 Rlin        = reshape(R,nbfrequenciesbyband*Pfilter,1);
 allfreqslin = reshape(allfreqsinfilters_Hz,nbfrequenciesbyband*Pfilter,1);
+
+% Rsup/Rlin [nbfrequenciesbyband*Pfilter]
+% allfreqlin (Hz) [nbfrequenciesbyband*Pfilter]
+% nbofvaluesoverthreshold [nbfrequenciesbyband*Pfilter]
+% MSC [nbfrequenciesbyband*Pfilter]
+% CI/variance [nbfrequenciesbyband*Pfilter]
+% all inputs
+
