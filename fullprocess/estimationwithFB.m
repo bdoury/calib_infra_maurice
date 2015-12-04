@@ -50,7 +50,7 @@ addpath ZZtoolbox/
 %=====================
 MSCthreshold     = 0.98;
 FLAGsaveall      = 0;
-FLAGsavesmall    = 0;
+FLAGsavesmall    = 1;
 nofilterbankflag = 0;
 flagtheoSTD      = 0;
 %=====================
@@ -95,7 +95,7 @@ Pfilter = length(filtercharact);
 %     filtercharact(ifilter).overlapDFT=0.75;
 % end
 
-for ihc = 2:8,  % === ihc is the site - index of H and C
+for ihc = 1:8,  % === ihc is the site - index of H and C
     %===================== read data =========================
     fileswithdotmat              = dir(sprintf('%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
