@@ -39,6 +39,7 @@ nbfrequenciesbyband    = 20;
 % - allfreqsinfilter_Hz
 % - Fs_Hz
 % - the signals (signals_centered variable in the following)
+% - ref sensor response
 
 %=====================
 %=== directory of input signals
