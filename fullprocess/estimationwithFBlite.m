@@ -26,12 +26,13 @@
 
 clear
 addpath ZZtoolbox/
-
+%=====================
+load onefilest1file20.mat
 %=====================
 MSCthreshold     = 0.98;
 FLAGsavesmall    = 1;
 Fs_Hz            = 20;
-nbfrequenciesbyband    = 15;
+nbfrequenciesbyband    = 20;
 
 %==== List of inputs to the developper
 % - filter.num and .den 
@@ -89,6 +90,7 @@ for ifilter = 1:Pfilter
     switch windowshapename
         case 'hann'
             windshape{ifilter} = hann(lengthDFT,'periodic');
+            windshape{ifilter} = windshape{ifilter} / sqrt(sum(windshape{ifilter} .^2));
     end
     eval(fdesign);
     filterbank{ifilter}.num = filnum;
@@ -133,10 +135,21 @@ date_i = sprintf('%s/%s/%s',fullfilename_i(7:10),...
 %============================================
 [Nsignals,nbsignals] = size(signals_centered);
 sigout               = zeros(Nsignals,nbsignals,Pfilter);
+L_ifilter  = zeros(Pfilter,1);
+allfrq_aux = cell(Pfilter,1);
+EXPV       = cell(Pfilter,1);
+
 for ifilter = 1:Pfilter
     filnum = filterbank{ifilter}.num;
     filden = filterbank{ifilter}.den;
     sigout(:,:,ifilter) = filter(filnum,filden,signals_centered);
+    L_ifilter(ifilter)  = length([frqs_Hz{ifilter}]);
+    allfrq_aux{ifilter} = frqs_Hz{ifilter}(1:L_ifilter(ifilter))'/Fs_Hz;
+    SCPperiod_sec   = filtercharact(ifilter).SCPperiod_sec;
+    ratioDFT2SCP    = filtercharact(ifilter).ratioDFT2SCP;
+    lengthDFT       = fix(SCPperiod_sec*Fs_Hz/ratioDFT2SCP);
+    DFTindex        = (0:lengthDFT-1)';
+    EXPV{ifilter}   = exp(-2j*pi*DFTindex*allfrq_aux{ifilter});
 end
 %============================================
 %============================================
@@ -147,22 +160,20 @@ tabMSC     = cell(Pfilter,1);
 
 for ifilter = 1:Pfilter
     SCPperiod_sec   = filtercharact(ifilter).SCPperiod_sec;
-    overlapDFT      = filtercharact(ifilter).overlapDFT;
     ratioDFT2SCP    = filtercharact(ifilter).ratioDFT2SCP;
+    overlapDFT      = filtercharact(ifilter).overlapDFT;
     % Computation
     lengthDFT       = fix(SCPperiod_sec*Fs_Hz/ratioDFT2SCP);
     lengthSCP       = fix(SCPperiod_sec*Fs_Hz);
     DFTshift        = fix((1-overlapDFT)*lengthDFT);
-    NSCPwindows     = fix(Nsignals/SCPperiod_sec/Fs_Hz);
+    NSCPwindows     = fix(Nsignals/Fs_Hz/SCPperiod_sec);
     sigauxW         = zeros(lengthDFT,2);
-    listindex       = (0:lengthDFT-1)';
+    DFTindex        = (0:lengthDFT-1)';
     
-    SCP_ifreq11     = zeros(nbfrequenciesbyband,NSCPwindows-1);
-    SCP_ifreq22     = zeros(nbfrequenciesbyband,NSCPwindows-1);
-    SCP_ifreq12     = zeros(nbfrequenciesbyband,NSCPwindows-1);
-    
+    SCP_ifreq11     = zeros(L_ifilter(ifilter),NSCPwindows-1);
+    SCP_ifreq22     = zeros(L_ifilter(ifilter),NSCPwindows-1);
+    SCP_ifreq12     = zeros(L_ifilter(ifilter),NSCPwindows-1);
 
-    
     for iwindowSCP  = 1:NSCPwindows-1
         id0   = (iwindowSCP-1)*lengthSCP;
         id1   = 0;
@@ -171,58 +182,74 @@ for ifilter = 1:Pfilter
             cpDFT  = cpDFT+1;
             id1    = id0 + (cpDFT-1)*DFTshift+1;
             id2    = id1+lengthDFT-1;
-            sigaux = sigout(id1:id2,:,ifilter);
+            sigaux = squeeze(sigout(id1:id2,:,ifilter));
             sigauxW(:,1) = sigaux(:,1) .* windshape{ifilter};
             sigauxW(:,2) = sigaux(:,2) .* windshape{ifilter};
-            for ifreq = 1:nbfrequenciesbyband
-                fq_aux   = allfreqsinfilters_Hz(ifreq,ifilter)/Fs_Hz;
-                EXPVect  = exp(-2j*pi*fq_aux*listindex);
-                X_ifreq1 = sum(sigauxW(:,1) .* EXPVect);
-                X_ifreq2 = sum(sigauxW(:,2) .* EXPVect);
+            for ifreq = 1:L_ifilter(ifilter)
+                X_ifreq1 = sum(sigauxW(:,1) .* EXPV{ifilter}(:,ifreq));
+                X_ifreq2 = sum(sigauxW(:,2) .* EXPV{ifilter}(:,ifreq));
                 SCP_ifreq11(ifreq,iwindowSCP) = SCP_ifreq11(ifreq,iwindowSCP) + ...
                     X_ifreq1 .* conj(X_ifreq1);
                 SCP_ifreq22(ifreq,iwindowSCP) = SCP_ifreq22(ifreq,iwindowSCP) + ...
                     X_ifreq2 .* conj(X_ifreq2);
                 SCP_ifreq12(ifreq,iwindowSCP) = SCP_ifreq12(ifreq,iwindowSCP) + ...
-                    X_ifreq1 .* conj(X_ifreq2);
+                    conj(X_ifreq1) .* (X_ifreq2);
             end
         end
     end
     tabMSC_ifilter   = (abs(SCP_ifreq12) .^2) ./ ...
         (SCP_ifreq11 .* SCP_ifreq22);
-    ind_ifilter = (tabMSC_ifilter>0.98);
-    tabMSC_ifilter_overTH = NaN(size(tabMSC_ifilter));
-    tabMSC_ifilter_overTH(ind_ifilter) = ...
+    ind_ifilter = (tabMSC_ifilter>MSCthreshold);
+    tabMSC_ifilter_cst = NaN(size(tabMSC_ifilter));
+    tabMSC_ifilter_cst(ind_ifilter) = ...
         tabMSC_ifilter(ind_ifilter);
-    tabMSC{ifilter}  = tabMSC_ifilter_overTH;
+    tabMSC{ifilter}  = tabMSC_ifilter_cst;
 
     tabRsup_ifilter  = SCP_ifreq11 ./ conj(SCP_ifreq12);
-    tabRsup_ifilter_overTH = NaN(size(tabRsup_ifilter));
-    tabRsup_ifilter_overTH(ind_ifilter) = ...
+    tabRsup_ifilter_cst = NaN(size(tabRsup_ifilter));
+    tabRsup_ifilter_cst(ind_ifilter) = ...
         tabRsup_ifilter(ind_ifilter);
-    tabRsup{ifilter} = tabRsup_ifilter_overTH;
+    tabRsup{ifilter} = tabRsup_ifilter_cst;
 
-    tabR1122_ifilter  = SCP_ifreq11 ./ SCP_ifreq22;
-    tabR1122_ifilter_overTH = NaN(size(tabR1122_ifilter));
-    tabR1122_ifilter_overTH(ind_ifilter) = ...
-        tabR1122_ifilter(ind_ifilter);
-    tabR1122{ifilter} = tabR1122_ifilter_overTH;
+    SCP_ifreq11_cst   = NaN(size(SCP_ifreq11));
+    SCP_ifreq11_cst(ind_ifilter) = SCP_ifreq11(ind_ifilter);
+    SCP_ifreq22_cst   = NaN(size(SCP_ifreq22));
+    SCP_ifreq22_cst(ind_ifilter) = SCP_ifreq22(ind_ifilter);
+    
+    tabR1122_cst      = SCP_ifreq11_cst ./ SCP_ifreq22_cst;
+    tabR1122{ifilter} = tabR1122_cst;
 end
-R = zeros(nbfrequenciesbyband,Pfilter);
 
+R = cell(Pfilter,1);
 for  ifilter = 1:Pfilter
-    tabMSC_ifilter  = tabMSC{ifilter};
-    tabRsup_ifilter = tabRsup{ifilter};
+    tabMSC_ifilter   = tabMSC{ifilter};
+    tabRsup_ifilter  = tabRsup{ifilter};
     tabR1122_ifilter = tabR1122{ifilter};
     
-    weightMSCsupeta = (tabMSC_ifilter .^2) ./  ...
+    weightMSCsupeta  = (tabMSC_ifilter .^2) ./  ...
         (1-tabMSC_ifilter) .* tabR1122_ifilter;
-
-    R(:,ifilter) = nansum(tabRsup_ifilter .* weightMSCsupeta,2) ...
+    
+    R{ifilter} = nansum(tabRsup_ifilter .* weightMSCsupeta,2) ...
         ./ nansum(weightMSCsupeta,2);
 end
-Rlin        = reshape(R,nbfrequenciesbyband*Pfilter,1);
 allfreqslin = reshape(allfreqsinfilters_Hz,nbfrequenciesbyband*Pfilter,1);
+Rlinonfrq=[];
+for ip=1:Pfilter
+    Rlinonfrq = [Rlinonfrq;R{ip}];
+end
+
+
+
+load onefilest1file20.mat
+loglog(abs(([Rlinonfrq allRatioSupPfilters])),'.')
+
+
+%%
+indtemp=1;
+SCP_ifreq11(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).UU(idipinf(6):idipsup(6))
+SCP_ifreq22(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).RR(idipinf(6):idipsup(6))
+% SCP_ifreq12(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).UR(idipinf(6):idipsup(6))
+
 
 % Rsup/Rlin [nbfrequenciesbyband*Pfilter]
 % allfreqlin (Hz) [nbfrequenciesbyband*Pfilter]

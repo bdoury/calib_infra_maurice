@@ -472,7 +472,7 @@ tabHURRR    = [allSDs.Rinf];
 % Remark: in Matlab we can also use:
 % sqrt(mean(real(z))^2+mean(imag(z))^2) = abs(mean(z))
 % and 
-% atan2(mean(imag(z),mean(real(z)) = angle(mean(z))
+% atan2(mean(imag(z)),mean(real(z))) = angle(mean(z))
 %========================================================================
 tabrealHUUUR  = real(tabHUUUR);
 tabimagHUUUR  = imag(tabHUUUR);
