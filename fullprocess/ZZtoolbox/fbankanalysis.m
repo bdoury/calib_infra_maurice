@@ -233,15 +233,14 @@ end
 %========================================================================
 function [allSDs, time_sec, frqsFFT_Hz] = ...
     estimSCP(xU,xR,Lfft,overlapFFT, ...
-    NaverageFFTs, overlapSD, Fs_Hz, smoothwindow)
+    ratioDFT2SCP, overlapSD, Fs_Hz, smoothwindow)
 %========================================================================
 % Perform the spectral components of the two signals xU et xR.
 %========================================================================
-% The code uses the Welch's approach. The signal is shared into DFT
-% windows of which the length Lfft, with the
-% overlap rate of OVERLAPFFT. Then the specral components is averaged
-% on NaverageFFTs DFT blocks. Therefore each spectral block corresponds
-% to a time period reported in TIME_SEC.
+% The code uses the Welch's approach: on a given time window of signals
+% DFT is performed. Sucessive time windows can overlapped.
+% Then the specral components are obtained by averaging some 
+% successive DFT blocks.
 %
 % Inputs:
 %    xU: signal observed on the SUT (T x 1)
@@ -272,11 +271,6 @@ function [allSDs, time_sec, frqsFFT_Hz] = ...
 xU   = xU(:);
 xR   = xR(:);
 N    = length(xU);
-sqrtLfft    = sqrt(Lfft);
-shiftSignal = fix((1-overlapFFT)*Lfft);
-NblocksFFT  = fix((N-(Lfft-shiftSignal))/shiftSignal);
-allFFTsRR   = zeros(Lfft,NblocksFFT);
-allFFTsUU   = zeros(Lfft,NblocksFFT);
 if exist('smoothwindow','var')
     switch smoothwindow
         case 'hann'
@@ -296,6 +290,7 @@ end
 %========================================================================
 % the normalisation below is
 % not useful if we only consider PSD ratios
+Hwin = Hwin *sqrt(Lfft/(Hwin'*Hwin));
 %========================================================================
 %   <-------- NaverageFFTs = 5 ------->
 %  |******|******|******|******|******|
@@ -311,7 +306,12 @@ end
 % to proceed in such a way.
 %
 %========================================================================
-Hwin = Hwin *sqrt(Lfft/(Hwin'*Hwin));
+sqrtLfft    = sqrt(Lfft);
+shiftSignal = fix((1-overlapFFT)*Lfft);
+NblocksFFT  = fix((N-(Lfft-shiftSignal))/shiftSignal);
+allFFTsRR   = zeros(Lfft,NblocksFFT);
+allFFTsUU   = zeros(Lfft,NblocksFFT);
+
 for ibF  = 1:NblocksFFT
     ibT  = (ibF-1)*shiftSignal+(1:Lfft);
     xU_i = xU(ibT) .* Hwin;
@@ -321,11 +321,12 @@ for ibF  = 1:NblocksFFT
     allFFTsUU(:,ibF) = fft(xU_i,Lfft)/sqrtLfft;
     allFFTsRR(:,ibF) = fft(xR_i,Lfft)/sqrtLfft;
 end
-NaverageFFT = fix(NaverageFFTs/(1-overlapFFT))-1;
-shiftFFTs = fix((1-overlapSD)*NaverageFFTs);
-allSDs    = struct;
-time_sec  = struct;
-NshiftFFTs_with_overlap = max([2*shiftFFTs-1,1]);
+NaverageFFT = fix(ratioDFT2SCP/(1-overlapFFT))-1;
+NaverageFFT = max([NaverageFFT,ratioDFT2SCP]);
+shiftFFTs   = fix((1-overlapSD)*NaverageFFT);
+allSDs      = struct;
+time_sec    = struct;
+NshiftFFTs_with_overlap = max([shiftFFTs,1]); 
 NSD       = fix(NblocksFFT/NshiftFFTs_with_overlap);
 for ibB=1:NSD,
     indB1 = (ibB-1)*NshiftFFTs_with_overlap+1;
@@ -359,8 +360,10 @@ function [Rsup, Rinf, SCPsupeta, MSC, Nsupthreshold] ...
 %
 % [Rsup, Rinf, SpMatrix, MSC, Nsupthreshold] ...
 %    = estimSUT(allSDs, MSCThreshold)
-%
-%====
+%========================================================================
+%==== You have to change the 'SD' in 'SCP' to be homogeous
+%==== You have to chamge the 'overeta' by 'cst'
+%========================================================================
 % Inputs:
 %        allSDs, also called SCP in other programs:
 %        SD (Spectral Density) = SCP (Spectral ComPonent)

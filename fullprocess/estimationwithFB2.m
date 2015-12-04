@@ -52,6 +52,7 @@ MSCthreshold     = 0.98;
 FLAGsaveall      = 0;
 FLAGsavesmall    = 0;
 nofilterbankflag = 0;
+flagtheoSTD      = 0;
 
 %=====================
 %=== directory of input signals
@@ -179,7 +180,7 @@ for ihc = 1 %:8,  ihc is the site - index of H and C
         [SUTs, filteredsignals, allfrqsFFT_Hz, ...
             alltimes_sec, filterbank] = ...
             fbankanalysis(signals_centered,...
-            filtercharact,Fs_Hz,MSCthreshold,1);
+            filtercharact,Fs_Hz,MSCthreshold,flagtheoSTD);
         %============================================
         % These three quantities, idipinf, idipsup and cumsumnbfq_ip
         % do not depend on the index ifile and do depend only on the
@@ -255,10 +256,10 @@ for ihc = 1 %:8,  ihc is the site - index of H and C
     nbofvaluesoverthreshold     = nbofvaluesoverthreshold(1:id2,:);
     
     allScpPfilters              = allScpPfilters(:,1:id2,:);
-    
-    theoreticalSTDmod           = theoreticalSTDmod(1:id2,:);
-    theoreticalSTDphase_rad     = theoreticalSTDphase_rad(1:id2,:);
-    
+    if flagtheoSTD
+        theoreticalSTDmod           = theoreticalSTDmod(1:id2,:);
+        theoreticalSTDphase_rad     = theoreticalSTDphase_rad(1:id2,:);
+    end
     if FLAGsavesmall
         comsave = ...
             sprintf('save %s/resultssta26sensor%i',...

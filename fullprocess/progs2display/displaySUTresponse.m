@@ -22,7 +22,7 @@ directoryinputresults = '../AAresultswithFB98/';
 sensor_UT    = 'I26DE_BDF_RSP_2015134_MB3';
 saveflag     = 1;
 trimmeanflag = 0;
-for ihc = 1:8
+for ihc = 1%:8
     numfig = ihc;
     figure(numfig);
     % list of the files from 1 to nbmats

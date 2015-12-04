@@ -59,6 +59,9 @@ cmdloadfilter         = sprintf('run(''%s'')',filtercharactfilename);
 eval(cmdloadfilter);
 %=====================
 Pfilter                = length(filtercharact);
+for ifilter = 1:Pfilter
+    filtercharact(ifilter).overlapDFT=0;
+end
 filterbank             = cell(Pfilter,1);
 allfreqsinfilters_Hz   = zeros(nbfrequenciesbyband,Pfilter);
 windshape              = cell(Pfilter,1);
@@ -194,7 +197,7 @@ for ifilter = 1:Pfilter
                 SCP_ifreq22(ifreq,iwindowSCP) = SCP_ifreq22(ifreq,iwindowSCP) + ...
                     X_ifreq2 .* conj(X_ifreq2);
                 SCP_ifreq12(ifreq,iwindowSCP) = SCP_ifreq12(ifreq,iwindowSCP) + ...
-                    conj(X_ifreq1) .* (X_ifreq2);
+                    (X_ifreq1) .* conj(X_ifreq2);
             end
         end
     end
@@ -234,19 +237,18 @@ for  ifilter = 1:Pfilter
         ./ nansum(weightMSCsupeta,2);
 end
 allfreqslin = reshape(allfreqsinfilters_Hz,nbfrequenciesbyband*Pfilter,1);
-Rlinonfrq=[];
+Rlinonfrq   = [];
 for ip=1:Pfilter
     Rlinonfrq = [Rlinonfrq;R{ip}];
 end
 
-
-
 load onefilest1file20.mat
 loglog(abs(([Rlinonfrq allRatioSupPfilters])),'.')
+semilogx(angle(([Rlinonfrq allRatioSupPfilters])),'.')
 
 
 %%
-indtemp=1;
+indtemp=2222;
 SCP_ifreq11(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).UU(idipinf(6):idipsup(6))
 SCP_ifreq22(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).RR(idipinf(6):idipsup(6))
 % SCP_ifreq12(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).UR(idipinf(6):idipsup(6))

@@ -1,13 +1,13 @@
 function [allSDs, time_sec, frqsFFT_Hz] = ...
     estimSCP(xU,xR,Lfft,overlapFFT, ...
-    NaverageFFTs, overlapSD, Fs_Hz, smoothwindow)
+    ratioDFT2SCP, overlapSD, Fs_Hz, smoothwindow)
 %==========================================================================
 % Perform the spectral components of the two signals xU et xR.
 %==========================================================================
 % The code uses the Welch's approach. The signal is shared into DFT
 % windows of which the length is Lfft, with the
 % overlap rate of OVERLAPFFT. Then the specral components is averaged
-% on NaverageFFTs DFT blocks. Therefore each spectral block corresponds
+% on some DFT blocks. Therefore each spectral block corresponds
 % to a time period reported in TIME_SEC.
 %
 % Inputs:
@@ -15,7 +15,7 @@ function [allSDs, time_sec, frqsFFT_Hz] = ...
 %    xR: signal observed on the SREF (T x 1)
 %    Lfft: length og the FFTs
 %    overlapFFT: between 0 and 1, overlap on the FFT block
-%    NaverageFFTs: number of FFT-length to averaging
+%    ratioDFT2SCP: number of FFT-length to averaging
 %    overlapSD: between 0 and 1, overlap on the averaging
 %                  Spectral Density block
 %    Fs_Hz: sampling frequency in Hz
@@ -72,11 +72,11 @@ for ibF  = 1:NblocksFFT
     allFFTsUU(:,ibF) = fft(xU_i,Lfft)/sqrtLfft;
     allFFTsRR(:,ibF) = fft(xR_i,Lfft)/sqrtLfft;
 end
-NaverageFFT = fix(NaverageFFTs/(1-overlapFFT))-1;
-shiftFFTs = fix((1-overlapSD)*NaverageFFTs);
-allSDs    = struct;
-time_sec  = struct;
-NshiftFFTs_with_overlap = max([2*shiftFFTs-1,1]);
+NaverageFFT = fix(ratioDFT2SCP/(1-overlapFFT))-1;
+shiftFFTs   = fix((1-overlapSD)*ratioDFT2SCP);
+allSDs      = struct;
+time_sec    = struct;
+NshiftFFTs_with_overlap = max([shiftFFTs-1,1]);
 NSD       = fix(NblocksFFT/NshiftFFTs_with_overlap);
 for ibB=1:NSD,
     indB1 = (ibB-1)*NshiftFFTs_with_overlap+1;
