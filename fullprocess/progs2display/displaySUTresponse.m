@@ -29,11 +29,11 @@ for ihc = 1%:8
     % if you want a name type fileswithdotmat(#)
     fileswithdotmat = dir(sprintf('../%ss%i/s%iy*.mat',...
         directorysignals,ihc,ihc));
-    comload = sprintf('load %sresultssta26sensor%ibis',directoryinputresults,ihc);
+    comload = sprintf('load %sresultssta26sensor%i',directoryinputresults,ihc);
     eval(comload);
     switch ihc
         case 1
-            remainindex = [1:6];%[1:61  63:70]; %2015/10/13
+            remainindex = [1:61 63:70]; %2015/10/13
         case 2
             remainindex = [1:nbmats]; %[1:nbmats]; % 2015/10/13
         case 4

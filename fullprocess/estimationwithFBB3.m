@@ -93,6 +93,10 @@ Pfilter = length(filtercharact);
 %     filtercharact(Pfilter).Wlow_Hz  = 0.001;
 %     filtercharact(Pfilter).Whigh_Hz = 10;
 % end
+% for ip=1:Pfilter
+% filtercharact(ip).overlapDFT = 0.25;
+% end
+
 
 for ihc = 1 %:8,  ihc is the site - index of H and C
     %===================== read data =========================
@@ -268,7 +272,6 @@ for ihc = 1 %:8,  ihc is the site - index of H and C
             directoryresults,ihc);
         clear signals_centered
         clear filteredsignals
-        clear alltimes_sec
         clear SUTs
         eval(comsave);
     end
