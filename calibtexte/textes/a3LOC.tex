@@ -1,0 +1,123 @@
+% !TEX root = ../calibreport.tex
+%============================================
+
+Let us consider the equation:
+$$
+ Y_{t}=g_{t} \star X_{t}
+$$
+where $g_{t}$ is the $M$-ary impulse response of the single input multiple output (SIMO) linear filter and $X_{t}$ is a scalar WSS process, with zero mean and spectral matrix (of size 1) $\gamma_{x}(f)$. It is easy to show that the spectral matrix of $Y_{t}$ writes
+$$
+ \Sigma_{y}(f)=\gamma_{x}(f)G(f)G^{H}(f)
+$$
+where $G(f)$ is the discrete time Fourier transform of $g_{t}$.
+We notice that $\Sigma_{y}(f)$ is a matrix of rank 1. A particular case is a pure delay propagation filter as for example in the planar propagation where the vector entry of $G(f)$ writes:
+$$
+ G_{m}(f)=e^{-2j\pi f r_{m}^{T}\theta}
+$$
+where $r_{m}$ is the 3D location of the sensor $m$ and $\theta$ the wave number of the planar wave. It follows that the coherence matrix of the $M$-ary observation has the following entry expression
+\begin{eqnarray}
+ \label{eq:delaymatrixpuredelay}
+ C_{y,m\ell}(f)&=&e^{-2j\pi f (r_{m}-r_{\ell})^{T}\theta}
+ \\ \nonumber
+ &=&\int_{\mathds{R}^{3}} e^{-2j\pi f (r_{m}-r_{\ell})^{T}u}\delta_{\theta}(u)du
+\end{eqnarray}
+where $du$ is the infinitesimal Lebesgue measure in $\mathds{R}^{3}$ and $\delta_{\theta}$ the Dirac's distribution located in $\theta$. The expression \eqref{eq:delaymatrixpuredelay} can be seen as an expectation of $e^{-2j\pi f (r_{m}-r_{\ell})^{T}\theta}$ assuming that $\theta$ is deterministic.
+
+%===================================================================
+\subsubsection{Coherence model}
+
+In a pioneer work Mack and Flinn \cite{mack_flinn:1971} propose to model the loss of coherence by considering that the azimuth, the elevation and velocity are uncertain. More specifically, authors in \cite{nouvellet:2012}  assume that the 3D vector $\mu=(a,e,c)$ where $a$ denotes the azimuth, $e$ the elevation and $c$ the sound velocity writes:
+\begin{equation}
+ \label{eq:randomnesswn}
+ \mu=\mu_{0}+\nu
+\end{equation} 
+where $\mu_{0}=(a_{0},e_{0},c_{0})$ is a deterministic value and $\nu$ a zero-mean Gaussian random vector of dimension 3, whose covariance is denoted $\Sigma_{\mu}$.  We know that $\mu$ is related to the slowness vector $k$ by the one-to-one mapping 
+\begin{eqnarray*}
+ \label{eq:tehtaxyz}
+ {\footnotesize
+ \begin{array}{rcl}
+ f:\,
+  \mu= 
+ \left\{
+ \begin{array}{ll}
+ a=\arg(k_{2}+jk_{1})&a\in(0,2\pi)
+ \\
+ e=\arg\sin(ck_{3})&e\in(-\pi/2,\pi/2)
+ \\
+ v=(k_{1}^{2}+k_{2}^{2}+k_{3}^{2})^{1/2}&v\in\mathds{R}^{+}
+ \end{array}\right.
+ &
+ \Longleftrightarrow\vspace{6pt}
+ \\ 
+ &&\hspace{-5.5cm}
+ \,k=\left\{
+ \begin{array}{ll}
+ k_{1}=-v^{-1}\sin(a)\cos(e)
+ \\
+ k_{2}=v^{-1}\cos(a)\cos(e)&\in\mathds{R}^{3}
+ \\
+ k_{3}=v^{-1}\sin(e) 
+ \end{array}\right.
+ \end{array}}
+\end{eqnarray*}
+Using a first order Taylor's expansion, it follows that $k \approx f(\mu_{0})+J(\mu_{0})(\mu-\mu_{0})$ where the Jacobian writes
+\begin{eqnarray*}
+ J(\mu_{0}) 
+&=&
+v_{0}^{-1} \times \tilde J(\mu_0)
+\\
+\mathrm{with}&&
+\tilde J(\mu_0) = 
+\begin{bmatrix}
+ -\cos(a_{0})\cos(e_{0})&
+ \sin(a_{0})\sin(e_{0})&
+ v_{0}^{-1}\sin(a_{0})\cos(e_{0})
+ \\
+ -\sin(a_{0})\cos(e_{0})&
+ -\cos(a_{0})\sin(e_{0})&
+ -v_{0}^{-1}\cos(a_{0})\cos(e_{0})
+ \\
+ 0& 
+ \cos(e_{0})&
+ -v_{0}^{-1}\sin(e_{0})
+ \end{bmatrix}
+\end{eqnarray*}
+Therefore from \eqref{eq:randomnesswn} we derive $k\approx k_{0}+\varepsilon$ where $\varepsilon=J(\mu_{0})\,\nu$ appears as a zero-mean Gaussian random vector whose the covariance is:
+\begin{eqnarray}
+ \label{eq:aec2theta}
+\Sigma_{k} \approx v_{0}^{-2} 
+\underbrace{\tilde J(\mu_{0}) \Sigma_{\mu} \tilde J^{T}(\mu_{0})}_{\tilde \Sigma_{k}}
+\end{eqnarray}
+Hence the coherence matrix entry of the model with random wavefront writes:
+\begin{eqnarray*}
+   C_{m,\ell}(f)&=&e^{-2j\pi f(r_{m}-r_{\ell})^{T}k_{0}}
+   \Phi_{\epsilon}(2\pi f(r_{m}-r_{\ell}))
+\end{eqnarray*}
+where $\Phi_{\epsilon}:u\in\mathds{R}^{3}\mapsto\esp{e^{ju^{T}\varepsilon}}\in\mathds{C}$ is the characteristic function of $\varepsilon$. 
+Since $\varepsilon$ is Gaussian distributed with zero-mean and covariance matrix $\Sigma_{k}$, hence we have
+\begin{eqnarray}
+\label{eq:Cfr1r2Gaussian}
+C_{m,\ell}(f)=
+\underbrace{e^{-2j\pi f(r_{m}-r_{\ell})^{T}k_{0}}}_{\text{pure delay}}
+ \underbrace{e^{-2\pi^{2}(f/v_0)^{2}(r_{m}-r_{\ell})^{T}
+                 \tilde \Sigma_{k}(r_{m}-r_{\ell})}}_{\text{LOC}}
+ \end{eqnarray}
+
+We let  $\zeta=v_0/f$ that can be interpreted as a ``wavelength''. Using the MSC definition \eqref{eq:def-coherence-function}  we derive the following expression:
+\begin{eqnarray}
+\label{eq:MSCwind}
+\MSC_{km}(f)=
+e^{-\frac{4\pi^{2}}{\zeta^{2}}(r_{m}-r_{\ell})^{T}
+                 \tilde \Sigma_{k}(r_{m}-r_{\ell})}
+ \end{eqnarray}
+It follows that
+\begin{itemize}
+\item
+ when $\zeta$ is large w.r.t. the sensor  inter-distances, the matrix $C\approx I$, hence the components of $x(t)$ appear as non spatially coherent,
+
+
+\item
+when $\zeta$ is small w.r.t.  the sensor  inter-distances, the matrix $C\approx \mathds{1} \mathds{1}^{T}$ which is a projector, hence the components of $x(t)$ appear as spatially coherent.
+ 
+
+\end{itemize}

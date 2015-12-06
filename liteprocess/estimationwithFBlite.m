@@ -27,7 +27,7 @@ FLAGsavesmall    = 0;
 Fs_Hz            = 20;
 ihc              = 1;
 trimpercent      = 0.7;
-nbrandomconcat   = 10;
+nbrandomconcat   = 50;
 frequencylist_Hz = logspace(-2,log10(6),30);
 %===
 % directories
@@ -89,18 +89,26 @@ disp('************* start process ********************')
 %===============================================================
 %=============== processing function call ======================
 %===============================================================
-[Rsup, freqslin, STDmoduleR, STDphaseR, nboverTH] = estimSUTlite ...
+tic
+[Rsup, freqslin, STDmoduleR, STDphaseR, nboverTH] = ...
+    estimSUTlite ...
     (signals, filtercharact, frequencylist_Hz, ...
     Fs_Hz, MSCthreshold, trimpercent);
-
+toc
 %%
 %===============================================================
 %===============================================================
 %===============================================================
 figure(1)
-semilogx(freqslin, 20*log10(abs(Rsup)),'or')
+semilogx(freqslin, 20*log10(abs(Rsup)),...
+    'or','markerfacecolor','r')
+hold on 
+semilogx(frequencylist_Hz, 1.5*ones(length(frequencylist_Hz),1),...
+    'ob','markerfacecolor','b')
+hold off
 set(gca,'fontname','times','fontsize',12)
 grid on
+set(gca,'xlim',[0.01 7],'ylim',[-1 2])
 hold off
 title(sprintf('%i days on station %i',2*nbrandomconcat,ihc),...
     'fontname','times','fontsize',14)
@@ -117,8 +125,9 @@ set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
 
-printdirectory  = ' ../calibtexte2lite/';
-fileprint = sprintf('%sexample2onstation%i.eps',printdirectory,ihc);
+numexample = 3;
+printdirectory  = ' ../calibtextelite/';
+fileprint = sprintf('%sexample%ionstation%i.eps',printdirectory,numexample,ihc);
 figure(1)
 fileprintepscmd = sprintf('print -depsc -loose %s',fileprint);
 fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
