@@ -30,7 +30,7 @@ addpath ZZtoolbox/
 load onefilest1file20.mat
 %=====================
 MSCthreshold     = 0.98;
-FLAGsavesmall    = 1;
+FLAGsavesmall    = 0;
 Fs_Hz            = 20;
 nbfrequenciesbyband    = 20;
 
@@ -59,9 +59,9 @@ cmdloadfilter         = sprintf('run(''%s'')',filtercharactfilename);
 eval(cmdloadfilter);
 %=====================
 Pfilter                = length(filtercharact);
-for ifilter = 1:Pfilter
-    filtercharact(ifilter).overlapDFT=0;
-end
+% for ifilter = 1:Pfilter
+%     filtercharact(ifilter).overlapDFT=0;
+% end
 filterbank             = cell(Pfilter,1);
 allfreqsinfilters_Hz   = zeros(nbfrequenciesbyband,Pfilter);
 windshape              = cell(Pfilter,1);
@@ -248,7 +248,7 @@ semilogx(angle(([Rlinonfrq allRatioSupPfilters])),'.')
 
 
 %%
-indtemp=2222;
+indtemp=233;
 SCP_ifreq11(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).UU(idipinf(6):idipsup(6))
 SCP_ifreq22(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).RR(idipinf(6):idipsup(6))
 % SCP_ifreq12(1:L_ifilter(6),indtemp) ./ SUTs(6).SCP(indtemp).UR(idipinf(6):idipsup(6))

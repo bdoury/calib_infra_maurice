@@ -4,12 +4,12 @@
 
 In this chapter we derive the expression of the three spectral components associated with the two outputs signals, as a function of the responses of the two sensors. Without \emph{a priori} knowledges  the problem is ill-conditioned. An approach based on the MSC can be used to remove the uncertainty. That leads to an estimation algorithm by replacing the spectral components by consistent estimates. These estimates are obtained via Welch's technic. Finally a filter bank approach is shown to be useful. Indeed spectral estimation  needs that the signals are stationary for long periods of time, which can be  very challenging particularly in the low frequency domain. For circumvent this difficulty we propose to separate the signals in different frequency bands.
 
-\figscale{slidesITW2015/fulltestbedIS26.pdf}{The calibration systems consists of two channels: (i) the SUT with the noise reduction system (NRS), the sensor and the digitizer and (ii) the SREF with the sensor and the digitizer. Because the two digitizers are identical, the response ratio between the two channels does not depend on the digitizer. It follows that the response ratio corrected by the SREF response is an estimate of the SUT response, including the sensor and the NRS.}{}{1}
+\figscale{../slidesITW2015/fulltestbedIS26.pdf}{The calibration systems consists of two channels: (i) the SUT with the noise reduction system (NRS), the sensor and the digitizer and (ii) the SREF with the sensor and the digitizer. Because the two digitizers are identical, the response ratio between the two channels does not depend on the digitizer. It follows that the response ratio corrected by the SREF response is an estimate of the SUT response, including the sensor and the NRS.}{}{1}
 
 
 Therefore the main quantity of interest is the frequency response ratio between the two channels. It can be estimated by cross-correlation between the two outputs, assuming some hypotheses as stationarity.
 
-\figscale{slidesITW2015/processdetail.pdf}{$\widehat{S_{UU}}(f)$, $\widehat{S_{RR}}(f)$, $\widehat{S_{UR}}(f)$ denote respectively the spectrum on channel SUT, the spectrum on channel SREF and the cross-spectrum between them. In the absence of noise the ratio between the 2 responses is given by the ratio $\widehat{S_{UU}}(f)/\widehat{S_{RR}}(f)$}{}{0.7}
+\figscale{../slidesITW2015/processdetail.pdf}{$\widehat{S_{UU}}(f)$, $\widehat{S_{RR}}(f)$, $\widehat{S_{UR}}(f)$ denote respectively the spectrum on channel SUT, the spectrum on channel SREF and the cross-spectrum between them. In the absence of noise the ratio between the 2 responses is given by the ratio $\widehat{S_{UU}}(f)/\widehat{S_{RR}}(f)$}{}{0.7}
 
 %Let us remind the DFT expression, associated to the frequency $kF_s/N$, performing on $N$ samples denoted $x(0),\ldots,x(N-1)$:
 %\begin{eqnarray}
