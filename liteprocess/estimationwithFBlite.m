@@ -27,7 +27,7 @@ FLAGsavesmall    = 0;
 Fs_Hz            = 20;
 ihc              = 1;
 trimpercent      = 0.7;
-nbrandomconcat   = 50;
+nbrandomconcat   = 20;
 frequencylist_Hz = logspace(-2,log10(6),30);
 %===
 % directories
@@ -73,18 +73,19 @@ for indfile = 1:nbrandomconcat
     alldates{indfile} = date_i;
     signals           = [signals;signals_centered];
 end
-%%
-sortalldates = sort(alldates);
-txt = [];
 disp('************************************************')
+sortalldates = sort(alldates);
 display(sprintf('Station %i:',ihc));
-for ii=1:nbrandomconcat
-   aux = sprintf('%stt %s %s','{',[sortalldates{ii}],'}\\');
-   txt = [txt;aux];
-end
 display(sort(alldates))
-disp('************* start process ********************')
 %%
+txtlatex = cell(nbrandomconcat,1);
+for ii=1:nbrandomconcat
+   aux = sprintf('%stt %s %s','{\',[sortalldates{ii}],'}\\');
+   txtlatex{ii} = aux;
+end
+cell2mat(txtlatex)
+%%
+disp('************* start process ********************')
 %===============================================================
 %===============================================================
 %=============== processing function call ======================
@@ -97,6 +98,7 @@ tic
 toc
 %%
 %===============================================================
+%============================ for plotting =====================
 %===============================================================
 %===============================================================
 figure(1)
@@ -114,7 +116,7 @@ title(sprintf('%i days on station %i',2*nbrandomconcat,ihc),...
     'fontname','times','fontsize',14)
 xlabel('frequency - Hz')
 ylabel('Rsup - dB')
-%===============================================================
+%==
 HorizontalSize = 12;
 VerticalSize   = 10;
 set(gcf,'units','centimeters');
@@ -125,9 +127,13 @@ set(gcf,'paperposition',[0 0 HorizontalSize VerticalSize]);
 set(gcf,'color', [1,1,0.92]);
 set(gcf, 'InvertHardCopy', 'off');
 
+%===============================================================
+%============================ for printing =====================
+%===============================================================
 numexample = 3;
 printdirectory  = ' ../calibtextelite/';
-fileprint = sprintf('%sexample%ionstation%i.eps',printdirectory,numexample,ihc);
+fileprint = sprintf('%sexample%ionstation%i.eps',...
+    printdirectory,numexample,ihc);
 figure(1)
 fileprintepscmd = sprintf('print -depsc -loose %s',fileprint);
 fileeps2pdfcmd  = sprintf('!epstopdf %s',fileprint);
