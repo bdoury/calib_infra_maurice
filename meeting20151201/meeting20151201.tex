@@ -1,0 +1,283 @@
+\documentclass[handout,9pt]{beamer}
+%\documentclass[10pt]{beamer}
+%\documentclass[draft, 10pt]{beamer}
+
+%\mode<handout>{\beamertemplatesolidbackgroundcolor{black!5}}
+
+ % \textheight 7cm
+ %\doublespace
+ %\oddsidemargin -1.5cm
+ % \evensidemargin +1.5cm
+ % \textwidth 12cm
+ % \topmargin 0cm
+
+%%%%%\usepackage{times}
+
+%================================================================
+\usepackage{ifthen}
+\usepackage{color,amsmath,amsfonts,amssymb,epsfig,hyperref}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+%\usepackage{media9}
+\usepackage{tikz}
+%\usepackage{pgfplots}
+
+%\usepackage{animate}
+%\usepackage{multimedia}
+\usepackage{everypage}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{tikz}
+
+\definecolor{enstrouge}{RGB}{212,65,84}
+\definecolor{liteorange}{RGB}{235,226,52}
+\definecolor{greenNoise}{RGB}{243,42,255}
+\definecolor{LightRed}{rgb}{0.75,0.0325,0}
+\definecolor{LightGrey}{rgb}{0.95,0.95,0.95}
+\definecolor{Peach}{rgb}{0.98,0.49,0.25}
+\definecolor{BurntOrange}{rgb}{0.79,0.37,0}
+\definecolor{LightYellow}{rgb}{1,1,0.92}
+
+\definecolor{litegreen}{RGB}{200,255,200}
+\definecolor{enstorange}{RGB}{255,214,10}
+\definecolor{enstrouge}{RGB}{212,65,84}
+\definecolor{grey}{RGB}{204,204,204}
+\definecolor{blue}{RGB}{0,0,255}
+\definecolor{almostblack}{RGB}{100,100,100}
+\definecolor{violet}{rgb}{0.4,0,0.4}
+\definecolor{BurntOrange}{rgb}{0.79,0.37,0}
+\definecolor{cyan}{RGB}{0,255,255}
+\definecolor{magenta}{RGB}{243,42,255}
+
+
+%================================================================
+\mode<presentation> {
+  %== theme
+% Antibes, Berlin, Bergen, Berkeley,
+% Boadilla, boxes, Copenhagen, Darmstadt, Dresden
+% Frankfurt, Goettingen, Hannover, Ilmenau, JuanLesPins
+% Luebeck, Madrid, Malmoe, Marburg, Montpellier, PaloAlto
+% Pittsburgh, Rochester, Singapore, Szeged, Warsaw
+  \usetheme{boxes}%[width=0.18\linewidth,]
+%%== colortheme
+%%albatross, beetle, crane, dolphin, ove, fly, lily
+%% orchid, rose, seagull, seahorse, sidebartab, whale
+  \usecolortheme{rose}
+  % \useoutertheme contient la pose du logo
+  %\useoutertheme{default}
+  \setbeamercovered{transparent}
+}
+\setbeamercolor{sidebar}{bg= enstrouge}
+\setbeamercolor{structure}{fg= orange}
+\setbeamercolor{alerted text}{fg=blue}
+
+\usefonttheme[onlymath]{serif}
+%=======================================
+%\setbeamerfont{page number in head/foot}{size=\large}
+ %\setbeamercolor{background canvas}{bg=LightYellow} 
+% \setbeamertemplate{footline}[frame number]
+ 
+%\pagestyle{fancy}
+% \lhead[]{}
+% \chead[]{}
+% \rhead[]{}
+% \lfoot[]{\includegraphics[scale=0.05]{\DIRLOGO/telecomparis}}
+% \cfoot[]{\insertframenumber/\inserttotalframenumber}
+% \rfoot[]{}
+
+%======================================================================
+%=============== NEW COMMANDS =========================================
+
+\newcommand{\figsstit}[2]{
+\begin{figure}[hbtp]
+\centerline{
+    \hbox{ \epsfig{figure={#1}, scale=#2} }
+}
+\end{figure}}
+%===========================
+\newcommand{\figscale}[4]{
+\begin{figure}[hbtp]
+\centerline{
+    \hbox{ \epsfig{figure={#1}, scale=#4} }
+}
+\begin{center}
+\parbox{11 cm}
+{
+    \caption{\protect\small\it  {#2}}
+    \label {#3}
+}
+\end{center}
+\end{figure}}
+%===========================
+\newcommand{\figdims}[5]{
+\begin{figure}[hbtp]
+\centerline{
+    \hbox{ \epsfig{figure={#1}, height=#4cm, width=#5cm} }
+}
+\begin{center}
+\parbox{10cm}
+{
+    \caption{\protect\small\it  {#2}}
+    \label {#3}
+}
+\end{center}
+\end{figure}}
+%======================== \def =================
+\def\with{\quad \text{with}\quad}
+\def\where{\quad \text{where}\quad}
+\def\and{\quad \text{and}\quad}
+\def\gandl{\renewcommand\arraystretch{0.5}\begin{array}{c}H_{1}\\>\\<\\H_{0}\end{array}}
+\def\GLRT{\ensuremath{\text{GLRT}}}
+\def\GLRTdet{\ensuremath{\text{GLRT-det}}}
+\def\GLRTstoEG{\ensuremath{\text{GLRT-sto-EG}}}
+\def\GLRTstoVG{\ensuremath{\text{GLRT-sto-VG}}}
+\def\m2{m$^2$}
+\def\Fstat{{F\text{-stat}}}
+
+\def\MSC{\text{MSC}}
+\def\hMSC{\widehat{\text{MSC}}}
+
+\def\simas{\stackrel{\mathrm{asympt.}}{\sim}}
+\def\simiid{\stackrel{\mathrm{i.i.d.}}{\sim}}
+
+% \def\linetext{\noindent
+%       \makebox[\textwidth]{\color{orange}
+%       {\rule{\textwidth}{1pt}}}}
+
+ \def\linetext{\noindent{\color{orange}\rule{\textwidth}{1pt}
+       \\[\dimexpr-\baselineskip+1mm+0pt]
+                \rule{\textwidth}{0.5pt}}}
+
+\def\linepaper{\noindent{\color{orange}\rule{\paperwidth}{1pt}
+       \\[\dimexpr-\baselineskip+1mm+0pt]
+                \rule{\paperwidth}{0.5pt}}}
+
+
+%==================================================
+\newcommand\algo[1]%
+{
+    \begin{center} %
+    \begin{tabular} {||p{10 cm}l ||}%
+    \hline
+               #1 &  \\
+    \hline
+    \end{tabular}
+    \vspace{12pt}
+    \end{center}
+}
+\def\uB{\underline B}
+\def\uD{\underline D}
+\def\ur{\underline r}
+\def\ux{\underline x}
+\def\uX{\underline X}
+\def\ug{\underline g}
+\def\uw{\underline w}
+
+\def\utheta{\underline \theta}
+\def\uzeta{\underline \zeta}
+
+
+\def\dx{\dot x}
+\def\hx{\hat x}
+\def\hy{\hat y}
+\def\hX{\hat X}
+\def\hY{\hat Y}
+\def\tx{{\tilde x}}
+\def\tX{{\tilde X}}
+\def\cX{{\cal X}}
+
+
+\def\soi{s_{\mathrm{soi}}}
+\def\ns{s_{\mathrm{son}}}
+
+\def\sut{\mathrm{sut}}
+\def\sref{\mathrm{sref}}
+
+
+\def\ssoi{\utheta_{\mathrm{soi}}}
+\def\sns{\utheta_{\mathrm{son}}}
+\def\degree{^{\circ}}
+
+\def\cbullet{{\color{orange}\bullet}}
+
+ \newcommand{\prob}[1]{\mathds{P}\left( #1 \right)}
+ \newcommand{\esp}[1]{\mathds{E}\left[ #1 \right]}
+ \newcommand{\espunder}[2]{\mathds{E}_{#1}\left[ #2 \right]}
+ \newcommand{\var}[1]{\mathrm{var}\left( #1 \right)}
+ \newcommand{\cov}[1]{\mathrm{Cov}\left( #1 \right)}
+ \newcommand{\card}[1]{\left| #1 \right|}
+ \newcommand\trace[1]{{\mathrm{Tr}} \left [ #1 \right] }
+ \newcommand\diag[1]{{\mathrm{diag}} \left [ #1 \right] }
+ \newcommand{\SNR}{\text{SNR}}
+ \newcommand{\CRB}{\text{CRB}}
+ \newcommand{\MLE}{\text{MLE}}
+ \newcommand{\FIM}{\text{FIM}}
+ \newcommand{\auc}{\text{AUC}}
+
+\newenvironment{TAB}{\begin{table}[[hbt] \center \leavevmode}{\end{table}}
+\newtheorem{propriete}{Propri\'{e}t\'{e} - \thepropriete}
+\newtheorem{theoreme}{Th\'{e}or\`{e}me - \thetheoreme}
+\newtheorem{definision}{D\'{e}finition - \thedefinision}
+\newtheorem{exemple}{Exemple - \theexemple}
+\newtheorem{lemme}{Lemme - \thelemme}
+
+
+
+\begin{document}
+ \sloppy
+
+%=======================================================
+%=======================================================
+\begin{frame}
+\frametitle{Main function \alert{\tt fbanalysis.m}}
+
+\figsstit{../calibtexte/figures/synopticV2.pdf}{0.6}
+
+
+%In the presented results the analysis time duration is 48 hours to be large enough to allow an averaging on a sufficient number of events in each T/F cell.
+%
+
+\end{frame}
+
+%=======================================================
+\begin{frame}
+\frametitle{Settings}
+\begin{itemize}
+\item
+Different time period, regarding the frequency bandwidth, are considered, leading to different numbers of samples. Hence, using the FFT, we have different numbers of frequency bins. 
+
+But only a few  of them are kept depending on the  filter frequency bandwidth. For example with the considered FB, we have in the full band, $70$ frequency bins from $0.005$ Hz to $5.75$ Hz.
+
+That means that we can perform the $70$ spectral components using the direct formula.
+
+%\begin{tabular}{cccc}
+%$11$ frequencies on the first band, 
+%\\
+%$11$ frequencies on the first band 
+%\\
+%$15$ frequencies on the second band 
+%\\
+%$11$ frequencies on the third band 
+%\\
+%$12$ frequencies on the forth band 
+%\\
+%$6$ frequencies on the fifth band 
+%\\
+%$19$ frequencies on the sixth band 
+%\end{tabular}
+
+
+\item
+ the function {\tt fbanalysis.m} performs an averaging on the time slots, typically a pair of days, giving around $175$, $250$, $700$, $1100$, $6000$ and $9000$ time slots regarding the  filter frequency bandwidth.
+ 
+ \item
+Outside of the  function {\tt fbanalysis.m}, an external averaging is applied on several pairs of days.
+
+\end{itemize}
+
+\end{frame}
+\end{document}
+

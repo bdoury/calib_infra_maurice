@@ -1,0 +1,23 @@
+1) to extract data from database run:
+                - RUNextractfromDB.m
+   after providing the settings. 
+   This program makes requests at the database and save the records into 
+   a selected directory (here '../../../AAdataI26calib/'). The records 
+   consists of data, name of the channel, etc
+   This directory is partitioned in 8 directories from s1 to s8.
+   The program uses the programs extractfromDB.m, convertCSSmatlab.m
+   and savesignals.m, located in ZZtoolbox/00pierrick/
+
+2) to analyze the signals run:
+                - estimationwithFB.m
+   is used  from the selected directory 
+   (here '../../../AAdataI26calib/'). A few part of the results is saved 
+   in a selected directory as  'AAresultswithFB98_5'
+   with one file by sensor location
+   The program uses the functions fbankanalysis.m and statsRatioHbis.m
+   located in ZZtoolbox/.
+
+3) programs in the directory progs2display allow to display some results.
+ 
+Rk: AAresultswithFB98 and AAresultswithFB9810 are respectively for filtercharact(1).ratioDFT2SCP
+equals 5 and 10. They shoud give about the same results.

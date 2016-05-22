@@ -1,0 +1,61 @@
+% !TEX root = ../calibreport.tex
+
+%====== deterministic
+
+\subsubsection{Remark on a deterministic approach}
+\label{ann:deterministic-approach}
+We have seen that, in the absence of noises, we can use the DFT of each trajectory and perform the ratio without any averaging. But we have also to express a deterministic property which can be the equivalent of the MSC condtion. For that we can work frequency by frequency and therefore omit the dependence in frequency. We denote $X_{\ut,1}$, $\ldots$ 
+ $X_{\ut,M}$ the DFT of the signal of the SUT and $X_{\rf,1}$, $\ldots$ 
+ $X_{\rf,M}$ the DFT of the signal of the SREF.
+
+Now to define in the determistic case a notion equivalent to the MSC, we can say that the values of the ratio must be almost constant along the $M$ windows. That writes: it exists 2 coefficients   not depending on $m$, verifying $\alpha_{\ut}^2+\alpha_{\rf}^2=1$ and s.t. 
+\begin{eqnarray} 
+\label{eq:approx}
+ \alpha_{\ut}X_{\ut,m}+\alpha_{\rf}X_{\rf,m}&\approx &0
+\end{eqnarray}
+With obvious matricial notations, we have:
+\begin{eqnarray*}
+ X \alpha &=& \epsilon
+\end{eqnarray*}
+\begin{eqnarray*}
+X & = &
+\begin{bmatrix}
+X_{\ut,1}&X_{\rf,1}
+\\
+\vdots
+\\
+X_{\ut,M}&X_{\rf,M}
+\end{bmatrix} 
+\quad\mathrm{and}\quad
+\begin{bmatrix} 
+\alpha_{\ut}
+\\
+\vdots
+\\
+\alpha_{\rf}
+\end{bmatrix} 
+\end{eqnarray*}
+The minimization of the norm of $\epsilon$ under the constraint $\|\alpha\|^2=1$ leads to take for $\alpha$ the eigenvector associated to the lowest eigenvalue of denoted $\lambda_{\min}$. The matrix $M^{-1}X^TX$  writes:
+\begin{eqnarray*}
+\Gamma&=&\frac{1}{M}
+ \begin{bmatrix}
+\sum_{m=1}^M |X_{\ut,m}|^2&\sum_{m=1}^M X_{\ut,m}X_{\rf,m}^*
+\\
+\sum_{m=1}^M X_{\ut,m}^*X_{\rf,m}&\sum_{m=1}^M |X_{\rf,m}|^2
+\end{bmatrix}
+\end{eqnarray*}
+
+The minimum value is then given by:
+\begin{eqnarray*}
+ \epsilon_{\min}&=&\lambda_{\min}
+\end{eqnarray*}
+Lower  $\lambda_{\min}$ better the approximation \eqref{eq:approx}. On the other hand, lower  $\lambda_{\min}$ lower the determinant of $\Gamma$ which writes:
+\begin{eqnarray*}
+ \Delta & =& M^{-2}\sum_{m=1}^M |X_{\ut,m}|^2\sum_{m=1}^M |X_{\rf,m}|^2-
+  M^{-2}\left| \sum_{m=1}^M X_{\ut,m}X_{\rf,m}^* \right|^2
+ \\
+&=& M^{-2}\sum_{m=1}^M |X_{\ut,m}|^2\sum_{m=1}^M |X_{\rf,m}|^2\,
+(1-\MSC)
+\end{eqnarray*}
+In conclusion nearer the MSC to 1, better the approximation \eqref{eq:approx}.
+

@@ -1,0 +1,233 @@
+\documentclass[a4paper, 11pt, draft]{article}
+%================================================================
+\usepackage{ifthen}
+\usepackage{verbatim, fancyhdr,
+            theorem, dsfont, color,
+            amsmath, amsfonts, amssymb,
+            hyperref,
+            epsfig, graphicx,setspace}
+
+\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+% \usepackage{setspace}
+
+%============================================
+ \textheight 22cm
+ %\doublespace
+ \oddsidemargin -0.5cm
+ \evensidemargin +1.5cm
+ \textwidth 17cm
+ \topmargin 0cm
+%============================================
+\newcommand{\figscale}[4]{
+\begin{figure}[hbtp]
+\centerline{
+    \hbox{ \psfig{figure={#1}, scale=#4} }
+}
+\begin{center}
+\parbox{8 cm}
+{
+    \caption{\protect\small\it  {#2}}
+    \label {#3}
+}
+\end{center}
+\end{figure}}
+
+%---POUR INFO---%
+%\href{mailto:mail@exemple.com}{Mon mail} % Lien email
+%\href{http://exemple.com}{Mon site web}  % Lien web
+%\href{fichier.pdf}{Mon fichier}          % Lien vers un fichier
+
+%%---INCLUSION DE CODE SOURCE C++---%
+%\definecolor{grey}{rgb}{0.95,0.95,0.95}
+%\lstset{language=C++, numbers=left, tabsize=2, frame=single, breaklines=true,
+%basicstyle=\ttfamily, numberstyle=\tiny\ttfamily, framexleftmargin=13mm,
+%backgroundcolor=\color{grey}, xleftmargin=1cm}
+
+%============================================================================
+ \newcommand{\note}[2]{\marginpar{\textcolor{blue}{#1}
+                \color{red}\footnotesize{ #2}\color{black}}}
+
+%\def\DIRLOGO{C:/tout/maurice/template/LOGOS}
+%==============================================
+\newcommand{\prob}[1]{\mathds{P}\left( #1 \right)}
+\newcommand{\esp}[1]{\mathds{E}\left[ #1 \right]}
+\newcommand{\diag}[1]{\mathrm{diag}\left[ #1 \right]}
+\newcommand{\var}[1]{\mathrm{var}\left( #1 \right)}
+\newcommand{\card}[1]{\left| #1 \right|}
+\newcommand{\SSE}{\ensuremath{\mathrm{SSE}}}
+\newcommand{\SSR}{\ensuremath{\mathrm{SSR}}}
+\newcommand{\SST}{\ensuremath{\mathrm{SST}}}
+\newcommand{\MSE}{\ensuremath{\mathrm{MSE}}}
+\newcommand{\MSR}{\ensuremath{\mathrm{MSR}}}
+%===============================================
+
+\newenvironment{TAB}{\begin{table}[[hbt] \center \leavevmode}{\end{table}}
+\newtheorem{propriete}{Propri\'{e}t\'{e} - \thepropriete}
+\newtheorem{theoreme}{Th\'{e}or\`{e}me - \thetheoreme}
+\newtheorem{definition}{D\'{e}finition - \thedefinision}
+\newtheorem{exemple}{Exemple - \theexemple}
+\newtheorem{lemme}{Lemme - \thelemme}
+%====
+%\begin{table}
+%\begin{center}
+%\begin{tabular}{|l|c|c|c|}
+%\hline
+%Architecture &  24 SV & 27 SV & 30 SV
+%\\
+%\hline\hline
+% GIC & 100\%& 100\%& 100
+% \\
+% \hline
+% RRAIM& 98.4\%& 100\%& 100
+% \\
+% \hline
+% ARAIM& 44.7\%& 94.1\%& 100
+% \\
+% \hline
+%\end{tabular}
+%\\
+% \parbox{12cm}{
+%     \caption{\small\it xxxx }
+%     \label{tab:tableau}}
+%\end{center}
+% \end{table}
+%=========== LOGO/Head/Foot par PAGE ========
+%\pagestyle{fancy}
+% \lhead[]{}
+% \chead[]{}
+% \rhead[]{\includegraphics[scale=0.1]{\DIRLOGO/logo_telecomparis}}
+% \lfoot[]{}
+% \cfoot[]{}
+% \rfoot[]{\thepage}
+%
+
+%\usepackage[titles]{tocloft}
+%\renewcommand{\cftsecfont}{%
+%  \fontsize{11}{13}\usefont{OT1}{phv}{bc}{n}\selectfont
+%}
+
+%%============================================================================
+\def\thesection{\arabic{section}}
+%\def\thetable{\arabic{table}}
+%\def\thefigure{\arabic{figure}}
+%\def\theequation{\arabic{equation}}
+%\def\theexercice{\arabic{exercice}}
+%\def\theequation{\arabic{exercice}.\arabic{equation}}
+%%============================================================================
+%\newcounter{auxiliaire}
+%%%%%%%% comment
+%\setcounter{auxiliaire}{\theenumi}
+%\end{enumerate}
+% TEXTE
+%\begin{enumerate}
+%\setcounter{enumi}{\theauxiliaire}
+% on peut aussi utliser
+%
+%\begin{enumerate}
+% \item
+%\end{enumerate}
+%blabla
+%\begin{enumerate}[resume]
+% \item
+%\end{enumerate}
+%%============================================================================
+%\renewcommand\arraystretch{1.6}
+%%============================================================================
+%\begin{table}[H]
+%\begin{center}
+%    \begin{tabular}{cccccccc}
+%    \hline \hline
+%    \multicolumn{4}{c}{Mod\`{e}le de moyenne} &   \multicolumn{3}{c}{Mod\`{e}le de dispersion} & $-2logV$\\
+%    {\it Intercept}  & $\delta z$ & $C/N_0$ & $Elev$ &  {\it Intercept} & $C/N_0$ & $Elev$ &\\
+%    \hline
+%      24.87   & -0.74    & -0.60    & -0.11      &  6.9281  & -0.0375  & -0.0257  &  261210 \\
+%     (0.2384) & (0.0026) & (0.0072) &  (0.0029)  & (0.0283) & (0.0011) & (0.0004) &       \\
+%     \hline \hline
+%    \end{tabular}
+%    \caption{Estimations des param\`{e}tres du mod\`{e}le h\'{e}t\'{e}rog\`{e}ne.
+%    Pour chaque param\`{e}tres nous avons donn\'{e} son estimation et
+%    en dessous entre parenth\`{e}ses son \'{e}cart-type et la valeur de
+%    la vraisemblance calcul\'{e}e pour les valeurs estim\'{e}es.}
+%    \label{ParametresDuModeleHeterogene}
+%\end{center}
+%\end{table}
+% ==================================================
+% Figures cote \`{a} cote
+%\begin{figure}[h]
+%  \begin{minipage}{0.5\linewidth}
+%   \centering
+%   \includegraphics[scale=0.7]{fig1}
+%  \end{minipage}
+%\hfill
+%  \begin{minipage}{0.5 \linewidth}
+%   \centering
+%   \includegraphics[scale=0.65]{fig2}
+%  \end{minipage}
+%\begin{center}
+%\parbox{10 cm}
+%{\caption{\protect\small\it mon commentaire }
+%\label{fig:monlabel} }
+%\end{center}
+%
+%\end{figure}
+
+
+%%=======================================================================
+%\title{\bf\Large Hybridations multiples GNSS/IMU\vspace{3cm}}
+%\author{toto,
+%\\
+%{mel: \small toto.tutu@telecom-paristech.fr}
+%\\
+%\vspace{1cm}
+%\\
+%et
+%\\
+%\vspace{1cm}
+%\\
+%Maurice Charbit
+%\\
+%{mel: \small maurice.charbit@telecom-paristech.fr}
+%\\
+%\vspace{5cm}
+%\\
+%{ \includegraphics[height=15mm]{\DIRLOGO/logo_telecomparis}}
+%}
+%============================================
+\begin{document}
+ \sloppy
+
+
+Le fait de prendre de prendre une durée de la fenêtre d'analyse spectrale qui varie comme l'inverse de la fréquence est justifiée de la fa\c con suivante:
+\begin{itemize}
+\item
+en situation stationnaire: en général on n'exige pas, dans les spécifications, d'avoir la même résolution (capacité à discriminer 2 fréquences) dans toute la bande de fréquence (en fait aucune indication n'est donnée à ce sujet dans le PTS manual). Ce que l'on souhaite constant est le rapport entre la résolution et la fréquence considérée.
+
+Par exemple, on considère que $0.001$ Hz autour de $0.1$ Hz est équivalent à $0.01$ Hz autour de $1$ Hz.
+
+
+\item
+en situation où l'hypothèse de stationnarité n'est pas vérifiée de fa\c con permanente: les observations montrent qu'il est plus facile de trouver une  fenêtre  courtes qu'une fenêtre longue et qui répondent toutes deux à l'hypothèse de stationnarité avec un même niveau de MSC. En fait si on observait de longues fenêtres en HF on pourrait réduire le seuil de MSC puisqu'on aurait plus de fenêtres pour ``moyenne'' les spectres. Dans les settings le nombre de fenêtres est gardé constant, et par conséquent en HF, on peut réduire la longueur en temps des fenêtres d'intégration.
+
+\end{itemize}
+
+
+D'où l'idée de travailler avec des durées variables suivant l'endroit de l'axe des fréquences en faisant en sorte que le produit 
+
+
+\begin{center}
+Exemple pour 6 fenêtres: $1000$ s,  $500$ s, $250$ s, $100$ s, $50$ s et $20$ s pour des résolutions de l'ordre de 
+\end{center}
+
+
+
+\bigskip 
+Par contre il n'est pas prouvé sur notre application que le filtrage apporte une amélioration. Ne pas oublier, en effet, que la TF applique en quelque sorte un filtrage qui rend moins évident la nécessité d'ajouter un filtre.
+Toutefois cela peut (ce n'est pas une preuve) réduire les problèmes de leakage, en sélectionnant juste la bande dont on va extraire les estimations. Si on décide d'appliquer un filtrage dont la bande est en inverse de la durée d'observation on a aussi un découpage logarithmique.
+
+
+
+
+\end{document}
+
