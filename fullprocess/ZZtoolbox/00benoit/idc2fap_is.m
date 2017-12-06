@@ -109,14 +109,21 @@ while ischar(tline)
             
             %1 - Read the FAP into vector
             tline = fgetl(fid);
+            if (strfind(tline,'#'))
+                tline = fgetl(fid);
+            end
             nb_elements = textscan(tline,'%f'); %reading the number of elements of the FIR filter
             fap_vector = zeros(nb_elements{1},3);
             for j=1:nb_elements{1},
                 tline = fgetl(fid);
-                fap_element = textscan(tline,'%f %f %f %f %f');
-                fap_vector(j,1) = fap_element{1};fap_vector(j,2) = fap_element{2};fap_vector(j,3) = fap_element{3};
+                if (strfind(tline,'#'))
+                else
+                   fap_element = textscan(tline,'%f %f %f %f %f');
+                   fap_vector(j,1) = fap_element{1};fap_vector(j,2) = fap_element{2};fap_vector(j,3) = fap_element{3}; 
+                end
             end
             %2 - Apply FAP to Transfer Function
+            fap_vector;
             amp=interp1(fap_vector(:,1),fap_vector(:,2),f);
             phas=interp1(fap_vector(:,1),fap_vector(:,3),f);
             fap=amp.*exp(1j*phas*pi/180);

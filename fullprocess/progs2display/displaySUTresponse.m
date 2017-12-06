@@ -9,7 +9,7 @@
 % using both ZZtoolbox/00gabrielson and ../ZZtoolbox/00benoit
 %
 %=========================================================================
-clear
+%clear
 addpath ../ZZtoolbox/
 addpath ../ZZtoolbox/00gabrielson
 addpath ../ZZtoolbox/00benoit
@@ -22,7 +22,8 @@ directoryinputresults = '../AAresultswithFB98/';
 sensor_UT     = 'I26DE_BDF_RSP_2015134_MB3';
 saveprintflag = 1;
 trimmeanflag  = 0;
-for ihc = 1:8
+
+for ihc = 8:8
     numfig = ihc;
     figure(numfig);
     % list of the files from 1 to nbmats
@@ -129,11 +130,14 @@ for ihc = 1:8
     ICallRatioPfiltersSUZbis       = STDmodRatioPfilters_aveSUZ ./ ...
         sqrt(sum(nbofvaluesoverthresholdSUZ,2));
     
-    N_freq_vector = 300;
-    freq_vector   = logspace(log10(0.001),log10(30),N_freq_vector) .';
+    N_freq_vector = 200;
+    freq_vector   = logspace(log10(0.001),log10(10),N_freq_vector) .';
+    fap = zeros(N_freq_vector,3);
+    fap(:,1) = freq_vector;
     [p_total_NRS_sensor, p_total_NRS, TF_ref_sensor, TFsensor4freqRatio] = ...
         HCP_acoustical(freq_vector, allfrqsPfiltersSUZ, sensor_UT, ref_sensor, 'nofir');
-    
+    [p_total_NRS_sensor_benoit, p_total_NRS_benoit] = ...
+        HCP_acoustical_benoit(freq_vector, sensor_UT, 'nofir');
     %================================
     absestimwithcorrect = coeffsens * meanmodRatioPfiltersSUZ .* abs(TFsensor4freqRatio);
     %================================================
@@ -150,8 +154,11 @@ for ihc = 1:8
     %=============== dipslay
     hold on
     %      semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)), 'r');
-    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*0.95), 'r--','linew',1.5);
-    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*1.05), 'r--','linew',1.5);
+    fap(:,2) = abs(p_total_NRS_sensor_benoit);
+    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor_benoit)*0.95), 'r--','linew',1.5);
+    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor_benoit)*1.05), 'r--','linew',1.5);    
+    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*0.95), 'g--','linew',1.5);
+    semilogx(freq_vector, 20*log10(abs(p_total_NRS_sensor)*1.05), 'g--','linew',1.5);
     hold off
     title(sprintf('IS26 -  sensor H%i, MSC threshold = %4.2f\nday number = %i',...
         ihc, MSCthreshold, 2*nbdoubledays),'fontname','times','fontsize',14)
@@ -159,7 +166,7 @@ for ihc = 1:8
     %             'fontname','times','fontsize',14)
     
     set(gca,'fontname','times','fontsize',14)
-    set(gca,'xlim',[0.01 5])
+    set(gca,'xlim',[0.01 10])
     set(gca,'ylim',4*[-1 1])
     set(gca,'xtickLabel',[])
     %              xlabel('frequency [Hz]')
@@ -196,12 +203,14 @@ for ihc = 1:8
     %=============== dipslay
     hold on
     %     semilogx(freq_vector, -unwrap(angltheo_rd)*180/pi, 'r');
-    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi-5, 'r--','linew',1.5);
-    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi+5, 'r--','linew',1.5);
+    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi-5, 'g--','linew',1.5);
+    semilogx(freq_vector, unwrap(angltheo_rd)*180/pi+5, 'g--','linew',1.5);    
+    semilogx(freq_vector, unwrap(angle(p_total_NRS_sensor_benoit))*180/pi-5, 'r--','linew',1.5);
+    semilogx(freq_vector, unwrap(angle(p_total_NRS_sensor_benoit))*180/pi+5, 'r--','linew',1.5);
     hold off
-    
+    fap(:,3) = unwrap(angle(p_total_NRS_sensor_benoit))*180/pi;
     set(gca,'fontname','times','fontsize',14)
-    set(gca,'xlim',[0.01 5])
+    set(gca,'xlim',[0.01 10])
     set(gca,'ylim',40*[-1 1])
     xlabel('frequency [Hz]')
     
