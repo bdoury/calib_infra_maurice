@@ -121,7 +121,6 @@ for ifilter = 1:Pfilter
     filnum = filterbankcoeff{ifilter}.num;
     filden = filterbankcoeff{ifilter}.den;
     filteredsignals = filter(filnum,filden,signals);
-    
     SCPperiod_sec   = structfiltercharacteristics(ifilter).SCPperiod_sec;
     ratioDFT2SCP    = structfiltercharacteristics(ifilter).ratioDFT2SCP;
     overlapDFT      = structfiltercharacteristics(ifilter).overlapDFT;
@@ -171,7 +170,6 @@ for ifilter = 1:Pfilter
         NaN(size(tabRsup_ifilter))+1j*NaN(size(tabRsup_ifilter));
     tabRsup_ifilter_cst(ind_ifilter_cst) = ...
         tabRsup_ifilter(ind_ifilter_cst);
-
     tabRsup_ifilter_cst_trim = ...
         trimmeancomplex(tabRsup_ifilter_cst,trimpercent);    
     
